@@ -1,0 +1,93 @@
+@extends('layouts.admin')
+@section('title', $news->exists ? 'Edit Article' : 'Write Article')
+@section('header', $news->exists ? 'Edit News Article' : 'Write New Article')
+
+@section('content')
+<div class="admin-card">
+    @if ($errors->any())
+        <div style="background: #fee2e2; color: #b91c1c; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; border: 1px solid #f87171;">
+            <ul style="margin: 0; padding-left: 1.5rem;">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ $news->exists ? route('admin.news.update', $news) : route('admin.news.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @if($news->exists) @method('PUT') @endif
+        
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+            <!-- Left Column: Main Content -->
+            <div>
+                <div class="form-group">
+                    <label class="form-label">Article Title <span style="color: red;">*</span></label>
+                    <input type="text" name="title" value="{{ old('title', $news->title) }}" class="form-control" required style="font-size: 1.2rem; padding: 0.8rem;">
+                </div>
+                
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label class="form-label">Article Content <span style="color: red;">*</span></label>
+                    <textarea name="body" class="form-control" rows="15" required style="font-family: inherit;">{{ old('body', $news->body) }}</textarea>
+                    <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: #6b7280;">Basic HTML is supported.</p>
+                </div>
+            </div>
+
+            <!-- Right Column: Meta & Settings -->
+            <div>
+                <div class="admin-card" style="box-shadow: none; border: 1px solid #e5e7eb; padding: 1.2rem; background: #f9fafb;">
+                    <h3 style="margin-top: 0; font-size: 0.95rem; color: #374151; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1rem;">Publishing Options</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Category <span style="color: red;">*</span></label>
+                        <select name="category" class="form-control" required>
+                            <option value="">Select Category</option>
+                            <option value="Department News" {{ old('category', $news->category) == 'Department News' ? 'selected' : '' }}>Department News</option>
+                            <option value="Research Highlight" {{ old('category', $news->category) == 'Research Highlight' ? 'selected' : '' }}>Research Highlight</option>
+                            <option value="Student Spotlight" {{ old('category', $news->category) == 'Student Spotlight' ? 'selected' : '' }}>Student Spotlight</option>
+                            <option value="Award" {{ old('category', $news->category) == 'Award' ? 'selected' : '' }}>Award / Recognition</option>
+                            <option value="General" {{ old('category', $news->category) == 'General' ? 'selected' : '' }}>General Info</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Publish Date/Time</label>
+                        <input type="datetime-local" name="published_at" value="{{ old('published_at', $news->published_at ? \Carbon\Carbon::parse($news->published_at)->format('Y-m-d\TH:i') : '') }}" class="form-control">
+                        <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #6b7280;">Leave blank to save as Draft. Set future date to schedule.</p>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 1.5rem;">
+                        <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+                            <input type="checkbox" name="is_featured" value="1" {{ old('is_featured', $news->is_featured) ? 'checked' : '' }} style="width: 18px; height: 18px; margin-top: 2px;">
+                            <div>
+                                <strong style="display: block; font-size: 0.9rem;">Feature this article</strong>
+                                <span style="font-size: 0.75rem; color: #6b7280;">Featured articles appear in the hero slider on the homepage.</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="admin-card" style="box-shadow: none; border: 1px solid #e5e7eb; padding: 1.2rem; margin-top: 1.5rem;">
+                    <h3 style="margin-top: 0; font-size: 0.95rem; color: #374151; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1rem;">Featured Image</h3>
+                    
+                    @if($news->featured_image)
+                        <div style="margin-bottom: 1rem;">
+                            <img src="{{ asset('storage/'.$news->featured_image) }}" style="width: 100%; height: auto; border-radius: 4px; border: 1px solid #e5e7eb;">
+                        </div>
+                    @endif
+                    
+                    <div class="form-group mb-0">
+                        <input type="file" name="featured_image" class="form-control" accept="image/*">
+                        <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #6b7280;">Recommended size: 1200x630px (Max 2MB)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; display: flex; justify-content: flex-end; gap: 1rem;">
+            <a href="{{ route('admin.news.index') }}" class="btn btn-secondary" style="background: white; border: 1px solid #d1d5db; color: #374151; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 4px;">Cancel</a>
+            <button type="submit" class="btn btn-primary" style="background: var(--color-primary); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: bold; cursor: pointer;">{{ $news->exists ? 'Update Article' : 'Save Article' }}</button>
+        </div>
+    </form>
+</div>
+@endsection
