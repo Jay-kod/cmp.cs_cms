@@ -12,7 +12,7 @@ class StaffController extends Controller
 {
     public function index()
     {
-        $staff = Staff::orderBy('sort_order')->paginate(20);
+        $staff = Staff::orderByDesc('is_hod')->orderBy('sort_order')->paginate(20);
         return view('admin.staff.index', compact('staff'));
     }
 
@@ -28,6 +28,7 @@ class StaffController extends Controller
             'qualifications' => 'nullable|string|max:255',
             'title' => 'nullable|string|max:50',
             'rank' => 'required|string|max:100',
+            'role' => 'nullable|string|max:255',
             'email' => 'required|email|unique:staff,email',
             'phone' => 'nullable|string|max:50',
             'specialisation' => 'nullable|string|max:255',
@@ -66,6 +67,7 @@ class StaffController extends Controller
             'qualifications' => 'nullable|string|max:255',
             'title' => 'nullable|string|max:50',
             'rank' => 'required|string|max:100',
+            'role' => 'nullable|string|max:255',
             'email' => 'required|email|unique:staff,email,'.$staff->id,
             'phone' => 'nullable|string|max:50',
             'specialisation' => 'nullable|string|max:255',

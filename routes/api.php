@@ -67,7 +67,7 @@ Route::get('/search', function (Request $request) {
     $pages = [
         ['title' => 'About Us', 'url' => '/about', 'icon' => 'fa-solid fa-info-circle', 'keywords' => 'about department story vision mission'],
         ['title' => 'Academics', 'url' => '/academics', 'icon' => 'fa-solid fa-graduation-cap', 'keywords' => 'academics programmes courses'],
-        ['title' => 'Contact & Alumni', 'url' => '/contact-alumni', 'icon' => 'fa-solid fa-envelope', 'keywords' => 'contact alumni email phone'],
+        ['title' => 'Contact', 'url' => '/contact', 'icon' => 'fa-solid fa-envelope', 'keywords' => 'contact email phone department'],
         ['title' => 'Blog / News & Events', 'url' => '/research-news', 'icon' => 'fa-solid fa-newspaper', 'keywords' => 'blog news events research publications'],
         ['title' => 'Faculty Members', 'url' => '/people', 'icon' => 'fa-solid fa-users', 'keywords' => 'faculty staff people lecturers professors'],
     ];

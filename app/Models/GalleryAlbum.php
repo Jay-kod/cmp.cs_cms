@@ -9,6 +9,11 @@ class GalleryAlbum extends Model
 {
     protected $guarded = [];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function images()
     {
         return $this->hasMany(GalleryImage::class, 'album_id');

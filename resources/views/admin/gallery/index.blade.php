@@ -17,6 +17,8 @@
         <div style="height: 160px; background: #e5e7eb; position: relative;">
             @if($album->cover_image)
                 <img src="{{ asset('storage/'.$album->cover_image) }}" style="width: 100%; height: 100%; object-fit: cover;">
+            @elseif($album->images->first())
+                <img src="{{ asset('storage/'.$album->images->first()->image_path) }}" style="width: 100%; height: 100%; object-fit: cover;">
             @else
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 2rem;">
                     <i class="fa-solid fa-images"></i>

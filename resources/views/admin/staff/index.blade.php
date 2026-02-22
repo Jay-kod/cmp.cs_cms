@@ -8,7 +8,14 @@
         <h2 style="margin: 0; font-size: 1.1rem;">All Staff Members</h2>
         <p style="margin: 0; color: #6b7280; font-size: 0.85rem;">Manage department personnel, ranks, and roles.</p>
     </div>
-    <a href="{{ route('admin.staff.create') }}" class="btn btn-secondary" style="background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none;"><i class="fa-solid fa-plus"></i> Add New Staff</a>
+    <div style="display: flex; gap: 0.8rem; align-items: center;">
+        <a href="#" class="btn" style="background: white; color: #374151; border: 1px solid #d1d5db; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem;" title="Import from CSV/Excel (Coming Soon)">
+            <i class="fa-solid fa-file-import"></i> Add in Bulk
+        </a>
+        <a href="{{ route('admin.staff.create') }}" class="btn btn-secondary" style="background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem;">
+            <i class="fa-solid fa-plus"></i> Add New Staff
+        </a>
+    </div>
 </div>
 
 <div class="admin-table-container">
@@ -17,6 +24,7 @@
             <tr>
                 <th>Name</th>
                 <th>Rank</th>
+                <th>Role</th>
                 <th>Specialisation</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -35,6 +43,13 @@
                     </div>
                 </td>
                 <td>{{ $person->rank }}</td>
+                <td>
+                    @if($person->role)
+                        <span style="display: inline-block; background: #ede9fe; color: #6d28d9; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; font-weight: 600;">{{ $person->role }}</span>
+                    @else
+                        <span style="color: #d1d5db;">—</span>
+                    @endif
+                </td>
                 <td>{{ Str::limit($person->specialisation, 30) }}</td>
                 <td>
                     @if($person->is_active)
@@ -44,18 +59,18 @@
                     @endif
                 </td>
                 <td>
-                    <div class="actions">
-                        <a href="{{ route('admin.staff.edit', $person) }}" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #e5e7eb; color: #374151; text-decoration: none; border-radius: 4px;"><i class="fa-solid fa-edit"></i> Edit</a>
+                    <div class="actions" style="display: flex; gap: 0.5rem;">
+                        <a href="{{ route('admin.staff.edit', $person) }}" style="color: #3b82f6; font-size: 1rem;" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
                         <form action="{{ route('admin.staff.destroy', $person) }}" method="POST" data-confirm="Are you sure you want to delete this staff member? This action cannot be undone." style="display:inline;">
                             @csrf @method('DELETE')
-                            <button type="submit" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #fee2e2; color: #b91c1c; border: none; cursor: pointer; border-radius: 4px;"><i class="fa-solid fa-trash"></i> Delete</button>
+                            <button type="submit" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 1rem; padding: 0;" title="Delete"><i class="fa-solid fa-trash"></i></button>
                         </form>
                     </div>
                 </td>
             </tr>
             @empty
             <tr>
-                <td colspan="5" style="text-align: center; padding: 2rem;">No staff members found.</td>
+                <td colspan="6" style="text-align: center; padding: 2rem;">No staff members found.</td>
             </tr>
             @endforelse
         </tbody>

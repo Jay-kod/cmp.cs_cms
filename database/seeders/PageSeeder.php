@@ -111,7 +111,7 @@ class PageSeeder extends Seeder
     <li><a href="/academics">Academics</a> — Programme categories, courses, and academic structure</li>
     <li><a href="/people">Faculty</a> — Academic and non-academic staff directory</li>
     <li><a href="/research-news">Blog</a> — News, events, and research publications</li>
-    <li><a href="/contact-alumni">Contact & Alumni</a> — Get in touch and alumni network</li>
+    <li><a href="/contact">Contact</a> — Get in touch with the department</li>
 </ul>
 
 <h3><i class="fa-solid fa-graduation-cap"></i> Academic Programmes</h3>

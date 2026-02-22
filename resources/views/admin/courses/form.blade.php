@@ -40,6 +40,16 @@
                         @endforeach
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-label">Lecturer(s)</label>
+                    <select name="staff_ids[]" class="form-control" multiple style="min-height: 120px;">
+                        @foreach($allStaff as $s)
+                            <option value="{{ $s->id }}" {{ (collect(old('staff_ids', $course->exists ? $course->staff->pluck('id')->toArray() : []))->contains($s->id)) ? 'selected' : '' }}>{{ $s->name }}</option>
+                        @endforeach
+                    </select>
+                    <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: #6b7280;">Hold Ctrl/Cmd to select multiple lecturers.</p>
+                </div>
                 
             </div>
 

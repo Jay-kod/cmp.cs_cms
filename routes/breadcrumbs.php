@@ -32,8 +32,8 @@ Breadcrumbs::for('research-news', function (BreadcrumbTrail $trail) {
     $trail->push('Blog', url('research-news'));
 });
 
-// Home > Contact & Alumni
-Breadcrumbs::for('contact-alumni', function (BreadcrumbTrail $trail) {
+// Home > Contact
+Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('Contact & Alumni', url('contact-alumni'));
+    $trail->push('Contact', url('contact'));
 });

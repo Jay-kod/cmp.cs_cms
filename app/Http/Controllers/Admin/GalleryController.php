@@ -13,7 +13,10 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        $albums = GalleryAlbum::withCount('images')->orderBy('date', 'desc')->paginate(20);
+        $albums = GalleryAlbum::withCount('images')
+            ->with(['images' => fn($q) => $q->orderBy('id')->limit(1)])
+            ->orderBy('date', 'desc')
+            ->paginate(20);
         return view('admin.gallery.index', compact('albums'));
     }
 

@@ -16,10 +16,10 @@
             <a href="/about" class="nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
             <a href="/academics" class="nav-link {{ request()->is('academics*') ? 'active' : '' }}">Academics</a>
             <a href="/research-news" class="nav-link {{ request()->is('research-news*') ? 'active' : '' }}">Blog</a>
-            <a href="/contact-nacos" class="nav-link {{ request()->is('contact-nacos*') ? 'active' : '' }}">Contact</a>
+            <a href="/contact" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
             <span class="nav-divider"></span>
             <a href="#" class="nav-link nav-icon-link" id="search-toggle-btn" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            <a href="/contact-nacos#apply" class="navbar-cta">Join Us</a>
+            <a href="/contact" class="navbar-cta">Contact Us</a>
         </nav>
 
         <button class="navbar-hamburger" id="mobile-menu-btn" aria-label="Toggle menu">
@@ -33,7 +33,7 @@
         <a href="/about" class="mobile-link {{ request()->is('about') ? 'active' : '' }}">About</a>
         <a href="/academics" class="mobile-link {{ request()->is('academics*') ? 'active' : '' }}">Academics</a>
         <a href="/research-news" class="mobile-link {{ request()->is('research-news*') ? 'active' : '' }}">Blog</a>
-        <a href="/contact-nacos" class="mobile-link {{ request()->is('contact-nacos*') ? 'active' : '' }}">Contact</a>
-        <a href="/contact-nacos#apply" class="mobile-link mobile-cta">Apply Now</a>
+        <a href="/contact" class="mobile-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
+        <a href="/contact" class="mobile-link mobile-cta">Contact Us</a>
     </div>
 </div>

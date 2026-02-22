@@ -119,11 +119,11 @@
     
     <div class="container" style="display: flex; gap: 5rem; align-items: center; flex-wrap: wrap; position: relative; z-index: 2;">
         <!-- HoD Photo -->
-        <div style="flex: 0 0 380px; max-width: 100%; position: relative;">
-            <div style="position: absolute; inset: -15px -15px 15px 15px; border: 2px solid var(--color-primary); border-radius: 16px; z-index: 1;"></div>
-            <div style="position: absolute; inset: 15px 15px -15px -15px; background: rgba(22,163,74,0.1); border-radius: 16px; z-index: 1;"></div>
+        <div style="flex: 0 0 300px; max-width: 100%; position: relative;">
+            <div style="position: absolute; inset: -12px -12px 12px 12px; border: 2px solid var(--color-primary); border-radius: 14px; z-index: 1;"></div>
+            <div style="position: absolute; inset: 12px 12px -12px -12px; background: rgba(22,163,74,0.1); border-radius: 14px; z-index: 1;"></div>
             
-            <div style="position: relative; z-index: 2; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); border: 8px solid white;">
+            <div style="position: relative; z-index: 2; aspect-ratio: 3/4; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15); border: 6px solid white;">
                 @if($gs('hod_photo'))
                     <img src="{{ asset('storage/'.$gs('hod_photo')) }}" alt="{{ $gs('hod_name', $hod->name ?? 'HOD') }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                 @elseif($hod && $hod->photo)
@@ -207,34 +207,45 @@
         </div>
         
         <div class="hover-card-grid">
-            @foreach($programmes as $prog)
-            <a href="/academics#{{ $prog->slug }}" class="hover-card" style="background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 2.5rem; text-decoration: none; color: inherit; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 25px 50px -12px rgba(59,130,246,0.15)'; this.style.borderColor='#cbd5e1'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px -10px rgba(0,0,0,0.05)'; this.style.borderColor='#e2e8f0'">
-                <!-- Top gradient line -->
-                <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));"></div>
-                
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem;">
-                    <div style="width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(99,102,241,0.1)); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
-                        @if($prog->level === 'BSc') <i class="fa-solid fa-code"></i>
-                        @elseif($prog->level === 'MSc') <i class="fa-solid fa-server"></i>
-                        @else <i class="fa-solid fa-microchip"></i> @endif
+            @php
+                $progColors = [
+                    ['from' => '#16a34a', 'to' => '#059669', 'bg' => 'rgba(22,163,74,0.08)', 'badge' => '#dcfce7', 'badgeText' => '#15803d'],
+                    ['from' => '#2563eb', 'to' => '#7c3aed', 'bg' => 'rgba(37,99,235,0.08)', 'badge' => '#dbeafe', 'badgeText' => '#1d4ed8'],
+                    ['from' => '#0891b2', 'to' => '#0284c7', 'bg' => 'rgba(8,145,178,0.08)', 'badge' => '#cffafe', 'badgeText' => '#0e7490'],
+                    ['from' => '#ea580c', 'to' => '#dc2626', 'bg' => 'rgba(234,88,12,0.08)', 'badge' => '#ffedd5', 'badgeText' => '#c2410c'],
+                ];
+                $progIcons = ['fa-solid fa-code', 'fa-solid fa-server', 'fa-solid fa-shield-halved', 'fa-solid fa-microchip', 'fa-solid fa-database'];
+            @endphp
+            @foreach($programmes as $pIdx => $prog)
+            @php $pc = $progColors[$pIdx % count($progColors)]; @endphp
+            <a href="/academics#{{ $prog->slug }}" class="hover-card" style="background: white; border-radius: 20px; text-decoration: none; color: inherit; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; box-shadow: 0 4px 20px -5px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px -10px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px -5px rgba(0,0,0,0.08)'">
+                {{-- Gradient Header Strip --}}
+                <div style="height: 6px; background: linear-gradient(90deg, {{ $pc['from'] }}, {{ $pc['to'] }});"></div>
+
+                <div style="padding: 2rem 2rem 1.5rem;">
+                    {{-- Icon + Badge Row --}}
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem;">
+                        <div style="width: 56px; height: 56px; border-radius: 16px; background: {{ $pc['bg'] }}; color: {{ $pc['from'] }}; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+                            <i class="{{ $progIcons[$pIdx % count($progIcons)] }}"></i>
+                        </div>
+                        <span style="background: {{ $pc['badge'] }}; color: {{ $pc['badgeText'] }}; font-size: 0.78rem; font-weight: 800; padding: 0.35rem 1rem; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase;">{{ $prog->level }}</span>
                     </div>
-                    <span style="background: #f1f5f9; color: #475569; font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 20px; letter-spacing: 0.5px; border: 1px solid #e2e8f0;">{{ $prog->level }}</span>
+
+                    {{-- Programme Name --}}
+                    <h3 style="font-size: 1.25rem; margin: 0 0 0.8rem; color: #0f172a; font-family: var(--font-heading); font-weight: 800; line-height: 1.3;">{{ $prog->name }}</h3>
+
+                    {{-- Description --}}
+                    <p style="font-size: 0.9rem; color: #64748b; line-height: 1.65; flex: 1; margin: 0;">{{ Str::limit($prog->description, 110) }}</p>
                 </div>
-                
-                <h3 style="font-size: 1.3rem; margin: 0 0 1rem; color: #0f172a; font-family: var(--font-heading); font-weight: 700; line-height: 1.3;">{{ $prog->name }}</h3>
-                
-                <p style="font-size: 0.95rem; color: #64748b; line-height: 1.6; flex: 1; margin: 0 0 1.5rem;">{{ Str::limit($prog->description, 130) }}</p>
-                
-                <div style="border-top: 1px solid #f1f5f9; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-                    <div style="display: flex; gap: 1rem; font-size: 0.8rem; color: #64748b; font-weight: 500;">
-                        <span style="display: flex; align-items: center; gap: 0.4rem;"><i class="fa-regular fa-clock" style="color: var(--color-primary);"></i> {{ $prog->duration }}</span>
-                        <span style="display: flex; align-items: center; gap: 0.4rem;"><i class="fa-solid fa-book-open" style="color: var(--color-primary);"></i> {{ $prog->mode_of_study }}</span>
+
+                {{-- Footer --}}
+                <div style="padding: 1rem 2rem; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; margin-top: auto; background: #fafbfc;">
+                    <div style="display: flex; gap: 1.2rem; font-size: 0.8rem; color: #475569; font-weight: 600;">
+                        <span style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-regular fa-clock" style="color: {{ $pc['from'] }};"></i> {{ $prog->duration }}</span>
+                        <span style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-book-open" style="color: {{ $pc['from'] }};"></i> {{ $prog->mode_of_study }}</span>
                     </div>
-                    <div style="color: var(--color-primary); font-size: 1.1rem; transition: transform 0.3s;" class="card-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: {{ $pc['bg'] }}; color: {{ $pc['from'] }}; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.3s;" class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
                 </div>
-                
-                <!-- Hover subtle background gradient -->
-                <div style="position: absolute; bottom: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%); pointer-events: none;"></div>
             </a>
             @endforeach
         </div>
@@ -295,7 +306,7 @@
                 <h2 style="font-size: 2.8rem; font-family: var(--font-heading); font-weight: 800; color: white; margin: 0;">{{ $gs('home_gallery_title','Department Life') }}</h2>
                 <p style="color: #94a3b8; font-size: 1.05rem; margin-top: 0.5rem;">{{ $gs('home_gallery_subtitle','Moments from events, lectures, and campus life') }} — {{ $galleryAlbumCount }} {{ Str::plural('album', $galleryAlbumCount) }}.</p>
             </div>
-            <a href="/about#gallery" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #86efac; font-weight: 700; text-decoration: none; font-size: 0.95rem; transition: gap 0.2s;" onmouseover="this.style.gap='0.8rem'" onmouseout="this.style.gap='0.5rem'">
+            <a href="{{ route('gallery.index') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #86efac; font-weight: 700; text-decoration: none; font-size: 0.95rem; transition: gap 0.2s;" onmouseover="this.style.gap='0.8rem'" onmouseout="this.style.gap='0.5rem'">
                 {{ $gs('home_gallery_btn_text','View All Photos') }} <i class="fa-solid fa-arrow-right-long"></i>
             </a>
         </div>
@@ -350,6 +361,131 @@
     </div>
 </section>
 @endif
+
+<!-- ═══════════════════════════════════════════════
+     NACOS — Student Association Spotlight
+     ═══════════════════════════════════════════════ -->
+<section class="nacos-home-section" style="padding: 3.5rem 0; background: linear-gradient(165deg, #0f172a 0%, #1e293b 60%, #0f4c2e 100%); position: relative; overflow: hidden;">
+    {{-- Decorative background --}}
+    <div style="position: absolute; inset: 0; pointer-events: none;">
+        <div style="position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(22,163,74,0.15) 0%, transparent 70%); border-radius: 50%;"></div>
+        <div style="position: absolute; bottom: -50px; left: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(22,163,74,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+        <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.5%22 fill=%22rgba(255,255,255,0.03)%22/></svg>');"></div>
+    </div>
+
+    <div class="container" style="position: relative; z-index: 2;">
+        {{-- Section Header --}}
+        <div style="display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 1.5rem; margin-bottom: 2rem;">
+            <div>
+                <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(22,163,74,0.2); backdrop-filter: blur(8px); color: #4ade80; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.3rem 0.9rem; border-radius: 20px; margin-bottom: 0.6rem; border: 1px solid rgba(22,163,74,0.3);">
+                    <i class="fa-solid fa-users-rectangle"></i> {{ $gs('home_nacos_badge','Student Association') }}
+                </span>
+                <h2 style="font-size: 2.4rem; font-family: var(--font-heading); font-weight: 800; color: white; margin-bottom: 0.5rem; line-height: 1.15;">{{ $gs('home_nacos_title','NACOS') }}</h2>
+                <p style="color: #94a3b8; font-size: 0.95rem; max-width: 550px; line-height: 1.6; margin: 0;">{{ $gs('home_nacos_subtitle','The National Association of Computing Students (NUK Chapter) — empowering students through leadership, innovation and community.') }}</p>
+            </div>
+            <a href="{{ route('nacos-presidents') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #4ade80; font-weight: 700; font-size: 0.85rem; text-decoration: none; padding: 0.5rem 1rem; border: 1.5px solid rgba(74,222,128,0.3); border-radius: 10px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.background='rgba(74,222,128,0.1)'; this.style.borderColor='rgba(74,222,128,0.6)'" onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(74,222,128,0.3)'">
+                View More About NACOS <i class="fa-solid fa-arrow-right" style="font-size: 0.8rem;"></i>
+            </a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;">
+            {{-- Left Column: About NACOS + Quick Stats --}}
+            <div>
+                {{-- About card --}}
+                <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.4rem; margin-bottom: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="width: 42px; height: 42px; background: linear-gradient(135deg, #16a34a, #059669); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: white;">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <div>
+                            <h3 style="color: white; font-size: 1.05rem; font-weight: 700; margin: 0; font-family: var(--font-heading);">{{ $gs('home_nacos_about_title','About NACOS') }}</h3>
+                            <span style="color: #64748b; font-size: 0.75rem;">{{ $gs('home_nacos_about_tag','NUK Chapter') }}</span>
+                        </div>
+                    </div>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.65; margin: 0;">{{ $gs('home_nacos_about_text','NACOS is the umbrella body for all computing students. We foster academic excellence, professional development, and social bonds among members through events, workshops, competitions, and community service.') }}</p>
+                </div>
+
+                {{-- Quick Stats Row --}}
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;">
+                    @php
+                        $nacosStats = [
+                            ['icon' => 'fa-solid fa-crown', 'value' => $nacosTotalCount, 'label' => $gs('home_nacos_stat1_label','Past Leaders')],
+                            ['icon' => 'fa-solid fa-calendar-check', 'value' => $gs('home_nacos_stat2_value','50+'), 'label' => $gs('home_nacos_stat2_label','Events Hosted')],
+                            ['icon' => 'fa-solid fa-user-graduate', 'value' => $gs('home_nacos_stat3_value','500+'), 'label' => $gs('home_nacos_stat3_label','Active Members')],
+                        ];
+                    @endphp
+                    @foreach($nacosStats as $stat)
+                    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 0.9rem 0.7rem; text-align: center; transition: all 0.3s;" onmouseover="this.style.background='rgba(22,163,74,0.12)'; this.style.borderColor='rgba(22,163,74,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'; this.style.borderColor='rgba(255,255,255,0.06)'">
+                        <i class="{{ $stat['icon'] }}" style="color: #4ade80; font-size: 0.95rem; margin-bottom: 0.35rem; display: block;"></i>
+                        <div style="font-size: 1.35rem; font-weight: 800; color: white; font-family: var(--font-heading); line-height: 1;">{{ $stat['value'] }}</div>
+                        <div style="font-size: 0.7rem; color: #64748b; margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">{{ $stat['label'] }}</div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
+            {{-- Right Column: Past Leaders Grid --}}
+            <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+                    <h3 style="color: white; font-size: 1rem; font-weight: 700; margin: 0; font-family: var(--font-heading); display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-award" style="color: #4ade80;"></i> Recent Leaders
+                    </h3>
+                    <span style="color: #475569; font-size: 0.75rem; font-weight: 600;">{{ $nacosTotalCount }} total</span>
+                </div>
+
+                @if($nacosPresidents->count() > 0)
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                    @foreach($nacosPresidents as $idx => $pres)
+                    <a href="{{ route('nacos-presidents') }}" style="display: block; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; text-decoration: none; transition: all 0.35s; position: relative; overflow: hidden;" onmouseover="this.style.background='rgba(255,255,255,0.09)'; this.style.borderColor='rgba(74,222,128,0.3)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)'">
+                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                            <div style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(74,222,128,0.3); overflow: hidden; flex-shrink: 0; background: linear-gradient(135deg, #1e293b, #0f172a);">
+                                <img src="{{ $pres->photo ? asset('storage/'.$pres->photo) : asset('images/avatar-placeholder.png') }}" alt="{{ $pres->name }}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($pres->name) }}&background=16a34a&color=fff&size=100'">
+                            </div>
+                            <div style="min-width: 0;">
+                                <h4 style="color: white; font-size: 0.88rem; font-weight: 700; margin: 0 0 0.15rem; font-family: var(--font-heading); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $pres->name }}</h4>
+                                <span style="display: inline-block; background: rgba(22,163,74,0.2); color: #4ade80; padding: 0.1rem 0.5rem; border-radius: 12px; font-size: 0.68rem; font-weight: 600;">{{ $pres->tenure_start ?? '?' }} – {{ $pres->tenure_end ?? 'Present' }}</span>
+                                @if($pres->current_status)
+                                <p style="color: #64748b; font-size: 0.78rem; margin: 0.3rem 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $pres->current_status }}</p>
+                                @endif
+                            </div>
+                        </div>
+                    </a>
+                    @endforeach
+                </div>
+                @else
+                <div style="background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; text-align: center;">
+                    <i class="fa-solid fa-user-tie" style="font-size: 1.6rem; color: #334155; margin-bottom: 0.6rem; display: block;"></i>
+                    <p style="color: #64748b; font-size: 0.85rem; margin: 0;">NACOS leader records will appear here once added.</p>
+                </div>
+                @endif
+
+                {{-- CTA Banner --}}
+                <a href="{{ route('nacos-presidents') }}" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.75rem; padding: 0.8rem 1.2rem; background: linear-gradient(135deg, rgba(22,163,74,0.15), rgba(22,163,74,0.05)); border: 1px solid rgba(22,163,74,0.25); border-radius: 12px; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='linear-gradient(135deg, rgba(22,163,74,0.25), rgba(22,163,74,0.1))'; this.style.borderColor='rgba(22,163,74,0.4)'" onmouseout="this.style.background='linear-gradient(135deg, rgba(22,163,74,0.15), rgba(22,163,74,0.05))'; this.style.borderColor='rgba(22,163,74,0.25)'">
+                    <div>
+                        <div style="color: white; font-weight: 700; font-size: 0.88rem; font-family: var(--font-heading);">{{ $gs('home_nacos_cta_title','Explore NACOS History') }}</div>
+                        <div style="color: #64748b; font-size: 0.75rem;">{{ $gs('home_nacos_cta_desc','See all past leaders, their tenure and achievements') }}</div>
+                    </div>
+                    <div style="width: 32px; height: 32px; background: rgba(22,163,74,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #4ade80; flex-shrink: 0; font-size: 0.85rem;">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @media (max-width: 991px) {
+        .nacos-home-section .container > div:nth-child(2) { grid-template-columns: 1fr !important; }
+        .nacos-home-section .container > div:first-child { grid-template-columns: 1fr !important; text-align: center; }
+        .nacos-home-section .container > div:first-child > a { justify-self: center; }
+        .nacos-home-section .container > div:first-child p { margin: 0 auto !important; }
+    }
+    @media (max-width: 575px) {
+        .nacos-home-section { padding: 2.5rem 0 !important; }
+        .nacos-home-section h2 { font-size: 1.8rem !important; }
+    }
+</style>
 
 <!-- ═══════════════════════════════════════════════
      NEWS & EVENTS
@@ -443,114 +579,274 @@
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     EXPLORE THE DEPARTMENT — Quick Links Hub
-     ═══════════════════════════════════════════════ -->
-<section style="padding: 6rem 0; background: #f8fafc; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: 0; left: 0; width: 100%; overflow: hidden; line-height: 0;">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 50px;">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" style="fill: white;"></path>
-        </svg>
-    </div>
+<style>
+    .marquee-wrapper {
+        display: flex;
+        overflow: hidden;
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+    .marquee-content {
+        display: flex;
+        flex-shrink: 0;
+        min-width: 100%;
+        gap: 1.5rem;
+        padding: 1rem 0;
+        animation: scrollLeft 30s linear infinite;
+    }
+    .marquee-wrapper:hover .marquee-content {
+        animation-play-state: paused;
+    }
+    .marquee-content.reverse {
+        animation: scrollRight 30s linear infinite;
+    }
+    @keyframes scrollLeft {
+        from { transform: translateX(0); }
+        to { transform: translateX(calc(-100% - 1.5rem)); }
+    }
+    @keyframes scrollRight {
+        from { transform: translateX(calc(-100% - 1.5rem)); }
+        to { transform: translateX(0); }
+    }
+    .quick-link-card {
+        width: 220px;
+        flex-shrink: 0;
+    }
 
-    <div class="container" style="position: relative; z-index: 2;">
-        <div style="text-align: center; margin-bottom: 4rem;">
-            <span style="display: inline-block; color: var(--color-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; background: rgba(22,163,74,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_explore_badge','Explore') }}</span>
-            <h2 style="font-size: 2.8rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin-bottom: 1rem;">{{ $gs('home_explore_title','Discover More') }}</h2>
-            <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.7;">{{ $gs('home_explore_subtitle','Everything you need to know about the department — all in one place.') }}</p>
-        </div>
+    /* ── Discover More — Static Grid ── */
+    .discover-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+    }
+    .discover-card {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1.1rem;
+        padding: 1.35rem 1.5rem;
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        text-decoration: none;
+        transition: all 0.35s cubic-bezier(.4,0,.2,1);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        overflow: hidden;
+        animation: discoverFadeUp 0.5s ease both;
+    }
+    .discover-card::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 4px;
+        background: var(--card-color, var(--color-primary));
+        border-radius: 16px 0 0 16px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .discover-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+        border-color: #cbd5e1;
+    }
+    .discover-card:hover::before { opacity: 1; }
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem;">
-            @php
-                $defaultColors = ['#16a34a','#0891b2','#7c3aed','#ea580c','#dc2626','#ca8a04'];
-                $defaults = [
-                    1 => ['icon' => 'fa-solid fa-building-columns', 'label' => 'About Us',    'desc' => 'Our history & vision', 'url' => '/about'],
-                    2 => ['icon' => 'fa-solid fa-graduation-cap',   'label' => 'Academics',   'desc' => 'Programmes & courses', 'url' => '/academics'],
-                    3 => ['icon' => 'fa-solid fa-users',            'label' => 'Our Staff',   'desc' => 'Faculty directory',    'url' => '/people'],
-                    4 => ['icon' => 'fa-solid fa-newspaper',        'label' => 'Blog & News', 'desc' => 'Latest updates',       'url' => '/research-news'],
-                    5 => ['icon' => 'fa-solid fa-users',            'label' => 'NACOS',       'desc' => 'Contact & connect',    'url' => '/contact-nacos'],
-                    6 => ['icon' => 'fa-solid fa-images',           'label' => 'Gallery',     'desc' => 'Photos & albums',      'url' => '/about#gallery'],
-                ];
-                $quickLinks = [];
-                for($qi = 1; $qi <= 6; $qi++) {
-                    $d   = $defaults[$qi];
-                    $lbl = $gs('home_qlink'.$qi.'_label', $d['label']);
-                    $url = $gs('home_qlink'.$qi.'_url',   $d['url']);
-                    if($lbl && $url) {
-                        $quickLinks[] = [
-                            'icon'  => $gs('home_qlink'.$qi.'_icon', $d['icon']),
-                            'label' => $lbl,
-                            'desc'  => $gs('home_qlink'.$qi.'_desc', $d['desc']),
-                            'url'   => $url,
-                            'color' => $defaultColors[$qi-1],
-                        ];
-                    }
-                }
+    .discover-card__number {
+        position: absolute;
+        top: 0.6rem; right: 0.85rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #cbd5e1;
+        font-family: var(--font-heading);
+        letter-spacing: 0.5px;
+        transition: color 0.3s;
+    }
+    .discover-card:hover .discover-card__number { color: var(--card-color); }
 
-                // Add active CMS pages
-                foreach($cmsPages as $pg) {
-                    $quickLinks[] = [
-                        'icon' => $pg->icon ?? 'fa-solid fa-file-lines',
-                        'label' => $pg->title ?? ucfirst($pg->slug),
-                        'desc' => 'Department page',
-                        'url' => '/page/' . $pg->slug,
-                        'color' => '#64748b',
-                    ];
-                }
-                }
-            @endphp
+    .discover-card__icon {
+        width: 48px; height: 48px;
+        flex-shrink: 0;
+        background: color-mix(in srgb, var(--card-color) 10%, transparent);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--card-color);
+        font-size: 1.2rem;
+        transition: all 0.35s;
+    }
+    .discover-card:hover .discover-card__icon {
+        background: var(--card-color);
+        color: white;
+        transform: scale(1.08);
+    }
 
-            @foreach($quickLinks as $link)
-            <a href="{{ $link['url'] }}" class="quick-link-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.8rem; padding: 2rem 1rem; background: white; border: 1px solid #e2e8f0; border-radius: 14px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-                <div style="width: 50px; height: 50px; background: {{ $link['color'] }}15; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: {{ $link['color'] }}; font-size: 1.3rem; transition: all 0.3s;">
-                    <i class="{{ $link['icon'] }}"></i>
+    .discover-card__body { flex: 1; min-width: 0; }
+    .discover-card__title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 0.15rem;
+        font-family: var(--font-heading);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .discover-card__desc {
+        font-size: 0.8rem;
+        color: #94a3b8;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .discover-card__arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px; height: 30px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: #f1f5f9;
+        color: #94a3b8;
+        font-size: 0.75rem;
+        transition: all 0.3s;
+    }
+    .discover-card:hover .discover-card__arrow {
+        background: var(--card-color);
+        color: white;
+        transform: translateX(3px);
+    }
+
+    @keyframes discoverFadeUp {
+        from { opacity: 0; transform: translateY(18px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 991px) {
+        .discover-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 575px) {
+        .discover-grid { grid-template-columns: 1fr; }
+        .discover-card { padding: 1.1rem 1.2rem; }
+    }
+    .partner-card {
+        height: 100px;
+        min-width: 200px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        text-decoration: none;
+    }
+    .partner-logo {
+        max-width: 140px;
+        max-height: 55px;
+        object-fit: contain;
+        filter: grayscale(100%) opacity(0.5);
+        transition: all 0.3s ease;
+    }
+    a.partner-card:hover, div.partner-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+        border-color: #cbd5e1;
+    }
+    a.partner-card:hover .partner-logo, div.partner-card:hover .partner-logo {  
+        filter: grayscale(0%) opacity(1);
+        transform: scale(1.05);
+    }
+</style>
+        
+        @if(isset($partners) && $partners->count() > 0)
+        <!-- ═══════════════════════════════════════════════
+             OUR PARTNERS
+             ═══════════════════════════════════════════════ -->
+        <section style="padding: 6rem 0; background: white; border-top: 1px solid #f1f5f9; position: relative;">
+            <div class="container" style="position: relative; z-index: 2;">
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <span style="display: inline-block; color: var(--color-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; background: rgba(22,163,74,0.1); padding: 0.3rem 1rem; border-radius: 20px;">Collaborators</span>
+                    <h2 style="font-size: 2.8rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin-bottom: 1rem;">Industry Partners</h2>
+                    <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.7;">Working together with leading organizations to provide the best opportunities.</p>
                 </div>
-                <div>
-                    <h4 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin: 0 0 0.2rem; font-family: var(--font-heading);">{{ $link['label'] }}</h4>
-                    <p style="font-size: 0.78rem; color: #94a3b8; margin: 0;">{{ $link['desc'] }}</p>
+        
+                <div class="marquee-wrapper">
+                    <div class="marquee-content reverse">
+                        @foreach($partners as $partner)
+                        @if($partner->url)
+                        <a href="{{ $partner->url }}" target="_blank" rel="noopener noreferrer" class="partner-card" title="{{ $partner->name }}">
+                        @else
+                        <div class="partner-card" title="{{ $partner->name }}">
+                        @endif
+                            <img src="{{ Storage::url($partner->logo) }}" alt="{{ $partner->name }}" class="partner-logo">
+                        @if($partner->url)
+                        </a>
+                        @else
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+                    {{-- Duplicate for seamless loop --}}
+                    <div class="marquee-content reverse" aria-hidden="true">
+                        @foreach($partners as $partner)
+                        @if($partner->url)
+                        <a href="{{ $partner->url }}" target="_blank" rel="noopener noreferrer" class="partner-card" title="{{ $partner->name }}">
+                        @else
+                        <div class="partner-card" title="{{ $partner->name }}">
+                        @endif
+                            <img src="{{ Storage::url($partner->logo) }}" alt="{{ $partner->name }}" class="partner-logo">
+                        @if($partner->url)
+                        </a>
+                        @else
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
                 </div>
-            </a>
-            @endforeach
-        </div>
-    </div>
-</section>
+            </div>
+        </section>
+        @endif
+
+
 
 <!-- ═══════════════════════════════════════════════
      CALL TO ACTION — Contact & Apply
      ═══════════════════════════════════════════════ -->
-<section style="padding: 5rem 0; background: linear-gradient(135deg, #14532d 0%, #166534 40%, #15803d 100%); position: relative; overflow: hidden;">
-    <div style="position: absolute; top: 20%; right: 5%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); pointer-events: none;"></div>
-    <div style="position: absolute; bottom: -50px; left: 10%; width: 200px; height: 200px; border: 1px solid rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none;"></div>
+<section style="padding: 2.8rem 0; background: linear-gradient(105deg, #14532d 0%, #15803d 100%); position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.6%22 fill=%22rgba(255,255,255,0.04)%22/></svg>'); pointer-events: none;"></div>
     
-    <div class="container" style="position: relative; z-index: 2; text-align: center;">
-        <div style="max-width: 700px; margin: 0 auto;">
-            <i class="fa-solid fa-paper-plane" style="font-size: 2.5rem; color: rgba(255,255,255,0.2); margin-bottom: 1.5rem;"></i>
-            <h2 style="font-size: 2.6rem; font-family: var(--font-heading); font-weight: 800; color: white; margin-bottom: 1rem; line-height: 1.2;">{{ $gs('home_cta_title','Ready to Join Us?') }}</h2>
-            <p style="font-size: 1.15rem; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 2.5rem;">{{ $gs('home_cta_subtitle','Whether you\'re a prospective student, an alumnus, or just curious about the department — we\'d love to hear from you.') }}</p>
-            
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                @foreach([1,2,3] as $bi)
-                @php
-                    $defaultBtnLabels = ['Contact Us', 'About the Department', 'View Programmes'];
-                    $defaultBtnUrls   = ['/contact-nacos#apply', '/about', '/academics'];
-                    $defaultBtnIcons  = ['fa-solid fa-envelope', 'fa-solid fa-circle-info', 'fa-solid fa-graduation-cap'];
-                    $btnText = $gs('home_cta_btn'.$bi.'_text', $defaultBtnLabels[$bi-1]);
-                    $btnUrl  = $gs('home_cta_btn'.$bi.'_url',  $defaultBtnUrls[$bi-1]);
-                    $btnIcon = $gs('home_cta_btn'.$bi.'_icon', $defaultBtnIcons[$bi-1]);
-                @endphp
-                @if($btnText && $btnUrl)
-                @if($bi === 1)
-                <a href="{{ $btnUrl }}" style="display: inline-flex; align-items: center; gap: 0.6rem; background: white; color: #14532d; padding: 0.9rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)'">
-                    <i class="{{ $btnIcon }}"></i> {{ $btnText }}
-                </a>
-                @else
-                <a href="{{ $btnUrl }}" style="display: inline-flex; align-items: center; gap: 0.6rem; background: transparent; color: white; padding: 0.9rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; text-decoration: none; border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.6)'; this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)'; this.style.background='transparent'">
-                    <i class="{{ $btnIcon }}"></i> {{ $btnText }}
-                </a>
-                @endif
-                @endif
-                @endforeach
-            </div>
+    <div class="container" style="position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 280px;">
+            <h2 style="font-size: 1.8rem; font-family: var(--font-heading); font-weight: 800; color: white; margin: 0 0 0.4rem; line-height: 1.2;">{{ $gs('home_cta_title','Ready to Join Us?') }}</h2>
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0;">{{ $gs('home_cta_subtitle','Whether you\'re a prospective student, an alumnus, or just curious about the department — we\'d love to hear from you.') }}</p>
+        </div>
+        
+        <div style="display: flex; gap: 0.7rem; flex-wrap: wrap; align-items: center;">
+            @foreach([1,2,3] as $bi)
+            @php
+                $defaultBtnLabels = ['Contact Us', 'About the Department', 'View Programmes'];
+                $defaultBtnUrls   = ['/contact', '/about', '/academics'];
+                $defaultBtnIcons  = ['fa-solid fa-envelope', 'fa-solid fa-circle-info', 'fa-solid fa-graduation-cap'];
+                $btnText = $gs('home_cta_btn'.$bi.'_text', $defaultBtnLabels[$bi-1]);
+                $btnUrl  = $gs('home_cta_btn'.$bi.'_url',  $defaultBtnUrls[$bi-1]);
+                $btnIcon = $gs('home_cta_btn'.$bi.'_icon', $defaultBtnIcons[$bi-1]);
+            @endphp
+            @if($btnText && $btnUrl)
+            @if($bi === 1)
+            <a href="{{ $btnUrl }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: white; color: #14532d; padding: 0.65rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 700; text-decoration: none; transition: all 0.25s; box-shadow: 0 2px 10px rgba(0,0,0,0.15);" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.15)'">
+                <i class="{{ $btnIcon }}"></i> {{ $btnText }}
+            </a>
+            @else
+            <a href="{{ $btnUrl }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.08); color: white; padding: 0.65rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.2); transition: all 0.25s; backdrop-filter: blur(4px);" onmouseover="this.style.borderColor='rgba(255,255,255,0.5)'; this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.background='rgba(255,255,255,0.08)'">
+                <i class="{{ $btnIcon }}"></i> {{ $btnText }}
+            </a>
+            @endif
+            @endif
+            @endforeach
         </div>
     </div>
 </section>

@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Mail;
 class ContactNacosController extends Controller
 {
     /**
-     * Show the Contact & NACOS page
+     * Show the Contact page
      */
     public function index()
     {
-        return view('pages.contact-nacos');
+        return view('pages.contact');
     }
 
     /**

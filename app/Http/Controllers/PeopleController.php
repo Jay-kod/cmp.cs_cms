@@ -12,7 +12,7 @@ class PeopleController extends Controller
         $hod = Staff::where('is_hod', true)->first();
         $academicStaff = Staff::where('is_active', true)
             ->whereNotIn('rank', ['Technical Staff', 'Administrative Staff', 'Technologist'])
-            ->orderBy('sort_order')
+            ->orderByDesc('is_hod')->orderBy('sort_order')
             ->get();
         // Just for simplicity, assuming anyone not matched above is technical/admin
         $technicalStaff = Staff::where('is_active', true)

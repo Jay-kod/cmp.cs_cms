@@ -7,9 +7,14 @@
         <h1 style="margin: 0; font-size: 1.5rem; color: #1e293b;">NACOS Presidents</h1>
         <p style="margin: 0.2rem 0 0; color: #64748b; font-size: 0.9rem;">Manage former and current NACOS (National Association of Computing Students) Presidents.</p>
     </div>
-    <a href="{{ route('admin.nacos-presidents.create') }}" class="btn btn-primary" style="background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 600;">
-        <i class="fa-solid fa-plus"></i> Add President
-    </a>
+    <div style="display: flex; gap: 0.8rem; align-items: center;">
+        <a href="#" class="btn" style="background: white; color: #374151; border: 1px solid #d1d5db; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem;" title="Import from CSV/Excel (Coming Soon)">
+            <i class="fa-solid fa-file-import"></i> Add in Bulk
+        </a>
+        <a href="{{ route('admin.nacos-presidents.create') }}" class="btn btn-primary" style="background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem;">
+            <i class="fa-solid fa-plus"></i> Add President
+        </a>
+    </div>
 </div>
 @endsection
 

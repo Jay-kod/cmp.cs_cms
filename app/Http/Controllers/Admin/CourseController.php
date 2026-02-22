@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Programme;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Course::with('programme');
+        $query = Course::with(['programme', 'staff']);
         
         if ($request->filled('programme_id')) {
             $query->where('programme_id', $request->programme_id);
@@ -30,7 +31,8 @@ class CourseController extends Controller
     public function create()
     {
         $programmes = Programme::orderBy('name')->get();
-        return view('admin.courses.form', ['course' => new Course(), 'programmes' => $programmes]);
+        $allStaff = Staff::where('is_active', true)->orderBy('name')->get();
+        return view('admin.courses.form', ['course' => new Course(), 'programmes' => $programmes, 'allStaff' => $allStaff]);
     }
 
     public function store(Request $request)
@@ -49,13 +51,20 @@ class CourseController extends Controller
         if(!$request->has('is_elective')) $data['is_elective'] = false;
 
         $course = Course::create($data);
+
+        if ($request->has('staff_ids')) {
+            $course->staff()->sync($request->input('staff_ids', []));
+        }
+
         return redirect()->route('admin.courses.index', ['programme_id' => $course->programme_id])->with('success', 'Course created successfully.');
     }
 
     public function edit(Course $course)
     {
         $programmes = Programme::orderBy('name')->get();
-        return view('admin.courses.form', compact('course', 'programmes'));
+        $allStaff = Staff::where('is_active', true)->orderBy('name')->get();
+        $course->load('staff');
+        return view('admin.courses.form', compact('course', 'programmes', 'allStaff'));
     }
 
     public function update(Request $request, Course $course)
@@ -74,6 +83,8 @@ class CourseController extends Controller
         if(!$request->has('is_elective')) $data['is_elective'] = false;
 
         $course->update($data);
+        $course->staff()->sync($request->input('staff_ids', []));
+
         return redirect()->route('admin.courses.index', ['programme_id' => $course->programme_id])->with('success', 'Course updated successfully.');
     }
 

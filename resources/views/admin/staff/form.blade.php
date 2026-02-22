@@ -53,6 +53,17 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-label">Departmental Role</label>
+                    <select name="role" class="form-control">
+                        <option value="">— None —</option>
+                        @foreach(\App\Models\StaffRole::orderBy('sort_order')->orderBy('name')->get() as $role)
+                            <option value="{{ $role->name }}" {{ old('role', $staff->role) == $role->name ? 'selected' : '' }}>{{ $role->name }}</option>
+                        @endforeach
+                    </select>
+                    <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: #6b7280;">Administrative role within the department (optional). <a href="{{ route('admin.staff-roles.index') }}" style="color: var(--color-primary);">Manage roles</a></p>
+                </div>
+
+                <div class="form-group">
                     <label class="form-label">Specialisation / Research Area</label>
                     <input type="text" name="specialisation" value="{{ old('specialisation', $staff->specialisation) }}" class="form-control" placeholder="e.g. Artificial Intelligence, Data Science">
                 </div>

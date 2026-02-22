@@ -129,6 +129,7 @@
     <button type="button" class="section-tab" data-section="news"><i class="fa-solid fa-newspaper"></i> News</button>
     <button type="button" class="section-tab" data-section="events"><i class="fa-solid fa-calendar-days"></i> Events</button>
     <button type="button" class="section-tab" data-section="explore"><i class="fa-solid fa-compass"></i> Explore</button>
+    <button type="button" class="section-tab" data-section="nacos"><i class="fa-solid fa-users-rectangle"></i> NACOS</button>
     <button type="button" class="section-tab" data-section="cta"><i class="fa-solid fa-paper-plane"></i> CTA</button>
 </div>
 
@@ -670,7 +671,7 @@
                         ['icon' => 'fa-solid fa-graduation-cap',   'label' => 'Academics',     'desc' => 'Programmes & courses', 'url' => '/academics',    'color' => '#0891b2'],
                         ['icon' => 'fa-solid fa-users',            'label' => 'Our Staff',     'desc' => 'Faculty directory',    'url' => '/people',       'color' => '#7c3aed'],
                         ['icon' => 'fa-solid fa-newspaper',        'label' => 'Blog & News',   'desc' => 'Latest updates',       'url' => '/research-news','color' => '#ea580c'],
-                        ['icon' => 'fa-solid fa-users',            'label' => 'NACOS',         'desc' => 'Contact & connect',    'url' => '/contact-nacos','color' => '#dc2626'],
+                        ['icon' => 'fa-solid fa-users',            'label' => 'NACOS',         'desc' => 'Contact & connect',    'url' => '/nacos-presidents','color' => '#dc2626'],
                         ['icon' => 'fa-solid fa-images',           'label' => 'Gallery',       'desc' => 'Photos & albums',      'url' => '/about#gallery','color' => '#ca8a04'],
                     ];
                 @endphp
@@ -707,6 +708,37 @@
             <div style="margin-top: 1rem; padding: 1rem; background: #f8fafc; border-radius: 10px; border: 1px solid #e2e8f0;">
                 <p style="margin: 0 0 0.5rem; font-size: 0.85rem; font-weight: 600; color: #475569;"><i class="fa-solid fa-link" style="color: var(--color-primary); margin-right: 4px;"></i> Additional Links</p>
                 <p style="margin: 0; font-size: 0.82rem; color: #64748b;">Active <a href="{{ route('admin.pages.index') }}" style="color: var(--color-primary); font-weight: 600;">CMS Pages</a> are automatically appended after the 6 links above.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PANEL: NACOS (redirect)
+     ══════════════════════════════════════ -->
+<div class="section-panel" id="panel-nacos">
+    <div class="pc-card">
+        <div class="pc-card-header open">
+            <h3>
+                <i class="fa-solid fa-users-rectangle" style="color: var(--color-primary);"></i>
+                NACOS Section
+                <span class="section-badge">Separate Editor</span>
+            </h3>
+        </div>
+        <div class="pc-card-body">
+            <div class="help-tip">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>The NACOS section on the homepage has its own dedicated editor with full controls for the section header, about card, stats, CTA banner, and the Presidents page.</span>
+            </div>
+            <div style="text-align: center; padding: 2rem 1rem;">
+                <div style="width: 64px; height: 64px; background: rgba(22,163,74,0.1); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem;">
+                    <i class="fa-solid fa-users-rectangle" style="font-size: 1.6rem; color: var(--color-primary);"></i>
+                </div>
+                <h4 style="font-size: 1.1rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">NACOS has its own editor</h4>
+                <p style="color: #64748b; font-size: 0.9rem; max-width: 400px; margin: 0 auto 1.5rem; line-height: 1.6;">Manage all the NACOS homepage section content, stats, and the Presidents page settings from the dedicated NACOS editor.</p>
+                <a href="{{ route('admin.page-content.show', 'nacos') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-primary); color: white; padding: 0.7rem 1.5rem; border-radius: 10px; font-size: 0.9rem; font-weight: 700; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 12px rgba(22,163,74,0.25);" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <i class="fa-solid fa-arrow-right"></i> Open NACOS Editor
+                </a>
             </div>
         </div>
     </div>
@@ -755,7 +787,7 @@
                 @foreach([1,2,3] as $bi)
                 @php
                     $defaultBtnLabels = ['Contact Us', 'About the Department', 'View Programmes'];
-                    $defaultBtnUrls   = ['/contact-nacos#apply', '/about', '/academics'];
+                    $defaultBtnUrls   = ['/contact', '/about', '/academics'];
                     $defaultBtnIcons  = ['fa-solid fa-envelope', 'fa-solid fa-circle-info', 'fa-solid fa-graduation-cap'];
                 @endphp
                 <div class="form-row" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom: {{ $bi < 3 ? '0.8rem' : '0' }};">

@@ -51,6 +51,7 @@
                 <th>Course Title</th>
                 <th>Programme</th>
                 <th>Lvl / Sem</th>
+                <th>Lecturer(s)</th>
                 <th>Units / Type</th>
                 <th>Actions</th>
             </tr>
@@ -62,6 +63,15 @@
                 <td>{{ Str::limit($course->title, 40) }}</td>
                 <td>{{ Str::limit($course->programme->name, 25) }}</td>
                 <td>Lvl {{ $course->level }}<br><span style="font-size: 0.75rem; color: #6b7280;">Sem {{ $course->semester }}</span></td>
+                <td>
+                    @if($course->staff->count())
+                        @foreach($course->staff as $lecturer)
+                            <span style="display: inline-block; background: #f0fdf4; color: #15803d; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; font-weight: 500; margin: 1px 0;">{{ $lecturer->name }}</span>
+                        @endforeach
+                    @else
+                        <span style="color: #9ca3af; font-size: 0.8rem; font-style: italic;">Not assigned</span>
+                    @endif
+                </td>
                 <td>
                     {{ $course->credit_units }} Unit(s)<br>
                     @if($course->is_elective)
@@ -82,7 +92,7 @@
             </tr>
             @empty
             <tr>
-                <td colspan="6" style="text-align: center; padding: 2rem;">No courses found matching criteria.</td>
+                <td colspan="7" style="text-align: center; padding: 2rem;">No courses found matching criteria.</td>
             </tr>
             @endforelse
         </tbody>
