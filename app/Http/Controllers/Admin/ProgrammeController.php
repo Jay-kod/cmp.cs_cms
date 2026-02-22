@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Programme;
+use App\Models\ProgrammeCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -17,13 +18,15 @@ class ProgrammeController extends Controller
 
     public function create()
     {
-        return view('admin.programmes.form', ['programme' => new Programme()]);
+        $categories = ProgrammeCategory::active()->ordered()->get();
+        return view('admin.programmes.form', ['programme' => new Programme(), 'categories' => $categories]);
     }
 
     public function store(Request $request)
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'programme_category_id' => 'nullable|exists:programme_categories,id',
             'level' => 'required|string|max:50',
             'duration' => 'required|string|max:50',
             'mode_of_study' => 'required|string|max:100',
@@ -46,13 +49,15 @@ class ProgrammeController extends Controller
 
     public function edit(Programme $programme)
     {
-        return view('admin.programmes.form', compact('programme'));
+        $categories = ProgrammeCategory::active()->ordered()->get();
+        return view('admin.programmes.form', compact('programme', 'categories'));
     }
 
     public function update(Request $request, Programme $programme)
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'programme_category_id' => 'nullable|exists:programme_categories,id',
             'level' => 'required|string|max:50',
             'duration' => 'required|string|max:50',
             'mode_of_study' => 'required|string|max:100',

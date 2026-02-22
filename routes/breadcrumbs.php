@@ -20,16 +20,16 @@ Breadcrumbs::for('academics', function (BreadcrumbTrail $trail) {
     $trail->push('Academics', url('academics'));
 });
 
-// Home > People
+// Home > Faculty
 Breadcrumbs::for('people', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('People', url('people'));
+    $trail->push('Faculty', url('people'));
 });
 
-// Home > Research & News
+// Home > Blog
 Breadcrumbs::for('research-news', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('Research & News', url('research-news'));
+    $trail->push('Blog', url('research-news'));
 });
 
 // Home > Contact & Alumni

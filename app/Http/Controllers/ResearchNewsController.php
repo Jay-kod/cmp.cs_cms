@@ -19,4 +19,11 @@ class ResearchNewsController extends Controller
         
         return view('pages.research-news', compact('news', 'publications', 'events', 'albums'));
     }
+
+    public function show(string $slug)
+    {
+        $article = News::where('slug', $slug)->firstOrFail();
+        $related  = News::where('id', '!=', $article->id)->latest('published_at')->take(3)->get();
+        return view('pages.news-show', compact('article', 'related'));
+    }
 }

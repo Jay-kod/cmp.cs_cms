@@ -1,15 +1,19 @@
-<div class="nav-layer-1">
-    <div class="container">
-        <div class="utility-left">
-            <span>{{ config('university.short_name') }}</span>
-            <span class="desktop-only"> &middot; Faculty of Natural & Applied Sciences</span>
+<div class="topbar">
+    <div class="container topbar-inner">
+        <div class="topbar-left">
+            <span class="topbar-badge">{{ config('university.short_name') }}</span>
+            <span class="topbar-divider desktop-only"></span>
+            <span class="desktop-only topbar-faculty">Faculty of Natural &amp; Applied Sciences</span>
         </div>
-        <div class="utility-right">
-            <a href="tel:+234123456789"><i class="fa-solid fa-phone"></i> <span class="desktop-only">+234 (0) 123 456 7890</span></a>
-            <a href="mailto:info@dcms.nsuk.edu.ng"><i class="fa-solid fa-envelope"></i> <span class="desktop-only">info@dcms.nsuk.edu.ng</span></a>
-            <button id="theme-toggle" class="btn" style="background:transparent; color:white; padding:0 0 0 1rem;">
-                <i class="fa-solid fa-moon"></i>
-            </button>
+        <div class="topbar-right">
+            <a href="tel:+234123456789" class="topbar-link">
+                <i class="fa-solid fa-phone-flip"></i>
+                <span class="desktop-only">+234 (0) 123 456 7890</span>
+            </a>
+            <a href="mailto:info@dcms.nsuk.edu.ng" class="topbar-link">
+                <i class="fa-solid fa-envelope"></i>
+                <span class="desktop-only">info@dcms.nsuk.edu.ng</span>
+            </a>
         </div>
     </div>
 </div>

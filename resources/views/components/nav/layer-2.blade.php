@@ -1,23 +1,39 @@
-<div class="nav-layer-2">
-    <div class="container">
-        <div class="brand-identity">
-            <img src="{{ asset(config('university.logo', 'build/assets/logo.png')) }}" alt="Logo" class="brand-logo" onerror="this.src='https://via.placeholder.com/60?text=Logo'">
-            <div class="brand-text">
-                <h1>{{ config('university.name') }}</h1>
-                <p class="desktop-only">{{ config('university.university') }}</p>
+<div class="navbar">
+    <div class="container navbar-inner">
+        <!-- Brand -->
+        <a href="/" class="navbar-brand">
+            <img src="{{ asset(config('university.logo', 'build/assets/logo.png')) }}" alt="Logo" class="navbar-logo" onerror="this.src='https://via.placeholder.com/44?text=Logo'">
+            <div class="navbar-brand-text">
+                <strong class="desktop-only">{{ config('university.name') }}</strong>
+                <strong class="mobile-only">CS Dept. NSUK</strong>
+                <span class="desktop-only">{{ config('university.university') }}</span>
             </div>
-        </div>
-        
-        <div class="header-actions desktop-only">
-            <div class="search-box">
-                <input type="text" placeholder="Search..." style="padding: 0.5rem; border: 1px solid var(--color-border); border-radius: 4px;">
-                <button class="btn btn-secondary" style="background: var(--color-primary); color: white;"><i class="fa-solid fa-search"></i></button>
-            </div>
-            <a href="#" class="btn btn-accent">Apply Now</a>
-        </div>
-        
-        <button class="mobile-nav-toggle" id="mobile-menu-btn">
-            <i class="fa-solid fa-bars"></i>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="navbar-nav desktop-only" id="primary-nav">
+            <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
+            <a href="/about" class="nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
+            <a href="/academics" class="nav-link {{ request()->is('academics*') ? 'active' : '' }}">Academics</a>
+            <a href="/research-news" class="nav-link {{ request()->is('research-news*') ? 'active' : '' }}">Blog</a>
+            <a href="/contact-nacos" class="nav-link {{ request()->is('contact-nacos*') ? 'active' : '' }}">Contact</a>
+            <span class="nav-divider"></span>
+            <a href="#" class="nav-link nav-icon-link" id="search-toggle-btn" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="/contact-nacos#apply" class="navbar-cta">Join Us</a>
+        </nav>
+
+        <button class="navbar-hamburger" id="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
         </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="navbar-mobile-drawer" id="mobileDrawer">
+        <a href="/" class="mobile-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
+        <a href="/about" class="mobile-link {{ request()->is('about') ? 'active' : '' }}">About</a>
+        <a href="/academics" class="mobile-link {{ request()->is('academics*') ? 'active' : '' }}">Academics</a>
+        <a href="/research-news" class="mobile-link {{ request()->is('research-news*') ? 'active' : '' }}">Blog</a>
+        <a href="/contact-nacos" class="mobile-link {{ request()->is('contact-nacos*') ? 'active' : '' }}">Contact</a>
+        <a href="/contact-nacos#apply" class="mobile-link mobile-cta">Apply Now</a>
     </div>
 </div>

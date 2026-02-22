@@ -35,7 +35,7 @@
             
             <div style="margin-top: auto; display: flex; gap: 8px;">
                 <a href="{{ route('admin.gallery.edit', $album) }}" class="btn btn-secondary" style="flex: 1; text-align: center; padding: 0.4rem; font-size: 0.8rem; background: #f3f4f6; color: #374151; text-decoration: none; border-radius: 4px; border: 1px solid #d1d5db;"><i class="fa-solid fa-pen"></i> Edit & Add</a>
-                <form action="{{ route('admin.gallery.destroy', $album) }}" method="POST" onsubmit="return confirm('WARNING: This will delete the album AND ALL {{ $album->images_count }} PHOTOS inside it. Continue?');" style="flex: 1; margin: 0;">
+                <form action="{{ route('admin.gallery.destroy', $album) }}" method="POST" data-confirm="WARNING: This will delete the album AND ALL {{ $album->images_count }} PHOTOS inside it. Continue?" style="flex: 1; margin: 0;">
                     @csrf @method('DELETE')
                     <button type="submit" class="btn btn-secondary" style="width: 100%; padding: 0.4rem; font-size: 0.8rem; background: white; color: #ef4444; border: 1px solid #fca5a5; cursor: pointer; border-radius: 4px;"><i class="fa-solid fa-trash"></i> Delete</button>
                 </form>

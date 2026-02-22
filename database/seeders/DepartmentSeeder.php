@@ -33,6 +33,10 @@ class DepartmentSeeder extends Seeder
             ['key' => 'vision_statement', 'value' => 'To be a world-class centre of excellence in computing research and education.', 'group' => 'about'],
             ['key' => 'mission_statement', 'value' => 'To produce highly skilled IT professionals capable of competing globally and solving local challenges.', 'group' => 'about'],
             ['key' => 'core_values', 'value' => 'Excellence, Integrity, Innovation, Collaboration', 'group' => 'about'],
+            // Branding Colors
+            ['key' => 'color_primary', 'value' => '#16a34a', 'group' => 'branding'],
+            ['key' => 'color_secondary', 'value' => '#15803d', 'group' => 'branding'],
+            ['key' => 'color_accent', 'value' => '#22c55e', 'group' => 'branding'],
         ];
 
         foreach ($settings as $setting) {

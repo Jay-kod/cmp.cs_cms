@@ -3,12 +3,13 @@
 return [
     'name' => 'Department of Computer Science',
     'university' => 'Nasarawa State University, Keffi',
-    'short_name' => 'NSUK',
+    'short_name' => 'CMP NSUK',
+    'department_code' => 'CMP',
     'tagline' => 'Pioneering Innovation in Computing',
     'established' => 1972,
-    'primary_color' => '#1B2A4A',
-    'secondary_color' => '#D4A843',
-    'accent_color' => '#2E86AB',
+    'primary_color' => '#16a34a',
+    'secondary_color' => '#15803d',
+    'accent_color' => '#22c55e',
     'logo' => 'images/logo.png',
     'favicon' => 'images/favicon.ico',
 ];

@@ -30,6 +30,11 @@
                     <label class="form-label">Full Name <span style="color: red;">*</span></label>
                     <input type="text" name="name" value="{{ old('name', $staff->name) }}" class="form-control" required>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-label">Qualifications</label>
+                    <input type="text" name="qualifications" value="{{ old('qualifications', $staff->qualifications) }}" class="form-control" placeholder="e.g. B.Sc., M.Sc., Ph.D.">
+                </div>
                 
                 <div class="form-group">
                     <label class="form-label">Rank / Position <span style="color: red;">*</span></label>

@@ -73,7 +73,7 @@
         <div style="position: relative; border-radius: 4px; overflow: hidden; border: 1px solid #e5e7eb; aspect-ratio: 1/1; background: #f3f4f6;">
             <img src="{{ asset('storage/'.$img->image_path) }}" style="width: 100%; height: 100%; object-fit: cover;">
             
-            <form action="{{ route('admin.gallery.image.destroy', $img->id) }}" method="POST" onsubmit="return confirm('Remove this photo?');" style="position: absolute; top: 5px; right: 5px; margin: 0;">
+            <form action="{{ route('admin.gallery.image.destroy', $img->id) }}" method="POST" data-confirm="Remove this photo?" style="position: absolute; top: 5px; right: 5px; margin: 0;">
                 @csrf @method('DELETE')
                 <button type="submit" style="background: rgba(2ef, 68, 68, 0.9); color: white; border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-xmark"></i></button>
             </form>

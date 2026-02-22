@@ -14,6 +14,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             DepartmentSeeder::class,
+            ProgrammeCategorySeeder::class,
+            PageSeeder::class,
+            ExternalSystemSeeder::class,
+            SocialLinkSeeder::class,
+            CarouselSlideSeeder::class,
+            HomepageSampleSeeder::class,
         ]);
     }
 }

@@ -25,6 +25,16 @@
                     <label class="form-label">Programme Name <span style="color: red;">*</span></label>
                     <input type="text" name="name" value="{{ old('name', $programme->name) }}" class="form-control" required placeholder="e.g. B.Sc. Computer Science">
                 </div>
+
+                <div class="form-group">
+                    <label class="form-label">Programme Category</label>
+                    <select name="programme_category_id" class="form-control">
+                        <option value="">— No Category —</option>
+                        @foreach($categories as $cat)
+                        <option value="{{ $cat->id }}" {{ old('programme_category_id', $programme->programme_category_id) == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 
                 <div class="form-group">
                     <label class="form-label">Level <span style="color: red;">*</span></label>

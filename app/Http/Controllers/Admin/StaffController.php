@@ -25,6 +25,7 @@ class StaffController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'qualifications' => 'nullable|string|max:255',
             'title' => 'nullable|string|max:50',
             'rank' => 'required|string|max:100',
             'email' => 'required|email|unique:staff,email',
@@ -62,6 +63,7 @@ class StaffController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'qualifications' => 'nullable|string|max:255',
             'title' => 'nullable|string|max:50',
             'rank' => 'required|string|max:100',
             'email' => 'required|email|unique:staff,email,'.$staff->id,

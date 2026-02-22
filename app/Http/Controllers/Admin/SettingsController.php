@@ -18,10 +18,14 @@ class SettingsController extends Controller
     {
         $data = $request->except(['_token', '_method']);
         
+        // Color keys belong to 'branding' group, everything else to 'general'
+        $colorKeys = ['color_primary', 'color_secondary', 'color_accent'];
+        
         foreach ($data as $key => $value) {
+            $group = in_array($key, $colorKeys) ? 'branding' : 'general';
             DepartmentSetting::updateOrCreate(
                 ['key' => $key],
-                ['value' => is_array($value) ? json_encode($value) : $value]
+                ['value' => is_array($value) ? json_encode($value) : $value, 'group' => $group]
             );
         }
 

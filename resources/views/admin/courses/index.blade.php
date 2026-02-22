@@ -73,7 +73,7 @@
                 <td>
                     <div class="actions">
                         <a href="{{ route('admin.courses.edit', $course) }}" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #e5e7eb; color: #374151; text-decoration: none; border-radius: 4px;"><i class="fa-solid fa-edit"></i></a>
-                        <form action="{{ route('admin.courses.destroy', $course) }}" method="POST" onsubmit="return confirm('Delete this course?');" style="display:inline;">
+                        <form action="{{ route('admin.courses.destroy', $course) }}" method="POST" data-confirm="Delete this course?" style="display:inline;">
                             @csrf @method('DELETE')
                             <button type="submit" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #fee2e2; color: #b91c1c; border: none; cursor: pointer; border-radius: 4px;"><i class="fa-solid fa-trash"></i></button>
                         </form>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="hteF4JqZq480VA0h2S3npKBuwgqENfYWkxkqUxHA">
+        <link rel="icon" type="image/png" href="http://127.0.0.1:8000/images/logo-favicon.png">
+        <link rel="apple-touch-icon" href="http://127.0.0.1:8000/images/logo-favicon.png">
+
+        <title>Laravel - Admin Portal</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+        <!-- Scripts -->
+        <link rel="preload" as="style" href="http://127.0.0.1:8000/build/assets/app-Cgi_OILR.css" /><link rel="modulepreload" href="http://127.0.0.1:8000/build/assets/app-CnN4B5L6.js" /><link rel="stylesheet" href="http://127.0.0.1:8000/build/assets/app-Cgi_OILR.css" /><script type="module" src="http://127.0.0.1:8000/build/assets/app-CnN4B5L6.js"></script>
+        <style>
+            :root {
+                --color-primary-guest: #16a34a; /* Provide fallback since this page doesn't have the global dynamic colors block */
+                --color-secondary-guest: #15803d;
+            }
+            body {
+                margin: 0;
+            }
+            .login-wrapper {
+                min-height: 100vh;
+                display: flex;
+                background-color: #f3f4f6;
+                background-image: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            }
+            .login-left {
+                flex: 1.2;
+                background: linear-gradient(135deg, var(--color-primary, var(--color-primary-guest)) 0%, var(--color-secondary, var(--color-secondary-guest)) 100%);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                padding: 4rem;
+                position: relative;
+                overflow: hidden;
+            }
+            .login-left::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 40%),
+                                  radial-gradient(circle at 80% 20%, rgba(0,0,0,0.1) 0%, transparent 40%);
+                pointer-events: none;
+            }
+            .login-right {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 2rem;
+            }
+            .login-card {
+                background: white;
+                padding: 3rem;
+                border-radius: 12px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+                width: 100%;
+                max-width: 450px;
+                animation: slide-up 0.4s ease-out;
+            }
+            @keyframes slide-up {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @media (max-width: 900px) {
+                .login-left { display: none; }
+                .login-wrapper { justify-content: center; align-items: center; padding: 1rem; }
+            }
+        </style>
+    </head>
+    <body class="antialiased">
+        <div class="login-wrapper">
+            <div class="login-left">
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <img src="http://127.0.0.1:8000/images/logo.png" alt="CMP NSUK Logo" style="margin-bottom: 2rem;" style="max-height: 80px; width: auto; object-fit: contain;">
+    <span style="font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: #1B2A4A; letter-spacing: 1px; margin-top: 10px;">CMP NSUK</span>
+</div>
+                <h1 style="color: white; font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">Departmental CMS</h1>
+                <p style="text-align: center; font-size: 1.1rem; opacity: 0.9; max-width: 400px; line-height: 1.6;">Secure administrative portal for managing departmental content, staff profiles, news, and academic information.</p>
+            </div>
+            
+            <div class="login-right">
+                <div class="login-card">
+                    <div style="text-align: center; margin-bottom: 2rem; display: none;" class="mobile-logo">
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <img src="http://127.0.0.1:8000/images/logo.png" alt="CMP NSUK Logo"  style="max-height: 80px; width: auto; object-fit: contain;">
+    <span style="font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: #1B2A4A; letter-spacing: 1px; margin-top: 10px;">CMP NSUK</span>
+</div>
+                    </div>
+                    <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 1.8rem; margin: 0; color: #1f2937; font-family: 'Outfit', sans-serif;">Welcome Back</h2>
+        <p style="color: #6b7280; font-size: 0.9rem; margin-top: 0.5rem;">Please sign in to your admin account</p>
+    </div>
+
+    <!-- Session Status -->
+    
+    <form method="POST" action="http://127.0.0.1:8000/login">
+        <input type="hidden" name="_token" value="hteF4JqZq480VA0h2S3npKBuwgqENfYWkxkqUxHA" autocomplete="off">
+        <!-- Email Address -->
+        <div style="margin-bottom: 1.25rem;">
+            <label for="email" style="display: block; font-weight: 500; font-size: 0.9rem; margin-bottom: 0.5rem; color: #374151;">Email Address</label>
+            <div style="position: relative;">
+                <div style="position: absolute; left: 14px; top: 12px; color: #9ca3af;"><i class="fa-solid fa-envelope"></i></div>
+                <input id="email" type="email" name="email" value="" required autofocus autocomplete="username" 
+                    style="width: 100%; box-sizing: border-box; padding: 0.75rem 0.75rem 0.75rem 2.8rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem; outline: none; transition: all 0.2s ease; background-color: #f9fafb;"
+                    onfocus="this.style.borderColor='var(--color-primary, #16a34a)'; this.style.boxShadow='0 0 0 3px rgba(22, 163, 74, 0.1)'; this.style.backgroundColor='#ffffff';"
+                    onblur="this.style.borderColor='#d1d5db'; this.style.boxShadow='none'; this.style.backgroundColor='#f9fafb';">
+            </div>
+                    </div>
+
+        <!-- Password -->
+        <div style="margin-bottom: 1.5rem;">
+            <label for="password" style="display: block; font-weight: 500; font-size: 0.9rem; margin-bottom: 0.5rem; color: #374151;">Password</label>
+            <div style="position: relative;">
+                <div style="position: absolute; left: 14px; top: 12px; color: #9ca3af;"><i class="fa-solid fa-lock"></i></div>
+                <input id="password" type="password" name="password" required autocomplete="current-password"
+                    style="width: 100%; box-sizing: border-box; padding: 0.75rem 2.8rem 0.75rem 2.8rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.95rem; outline: none; transition: all 0.2s ease; background-color: #f9fafb;"
+                    onfocus="this.style.borderColor='var(--color-primary, #16a34a)'; this.style.boxShadow='0 0 0 3px rgba(22, 163, 74, 0.1)'; this.style.backgroundColor='#ffffff';"
+                    onblur="this.style.borderColor='#d1d5db'; this.style.boxShadow='none'; this.style.backgroundColor='#f9fafb';">
+                <div style="position: absolute; right: 14px; top: 12px; color: #9ca3af; cursor: pointer; transition: color 0.2s ease;" 
+                     onmouseover="this.style.color='var(--color-primary, #16a34a)'" onmouseout="this.style.color='#9ca3af'"
+                     onclick="const p = document.getElementById('password'); const i = this.querySelector('i'); if (p.type === 'password') { p.type = 'text'; i.classList.remove('fa-eye'); i.classList.add('fa-eye-slash'); } else { p.type = 'password'; i.classList.remove('fa-eye-slash'); i.classList.add('fa-eye'); }">
+                     <i class="fa-solid fa-eye"></i>
+                </div>
+            </div>
+                    </div>
+
+        <!-- Remember Me & Forgot Password -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <label for="remember_me" style="display: flex; align-items: center; cursor: pointer;">
+                <input id="remember_me" type="checkbox" name="remember" style="width: 1rem; height: 1rem; border-radius: 4px; border: 1px solid #d1d5db; accent-color: var(--color-primary, #16a34a); margin-right: 0.5rem;">
+                <span style="font-size: 0.9rem; color: #4b5563;">Remember me</span>
+            </label>
+
+                            <a style="font-size: 0.9rem; color: var(--color-primary, #16a34a); font-weight: 500; text-decoration: none; transition: color 0.2s ease;" href="http://127.0.0.1:8000/forgot-password" onmouseover="this.style.color='var(--color-secondary, #15803d)'" onmouseout="this.style.color='var(--color-primary, #16a34a)'">
+                    Forgot password?
+                </a>
+                    </div>
+
+        <button type="submit" style="width: 100%; background: var(--color-primary, #16a34a); color: white; padding: 0.85rem; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(22,163,74,0.2); display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif;"
+                onmouseover="this.style.backgroundColor='var(--color-secondary, #15803d)'; this.style.transform='translateY(-1px)'; this.style.boxShadow='0 6px 15px rgba(22,163,74,0.3)';"
+                onmouseout="this.style.backgroundColor='var(--color-primary, #16a34a)'; this.style.transform='none'; this.style.boxShadow='0 4px 10px rgba(22,163,74,0.2)';"
+                onmousedown="this.style.transform='translateY(1px)'; this.style.boxShadow='0 2px 5px rgba(22,163,74,0.2)';">
+            <i class="fa-solid fa-sign-in-alt" style="margin-right: 0.5rem;"></i> Log in
+        </button>
+    </form>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (max-width: 900px) {
+                .mobile-logo { display: block !important; }
+            }
+        </style>
+    </body>
+</html>

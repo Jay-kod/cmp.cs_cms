@@ -20,7 +20,10 @@
                 </div>
                 <div style="flex: 1; min-width: 250px;">
                     <h3 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 1.8rem; color: var(--color-primary);">{{ $hod->name }}</h3>
-                    <p style="color: var(--color-secondary); font-weight: 600; font-size: 1.1rem; margin-bottom: 1.5rem;">{{ $hod->title }}, Head of Department</p>
+                    <p style="color: var(--color-secondary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">{{ $hod->title }}, Head of Department</p>
+                    @if($hod->qualifications)
+                        <p style="color: var(--color-text-main); font-weight: 500; font-size: 0.95rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-graduation-cap" style="color: var(--color-accent); width: 20px;"></i> {{ $hod->qualifications }}</p>
+                    @endif
                     
                     <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem;">
                         <p style="color: var(--color-text-main); margin: 0;"><i class="fa-solid fa-microchip" style="color: var(--color-accent); width: 20px;"></i> <strong>Specialisation:</strong> {{ $hod->specialisation }}</p>
@@ -45,8 +48,11 @@
                 <div style="background: var(--color-bg-main); border: 1px solid var(--color-border); border-radius: 8px; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.02);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.08)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.02)';">
                     <img src="{{ $staff->photo ? asset('storage/'.$staff->photo) : asset('build/assets/placeholder.jpg') }}" alt="{{ $staff->name }}" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 1.2rem; border: 4px solid var(--color-bg-alt); box-shadow: 0 4px 10px rgba(0,0,0,0.05);" onerror="this.src='https://via.placeholder.com/150?text=Profile'">
                     <h4 style="margin-bottom: 0.25rem; font-size: 1.2rem;"><a href="{{ route('people.show', $staff->slug) }}" style="color: var(--color-primary); text-decoration: none;">{{ $staff->name }}</a></h4>
-                    <p style="color: var(--color-secondary); font-size: 0.95rem; margin-bottom: 0.8rem; font-weight: 500;">{{ $staff->rank }}</p>
-                    <p style="color: var(--color-text-muted); font-size: 0.85rem; line-height: 1.5;"><i class="fa-solid fa-graduation-cap"></i> {{ $staff->specialisation }}</p>
+                    <p style="color: var(--color-secondary); font-size: 0.95rem; margin-bottom: 0.3rem; font-weight: 500;">{{ $staff->rank }}</p>
+                    @if($staff->qualifications)
+                        <p style="color: var(--color-text-main); font-size: 0.85rem; margin-bottom: 0.8rem; font-weight: 600;"><i class="fa-solid fa-graduation-cap" style="color: var(--color-accent);"></i> {{ $staff->qualifications }}</p>
+                    @endif
+                    <p style="color: var(--color-text-muted); font-size: 0.85rem; line-height: 1.5;"><i class="fa-solid fa-microchip"></i> {{ $staff->specialisation }}</p>
                 </div>
                 @endforeach
             </div>
