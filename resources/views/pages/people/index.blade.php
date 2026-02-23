@@ -2,9 +2,20 @@
 @section('title', 'People')
 
 @section('content')
-<div class="page-header" style="background: var(--color-primary); color: white; padding: 4rem 0; text-align: center;">
+@php
+    $hs = \App\Models\DepartmentSetting::where('group', 'page_people')->pluck('value', 'key')->toArray();
+    $heroImg = \App\Models\DepartmentSetting::where('key', 'hero_people')->value('value');
+    $heroUrl = $heroImg && file_exists(storage_path('app/public/' . $heroImg)) 
+        ? asset('storage/' . $heroImg) 
+        : null;
+@endphp
+
+<div class="page-header" style="{{ $heroUrl ? "background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url('{$heroUrl}') center/cover;" : 'background: var(--color-primary);' }} color: white; padding: 4rem 0; text-align: center;">
     <div class="container">
-        <h1 style="color: white; font-size: 2.5rem; margin-bottom: 0;">Our People</h1>
+        <h1 style="color: white; font-size: 2.5rem; margin-bottom: 0;">{{ $hs['people_hero_title'] ?? 'Our People' }}</h1>
+        @if(!empty($hs['people_hero_subtitle']))
+        <p style="margin-top: 1rem; color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">{{ $hs['people_hero_subtitle'] }}</p>
+        @endif
     </div>
 </div>
 

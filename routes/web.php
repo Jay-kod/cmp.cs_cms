@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactNacosController;
 use App\Http\Controllers\GalleryController as PublicGalleryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\SuperAdmin\DashboardController as SuperAdminDashboardController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\ProgrammeController;
 use App\Http\Controllers\Admin\ProgrammeCategoryController;
@@ -29,6 +30,8 @@ use App\Http\Controllers\Admin\CarouselController;
 use App\Http\Controllers\Admin\PageContentController;
 use App\Http\Controllers\Admin\StaffRoleController;
 use App\Http\Controllers\Admin\AnalyticsController;
+use App\Http\Controllers\Admin\PublicationController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\PartnerController;
 use Illuminate\Support\Facades\Route;
 
@@ -54,61 +57,75 @@ Route::get('/research-news/{slug}', [ResearchNewsController::class, 'show'])->na
 Route::get('/news/{news}/reactions', [ReactionController::class, 'show'])->name('reactions.show');
 Route::post('/news/{news}/reactions', [ReactionController::class, 'store'])->name('reactions.store');
 Route::get('/contact', [ContactNacosController::class, 'index'])->name('contact');
-Route::post('/contact', [ContactNacosController::class, 'send'])->name('contact.send');
+Route::post('/contact', [ContactNacosController::class, 'send'])->middleware('throttle:5,1')->name('contact.send');
 Route::get('/nacos-presidents', [ContactNacosController::class, 'presidents'])->name('nacos-presidents');
 Route::get('/gallery', [PublicGalleryController::class, 'index'])->name('gallery.index');
 Route::get('/gallery/{album}', [PublicGalleryController::class, 'show'])->name('gallery.show');
 Route::get('/page/{page}', [PageController::class, 'show'])->name('page.show');
+Route::get('/events', [\App\Http\Controllers\EventPublicController::class, 'index'])->name('events.index');
 
-Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    
-    // Resource controllers
-    Route::resource('staff', StaffController::class);
-    Route::resource('staff-roles', StaffRoleController::class);
-    Route::resource('programmes', ProgrammeController::class);
-    Route::resource('programme-categories', ProgrammeCategoryController::class);
-    Route::resource('courses', CourseController::class);
+
+    // ── Content (all admin roles: editor, admin, super_admin) ──
     Route::resource('news', NewsController::class);
     Route::resource('events', EventController::class);
     Route::resource('announcements', AnnouncementController::class);
-    Route::resource('nacos-presidents', NacosPresidentController::class);
-    Route::resource('past-hods', PastHodController::class);
-    Route::resource('partners', PartnerController::class);
-    Route::resource('gallery', GalleryController::class);
-    Route::delete('gallery/image/{image}', [GalleryController::class, 'destroyImage'])->name('gallery.image.destroy');
-    
-    // Settings
-    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
-    Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
 
-    // Pages
-    Route::resource('pages', AdminPageController::class);
+    // ── Management (admin + super_admin) ──
+    Route::middleware('role:admin')->group(function () {
+        Route::resource('staff', StaffController::class);
+        Route::resource('staff-roles', StaffRoleController::class);
+        Route::resource('programmes', ProgrammeController::class);
+        Route::resource('programme-categories', ProgrammeCategoryController::class);
+        Route::resource('courses', CourseController::class);
+        Route::resource('nacos-presidents', NacosPresidentController::class);
+        Route::resource('past-hods', PastHodController::class);
+        Route::resource('partners', PartnerController::class);
+        Route::resource('gallery', GalleryController::class);
+        Route::delete('gallery/image/{image}', [GalleryController::class, 'destroyImage'])->name('gallery.image.destroy');
+        Route::resource('publications', PublicationController::class);
+        Route::resource('users', UserController::class);
 
-    // System Backup
-    Route::get('/backup', [\App\Http\Controllers\Admin\BackupController::class, 'index'])->name('backup.index');
-    Route::post('/backup', [\App\Http\Controllers\Admin\BackupController::class, 'download'])->name('backup.download');
+        // Carousel & Media
+        Route::resource('carousel', CarouselController::class)->except(['show']);
+        Route::get('/carousel-footer-bg', [CarouselController::class, 'footerBg'])->name('carousel.footer-bg');
+        Route::post('/carousel-footer-bg', [CarouselController::class, 'updateFooterBg'])->name('carousel.footer-bg.update');
+        Route::get('/carousel-page-heroes', [CarouselController::class, 'pageHeroes'])->name('carousel.page-heroes');
+        Route::post('/carousel-page-heroes', [CarouselController::class, 'updatePageHeroes'])->name('carousel.page-heroes.update');
 
-    // External Systems
-    Route::resource('external-systems', ExternalSystemController::class)->except(['show']);
+        // External Systems & Social Links
+        Route::resource('external-systems', ExternalSystemController::class)->except(['show']);
+        Route::resource('social-links', SocialLinkController::class)->except(['show']);
 
-    // Social Links
-    Route::resource('social-links', SocialLinkController::class)->except(['show']);
+        // Page Content Editors
+        Route::get('/page-content/{page}', [PageContentController::class, 'showPage'])->name('page-content.show');
+        Route::post('/page-content/{page}', [PageContentController::class, 'updatePage'])->name('page-content.update');
 
-    // Carousel & Media
-    Route::resource('carousel', CarouselController::class)->except(['show']);
-    Route::get('/carousel-footer-bg', [CarouselController::class, 'footerBg'])->name('carousel.footer-bg');
-    Route::post('/carousel-footer-bg', [CarouselController::class, 'updateFooterBg'])->name('carousel.footer-bg.update');
-    Route::get('/carousel-page-heroes', [CarouselController::class, 'pageHeroes'])->name('carousel.page-heroes');
-    Route::post('/carousel-page-heroes', [CarouselController::class, 'updatePageHeroes'])->name('carousel.page-heroes.update');
+        // Pages
+        Route::resource('pages', AdminPageController::class);
 
-    // Analytics & Reports
-    Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics.index');
-    Route::get('/analytics/download', [AnalyticsController::class, 'download'])->name('analytics.download');
+        // Analytics & Reports
+        Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics.index');
+        Route::get('/analytics/download', [AnalyticsController::class, 'download'])->name('analytics.download');
+    });
 
-    // Page Content Editors
-    Route::get('/page-content/{page}', [PageContentController::class, 'showPage'])->name('page-content.show');
-    Route::post('/page-content/{page}', [PageContentController::class, 'updatePage'])->name('page-content.update');
+    // ── Super Admin only ──
+    Route::middleware('super_admin')->group(function () {
+        // System Dashboard
+        Route::get('/super-dashboard', [SuperAdminDashboardController::class, 'index'])->name('super-dashboard');
+
+        // User Management
+        Route::resource('users', UserController::class)->except(['show']);
+
+        // Settings
+        Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+        Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
+
+        // System Backup
+        Route::get('/backup', [\App\Http\Controllers\Admin\BackupController::class, 'index'])->name('backup.index');
+        Route::post('/backup', [\App\Http\Controllers\Admin\BackupController::class, 'download'])->name('backup.download');
+    });
 });
 
 Route::middleware('auth')->group(function () {

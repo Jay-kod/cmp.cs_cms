@@ -35,7 +35,7 @@ class StaffController extends Controller
             'bio' => 'nullable|string',
             'is_hod' => 'boolean',
             'is_active' => 'boolean',
-            'photo' => 'nullable|image|max:2048'
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048'
         ]);
 
         $data['slug'] = Str::slug($data['name']);
@@ -74,7 +74,7 @@ class StaffController extends Controller
             'bio' => 'nullable|string',
             'is_hod' => 'boolean',
             'is_active' => 'boolean',
-            'photo' => 'nullable|image|max:2048'
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048'
         ]);
 
         $data['slug'] = Str::slug($data['name']);

@@ -24,6 +24,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
 
 class AnalyticsController extends Controller
 {
@@ -32,7 +33,7 @@ class AnalyticsController extends Controller
      */
     public function index()
     {
-        $data = $this->gatherAllStats();
+        $data = Cache::remember('analytics_stats', 600, fn() => $this->gatherAllStats());
         return view('admin.analytics.index', $data);
     }
 

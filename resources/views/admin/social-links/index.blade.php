@@ -71,9 +71,12 @@
             </tr>
             @empty
             <tr>
-                <td colspan="6" style="text-align: center; padding: 2rem; color: #9ca3af;">
-                    <i class="fa-solid fa-share-nodes" style="font-size: 1.5rem; display: block; margin-bottom: 0.5rem;"></i>
-                    No social links added yet.
+                <td colspan="6" style="text-align: center; padding: 3rem 1rem;">
+                    <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem;">
+                        <i class="fa-solid fa-share-nodes" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 1rem;"></i>
+                        <h3 style="margin: 0 0 0.5rem; color: #334155; font-size: 1.2rem;">No Social Links Found</h3>
+                        <p style="margin: 0; color: #64748b;">No social links added yet.</p>
+                    </div>
                 </td>
             </tr>
             @endforelse

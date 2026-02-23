@@ -2,10 +2,18 @@
 @section('title', 'Past Heads of Department')
 
 @section('content')
-<div class="page-header" style="background: var(--color-primary); color: white; padding: 4rem 0; text-align: center;">
+@php
+    $hs = \App\Models\DepartmentSetting::where('group', 'page_past-hods')->pluck('value', 'key')->toArray();
+    $heroImg = \App\Models\DepartmentSetting::where('key', 'hero_past-hods')->value('value');
+    $heroUrl = $heroImg && file_exists(storage_path('app/public/' . $heroImg)) 
+        ? asset('storage/' . $heroImg) 
+        : null;
+@endphp
+
+<div class="page-header" style="{{ $heroUrl ? "background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url('{$heroUrl}') center/cover;" : 'background: var(--color-primary);' }} color: white; padding: 4rem 0; text-align: center;">
     <div class="container">
-        <h1 style="color: white; font-size: 2.5rem; margin-bottom: 0;">Past Heads of Department</h1>
-        <p style="margin-top: 1rem; color: rgba(255,255,255,0.8); font-size: 1.1rem;">Honoring the leaders who have driven our department forward</p>
+        <h1 style="color: white; font-size: 2.5rem; margin-bottom: 0;">{{ $hs['past_hods_hero_title'] ?? 'Past Heads of Department' }}</h1>
+        <p style="margin-top: 1rem; color: rgba(255,255,255,0.8); font-size: 1.1rem;">{{ $hs['past_hods_hero_subtitle'] ?? 'Honoring the leaders who have driven our department forward' }}</p>
     </div>
 </div>
 

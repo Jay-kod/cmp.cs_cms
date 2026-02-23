@@ -12,7 +12,7 @@ class PageContentController extends Controller
     /**
      * Pages that have content editors.
      */
-    private array $validPages = ['home', 'about', 'academics', 'blog', 'contact', 'nacos'];
+    private array $validPages = ['home', 'about', 'academics', 'blog', 'contact', 'nacos', 'people', 'gallery', 'past-hods'];
 
     /**
      * Show the content editor for a given page.

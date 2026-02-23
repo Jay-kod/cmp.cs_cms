@@ -32,7 +32,7 @@ class NacosPresidentController extends Controller
             'tenure_end' => 'nullable|string|max:50',
             'current_status' => 'nullable|string|max:255',
             'bio' => 'nullable|string',
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
         ]);
 
         if ($request->hasFile('photo')) {
@@ -59,7 +59,7 @@ class NacosPresidentController extends Controller
             'tenure_end' => 'nullable|string|max:50',
             'current_status' => 'nullable|string|max:255',
             'bio' => 'nullable|string',
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
         ]);
 
         if ($request->hasFile('photo')) {

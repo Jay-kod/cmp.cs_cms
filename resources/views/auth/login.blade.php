@@ -61,5 +61,12 @@
                 onmousedown="this.style.transform='translateY(1px)'; this.style.boxShadow='0 2px 5px rgba(22,163,74,0.2)';">
             <i class="fa-solid fa-sign-in-alt" style="margin-right: 0.5rem;"></i> {{ __('Log in') }}
         </button>
+
+        <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid #e5e7eb;">
+            <a href="{{ route('super-admin.login.form') }}" style="font-size: 0.82rem; color: #6b7280; text-decoration: none; transition: color 0.2s;"
+               onmouseover="this.style.color='var(--color-primary, #16a34a)'" onmouseout="this.style.color='#6b7280'">
+                <i class="fa-solid fa-shield-halved" style="margin-right: 4px;"></i> Super Admin Portal
+            </a>
+        </div>
     </form>
 </x-guest-layout>

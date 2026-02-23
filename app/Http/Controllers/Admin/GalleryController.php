@@ -30,7 +30,8 @@ class GalleryController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'date' => 'required|date',
-            'cover_image' => 'nullable|image|max:2048'
+            'cover_image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
+            'images.*' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:5120',
         ]);
 
         $data['slug'] = Str::slug($data['title']) . '-' . time();
@@ -68,7 +69,8 @@ class GalleryController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'date' => 'required|date',
-            'cover_image' => 'nullable|image|max:2048'
+            'cover_image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
+            'images.*' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:5120',
         ]);
 
         if ($data['title'] !== $gallery->title) {

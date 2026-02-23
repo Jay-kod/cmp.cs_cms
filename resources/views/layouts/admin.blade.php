@@ -23,10 +23,17 @@
     {{-- Dynamic branding colors from CMS settings --}}
     <style>
         :root {
-            --color-primary: {{ $brandColors['primary'] ?? '#16a34a' }};
-            --color-primary-light: {{ $brandColors['accent'] ?? '#22c55e' }};
-            --color-secondary: {{ $brandColors['secondary'] ?? '#15803d' }};
-            --color-accent: {{ $brandColors['accent'] ?? '#22c55e' }};
+            @if(auth()->user() && auth()->user()->isSuperAdmin())
+                --color-primary: #b91c1c;
+                --color-primary-light: #ef4444;
+                --color-secondary: #991b1b;
+                --color-accent: #ef4444;
+            @else
+                --color-primary: {{ $brandColors['primary'] ?? '#16a34a' }};
+                --color-primary-light: {{ $brandColors['accent'] ?? '#22c55e' }};
+                --color-secondary: {{ $brandColors['secondary'] ?? '#15803d' }};
+                --color-accent: {{ $brandColors['accent'] ?? '#22c55e' }};
+            @endif
         }
     </style>
 </head>
@@ -46,7 +53,7 @@
     <div class="admin-layout" style="display: flex; min-height: 100vh;">
         
         <!-- Sidebar -->
-        <aside class="admin-sidebar" id="adminSidebar" style="width: 260px; background: #0f172a; color: #cbd5e1; flex-shrink: 0; display: flex; flex-direction: column; transition: width 0.3s ease; position: sticky; top: 0; height: 100vh; z-index: 100;">
+        <aside class="admin-sidebar" id="adminSidebar" style="width: 260px; background: {{ auth()->user() && auth()->user()->isSuperAdmin() ? '#b91c1c' : '#0f172a' }}; color: #cbd5e1; flex-shrink: 0; display: flex; flex-direction: column; transition: width 0.3s ease; position: sticky; top: 0; height: 100vh; z-index: 100;">
             <div style="padding: 1.5rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); height: 75px; box-sizing: border-box; overflow: hidden; white-space: nowrap;">
                 <div style="width: 42px; height: 42px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
                     <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 100%; height: auto; border-radius: 6px;">
@@ -62,7 +69,10 @@
                     
                     <li class="nav-section-title"><span>Overview</span></li>
                     <li>
-                        <a href="{{ route('admin.dashboard') }}" class="admin-nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                        @php
+                            $dashboardRoute = auth()->user() && auth()->user()->isSuperAdmin() ? 'admin.super-dashboard' : 'admin.dashboard';
+                        @endphp
+                        <a href="{{ route($dashboardRoute) }}" class="admin-nav-item {{ request()->routeIs('admin.dashboard') || request()->routeIs('admin.super-dashboard') ? 'active' : '' }}">
                             <div class="nav-icon"><i class="fa-solid fa-border-all"></i></div>
                             <span>Dashboard</span>
                         </a>
@@ -74,6 +84,7 @@
                         </a>
                     </li>
                     
+                    @if(auth()->user()->isAdmin())
                     <li class="nav-section-title"><span>Management</span></li>
                     <li>
                         <a href="{{ route('admin.programmes.index') }}" class="admin-nav-item {{ request()->routeIs('admin.programmes.*') || request()->routeIs('admin.programme-categories.*') ? 'active' : '' }}" title="Programmes">
@@ -111,8 +122,10 @@
                             <span>NACOS Presidents</span>
                         </a>
                     </li>
+                    @endif {{-- end isAdmin for Management --}}
                     
                     <li class="nav-section-title"><span>Content & Media</span></li>
+                    @if(auth()->user()->isAdmin())
                     <li>
                         <a href="{{ route('admin.carousel.index') }}" class="admin-nav-item {{ request()->routeIs('admin.carousel.*') ? 'active' : '' }}" title="Carousel & Media">
                             <div class="nav-icon"><i class="fa-solid fa-photo-film"></i></div>
@@ -149,8 +162,16 @@
                             <span>Partners</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.publications.index') }}" class="admin-nav-item {{ request()->routeIs('admin.publications.*') ? 'active' : '' }}" title="Publications">
+                            <div class="nav-icon"><i class="fa-solid fa-book-open"></i></div>
+                            <span>Publications</span>
+                        </a>
+                    </li>
+                    @endif {{-- end isAdmin for Content & Media --}}
 
                     {{-- ── PAGES ── --}}
+                    @if(auth()->user()->isAdmin())
                     <li class="nav-section-title"><span>Pages</span></li>
 
                     {{-- Home --}}
@@ -174,6 +195,27 @@
                             <span>Academics</span>
                         </a>
                     </li>
+                    {{-- People --}}
+                    <li>
+                        <a href="{{ route('admin.page-content.show', 'people') }}" class="admin-nav-item {{ request()->is('admin/page-content/people') ? 'active' : '' }}" title="Faculty & People Page">
+                            <div class="nav-icon"><i class="fa-solid fa-users"></i></div>
+                            <span>Faculty & People</span>
+                        </a>
+                    </li>
+                    {{-- Gallery --}}
+                    <li>
+                        <a href="{{ route('admin.page-content.show', 'gallery') }}" class="admin-nav-item {{ request()->is('admin/page-content/gallery') ? 'active' : '' }}" title="Gallery Page">
+                            <div class="nav-icon"><i class="fa-solid fa-images"></i></div>
+                            <span>Gallery Page</span>
+                        </a>
+                    </li>
+                    {{-- Past HODs --}}
+                    <li>
+                        <a href="{{ route('admin.page-content.show', 'past-hods') }}" class="admin-nav-item {{ request()->is('admin/page-content/past-hods') ? 'active' : '' }}" title="Past HODs Page">
+                            <div class="nav-icon"><i class="fa-solid fa-landmark"></i></div>
+                            <span>Past HODs Page</span>
+                        </a>
+                    </li>
                     {{-- Blog --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'blog') }}" class="admin-nav-item {{ request()->is('admin/page-content/blog') ? 'active' : '' }}" title="Blog / Research Page">
@@ -195,14 +237,10 @@
                             <span>NACOS</span>
                         </a>
                     </li>
+                    @endif {{-- end isAdmin for Pages --}}
                     
                     <li class="nav-section-title"><span>System</span></li>
-                    <li>
-                        <a href="{{ route('admin.settings.index') }}" class="admin-nav-item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}" title="Settings">
-                            <div class="nav-icon"><i class="fa-solid fa-gear"></i></div>
-                            <span>Settings</span>
-                        </a>
-                    </li>
+                    @if(auth()->user()->isAdmin())
                     <li>
                         <a href="{{ route('admin.pages.index') }}" class="admin-nav-item {{ request()->routeIs('admin.pages.*') ? 'active' : '' }}" title="Pages">
                             <div class="nav-icon"><i class="fa-solid fa-file-lines"></i></div>
@@ -221,12 +259,27 @@
                             <span>Social Links</span>
                         </a>
                     </li>
+                    @endif
+                    @if(auth()->user()->isSuperAdmin())
+                    <li>
+                        <a href="{{ route('admin.users.index') }}" class="admin-nav-item {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" title="User Management">
+                            <div class="nav-icon"><i class="fa-solid fa-users-gear"></i></div>
+                            <span>User Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.settings.index') }}" class="admin-nav-item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}" title="Settings">
+                            <div class="nav-icon"><i class="fa-solid fa-gear"></i></div>
+                            <span>Settings</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="{{ route('admin.backup.index') }}" class="admin-nav-item {{ request()->routeIs('admin.backup.*') ? 'active' : '' }}" title="System Backup">
                             <div class="nav-icon"><i class="fa-solid fa-database"></i></div>
                             <span>System Backup</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </nav>
             
@@ -235,7 +288,10 @@
                     <div class="nav-icon" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; background: rgba(255,255,255,0.1); padding: 0;">
                         <i class="fa-solid fa-user" style="font-size: 0.8rem;"></i>
                     </div>
-                    <span>{{ Auth::user()->name }}</span>
+                    <span style="display:flex;flex-direction:column;line-height:1.2">
+                        {{ Auth::user()->name }}
+                        <small style="font-size:.6rem;color:{{ auth()->user()->isSuperAdmin() ? '#fbbf24' : (auth()->user()->isAdmin() ? '#60a5fa' : '#4ade80') }};font-weight:700;text-transform:uppercase;letter-spacing:.5px">{{ auth()->user()->role_label }}</small>
+                    </span>
                 </a>
                 <form id="logoutForm" method="POST" action="{{ route('logout') }}" style="margin: 0;">
                     @csrf

@@ -9,6 +9,7 @@
     $heroUrl = $heroSetting && $heroSetting->value && file_exists(storage_path('app/public/' . $heroSetting->value))
         ? asset('storage/' . $heroSetting->value)
         : asset('images/campus-bg.jpg');
+    $gsData = \App\Models\DepartmentSetting::where('group', 'page_gallery')->pluck('value', 'key')->toArray();
 @endphp
 
 <!-- Hero -->
@@ -16,10 +17,10 @@
     <div style="position: absolute; inset: 0; background: radial-gradient(circle at 20% 80%, rgba(16,185,129,0.12), transparent 50%), radial-gradient(circle at 80% 20%, rgba(59,130,246,0.08), transparent 50%); pointer-events: none;"></div>
     <div class="container" style="position: relative; z-index: 10; text-align: center;">
         <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.2rem; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); color: #a7f3d0; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-            <i class="fa-solid fa-images" style="font-size: 0.7rem;"></i> Photo Gallery
+            <i class="fa-solid fa-images" style="font-size: 0.7rem;"></i> {{ $gsData['gallery_hero_badge'] ?? 'Photo Gallery' }}
         </div>
-        <h1 style="color: white; font-size: 3rem; font-family: var(--font-heading); margin: 0 0 0.8rem; font-weight: 800; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">Our Photo Gallery</h1>
-        <p style="color: #cbd5e1; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.7;">Browse through moments from events, lectures, ceremonies, and campus life.</p>
+        <h1 style="color: white; font-size: 3rem; font-family: var(--font-heading); margin: 0 0 0.8rem; font-weight: 800; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">{{ $gsData['gallery_hero_title'] ?? 'Our Photo Gallery' }}</h1>
+        <p style="color: #cbd5e1; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.7;">{{ $gsData['gallery_hero_subtitle'] ?? 'Browse through moments from events, lectures, ceremonies, and campus life.' }}</p>
     </div>
 </div>
 
