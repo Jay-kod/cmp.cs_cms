@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', $slide ? 'Edit Slide' : 'Add Slide')
 @section('header', $slide ? 'Edit Carousel Slide' : 'Add Carousel Slide')
 

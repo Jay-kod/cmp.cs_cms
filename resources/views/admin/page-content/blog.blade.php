@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', 'Blog / Research Page Content')
 @section('header', 'Blog & Research Page Editor')
 

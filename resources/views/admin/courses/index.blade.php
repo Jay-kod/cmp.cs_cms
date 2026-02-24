@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', 'Manage Courses')
 @section('header', 'Course Database')
 

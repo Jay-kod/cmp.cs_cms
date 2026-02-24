@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 
 @section('title', $partner->exists ? 'Edit Partner' : 'Add Partner')
 

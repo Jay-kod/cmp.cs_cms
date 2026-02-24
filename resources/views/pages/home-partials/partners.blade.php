@@ -1,3 +1,4 @@
+@if(isset($partners) && $partners->count() > 0)
 <!-- OUR PARTNERS -->
 <section style="padding: 6rem 0; background: white; border-top: 1px solid #f1f5f9; position: relative;">
             <div class="container" style="position: relative; z-index: 2;">

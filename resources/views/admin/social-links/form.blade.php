@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', $link ? 'Edit Social Link' : 'Add Social Link')
 @section('header', $link ? 'Edit Social Link' : 'Add Social Link')
 

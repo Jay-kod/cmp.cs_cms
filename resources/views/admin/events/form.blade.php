@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', $event->exists ? 'Edit Event' : 'Create Event')
 @section('header', $event->exists ? 'Edit Event Details' : 'Create New Event')
 

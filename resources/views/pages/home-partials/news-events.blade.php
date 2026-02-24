@@ -270,5 +270,3 @@
         transform: scale(1.05);
     }
 </style>
-        
-        @if(isset($partners) && $partners->count() > 0)

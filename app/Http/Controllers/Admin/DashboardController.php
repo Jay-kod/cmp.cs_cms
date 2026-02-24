@@ -19,6 +19,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // Super admins get redirected to their own, more powerful dashboard
+        if (auth()->user()->isSuperAdmin()) {
+            return redirect()->route('admin.super-dashboard');
+        }
+
         $stats = [
             'staffCount' => Staff::count(),
             'programmesCount' => Programme::count(),

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', isset($album) && $album->exists ? 'Edit Album' : 'Create Album')
 @section('header', isset($album) && $album->exists ? 'Edit Photo Album' : 'Create Photo Album')
 

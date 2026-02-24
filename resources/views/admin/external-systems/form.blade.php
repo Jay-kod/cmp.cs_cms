@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', $system ? 'Edit System' : 'Add System')
 @section('header', $system ? 'Edit External System' : 'Add External System')
 

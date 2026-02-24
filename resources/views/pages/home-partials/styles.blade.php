@@ -222,4 +222,3 @@
     resetAutoplay();
 })();
 </script>
-@endsection

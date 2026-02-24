@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="{{ asset('images/logo-favicon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('images/logo-favicon.png') }}">
 
-    <title>@yield('title', 'Admin Dashboard') - {{ config('app.name', 'DCMS') }}</title>
+    <title>@yield('title', 'Super Admin') - {{ config('app.name', 'DCMS') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,13 +20,13 @@
     <!-- Styles and Scripts -->
     @vite(['resources/css/app.css', 'resources/css/admin.css', 'resources/js/app.js'])
 
-    {{-- Dynamic branding colors from CMS settings --}}
+    {{-- Super Admin always uses red theme --}}
     <style>
         :root {
-            --color-primary: {{ $brandColors['primary'] ?? '#16a34a' }};
-            --color-primary-light: {{ $brandColors['accent'] ?? '#22c55e' }};
-            --color-secondary: {{ $brandColors['secondary'] ?? '#15803d' }};
-            --color-accent: {{ $brandColors['accent'] ?? '#22c55e' }};
+            --color-primary: #b91c1c;
+            --color-primary-light: #ef4444;
+            --color-secondary: #991b1b;
+            --color-accent: #ef4444;
         }
     </style>
 </head>
@@ -45,26 +45,27 @@
 
     <div class="admin-layout" style="display: flex; min-height: 100vh;">
         
-        <!-- Sidebar -->
-        <aside class="admin-sidebar" id="adminSidebar" style="width: 260px; background: #0f172a; color: #cbd5e1; flex-shrink: 0; display: flex; flex-direction: column; transition: width 0.3s ease; position: sticky; top: 0; height: 100vh; z-index: 100;">
-            <div style="padding: 1.5rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); height: 75px; box-sizing: border-box; overflow: hidden; white-space: nowrap;">
-                <div style="width: 42px; height: 42px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+        <!-- Super Admin Sidebar (Dark Red) -->
+        <aside class="admin-sidebar" id="adminSidebar" style="width: 260px; background: linear-gradient(180deg, #7f1d1d 0%, #991b1b 100%); color: #fecaca; flex-shrink: 0; display: flex; flex-direction: column; transition: width 0.3s ease; position: sticky; top: 0; height: 100vh; z-index: 100;">
+            <div style="padding: 1.5rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.08); height: 75px; box-sizing: border-box; overflow: hidden; white-space: nowrap;">
+                <div style="width: 42px; height: 42px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
                     <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 100%; height: auto; border-radius: 6px;">
                 </div>
                 <div class="brand-text" style="transition: opacity 0.2s;">
                     <h2 style="color: white; margin: 0; font-size: 1.15rem; font-family: var(--font-heading); font-weight: 700; letter-spacing: 0.5px;">{{ config('university.short_name') }}</h2>
-                    <div style="font-size: 0.65rem; color: var(--color-primary); font-weight: 700; letter-spacing: 1.5px; margin-top: 2px;">ADMIN PORTAL</div>
+                    <div style="font-size: 0.6rem; color: #fbbf24; font-weight: 800; letter-spacing: 2px; margin-top: 2px;">SUPER ADMIN</div>
                 </div>
             </div>
             
             <nav style="flex: 1; overflow-y: auto; overflow-x: hidden; padding: 1.5rem 0;">
                 <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.25rem;">
                     
+                    {{-- ── OVERVIEW ── --}}
                     <li class="nav-section-title"><span>Overview</span></li>
                     <li>
-                        <a href="{{ route('admin.dashboard') }}" class="admin-nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                            <div class="nav-icon"><i class="fa-solid fa-border-all"></i></div>
-                            <span>Dashboard</span>
+                        <a href="{{ route('admin.super-dashboard') }}" class="admin-nav-item {{ request()->routeIs('admin.super-dashboard') ? 'active' : '' }}">
+                            <div class="nav-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span>System Dashboard</span>
                         </a>
                     </li>
                     <li>
@@ -74,7 +75,7 @@
                         </a>
                     </li>
                     
-                    @if(auth()->user()->isAdmin())
+                    {{-- ── MANAGEMENT (Super admin has full access) ── --}}
                     <li class="nav-section-title"><span>Management</span></li>
                     <li>
                         <a href="{{ route('admin.programmes.index') }}" class="admin-nav-item {{ request()->routeIs('admin.programmes.*') || request()->routeIs('admin.programme-categories.*') ? 'active' : '' }}" title="Programmes">
@@ -112,10 +113,9 @@
                             <span>NACOS Presidents</span>
                         </a>
                     </li>
-                    @endif {{-- end isAdmin for Management --}}
                     
+                    {{-- ── CONTENT & MEDIA ── --}}
                     <li class="nav-section-title"><span>Content & Media</span></li>
-                    @if(auth()->user()->isAdmin())
                     <li>
                         <a href="{{ route('admin.carousel.index') }}" class="admin-nav-item {{ request()->routeIs('admin.carousel.*') ? 'active' : '' }}" title="Carousel & Media">
                             <div class="nav-icon"><i class="fa-solid fa-photo-film"></i></div>
@@ -158,79 +158,66 @@
                             <span>Publications</span>
                         </a>
                     </li>
-                    @endif {{-- end isAdmin for Content & Media --}}
 
                     {{-- ── PAGES ── --}}
-                    @if(auth()->user()->isAdmin())
                     <li class="nav-section-title"><span>Pages</span></li>
-
-                    {{-- Home --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'home') }}" class="admin-nav-item {{ request()->is('admin/page-content/home') ? 'active' : '' }}" title="Home Page">
                             <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
                             <span>Home</span>
                         </a>
                     </li>
-                    {{-- About --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'about') }}" class="admin-nav-item {{ request()->is('admin/page-content/about') ? 'active' : '' }}" title="About Page">
                             <div class="nav-icon"><i class="fa-solid fa-circle-info"></i></div>
                             <span>About</span>
                         </a>
                     </li>
-                    {{-- Academics --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'academics') }}" class="admin-nav-item {{ request()->is('admin/page-content/academics') ? 'active' : '' }}" title="Academics Page">
                             <div class="nav-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                             <span>Academics</span>
                         </a>
                     </li>
-                    {{-- People --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'people') }}" class="admin-nav-item {{ request()->is('admin/page-content/people') ? 'active' : '' }}" title="Faculty & People Page">
                             <div class="nav-icon"><i class="fa-solid fa-users"></i></div>
                             <span>Faculty & People</span>
                         </a>
                     </li>
-                    {{-- Gallery --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'gallery') }}" class="admin-nav-item {{ request()->is('admin/page-content/gallery') ? 'active' : '' }}" title="Gallery Page">
                             <div class="nav-icon"><i class="fa-solid fa-images"></i></div>
                             <span>Gallery Page</span>
                         </a>
                     </li>
-                    {{-- Past HODs --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'past-hods') }}" class="admin-nav-item {{ request()->is('admin/page-content/past-hods') ? 'active' : '' }}" title="Past HODs Page">
                             <div class="nav-icon"><i class="fa-solid fa-landmark"></i></div>
                             <span>Past HODs Page</span>
                         </a>
                     </li>
-                    {{-- Blog --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'blog') }}" class="admin-nav-item {{ request()->is('admin/page-content/blog') ? 'active' : '' }}" title="Blog / Research Page">
                             <div class="nav-icon"><i class="fa-solid fa-flask"></i></div>
                             <span>Blog / Research</span>
                         </a>
                     </li>
-                    {{-- Contact --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'contact') }}" class="admin-nav-item {{ request()->is('admin/page-content/contact') ? 'active' : '' }}" title="Contact & NACOS Page">
                             <div class="nav-icon"><i class="fa-solid fa-address-book"></i></div>
                             <span>Contact</span>
                         </a>
                     </li>
-                    {{-- NACOS --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'nacos') }}" class="admin-nav-item {{ request()->is('admin/page-content/nacos') ? 'active' : '' }}" title="NACOS Section">
                             <div class="nav-icon"><i class="fa-solid fa-users-rectangle"></i></div>
                             <span>NACOS</span>
                         </a>
                     </li>
-                    @endif {{-- end isAdmin for Pages --}}
-                    
+
+                    {{-- ── SYSTEM ── --}}
                     <li class="nav-section-title"><span>System</span></li>
-                    @if(auth()->user()->isAdmin())
                     <li>
                         <a href="{{ route('admin.pages.index') }}" class="admin-nav-item {{ request()->routeIs('admin.pages.*') ? 'active' : '' }}" title="Pages">
                             <div class="nav-icon"><i class="fa-solid fa-file-lines"></i></div>
@@ -249,25 +236,45 @@
                             <span>Social Links</span>
                         </a>
                     </li>
-                    @endif
+
+                    {{-- ── SUPER ADMIN EXCLUSIVE ── --}}
+                    <li class="nav-section-title"><span style="color: #fbbf24;">Super Admin</span></li>
+                    <li>
+                        <a href="{{ route('admin.users.index') }}" class="admin-nav-item {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" title="User Management">
+                            <div class="nav-icon" style="background: rgba(251,191,36,0.15); color: #fbbf24;"><i class="fa-solid fa-users-gear"></i></div>
+                            <span>User Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.settings.index') }}" class="admin-nav-item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}" title="Settings">
+                            <div class="nav-icon" style="background: rgba(251,191,36,0.15); color: #fbbf24;"><i class="fa-solid fa-gear"></i></div>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.backup.index') }}" class="admin-nav-item {{ request()->routeIs('admin.backup.*') ? 'active' : '' }}" title="System Backup">
+                            <div class="nav-icon" style="background: rgba(251,191,36,0.15); color: #fbbf24;"><i class="fa-solid fa-database"></i></div>
+                            <span>System Backup</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             
-            <div style="padding: 1rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; white-space: nowrap;">
+            <div style="padding: 1rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 0.5rem; overflow: hidden; white-space: nowrap;">
                 <a href="{{ route('profile.edit') }}" class="admin-nav-item" style="padding: 0.5rem;" title="{{ Auth::user()->name }}">
-                    <div class="nav-icon" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; background: rgba(255,255,255,0.1); padding: 0;">
-                        <i class="fa-solid fa-user" style="font-size: 0.8rem;"></i>
+                    <div class="nav-icon" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; background: rgba(251,191,36,0.2); padding: 0;">
+                        <i class="fa-solid fa-user-shield" style="font-size: 0.8rem; color: #fbbf24;"></i>
                     </div>
                     <span style="display:flex;flex-direction:column;line-height:1.2">
                         {{ Auth::user()->name }}
-                        <small style="font-size:.6rem;color:{{ auth()->user()->isAdmin() ? '#60a5fa' : '#4ade80' }};font-weight:700;text-transform:uppercase;letter-spacing:.5px">{{ auth()->user()->role_label }}</small>
+                        <small style="font-size:.6rem;color:#fbbf24;font-weight:700;text-transform:uppercase;letter-spacing:.5px">Super Admin</small>
                     </span>
                 </a>
                 <form id="logoutForm" method="POST" action="{{ route('logout') }}" style="margin: 0;">
                     @csrf
                     <button type="button" onclick="document.getElementById('logoutModal').style.display='flex'" class="admin-nav-item" style="width: 100%; border: none; background: transparent; cursor: pointer; text-align: left; font-family: inherit; padding: 0.5rem;" title="Logout">
-                        <div class="nav-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;"><i class="fa-solid fa-arrow-right-from-bracket" style="font-size: 0.8rem;"></i></div>
-                        <span style="color: #ef4444;">Logout</span>
+                        <div class="nav-icon" style="background: rgba(239, 68, 68, 0.15); color: #fca5a5;"><i class="fa-solid fa-arrow-right-from-bracket" style="font-size: 0.8rem;"></i></div>
+                        <span style="color: #fca5a5;">Logout</span>
                     </button>
                 </form>
             </div>
@@ -280,16 +287,18 @@
                     <button id="sidebarToggle" class="sidebar-toggle-btn" title="Toggle Sidebar">
                         <i class="fa-solid fa-bars"></i>
                     </button>
-                    <h1 style="margin: 0; font-size: 1.25rem; color: var(--color-primary);">@yield('header', 'Dashboard')</h1>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <h1 style="margin: 0; font-size: 1.25rem; color: var(--color-primary);">@yield('header', 'System Dashboard')</h1>
+                        <span style="background: linear-gradient(135deg, #b91c1c, #dc2626); color: white; font-size: 0.6rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase;">Super Admin</span>
+                    </div>
                 </div>
                 <div style="display: flex; gap: 1rem;">
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;"><i class="fa-solid fa-gauge"></i> Admin View</a>
                     <a href="{{ route('home') }}" target="_blank" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;"><i class="fa-solid fa-external-link"></i> View Website</a>
                 </div>
             </header>
             
             <div style="padding: 2rem; flex: 1; overflow-y: auto;">
-                {{-- Flash messages are now handled as toast notifications below --}}
-                
                 @yield('content')
             </div>
         </main>
@@ -303,7 +312,7 @@
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </div>
                 <h3 style="margin: 0 0 0.5rem 0; font-family: var(--font-heading); font-size: 1.25rem; color: #1f2937; font-weight: 700;">Ready to Leave?</h3>
-                <p style="margin: 0; color: #6b7280; font-size: 0.95rem; line-height: 1.5;">You are about to end your current administrative session. You will need to sign in again to access the dashboard.</p>
+                <p style="margin: 0; color: #6b7280; font-size: 0.95rem; line-height: 1.5;">You are about to end your Super Admin session. You will need to sign in again to access the system.</p>
             </div>
             <div style="background: #f8fafc; padding: 1.25rem 2rem; display: flex; gap: 1rem; border-top: 1px solid #e2e8f0;">
                 <button type="button" onclick="document.getElementById('logoutModal').style.display='none'" style="flex: 1; padding: 0.75rem; border: 1px solid #cbd5e1; background: white; color: #475569; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#f1f5f9'" onmouseout="this.style.background='white'">Cancel</button>
@@ -312,10 +321,7 @@
         </div>
     </div>
 
-    <!-- ═══════════════════════════════════════════════════════════════
-         Global Custom Confirmation Modal (replaces browser confirm())
-         Usage: add data-confirm="Your message here" to any <form>
-         ═══════════════════════════════════════════════════════════════ -->
+    <!-- Global Custom Confirmation Modal -->
     <div id="confirmModal" style="display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(15, 23, 42, 0); backdrop-filter: blur(0px); align-items: center; justify-content: center; padding: 1rem; transition: background 0.3s ease, backdrop-filter 0.3s ease;">
         <div id="confirmModalCard" style="background: white; width: 100%; max-width: 420px; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); overflow: hidden; transform: translateY(20px) scale(0.95); opacity: 0; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
             <div style="padding: 2rem 2rem 1.5rem 2rem; text-align: center;">
@@ -345,7 +351,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Dismiss preloader
             const preloader = document.getElementById('preloader');
             if (preloader) {
                 setTimeout(() => {
@@ -355,15 +360,11 @@
                 }, 600);
             }
 
-            // Sidebar Toggle Logic with localStorage persistence
             const sidebar = document.getElementById('adminSidebar');
             const toggleBtn = document.getElementById('sidebarToggle');
-            
-            // Check if user previously collapsed it
             if (localStorage.getItem('sidebarCollapsed') === 'true') {
                 sidebar.classList.add('collapsed');
             }
-
             if (toggleBtn && sidebar) {
                 toggleBtn.addEventListener('click', () => {
                     sidebar.classList.toggle('collapsed');
@@ -371,21 +372,13 @@
                 });
             }
             
-            // Close logout modal when clicking outside
             const logoutModal = document.getElementById('logoutModal');
             if(logoutModal) {
                 logoutModal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.style.display = 'none';
-                    }
+                    if (e.target === this) this.style.display = 'none';
                 });
             }
 
-            // ──────────────────────────────────────────────
-            // Global Custom Confirmation Modal Logic
-            // Any <form data-confirm="message"> will show
-            // a styled modal instead of browser confirm()
-            // ──────────────────────────────────────────────
             const confirmModal   = document.getElementById('confirmModal');
             const confirmCard    = document.getElementById('confirmModalCard');
             const confirmMsg     = document.getElementById('confirmModalMessage');
@@ -397,7 +390,6 @@
                 pendingForm = form;
                 confirmMsg.textContent = message;
                 confirmModal.style.display = 'flex';
-                // Trigger animation on next frame
                 requestAnimationFrame(() => {
                     confirmModal.style.background = 'rgba(15, 23, 42, 0.7)';
                     confirmModal.style.backdropFilter = 'blur(4px)';
@@ -412,114 +404,66 @@
                 confirmCard.style.opacity = '0';
                 confirmModal.style.background = 'rgba(15, 23, 42, 0)';
                 confirmModal.style.backdropFilter = 'blur(0px)';
-                setTimeout(() => {
-                    confirmModal.style.display = 'none';
-                    pendingForm = null;
-                }, 300);
+                setTimeout(() => { confirmModal.style.display = 'none'; pendingForm = null; }, 300);
             }
 
-            // Intercept all forms with data-confirm
             document.addEventListener('submit', function(e) {
                 const form = e.target;
                 const msg  = form.getAttribute('data-confirm');
-                if (msg && !form._confirmed) {
-                    e.preventDefault();
-                    showConfirmModal(form, msg);
-                }
+                if (msg && !form._confirmed) { e.preventDefault(); showConfirmModal(form, msg); }
             });
 
-            // OK button → submit the pending form
-            if (confirmOk) {
-                confirmOk.addEventListener('click', function() {
-                    if (pendingForm) {
-                        pendingForm._confirmed = true;
-                        pendingForm.submit();
-                    }
-                    hideConfirmModal();
-                });
-            }
-
-            // Cancel button
-            if (confirmCancel) {
-                confirmCancel.addEventListener('click', hideConfirmModal);
-            }
-
-            // Click outside modal card to cancel
-            if (confirmModal) {
-                confirmModal.addEventListener('click', function(e) {
-                    if (e.target === this) hideConfirmModal();
-                });
-            }
-
-            // Escape key to cancel
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && confirmModal && confirmModal.style.display === 'flex') {
-                    hideConfirmModal();
-                }
-            });
+            if (confirmOk) confirmOk.addEventListener('click', function() { if (pendingForm) { pendingForm._confirmed = true; pendingForm.submit(); } hideConfirmModal(); });
+            if (confirmCancel) confirmCancel.addEventListener('click', hideConfirmModal);
+            if (confirmModal) confirmModal.addEventListener('click', function(e) { if (e.target === this) hideConfirmModal(); });
+            document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && confirmModal && confirmModal.style.display === 'flex') hideConfirmModal(); });
         });
     </script>
 
-    {{-- ═══ Toast Notification System ═══ --}}
+    {{-- Toast Notification System --}}
     @if(session('success') || session('error'))
     <div id="toastContainer" style="position: fixed; top: 1.5rem; right: 1.5rem; z-index: 99999; display: flex; flex-direction: column; gap: 0.75rem; pointer-events: none;">
         @if(session('success'))
         <div class="admin-toast" data-type="success" style="pointer-events: auto; min-width: 250px; max-width: 350px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.3); overflow: hidden; animation: toastSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform: translateX(120%);">
             <div style="display: flex; align-items: center; gap: 0.8rem; padding: 0.85rem 1rem;">
-                <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(34, 197, 94, 0.15); color: #4ade80; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; box-shadow: inset 0 0 8px rgba(34, 197, 94, 0.2);">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(34, 197, 94, 0.15); color: #4ade80; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0;">
                     <i class="fa-solid fa-check"></i>
                 </div>
                 <div style="flex: 1; min-width: 0;">
-                    <p style="margin: 0; font-weight: 500; font-size: 0.88rem; color: #f8fafc; letter-spacing: 0.2px; line-height: 1.4;">{{ session('success') }}</p>
+                    <p style="margin: 0; font-weight: 500; font-size: 0.88rem; color: #f8fafc; line-height: 1.4;">{{ session('success') }}</p>
                 </div>
-                <button onclick="dismissToast(this.closest('.admin-toast'))" style="background: none; border: none; color: #64748b; cursor: pointer; font-size: 0.95rem; padding: 0.2rem; line-height: 1; flex-shrink: 0; transition: color 0.2s;" onmouseover="this.style.color='#f8fafc'" onmouseout="this.style.color='#64748b'" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                <button onclick="dismissToast(this.closest('.admin-toast'))" style="background: none; border: none; color: #64748b; cursor: pointer; font-size: 0.95rem; padding: 0.2rem; line-height: 1; flex-shrink: 0;" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div style="height: 2px; background: rgba(255,255,255,0.05); overflow: hidden;">
-                <div class="toast-progress" style="height: 100%; background: #4ade80; box-shadow: 0 0 8px rgba(74,222,128,0.5); width: 100%; animation: toastCountdown 10s linear forwards;"></div>
+                <div class="toast-progress" style="height: 100%; background: #4ade80; width: 100%; animation: toastCountdown 10s linear forwards;"></div>
             </div>
         </div>
         @endif
         @if(session('error'))
         <div class="admin-toast" data-type="error" style="pointer-events: auto; min-width: 250px; max-width: 350px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.3); overflow: hidden; animation: toastSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform: translateX(120%);">
             <div style="display: flex; align-items: center; gap: 0.8rem; padding: 0.85rem 1rem;">
-                <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(239, 68, 68, 0.15); color: #f87171; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; box-shadow: inset 0 0 8px rgba(239, 68, 68, 0.2);">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(239, 68, 68, 0.15); color: #f87171; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0;">
                     <i class="fa-solid fa-exclamation"></i>
                 </div>
                 <div style="flex: 1; min-width: 0;">
-                    <p style="margin: 0; font-weight: 500; font-size: 0.88rem; color: #f8fafc; letter-spacing: 0.2px; line-height: 1.4;">{{ session('error') }}</p>
+                    <p style="margin: 0; font-weight: 500; font-size: 0.88rem; color: #f8fafc; line-height: 1.4;">{{ session('error') }}</p>
                 </div>
-                <button onclick="dismissToast(this.closest('.admin-toast'))" style="background: none; border: none; color: #64748b; cursor: pointer; font-size: 0.95rem; padding: 0.2rem; line-height: 1; flex-shrink: 0; transition: color 0.2s;" onmouseover="this.style.color='#f8fafc'" onmouseout="this.style.color='#64748b'" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                <button onclick="dismissToast(this.closest('.admin-toast'))" style="background: none; border: none; color: #64748b; cursor: pointer; font-size: 0.95rem; padding: 0.2rem; line-height: 1; flex-shrink: 0;" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div style="height: 2px; background: rgba(255,255,255,0.05); overflow: hidden;">
-                <div class="toast-progress" style="height: 100%; background: #f87171; box-shadow: 0 0 8px rgba(248,113,113,0.5); width: 100%; animation: toastCountdown 10s linear forwards;"></div>
+                <div class="toast-progress" style="height: 100%; background: #f87171; width: 100%; animation: toastCountdown 10s linear forwards;"></div>
             </div>
         </div>
         @endif
     </div>
-
     <style>
-        @keyframes toastSlideIn {
-            from { transform: translateX(120%); opacity: 0; }
-            to   { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes toastSlideOut {
-            from { transform: translateX(0); opacity: 1; max-height: 200px; margin-bottom: 0; }
-            to   { transform: translateX(120%); opacity: 0; max-height: 0; margin-bottom: -10px; }
-        }
-        @keyframes toastCountdown {
-            from { width: 100%; }
-            to   { width: 0%; }
-        }
+        @keyframes toastSlideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes toastSlideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }
+        @keyframes toastCountdown { from { width: 100%; } to { width: 0%; } }
     </style>
-
     <script>
-        function dismissToast(el) {
-            el.style.animation = 'toastSlideOut 0.4s cubic-bezier(0.55, 0, 1, 0.45) forwards';
-            setTimeout(function() { el.remove(); }, 400);
-        }
-        document.querySelectorAll('.admin-toast').forEach(function(toast) {
-            setTimeout(function() { dismissToast(toast); }, 10000);
-        });
+        function dismissToast(el) { el.style.animation = 'toastSlideOut 0.4s cubic-bezier(0.55, 0, 1, 0.45) forwards'; setTimeout(function() { el.remove(); }, 400); }
+        document.querySelectorAll('.admin-toast').forEach(function(toast) { setTimeout(function() { dismissToast(toast); }, 10000); });
     </script>
     @endif
 </body>

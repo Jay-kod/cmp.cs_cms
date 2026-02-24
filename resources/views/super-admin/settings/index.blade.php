@@ -1,4 +1,4 @@
-@extends($adminLayout ?? 'layouts.admin')
+@extends('layouts.super-admin')
 @section('title', 'System Settings')
 @section('header', 'Department Settings')
 
@@ -18,7 +18,7 @@
         
         <!-- Contact Information -->
         <div class="admin-card">
-            <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-address-book" style="color: var(--color-primary); margin-right: 8px;"></i> Contact Information</h3>
+            <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-address-book" style="color: #b91c1c; margin-right: 8px;"></i> Contact Information</h3>
             
             <div class="form-group">
                 <label class="form-label">Official Email</label>
@@ -43,7 +43,7 @@
         
         <!-- Social Media Links -->
         <div class="admin-card">
-            <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-hashtag" style="color: var(--color-secondary); margin-right: 8px;"></i> Social Media Presence</h3>
+            <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-hashtag" style="color: #991b1b; margin-right: 8px;"></i> Social Media Presence</h3>
             
             <div class="form-group">
                 <label class="form-label">Facebook URL</label>
@@ -80,7 +80,7 @@
 
         <!-- Academic Configuration -->
         <div class="admin-card">
-            <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-graduation-cap" style="color: var(--color-accent); margin-right: 8px;"></i> Academic Calendar</h3>
+            <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-graduation-cap" style="color: #b91c1c; margin-right: 8px;"></i> Academic Calendar</h3>
             
             <div class="form-group">
                 <label class="form-label">Current Academic Year</label>
@@ -106,7 +106,7 @@
 
         <!-- Branding & Colors -->
         <div class="admin-card">
-            <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-palette" style="color: var(--color-primary); margin-right: 8px;"></i> Branding Colors</h3>
+            <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-palette" style="color: #b91c1c; margin-right: 8px;"></i> Branding Colors</h3>
             <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 1.5rem;">These colors are applied across the entire public website and admin panel. Changes take effect immediately.</p>
             
             <div class="form-group">
@@ -115,7 +115,6 @@
                     <input type="color" name="color_primary" value="{{ $brandColors['primary'] }}" style="width: 50px; height: 40px; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; padding: 2px;">
                     <input type="text" value="{{ $brandColors['primary'] }}" class="form-control" style="flex: 1;" readonly onclick="this.previousElementSibling.click()" id="color_primary_text">
                 </div>
-                <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: #6b7280;">Navigation bars, headers, buttons, and primary elements.</p>
             </div>
             
             <div class="form-group">
@@ -124,7 +123,6 @@
                     <input type="color" name="color_secondary" value="{{ $brandColors['secondary'] }}" style="width: 50px; height: 40px; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; padding: 2px;">
                     <input type="text" value="{{ $brandColors['secondary'] }}" class="form-control" style="flex: 1;" readonly onclick="this.previousElementSibling.click()" id="color_secondary_text">
                 </div>
-                <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: #6b7280;">Active menu states, links, and secondary accents.</p>
             </div>
             
             <div class="form-group">
@@ -133,7 +131,6 @@
                     <input type="color" name="color_accent" value="{{ $brandColors['accent'] }}" style="width: 50px; height: 40px; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; padding: 2px;">
                     <input type="text" value="{{ $brandColors['accent'] }}" class="form-control" style="flex: 1;" readonly onclick="this.previousElementSibling.click()" id="color_accent_text">
                 </div>
-                <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: #6b7280;">Highlights, badges, decorative borders, and call-to-action buttons.</p>
             </div>
 
             <div style="margin-top: 1.5rem; padding: 1rem; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;">
@@ -150,19 +147,16 @@
     </div>
     
     <div style="margin-top: 2rem; padding: 1.5rem; background: white; border: 1px solid #e5e7eb; display: flex; justify-content: flex-end; gap: 1rem; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
-        <button type="submit" class="btn btn-primary" style="background: var(--color-primary); color: white; border: none; padding: 0.8rem 2rem; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 1.05rem;"><i class="fa-solid fa-save"></i> Save All Settings</button>
+        <button type="submit" class="btn btn-primary" style="background: #b91c1c; color: white; border: none; padding: 0.8rem 2rem; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 1.05rem;"><i class="fa-solid fa-save"></i> Save All Settings</button>
     </div>
 </form>
 
 <script>
-    // Live color preview sync
     document.querySelectorAll('input[type="color"]').forEach(picker => {
         picker.addEventListener('input', function() {
             const name = this.name;
             const textInput = this.nextElementSibling;
             textInput.value = this.value;
-            
-            // Update preview boxes
             if (name === 'color_primary') document.getElementById('preview-primary').style.background = this.value;
             if (name === 'color_secondary') document.getElementById('preview-secondary').style.background = this.value;
             if (name === 'color_accent') document.getElementById('preview-accent').style.background = this.value;

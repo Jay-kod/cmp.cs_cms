@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', 'NACOS Page Content')
 @section('header', 'NACOS Page Editor')
 

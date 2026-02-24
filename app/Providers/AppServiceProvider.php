@@ -22,6 +22,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // ── Dynamic admin layout ──
+        // When a super admin opens shared admin views (news, staff, events, etc.),
+        // they see the super-admin layout (red theme). Regular admins see the admin layout (green).
+        View::composer('admin.*', function ($view) {
+            if (auth()->check() && auth()->user()->isSuperAdmin()) {
+                $view->with('adminLayout', 'layouts.super-admin');
+            } else {
+                $view->with('adminLayout', 'layouts.admin');
+            }
+        });
+
         // Share branding colors with every view so layouts can inject them as CSS variables
         View::composer('*', function ($view) {
             static $colors = null;

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', 'Gallery Page Content')
 @section('header', 'Gallery Page Editor')
 

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', $hod->exists ? 'Edit HOD' : 'Add Past HOD')
 @section('header', $hod->exists ? 'Edit Past Head of Department' : 'Add New Past HOD')
 

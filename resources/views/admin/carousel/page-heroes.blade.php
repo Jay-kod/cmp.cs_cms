@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', 'Page Hero Images')
 @section('header', 'Page Hero Images')
 

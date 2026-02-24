@@ -15,12 +15,10 @@ class User extends Authenticatable
     /** Role constants */
     const ROLE_SUPER_ADMIN = 'super_admin';
     const ROLE_ADMIN = 'admin';
-    const ROLE_EDITOR = 'editor';
 
     const ROLES = [
         self::ROLE_SUPER_ADMIN => 'Super Admin',
         self::ROLE_ADMIN       => 'Admin',
-        self::ROLE_EDITOR      => 'Editor',
     ];
 
     /**
@@ -69,14 +67,9 @@ class User extends Authenticatable
         return in_array($this->role, [self::ROLE_SUPER_ADMIN, self::ROLE_ADMIN]);
     }
 
-    public function isEditor(): bool
-    {
-        return in_array($this->role, [self::ROLE_SUPER_ADMIN, self::ROLE_ADMIN, self::ROLE_EDITOR]);
-    }
-
     public function hasMinRole(string $minRole): bool
     {
-        $hierarchy = [self::ROLE_EDITOR => 1, self::ROLE_ADMIN => 2, self::ROLE_SUPER_ADMIN => 3];
+        $hierarchy = [self::ROLE_ADMIN => 1, self::ROLE_SUPER_ADMIN => 2];
         return ($hierarchy[$this->role] ?? 0) >= ($hierarchy[$minRole] ?? 0);
     }
 
