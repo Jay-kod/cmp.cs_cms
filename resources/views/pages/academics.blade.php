@@ -30,6 +30,20 @@
 <div class="container page-layout reveal" style="margin-top: -3rem; position: relative; z-index: 20; padding-bottom: 4rem;">
     <div class="main-content acad-main" style="background: white; border-radius: 16px; box-shadow: 0 20px 50px -12px rgba(0,0,0,0.1); padding: 3rem 4rem;">
 
+        {{-- Search / Filter Bar --}}
+        <div id="acad-search-bar" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem 1.5rem; margin-bottom: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center;">
+            <div style="flex: 1; min-width: 200px; position: relative;">
+                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem;"></i>
+                <input type="text" id="acad-search-input" placeholder="Search programmes or courses..." style="width: 100%; padding: 0.6rem 0.8rem 0.6rem 2.2rem; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none; transition: border-color 0.2s; background: white;" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e2e8f0'">
+            </div>
+            <select id="acad-section-filter" style="padding: 0.6rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; background: white; color: #334155; cursor: pointer; outline: none;">
+                <option value="all">All Sections</option>
+                <option value="programmes">Programmes Only</option>
+                <option value="courses">Courses Only</option>
+            </select>
+            <span id="acad-result-count" style="font-size: 0.8rem; color: #64748b; font-weight: 500; padding: 0.4rem 0.8rem; background: white; border-radius: 20px; border: 1px solid #e2e8f0; white-space: nowrap;"></span>
+        </div>
+
         {{-- ═══════════ PROGRAMME CATEGORIES OVERVIEW ═══════════ --}}
         <section id="overview" style="margin-bottom: 4rem;">
             <div class="acad-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
@@ -132,7 +146,7 @@
             @else
             <div style="display: grid; gap: 1.2rem;">
                 @foreach($cat->programmes as $prog)
-                <details class="programme-card" style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); transition: box-shadow 0.3s;"
+                <details class="programme-card acad-programme-item" data-name="{{ strtolower($prog->name) }}" data-level="{{ strtolower($prog->level ?? '') }}" style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); transition: box-shadow 0.3s;"
                          onmouseover="this.style.boxShadow='0 10px 25px -5px rgba(0,0,0,0.05)'"
                          onmouseout="this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.02)'">
                     
@@ -245,7 +259,7 @@
                         </thead>
                         <tbody>
                             @foreach($levelCourses as $index => $course)
-                            <tr style="border-bottom: 1px solid #f1f5f9; background: {{ $index % 2 === 0 ? 'white' : '#fafafb' }}; transition: background 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='{{ $index % 2 === 0 ? 'white' : '#fafafb' }}'">
+                            <tr class="acad-course-row" data-code="{{ strtolower($course->code) }}" data-coursetitle="{{ strtolower($course->title) }}" style="border-bottom: 1px solid #f1f5f9; background: {{ $index % 2 === 0 ? 'white' : '#fafafb' }}; transition: background 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='{{ $index % 2 === 0 ? 'white' : '#fafafb' }}'">
                                 <td style="padding: 1rem 1.5rem;"><strong style="color: var(--color-primary); font-family: monospace; font-size: 0.95rem; background: rgba(22, 163, 74, 0.08); padding: 0.3rem 0.6rem; border-radius: 6px;">{{ $course->code }}</strong></td>
                                 <td style="padding: 1rem 1.5rem; color: #334155; font-size: 0.95rem;">{{ $course->title }}</td>
                                 <td style="padding: 1rem 1.5rem; text-align: center; color: #64748b; font-weight: 600;">{{ $course->credit_units }}</td>

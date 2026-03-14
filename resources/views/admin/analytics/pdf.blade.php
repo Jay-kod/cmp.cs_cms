@@ -104,7 +104,7 @@
                         <td>{{ $st->name }}</td>
                         <td>{{ $st->rank ?? '-' }}</td>
                         <td style="word-break: break-all;">{{ $st->email }}</td>
-                        <td>{{ $st->is_active ? 'Active' : 'Inactive' }}</td>
+                        <td>{{ $st->status ?? 'Tenure' }}</td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -12,7 +12,8 @@ use App\Http\Controllers\Auth\SuperAdminLoginController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('guest')->group(function () {
+// ── Regular Admin Login (guest via web guard) ──
+Route::middleware('guest:web')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
@@ -22,13 +23,6 @@ Route::middleware('guest')->group(function () {
                 ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
-
-    // Super Admin Login
-    Route::get('super-admin/login', [SuperAdminLoginController::class, 'create'])
-                ->name('super-admin.login.form');
-
-    Route::post('super-admin/login', [SuperAdminLoginController::class, 'store'])
-                ->name('super-admin.login');
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');
@@ -41,6 +35,15 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.store');
+});
+
+// ── Super Admin Login (guest via super_admin guard — independent session) ──
+Route::middleware('guest:super_admin')->group(function () {
+    Route::get('super-admin/login', [SuperAdminLoginController::class, 'create'])
+                ->name('super-admin.login.form');
+
+    Route::post('super-admin/login', [SuperAdminLoginController::class, 'store'])
+                ->name('super-admin.login');
 });
 
 Route::middleware('auth')->group(function () {
@@ -64,4 +67,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+});
+
+// ── Super Admin Logout (uses super_admin guard) ──
+Route::middleware('auth:super_admin')->group(function () {
+    Route::post('super-admin/logout', [SuperAdminLoginController::class, 'destroy'])
+                ->name('super-admin.logout');
 });

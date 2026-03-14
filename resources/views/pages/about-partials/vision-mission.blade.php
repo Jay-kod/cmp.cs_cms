@@ -31,34 +31,54 @@
             </div>
 
             <!-- Objectives -->
-            <div class="about-objectives-wrap" style="margin-top: 1.5rem; background: #ffffff; border-radius: 20px; padding: 3rem; border: 1px solid rgba(22, 163, 74, 0.12); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); position: relative; overflow: hidden;">
-                <div style="position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(22,163,74,0.05), transparent 70%); pointer-events: none;"></div>
-                <div style="position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(16,185,129,0.04), transparent 70%); pointer-events: none;"></div>
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; position: relative;">
-                    <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #16a34a, #15803d); color: white; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; box-shadow: 0 8px 20px -4px rgba(22, 163, 74, 0.4);">
-                        <i class="fa-solid fa-list-check"></i>
+            <div class="about-objectives-wrap" style="margin-top: 2.5rem;">
+                {{-- Section Header --}}
+                <div style="text-align: center; margin-bottom: 2.5rem;">
+                    <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 1rem; background: #f0fdf4; border: 1px solid #dcfce7; border-radius: 20px; font-size: 0.75rem; font-weight: 700; color: #16a34a; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;">
+                        <i class="fa-solid fa-crosshairs" style="font-size: 0.65rem;"></i> Our Goals
                     </div>
-                    <div>
-                        <h3 style="font-size: 1.4rem; color: #1e293b; margin: 0; font-family: var(--font-heading); font-weight: 700;">Our Objectives</h3>
-                        <p style="margin: 0.2rem 0 0; font-size: 0.85rem; color: #64748b;">What we strive to achieve</p>
-                    </div>
+                    <h3 style="font-size: 1.8rem; color: #0f172a; margin: 0 0 0.5rem; font-family: var(--font-heading); font-weight: 800;">What We Strive to Achieve</h3>
+                    <p style="margin: 0 auto; max-width: 500px; font-size: 0.92rem; color: #64748b; line-height: 1.6;">Our department is guided by four key objectives that shape everything we do.</p>
                 </div>
-                <div class="about-objectives-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; position: relative;">
-                    @php
-                        $objectives = [
-                            ['icon' => 'fa-user-graduate', 'title' => 'Industry-Ready Graduates', 'text' => 'Produce market-ready graduates with appropriate IT skills and capacity for independent thinking, self-reliance, and resourcefulness.', 'accent' => '#059669'],
-                            ['icon' => 'fa-flask', 'title' => 'Research Excellence', 'text' => 'Develop trend-setting multidisciplinary research excellence with national, regional, and international recognition.', 'accent' => '#16a34a'],
-                            ['icon' => 'fa-laptop-code', 'title' => 'Future Leaders', 'text' => 'Equip students with cutting-edge knowledge and abilities to lead, innovate, and create across diverse industries.', 'accent' => '#10b981'],
-                            ['icon' => 'fa-handshake', 'title' => 'Community & Inclusivity', 'text' => 'Promote inclusivity and accessibility to the Nasarawa State community and the nation at large through quality education.', 'accent' => '#047857'],
-                        ];
-                    @endphp
+
+                @php
+                    $objectives = [
+                        ['icon' => 'fa-user-graduate', 'title' => 'Industry-Ready Graduates', 'text' => 'Produce market-ready graduates with appropriate IT skills and capacity for independent thinking, self-reliance, and resourcefulness.', 'color' => '#059669', 'light' => '#ecfdf5'],
+                        ['icon' => 'fa-flask', 'title' => 'Research Excellence', 'text' => 'Develop trend-setting multidisciplinary research excellence with national, regional, and international recognition.', 'color' => '#16a34a', 'light' => '#f0fdf4'],
+                        ['icon' => 'fa-laptop-code', 'title' => 'Future Leaders', 'text' => 'Equip students with cutting-edge knowledge and abilities to lead, innovate, and create across diverse industries.', 'color' => '#10b981', 'light' => '#ecfdf5'],
+                        ['icon' => 'fa-handshake', 'title' => 'Community & Inclusivity', 'text' => 'Promote inclusivity and accessibility to the Nasarawa State community and the nation at large through quality education.', 'color' => '#047857', 'light' => '#f0fdf4'],
+                    ];
+                @endphp
+
+                {{-- Timeline Layout --}}
+                <div class="obj-timeline">
                     @foreach($objectives as $i => $obj)
-                    <div style="text-align: center; padding: 1.2rem 1rem; background: #fafaf9; border-radius: 12px; border: 1px solid rgba(22,163,74,0.05); transition: all 0.3s cubic-bezier(0.4,0,0.2,1); cursor: default;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 28px -6px rgba(22,163,74,0.12)'; this.style.borderColor='rgba(22,163,74,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(22,163,74,0.05)'">
-                        <div style="width: 40px; height: 40px; background: rgba(22,163,74,0.06); color: var(--color-primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; margin: 0 auto 0.8rem; border: 1px solid rgba(22,163,74,0.1);">
-                            <i class="fa-solid {{ $obj['icon'] }}"></i>
+                    <div class="obj-row {{ $i % 2 === 0 ? '' : 'obj-row-reverse' }}">
+                        {{-- Number Side --}}
+                        <div class="obj-number-side">
+                            <div class="obj-big-num" style="color: {{ $obj['color'] }};">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</div>
                         </div>
-                        <h4 style="margin: 0 0 0.4rem; font-size: 0.85rem; font-weight: 700; color: #1e293b; font-family: var(--font-heading);">{{ $obj['title'] }}</h4>
-                        <p style="margin: 0; color: #475569; font-size: 0.82rem; line-height: 1.6;">{{ $obj['text'] }}</p>
+
+                        {{-- Connector --}}
+                        <div class="obj-connector">
+                            <div class="obj-dot" style="background: {{ $obj['color'] }}; box-shadow: 0 0 0 4px {{ $obj['light'] }}, 0 0 0 5px {{ $obj['color'] }}33;"></div>
+                            @if($i < count($objectives) - 1)
+                            <div class="obj-line"></div>
+                            @endif
+                        </div>
+
+                        {{-- Content Side --}}
+                        <div class="obj-content-side">
+                            <div class="obj-content-card" style="border-left: 3px solid {{ $obj['color'] }};">
+                                <div class="obj-content-header">
+                                    <div class="obj-icon" style="background: {{ $obj['light'] }}; color: {{ $obj['color'] }};">
+                                        <i class="fa-solid {{ $obj['icon'] }}"></i>
+                                    </div>
+                                    <h4 class="obj-title">{{ $obj['title'] }}</h4>
+                                </div>
+                                <p class="obj-text">{{ $obj['text'] }}</p>
+                            </div>
+                        </div>
                     </div>
                     @endforeach
                 </div>

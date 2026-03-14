@@ -63,7 +63,7 @@
                     {{-- ── OVERVIEW ── --}}
                     <li class="nav-section-title"><span>Overview</span></li>
                     <li>
-                        <a href="{{ route('admin.super-dashboard') }}" class="admin-nav-item {{ request()->routeIs('admin.super-dashboard') ? 'active' : '' }}">
+                        <a href="{{ route('super-admin.dashboard') }}" class="admin-nav-item {{ request()->routeIs('super-admin.dashboard') ? 'active' : '' }}">
                             <div class="nav-icon"><i class="fa-solid fa-shield-halved"></i></div>
                             <span>System Dashboard</span>
                         </a>
@@ -93,12 +93,6 @@
                         <a href="{{ route('admin.staff.index') }}" class="admin-nav-item {{ request()->routeIs('admin.staff.*') ? 'active' : '' }}" title="Staff Directory">
                             <div class="nav-icon"><i class="fa-solid fa-user-tie"></i></div>
                             <span>Staff Directory</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.staff-roles.index') }}" class="admin-nav-item {{ request()->routeIs('admin.staff-roles.*') ? 'active' : '' }}" title="Staff Roles">
-                            <div class="nav-icon"><i class="fa-solid fa-id-badge"></i></div>
-                            <span>Staff Roles</span>
                         </a>
                     </li>
                     <li>
@@ -240,19 +234,19 @@
                     {{-- ── SUPER ADMIN EXCLUSIVE ── --}}
                     <li class="nav-section-title"><span style="color: #fbbf24;">Super Admin</span></li>
                     <li>
-                        <a href="{{ route('admin.users.index') }}" class="admin-nav-item {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" title="User Management">
+                        <a href="{{ route('super-admin.users.index') }}" class="admin-nav-item {{ request()->routeIs('super-admin.users.*') ? 'active' : '' }}" title="User Management">
                             <div class="nav-icon" style="background: rgba(251,191,36,0.15); color: #fbbf24;"><i class="fa-solid fa-users-gear"></i></div>
                             <span>User Management</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.settings.index') }}" class="admin-nav-item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}" title="Settings">
+                        <a href="{{ route('super-admin.settings.index') }}" class="admin-nav-item {{ request()->routeIs('super-admin.settings.*') ? 'active' : '' }}" title="Settings">
                             <div class="nav-icon" style="background: rgba(251,191,36,0.15); color: #fbbf24;"><i class="fa-solid fa-gear"></i></div>
                             <span>Settings</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.backup.index') }}" class="admin-nav-item {{ request()->routeIs('admin.backup.*') ? 'active' : '' }}" title="System Backup">
+                        <a href="{{ route('super-admin.backup.index') }}" class="admin-nav-item {{ request()->routeIs('super-admin.backup.*') ? 'active' : '' }}" title="System Backup">
                             <div class="nav-icon" style="background: rgba(251,191,36,0.15); color: #fbbf24;"><i class="fa-solid fa-database"></i></div>
                             <span>System Backup</span>
                         </a>
@@ -270,7 +264,7 @@
                         <small style="font-size:.6rem;color:#fbbf24;font-weight:700;text-transform:uppercase;letter-spacing:.5px">Super Admin</small>
                     </span>
                 </a>
-                <form id="logoutForm" method="POST" action="{{ route('logout') }}" style="margin: 0;">
+                <form id="logoutForm" method="POST" action="{{ route('super-admin.logout') }}" style="margin: 0;">
                     @csrf
                     <button type="button" onclick="document.getElementById('logoutModal').style.display='flex'" class="admin-nav-item" style="width: 100%; border: none; background: transparent; cursor: pointer; text-align: left; font-family: inherit; padding: 0.5rem;" title="Logout">
                         <div class="nav-icon" style="background: rgba(239, 68, 68, 0.15); color: #fca5a5;"><i class="fa-solid fa-arrow-right-from-bracket" style="font-size: 0.8rem;"></i></div>

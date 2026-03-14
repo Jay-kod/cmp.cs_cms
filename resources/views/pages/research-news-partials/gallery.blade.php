@@ -10,11 +10,25 @@
             
             <div class="blog-gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.2rem;">
                 @forelse($albums as $album)
-                <div style="position: relative; border-radius: 12px; overflow: hidden; height: 220px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05);"
-                     onmouseover="this.querySelector('img').style.transform='scale(1.1)'; this.querySelector('.overlay-content').style.transform='translateY(0)'; this.querySelector('.overlay-content').style.opacity='1'"
-                     onmouseout="this.querySelector('img').style.transform='scale(1)'; this.querySelector('.overlay-content').style.transform='translateY(10px)'; this.querySelector('.overlay-content').style.opacity='0.8'">
+                @php
+                    $coverUrl = $album->cover_image 
+                        ? asset('storage/'.$album->cover_image) 
+                        : ($album->images->first() ? asset('storage/'.$album->images->first()->image_path) : null);
+                @endphp
+                <a href="{{ route('gallery.show', $album->slug) }}" style="text-decoration:none; display:block; position: relative; border-radius: 12px; overflow: hidden; height: 220px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05);"
+                     onmouseover="var img=this.querySelector('img'); if(img) img.style.transform='scale(1.1)'; this.querySelector('.overlay-content').style.transform='translateY(0)'; this.querySelector('.overlay-content').style.opacity='1'"
+                     onmouseout="var img=this.querySelector('img'); if(img) img.style.transform='scale(1)'; this.querySelector('.overlay-content').style.transform='translateY(10px)'; this.querySelector('.overlay-content').style.opacity='0.8'">
                      
-                    <img src="{{ $album->cover_image ? asset('storage/'.$album->cover_image) : asset('build/assets/placeholder.jpg') }}" alt="{{ $album->title }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);" onerror="this.src='https://via.placeholder.com/300?text={{ urlencode($album->title) }}'">
+                    @if($coverUrl)
+                    <img src="{{ $coverUrl }}" alt="{{ $album->title }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div style="display:none; width:100%; height:100%; background:linear-gradient(135deg,#1e293b,#334155); align-items:center; justify-content:center; color:#94a3b8; font-size:2.5rem;">
+                        <i class="fa-solid fa-images"></i>
+                    </div>
+                    @else
+                    <div style="width:100%; height:100%; background:linear-gradient(135deg,#1e293b,#334155); display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:2.5rem;">
+                        <i class="fa-solid fa-images"></i>
+                    </div>
+                    @endif
                     
                     <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 50%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem 1.2rem;">
                         <h4 style="margin: 0 0 0.3rem; font-size: 1.1rem; color: white; line-height: 1.3; font-family: var(--font-heading);">{{ $album->title }}</h4>
@@ -26,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 @empty
                 <div style="grid-column: 1 / -1; background: #f8fafc; padding: 2.5rem; text-align: center; border-radius: 12px; color: #64748b; border: 1px dashed #cbd5e1;">
                     <p style="margin: 0;">No albums available.</p>

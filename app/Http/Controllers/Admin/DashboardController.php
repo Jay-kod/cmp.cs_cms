@@ -21,7 +21,7 @@ class DashboardController extends Controller
     {
         // Super admins get redirected to their own, more powerful dashboard
         if (auth()->user()->isSuperAdmin()) {
-            return redirect()->route('admin.super-dashboard');
+            return redirect()->route('super-admin.dashboard');
         }
 
         $stats = [

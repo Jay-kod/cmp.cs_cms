@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="{{ asset('images/logo-favicon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('images/logo-favicon.png') }}">
     <title>@yield('title', config('university.name')) - {{ config('university.short_name') }}</title>
@@ -59,28 +60,18 @@
             .header-spacer { height: 68px; }
             .mobile-only { display: inline !important; }
         }
+        /* Footer bottom bar: stack on small screens */
+        @media(max-width:575px) {
+            footer .container[style*="justify-content: space-between"] {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 0.6rem !important;
+            }
+        }
     </style>
 
-    <!-- Search Overlay -->
-    <div id="search-overlay" style="display:none; position:fixed; inset:0; z-index:100000; background:rgba(0,0,0,0.55); backdrop-filter:blur(4px); align-items:flex-start; justify-content:center; padding-top:15vh; transition:opacity 0.25s;">
-        <div style="background:#fff; width:92%; max-width:620px; border-radius:14px; box-shadow:0 20px 60px rgba(0,0,0,0.25); overflow:hidden; animation:searchSlideIn 0.25s ease;">
-            <form action="/search" method="GET" autocomplete="off" style="display:flex; align-items:center; gap:0; border-bottom:1px solid #e5e7eb;">
-                <i class="fa-solid fa-magnifying-glass" style="padding:0 0 0 1.2rem; color:#9ca3af; font-size:1.1rem;"></i>
-                <input type="text" name="q" id="search-input" placeholder="Search programmes, news, staff, events..." style="flex:1; padding:1.1rem 1rem; border:none; outline:none; font-size:1.05rem; font-family:var(--font-body); background:transparent;">
-                <button type="button" id="search-close-btn" style="padding:1rem 1.2rem; background:none; border:none; cursor:pointer; color:#6b7280; font-size:1.1rem;" title="Close"><i class="fa-solid fa-xmark"></i></button>
-            </form>
-            <div id="search-results" style="max-height:340px; overflow-y:auto; padding:0.5rem;">
-                <div style="text-align:center; padding:2rem 1rem; color:#9ca3af; font-size:0.9rem;">
-                    <i class="fa-solid fa-keyboard" style="font-size:1.3rem; display:block; margin-bottom:0.5rem;"></i>
-                    Start typing to search...
-                </div>
-            </div>
-        </div>
-    </div>
-    <style>
-        @keyframes searchSlideIn { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
-        #search-overlay.open { display:flex !important; }
-    </style>
+    <!-- Search overlay removed - search is now inline on individual pages -->
 
     @if (!request()->is('/') && Breadcrumbs::exists())
     <div style="background: #f8faf9; border-bottom: 1px solid #e5e7eb;">
@@ -200,6 +191,12 @@
                     </div>
 
                     <!-- Contact Info -->
+                    @php
+                        $__ftPhone = \App\Models\DepartmentSetting::where('key', 'contact_phone')->value('value') ?? '+234 (0) 123 456 7890';
+                        $__ftEmail = \App\Models\DepartmentSetting::where('key', 'contact_email')->value('value') ?? 'info@dcms.nsuk.edu.ng';
+                        $__ftAddr  = \App\Models\DepartmentSetting::where('key', 'contact_address')->value('value') ?? (config('university.university') . ', Keffi, Nasarawa State, Nigeria');
+                        $__ftHours = \App\Models\DepartmentSetting::where('key', 'contact_hours')->value('value') ?? 'Mon – Fri: 8:00 AM – 4:00 PM';
+                    @endphp
                     <div>
                         <h4 style="color: #fff; font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.6rem;">
                             Get in Touch
@@ -208,19 +205,19 @@
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem;">
                             <li style="display: flex; align-items: flex-start; gap: 0.7rem;">
                                 <i class="fa-solid fa-location-dot" style="color: var(--color-primary); margin-top: 3px; width: 16px; text-align: center;"></i>
-                                <span style="font-size: 0.88rem; line-height: 1.5;">{{ config('university.university') }}, Keffi, Nasarawa State, Nigeria</span>
+                                <span style="font-size: 0.88rem; line-height: 1.5;">{!! $__ftAddr !!}</span>
                             </li>
                             <li style="display: flex; align-items: center; gap: 0.7rem;">
                                 <i class="fa-solid fa-phone" style="color: var(--color-primary); width: 16px; text-align: center;"></i>
-                                <a href="tel:+234123456789" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#9ca3af'">+234 (0) 123 456 7890</a>
+                                <a href="tel:{{ preg_replace('/[^+0-9]/', '', $__ftPhone) }}" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#9ca3af'">{{ $__ftPhone }}</a>
                             </li>
                             <li style="display: flex; align-items: center; gap: 0.7rem;">
                                 <i class="fa-solid fa-envelope" style="color: var(--color-primary); width: 16px; text-align: center;"></i>
-                                <a href="mailto:info@dcms.nsuk.edu.ng" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#9ca3af'">info@dcms.nsuk.edu.ng</a>
+                                <a href="mailto:{{ $__ftEmail }}" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#9ca3af'">{{ $__ftEmail }}</a>
                             </li>
                             <li style="display: flex; align-items: center; gap: 0.7rem;">
                                 <i class="fa-solid fa-clock" style="color: var(--color-primary); width: 16px; text-align: center;"></i>
-                                <span style="font-size: 0.88rem;">Mon – Fri: 8:00 AM – 4:00 PM</span>
+                                <span style="font-size: 0.88rem;">{{ $__ftHours }}</span>
                             </li>
                         </ul>
                     </div>
@@ -291,70 +288,6 @@
                 });
             }
 
-            // Search overlay
-            const searchOverlay = document.getElementById('search-overlay');
-            const searchToggleBtn = document.getElementById('search-toggle-btn');
-            const searchCloseBtn = document.getElementById('search-close-btn');
-            const searchInput = document.getElementById('search-input');
-            const searchResults = document.getElementById('search-results');
-            let searchTimer = null;
-
-            function openSearch() {
-                if (searchOverlay) {
-                    searchOverlay.classList.add('open');
-                    document.body.style.overflow = 'hidden';
-                    setTimeout(() => searchInput && searchInput.focus(), 150);
-                }
-            }
-            function closeSearch() {
-                if (searchOverlay) {
-                    searchOverlay.classList.remove('open');
-                    document.body.style.overflow = '';
-                    if (searchInput) searchInput.value = '';
-                    if (searchResults) searchResults.innerHTML = '<div style="text-align:center; padding:2rem 1rem; color:#9ca3af; font-size:0.9rem;"><i class="fa-solid fa-keyboard" style="font-size:1.3rem; display:block; margin-bottom:0.5rem;"></i>Start typing to search...</div>';
-                }
-            }
-
-            if (searchToggleBtn) searchToggleBtn.addEventListener('click', (e) => { e.preventDefault(); openSearch(); });
-            if (searchCloseBtn) searchCloseBtn.addEventListener('click', closeSearch);
-            if (searchOverlay) searchOverlay.addEventListener('click', (e) => { if (e.target === searchOverlay) closeSearch(); });
-            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); } });
-
-            // Live search
-            if (searchInput) {
-                searchInput.addEventListener('input', () => {
-                    clearTimeout(searchTimer);
-                    const q = searchInput.value.trim();
-                    if (q.length < 2) {
-                        searchResults.innerHTML = '<div style="text-align:center; padding:2rem 1rem; color:#9ca3af; font-size:0.9rem;"><i class="fa-solid fa-keyboard" style="font-size:1.3rem; display:block; margin-bottom:0.5rem;"></i>Start typing to search...</div>';
-                        return;
-                    }
-                    searchResults.innerHTML = '<div style="text-align:center; padding:1.5rem; color:#9ca3af;"><i class="fa-solid fa-spinner fa-spin"></i> Searching...</div>';
-                    searchTimer = setTimeout(() => {
-                        fetch('/api/search?q=' + encodeURIComponent(q))
-                            .then(r => r.json())
-                            .then(data => {
-                                if (!data.results || data.results.length === 0) {
-                                    searchResults.innerHTML = '<div style="text-align:center; padding:2rem 1rem; color:#9ca3af;"><i class="fa-solid fa-magnifying-glass" style="font-size:1.3rem; display:block; margin-bottom:0.5rem;"></i>No results found for &ldquo;' + q + '&rdquo;</div>';
-                                    return;
-                                }
-                                let html = '';
-                                data.results.forEach(r => {
-                                    html += '<a href="' + r.url + '" style="display:flex; align-items:center; gap:0.8rem; padding:0.7rem 1rem; border-radius:8px; text-decoration:none; color:#374151; transition:background 0.15s;" onmouseover="this.style.background=\'#f3f4f6\'" onmouseout="this.style.background=\'transparent\'">';
-                                    html += '<i class="' + (r.icon || 'fa-solid fa-link') + '" style="color:var(--color-primary); font-size:1rem; width:20px; text-align:center;"></i>';
-                                    html += '<div><strong style="font-size:0.92rem;">' + r.title + '</strong>';
-                                    if (r.subtitle) html += '<br><span style="font-size:0.8rem; color:#9ca3af;">' + r.subtitle + '</span>';
-                                    html += '</div></a>';
-                                });
-                                searchResults.innerHTML = html;
-                            })
-                            .catch(() => {
-                                searchResults.innerHTML = '<div style="text-align:center; padding:1.5rem; color:#ef4444;">Search unavailable. Try again later.</div>';
-                            });
-                    }, 300);
-                });
-            }
-
             // Back to top button
             const backToTop = document.getElementById('back-to-top');
             if (backToTop) {
@@ -371,6 +304,33 @@
                 });
             }
         });
+    </script>
+    {{-- Auto-refresh: poll every 10 minutes, reload if content changed --}}
+    <script>
+    (function() {
+        var POLL_INTERVAL = 10 * 60 * 1000; // 10 minutes
+        var lastTs = null;
+
+        function checkForUpdates() {
+            fetch('/api/content-updated', { cache: 'no-store' })
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (lastTs === null) {
+                        // First check — just record the baseline
+                        lastTs = data.ts;
+                    } else if (data.ts > lastTs) {
+                        // Content has been updated since we last checked
+                        location.reload();
+                    }
+                })
+                .catch(function() { /* network error — skip this cycle */ });
+        }
+
+        // Initial baseline after 5 seconds (let the page finish loading)
+        setTimeout(checkForUpdates, 5000);
+        // Then poll every 10 minutes
+        setInterval(checkForUpdates, POLL_INTERVAL);
+    })();
     </script>
 </body>
 </html>

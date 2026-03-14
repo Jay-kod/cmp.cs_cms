@@ -31,7 +31,7 @@ class CourseController extends Controller
     public function create()
     {
         $programmes = Programme::orderBy('name')->get();
-        $allStaff = Staff::where('is_active', true)->orderBy('name')->get();
+        $allStaff = Staff::orderBy('name')->get();
         return view('admin.courses.form', ['course' => new Course(), 'programmes' => $programmes, 'allStaff' => $allStaff]);
     }
 
@@ -62,7 +62,7 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         $programmes = Programme::orderBy('name')->get();
-        $allStaff = Staff::where('is_active', true)->orderBy('name')->get();
+        $allStaff = Staff::orderBy('name')->get();
         $course->load('staff');
         return view('admin.courses.form', compact('course', 'programmes', 'allStaff'));
     }

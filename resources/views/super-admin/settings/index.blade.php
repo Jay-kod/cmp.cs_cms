@@ -11,7 +11,7 @@
     <p style="margin: 0; color: #6b7280; font-size: 0.85rem;">Manage contact details, social links, and site-wide metadata.</p>
 </div>
 
-<form action="{{ route('admin.settings.update') }}" method="POST">
+<form action="{{ route('super-admin.settings.update') }}" method="POST">
     @csrf
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem;">

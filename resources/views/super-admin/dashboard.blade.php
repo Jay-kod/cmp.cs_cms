@@ -168,7 +168,7 @@
                         {{ $systemStats['lastBackupDate'] ? $systemStats['lastBackupDate'] : 'No backups found' }}
                     </span>
                 </div>
-                <a href="{{ route('admin.backup.index') }}" class="btn btn-sm" style="padding: 0.4rem 1rem; border-radius: 6px; background: #b91c1c; color: white; text-decoration: none; font-size: 0.85rem;">
+                <a href="{{ route('super-admin.backup.index') }}" class="btn btn-sm" style="padding: 0.4rem 1rem; border-radius: 6px; background: #b91c1c; color: white; text-decoration: none; font-size: 0.85rem;">
                     <i class="fa-solid fa-database"></i> Backup
                 </a>
             </div>
@@ -178,7 +178,7 @@
                     <strong style="color: #334155; font-size: 0.95rem; display: block;">Settings Configured</strong>
                     <span style="color: #64748b; font-size: 0.85rem;">{{ $systemStats['settingsCount'] }} settings stored</span>
                 </div>
-                <a href="{{ route('admin.settings.index') }}" class="btn btn-sm" style="padding: 0.4rem 1rem; border-radius: 6px; background: white; border: 1px solid #cbd5e1; color: #475569; text-decoration: none; font-size: 0.85rem;">
+                <a href="{{ route('super-admin.settings.index') }}" class="btn btn-sm" style="padding: 0.4rem 1rem; border-radius: 6px; background: white; border: 1px solid #cbd5e1; color: #475569; text-decoration: none; font-size: 0.85rem;">
                     <i class="fa-solid fa-gear"></i> Settings
                 </a>
             </div>
@@ -204,7 +204,7 @@
         </div>
         <div class="panel-body" style="padding: 1.5rem;">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                <a href="{{ route('admin.users.create') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(185,28,28,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                <a href="{{ route('super-admin.users.create') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(185,28,28,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
                     <div style="width: 36px; height: 36px; background: #b91c1c; color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
@@ -232,14 +232,14 @@
                     <span style="font-size: 0.85rem; font-weight: 600; color: #6d28d9;">Add Staff</span>
                 </a>
 
-                <a href="{{ route('admin.settings.index') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #fefce8; border: 1px solid #fef08a; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(217,119,6,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                <a href="{{ route('super-admin.settings.index') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #fefce8; border: 1px solid #fef08a; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(217,119,6,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
                     <div style="width: 36px; height: 36px; background: #d97706; color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">
                         <i class="fa-solid fa-gear"></i>
                     </div>
                     <span style="font-size: 0.85rem; font-weight: 600; color: #b45309;">Settings</span>
                 </a>
 
-                <a href="{{ route('admin.backup.index') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(5,150,105,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                <a href="{{ route('super-admin.backup.index') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(5,150,105,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
                     <div style="width: 36px; height: 36px; background: #059669; color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">
                         <i class="fa-solid fa-database"></i>
                     </div>
@@ -260,7 +260,7 @@
             <h3 class="panel-title">
                 <i class="fa-solid fa-user-shield" style="color: #b91c1c;"></i> All Users
             </h3>
-            <a href="{{ route('admin.users.create') }}" class="btn btn-sm panel-new-btn"><i class="fa-solid fa-plus"></i> New</a>
+            <a href="{{ route('super-admin.users.create') }}" class="btn btn-sm panel-new-btn"><i class="fa-solid fa-plus"></i> New</a>
         </div>
         <div class="panel-body">
             @forelse($recentUsers as $user)
@@ -270,7 +270,7 @@
                 </div>
                 <div class="item-content">
                     <h4 class="item-title">
-                        <a href="{{ route('admin.users.edit', $user) }}" class="item-link">{{ $user->name }}</a>
+                        <a href="{{ route('super-admin.users.edit', $user) }}" class="item-link">{{ $user->name }}</a>
                     </h4>
                     <div class="item-meta">
                         <span class="meta-badge" style="background: {{ $user->isSuperAdmin() ? '#fef2f2' : ($user->isAdmin() ? '#eff6ff' : '#f0fdf4') }}; color: {{ $user->isSuperAdmin() ? '#b91c1c' : ($user->isAdmin() ? '#2563eb' : '#059669') }};">
@@ -287,7 +287,7 @@
             @endforelse
         </div>
         <div class="panel-footer">
-            <a href="{{ route('admin.users.index') }}" class="panel-view-all">
+            <a href="{{ route('super-admin.users.index') }}" class="panel-view-all">
                 Manage All Users <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>

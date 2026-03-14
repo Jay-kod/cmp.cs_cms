@@ -8,7 +8,7 @@
         {{ isset($user) ? 'Edit User Account' : 'Create New User Account' }}
     </h2>
 
-    <form action="{{ isset($user) ? route('admin.users.update', $user) : route('admin.users.store') }}" method="POST">
+    <form action="{{ isset($user) ? route('super-admin.users.update', $user) : route('super-admin.users.store') }}" method="POST">
         @csrf
         @if(isset($user)) @method('PUT') @endif
 
@@ -50,7 +50,7 @@
 
         <div style="margin-top: 2rem; display: flex; gap: 10px;">
             <button type="submit" class="btn" style="background: #b91c1c; border-color: #b91c1c;"><i class="fa-solid fa-save"></i> {{ isset($user) ? 'Update User' : 'Create User' }}</button>
-            <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Cancel</a>
+            <a href="{{ route('super-admin.users.index') }}" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>

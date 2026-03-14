@@ -15,7 +15,7 @@ class ResearchNewsController extends Controller
         $news = News::latest('published_at')->paginate(12);
         $publications = Publication::with('staff')->orderBy('year', 'desc')->take(20)->get();
         $events = Event::orderBy('date', 'desc')->take(10)->get();
-        $albums = GalleryAlbum::latest('date')->take(12)->get();
+        $albums = GalleryAlbum::with('images')->latest('date')->take(12)->get();
         
         return view('pages.research-news', compact('news', 'publications', 'events', 'albums'));
     }

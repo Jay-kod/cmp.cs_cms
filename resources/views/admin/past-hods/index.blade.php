@@ -10,7 +10,7 @@
         <p style="margin: 0.2rem 0 0; color: #64748b; font-size: 0.85rem;">Manage the chronological list of past and present HODs.</p>
     </div>
     <div style="display: flex; gap: 0.8rem; align-items: center;">
-        <a href="#" class="btn" style="background: white; color: #374151; border: 1px solid #d1d5db; padding: 0.6rem 1.4rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem;" title="Import from CSV/Excel (Coming Soon)">
+        <a href="{{ route('admin.bulk-import.show', 'past-hods') }}" class="btn" style="background: white; color: #374151; border: 1px solid #d1d5db; padding: 0.6rem 1.4rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem;" title="Import HODs from CSV">
             <i class="fa-solid fa-file-import"></i> Add in Bulk
         </a>
         <a href="{{ route('admin.past-hods.create') }}" class="btn btn-primary" style="background: var(--color-primary); color: white; padding: 0.6rem 1.4rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.4rem;">

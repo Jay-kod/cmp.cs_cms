@@ -103,5 +103,22 @@
     opacity: 1 !important;
     transform: translateX(-50%) translateY(0) !important;
 }
+
+/* Gallery Page Responsive */
+@media (max-width: 768px) {
+    div[style*="padding: 4.5rem 0 5.5rem"] { padding: 3rem 0 3.5rem !important; }
+    div[style*="padding: 4.5rem 0 5.5rem"] h1[style*="font-size: 3rem"] { font-size: 2rem !important; }
+    div[style*="padding: 4.5rem 0 5.5rem"] p[style*="font-size: 1.1rem"] { font-size: 0.92rem !important; }
+    .gallery-album-card div[style*="height: 220px"] { height: 180px !important; }
+}
+@media (max-width: 575px) {
+    div[style*="padding: 4.5rem 0 5.5rem"] { padding: 2rem 0 2.5rem !important; }
+    div[style*="padding: 4.5rem 0 5.5rem"] h1[style*="font-size: 3rem"] { font-size: 1.6rem !important; }
+    div[style*="grid-template-columns: repeat(auto-fill, minmax(300px"] { grid-template-columns: 1fr !important; }
+    .gallery-album-card div[style*="height: 220px"] { height: 200px !important; }
+}
+@media (max-width: 480px) {
+    div[style*="padding: 4.5rem 0 5.5rem"] h1[style*="font-size: 3rem"] { font-size: 1.4rem !important; }
+}
 </style>
 @endsection

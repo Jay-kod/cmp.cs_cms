@@ -27,7 +27,7 @@ class HomeController extends Controller
         $announcements = Announcement::where('expires_at', '>=', now())->orWhereNull('expires_at')->take(3)->get();
         
         $hod = Staff::where('is_hod', true)->first();
-        $staffCount = Staff::where('is_active', true)->count();
+        $staffCount = Staff::count();
         $courseCount = Course::count();
         $carouselSlides = CarouselSlide::active()->ordered()->get();
 
@@ -35,7 +35,7 @@ class HomeController extends Controller
         $staffLimit   = (int) (DepartmentSetting::where('key', 'home_staff_count')->value('value') ?? 4);
         $galleryLimit = (int) (DepartmentSetting::where('key', 'home_gallery_count')->value('value') ?? 8);
 
-        $featuredStaff = Staff::where('is_active', true)->orderByDesc('is_hod')->orderBy('sort_order')->take($staffLimit)->get();
+        $featuredStaff = Staff::orderByDesc('is_hod')->orderBy('sort_order')->take($staffLimit)->get();
         $galleryImages = GalleryImage::latest()->take($galleryLimit)->get();
         $galleryAlbumCount = GalleryAlbum::count();
         $externalSystems = ExternalSystem::active()->ordered()->get();

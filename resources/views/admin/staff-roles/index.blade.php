@@ -9,7 +9,7 @@
         <p style="margin: 0; color: #6b7280; font-size: 0.85rem;">Manage the roles that can be assigned to staff members.</p>
     </div>
     <div style="display: flex; gap: 0.8rem; align-items: center;">
-        <a href="#" class="btn" style="background: white; color: #374151; border: 1px solid #d1d5db; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem;" title="Import from CSV/Excel (Coming Soon)">
+        <a href="{{ route('admin.bulk-import.show', 'staff-roles') }}" class="btn" style="background: white; color: #374151; border: 1px solid #d1d5db; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem;" title="Import Roles from CSV">
             <i class="fa-solid fa-file-import"></i> Add in Bulk
         </a>
         <a href="{{ route('admin.staff-roles.create') }}" class="btn btn-secondary" style="background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem;">

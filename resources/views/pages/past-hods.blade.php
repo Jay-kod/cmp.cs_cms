@@ -49,4 +49,22 @@
         </div>
     </div>
 </div>
+
+<style>
+/* Past HODs Page Responsive */
+@media (max-width: 768px) {
+    .page-header[style*="padding: 4rem"] { padding: 2.5rem 0 !important; }
+    .page-header h1[style*="font-size: 2.5rem"] { font-size: 1.8rem !important; }
+    .page-header p[style*="font-size: 1.1rem"] { font-size: 0.92rem !important; }
+}
+@media (max-width: 575px) {
+    .page-header[style*="padding: 4rem"] { padding: 2rem 0 !important; }
+    .page-header h1[style*="font-size: 2.5rem"] { font-size: 1.5rem !important; }
+    div[style*="minmax(280px"] { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important; }
+}
+@media (max-width: 480px) {
+    .page-header h1[style*="font-size: 2.5rem"] { font-size: 1.35rem !important; }
+    div[style*="minmax(280px"] { grid-template-columns: 1fr !important; }
+}
+</style>
 @endsection

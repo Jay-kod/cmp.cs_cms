@@ -69,9 +69,16 @@
 
 @media (max-width: 768px) {
     .album-photo-grid { columns: 2 !important; }
+    div[style*="padding: 4rem 0 5rem"] { padding: 2.5rem 0 3rem !important; }
+    div[style*="padding: 4rem 0 5rem"] h1[style*="font-size: 2.6rem"] { font-size: 1.8rem !important; }
+}
+@media (max-width: 575px) {
+    div[style*="padding: 4rem 0 5rem"] { padding: 2rem 0 2.5rem !important; }
+    div[style*="padding: 4rem 0 5rem"] h1[style*="font-size: 2.6rem"] { font-size: 1.5rem !important; }
 }
 @media (max-width: 480px) {
     .album-photo-grid { columns: 1 !important; }
+    div[style*="padding: 4rem 0 5rem"] h1[style*="font-size: 2.6rem"] { font-size: 1.35rem !important; }
 }
 </style>
 

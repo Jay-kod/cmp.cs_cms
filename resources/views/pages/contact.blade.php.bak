@@ -1,0 +1,171 @@
+@extends('layouts.public')
+@section('title', 'Contact Us')
+
+@section('content')
+@php
+    $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::where('key', $key)->value('value') ?? $default;
+@endphp
+
+{{-- ── Hero ── --}}
+<div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 3.5rem 0 3rem; text-align: center; position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 50%, rgba(22,163,74,0.12) 0%, transparent 60%);"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(22,163,74,0.15); border: 1px solid rgba(22,163,74,0.3); padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600; color: #4ade80; margin-bottom: 1rem;">
+            <i class="fa-solid fa-envelope"></i> {{ $gs('contact_hero_badge', 'Get in Touch') }}
+        </div>
+        <h1 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin: 0 0 0.6rem; color: white;">{{ $gs('contact_hero_title', 'Contact the Department') }}</h1>
+        <p style="font-size: 1rem; color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto; line-height: 1.6;">{{ $gs('contact_hero_subtitle', 'Have questions, feedback, or partnership inquiries? We\'d love to hear from you.') }}</p>
+    </div>
+</div>
+
+<div class="container" style="max-width: 1100px; margin-top: -1.5rem; padding-bottom: 3rem; position: relative; z-index: 2;">
+
+    {{-- ── Quick Info Cards ── --}}
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2.5rem;">
+        @foreach([
+            ['icon' => 'fa-solid fa-location-dot', 'title' => 'Visit Us', 'text' => $gs('contact_address', config('university.university').',<br>Keffi, Nasarawa State'), 'color' => '#16a34a'],
+            ['icon' => 'fa-solid fa-envelope', 'title' => 'Email', 'text' => $gs('contact_email', 'info@dcms.nsuk.edu.ng'), 'color' => '#0891b2'],
+            ['icon' => 'fa-solid fa-phone', 'title' => 'Phone', 'text' => $gs('contact_phone', '+234 (0) 123 456 7890'), 'color' => '#7c3aed'],
+            ['icon' => 'fa-solid fa-clock', 'title' => 'Office Hours', 'text' => $gs('contact_hours', 'Mon – Fri: 8 AM – 4 PM'), 'color' => '#ea580c'],
+        ] as $card)
+        <div style="background: white; border-radius: 12px; padding: 1.3rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #f1f5f9; text-align: center; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 28px rgba(0,0,0,0.10)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
+            <div style="width: 40px; height: 40px; background: {{ $card['color'] }}12; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem;">
+                <i class="{{ $card['icon'] }}" style="color: {{ $card['color'] }}; font-size: 1rem;"></i>
+            </div>
+            <h4 style="font-family: var(--font-heading); font-weight: 700; font-size: 0.85rem; margin: 0 0 0.3rem; color: #334155;">{{ $card['title'] }}</h4>
+            <p style="font-size: 0.82rem; color: #64748b; margin: 0; line-height: 1.5;">{!! $card['text'] !!}</p>
+        </div>
+        @endforeach
+    </div>
+
+    {{-- ── Main Content: Form + Info ── --}}
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: start;">
+
+        {{-- Contact Form --}}
+        <div style="background: white; border-radius: 14px; padding: 2rem; box-shadow: 0 4px 24px rgba(0,0,0,0.06); border: 1px solid #f1f5f9;">
+            @if(session('success'))
+            <div style="background: #dcfce7; color: #166534; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid #bbf7d0; margin-bottom: 1.2rem; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
+            </div>
+            @endif
+            @if(session('error'))
+            <div style="background: #fef2f2; color: #991b1b; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid #fecaca; margin-bottom: 1.2rem; font-size: 0.88rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-circle-exclamation"></i> {{ session('error') }}
+            </div>
+            @endif
+
+            <h2 style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 800; margin: 0 0 0.3rem; color: #0f172a;">{{ $gs('contact_form_title', 'Send Us a Message') }}</h2>
+            <p style="font-size: 0.85rem; color: #64748b; margin: 0 0 1.5rem; line-height: 1.5;">{{ $gs('contact_form_subtitle', 'Fill out the form below and we\'ll get back to you as soon as possible.') }}</p>
+
+            <form action="{{ route('contact.send') }}" method="POST">
+                @csrf
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">Full Name <span style="color: #ef4444;">*</span></label>
+                        <input type="text" name="name" required value="{{ old('name') }}" placeholder="e.g. John Doe" style="width: 100%; padding: 0.65rem 0.8rem; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.88rem; font-family: var(--font-body); transition: border-color 0.2s; outline: none; background: #fafbfc;" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e2e8f0'">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">Email Address <span style="color: #ef4444;">*</span></label>
+                        <input type="email" name="email" required value="{{ old('email') }}" placeholder="e.g. john@example.com" style="width: 100%; padding: 0.65rem 0.8rem; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.88rem; font-family: var(--font-body); transition: border-color 0.2s; outline: none; background: #fafbfc;" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e2e8f0'">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">Subject <span style="color: #ef4444;">*</span></label>
+                    <input type="text" name="subject" required value="{{ old('subject') }}" placeholder="What is this about?" style="width: 100%; padding: 0.65rem 0.8rem; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.88rem; font-family: var(--font-body); transition: border-color 0.2s; outline: none; background: #fafbfc;" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e2e8f0'">
+                </div>
+
+                <div style="margin-bottom: 1.3rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">Message <span style="color: #ef4444;">*</span></label>
+                    <textarea name="message" rows="5" required placeholder="Write your message here..." style="width: 100%; padding: 0.65rem 0.8rem; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.88rem; font-family: var(--font-body); transition: border-color 0.2s; outline: none; resize: vertical; background: #fafbfc;" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e2e8f0'">{{ old('message') }}</textarea>
+                </div>
+
+                <button type="submit" style="width: 100%; padding: 0.75rem; background: var(--color-primary); color: white; border: none; border-radius: 8px; font-size: 0.92rem; font-weight: 700; font-family: var(--font-heading); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: all 0.2s;" onmouseover="this.style.background='#15803d'" onmouseout="this.style.background='var(--color-primary)'">
+                    <i class="fa-solid fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </div>
+
+        {{-- Side Panel --}}
+        <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+
+            {{-- About the Department --}}
+            <div style="background: white; border-radius: 14px; padding: 1.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.06); border: 1px solid #f1f5f9;">
+                <h3 style="font-family: var(--font-heading); font-size: 1rem; font-weight: 700; margin: 0 0 0.7rem; color: #0f172a; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-building-columns" style="color: var(--color-primary);"></i> {{ $gs('contact_about_title', 'About the Department') }}
+                </h3>
+                <p style="font-size: 0.85rem; color: #475569; line-height: 1.7; margin: 0;">
+                    {{ $gs('contact_about_text', 'The '.config('university.name').' at '.config('university.university').' is dedicated to producing world-class computing professionals through quality education, research, and community engagement.') }}
+                </p>
+            </div>
+
+            {{-- Industry Partnerships --}}
+            <div style="background: linear-gradient(135deg, var(--color-primary), #15803d); border-radius: 14px; padding: 1.5rem; color: white;">
+                <h3 style="font-family: var(--font-heading); font-size: 1rem; font-weight: 700; margin: 0 0 0.5rem; color: white; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-handshake"></i> {{ $gs('contact_partner_title', 'Partner With Us') }}
+                </h3>
+                <p style="font-size: 0.83rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0 0 1rem;">
+                    {{ $gs('contact_partner_text', 'We collaborate with tech companies and organizations for internships, joint research, and curriculum development. Let\'s shape the next generation of IT leaders together.') }}
+                </p>
+                <a href="#" onclick="document.querySelector('input[name=subject]').value='Partnership Inquiry'; document.querySelector('input[name=subject]').focus(); return false;" style="display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.15); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.25); transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                    <i class="fa-solid fa-arrow-right" style="font-size: 0.7rem;"></i> {{ $gs('contact_partner_btn', 'Propose Partnership') }}
+                </a>
+            </div>
+
+            {{-- Quick Links --}}
+            <div style="background: white; border-radius: 14px; padding: 1.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.06); border: 1px solid #f1f5f9;">
+                <h3 style="font-family: var(--font-heading); font-size: 1rem; font-weight: 700; margin: 0 0 0.8rem; color: #0f172a; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-link" style="color: var(--color-primary);"></i> Useful Links
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    @foreach([
+                        ['url' => '/about', 'label' => 'About the Department', 'icon' => 'fa-solid fa-building-columns'],
+                        ['url' => '/academics', 'label' => 'Academic Programmes', 'icon' => 'fa-solid fa-graduation-cap'],
+                        ['url' => '/people', 'label' => 'Faculty & Staff', 'icon' => 'fa-solid fa-users'],
+                        ['url' => '/gallery', 'label' => 'Photo Gallery', 'icon' => 'fa-solid fa-images'],
+                    ] as $link)
+                    <a href="{{ $link['url'] }}" style="display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.7rem; border-radius: 8px; text-decoration: none; color: #334155; font-size: 0.84rem; font-weight: 500; transition: all 0.15s; background: #f8fafc;" onmouseover="this.style.background='#f1f5f9'; this.style.color='var(--color-primary)'" onmouseout="this.style.background='#f8fafc'; this.style.color='#334155'">
+                        <i class="{{ $link['icon'] }}" style="font-size: 0.75rem; width: 18px; text-align: center; color: var(--color-primary);"></i>
+                        {{ $link['label'] }}
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+
+            {{-- Social Links --}}
+            @php $socialLinks = \App\Models\SocialLink::where('is_active', true)->orderBy('sort_order')->get(); @endphp
+            @if($socialLinks->count())
+            <div style="background: white; border-radius: 14px; padding: 1.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.06); border: 1px solid #f1f5f9;">
+                <h3 style="font-family: var(--font-heading); font-size: 1rem; font-weight: 700; margin: 0 0 0.8rem; color: #0f172a; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-share-nodes" style="color: var(--color-primary);"></i> Connect With Us
+                </h3>
+                <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                    @foreach($socialLinks as $sl)
+                    <a href="{{ $sl->url }}" target="_blank" rel="noopener noreferrer" style="width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: #f1f5f9; color: #475569; text-decoration: none; font-size: 1rem; transition: all 0.2s;" onmouseover="this.style.background='var(--color-primary)'; this.style.color='white'" onmouseout="this.style.background='#f1f5f9'; this.style.color='#475569'" title="{{ $sl->platform }}">
+                        <i class="{{ $sl->icon }}"></i>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+            @endif
+        </div>
+    </div>
+
+    {{-- ── Map Section ── --}}
+    <div style="margin-top: 2.5rem; background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.06); border: 1px solid #f1f5f9;">
+        <div style="padding: 1.2rem 1.5rem; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 0.6rem;">
+            <i class="fa-solid fa-map-location-dot" style="color: var(--color-primary); font-size: 1.1rem;"></i>
+            <h3 style="font-family: var(--font-heading); font-size: 1rem; font-weight: 700; margin: 0; color: #0f172a;">Find Us on the Map</h3>
+        </div>
+        <iframe src="{{ $gs('contact_map_embed', 'https://www.google.com/maps?q=Nasarawa+State+University,+Keffi,+Nasarawa+State,+Nigeria&output=embed') }}" width="100%" height="320" style="border:0; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+
+<style>
+@media (max-width: 768px) {
+    .container > div[style*="grid-template-columns: 1.2fr"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+</style>
+@endsection

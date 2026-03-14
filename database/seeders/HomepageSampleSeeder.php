@@ -37,7 +37,7 @@ class HomepageSampleSeeder extends Seeder
         foreach ($extraStaff as $i => $s) {
             $s['slug'] = Str::slug($s['name']);
             $s['sort_order'] = 10 + $i;
-            $s['is_active'] = true;
+            $s['status'] = 'Tenure';
             $s['is_hod'] = false;
             Staff::firstOrCreate(['email' => $s['email']], $s);
         }

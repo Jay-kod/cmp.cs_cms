@@ -28,6 +28,6 @@ class SettingsController extends Controller
             );
         }
 
-        return redirect()->route('admin.settings.index')->with('success', 'Department settings updated successfully.');
+        return redirect()->route('super-admin.settings.index')->with('success', 'Department settings updated successfully.');
     }
 }

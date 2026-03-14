@@ -54,7 +54,7 @@
             <p style="color: #6b7280; font-size: 0.95rem; margin: 0;">This process takes a snapshot of your local database. It may take a few seconds depending on database size.</p>
         </div>
         
-        <form method="POST" action="{{ route('admin.backup.download') }}">
+        <form method="POST" action="{{ route('super-admin.backup.download') }}">
             @csrf
             <button type="submit" style="background: #7f1d1d; color: white; padding: 1.1rem 2.5rem; font-size: 1.05rem; border-radius: 10px; font-weight: 600; font-family: var(--font-heading); display: inline-flex; align-items: center; gap: 12px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: none; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(127, 29, 29, 0.3);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 20px -5px rgba(127, 29, 29, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px -1px rgba(127, 29, 29, 0.3)';">
                 <i class="fa-solid fa-cloud-arrow-down" style="font-size: 1.2rem; color: #fca5a5;"></i> 

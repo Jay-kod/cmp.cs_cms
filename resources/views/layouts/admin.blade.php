@@ -95,12 +95,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.staff-roles.index') }}" class="admin-nav-item {{ request()->routeIs('admin.staff-roles.*') ? 'active' : '' }}" title="Staff Roles">
-                            <div class="nav-icon"><i class="fa-solid fa-id-badge"></i></div>
-                            <span>Staff Roles</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{ route('admin.past-hods.index') }}" class="admin-nav-item {{ request()->routeIs('admin.past-hods.*') ? 'active' : '' }}" title="Past HODs">
                             <div class="nav-icon"><i class="fa-solid fa-landmark"></i></div>
                             <span>Past HODs</span>

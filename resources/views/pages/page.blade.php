@@ -30,4 +30,19 @@
         Last updated: {{ $page->updated_at->format('F j, Y') }}
     </div>
 </div>
+
+<style>
+/* Generic Page Responsive */
+@media (max-width: 768px) {
+    .page-header[style*="padding: 3.5rem"] { padding: 2.5rem 0 !important; }
+    .page-header h1[style*="font-size: 2.2rem"] { font-size: 1.7rem !important; }
+    .page-content[style*="padding: 2.5rem"] { padding: 1.5rem !important; }
+}
+@media (max-width: 575px) {
+    .page-header[style*="padding: 3.5rem"] { padding: 2rem 0 !important; }
+    .page-header h1[style*="font-size: 2.2rem"] { font-size: 1.4rem !important; }
+    .page-content[style*="padding: 2.5rem"] { padding: 1.2rem !important; }
+    .page-content h2 { font-size: 1.3rem !important; }
+}
+</style>
 @endsection

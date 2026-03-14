@@ -7,6 +7,7 @@ use App\Http\Controllers\AcademicsController;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\ResearchNewsController;
 use App\Http\Controllers\ReactionController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactNacosController;
 use App\Http\Controllers\GalleryController as PublicGalleryController;
 use App\Http\Controllers\PageController;
@@ -33,6 +34,7 @@ use App\Http\Controllers\Admin\PageContentController;
 use App\Http\Controllers\Admin\StaffRoleController;
 use App\Http\Controllers\Admin\AnalyticsController;
 use App\Http\Controllers\Admin\PublicationController;
+use App\Http\Controllers\Admin\BulkImportController;
 use App\Http\Controllers\PartnerController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,11 +54,14 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/past-hods', [AboutController::class, 'pastHods'])->name('past-hods');
 Route::get('/academics', [AcademicsController::class, 'index'])->name('academics');
 Route::get('/people', [PeopleController::class, 'index'])->name('people.index');
+Route::get('/people/search', [PeopleController::class, 'search'])->name('people.search');
 Route::get('/people/{slug}', [PeopleController::class, 'show'])->name('people.show');
 Route::get('/research-news', [ResearchNewsController::class, 'index'])->name('research-news');
 Route::get('/research-news/{slug}', [ResearchNewsController::class, 'show'])->name('research-news.show');
 Route::get('/news/{news}/reactions', [ReactionController::class, 'show'])->name('reactions.show');
 Route::post('/news/{news}/reactions', [ReactionController::class, 'store'])->name('reactions.store');
+Route::get('/news/{news}/comments', [CommentController::class, 'index'])->name('comments.index');
+Route::post('/news/{news}/comments', [CommentController::class, 'store'])->middleware('throttle:10,1')->name('comments.store');
 Route::get('/contact', [ContactNacosController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactNacosController::class, 'send'])->middleware('throttle:5,1')->name('contact.send');
 Route::get('/nacos-presidents', [ContactNacosController::class, 'presidents'])->name('nacos-presidents');
@@ -65,7 +70,7 @@ Route::get('/gallery/{album}', [PublicGalleryController::class, 'show'])->name('
 Route::get('/page/{page}', [PageController::class, 'show'])->name('page.show');
 Route::get('/events', [\App\Http\Controllers\EventPublicController::class, 'index'])->name('events.index');
 
-Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth:web,super_admin', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // ── Content Management (all admins: admin + super_admin) ──
@@ -106,20 +111,35 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics.index');
     Route::get('/analytics/download', [AnalyticsController::class, 'download'])->name('analytics.download');
 
-    // ══════════════════════════════════════════════
-    // ── Super Admin Only (users, settings, backup)
-    // ══════════════════════════════════════════════
-    Route::middleware('super_admin')->group(function () {
-        Route::get('/super-dashboard', [SuperAdminDashboardController::class, 'index'])->name('super-dashboard');
-        Route::resource('users', SuperAdminUserController::class)->except(['show']);
-        Route::get('/settings', [SuperAdminSettingsController::class, 'index'])->name('settings.index');
-        Route::post('/settings', [SuperAdminSettingsController::class, 'update'])->name('settings.update');
-        Route::get('/backup', [SuperAdminBackupController::class, 'index'])->name('backup.index');
-        Route::post('/backup', [SuperAdminBackupController::class, 'download'])->name('backup.download');
-    });
+    // Bulk Import
+    Route::get('/bulk-import/{type}', [BulkImportController::class, 'show'])->name('bulk-import.show');
+    Route::get('/bulk-import/{type}/template', [BulkImportController::class, 'template'])->name('bulk-import.template');
+    Route::post('/bulk-import/{type}', [BulkImportController::class, 'import'])->name('bulk-import.import');
+    Route::post('/bulk-import/{type}/preview', [BulkImportController::class, 'preview'])->name('bulk-import.preview');
+    Route::get('/bulk-import/{type}/preview', fn ($type) => redirect()->route('admin.bulk-import.show', $type));
+    Route::post('/bulk-import/{type}/confirm', [BulkImportController::class, 'confirmImport'])->name('bulk-import.confirm');
+    Route::get('/bulk-import/{type}/confirm', fn ($type) => redirect()->route('admin.bulk-import.show', $type));
 });
 
-Route::middleware('auth')->group(function () {
+// ══════════════════════════════════════════════════════════
+// ── Super Admin Panel (completely separate URL prefix)
+// ══════════════════════════════════════════════════════════
+Route::middleware(['auth:super_admin', 'super_admin'])->prefix('super-admin')->name('super-admin.')->group(function () {
+    Route::get('/', [SuperAdminDashboardController::class, 'index'])->name('dashboard');
+
+    // User Management
+    Route::resource('users', SuperAdminUserController::class)->except(['show']);
+
+    // Settings
+    Route::get('/settings', [SuperAdminSettingsController::class, 'index'])->name('settings.index');
+    Route::post('/settings', [SuperAdminSettingsController::class, 'update'])->name('settings.update');
+
+    // Backup
+    Route::get('/backup', [SuperAdminBackupController::class, 'index'])->name('backup.index');
+    Route::post('/backup', [SuperAdminBackupController::class, 'download'])->name('backup.download');
+});
+
+Route::middleware('auth:web,super_admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

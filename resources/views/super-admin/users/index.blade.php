@@ -6,7 +6,7 @@
 <div class="card">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h2 style="margin: 0; font-size: 1.25rem;">All System Users</h2>
-        <a href="{{ route('admin.users.create') }}" class="btn" style="background: #b91c1c; border-color: #b91c1c;"><i class="fa-solid fa-user-plus"></i> Add New User</a>
+        <a href="{{ route('super-admin.users.create') }}" class="btn" style="background: #b91c1c; border-color: #b91c1c;"><i class="fa-solid fa-user-plus"></i> Add New User</a>
     </div>
 
     @if($users->count())
@@ -46,10 +46,10 @@
                     <td>{{ $user->created_at->format('M j, Y') }}</td>
                     <td>
                         <div style="display: flex; gap: 8px;">
-                            <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-secondary btn-sm" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                            <a href="{{ route('super-admin.users.edit', $user) }}" class="btn btn-secondary btn-sm" title="Edit"><i class="fa-solid fa-pen"></i></a>
                             
                             @if(auth()->id() !== $user->id)
-                            <button type="button" class="btn btn-danger btn-sm" title="Delete" onclick="confirmDelete('{{ route('admin.users.destroy', $user) }}', 'this user account')">
+                            <button type="button" class="btn btn-danger btn-sm" title="Delete" onclick="confirmDelete('{{ route('super-admin.users.destroy', $user) }}', 'this user account')">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                             @else

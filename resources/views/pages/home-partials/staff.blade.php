@@ -15,9 +15,7 @@
                     @if($member->photo)
                         <img src="{{ asset('storage/'.$member->photo) }}" alt="{{ $member->name }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
                     @else
-                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #14532d, #166534); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 5rem;">
-                            <i class="fa-solid fa-user-tie"></i>
-                        </div>
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=260&background=14532d&color=fff&bold=true&format=svg&font-size=0.35" alt="{{ $member->name }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
                     @endif
                     <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(to top, rgba(0,0,0,0.4), transparent); pointer-events: none;"></div>
                 </div>

@@ -223,17 +223,51 @@
 </section>
 
 <style>
+    /* NACOS Presidents Page Responsive */
     @media (max-width: 991px) {
-        #about-nacos .container > div:first-child { grid-template-columns: 1fr !important; }
-        #about-nacos .container > div:last-child { grid-template-columns: 1fr 1fr !important; }
+        /* Hero */
+        section[style*="padding: 5rem 0 4rem"] { padding: 3.5rem 0 3rem !important; }
+        section[style*="padding: 5rem 0 4rem"] h1[style*="font-size: 3rem"] { font-size: 2.2rem !important; }
+        /* About: stack columns */
+        #about-nacos .container > div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+        /* Mission/Vision/Values: 3 → 2 */
+        #about-nacos div[style*="repeat(3, 1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
+        /* Activities: 3 → 2 */
+        section[style*="padding: 3.5rem 0"] div[style*="repeat(3, 1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
     }
-    @media (max-width: 767px) {
-        #about-nacos .container > div:last-child { grid-template-columns: repeat(3, 1fr) !important; }
-        section:nth-of-type(3) .container > div:last-child { grid-template-columns: 1fr 1fr !important; }
+    @media (max-width: 768px) {
+        section[style*="padding: 5rem 0 4rem"] { padding: 2.5rem 0 2rem !important; }
+        section[style*="padding: 5rem 0 4rem"] h1[style*="font-size: 3rem"] { font-size: 1.8rem !important; }
+        section[style*="padding: 5rem 0 4rem"] p[style*="font-size: 1.1rem"] { font-size: 0.92rem !important; }
+        /* About section padding */
+        section[style*="padding: 4rem 0"] { padding: 2.5rem 0 !important; }
+        #about-nacos h2[style*="font-size: 2.2rem"] { font-size: 1.7rem !important; }
+        /* Stats grid: keep 2x2 */
+        #about-nacos div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 1rem"] { grid-template-columns: 1fr 1fr !important; }
+        /* Activities: 2 → 1 */
+        section[style*="padding: 3.5rem 0"] div[style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+        section[style*="padding: 3.5rem 0"] h2[style*="font-size: 2rem"] { font-size: 1.6rem !important; }
+        /* Past Leaders section */
+        section#past-leaders { padding: 2.5rem 0 !important; }
+        section#past-leaders h2[style*="font-size: 2rem"] { font-size: 1.6rem !important; }
+        /* CTA */
+        section[style*="padding: 3rem 0"][style*="#14532d"] .container { flex-direction: column !important; text-align: center !important; }
     }
     @media (max-width: 575px) {
-        #about-nacos .container > div:last-child { grid-template-columns: 1fr 1fr !important; }
-        section:nth-of-type(3) .container > div:last-child { grid-template-columns: 1fr !important; }
+        section[style*="padding: 5rem 0 4rem"] h1[style*="font-size: 3rem"] { font-size: 1.5rem !important; }
+        /* Mission/Vision/Values: 2 → 1 */
+        #about-nacos div[style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+        /* Stats: 2x2 → 1 */
+        #about-nacos div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 1rem"] { grid-template-columns: 1fr !important; }
+        /* Leaders grid smaller min */
+        div[style*="minmax(280px, 1fr)"] { grid-template-columns: 1fr !important; }
+        section[style*="padding: 3.5rem 0"] { padding: 2rem 0 !important; }
+        /* CTA buttons full width */
+        section[style*="#14532d"] div[style*="gap: 0.6rem"] { flex-direction: column !important; width: 100% !important; }
+        section[style*="#14532d"] div[style*="gap: 0.6rem"] a { width: 100% !important; justify-content: center !important; }
+    }
+    @media (max-width: 480px) {
+        section[style*="padding: 5rem 0 4rem"] h1[style*="font-size: 3rem"] { font-size: 1.3rem !important; }
     }
 </style>
 @endsection

@@ -22,17 +22,15 @@ class AuthenticatedSessionController extends Controller
 
     /**
      * Handle an incoming authentication request.
-     * Super admins are redirected to use their dedicated portal.
+     * Only regular admins use this login — super admins have their own guard.
      */
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
 
-        // Super admins must use the dedicated super-admin login portal
+        // Block super admins from the regular admin portal
         if ($request->user()->isSuperAdmin()) {
             Auth::guard('web')->logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
 
             return redirect()->route('super-admin.login.form')
                 ->with('status', 'Please use the Super Admin portal to sign in.');
@@ -40,22 +38,20 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended('/admin');
     }
 
     /**
-     * Destroy an authenticated session.
+     * Destroy an authenticated session (regular admin logout).
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $isSuperAdmin = $request->user()?->isSuperAdmin();
-
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect($isSuperAdmin ? '/super-admin/login' : '/login');
+        return redirect('/login');
     }
 }

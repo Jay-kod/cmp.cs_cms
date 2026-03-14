@@ -148,36 +148,235 @@
     100% { transform: translateX(-50%); }
 }
 
-/* Responsive */
+/* ═══════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════ */
+
+/* ── Tablet ≤ 991px ── */
 @media (max-width: 991px) {
-    .hero-carousel { height: 480px !important; }
+    /* Hero */
+    .hero-carousel { height: 520px !important; }
     .hero-carousel h1 { font-size: 2.6rem !important; }
     .hero-carousel p { font-size: 1.05rem !important; }
     .carousel-arrow { width: 44px !important; height: 44px !important; font-size: 1.1rem !important; }
+
+    /* Section headings */
+    section h2[style*="font-size: 2.8rem"] { font-size: 2.2rem !important; }
+    section h2[style*="font-size: 2.4rem"] { font-size: 2rem !important; }
+
+    /* Section padding */
+    section[style*="padding: 6rem"] { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+    section[style*="padding: 5rem"] { padding-top: 3.5rem !important; }
+
+    /* HoD: tighten gap, shrink photo */
+    .hod-section .container[style*="display: flex"] { gap: 3rem !important; }
+    .hod-photo { flex: 0 0 260px !important; }
+
+    /* Stats: 5 → 3 */
+    div[style*="grid-template-columns: repeat(5"] {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    /* News/Events: narrow sidebar */
+    section .container > div[style*="grid-template-columns: 1fr 400px"] {
+        grid-template-columns: 1fr 320px !important;
+        gap: 2.5rem !important;
+    }
+
+    /* Gallery: 4 → 3 */
+    section div[style*="grid-template-columns: repeat(4"] {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
 }
 
+/* ── Small Tablet ≤ 768px ── */
 @media (max-width: 768px) {
+    /* Hero */
     .hero-carousel { height: 450px !important; }
-    .hero-carousel h1 { font-size: 2rem !important; line-height: 1.2 !important;}
+    .hero-carousel h1 { font-size: 2rem !important; line-height: 1.2 !important; }
     .hero-carousel p { font-size: 0.95rem !important; margin-bottom: 1.5rem !important; }
     .hero-carousel .btn { padding: 0.7rem 1.5rem !important; font-size: 0.95rem !important; }
+    .carousel-arrow { width: 40px !important; height: 40px !important; font-size: 1rem !important; }
+
+    /* Section headings */
+    section h2[style*="font-size: 2.8rem"] { font-size: 1.9rem !important; }
+    section h2[style*="font-size: 2.4rem"] { font-size: 1.7rem !important; }
+    section p[style*="font-size: 1.1rem"] { font-size: 0.95rem !important; }
+    section div[style*="margin-bottom: 4rem"] { margin-bottom: 2.5rem !important; }
+
+    /* Section padding */
+    section[style*="padding: 6rem"] { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+    section[style*="padding: 5rem"] { padding-top: 2.5rem !important; }
+
+    /* HoD: stack vertically */
+    .hod-section .container[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        align-items: center !important;
+    }
+    .hod-photo { flex: none !important; width: 250px !important; }
+    .hod-photo div[style*="right: -20px"] { display: none !important; }
+    .hod-text { min-width: 0 !important; width: 100% !important; text-align: center !important; }
+    .hod-text blockquote { text-align: center !important; }
+    .hod-text > div[style*="display: inline-flex"] { display: flex !important; justify-content: center !important; }
+    .hod-section .container[style*="margin-top"] { margin-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+
+    /* Stats: 5 → 2 */
+    div[style*="grid-template-columns: repeat(5"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Programmes: single column */
     .hover-card-grid { grid-template-columns: 1fr; }
-    
-    /* Stack news/events on mobile */
+
+    /* News/Events: stack */
     section .container > div[style*="grid-template-columns: 1fr 380px"],
     section .container > div[style*="grid-template-columns: 1fr 400px"] {
         grid-template-columns: 1fr !important;
+        gap: 2rem !important;
     }
 
-    /* Gallery 2-col on mobile */
+    /* News card images */
+    .news-card div[style*="width: 140px"] { width: 110px !important; height: 95px !important; }
+
+    /* Gallery: 4 → 2 */
     section div[style*="grid-template-columns: repeat(4"] {
         grid-template-columns: repeat(2, 1fr) !important;
     }
 
-    /* Stats responsive */
-    div[style*="grid-template-columns: repeat(5"] {
-        grid-template-columns: repeat(2, 1fr) !important;
+    /* Staff: reduce photo height */
+    .staff-home-card div[style*="height: 260px"] { height: 200px !important; }
+}
+
+/* ── Large Phone ≤ 575px ── */
+@media (max-width: 575px) {
+    /* Hero */
+    .hero-carousel { height: 400px !important; }
+    .hero-carousel h1 { font-size: 1.6rem !important; }
+    .hero-carousel p { font-size: 0.88rem !important; max-width: 100% !important; }
+    .hero-carousel .btn { padding: 0.6rem 1.3rem !important; font-size: 0.88rem !important; gap: 0.4rem !important; }
+    .carousel-arrow { width: 36px !important; height: 36px !important; font-size: 0.9rem !important; }
+    .carousel-arrow[style*="left:"] { left: 10px !important; }
+    .carousel-arrow[style*="right:"] { right: 10px !important; }
+    .carousel-dot { width: 10px !important; height: 10px !important; }
+
+    /* Section headings */
+    section h2[style*="font-size: 2.8rem"] { font-size: 1.6rem !important; }
+    section h2[style*="font-size: 2.4rem"] { font-size: 1.4rem !important; }
+    section h2[style*="font-size: 1.8rem"] { font-size: 1.4rem !important; }
+    section p[style*="font-size: 1.1rem"] { font-size: 0.9rem !important; }
+
+    /* Section padding */
+    section[style*="padding: 6rem"] { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+    section[style*="padding: 5rem"] { padding-top: 2rem !important; }
+    section div[style*="margin-bottom: 4rem"] { margin-bottom: 1.8rem !important; }
+
+    /* HoD */
+    .hod-photo { width: 200px !important; }
+    .hod-text h2 { font-size: 1.6rem !important; }
+    .hod-text blockquote { font-size: 1rem !important; padding-left: 1rem !important; }
+
+    /* Stats */
+    .stat-number { font-size: 2rem !important; }
+    .stat-card { padding: 1.2rem 0.8rem 1rem !important; min-height: 100px !important; }
+
+    /* Gallery: 2 → 1 */
+    section div[style*="grid-template-columns: repeat(4"] {
+        grid-template-columns: 1fr !important;
     }
+    .gallery-home-item[style*="grid-row: span 2"] { grid-row: span 1 !important; }
+    .gallery-home-item { aspect-ratio: 16/9 !important; }
+
+    /* News cards: stack image + text vertically */
+    .news-card { flex-direction: column !important; gap: 0.8rem !important; }
+    .news-card div[style*="width: 140px"] { width: 100% !important; height: 160px !important; }
+
+    /* Staff grid: 2 cols, smaller gap */
+    section div[style*="minmax(250px"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+    .staff-home-card div[style*="height: 260px"] { height: 180px !important; }
+    .staff-home-card div[style*="padding: 1.2rem 1.5rem"] { padding: 0.8rem 1rem !important; }
+
+    /* Systems grid: 2 cols */
+    section div[style*="minmax(220px"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+    .system-card { padding: 1.2rem 1rem !important; }
+
+    /* Partners */
+    .partner-card { min-width: 150px !important; height: 80px !important; padding: 0.7rem 1rem !important; }
+    .partner-logo { max-width: 100px !important; }
+
+    /* CTA: center & stack */
+    section[style*="padding: 2.8rem"] .container[style*="display: flex"] {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    /* Programmes gap */
+    .hover-card-grid { gap: 1.2rem !important; }
+}
+
+/* ── Small Phone ≤ 480px ── */
+@media (max-width: 480px) {
+    /* Hero */
+    .hero-carousel { height: 360px !important; }
+    .hero-carousel h1 { font-size: 1.35rem !important; }
+    .hero-carousel p { font-size: 0.82rem !important; }
+    .hero-carousel .btn { padding: 0.55rem 1rem !important; font-size: 0.82rem !important; }
+    .hero-carousel .container > span[style*="letter-spacing"] { font-size: 0.65rem !important; padding: 0.25rem 0.7rem !important; }
+    .carousel-dot { width: 8px !important; height: 8px !important; }
+
+    /* Section headings */
+    section h2[style*="font-size: 2.8rem"] { font-size: 1.4rem !important; }
+    section h2[style*="font-size: 2.4rem"] { font-size: 1.25rem !important; }
+
+    /* Section padding + spacing */
+    section[style*="padding: 6rem"] { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+    section[style*="padding: 5rem"] { padding-top: 1.5rem !important; }
+    section div[style*="margin-bottom: 4rem"] { margin-bottom: 1.5rem !important; }
+    section div[style*="margin-bottom: 2.5rem"] { margin-bottom: 1.2rem !important; }
+
+    /* HoD */
+    .hod-photo { width: 180px !important; }
+    .hod-section .container[style*="margin-top"] { margin-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+
+    /* Stats */
+    .stat-number { font-size: 1.6rem !important; }
+    .stat-card { padding: 1rem 0.5rem 0.8rem !important; min-height: 85px !important; }
+    .stat-bg-icon { font-size: 2rem !important; }
+    .stat-card p { font-size: 0.6rem !important; letter-spacing: 0.5px !important; }
+
+    /* Staff: single column */
+    section div[style*="minmax(250px"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Systems: single column */
+    section div[style*="minmax(220px"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Programme cards: compact padding */
+    .hover-card div[style*="padding: 2rem"] { padding: 1.2rem !important; }
+    .hover-card div[style*="padding: 1rem 2rem"] { padding: 0.75rem 1rem !important; }
+
+    /* CTA buttons: full width */
+    section[style*="padding: 2.8rem"] div[style*="gap: 0.7rem"] {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    section[style*="padding: 2.8rem"] div[style*="gap: 0.7rem"] a {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    /* News card images */
+    .news-card div[style*="width: 140px"] { height: 140px !important; }
 }
 </style>
 

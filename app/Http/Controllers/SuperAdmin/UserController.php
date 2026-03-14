@@ -39,7 +39,7 @@ class UserController extends Controller
             'role' => $validated['role'],
         ]);
 
-        return redirect()->route('admin.users.index')
+        return redirect()->route('super-admin.users.index')
             ->with('success', 'User created successfully.');
     }
 
@@ -74,7 +74,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('admin.users.index')
+        return redirect()->route('super-admin.users.index')
             ->with('success', 'User updated successfully.');
     }
 
@@ -85,19 +85,19 @@ class UserController extends Controller
         }
 
         if (auth()->id() === $user->id) {
-            return redirect()->route('admin.users.index')
+            return redirect()->route('super-admin.users.index')
                 ->with('error', 'You cannot delete your own account.');
         }
 
         $adminCount = User::where('is_admin', true)->count();
         if ($adminCount <= 1) {
-            return redirect()->route('admin.users.index')
+            return redirect()->route('super-admin.users.index')
                 ->with('error', 'Cannot delete the only remaining admin account.');
         }
 
         $user->delete();
 
-        return redirect()->route('admin.users.index')
+        return redirect()->route('super-admin.users.index')
             ->with('success', 'User deleted successfully.');
     }
 }

@@ -18,6 +18,31 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// ── Content freshness check (used by auto-refresh on public pages) ──
+Route::get('/content-updated', function () {
+    $latest = collect([
+        \App\Models\News::max('updated_at'),
+        \App\Models\Event::max('updated_at'),
+        \App\Models\Announcement::max('updated_at'),
+        \App\Models\Staff::max('updated_at'),
+        \App\Models\Programme::max('updated_at'),
+        \App\Models\Course::max('updated_at'),
+        \App\Models\CarouselSlide::max('updated_at'),
+        \App\Models\GalleryAlbum::max('updated_at'),
+        \App\Models\Partner::max('updated_at'),
+        \App\Models\Publication::max('updated_at'),
+        \App\Models\NacosPresident::max('updated_at'),
+        \App\Models\PastHod::max('updated_at'),
+        \App\Models\Page::max('updated_at'),
+        \App\Models\DepartmentSetting::max('updated_at'),
+    ])->filter()->max();
+
+    return response()->json([
+        'updated_at' => $latest,
+        'ts'         => $latest ? strtotime($latest) : 0,
+    ]);
+});
+
 Route::get('/search', function (Request $request) {
     $q = $request->input('q', '');
     if (strlen($q) < 2) {
@@ -31,7 +56,7 @@ Route::get('/search', function (Request $request) {
         ->where(fn($query) => $query->where('name', 'like', "%{$q}%")->orWhere('description', 'like', "%{$q}%"))
         ->limit(5)->get();
     foreach ($programmes as $p) {
-        $results[] = ['title' => $p->name, 'subtitle' => $p->level . ' · ' . $p->duration, 'url' => '/academics#' . $p->slug, 'icon' => 'fa-solid fa-graduation-cap'];
+        $results[] = ['title' => $p->name, 'subtitle' => $p->level . ' · ' . $p->duration, 'url' => '/academics#' . $p->slug, 'icon' => 'fa-solid fa-graduation-cap', 'type' => 'Programme'];
     }
 
     // Search news
@@ -39,28 +64,28 @@ Route::get('/search', function (Request $request) {
         ->where(fn($query) => $query->where('title', 'like', "%{$q}%")->orWhere('body', 'like', "%{$q}%"))
         ->limit(5)->get();
     foreach ($news as $n) {
-        $results[] = ['title' => $n->title, 'subtitle' => 'News', 'url' => '/research-news', 'icon' => 'fa-solid fa-newspaper'];
+        $results[] = ['title' => $n->title, 'subtitle' => 'News', 'url' => '/research-news', 'icon' => 'fa-solid fa-newspaper', 'type' => 'News'];
     }
 
     // Search staff
-    $staff = \App\Models\Staff::where(fn($query) => $query->where('name', 'like', "%{$q}%")->orWhere('specialization', 'like', "%{$q}%"))
+    $staff = \App\Models\Staff::where(fn($query) => $query->where('name', 'like', "%{$q}%")->orWhere('specialisation', 'like', "%{$q}%")->orWhere('rank', 'like', "%{$q}%"))
         ->limit(5)->get();
     foreach ($staff as $s) {
-        $results[] = ['title' => $s->name, 'subtitle' => $s->rank . ($s->specialization ? ' · ' . $s->specialization : ''), 'url' => '/people/' . $s->slug, 'icon' => 'fa-solid fa-user-tie'];
+        $results[] = ['title' => ($s->title ? $s->title . ' ' : '') . $s->name, 'subtitle' => $s->rank . ($s->specialisation ? ' · ' . $s->specialisation : ''), 'url' => '/people/' . $s->slug, 'icon' => 'fa-solid fa-user-tie', 'type' => 'Staff'];
     }
 
     // Search events
     $events = \App\Models\Event::where(fn($query) => $query->where('title', 'like', "%{$q}%")->orWhere('description', 'like', "%{$q}%"))
         ->limit(3)->get();
     foreach ($events as $e) {
-        $results[] = ['title' => $e->title, 'subtitle' => 'Event', 'url' => '/research-news', 'icon' => 'fa-solid fa-calendar'];
+        $results[] = ['title' => $e->title, 'subtitle' => 'Event', 'url' => '/research-news', 'icon' => 'fa-solid fa-calendar', 'type' => 'Event'];
     }
 
     // Search courses
     $courses = \App\Models\Course::where(fn($query) => $query->where('title', 'like', "%{$q}%")->orWhere('code', 'like', "%{$q}%"))
         ->limit(5)->get();
     foreach ($courses as $c) {
-        $results[] = ['title' => $c->code . ' - ' . $c->title, 'subtitle' => 'Level ' . $c->level . ' · ' . $c->credit_units . ' Units', 'url' => '/academics#course-structure', 'icon' => 'fa-solid fa-book'];
+        $results[] = ['title' => $c->code . ' - ' . $c->title, 'subtitle' => 'Level ' . $c->level . ' · ' . $c->credit_units . ' Units', 'url' => '/academics#course-structure', 'icon' => 'fa-solid fa-book', 'type' => 'Course'];
     }
 
     // Static pages
@@ -73,7 +98,7 @@ Route::get('/search', function (Request $request) {
     ];
     foreach ($pages as $page) {
         if (stripos($page['keywords'], $q) !== false || stripos($page['title'], $q) !== false) {
-            $results[] = ['title' => $page['title'], 'subtitle' => 'Page', 'url' => $page['url'], 'icon' => $page['icon']];
+            $results[] = ['title' => $page['title'], 'subtitle' => 'Page', 'url' => $page['url'], 'icon' => $page['icon'], 'type' => 'Page'];
         }
     }
 

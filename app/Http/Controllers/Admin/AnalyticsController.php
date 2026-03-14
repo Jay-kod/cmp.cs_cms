@@ -61,7 +61,7 @@ class AnalyticsController extends Controller
         // Staff
         $staff = Staff::all();
         $staffCount = $staff->count();
-        $activeStaff = $staff->where('is_active', true)->count();
+        $activeStaff = $staff->where('status', 'Tenure')->count();
         $hodStaff = $staff->where('is_hod', true)->first();
         $staffByRank = $staff->groupBy('rank')->map->count()->sortDesc();
         $staffAcceptingPg = $staff->where('accepting_pg', true)->count();

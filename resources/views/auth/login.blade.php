@@ -10,6 +10,29 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
+        {{-- Dev credentials hint (remove before production) --}}
+        @if(config('app.debug'))
+        <div id="devCredentials" style="background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border: 1px solid #86efac; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; position: relative;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
+                <div style="width: 22px; height: 22px; background: #16a34a; border-radius: 5px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-code" style="font-size: 0.65rem; color: white;"></i>
+                </div>
+                <span style="font-size: 0.8rem; font-weight: 700; color: #15803d; text-transform: uppercase; letter-spacing: 0.5px;">Dev Credentials</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.82rem; font-family: 'Courier New', monospace;">
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #6b7280;">Email:</span>
+                    <span style="color: #1f2937; font-weight: 600;">staff@dcms.nsuk.edu.ng</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span style="color: #6b7280;">Password:</span>
+                    <span style="color: #1f2937; font-weight: 600;">password</span>
+                </div>
+            </div>
+            <button type="button" onclick="document.getElementById('email').value='staff@dcms.nsuk.edu.ng'; document.getElementById('password').value='password';" style="margin-top: 0.75rem; width: 100%; padding: 0.45rem; background: #16a34a; color: white; border: none; border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#15803d'" onmouseout="this.style.background='#16a34a'"><i class="fa-solid fa-bolt" style="margin-right: 4px;"></i> Auto-fill</button>
+        </div>
+        @endif
+
         <!-- Email Address -->
         <div style="margin-bottom: 1.25rem;">
             <label for="email" style="display: block; font-weight: 500; font-size: 0.9rem; margin-bottom: 0.5rem; color: #374151;">Email Address</label>
