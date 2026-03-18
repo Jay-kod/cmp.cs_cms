@@ -9,6 +9,10 @@ class Staff extends Model
 {
     protected $guarded = [];
 
+    protected $casts = [
+        'qualifications' => 'array',
+    ];
+
     // public function qualifications()
     // {
     //     return $this->hasMany(Qualification::class);

@@ -37,6 +37,10 @@
     color: white;
     padding: 4rem 0 3.5rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
 }
@@ -559,7 +563,7 @@
 
 {{-- ── Hero ── --}}
 <div class="contact-hero">
-    <div class="hero-content container">
+    <div class="hero-content container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
         <div class="contact-badge">
             <i class="fa-solid fa-envelope"></i> {{ $gs('contact_hero_badge', 'Get in Touch') }}
         </div>

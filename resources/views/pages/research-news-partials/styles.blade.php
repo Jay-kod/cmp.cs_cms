@@ -12,7 +12,7 @@
     /* Tablet portrait (≤768px) */
     @media (max-width: 768px) {
         .page-layout { flex-direction: column; }
-        .blog-hero { padding: 3.5rem 0 4.5rem !important; }
+        .blog-hero { padding: 3.5rem 0 5.5rem !important; }
         .blog-hero h1 { font-size: 2rem !important; }
         .blog-hero p { font-size: 1rem !important; }
         .blog-main { padding: 1.5rem 1.2rem !important; border-radius: 12px !important; }
@@ -38,7 +38,7 @@
 
     /* Mobile (≤576px) */
     @media (max-width: 576px) {
-        .blog-hero { padding: 2.5rem 0 3.5rem !important; }
+        .blog-hero { padding: 2.5rem 0 5rem !important; }
         .blog-hero h1 { font-size: 1.6rem !important; }
         .blog-hero p { font-size: 0.88rem !important; }
         .blog-main { padding: 1.2rem 1rem !important; margin-top: -1.5rem !important; }

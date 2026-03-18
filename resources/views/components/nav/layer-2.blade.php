@@ -1,12 +1,13 @@
 <div class="navbar">
     <div class="container navbar-inner">
         <!-- Brand -->
-        <a href="/" class="navbar-brand">
+        <a href="/" class="navbar-brand" style="margin-left: -0.6rem; gap: 0.3rem;">
             <img src="{{ asset(config('university.logo', 'build/assets/logo.png')) }}" alt="Logo" class="navbar-logo" onerror="this.src='https://via.placeholder.com/44?text=Logo'">
             <div class="navbar-brand-text">
-                <strong class="desktop-only">{{ config('university.name') }}</strong>
-                <strong class="mobile-only">CS Dept. NSUK</strong>
+                <strong class="desktop-only text-base">{{ config('university.name') }}</strong>
+                <strong class="mobile-only" style="font-size: 0.65rem; white-space: normal; line-height: 1.15; max-width: 220px;">DEPARTMENT OF COMPUTER SCIENCE</strong>
                 <span class="desktop-only">{{ config('university.university') }}</span>
+                <span class="mobile-only" style="font-size: 0.5rem; color: #6b7280; font-weight: 500; white-space: normal; line-height: 1.15; max-width: 220px; margin-top: 1px; letter-spacing: 0.2px;">NASARAWA STATE UNIVERSITY, KEFFI</span>
             </div>
         </a>
 

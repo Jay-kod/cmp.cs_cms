@@ -4,7 +4,7 @@
     <div style="position: absolute; top: -100px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(22,163,74,0.08) 0%, transparent 70%); pointer-events: none;"></div>
     <div style="position: absolute; bottom: -50px; left: 10%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(22,163,74,0.06) 0%, transparent 70%); pointer-events: none;"></div>
     
-    <div class="container" style="display: flex; gap: 5rem; align-items: center; flex-wrap: wrap; position: relative; z-index: 2;">
+    <div class="container hod-grid" style="display: flex; gap: 5rem; align-items: center; flex-wrap: wrap; position: relative; z-index: 2;">
         <!-- HoD Photo -->
         <div class="hod-photo" style="flex: 0 0 300px; max-width: 100%; position: relative;">
             <div style="position: absolute; inset: -12px -12px 12px 12px; border: 2px solid var(--color-primary); border-radius: 14px; z-index: 1;"></div>
@@ -58,7 +58,7 @@
     
     <!-- Stats Counter Cards — integrated into HOD section -->
     <div class="container" style="margin-top: 4rem; padding-bottom: 4rem;">
-        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; text-align: center;">
+        <div class="stats-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; text-align: center;">
             @foreach([1,2,3,4,5] as $n)
             @php
                 $statIcon  = $gs("stat_{$n}_icon",  ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-medal'][$n-1]);

@@ -21,13 +21,13 @@
             <div style="position: absolute; top: 15%; left: 10%; width: 120px; height: 120px; border: 1px solid rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none;"></div>
             <div style="position: absolute; bottom: 20%; right: 15%; width: 250px; height: 250px; border: 1px solid rgba(255,255,255,0.03); border-radius: 50%; pointer-events: none;"></div>
             
-            <div class="container" style="position: relative; z-index: 10; max-width: 850px; padding: 0 1.5rem;">
+            <div class="container" style="position: relative; z-index: 10; max-width: 850px; padding: 0 1.5rem; text-align: center; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
                 <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 0.4rem 1.2rem; border-radius: 30px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 1.5px; text-transform: uppercase; color: #a7f3d0; border: 1px solid rgba(255,255,255,0.15);">
                     <i class="fa-solid fa-code" style="font-size: 0.7rem;"></i> {{ config('university.short_name') }} &middot; Computer Science
                 </span>
-                <h1 style="color: white; font-size: 3.8rem; font-family: var(--font-heading); font-weight: 800; margin-bottom: 1.2rem; line-height: 1.1; text-shadow: 0 10px 30px rgba(0,0,0,0.5);">{{ $slide->title }}</h1>
+                <h1 style="text-align: center; color: white; font-size: 3.8rem; font-family: var(--font-heading); font-weight: 800; margin-bottom: 1.2rem; line-height: 1.1; text-shadow: 0 10px 30px rgba(0,0,0,0.5);">{{ $slide->title }}</h1>
                 @if($slide->subtitle)
-                <p style="font-size: 1.15rem; color: #cbd5e1; margin: 0 auto 2.5rem; max-width: 700px; line-height: 1.7; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">{{ $slide->subtitle }}</p>
+                <p style="text-align: center; font-size: 1.15rem; color: #cbd5e1; margin: 0 auto 2.5rem; max-width: 700px; line-height: 1.7; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">{{ $slide->subtitle }}</p>
                 @endif
                 @if($slide->button_text)
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
@@ -46,12 +46,12 @@
             <div style="position: absolute; top: 15%; left: 10%; width: 120px; height: 120px; border: 1px solid rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none;"></div>
             <div style="position: absolute; bottom: 20%; right: 15%; width: 250px; height: 250px; border: 1px solid rgba(255,255,255,0.03); border-radius: 50%; pointer-events: none;"></div>
             
-            <div class="container" style="position: relative; z-index: 10; max-width: 850px; padding: 0 1.5rem;">
+            <div class="container" style="position: relative; z-index: 10; max-width: 850px; padding: 0 1.5rem; text-align: center; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
                 <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 0.4rem 1.2rem; border-radius: 30px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 1.5px; text-transform: uppercase; color: #a7f3d0; border: 1px solid rgba(255,255,255,0.15);">
                     <i class="fa-solid fa-laptop-code" style="font-size: 0.7rem;"></i> {{ config('university.short_name') }} &middot; Computer Science
                 </span>
-                <h1 style="color: white; font-size: 3.8rem; font-family: var(--font-heading); font-weight: 800; margin-bottom: 1.2rem; line-height: 1.1; text-shadow: 0 10px 30px rgba(0,0,0,0.5);">Empowering the Future<br>of Computing</h1>
-                <p style="font-size: 1.15rem; color: #cbd5e1; margin: 0 auto 2.5rem; max-width: 700px; line-height: 1.7; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">Discover world-class education, pioneering research, and a community dedicated to solving global challenges through technology.</p>
+                <h1 style="text-align: center; color: white; font-size: 3.8rem; font-family: var(--font-heading); font-weight: 800; margin-bottom: 1.2rem; line-height: 1.1; text-shadow: 0 10px 30px rgba(0,0,0,0.5);">Empowering the Future<br>of Computing</h1>
+                <p style="text-align: center; font-size: 1.15rem; color: #cbd5e1; margin: 0 auto 2.5rem; max-width: 700px; line-height: 1.7; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">Discover world-class education, pioneering research, and a community dedicated to solving global challenges through technology.</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="/about" class="btn" style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); color: white; font-weight: 700; padding: 0.9rem 2.5rem; font-size: 1.05rem; border-radius: 8px; border: none; box-shadow: 0 10px 25px -5px rgba(22, 163, 74, 0.4); display: inline-flex; align-items: center; gap: 0.6rem; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 15px 35px -5px rgba(22, 163, 74, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 25px -5px rgba(22, 163, 74, 0.4)'">
                         Explore Department <i class="fa-solid fa-arrow-right" style="font-size: 0.9rem;"></i>
@@ -81,9 +81,9 @@
     <!-- Glassmorphism Announcements Ticker (Overlaps Hero Bottom) -->
     @if($announcements->count() > 0)
     <div style="position: absolute; bottom: 0; left: 0; width: 100%; z-index: 20; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 2px solid var(--color-primary);">
-        <div class="container" style="display: flex; align-items: center; gap: 1.5rem; padding: 0.8rem 1rem;">
-            <div style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); color: white; padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; white-space: nowrap; letter-spacing: 1px; box-shadow: 0 2px 10px rgba(22, 163, 74, 0.4); display: flex; align-items: center; gap: 0.4rem;">
-                <i class="fa-solid fa-bolt"></i> Notice
+          <div class="container" style="display: flex; align-items: center; gap: 1rem; padding: 0.6rem 1rem;">
+              <div style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); color: #fff; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; white-space: nowrap; letter-spacing: 1px; box-shadow: 0 0 8px rgba(22, 163, 74, 0.8), inset 0 0 3px rgba(255, 255, 255, 0.2); display: flex; align-items: center; gap: 0.4rem; border: 1px solid rgba(255,255,255,0.2);">
+                  <i class="fa-solid fa-bolt" style="font-size: 0.6rem;"></i> Notice
             </div>
             <div style="overflow: hidden; flex: 1;">
                 <div class="announcement-scroll" style="display: flex; gap: 4rem; animation: scrollAnnouncements 25s linear infinite; white-space: nowrap;">

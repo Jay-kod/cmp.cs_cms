@@ -15,7 +15,7 @@
         <div style="position: absolute; bottom: -40px; left: -40px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(22,163,74,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
         <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.5%22 fill=%22rgba(255,255,255,0.03)%22/></svg>');"></div>
     </div>
-    <div class="container" style="position: relative; z-index: 2; text-align: center;">
+    <div class="container" style="position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center;">
         <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(22,163,74,0.2); backdrop-filter: blur(8px); color: #4ade80; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.3rem 1rem; border-radius: 20px; margin-bottom: 1rem; border: 1px solid rgba(22,163,74,0.3);">
             <i class="fa-solid fa-users-rectangle"></i> Student Association
         </span>

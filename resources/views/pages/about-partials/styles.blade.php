@@ -107,6 +107,20 @@
         line-height: 1.7;
     }
 
+    /* Vision/Mission & Programmes Hover Effects */
+    .vision-card:hover .bg-icon, .mission-card:hover .bg-icon { transform: rotate(0deg) scale(1.1) !important; color: rgba(22, 163, 74, 0.12) !important; }
+    .vision-card:hover .main-icon, .mission-card:hover .main-icon { transform: scale(1.15) !important; }
+    .mission-card:hover .bg-icon { color: rgba(16, 185, 129, 0.12) !important; }
+    
+    .about-prog-card:hover .bg-circle { transform: scale(1.5) !important; }
+    .about-prog-card:hover .main-icon { transform: rotate(-10deg) scale(1.1) !important; }
+
+    .about-board-card:hover .board-icon { transform: scale(1.15) !important; }
+
+    .about-req-card:hover .req-icon { transform: scale(1.1) !important; }
+    
+    .about-facilities-card:hover .fac-icon { transform: scale(1.1) rotate(5deg) !important; }
+
     /* ── About Page Responsive ── */
 
     /* Tablet landscape (≤1024px) */
@@ -119,7 +133,7 @@
     /* Tablet portrait (≤768px) */
     @media (max-width: 768px) {
         .page-layout { flex-direction: column; }
-        .about-hero { padding: 3.5rem 0 4.5rem !important; }
+        .about-hero { padding: 3.5rem 0 5.5rem !important; }
         .about-hero h1 { font-size: 2rem !important; }
         .about-hero p { font-size: 1rem !important; }
         .about-main { padding: 1.5rem 1.2rem !important; border-radius: 12px !important; }
@@ -127,7 +141,7 @@
         .about-main .section-heading h2 { font-size: 1.5rem !important; }
         .about-main .section-heading-icon { width: 40px !important; height: 40px !important; font-size: 1.1rem !important; border-radius: 10px !important; }
         .about-story-layout { flex-direction: column !important; align-items: center !important; gap: 1.5rem !important; }
-        .about-hod-card { flex: none !important; max-width: 180px !important; }
+        .about-hod-card { flex: none !important; max-width: 220px !important; }
         .about-story-text { min-width: 0 !important; font-size: 0.95rem !important; }
         .about-story-text .about-quote { font-size: 0.95rem !important; padding: 1rem 1.2rem !important; }
         .about-milestones { grid-template-columns: repeat(2, 1fr) !important; gap: 0.8rem !important; }
@@ -160,20 +174,22 @@
 
     /* Mobile (≤576px) */
     @media (max-width: 576px) {
-        .about-hero { padding: 2.5rem 0 3.5rem !important; }
+        .about-hero { padding: 2.5rem 0 5rem !important; }
         .about-hero h1 { font-size: 1.6rem !important; }
         .about-hero p { font-size: 0.88rem !important; }
         .about-main { padding: 1.2rem 1rem !important; margin-top: -1.5rem !important; }
         .about-main .section-heading h2 { font-size: 1.3rem !important; }
-        .about-hod-card { max-width: 150px !important; }
+        .about-hod-card { max-width: 200px !important; }
         .about-milestones { grid-template-columns: repeat(2, 1fr) !important; }
         .about-objectives-wrap h3 { font-size: 1.4rem !important; }
         .obj-content-card { padding: 1rem 1.2rem !important; }
         .obj-title { font-size: 0.95rem !important; }
         .obj-text { font-size: 0.84rem !important; }
-        .about-values-grid { grid-template-columns: repeat(2, 1fr) !important; }
-        .about-values-grid > div .val-icon { width: 44px !important; height: 44px !important; font-size: 1.2rem !important; }
+        .about-values-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.8rem !important; }
+        .about-values-grid > div { padding: 1rem 0.8rem !important; }
+        .about-values-grid > div .val-icon { width: 40px !important; height: 40px !important; font-size: 1.1rem !important; margin-bottom: 0.6rem !important; }
         .about-values-grid > div h4 { font-size: 0.95rem !important; }
+        .about-values-grid > div p { font-size: 0.78rem !important; line-height: 1.4 !important; }
         .about-req-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.6rem !important; }
         .about-req-grid > div { padding: 1rem 0.6rem !important; }
         .about-facilities-card { flex-direction: column !important; gap: 0.8rem !important; padding: 1.2rem !important; }

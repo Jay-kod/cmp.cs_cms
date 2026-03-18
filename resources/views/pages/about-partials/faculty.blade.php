@@ -1,9 +1,9 @@
         <!-- ═══════════ FACULTY CTA ═══════════ -->
         <section id="our-faculty">
-                <div class="about-faculty-cta" style="background: linear-gradient(135deg, var(--color-primary) 0%, #047857 50%, #0f766e 100%); border-radius: 16px; padding: 3.5rem; color: white; text-align: center; position: relative; overflow: hidden; box-shadow: 0 15px 30px -8px rgba(22, 163, 74, 0.4);">
-                <div style="position: absolute; top: -60px; right: -60px; width: 250px; height: 250px; background: rgba(255,255,255,0.06); border-radius: 50%;"></div>
-                <div style="position: absolute; bottom: -80px; left: -40px; width: 200px; height: 200px; background: rgba(255,255,255,0.04); border-radius: 50%;"></div>
-                <div style="position: absolute; top: 50%; left: 10%; width: 120px; height: 120px; border: 1px solid rgba(255,255,255,0.08); border-radius: 50%; transform: translateY(-50%);"></div>
+                <div class="about-faculty-cta hover-lift" style="background: linear-gradient(135deg, var(--color-primary) 0%, #047857 50%, #0f766e 100%); border-radius: 16px; padding: 3.5rem; color: white; text-align: center; position: relative; overflow: hidden; box-shadow: 0 15px 30px -8px rgba(22, 163, 74, 0.4); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 25px 40px -12px rgba(22,163,74,0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 30px -8px rgba(22, 163, 74, 0.4)'">
+                <div style="position: absolute; top: -60px; right: -60px; width: 250px; height: 250px; background: rgba(255,255,255,0.06); border-radius: 50%; transition: transform 0.5s;" class="bg-shape-1"></div>
+                <div style="position: absolute; bottom: -80px; left: -40px; width: 200px; height: 200px; background: rgba(255,255,255,0.04); border-radius: 50%; transition: transform 0.5s;" class="bg-shape-2"></div>
+                <div style="position: absolute; top: 50%; left: 10%; width: 120px; height: 120px; border: 1px solid rgba(255,255,255,0.08); border-radius: 50%; transform: translateY(-50%); transition: transform 0.5s;" class="bg-shape-3"></div>
 
                 <div style="position: relative; z-index: 10;">
                     <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 1rem; background: rgba(255,255,255,0.1); color: #a7f3d0; border-radius: 20px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.2rem; border: 1px solid rgba(255,255,255,0.15);">

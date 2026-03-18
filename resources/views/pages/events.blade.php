@@ -3,8 +3,8 @@
 
 @section('content')
 {{-- Hero --}}
-<section style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 4rem 0; color: white; text-align: center;">
-    <div class="container">
+<section style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 4rem 0; color: white; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <div class="container" style="display: flex; flex-direction: column; align-items: center;">
         <span style="display: inline-block; background: rgba(22,163,74,0.2); color: var(--color-primary); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; border: 1px solid rgba(22,163,74,0.3);">
             <i class="fa-solid fa-calendar-days"></i> Department Events
         </span>

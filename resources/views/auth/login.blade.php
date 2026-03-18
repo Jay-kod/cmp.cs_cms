@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div style="text-align: center; margin-bottom: 2rem;">
+    <div style="text-align: center; margin-bottom: 1.5rem;">
         <h2 style="font-size: 1.8rem; margin: 0; color: #1f2937; font-family: 'Outfit', sans-serif;">Welcome Back</h2>
         <p style="color: #6b7280; font-size: 0.9rem; margin-top: 0.5rem;">Please sign in to your admin account</p>
     </div>

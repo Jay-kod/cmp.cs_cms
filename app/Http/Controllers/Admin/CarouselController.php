@@ -156,12 +156,11 @@ class CarouselController extends Controller
             'hero_contact' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
 
-        $pages = ['about', 'academics', 'blog', 'contact'];
-        $updated = false;
-
-        foreach ($pages as $page) {
+        $anyFile = false;
+        foreach (['about', 'academics', 'blog', 'contact'] as $page) {
             $key = "hero_{$page}";
             if ($request->hasFile($key)) {
+                $anyFile = true;
                 $oldSetting = \App\Models\DepartmentSetting::where('key', $key)->first();
                 if ($oldSetting && $oldSetting->value) {
                     if (Storage::disk('public')->exists($oldSetting->value)) {
@@ -169,22 +168,21 @@ class CarouselController extends Controller
                     }
                 }
 
-                $path = $request->file($key)->store('site/heroes', 'public');
+                $path = $request->file($key)->store("site/heroes", 'public');
 
                 \App\Models\DepartmentSetting::updateOrCreate(
                     ['key' => $key],
                     ['value' => $path]
                 );
-                
-                $updated = true;
             }
         }
 
-        if ($updated) {
+        if ($anyFile) {
             return redirect()->route('admin.carousel.page-heroes')
                 ->with('success', 'Page heroes updated successfully.');
         }
 
-        return redirect()->route('admin.carousel.page-heroes');
+        return redirect()->route('admin.carousel.page-heroes')
+            ->with('error', 'Please select an image to upload.');
     }
 }

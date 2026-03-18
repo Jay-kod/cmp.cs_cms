@@ -18,12 +18,12 @@
     <div style="position: absolute; bottom: 10%; left: 5%; width: 250px; height: 250px; border: 1px solid rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none;"></div>
     <div style="position: absolute; bottom: 20%; right: 25%; font-size: 8rem; color: rgba(255,255,255,0.02); transform: rotate(15deg); pointer-events: none;"><i class="fa-solid fa-laptop-code"></i></div>
     
-    <div class="container" style="position: relative; z-index: 10; text-align: center;">
+    <div class="container" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
         <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.2rem; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); color: #a7f3d0; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
             <i class="fa-solid fa-book-open" style="font-size: 0.7rem;"></i> {{ $gs('academics_hero_badge', 'Explore Our Programs') }}
         </div>
-        <h1 style="color: white; font-size: 3.2rem; font-family: var(--font-heading); margin: 0 0 1rem 0; font-weight: 800; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">{{ $gs('academics_hero_title', 'Discover Academic Excellence') }}</h1>
-        <p style="color: #cbd5e1; font-size: 1.15rem; max-width: 680px; margin: 0 auto; line-height: 1.7;">{{ $gs('academics_hero_subtitle', 'Rigorous computing programmes designed to equip you with cutting-edge skills for the technology-driven world.') }}</p>
+        <h1 style="text-align: center; color: white; font-size: 3.2rem; font-family: var(--font-heading); margin: 0 0 1rem 0; font-weight: 800; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">{{ $gs('academics_hero_title', 'Discover Academic Excellence') }}</h1>
+        <p style="text-align: center; color: #cbd5e1; font-size: 1.15rem; max-width: 680px; margin: 0 auto; line-height: 1.7;">{{ $gs('academics_hero_subtitle', 'Rigorous computing programmes designed to equip you with cutting-edge skills for the technology-driven world.') }}</p>
     </div>
 </div>
 
@@ -315,7 +315,7 @@
     /* Tablet portrait (≤768px) */
     @media (max-width: 768px) {
         .page-layout { flex-direction: column; }
-        .acad-hero { padding: 3.5rem 0 4.5rem !important; }
+        .acad-hero { padding: 3.5rem 0 5.5rem !important; }
         .acad-hero h1 { font-size: 2rem !important; }
         .acad-hero p { font-size: 1rem !important; }
         .acad-main { padding: 1.5rem 1.2rem !important; border-radius: 12px !important; }
@@ -338,7 +338,7 @@
 
     /* Mobile (≤576px) */
     @media (max-width: 576px) {
-        .acad-hero { padding: 2.5rem 0 3.5rem !important; }
+        .acad-hero { padding: 2.5rem 0 5rem !important; }
         .acad-hero h1 { font-size: 1.6rem !important; }
         .acad-hero p { font-size: 0.88rem !important; }
         .acad-main { padding: 1.2rem 1rem !important; margin-top: -1.5rem !important; }

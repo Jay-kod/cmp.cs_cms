@@ -1,5 +1,5 @@
 <!-- MEET OUR STAFF -->
-<section style="padding: 6rem 0; background: white; position: relative; overflow: hidden;">
+<section style="padding: 6rem 0; background: #f4fcfa; position: relative; overflow: hidden;">
     <div style="position: absolute; top: -80px; left: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(22,163,74,0.06) 0%, transparent 70%); pointer-events: none;"></div>
     <div class="container" style="position: relative; z-index: 2;">
         <div style="text-align: center; margin-bottom: 4rem;">
@@ -8,20 +8,20 @@
             <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.7;">{{ $gs('home_staff_subtitle','Dedicated academics and researchers shaping the future of computer science education.') }}</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+        <div class="staff-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
             @foreach($featuredStaff as $member)
             <a href="{{ route('people.show', $member->slug) }}" class="staff-home-card" style="text-decoration: none; color: inherit; background: #f8fafc; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; transition: all 0.35s ease;">
-                <div style="height: 260px; overflow: hidden; position: relative;">
+                <div class="staff-card-img" style="position: relative; padding-top: 125%; overflow: hidden;">
                     @if($member->photo)
-                        <img src="{{ asset('storage/'.$member->photo) }}" alt="{{ $member->name }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                        <img src="{{ asset('storage/'.$member->photo) }}" alt="{{ $member->name }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s;">
                     @else
-                        <img src="https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=260&background=14532d&color=fff&bold=true&format=svg&font-size=0.35" alt="{{ $member->name }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=400&background=14532d&color=fff&bold=true&format=svg&font-size=0.35" alt="{{ $member->name }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s;">
                     @endif
                     <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(to top, rgba(0,0,0,0.4), transparent); pointer-events: none;"></div>
                 </div>
-                <div style="padding: 1.2rem 1.5rem;">
-                    <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.3rem; font-family: var(--font-heading);">{{ $member->name }}</h3>
-                    <p style="font-size: 0.85rem; color: var(--color-primary); font-weight: 600; margin: 0;">{{ $member->rank ?? 'Lecturer' }}</p>
+                <div style="padding: 1.2rem 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.3rem; font-family: var(--font-heading); text-align: center; width: 100%;">{{ $member->name }}</h3>
+                    <p style="font-size: 0.85rem; color: var(--color-primary); font-weight: 600; margin: 0; text-align: center; width: 100%;">{{ $member->rank ?? 'Lecturer' }}</p>
                 </div>
             </a>
             @endforeach

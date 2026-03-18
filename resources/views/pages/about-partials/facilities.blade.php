@@ -19,8 +19,8 @@
                     ];
                 @endphp
                 @foreach($labs as $lab)
-                <div class="about-facilities-card" style="display: flex; gap: 1.2rem; background: #f8fafc; padding: 1.8rem; border-radius: 14px; border: 1px solid #e2e8f0; transition: all 0.3s;" onmouseover="this.style.background='#f1f5f9'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 25px -8px rgba(0,0,0,0.08)'" onmouseout="this.style.background='#f8fafc'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                    <div style="width: 56px; height: 56px; border-radius: 14px; background: {{ $lab['gradient'] }}; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; box-shadow: 0 8px 20px -4px {{ $lab['shadow'] }};">
+                <div class="about-facilities-card hover-lift" style="display: flex; gap: 1.2rem; background: #f8fafc; padding: 1.8rem; border-radius: 14px; border: 1px solid #e2e8f0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.background='#ffffff'; this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 30px -8px rgba(0,0,0,0.08)'; this.style.borderColor='var(--color-primary)'" onmouseout="this.style.background='#f8fafc'; this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='#e2e8f0'">
+                    <div style="width: 56px; height: 56px; border-radius: 14px; background: {{ $lab['gradient'] }}; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; box-shadow: 0 8px 20px -4px {{ $lab['shadow'] }}; transition: transform 0.3s;" class="fac-icon">
                         <i class="fa-solid {{ $lab['icon'] }}"></i>
                     </div>
                     <div>

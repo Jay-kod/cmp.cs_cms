@@ -2,7 +2,7 @@
 @section('title', $page->title)
 
 @section('content')
-<div class="page-header" style="background: var(--color-primary); color: white; padding: 3.5rem 0; text-align: center;">
+<div class="page-header" style="background: var(--color-primary); color: white; padding: 3.5rem 0; text-align: center; display: flex; flex-direction: column; align-items: center;">
     <div class="container">
         @if($page->icon)
         <i class="{{ $page->icon }}" style="font-size: 2rem; margin-bottom: 0.8rem; display: block; opacity: 0.85;"></i>

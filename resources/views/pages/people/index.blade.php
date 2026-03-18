@@ -102,7 +102,7 @@
                             </div>
                             @endif
 
-                            @if($hod->qualifications)
+                            @if(!empty($hod->qualifications))
                             <div class="hod-detail-item">
                                 <div class="hod-detail-icon">
                                     <i class="fa-solid fa-graduation-cap"></i>
@@ -521,16 +521,19 @@
             }
             .card-photo-side {
                 flex: none;
-                aspect-ratio: 1 / 1;
                 position: relative;
+                padding-top: 125%; /* 4:5 aspect ratio */
                 overflow: hidden;
                 background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
             }
             .card-photo-img {
+                position: absolute;
+                top: 0;
+                left: 0;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                object-position: center top;
+                object-position: top center;
                 display: block;
                 transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
@@ -591,6 +594,7 @@
                 flex-direction: column;
                 padding: 1.2rem 1.3rem 1rem;
                 justify-content: space-between;
+                align-items: center;
                 min-width: 0;
                 text-align: center;
                 background: linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 40%, #ffffff 100%);
@@ -623,6 +627,7 @@
                 display: flex;
                 flex-wrap: wrap;
                 gap: 5px;
+                justify-content: center;
             }
             .card-course-tag {
                 background: #dcfce7;
@@ -643,12 +648,13 @@
             }
             .card-footer {
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                justify-content: space-between;
+                gap: 0.8rem;
                 margin-top: auto;
                 padding-top: 0.8rem;
                 border-top: 1px solid #dcfce7;
-                text-align: left;
+                width: 100%;
             }
             .card-profile-btn {
                 display: inline-flex;

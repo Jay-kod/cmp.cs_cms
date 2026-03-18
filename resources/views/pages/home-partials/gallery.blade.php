@@ -14,7 +14,7 @@
             </a>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;">
+        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;">
             @foreach($galleryImages as $img)
             <div class="gallery-home-item" style="aspect-ratio: {{ $loop->first || $loop->index === 3 ? '1/1' : '4/3' }}; border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; {{ $loop->first ? 'grid-row: span 2;' : '' }}">
                 <img src="{{ asset('storage/'.$img->image_path) }}" alt="{{ $img->caption ?? '' }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">

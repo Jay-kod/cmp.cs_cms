@@ -10,9 +10,6 @@ class PeopleController extends Controller
     public function index(Request $request)
     {
         $hod = Staff::where('is_hod', true)->with('courses')->first();
-
-        $query = Staff::orderByDesc('is_hod')->orderBy('sort_order');
-
         // Search filter
         if ($search = $request->query('search')) {
             $query->where(function ($q) use ($search) {

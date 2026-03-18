@@ -20,12 +20,12 @@
                     ];
                 @endphp
                 @foreach($coreValues as $val)
-                <div style="text-align: center; padding: 2rem 1.2rem; background: {{ $val['bg'] }}; border-radius: 14px; border: 1px solid {{ $val['color'] }}20; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: default;" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 18px 35px -8px {{ $val['color'] }}25'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                    <div class="val-icon" style="width: 56px; height: 56px; margin: 0 auto 1rem; background: linear-gradient(135deg, {{ $val['color'] }}, {{ $val['color'] }}dd); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 8px 20px -4px {{ $val['color'] }}40;">
+                <div style="text-align: center; padding: 1.5rem 1rem; background: {{ $val['bg'] }}; border-radius: 14px; border: 1px solid {{ $val['color'] }}20; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 18px 35px -8px {{ $val['color'] }}25'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <div class="val-icon" style="width: 48px; height: 48px; margin: 0 auto 0.8rem; background: linear-gradient(135deg, {{ $val['color'] }}, {{ $val['color'] }}dd); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 8px 20px -4px {{ $val['color'] }}40; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                         <i class="fa-solid {{ $val['icon'] }}"></i>
                     </div>
-                    <h4 style="margin: 0 0 0.4rem; font-size: 1.1rem; color: #1e293b; font-weight: 700;">{{ $val['name'] }}</h4>
-                    <p style="margin: 0; font-size: 0.82rem; color: #64748b; line-height: 1.5;">{{ $val['desc'] }}</p>
+                    <h4 style="margin: 0 0 0.4rem; font-size: 1.05rem; color: #1e293b; font-weight: 700;">{{ $val['name'] }}</h4>
+                    <p style="margin: 0; font-size: 0.85rem; color: #64748b; line-height: 1.5; text-align: center;">{{ $val['desc'] }}</p>
                 </div>
                 @endforeach
             </div>

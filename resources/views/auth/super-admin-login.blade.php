@@ -24,7 +24,7 @@
         body { margin: 0; font-family: 'Inter', sans-serif; }
 
         .sa-wrapper {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             background: #0f172a;
             position: relative;
@@ -149,7 +149,7 @@
             background: rgba(30, 41, 59, 0.8);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(148, 163, 184, 0.1);
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 16px;
             width: 100%;
             max-width: 440px;
@@ -163,7 +163,7 @@
 
         .sa-card-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         .sa-card-header .sa-badge {
             display: inline-flex;
@@ -353,7 +353,14 @@
         .sa-mobile-header { display: none; }
         @media (max-width: 900px) {
             .sa-left { display: none; }
-            .sa-wrapper { justify-content: center; align-items: center; padding: 1rem; }
+            .sa-wrapper { 
+                justify-content: center; 
+                align-items: center; 
+                padding: 1rem; 
+                height: auto; 
+                min-height: 100vh; 
+                overflow-y: auto; 
+            }
             .sa-mobile-header {
                 display: flex;
                 flex-direction: column;

@@ -1,7 +1,7 @@
 <!-- NEWS & EVENTS -->
 <section style="padding: 6rem 0; background: white; position: relative;">
     <div class="container">
-        <div style="display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: start;">
+        <div class="news-events-split" style="display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: start;">
             
             <!-- News Column -->
             <div>
@@ -257,7 +257,7 @@
         max-width: 140px;
         max-height: 55px;
         object-fit: contain;
-        filter: grayscale(100%) opacity(0.5);
+        filter: grayscale(0%) opacity(1);
         transition: all 0.3s ease;
     }
     a.partner-card:hover, div.partner-card:hover {
@@ -266,7 +266,6 @@
         border-color: #cbd5e1;
     }
     a.partner-card:hover .partner-logo, div.partner-card:hover .partner-logo {  
-        filter: grayscale(0%) opacity(1);
-        transform: scale(1.05);
+        transform: scale(1.15);
     }
 </style>

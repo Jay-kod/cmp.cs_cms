@@ -10,7 +10,7 @@
         : null;
 @endphp
 
-<div class="page-header" style="{{ $heroUrl ? "background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url('{$heroUrl}') center/cover;" : 'background: var(--color-primary);' }} color: white; padding: 4rem 0; text-align: center;">
+<div class="page-header" style="{{ $heroUrl ? "background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url('{$heroUrl}') center/cover;" : 'background: var(--color-primary);' }} color: white; padding: 4rem 0; text-align: center; display: flex; flex-direction: column; align-items: center;">
     <div class="container">
         <h1 style="color: white; font-size: 2.5rem; margin-bottom: 0;">{{ $hs['past_hods_hero_title'] ?? 'Past Heads of Department' }}</h1>
         <p style="margin-top: 1rem; color: rgba(255,255,255,0.8); font-size: 1.1rem;">{{ $hs['past_hods_hero_subtitle'] ?? 'Honoring the leaders who have driven our department forward' }}</p>

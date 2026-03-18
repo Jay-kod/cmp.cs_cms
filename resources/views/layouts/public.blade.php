@@ -74,7 +74,7 @@
     <!-- Search overlay removed - search is now inline on individual pages -->
 
     @if (!request()->is('/') && Breadcrumbs::exists())
-    <div style="background: #f8faf9; border-bottom: 1px solid #e5e7eb;">
+    <div style="background: #f8faf9; border-bottom: 1px solid #e5e7eb; padding-top: 1rem;">
         <div class="container" style="padding: 0.65rem 0;">
             <nav aria-label="Breadcrumb">
                 <ol style="display: flex; align-items: center; gap: 0; margin: 0; padding: 0; list-style: none; flex-wrap: wrap;">

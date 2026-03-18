@@ -26,33 +26,33 @@
             @endphp
             @foreach($programmes as $pIdx => $prog)
             @php $pc = $progColors[$pIdx % count($progColors)]; @endphp
-            <a href="/academics#{{ $prog->slug }}" class="hover-card" style="background: white; border-radius: 20px; text-decoration: none; color: inherit; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; box-shadow: 0 4px 20px -5px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px -10px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px -5px rgba(0,0,0,0.08)'">
+            <a href="/academics#{{ $prog->slug }}" class="hover-card" style="background: white; border-radius: 20px; text-decoration: none; color: inherit; position: relative; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; box-shadow: 0 4px 15px -3px rgba(0,0,0,0.05); border: 1px solid #f1f5f9;">
                 {{-- Gradient Header Strip --}}
                 <div style="height: 6px; background: linear-gradient(90deg, {{ $pc['from'] }}, {{ $pc['to'] }});"></div>
 
                 <div style="padding: 2rem 2rem 1.5rem;">
                     {{-- Icon + Badge Row --}}
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem;">
-                        <div style="width: 56px; height: 56px; border-radius: 16px; background: {{ $pc['bg'] }}; color: {{ $pc['from'] }}; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+                        <div class="hover-icon-wrapper" style="width: 56px; height: 56px; border-radius: 16px; background: {{ $pc['bg'] }}; color: {{ $pc['from'] }}; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; transition: all 0.3s ease;">
                             <i class="{{ $progIcons[$pIdx % count($progIcons)] }}"></i>
                         </div>
-                        <span style="background: {{ $pc['badge'] }}; color: {{ $pc['badgeText'] }}; font-size: 0.78rem; font-weight: 800; padding: 0.35rem 1rem; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase;">{{ $prog->level }}</span>
+                        <span style="background: {{ $pc['badge'] }}; color: {{ $pc['badgeText'] }}; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.9rem; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase;">{{ $prog->level }}</span>
                     </div>
 
                     {{-- Programme Name --}}
-                    <h3 style="font-size: 1.25rem; margin: 0 0 0.8rem; color: #0f172a; font-family: var(--font-heading); font-weight: 800; line-height: 1.3;">{{ $prog->name }}</h3>
+                    <h3 style="font-size: 1.15rem; margin: 0 0 0.8rem; color: #1e293b; font-family: var(--font-heading); font-weight: 700; line-height: 1.3; transition: color 0.3s ease;" class="hover-title">{{ $prog->name }}</h3>
 
                     {{-- Description --}}
-                    <p style="font-size: 0.9rem; color: #64748b; line-height: 1.65; flex: 1; margin: 0;">{{ Str::limit($prog->description, 110) }}</p>
+                    <p style="font-size: 0.88rem; color: #64748b; line-height: 1.6; flex: 1; margin: 0;">{{ Str::limit($prog->description, 100) }}</p>
                 </div>
 
                 {{-- Footer --}}
-                <div style="padding: 1rem 2rem; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; margin-top: auto; background: #fafbfc;">
-                    <div style="display: flex; gap: 1.2rem; font-size: 0.8rem; color: #475569; font-weight: 600;">
-                        <span style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-regular fa-clock" style="color: {{ $pc['from'] }};"></i> {{ $prog->duration }}</span>
-                        <span style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-book-open" style="color: {{ $pc['from'] }};"></i> {{ $prog->mode_of_study }}</span>
+                <div style="padding: 1rem 2rem; border-top: 1px solid #f8fafc; display: flex; justify-content: space-between; align-items: center; margin-top: auto; background: white; transition: background 0.3s ease;" class="hover-footer">
+                    <div style="display: flex; gap: 1.2rem; font-size: 0.78rem; color: #64748b; font-weight: 500;">
+                        <span style="display: flex; align-items: center; gap: 0.4rem;"><i class="fa-regular fa-clock" style="color: {{ $pc['from'] }}; opacity: 0.8;"></i> {{ $prog->duration }}</span>
+                        <span style="display: flex; align-items: center; gap: 0.4rem;"><i class="fa-solid fa-book-open" style="color: {{ $pc['from'] }}; opacity: 0.8;"></i> {{ $prog->mode_of_study }}</span>
                     </div>
-                    <div style="width: 32px; height: 32px; border-radius: 50%; background: {{ $pc['bg'] }}; color: {{ $pc['from'] }}; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.3s;" class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: #f1f5f9; color: #64748b; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.3s ease;" class="card-arrow" data-color="{{ $pc['from'] }}" data-bg="{{ $pc['bg'] }}"><i class="fa-solid fa-arrow-right"></i></div>
                 </div>
             </a>
             @endforeach
