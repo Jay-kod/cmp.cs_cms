@@ -26,6 +26,7 @@ class ProgrammeController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'department_code' => 'nullable|string|in:cs,cyb,ds',
             'programme_category_id' => 'nullable|exists:programme_categories,id',
             'level' => 'required|string|max:50',
             'duration' => 'required|string|max:50',
@@ -57,6 +58,7 @@ class ProgrammeController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'department_code' => 'nullable|string|in:cs,cyb,ds',
             'programme_category_id' => 'nullable|exists:programme_categories,id',
             'level' => 'required|string|max:50',
             'duration' => 'required|string|max:50',

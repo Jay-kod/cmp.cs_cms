@@ -20,16 +20,19 @@
             <i class="fa-solid fa-users-rectangle"></i> Student Association
         </span>
         <h1 style="color: white; font-size: 3rem; font-family: var(--font-heading); font-weight: 800; margin: 0 0 0.8rem; line-height: 1.15;">{{ $gs('nacos_presidents_title', 'NACOS') }}</h1>
-        <p style="color: #94a3b8; font-size: 1.1rem; max-width: 620px; margin: 0 auto 2rem; line-height: 1.7;">{{ $gs('nacos_presidents_subtitle', 'The National Association of Computing Students (NUK Chapter) — empowering students through leadership, innovation and community.') }}</p>
-        <div style="display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;">
-            <a href="#about-nacos" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #16a34a, #059669); color: white; padding: 0.65rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px rgba(22,163,74,0.3); transition: all 0.2s;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
-                <i class="fa-solid fa-circle-info"></i> About NACOS
-            </a>
-            <a href="#past-leaders" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.08); color: white; padding: 0.65rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.15); transition: all 0.2s; backdrop-filter: blur(4px);" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)'; this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'; this.style.background='rgba(255,255,255,0.08)'">
-                <i class="fa-solid fa-crown"></i> Past Leaders
-            </a>
+        <p style="color: #e2e8f0; font-size: 1.15rem; max-width: 700px; margin: 0 auto 2rem; line-height: 1.8; text-wrap: balance; text-align: center; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">{{ $gs('nacos_presidents_subtitle', 'Honoring the visionary leaders and rich legacy of the National Association of Computing Students (NUK Chapter) — championing academic excellence and technological innovation.') }}</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 0.6rem; width: 100%; max-width: 400px; margin: 0 auto;">
+            <div style="display: flex; gap: 0.6rem; justify-content: center; flex-wrap: nowrap; width: 100%;">
+                <a href="#about-nacos" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: linear-gradient(135deg, #16a34a, #059669); color: white; padding: 0.65rem 0.5rem; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px rgba(22,163,74,0.3); transition: all 0.2s; flex: 1; white-space: nowrap;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <i class="fa-solid fa-circle-info"></i> About NACOS
+                </a>
+                <a href="#past-leaders" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: rgba(255,255,255,0.08); color: white; padding: 0.65rem 0.5rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.15); transition: all 0.2s; backdrop-filter: blur(4px); flex: 1; white-space: nowrap;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)'; this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'; this.style.background='rgba(255,255,255,0.08)'">
+                    <i class="fa-solid fa-crown"></i> Past Leaders
+                </a>
+            </div>
             @if(filled($gs('nacos_official_website_url')))
-            <a href="{{ $gs('nacos_official_website_url') }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #eab308, #ca8a04); color: white; padding: 0.65rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px rgba(234,179,8,0.3); transition: all 0.2s; border: none;" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 6px 20px rgba(234,179,8,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(234,179,8,0.3)'">
+            <a href="{{ $gs('nacos_official_website_url') }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: linear-gradient(135deg, #eab308, #ca8a04); color: white; padding: 0.65rem 0.5rem; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px rgba(234,179,8,0.3); transition: all 0.2s; border: none; width: 100%; white-space: nowrap;" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 6px 20px rgba(234,179,8,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(234,179,8,0.3)'">
                 <i class="fa-solid fa-globe"></i> {{ $gs('nacos_official_website_label', 'Visit Major NACOS Website') }} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem; margin-left: 0.2rem;"></i>
             </a>
             @endif
@@ -47,11 +50,12 @@
             <div>
                 <span style="display: inline-block; color: var(--color-primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.8rem; background: rgba(22,163,74,0.1); padding: 0.25rem 0.9rem; border-radius: 20px;">Who We Are</span>
                 <h2 style="font-size: 2.2rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin: 0 0 1rem; line-height: 1.2;">{{ $gs('nacos_page_about_title', 'About NACOS') }}</h2>
-                <p style="color: #475569; font-size: 1rem; line-height: 1.8; margin: 0 0 1.2rem;">{{ $gs('nacos_page_about_text', 'The National Association of Computing Students (NACOS) is the umbrella body for all students studying computing-related disciplines. Our NUK Chapter is dedicated to fostering academic excellence, professional development, and strong social bonds among members.') }}</p>
-                <p style="color: #64748b; font-size: 0.95rem; line-height: 1.8; margin: 0;">{{ $gs('nacos_page_about_text2', 'Through workshops, hackathons, seminars, and community outreach, NACOS prepares students for the ever-evolving tech industry while building a supportive network that extends well beyond graduation.') }}</p>
+                <p style="color: #334155; font-size: 1.05rem; line-height: 1.8; margin: 0 0 1.2rem;">{{ $gs('nacos_page_about_text', 'The National Association of Computing Students (NACOS) is the premier umbrella body for all students pursuing computing-related disciplines. The NUK Chapter stands as a vibrant hub dedicated to fostering academic excellence, accelerating professional development, and cultivating strong, lifelong social bonds among its members.') }}</p>
+                <p style="color: #475569; font-size: 1rem; line-height: 1.8; margin: 0 0 1.2rem;">{{ $gs('nacos_page_about_text2', 'Through engaging workshops, competitive hackathons, insightful seminars, and impactful community outreach, NACOS actively prepares students to thrive in the ever-evolving tech industry. We are committed to building a robust, supportive network that empowers our members well beyond graduation.') }}</p>
+                <p style="color: #475569; font-size: 1rem; line-height: 1.8; margin: 0;">{{ $gs('nacos_page_about_text3', 'As a community driven by innovation, we continuously strive to bridge the gap between classroom theory and real-world application. By collaborating with industry experts, faculty, and accomplished alumni, NACOS provides unique mentorship opportunities, ensuring that every student has the resources, guidance, and confidence required to become future tech leaders and effectively shape the digital landscape of tomorrow.') }}</p>
             </div>
             {{-- Stats Column --}}
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
                 @php
                     $pageStats = [
                         ['icon' => 'fa-solid fa-crown',           'value' => $presidents->count(), 'label' => 'Past Leaders',   'color' => '#16a34a'],
@@ -61,49 +65,63 @@
                     ];
                 @endphp
                 @foreach($pageStats as $stat)
-                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.5rem; text-align: center; transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                    <div style="width: 44px; height: 44px; background: {{ $stat['color'] }}15; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem;">
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-2 sm:mb-3" style="background: {{ $stat['color'] }}15;">
                         <i class="{{ $stat['icon'] }}" style="color: {{ $stat['color'] }}; font-size: 1.1rem;"></i>
                     </div>
-                    <div style="font-size: 1.8rem; font-weight: 800; color: #0f172a; font-family: var(--font-heading); line-height: 1;">{{ $stat['value'] }}</div>
-                    <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">{{ $stat['label'] }}</div>
+                    <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-none mb-1 font-heading">{{ $stat['value'] }}</div>
+                    <div class="text-[0.7rem] sm:text-xs text-slate-500 uppercase tracking-wider font-semibold">{{ $stat['label'] }}</div>
                 </div>
                 @endforeach
             </div>
         </div>
 
         {{-- Mission / Vision / Values Cards --}}
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8 mt-5">
             @php
                 $pillars = [
                     [
-                        'icon'  => 'fa-solid fa-bullseye',
+                        'icon'  => 'fa-solid fa-rocket',
                         'title' => $gs('nacos_page_pillar1_title', 'Our Mission'),
-                        'text'  => $gs('nacos_page_pillar1_text', 'To promote academic excellence, advance computing knowledge, and nurture future tech leaders through hands-on learning, mentorship, and industry collaboration.'),
-                        'color' => '#16a34a',
+                        'text'  => $gs('nacos_page_pillar1_text', 'To empower the next generation of tech innovators through cutting-edge knowledge, hands-on learning, and robust industry collaboration.'),
+                        'color' => 'from-green-500 to-emerald-600',
+                        'bg' => 'bg-green-50',
+                        'text_color' => 'text-green-600'
                     ],
                     [
                         'icon'  => 'fa-solid fa-eye',
                         'title' => $gs('nacos_page_pillar2_title', 'Our Vision'),
-                        'text'  => $gs('nacos_page_pillar2_text', 'To be the foremost student body shaping innovative, ethical, and globally competitive computing professionals in Nigeria and beyond.'),
-                        'color' => '#0891b2',
+                        'text'  => $gs('nacos_page_pillar2_text', 'To be the preeminent student organization shaping highly skilled, ethical, and globally competitive computing professionals.'),
+                        'color' => 'from-cyan-500 to-blue-600',
+                        'bg' => 'bg-cyan-50',
+                        'text_color' => 'text-cyan-600'
                     ],
                     [
-                        'icon'  => 'fa-solid fa-heart',
-                        'title' => $gs('nacos_page_pillar3_title', 'Our Values'),
-                        'text'  => $gs('nacos_page_pillar3_text', 'Innovation, integrity, collaboration, inclusivity, and continuous learning form the bedrock of everything we do as an association.'),
-                        'color' => '#7c3aed',
+                        'icon'  => 'fa-solid fa-shield-heart',
+                        'title' => $gs('nacos_page_pillar3_title', 'Our Core Values'),
+                        'text'  => $gs('nacos_page_pillar3_text', 'Innovation. Integrity. Collaboration. Inclusivity. Excellence. These principles are the absolute foundation of everything we do.'),
+                        'color' => 'from-purple-500 to-indigo-600',
+                        'bg' => 'bg-purple-50',
+                        'text_color' => 'text-purple-600'
                     ],
                 ];
             @endphp
             @foreach($pillars as $pillar)
-            <div style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.5rem; position: relative; overflow: hidden; transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.07)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: {{ $pillar['color'] }};"></div>
-                <div style="width: 42px; height: 42px; background: {{ $pillar['color'] }}12; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-                    <i class="{{ $pillar['icon'] }}" style="color: {{ $pillar['color'] }}; font-size: 1.1rem;"></i>
+            <div class="group relative bg-slate-50 border border-slate-200/80 rounded-2xl p-6 sm:p-8 overflow-hidden transition-all duration-300 hover:-translate-y-2 shadow-[0_12px_24px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] flex flex-col h-full z-10">
+                
+                {{-- Decorative top gradient border --}}
+                <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r {{ $pillar['color'] }} opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                
+                {{-- Decorative background blur element --}}
+                <div class="absolute -right-8 -top-8 w-32 h-32 {{ $pillar['bg'] }} rounded-full blur-2xl opacity-60 group-hover:opacity-90 transition-opacity -z-10"></div>
+                
+                <div class="w-14 h-14 {{ $pillar['bg'] }} rounded-xl flex items-center justify-center mb-5 rotate-3 group-hover:rotate-0 transition-transform duration-300 shadow-sm border border-white/50">
+                    <i class="{{ $pillar['icon'] }} {{ $pillar['text_color'] }} text-xl drop-shadow-sm"></i>
                 </div>
-                <h3 style="font-size: 1.1rem; font-family: var(--font-heading); font-weight: 700; color: #0f172a; margin: 0 0 0.6rem;">{{ $pillar['title'] }}</h3>
-                <p style="color: #64748b; font-size: 0.9rem; line-height: 1.7; margin: 0;">{{ $pillar['text'] }}</p>
+                
+                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-800 mb-3 tracking-tight font-heading group-hover:text-slate-900">{{ $pillar['title'] }}</h3>
+                
+                <p class="text-slate-600 text-[0.95rem] leading-relaxed m-0 flex-grow font-medium">{{ $pillar['text'] }}</p>
             </div>
             @endforeach
         </div>
@@ -131,14 +149,14 @@
             ];
         @endphp
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             @foreach($activities as $act)
-            <div style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.4rem; transition: all 0.3s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 18px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                <div style="width: 40px; height: 40px; background: rgba(22,163,74,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem;">
-                    <i class="{{ $act['icon'] }}" style="color: var(--color-primary); font-size: 1rem;"></i>
+            <div class="group bg-white border border-slate-200/60 rounded-2xl p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5 shadow-[0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)]">
+                <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green-600 transition-colors duration-300">
+                    <i class="{{ $act['icon'] }} text-green-600 text-[1.15rem] group-hover:text-white transition-colors duration-300"></i>
                 </div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin: 0 0 0.4rem; font-family: var(--font-heading);">{{ $act['title'] }}</h4>
-                <p style="color: #64748b; font-size: 0.85rem; line-height: 1.6; margin: 0;">{{ $act['desc'] }}</p>
+                <h4 class="text-lg font-bold text-slate-800 mb-2.5 font-heading group-hover:text-green-700 transition-colors duration-300">{{ $act['title'] }}</h4>
+                <p class="text-slate-500 text-[0.9rem] leading-relaxed m-0">{{ $act['desc'] }}</p>
             </div>
             @endforeach
         </div>
@@ -163,31 +181,81 @@
         </div>
         @endif
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @forelse($presidents as $p)
-            <div style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.04); transition: all 0.3s; padding-bottom: 1.3rem;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.04)'">
-                <div style="height: 100px; background: linear-gradient(135deg, #0f172a 0%, #1e3a2f 100%); position: relative; margin-bottom: 50px;">
-                    <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2230%22 height=%2230%22><circle cx=%2215%22 cy=%2215%22 r=%220.4%22 fill=%22rgba(74,222,128,0.08)%22/></svg>');"></div>
-                    <img src="{{ $p->photo ? asset('storage/'.$p->photo) : asset('images/avatar-placeholder.png') }}" alt="{{ $p->name }}" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid white; position: absolute; bottom: -45px; left: 50%; transform: translateX(-50%); object-fit: cover; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($p->name) }}&background=16a34a&color=fff&size=150'">
-                </div>
-                
-                <div style="padding: 0 1.3rem; text-align: center;">
-                    <h3 style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #0f172a; font-family: var(--font-heading);">{{ $p->name }}</h3>
-                    <div style="display: inline-block; background: rgba(22,163,74,0.1); padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--color-primary); margin: 0.5rem 0;">
-                        {{ $p->tenure_start ?? 'Unknown' }} – {{ $p->tenure_end ?? 'Present' }}
+            <div class="group bg-white border border-slate-200 rounded-2xl p-4 transition-all duration-300 hover:border-green-500 hover:-translate-y-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] flex flex-col items-center text-center">
+                <!-- Square Picture -->
+                <div class="w-full aspect-square bg-slate-50 rounded-xl overflow-hidden relative shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] border border-slate-100 mb-4 group">
+                    <img src="{{ $p->photo ? asset('storage/'.$p->photo) : asset('images/avatar-placeholder.png') }}" 
+                         alt="{{ $p->name }}" 
+                         class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110" 
+                         onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($p->name) }}&background=16a34a&color=fff&size=150'">
+
+                    @if($p->email || $p->whatsapp || $p->facebook || $p->x)
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px]">
+                        @if($p->email)
+                        <a href="mailto:{{ $p->email }}" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-red-500 hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
+                            <i class="fa-solid fa-envelope"></i>
+                            <!-- Custom Tooltip -->
+                            <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[0.7rem] font-semibold tracking-wide px-2.5 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-[5px] before:border-transparent before:border-t-slate-900 z-10 translate-y-2 group-hover/icon:translate-y-0">
+                                {{ $p->email }}
+                            </span>
+                        </a>
+                        @endif
+
+                        @if($p->whatsapp)
+                        @php
+                            $waNumber = preg_replace('/[^0-9]/', '', $p->whatsapp);
+                        @endphp
+                        <a href="https://wa.me/{{ $waNumber }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-green-500 hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <!-- Custom Tooltip -->
+                            <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[0.7rem] font-semibold tracking-wide px-2.5 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-[5px] before:border-transparent before:border-t-slate-900 z-10 translate-y-2 group-hover/icon:translate-y-0">
+                                {{ $p->whatsapp }}
+                            </span>
+                        </a>
+                        @endif
+
+                        @php
+                            $facebookUrl = filled($p->facebook)
+                                ? (str_starts_with($p->facebook, 'http') ? $p->facebook : 'https://facebook.com/' . ltrim($p->facebook, '/'))
+                                : null;
+                        @endphp
+                        @if($facebookUrl)
+                        <a href="{{ $facebookUrl }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                            <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[0.7rem] font-semibold tracking-wide px-2.5 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-[5px] before:border-transparent before:border-t-slate-900 z-10 translate-y-2 group-hover/icon:translate-y-0">
+                                {{ $p->facebook }}
+                            </span>
+                        </a>
+                        @endif
+
+                        @php
+                            $xUrl = filled($p->x)
+                                ? (str_starts_with($p->x, 'http') ? $p->x : 'https://x.com/' . ltrim($p->x, '/'))
+                                : null;
+                        @endphp
+                        @if($xUrl)
+                        <a href="{{ $xUrl }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-black hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
+                            <i class="fa-brands fa-x-twitter text-lg"></i>
+                            <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[0.7rem] font-semibold tracking-wide px-2.5 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-[5px] before:border-transparent before:border-t-slate-900 z-10 translate-y-2 group-hover/icon:translate-y-0">
+                                {{ $p->x }}
+                            </span>
+                        </a>
+                        @endif
                     </div>
-                    
-                    @if($p->current_status)
-                        <p style="margin: 0.3rem 0 0; font-size: 0.85rem; color: #475569;">
-                            <i class="fa-solid fa-briefcase" style="color: var(--color-primary); margin-right: 4px; font-size: 0.75rem;"></i> {{ $p->current_status }}
-                        </p>
                     @endif
+                </div>
+
+                <!-- Middle Aligned Content -->
+                <div class="flex flex-col flex-1 w-full items-center justify-start px-2">
+                    <h3 class="m-0 mb-1 text-[1.15rem] font-bold text-slate-800 font-heading group-hover:text-green-600 transition-colors duration-300">{{ $p->name }}</h3>
                     
-                    @if($p->bio)
-                        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.6; border-top: 1px solid #f1f5f9; padding-top: 0.8rem; margin: 0.8rem 0 0;">
-                            {{ $p->bio }}
-                        </p>
-                    @endif
+                    <div class="mb-3">
+                        <span class="inline-block px-2.5 py-0.5 bg-green-50 text-green-700 text-[0.65rem] font-bold uppercase tracking-widest rounded shadow-sm border border-green-200/60">
+                            {{ $p->tenure_start ?? 'Unknown' }} — {{ $p->tenure_end ?? 'Present' }}
+                        </span>
+                    </div>
                 </div>
             </div>
             @empty

@@ -117,7 +117,7 @@ class BulkImportController extends Controller
             'nacos-presidents' => [
                 'label'    => 'NACOS Presidents',
                 'model'    => NacosPresident::class,
-                'columns'  => ['name', 'tenure_start', 'tenure_end', 'bio', 'current_status'],
+                'columns'  => ['name', 'tenure_start', 'tenure_end', 'bio', 'current_status', 'email', 'whatsapp', 'facebook', 'x'],
                 'required' => ['name'],
                 'back'     => 'admin.nacos-presidents.index',
                 'extra'    => null,

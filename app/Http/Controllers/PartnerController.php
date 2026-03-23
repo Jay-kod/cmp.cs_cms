@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Services\MediaOptimizationService;
 
 class PartnerController extends Controller
 {
@@ -30,7 +31,13 @@ class PartnerController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
-            $data['logo'] = $request->file('logo')->store('partners', 'public');
+            $logoFile = $request->file('logo');
+            $data['logo'] = $logoFile->store('partners', 'public');
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['logo'],
+                $logoFile->getClientMimeType()
+            );
         }
 
         if(!$request->has('is_active')) $data['is_active'] = false;
@@ -57,7 +64,13 @@ class PartnerController extends Controller
 
         if ($request->hasFile('logo')) {
             if ($partner->logo) Storage::disk('public')->delete($partner->logo);
-            $data['logo'] = $request->file('logo')->store('partners', 'public');
+            $logoFile = $request->file('logo');
+            $data['logo'] = $logoFile->store('partners', 'public');
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['logo'],
+                $logoFile->getClientMimeType()
+            );
         }
 
         if(!$request->has('is_active')) $data['is_active'] = false;

@@ -11,7 +11,7 @@
 @endphp
 
 {{-- Hero --}}
-<div style="{{ $heroUrl ? "background: linear-gradient(135deg, rgba(15,23,42,0.92), rgba(30,58,138,0.88)), url('{$heroUrl}') center/cover;" : 'background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);' }} color: white; padding: 5rem 0 4rem; text-align: center;">
+<div style="{{ $heroUrl ? "background: linear-gradient(135deg, rgba(16,43,31,0.92), rgba(21,128,61,0.88)), url('{$heroUrl}') center/cover;" : 'background: linear-gradient(135deg, #102b1f 0%, #15803d 100%);' }} color: white; padding: 8rem 0 5rem; text-align: center;">
     <div class="container">
         <h1 style="color: white; font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 800; letter-spacing: -0.5px;">{{ $hs['people_hero_title'] ?? 'Our People' }}</h1>
         @if(!empty($hs['people_hero_subtitle']))
@@ -338,6 +338,7 @@
                 display: flex;
                 align-items: flex-start;
                 gap: 0.7rem;
+                text-align: left;
             }
             .hod-detail-icon {
                 width: 32px;
@@ -448,11 +449,19 @@
                 .hod-name {
                     font-size: 1.35rem;
                 }
+                .hod-rank {
+                    text-align: center;
+                    width: 100%;
+                    display: block;
+                }
                 .hod-info-details {
-                    align-items: center;
+                    align-items: flex-start;
+                    text-align: left;
+                    width: 100%;
                 }
                 .hod-detail-item {
-                    justify-content: center;
+                    justify-content: flex-start;
+                    text-align: left;
                 }
                 .hod-card-actions {
                     flex-direction: column;
@@ -923,3 +932,4 @@ document.addEventListener('DOMContentLoaded', function() {
     updateClearBtn();
 });
 </script>
+

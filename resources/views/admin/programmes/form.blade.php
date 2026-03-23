@@ -35,6 +35,16 @@
                         @endforeach
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-label">Sub-Department</label>
+                    <select name="department_code" class="form-control">
+                        <option value="">— Generic / All —</option>
+                        <option value="cs" {{ old('department_code', $programme->department_code) == 'cs' ? 'selected' : '' }}>Computer Science</option>
+                        <option value="cyb" {{ old('department_code', $programme->department_code) == 'cyb' ? 'selected' : '' }}>Cyber Security</option>
+                        <option value="ds" {{ old('department_code', $programme->department_code) == 'ds' ? 'selected' : '' }}>Data Science</option>
+                    </select>
+                </div>
                 
                 <div class="form-group">
                     <label class="form-label">Level <span style="color: red;">*</span></label>

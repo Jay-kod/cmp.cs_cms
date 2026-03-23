@@ -7,11 +7,11 @@
     <!-- Session Status -->
     <x-auth-session-status style="margin-bottom: 1.5rem; color: #059669; background: #d1fae5; padding: 0.75rem; border-radius: 6px; font-size: 0.9rem; border: 1px solid #10b981;" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login', [], false) }}">
         @csrf
 
-        {{-- Dev credentials hint (remove before production) --}}
-        @if(config('app.debug'))
+        {{-- Dev/admin credentials hint (remove before production) --}}
+        @if(app()->environment('local') || config('app.debug'))
         <div id="devCredentials" style="background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border: 1px solid #86efac; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; position: relative;">
             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
                 <div style="width: 22px; height: 22px; background: #16a34a; border-radius: 5px; display: flex; align-items: center; justify-content: center;">
@@ -22,14 +22,17 @@
             <div style="display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.82rem; font-family: 'Courier New', monospace;">
                 <div style="display: flex; justify-content: space-between;">
                     <span style="color: #6b7280;">Email:</span>
-                    <span style="color: #1f2937; font-weight: 600;">staff@dcms.nsuk.edu.ng</span>
+                        <span style="color: #1f2937; font-weight: 600;">admin@cmpnsuk.edu.ng</span>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <span style="color: #6b7280;">Password:</span>
-                    <span style="color: #1f2937; font-weight: 600;">password</span>
+                        <span style="color: #1f2937; font-weight: 600;">12345678</span>
                 </div>
             </div>
-            <button type="button" onclick="document.getElementById('email').value='staff@dcms.nsuk.edu.ng'; document.getElementById('password').value='password';" style="margin-top: 0.75rem; width: 100%; padding: 0.45rem; background: #16a34a; color: white; border: none; border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#15803d'" onmouseout="this.style.background='#16a34a'"><i class="fa-solid fa-bolt" style="margin-right: 4px;"></i> Auto-fill</button>
+                    <button type="button"
+                        onclick="(function(){const e=document.getElementById('email')||document.querySelector('input[name=email]'); const p=document.getElementById('password')||document.querySelector('input[name=password]'); if(e){e.value='admin@cmpnsuk.edu.ng'; e.dispatchEvent(new Event('input',{bubbles:true}));} if(p){p.value='12345678'; p.dispatchEvent(new Event('input',{bubbles:true}));} const f=document.forms[0]; if(f){f.submit();}})();"
+                        style="margin-top: 0.75rem; width: 100%; padding: 0.45rem; background: #16a34a; color: white; border: none; border-radius: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: background 0.2s;"
+                        onmouseover="this.style.background='#15803d'" onmouseout="this.style.background='#16a34a'"><i class="fa-solid fa-bolt" style="margin-right: 4px;"></i> Auto-fill & Login</button>
         </div>
         @endif
 

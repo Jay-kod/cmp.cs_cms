@@ -20,13 +20,13 @@
                             </div>
                         @endif
                     </div>
-                    <div style="text-align: center; margin-top: 0.8rem;">
+                    <div style="text-align: center; margin-top: 0.8rem; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
                         @if(isset($hod) && $hod)
-                            <p style="margin: 0; font-weight: 700; color: #0f172a; font-size: 0.95rem;">{{ $hod->name }}</p>
-                            <p style="margin: 0; color: var(--color-primary); font-size: 0.82rem;">{{ $hod->rank }}, HOD</p>
+                            <p style="margin: 0; font-weight: 700; color: #0f172a; font-size: 0.95rem; text-align: center; width: 100%;">{{ $hod->name }}</p>
+                            <p style="margin: 0; color: var(--color-primary); font-size: 0.82rem; text-align: center; width: 100%;">{{ $hod->rank }}, HOD</p>
                         @else
-                            <p style="margin: 0; font-weight: 700; color: #0f172a; font-size: 0.95rem;">Head of Department</p>
-                            <p style="margin: 0; color: var(--color-primary); font-size: 0.82rem;">Department of Computer Science</p>
+                            <p style="margin: 0; font-weight: 700; color: #0f172a; font-size: 0.95rem; text-align: center; width: 100%;">Head of Department</p>
+                            <p style="margin: 0; color: var(--color-primary); font-size: 0.82rem; text-align: center; width: 100%;">Department of Computer Science</p>
                         @endif
                     </div>
                 </div>
@@ -49,19 +49,19 @@
 
             <!-- Timeline Milestones -->
             <div class="about-milestones" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 2.5rem;">
-                <div style="text-align: center; padding: 1.5rem; background: #ffffff; border-radius: 14px; border: 1px solid rgba(22, 163, 74, 0.2); box-shadow: 0 4px 15px -3px rgba(22, 163, 74, 0.05);">
+                <div class="hover-lift" style="text-align: center; padding: 1.5rem; background: #ffffff; border-radius: 14px; border: 1px solid rgba(22, 163, 74, 0.2); box-shadow: 0 4px 15px -3px rgba(22, 163, 74, 0.05);">
                     <div class="milestone-year" style="font-size: 2rem; font-weight: 800; color: var(--color-primary); font-family: var(--font-heading);">2003</div>
                     <div style="font-size: 0.85rem; color: #475569; margin-top: 0.3rem; font-weight: 500;">Established as a Unit</div>
                 </div>
-                <div style="text-align: center; padding: 1.5rem; background: #ffffff; border-radius: 14px; border: 1px solid rgba(22, 163, 74, 0.2); box-shadow: 0 4px 15px -3px rgba(22, 163, 74, 0.05);">
+                <div class="hover-lift" style="text-align: center; padding: 1.5rem; background: #ffffff; border-radius: 14px; border: 1px solid rgba(22, 163, 74, 0.2); box-shadow: 0 4px 15px -3px rgba(22, 163, 74, 0.05);">
                     <div class="milestone-year" style="font-size: 2rem; font-weight: 800; color: var(--color-primary); font-family: var(--font-heading);">2017</div>
                     <div style="font-size: 0.85rem; color: #475569; margin-top: 0.3rem; font-weight: 500;">Upgraded to Department</div>
                 </div>
-                <div style="text-align: center; padding: 1.5rem; background: #ffffff; border-radius: 14px; border: 1px solid rgba(22, 163, 74, 0.2); box-shadow: 0 4px 15px -3px rgba(22, 163, 74, 0.05);">
+                <div class="hover-lift" style="text-align: center; padding: 1.5rem; background: #ffffff; border-radius: 14px; border: 1px solid rgba(22, 163, 74, 0.2); box-shadow: 0 4px 15px -3px rgba(22, 163, 74, 0.05);">
                     <div class="milestone-year" style="font-size: 2rem; font-weight: 800; color: var(--color-primary); font-family: var(--font-heading);">2021</div>
                     <div style="font-size: 0.85rem; color: #475569; margin-top: 0.3rem; font-weight: 500;">New Programmes Added</div>
                 </div>
-                <div style="text-align: center; padding: 1.5rem; background: #ffffff; border-radius: 14px; border: 1px solid rgba(22, 163, 74, 0.2); box-shadow: 0 4px 15px -3px rgba(22, 163, 74, 0.05);">
+                <div class="hover-lift" style="text-align: center; padding: 1.5rem; background: #ffffff; border-radius: 14px; border: 1px solid rgba(22, 163, 74, 0.2); box-shadow: 0 4px 15px -3px rgba(22, 163, 74, 0.05);">
                     <div class="milestone-year" style="font-size: 2rem; font-weight: 800; color: var(--color-primary); font-family: var(--font-heading);">11+</div>
                     <div style="font-size: 0.85rem; color: #475569; margin-top: 0.3rem; font-weight: 500;">Academic Programmes</div>
                 </div>

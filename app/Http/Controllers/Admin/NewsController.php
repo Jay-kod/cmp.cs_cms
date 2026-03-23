@@ -7,6 +7,7 @@ use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Services\MediaOptimizationService;
 
 class NewsController extends Controller
 {
@@ -26,6 +27,7 @@ class NewsController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'category' => 'required|string|max:100',
+            'department_code' => 'nullable|string|in:cs,cyb,ds',
             'body' => 'required|string',
             'is_featured' => 'boolean',
             'featured_image' => 'nullable|image|max:2048',
@@ -36,8 +38,14 @@ class NewsController extends Controller
         if(!$request->has('is_featured')) $data['is_featured'] = false;
 
         if ($request->hasFile('featured_image')) {
-            $data['featured_image'] = $request->file('featured_image')->store('public/news_images');
+            $featuredFile = $request->file('featured_image');
+            $data['featured_image'] = $featuredFile->store('public/news_images');
             $data['featured_image'] = str_replace('public/', '', $data['featured_image']);
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['featured_image'],
+                $featuredFile->getClientMimeType()
+            );
         }
 
         News::create($data);
@@ -54,6 +62,7 @@ class NewsController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'category' => 'required|string|max:100',
+            'department_code' => 'nullable|string|in:cs,cyb,ds',
             'body' => 'required|string',
             'is_featured' => 'boolean',
             'featured_image' => 'nullable|image|max:2048',
@@ -68,8 +77,14 @@ class NewsController extends Controller
 
         if ($request->hasFile('featured_image')) {
             if($news->featured_image) Storage::delete('public/'.$news->featured_image);
-            $data['featured_image'] = $request->file('featured_image')->store('public/news_images');
+            $featuredFile = $request->file('featured_image');
+            $data['featured_image'] = $featuredFile->store('public/news_images');
             $data['featured_image'] = str_replace('public/', '', $data['featured_image']);
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['featured_image'],
+                $featuredFile->getClientMimeType()
+            );
         }
 
         $news->update($data);

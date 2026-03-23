@@ -18,6 +18,9 @@ use App\Models\Publication;
 use App\Models\ExternalSystem;
 use App\Models\Partner;
 use App\Models\Page;
+use App\Models\MediaFile;
+use App\Models\MediaDerivative;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -60,7 +63,41 @@ class DashboardController extends Controller
         $recentNews = News::latest()->take(5)->get();
         $upcomingEvents = Event::where('date', '>=', now())->orderBy('date')->take(5)->get();
 
-        return view('super-admin.dashboard', compact('contentStats', 'systemStats', 'recentUsers', 'recentNews', 'upcomingEvents'));
+        // Media optimization analysis (WebP derivatives)
+        $mediaStatusCounts = MediaDerivative::query()
+            ->where('format', 'webp')
+            ->select('status', DB::raw('count(*) as total'))
+            ->groupBy('status')
+            ->pluck('total', 'status');
+
+        $recentMedia = MediaFile::query()
+            ->where('type', 'image')
+            ->orderByDesc('id')
+            ->take(6)
+            ->with(['derivatives' => fn($q) => $q->where('format', 'webp')])
+            ->get();
+
+        $mediaLastConvertedAt = MediaDerivative::query()
+            ->where('format', 'webp')
+            ->where('status', 'ready')
+            ->max('updated_at');
+
+        $mediaLastFailedAt = MediaDerivative::query()
+            ->where('format', 'webp')
+            ->where('status', 'failed')
+            ->max('updated_at');
+
+        return view('super-admin.dashboard', compact(
+            'contentStats',
+            'systemStats',
+            'recentUsers',
+            'recentNews',
+            'upcomingEvents',
+            'mediaStatusCounts',
+            'recentMedia',
+            'mediaLastConvertedAt',
+            'mediaLastFailedAt'
+        ));
     }
 
     /**

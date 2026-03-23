@@ -7,6 +7,7 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Services\MediaOptimizationService;
 
 class EventController extends Controller
 {
@@ -35,8 +36,14 @@ class EventController extends Controller
         $data['slug'] = Str::slug($data['title']) . '-' . time();
 
         if ($request->hasFile('flyer_image')) {
-            $data['flyer_image'] = $request->file('flyer_image')->store('public/event_flyers');
+            $flyerFile = $request->file('flyer_image');
+            $data['flyer_image'] = $flyerFile->store('public/event_flyers');
             $data['flyer_image'] = str_replace('public/', '', $data['flyer_image']);
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['flyer_image'],
+                $flyerFile->getClientMimeType()
+            );
         }
 
         Event::create($data);
@@ -65,8 +72,14 @@ class EventController extends Controller
 
         if ($request->hasFile('flyer_image')) {
             if($event->flyer_image) Storage::delete('public/'.$event->flyer_image);
-            $data['flyer_image'] = $request->file('flyer_image')->store('public/event_flyers');
+            $flyerFile = $request->file('flyer_image');
+            $data['flyer_image'] = $flyerFile->store('public/event_flyers');
             $data['flyer_image'] = str_replace('public/', '', $data['flyer_image']);
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['flyer_image'],
+                $flyerFile->getClientMimeType()
+            );
         }
 
         $event->update($data);

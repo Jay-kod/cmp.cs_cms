@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            SuperAdminSeeder::class,
             DepartmentSeeder::class,
             ProgrammeCategorySeeder::class,
             PageSeeder::class,
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
             SocialLinkSeeder::class,
             CarouselSlideSeeder::class,
             HomepageSampleSeeder::class,
+            ResourceCategorySeeder::class,
         ]);
     }
 }

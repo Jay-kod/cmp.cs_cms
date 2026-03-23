@@ -13,6 +13,10 @@ class NacosPresident extends Model
         'tenure_start',
         'tenure_end',
         'bio',
-        'current_status'
+        'current_status',
+        'email',
+        'whatsapp',
+        'facebook',
+        'x'
     ];
 }

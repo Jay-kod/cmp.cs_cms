@@ -50,6 +50,16 @@
                         </select>
                     </div>
 
+                    <div class="form-group" style="margin-top: 1.5rem;">
+                        <label class="form-label">Sub-Department</label>
+                        <select name="department_code" class="form-control">
+                            <option value="">— Generic / All —</option>
+                            <option value="cs" {{ old('department_code', $news->department_code) == 'cs' ? 'selected' : '' }}>Computer Science</option>
+                            <option value="cyb" {{ old('department_code', $news->department_code) == 'cyb' ? 'selected' : '' }}>Cyber Security</option>
+                            <option value="ds" {{ old('department_code', $news->department_code) == 'ds' ? 'selected' : '' }}>Data Science</option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label class="form-label">Publish Date/Time</label>
                         <input type="datetime-local" name="published_at" value="{{ old('published_at', $news->published_at ? \Carbon\Carbon::parse($news->published_at)->format('Y-m-d\TH:i') : '') }}" class="form-control">

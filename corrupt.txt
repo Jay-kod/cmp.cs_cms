@@ -1,0 +1,3 @@
+resources/views/pages\about-partials\hod-message.blade.php
+resources/views/pages\about-partials\vision-mission-clean.blade.php
+resources/views/pages\home-partials\sub-departments.blade.php

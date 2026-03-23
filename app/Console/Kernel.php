@@ -12,7 +12,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('media:integrity-check --status=all')
+            ->dailyAt('03:00')
+            ->withoutOverlapping();
     }
 
     /**

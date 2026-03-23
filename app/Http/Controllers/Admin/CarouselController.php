@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CarouselSlide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Services\MediaOptimizationService;
 
 class CarouselController extends Controller
 {
@@ -37,7 +38,13 @@ class CarouselController extends Controller
         $validated['overlay_color'] = $validated['overlay_color'] ?: 'rgba(0,0,0,0.5)';
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('carousel', 'public');
+            $imageFile = $request->file('image');
+            $validated['image'] = $imageFile->store('carousel', 'public');
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $validated['image'],
+                $imageFile->getClientMimeType()
+            );
         }
 
         CarouselSlide::create($validated);
@@ -72,7 +79,13 @@ class CarouselController extends Controller
             if ($carousel->image && Storage::disk('public')->exists($carousel->image)) {
                 Storage::disk('public')->delete($carousel->image);
             }
-            $validated['image'] = $request->file('image')->store('carousel', 'public');
+            $imageFile = $request->file('image');
+            $validated['image'] = $imageFile->store('carousel', 'public');
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $validated['image'],
+                $imageFile->getClientMimeType()
+            );
         }
 
         $carousel->update($validated);
@@ -117,11 +130,17 @@ class CarouselController extends Controller
                 }
             }
 
-            $path = $request->file('footer_bg')->store('site', 'public');
+            $footerFile = $request->file('footer_bg');
+            $path = $footerFile->store('site', 'public');
 
             \App\Models\DepartmentSetting::updateOrCreate(
                 ['key' => 'footer_bg_image'],
                 ['value' => $path]
+            );
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $path,
+                $footerFile->getClientMimeType()
             );
 
             return redirect()->route('admin.carousel.footer-bg')
@@ -168,11 +187,17 @@ class CarouselController extends Controller
                     }
                 }
 
-                $path = $request->file($key)->store("site/heroes", 'public');
+                $heroFile = $request->file($key);
+                $path = $heroFile->store("site/heroes", 'public');
 
                 \App\Models\DepartmentSetting::updateOrCreate(
                     ['key' => $key],
                     ['value' => $path]
+                );
+
+                app(MediaOptimizationService::class)->enqueueImageToWebp(
+                    $path,
+                    $heroFile->getClientMimeType()
                 );
             }
         }

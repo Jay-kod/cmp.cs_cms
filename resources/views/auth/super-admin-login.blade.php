@@ -418,7 +418,7 @@
                     <div class="sa-session-status">{{ session('status') }}</div>
                 @endif
 
-                <form method="POST" action="{{ route('super-admin.login') }}">
+                <form method="POST" action="{{ route('super-admin.login', [], false) }}">
                     @csrf
 
                     {{-- Email --}}
@@ -463,8 +463,8 @@
                         <i class="fa-solid fa-shield-halved"></i> Authenticate
                     </button>
 
-                    {{-- Dev credentials hint (remove before production) --}}
-                    @if(config('app.debug'))
+                    {{-- Dev/super-admin credentials hint (remove before production) --}}
+                    @if(app()->environment('local') || config('app.debug'))
                     <div style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid rgba(234,179,8,0.3); border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1.25rem;">
                         <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
                             <div style="width: 22px; height: 22px; background: #eab308; border-radius: 5px; display: flex; align-items: center; justify-content: center;">
@@ -475,14 +475,17 @@
                         <div style="display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.82rem; font-family: 'Courier New', monospace;">
                             <div style="display: flex; justify-content: space-between;">
                                 <span style="color: #94a3b8;">Email:</span>
-                                <span style="color: #f8fafc; font-weight: 600;">admin@dcms.nsuk.edu.ng</span>
+                                <span style="color: #f8fafc; font-weight: 600;">superadmin@cmpnsuk.edu.ng</span>
                             </div>
                             <div style="display: flex; justify-content: space-between;">
                                 <span style="color: #94a3b8;">Password:</span>
-                                <span style="color: #f8fafc; font-weight: 600;">password</span>
+                                <span style="color: #f8fafc; font-weight: 600;">12345678</span>
                             </div>
                         </div>
-                        <button type="button" onclick="document.getElementById('email').value='admin@dcms.nsuk.edu.ng'; document.getElementById('password').value='password';" style="margin-top: 0.75rem; width: 100%; padding: 0.45rem; background: #eab308; color: #0f172a; border: none; border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#ca8a04'" onmouseout="this.style.background='#eab308'"><i class="fa-solid fa-bolt" style="margin-right: 4px;"></i> Auto-fill</button>
+                        <button type="button"
+                            onclick="(function(){const e=document.getElementById('email')||document.querySelector('input[name=email]'); const p=document.getElementById('password')||document.querySelector('input[name=password]'); if(e){e.value='superadmin@cmpnsuk.edu.ng'; e.dispatchEvent(new Event('input',{bubbles:true}));} if(p){p.value='12345678'; p.dispatchEvent(new Event('input',{bubbles:true}));} const f=document.forms[0]; if(f){f.submit();}})();"
+                            style="margin-top: 0.75rem; width: 100%; padding: 0.45rem; background: #eab308; color: #0f172a; border: none; border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: background 0.2s;"
+                            onmouseover="this.style.background='#ca8a04'" onmouseout="this.style.background='#eab308'"><i class="fa-solid fa-bolt" style="margin-right: 4px;"></i> Auto-fill & Login</button>
                     </div>
                     @endif
                 </form>

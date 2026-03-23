@@ -31,6 +31,16 @@
                     <label class="form-label">Date of Event <span style="color: red;">*</span></label>
                     <input type="date" name="date" value="{{ old('date', isset($album) && $album->date ? \Carbon\Carbon::parse($album->date)->format('Y-m-d') : date('Y-m-d')) }}" class="form-control" required>
                 </div>
+                
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label class="form-label">Sub-Department</label>
+                    <select name="department_code" class="form-control">
+                        <option value="">— Generic / All —</option>
+                        <option value="cs" {{ old('department_code', $album->department_code ?? '') == 'cs' ? 'selected' : '' }}>Computer Science</option>
+                        <option value="cyb" {{ old('department_code', $album->department_code ?? '') == 'cyb' ? 'selected' : '' }}>Cyber Security</option>
+                        <option value="ds" {{ old('department_code', $album->department_code ?? '') == 'ds' ? 'selected' : '' }}>Data Science</option>
+                    </select>
+                </div>
             </div>
             
             <div>

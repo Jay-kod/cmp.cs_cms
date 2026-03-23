@@ -114,9 +114,9 @@
             $footerBgPath = $footerBgSetting ? $footerBgSetting->value : 'site/footer-bg.jpg';
             $footerBgUrl = file_exists(storage_path('app/public/' . $footerBgPath)) ? asset('storage/' . $footerBgPath) : '';
         @endphp
-        <div style="position: relative; color: #d1d5db; padding: 3.5rem 0 2.5rem; {{ $footerBgUrl ? "background: url('".$footerBgUrl."') center/cover no-repeat fixed;" : 'background: #111827;' }}">
+        <div style="position: relative; color: #d1d5db; padding: 3.5rem 0 2.5rem; {{ $footerBgUrl ? "background: url('".$footerBgUrl."') center/cover no-repeat fixed;" : 'background: #0D4F26;' }}">
             @if($footerBgUrl)
-            <div style="position: absolute; inset: 0; background: rgba(17,24,39,0.88);"></div>
+            <div style="position: absolute; inset: 0; background: rgba(13,79,38,0.95);"></div>
             @endif
             <div class="container" style="position: relative; z-index: 1;">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem;">
@@ -127,17 +127,17 @@
                             <img src="{{ asset(config('university.logo', 'images/logo.png')) }}" alt="Logo" style="width: 46px; height: 46px; border-radius: 8px; background: white; padding: 3px;" onerror="this.src='https://via.placeholder.com/46?text=Logo'">
                             <div>
                                 <strong style="color: #fff; font-family: var(--font-heading); font-size: 1.05rem; display: block; line-height: 1.2;">{{ config('university.short_name') }}</strong>
-                                <span style="font-size: 0.75rem; color: #9ca3af;">{{ config('university.university') }}</span>
+                                <span style="font-size: 0.75rem; color: #d1d5db;">{{ config('university.university') }}</span>
                             </div>
                         </div>
-                        <p style="font-size: 0.88rem; line-height: 1.7; color: #9ca3af; margin-bottom: 1.2rem;">
+                        <p style="font-size: 0.88rem; line-height: 1.7; color: #d1d5db; margin-bottom: 1.2rem;">
                             {{ config('university.tagline', 'Pioneering Innovation in Computing') }}. Established {{ config('university.established') }}, dedicated to producing world-class computing professionals.
                         </p>
                         <!-- Social Icons -->
                         @php $socialLinks = \App\Models\SocialLink::active()->ordered()->get(); @endphp
                         <div style="display: flex; gap: 0.6rem;">
                             @forelse($socialLinks as $social)
-                            <a href="{{ $social->url }}" target="_blank" rel="noopener noreferrer" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; background: rgba(255,255,255,0.08); color: #9ca3af; font-size: 0.9rem; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.background='var(--color-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.color='#9ca3af'" title="{{ $social->name }}"><i class="{{ $social->icon }}"></i></a>
+                            <a href="{{ $social->url }}" target="_blank" rel="noopener noreferrer" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; background: rgba(255,255,255,0.08); color: #d1d5db; font-size: 0.9rem; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.background='var(--color-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.color='#d1d5db'" title="{{ $social->name }}"><i class="{{ $social->icon }}"></i></a>
                             @empty
                             <span style="font-size: 0.8rem; color: #6b7280;">No social links configured.</span>
                             @endforelse
@@ -151,12 +151,12 @@
                             <span style="position: absolute; bottom: 0; left: 0; width: 30px; height: 2.5px; background: var(--color-primary); border-radius: 2px;"></span>
                         </h4>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem;">
-                            <li><a href="/past-hods" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Past HODs</a></li>
-                            <li><a href="/people" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Faculty & Staff</a></li>
-                            <li><a href="/gallery" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Gallery</a></li>
-                            <li><a href="/nacos-presidents" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>NACOS Presidents</a></li>
-                            <li><a href="/page/student-handbook" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Student Handbook</a></li>
-                            <li><a href="/page/research-innovation" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Research & Innovation</a></li>
+                            <li><a href="/past-hods" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Past HODs</a></li>
+                            <li><a href="/people" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Faculty & Staff</a></li>
+                            <li><a href="/gallery" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Gallery</a></li>
+                            <li><a href="/nacos-presidents" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>NACOS Presidents</a></li>
+                            <li><a href="/page/student-handbook" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Student Handbook</a></li>
+                            <li><a href="/page/research-innovation" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Research & Innovation</a></li>
 
                         </ul>
 
@@ -169,7 +169,7 @@
                         </h4>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem;">
                             @foreach($externalSystems as $extSys)
-                            <li><a href="{{ $extSys->url }}" {{ $extSys->open_in_new_tab ? 'target="_blank" rel="noopener noreferrer"' : '' }} style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="{{ $extSys->icon }}" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>{{ $extSys->name }}</a></li>
+                            <li><a href="{{ $extSys->url }}" {{ $extSys->open_in_new_tab ? 'target="_blank" rel="noopener noreferrer"' : '' }} style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="{{ $extSys->icon }}" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>{{ $extSys->name }}</a></li>
                             @endforeach
                         </ul>
                         @endif
@@ -182,11 +182,11 @@
                             <span style="position: absolute; bottom: 0; left: 0; width: 30px; height: 2.5px; background: var(--color-primary); border-radius: 2px;"></span>
                         </h4>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem;">
-                            <li><a href="/academics#undergraduate-full-time" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>B.Sc. Computer Science</a></li>
-                            <li><a href="/academics#undergraduate-part-time" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Part-Time Programmes</a></li>
-                            <li><a href="/academics#masters" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>M.Sc. Computer Science</a></li>
-                            <li><a href="/academics#phd" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Ph.D. Computer Science</a></li>
-                            <li><a href="/academics#course-structure" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#9ca3af'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Course Structure</a></li>
+                            <li><a href="/academics#undergraduate-full-time" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>B.Sc. Computer Science</a></li>
+                            <li><a href="/academics#undergraduate-part-time" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Part-Time Programmes</a></li>
+                            <li><a href="/academics#masters" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>M.Sc. Computer Science</a></li>
+                            <li><a href="/academics#phd" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Ph.D. Computer Science</a></li>
+                            <li><a href="/academics#course-structure" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#d1d5db'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Course Structure</a></li>
                         </ul>
                     </div>
 
@@ -209,11 +209,11 @@
                             </li>
                             <li style="display: flex; align-items: center; gap: 0.7rem;">
                                 <i class="fa-solid fa-phone" style="color: var(--color-primary); width: 16px; text-align: center;"></i>
-                                <a href="tel:{{ preg_replace('/[^+0-9]/', '', $__ftPhone) }}" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#9ca3af'">{{ $__ftPhone }}</a>
+                                <a href="tel:{{ preg_replace('/[^+0-9]/', '', $__ftPhone) }}" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#d1d5db'">{{ $__ftPhone }}</a>
                             </li>
                             <li style="display: flex; align-items: center; gap: 0.7rem;">
                                 <i class="fa-solid fa-envelope" style="color: var(--color-primary); width: 16px; text-align: center;"></i>
-                                <a href="mailto:{{ $__ftEmail }}" style="color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#9ca3af'">{{ $__ftEmail }}</a>
+                                <a href="mailto:{{ $__ftEmail }}" style="color: #d1d5db; text-decoration: none; font-size: 0.88rem; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#d1d5db'">{{ $__ftEmail }}</a>
                             </li>
                             <li style="display: flex; align-items: center; gap: 0.7rem;">
                                 <i class="fa-solid fa-clock" style="color: var(--color-primary); width: 16px; text-align: center;"></i>
@@ -229,11 +229,11 @@
         <!-- Bottom Bar -->
         <div style="background: #0a0f1a; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.06);">
             <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem;">
-                <p style="margin: 0; font-size: 0.8rem; color: #6b7280;">&copy; {{ date('Y') }} {{ config('university.name') }}, {{ config('university.university') }}. All rights reserved.</p>
+                <p style="margin: 0; font-size: 0.8rem; color: #d1d5db;">&copy; {{ date('Y') }} {{ config('university.name') }}, {{ config('university.university') }}. All rights reserved.</p>
                 <div style="display: flex; gap: 1.2rem;">
-                    <a href="/page/privacy-policy" style="color: #6b7280; font-size: 0.8rem; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#9ca3af'" onmouseout="this.style.color='#6b7280'">Privacy Policy</a>
-                    <a href="/page/terms-of-use" style="color: #6b7280; font-size: 0.8rem; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#9ca3af'" onmouseout="this.style.color='#6b7280'">Terms of Use</a>
-                    <a href="/page/sitemap" style="color: #6b7280; font-size: 0.8rem; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#9ca3af'" onmouseout="this.style.color='#6b7280'">Sitemap</a>
+                    <a href="/page/privacy-policy" style="color: #d1d5db; font-size: 0.8rem; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#d1d5db'">Privacy Policy</a>
+                    <a href="/page/terms-of-use" style="color: #d1d5db; font-size: 0.8rem; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#d1d5db'">Terms of Use</a>
+                    <a href="/page/sitemap" style="color: #d1d5db; font-size: 0.8rem; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#d1d5db'">Sitemap</a>
                 </div>
             </div>
         </div>
@@ -280,13 +280,53 @@
             // Mobile drawer toggle
             const menuBtn = document.getElementById('mobile-menu-btn');
             const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('mobileDrawerOverlay');
+            const closeBtn = document.getElementById('mobile-drawer-close-btn');
             
             if(menuBtn && drawer) {
-                menuBtn.addEventListener('click', () => {
+                const toggleMenu = () => {
                     drawer.classList.toggle('open');
                     menuBtn.classList.toggle('is-active');
+                    if(overlay) overlay.classList.toggle('open');
+                };
+
+                menuBtn.addEventListener('click', toggleMenu);
+                if(overlay) overlay.addEventListener('click', toggleMenu);
+
+                if(closeBtn) {
+                    closeBtn.addEventListener('click', () => {
+                        if(drawer.classList.contains('open')) toggleMenu();
+                    });
+                }
+
+                document.addEventListener('keydown', (e) => {
+                    if(e.key === 'Escape' && drawer.classList.contains('open')) {
+                        toggleMenu();
+                    }
                 });
             }
+            
+            // Accordion for Nav Dropdowns & click outside to close
+            const navDropdowns = document.querySelectorAll('details.nav-dropdown, details.mobile-details');
+            navDropdowns.forEach((targetDetail) => {
+                targetDetail.addEventListener('toggle', (e) => {
+                    if (targetDetail.open) {
+                        navDropdowns.forEach((detail) => {
+                            if (detail !== targetDetail) {
+                                detail.removeAttribute('open');
+                            }
+                        });
+                    }
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('details.nav-dropdown') && !e.target.closest('details.mobile-details') && !e.target.closest('#mobile-menu-btn')) {
+                    navDropdowns.forEach((detail) => {
+                        detail.removeAttribute('open');
+                    });
+                }
+            });
 
             // Back to top button
             const backToTop = document.getElementById('back-to-top');

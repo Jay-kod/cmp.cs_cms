@@ -14,31 +14,31 @@
                 <!-- Chairman -->
                 <div class="about-board-card hover-lift" style="background: linear-gradient(135deg, #064e3b 0%, #065f46 100%); border-radius: 14px; padding: 1.8rem; color: white; text-align: center; position: relative; overflow: hidden; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 20px 40px -12px rgba(6,78,59,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                     <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(16,185,129,0.2), transparent 70%); pointer-events: none;"></div>
-                    <div style="position: relative; z-index: 2;">
+                    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; text-align: center;">
                         <div style="width: 56px; height: 56px; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; color: #a7f3d0; transition: transform 0.3s;" class="board-icon">
                             <i class="fa-solid fa-crown"></i>
                         </div>
-                        <h4 style="margin: 0 0 0.3rem; font-size: 1.15rem; font-weight: 700;">Chairman</h4>
-                        <p style="margin: 0; color: #6ee7b7; font-size: 0.9rem;">Head of Department (HOD)</p>
+                        <h4 style="margin: 0 0 0.3rem; font-size: 1.15rem; font-weight: 700; width: 100%; text-align: center;">Chairman</h4>
+                        <p style="margin: 0; color: #6ee7b7; font-size: 0.9rem; width: 100%; text-align: center;">Head of Department (HOD)</p>
                     </div>
                 </div>
 
                 <!-- Members -->
-                <div class="about-board-card hover-lift" style="background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border-radius: 14px; padding: 1.8rem; text-align: center; border: 1px solid #bbf7d0; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 20px 40px -12px rgba(22,163,74,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div class="about-board-card hover-lift" style="background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border-radius: 14px; padding: 1.8rem; text-align: center; border: 1px solid #bbf7d0; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; align-items: center; justify-content: center;" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 20px 40px -12px rgba(22,163,74,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                     <div style="width: 56px; height: 56px; background: rgba(22,163,74,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; color: var(--color-primary); transition: transform 0.3s;" class="board-icon">
                         <i class="fa-solid fa-users"></i>
                     </div>
-                    <h4 style="margin: 0 0 0.3rem; font-size: 1.15rem; color: #1e293b; font-weight: 700;">Members</h4>
-                    <p style="margin: 0; color: #64748b; font-size: 0.9rem;">All Academic Staff<br><span style="font-size: 0.8rem; color: #94a3b8;">(Except Graduate Assistants)</span></p>
+                    <h4 style="margin: 0 0 0.3rem; font-size: 1.15rem; color: #1e293b; font-weight: 700; width: 100%; text-align: center;">Members</h4>
+                    <p style="margin: 0; color: #64748b; font-size: 0.9rem; width: 100%; text-align: center;">All Academic Staff<br><span style="font-size: 0.8rem; color: #94a3b8;">(Except Graduate Assistants)</span></p>
                 </div>
 
                 <!-- Mandate -->
-                <div style="background: linear-gradient(135deg, #ecfdf5, #d1fae5); border-radius: 14px; padding: 2rem; text-align: center; border: 1px solid #a7f3d0;">
+                <div style="background: linear-gradient(135deg, #ecfdf5, #d1fae5); border-radius: 14px; padding: 2rem; text-align: center; border: 1px solid #a7f3d0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                     <div style="width: 64px; height: 64px; background: rgba(16,185,129,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-size: 1.8rem; color: #059669;">
                         <i class="fa-solid fa-clipboard-check"></i>
                     </div>
-                    <h4 style="margin: 0 0 0.3rem; font-size: 1.15rem; color: #1e293b; font-weight: 700;">Mandate</h4>
-                    <p style="margin: 0; color: #64748b; font-size: 0.9rem;">Course organisation, teaching oversight & examination control</p>
+                    <h4 style="margin: 0 0 0.3rem; font-size: 1.15rem; color: #1e293b; font-weight: 700; width: 100%; text-align: center;">Mandate</h4>
+                    <p style="margin: 0; color: #64748b; font-size: 0.9rem; width: 100%; text-align: center;">Course organisation, teaching oversight & examination control</p>
                 </div>
             </div>
         </section>

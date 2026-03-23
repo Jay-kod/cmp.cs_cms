@@ -59,29 +59,38 @@
             </p>
 
             {{-- Category Quick Nav Cards --}}
-            <div class="acad-cat-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem;">
+            <div class="acad-cat-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem;">
                 @php
                     $catColors = [
                         ['bg' => '#eff6ff', 'border' => '#bfdbfe', 'text' => '#1d4ed8', 'icon' => '#3b82f6'],
                         ['bg' => '#ecfdf5', 'border' => '#a7f3d0', 'text' => '#047857', 'icon' => '#10b981'],
                         ['bg' => '#faf5ff', 'border' => '#ddd6fe', 'text' => '#6d28d9', 'icon' => '#8b5cf6'],
-                        ['bg' => '#fffbeb', 'border' => '#fde68a', 'text' => '#b45309', 'icon' => '#f59e0b']
+                        ['bg' => '#fffbeb', 'border' => '#fde68a', 'text' => '#b45309', 'icon' => '#f59e0b'],
+                        ['bg' => '#f0f9ff', 'border' => '#bae6fd', 'text' => '#2563eb', 'icon' => '#3b82f6']
                     ];
                 @endphp
                 @foreach($categories as $index => $cat)
-                @php $color = $catColors[$index % 4]; @endphp
-                <a href="#{{ $cat->slug }}" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem; background: {{ $color['bg'] }}; padding: 2rem 1.5rem; border-radius: 14px; text-decoration: none; border: 1px solid {{ $color['border'] }}; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-align: center; position: relative; overflow: hidden;"
-                   onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 25px -8px {{ $color['icon'] }}40'"
-                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                    <div style="width: 56px; height: 56px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: {{ $color['icon'] }}; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 0.5rem; position: relative; z-index: 2;">
+                @php $color = $catColors[$index % 5]; @endphp
+                <a href="#{{ $cat->slug }}" style="display: flex; gap: 1.2rem; align-items: flex-start; background: white; padding: 1.5rem; border-radius: 14px; text-decoration: none; border: 1px solid #e2e8f0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;"
+                   onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 25px -5px rgba(0,0,0,0.05)'; this.style.borderColor='{{ $color['border'] }}'"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.02)'; this.style.borderColor='#e2e8f0'">
+                    
+                    {{-- Left Side: Icon --}}
+                    <div style="width: 54px; height: 54px; flex-shrink: 0; background: {{ $color['bg'] }}; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: {{ $color['icon'] }}; border: 1px solid {{ $color['border'] }};">
                         <i class="{{ $cat->icon ?? 'fa-solid fa-graduation-cap' }}"></i>
                     </div>
-                    <strong style="font-size: 1.15rem; color: {{ $color['text'] }}; font-family: var(--font-heading); position: relative; z-index: 2;">{{ $cat->name }}</strong>
-                    <span style="font-size: 0.85rem; color: #64748b; font-weight: 500; background: white; padding: 0.2rem 0.8rem; border-radius: 20px; position: relative; z-index: 2;">
-                        {{ $cat->programmes->count() }} Programme{{ $cat->programmes->count() !== 1 ? 's' : '' }}
-                    </span>
-                    <!-- Decorative BG Icon -->
-                    <i class="{{ $cat->icon ?? 'fa-solid fa-graduation-cap' }}" style="position: absolute; bottom: -10px; right: -10px; font-size: 5rem; color: {{ $color['icon'] }}; opacity: 0.05; transform: rotate(-15deg); pointer-events: none;"></i>
+
+                    {{-- Right Side: Title + Count --}}
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.4rem; padding-top: 0.2rem;">
+                        <strong style="font-size: 1.15rem; color: #1e293b; font-family: var(--font-heading); line-height: 1.3;">{{ $cat->name }}</strong>
+                        
+                        <div style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #64748b; font-weight: 500;">
+                            <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: #f1f5f9; border-radius: 50%; color: {{ $color['icon'] }}; font-size: 0.7rem;">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </span>
+                            {{ $cat->programmes->count() }} Programme{{ $cat->programmes->count() !== 1 ? 's' : '' }}
+                        </div>
+                    </div>
                 </a>
                 @endforeach
             </div>
@@ -97,21 +106,21 @@
                 <p style="color: #cbd5e1; font-size: 1.05rem; max-width: 500px; margin: 0 auto;">Join our vibrant academic community in three simple steps.</p>
             </div>
 
-            <div class="acad-steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; position: relative; z-index: 2;">
-                <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
-                    <div style="width: 48px; height: 48px; background: var(--color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; margin: 0 auto 1rem;">1</div>
-                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.5rem; color: white;">Check Requirements</strong>
-                    <p style="font-size: 0.85rem; color: #94a3b8; margin: 0; line-height: 1.5;">Review the entry requirements for your desired programme under its details below.</p>
+            <div class="acad-steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; position: relative; z-index: 2;">
+                <div class="acad-step-card" style="background: linear-gradient(145deg, rgba(30,41,59,0.7), rgba(15,23,42,0.9)); padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); text-align: center; backdrop-filter: blur(10px); transition: all 0.4s ease; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.3);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(16,185,129,0.4)'; this.style.boxShadow='0 20px 40px -5px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(16,185,129,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.08)'; this.style.boxShadow='0 10px 30px -5px rgba(0,0,0,0.3)'">
+                    <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--color-primary), #047857); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(16,185,129,0.3); border: 2px solid rgba(255,255,255,0.1);">1</div>
+                    <strong style="display: block; font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 0.8rem; color: white;">Check Requirements</strong>
+                    <p style="font-size: 0.95rem; color: #94a3b8; margin: 0; line-height: 1.6;">Review the entry requirements for your desired programme under its details below.</p>
                 </div>
-                <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
-                    <div style="width: 48px; height: 48px; background: var(--color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; margin: 0 auto 1rem;">2</div>
-                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.5rem; color: white;">University Portal</strong>
-                    <p style="font-size: 0.85rem; color: #94a3b8; margin: 0; line-height: 1.5;">Visit the central NSUK admissions portal to purchase forms during the intake window.</p>
+                <div class="acad-step-card" style="background: linear-gradient(145deg, rgba(30,41,59,0.7), rgba(15,23,42,0.9)); padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); text-align: center; backdrop-filter: blur(10px); transition: all 0.4s ease; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.3);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(16,185,129,0.4)'; this.style.boxShadow='0 20px 40px -5px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(16,185,129,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.08)'; this.style.boxShadow='0 10px 30px -5px rgba(0,0,0,0.3)'">
+                    <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--color-primary), #047857); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(16,185,129,0.3); border: 2px solid rgba(255,255,255,0.1);">2</div>
+                    <strong style="display: block; font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 0.8rem; color: white;">University Portal</strong>
+                    <p style="font-size: 0.95rem; color: #94a3b8; margin: 0; line-height: 1.6;">Visit the central NSUK admissions portal to purchase forms during the intake window.</p>
                 </div>
-                <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
-                    <div style="width: 48px; height: 48px; background: var(--color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 800; margin: 0 auto 1rem;">3</div>
-                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.5rem; color: white;">Screening</strong>
-                    <p style="font-size: 0.85rem; color: #94a3b8; margin: 0; line-height: 1.5;">Attend the departmental screening exercise with your credentials.</p>
+                <div class="acad-step-card" style="background: linear-gradient(145deg, rgba(30,41,59,0.7), rgba(15,23,42,0.9)); padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); text-align: center; backdrop-filter: blur(10px); transition: all 0.4s ease; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.3);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(16,185,129,0.4)'; this.style.boxShadow='0 20px 40px -5px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(16,185,129,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.08)'; this.style.boxShadow='0 10px 30px -5px rgba(0,0,0,0.3)'">
+                    <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--color-primary), #047857); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(16,185,129,0.3); border: 2px solid rgba(255,255,255,0.1);">3</div>
+                    <strong style="display: block; font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 0.8rem; color: white;">Screening</strong>
+                    <p style="font-size: 0.95rem; color: #94a3b8; margin: 0; line-height: 1.6;">Attend the departmental screening exercise with your credentials.</p>
                 </div>
             </div>
         </section>
@@ -150,31 +159,34 @@
                          onmouseover="this.style.boxShadow='0 10px 25px -5px rgba(0,0,0,0.05)'"
                          onmouseout="this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.02)'">
                     
-                    <summary style="cursor: pointer; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; list-style: none; user-select: none;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
-                            <h3 style="margin: 0; font-size: 1.25rem; color: #1e293b; font-family: var(--font-heading); line-height: 1.4;">{{ $prog->name }}</h3>
-                            <div class="expand-icon" style="flex-shrink: 0; width: 32px; height: 32px; background: #f1f5f9; color: #64748b; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.3s;">
-                                <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i>
-                            </div>
+                    <summary style="cursor: pointer; padding: 1.5rem; position: relative; list-style: none; user-select: none;">
+                        <div class="expand-icon" style="position: absolute; right: 1.5rem; top: 1.5rem; width: 36px; height: 36px; background: #f8fafc; border: 1px solid #e2e8f0; color: #64748b; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; z-index: 2;">
+                            <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i>
                         </div>
-                        
-                        {{-- Meta Badges --}}
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
-                            @if($prog->level)
-                            <span style="background: rgba(16, 185, 129, 0.1); color: #047857; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(16,185,129,0.2);">
-                                {{ $prog->level }}
-                            </span>
-                            @endif
-                            @if($prog->duration)
-                            <span style="background: #f1f5f9; color: #475569; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; border: 1px solid #e2e8f0; display: flex; align-items: center; gap: 0.4rem;">
-                                <i class="fa-regular fa-clock"></i> {{ $prog->duration }}
-                            </span>
-                            @endif
-                            @if($prog->mode_of_study)
-                            <span style="background: #f1f5f9; color: #475569; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; border: 1px solid #e2e8f0; display: flex; align-items: center; gap: 0.4rem;">
-                                <i class="fa-solid fa-book-open"></i> {{ $prog->mode_of_study }}
-                            </span>
-                            @endif
+
+                        <div style="width: 100%; box-sizing: border-box;">
+                            <div style="padding-right: 3.5rem; margin-bottom: 1rem;">
+                                <h3 style="margin: 0; font-size: 1rem; color: #1d4ed8; background: #eff6ff; font-family: var(--font-heading); line-height: 1.4; padding: 0.4rem 0.8rem; border-radius: 8px; display: inline-block;">{{ $prog->name }}</h3>
+                            </div>
+                            
+                            {{-- Meta Badges --}}
+                            <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 0.35rem; width: 100%;">
+                                @if($prog->level)
+                                <span style="background: rgba(16, 185, 129, 0.1); color: #047857; padding: 0.25rem 0.55rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; border: 1px solid rgba(16,185,129,0.2); white-space: nowrap; flex-shrink: 0; letter-spacing: 0.2px;">
+                                    {{ $prog->level }}
+                                </span>
+                                @endif
+                                @if($prog->duration)
+                                <span style="background: #f8fafc; color: #475569; padding: 0.25rem 0.55rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; border: 1px solid #e2e8f0; display: inline-flex; align-items: center; gap: 0.25rem; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.2px;">
+                                    <i class="fa-regular fa-clock" style="font-size: 0.65rem;"></i> {{ $prog->duration }}
+                                </span>
+                                @endif
+                                @if($prog->mode_of_study)
+                                <span style="background: #f8fafc; color: #475569; padding: 0.25rem 0.55rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; border: 1px solid #e2e8f0; display: inline-flex; align-items: center; gap: 0.25rem; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.2px;">
+                                    <i class="fa-solid fa-book-open" style="font-size: 0.65rem;"></i> {{ $prog->mode_of_study }}
+                                </span>
+                                @endif
+                            </div>
                         </div>
                     </summary>
 
@@ -241,36 +253,38 @@
             <p style="font-size: 1.05rem; color: #475569; margin-bottom: 2.5rem;">Browse the unified curriculum outline showing core and elective courses across different academic levels.</p>
 
             @foreach($courses as $level => $levelCourses)
-            <div style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 2rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
-                <div style="background: linear-gradient(to right, #f8fafc, white); padding: 1.2rem 1.5rem; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; gap: 0.8rem;">
-                    <span style="background: #1e293b; color: white; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">L{{ $level }}</span>
-                    <h3 style="margin: 0; font-size: 1.2rem; color: #1e293b; font-family: var(--font-heading);">Level {{ $level }} Courses</h3>
+            <div style="background: white; border: 1px solid #e2e8f0; border-radius: 16px; margin-bottom: 2.5rem; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01);">
+                <div style="background: #ffffff; padding: 1.5rem 1.8rem; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 1rem;">
+                    <span style="background: #0f172a; color: white; width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.15rem; box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);">L{{ $level }}</span>
+                    <h3 style="margin: 0; font-size: 1.4rem; color: #0f172a; font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.02em;">Level {{ $level }} Courses</h3>
                 </div>
                 <div style="overflow-x: auto;">
                     <table style="width: 100%; border-collapse: collapse; min-width: 650px; text-align: left;">
                         <thead>
-                            <tr style="background: #f1f5f9; color: #475569; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">
-                                <th style="padding: 1rem 1.5rem; font-weight: 600;">Course Code</th>
-                                <th style="padding: 1rem 1.5rem; font-weight: 600;">Course Title</th>
-                                <th style="padding: 1rem 1.5rem; font-weight: 600; text-align: center;">Units</th>
-                                <th style="padding: 1rem 1.5rem; font-weight: 600; text-align: center;">Semester</th>
-                                <th style="padding: 1rem 1.5rem; font-weight: 600; text-align: center;">Type</th>
+                            <tr style="background: #f8fafc; color: #64748b; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
+                                <th style="padding: 1.2rem 1.8rem; font-weight: 700; border-bottom: 1px solid #e2e8f0;">Course Code</th>
+                                <th style="padding: 1.2rem 1.8rem; font-weight: 700; border-bottom: 1px solid #e2e8f0;">Course Title</th>
+                                <th style="padding: 1.2rem 1.8rem; font-weight: 700; text-align: center; border-bottom: 1px solid #e2e8f0;">Units</th>
+                                <th style="padding: 1.2rem 1.8rem; font-weight: 700; text-align: center; border-bottom: 1px solid #e2e8f0;">Semester</th>
+                                <th style="padding: 1.2rem 1.8rem; font-weight: 700; text-align: center; border-bottom: 1px solid #e2e8f0;">Type</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($levelCourses as $index => $course)
-                            <tr class="acad-course-row" data-code="{{ strtolower($course->code) }}" data-coursetitle="{{ strtolower($course->title) }}" style="border-bottom: 1px solid #f1f5f9; background: {{ $index % 2 === 0 ? 'white' : '#fafafb' }}; transition: background 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='{{ $index % 2 === 0 ? 'white' : '#fafafb' }}'">
-                                <td style="padding: 1rem 1.5rem;"><strong style="color: var(--color-primary); font-family: monospace; font-size: 0.95rem; background: rgba(22, 163, 74, 0.08); padding: 0.3rem 0.6rem; border-radius: 6px;">{{ $course->code }}</strong></td>
-                                <td style="padding: 1rem 1.5rem; color: #334155; font-size: 0.95rem;">{{ $course->title }}</td>
-                                <td style="padding: 1rem 1.5rem; text-align: center; color: #64748b; font-weight: 600;">{{ $course->credit_units }}</td>
-                                <td style="padding: 1rem 1.5rem; text-align: center; color: #475569; font-size: 0.9rem;">
-                                    <span style="display: inline-flex; align-items: center; gap: 0.3rem;"><i class="fa-regular {{ strtolower($course->semester) == 'first' ? 'fa-sun' : 'fa-snowflake' }}" style="color: #94a3b8;"></i> {{ $course->semester }}</span>
+                            <tr class="acad-course-row" data-code="{{ strtolower($course->code) }}" data-coursetitle="{{ strtolower($course->title) }}" style="border-bottom: 1px solid #f1f5f9; background: {{ $index % 2 === 0 ? 'white' : '#fafafb' }}; transition: all 0.2s ease;" onmouseover="this.style.background='#f1f5f9'; this.style.transform='translateY(-1px)'" onmouseout="this.style.background='{{ $index % 2 === 0 ? 'white' : '#fafafb' }}'; this.style.transform='translateY(0)'">
+                                <td style="padding: 1.2rem 1.8rem;">
+                                    <strong style="color: var(--color-primary); font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; background: rgba(var(--color-primary-rgb, 37, 99, 235), 0.08); padding: 0.4rem 0.8rem; border-radius: 8px; border: 1px solid rgba(var(--color-primary-rgb, 37, 99, 235), 0.15); font-weight: 700; letter-spacing: 0.5px;">{{ $course->code }}</strong>
                                 </td>
-                                <td style="padding: 1rem 1.5rem; text-align: center;">
+                                <td style="padding: 1.2rem 1.8rem; color: #1e293b; font-size: 1rem; font-weight: 600;">{{ $course->title }}</td>
+                                <td style="padding: 1.2rem 1.8rem; text-align: center; color: #475569; font-weight: 700; font-size: 1rem;">{{ $course->credit_units }}</td>
+                                <td style="padding: 1.2rem 1.8rem; text-align: center; color: #64748b; font-size: 0.95rem; font-weight: 500;">
+                                    <span style="display: inline-flex; align-items: center; gap: 0.4rem; background: white; padding: 0.3rem 0.8rem; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 1px 2px rgba(0,0,0,0.05);"><i class="fa-solid {{ strtolower($course->semester) == 'first' ? 'fa-sun' : 'fa-snowflake' }}" style="color: {{ strtolower($course->semester) == 'first' ? '#f59e0b' : '#38bdf8' }};"></i> {{ $course->semester }}</span>
+                                </td>
+                                <td style="padding: 1.2rem 1.8rem; text-align: center;">
                                     @if($course->is_elective)
-                                        <span style="background: #f1f5f9; color: #64748b; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Elective</span>
+                                        <span style="background: rgba(245, 158, 11, 0.1); color: #b45309; padding: 0.4rem 1rem; border-radius: 30px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border: 1px solid rgba(245, 158, 11, 0.2); letter-spacing: 0.5px;">Elective</span>
                                     @else
-                                        <span style="background: rgba(16, 185, 129, 0.1); color: #047857; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; border: 1px solid rgba(16,185,129,0.2);">Core</span>
+                                        <span style="background: rgba(16, 185, 129, 0.1); color: #047857; padding: 0.4rem 1rem; border-radius: 30px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border: 1px solid rgba(16, 185, 129, 0.2); letter-spacing: 0.5px;">Core</span>
                                     @endif
                                 </td>
                             </tr>

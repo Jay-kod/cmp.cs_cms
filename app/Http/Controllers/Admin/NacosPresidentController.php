@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\NacosPresident;
 use Illuminate\Support\Facades\Storage;
+use App\Services\MediaOptimizationService;
 
 class NacosPresidentController extends Controller
 {
@@ -33,10 +34,20 @@ class NacosPresidentController extends Controller
             'current_status' => 'nullable|string|max:255',
             'bio' => 'nullable|string',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
+            'email' => 'nullable|email|max:255',
+            'whatsapp' => 'nullable|string|max:50',
+            'facebook' => 'nullable|string|max:255',
+            'x' => 'nullable|string|max:255',
         ]);
 
         if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('nacos-presidents', 'public');
+            $photoFile = $request->file('photo');
+            $data['photo'] = $photoFile->store('nacos-presidents', 'public');
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['photo'],
+                $photoFile->getClientMimeType()
+            );
         }
 
         NacosPresident::create($data);
@@ -60,13 +71,23 @@ class NacosPresidentController extends Controller
             'current_status' => 'nullable|string|max:255',
             'bio' => 'nullable|string',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
+            'email' => 'nullable|email|max:255',
+            'whatsapp' => 'nullable|string|max:50',
+            'facebook' => 'nullable|string|max:255',
+            'x' => 'nullable|string|max:255',
         ]);
 
         if ($request->hasFile('photo')) {
             if ($nacos_president->photo) {
                 Storage::disk('public')->delete($nacos_president->photo);
             }
-            $data['photo'] = $request->file('photo')->store('nacos-presidents', 'public');
+            $photoFile = $request->file('photo');
+            $data['photo'] = $photoFile->store('nacos-presidents', 'public');
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['photo'],
+                $photoFile->getClientMimeType()
+            );
         }
 
         $nacos_president->update($data);

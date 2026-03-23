@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -30,12 +31,27 @@ class SuperAdminLoginController extends Controller
             'password' => ['required', 'string'],
         ]);
 
+        // Normalize email to avoid invisible whitespace mismatches.
+        $email = trim((string) $request->input('email'));
+        $password = (string) $request->input('password');
+
         if (! Auth::guard('super_admin')->attempt(
-            $request->only('email', 'password'),
+            ['email' => $email, 'password' => $password],
             $request->boolean('remember')
         )) {
+            $message = trans('auth.failed');
+
+            if (config('app.debug')) {
+                $user = User::where('email', $email)->first();
+                $emailFound = $user ? 'yes' : 'no';
+                $role = $user ? ($user->role ?? 'NULL') : 'n/a';
+                $passwordMatch = $user ? (Hash::check($password, $user->password) ? 'yes' : 'no') : 'n/a';
+
+                $message .= " Debug: email_found={$emailFound}, role={$role}, password_match={$passwordMatch}.";
+            }
+
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => $message,
             ]);
         }
 
@@ -65,6 +81,6 @@ class SuperAdminLoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/super-admin/login');
+        return redirect()->route('super-admin.login.form');
     }
 }

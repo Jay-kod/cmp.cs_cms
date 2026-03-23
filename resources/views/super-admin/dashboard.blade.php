@@ -188,7 +188,7 @@
                     <strong style="color: #334155; font-size: 0.95rem; display: block;">External Systems</strong>
                     <span style="color: #64748b; font-size: 0.85rem;">{{ $systemStats['totalExternalSystems'] }} systems linked</span>
                 </div>
-                <a href="{{ route('admin.external-systems.index') }}" class="btn btn-sm" style="padding: 0.4rem 1rem; border-radius: 6px; background: white; border: 1px solid #cbd5e1; color: #475569; text-decoration: none; font-size: 0.85rem;">
+                <a href="{{ route('super-admin.external-systems.index') }}" class="btn btn-sm" style="padding: 0.4rem 1rem; border-radius: 6px; background: white; border: 1px solid #cbd5e1; color: #475569; text-decoration: none; font-size: 0.85rem;">
                     <i class="fa-solid fa-link"></i> Manage
                 </a>
             </div>
@@ -211,21 +211,21 @@
                     <span style="font-size: 0.85rem; font-weight: 600; color: #991b1b;">Add User</span>
                 </a>
 
-                <a href="{{ route('admin.news.create') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(22,163,74,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                <a href="{{ route('super-admin.news.create') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(22,163,74,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
                     <div style="width: 36px; height: 36px; background: #16a34a; color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">
                         <i class="fa-solid fa-newspaper"></i>
                     </div>
                     <span style="font-size: 0.85rem; font-weight: 600; color: #15803d;">Add News</span>
                 </a>
 
-                <a href="{{ route('admin.events.create') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(59,130,246,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                <a href="{{ route('super-admin.events.create') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(59,130,246,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
                     <div style="width: 36px; height: 36px; background: #3b82f6; color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">
                         <i class="fa-solid fa-calendar-plus"></i>
                     </div>
                     <span style="font-size: 0.85rem; font-weight: 600; color: #2563eb;">Add Event</span>
                 </a>
 
-                <a href="{{ route('admin.staff.create') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                <a href="{{ route('super-admin.staff.create') }}" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 10px; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
                     <div style="width: 36px; height: 36px; background: #7c3aed; color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">
                         <i class="fa-solid fa-user-plus"></i>
                     </div>
@@ -299,7 +299,7 @@
             <h3 class="panel-title">
                 <i class="fa-solid fa-newspaper" style="color: #16a34a;"></i> Recent News
             </h3>
-            <a href="{{ route('admin.news.create') }}" class="btn btn-sm panel-new-btn"><i class="fa-solid fa-plus"></i> New</a>
+            <a href="{{ route('super-admin.news.create') }}" class="btn btn-sm panel-new-btn"><i class="fa-solid fa-plus"></i> New</a>
         </div>
         <div class="panel-body">
             @forelse($recentNews as $news)
@@ -309,7 +309,7 @@
                 </div>
                 <div class="item-content">
                     <h4 class="item-title">
-                        <a href="{{ route('admin.news.edit', $news) }}" class="item-link">{{ $news->title }}</a>
+                        <a href="{{ route('super-admin.news.edit', $news) }}" class="item-link">{{ $news->title }}</a>
                     </h4>
                     <div class="item-meta">
                         <span><i class="fa-regular fa-clock"></i> {{ $news->published_at ? \Carbon\Carbon::parse($news->published_at)->diffForHumans() : 'Draft' }}</span>
@@ -324,7 +324,7 @@
             @endforelse
         </div>
         <div class="panel-footer">
-            <a href="{{ route('admin.news.index') }}" class="panel-view-all">
+            <a href="{{ route('super-admin.news.index') }}" class="panel-view-all">
                 View All News <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
@@ -336,7 +336,7 @@
             <h3 class="panel-title">
                 <i class="fa-regular fa-calendar-check" style="color: #3b82f6;"></i> Upcoming Events
             </h3>
-            <a href="{{ route('admin.events.create') }}" class="btn btn-sm panel-new-btn"><i class="fa-solid fa-plus"></i> New</a>
+            <a href="{{ route('super-admin.events.create') }}" class="btn btn-sm panel-new-btn"><i class="fa-solid fa-plus"></i> New</a>
         </div>
         <div class="panel-body">
             @forelse($upcomingEvents as $event)
@@ -347,7 +347,7 @@
                 </div>
                 <div class="item-content">
                     <h4 class="item-title">
-                        <a href="{{ route('admin.events.edit', $event) }}" class="item-link">{{ $event->title }}</a>
+                        <a href="{{ route('super-admin.events.edit', $event) }}" class="item-link">{{ $event->title }}</a>
                     </h4>
                     <div class="item-meta">
                         <span><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::parse($event->time ?? $event->date)->format('h:i A') }}</span>
@@ -366,9 +366,111 @@
             @endforelse
         </div>
         <div class="panel-footer">
-            <a href="{{ route('admin.events.index') }}" class="panel-view-all">
+            <a href="{{ route('super-admin.events.index') }}" class="panel-view-all">
                 View All Events <i class="fa-solid fa-arrow-right"></i>
             </a>
+        </div>
+    </div>
+
+    <!-- Media Optimization Panel -->
+    <div class="admin-card dashboard-panel">
+        <div class="panel-header">
+            <h3 class="panel-title">
+                <i class="fa-solid fa-image" style="color: #10b981;"></i> Media Optimization (WebP)
+            </h3>
+            <a href="{{ route('super-admin.media-optimization.index') }}" class="btn btn-sm panel-new-btn">
+                <i class="fa-solid fa-magnifying-glass"></i> Analyze
+            </a>
+        </div>
+
+        <div class="panel-body">
+            @php
+                $pending = $mediaStatusCounts['pending'] ?? 0;
+                $processing = $mediaStatusCounts['processing'] ?? 0;
+                $ready = $mediaStatusCounts['ready'] ?? 0;
+                $failed = $mediaStatusCounts['failed'] ?? 0;
+            @endphp
+
+            <div style="margin-bottom: 0.75rem; padding: 0.75rem 0.85rem; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0;">
+                <div style="font-weight: 800; color: #334155; font-size: 0.9rem; margin-bottom: 0.25rem;">
+                    <i class="fa-solid fa-clock-rotate-left" style="margin-right: 0.35rem; color: var(--color-primary);"></i>
+                    Last WebP Conversion
+                </div>
+                <div style="color: #64748b; font-size: 0.88rem;">
+                    {{ isset($mediaLastConvertedAt) && $mediaLastConvertedAt ? \Carbon\Carbon::parse($mediaLastConvertedAt)->diffForHumans() : '—' }}
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1rem; padding: 0.75rem 0.85rem; border-radius: 10px; background: #fef2f2; border: 1px solid #fecaca;">
+                <div style="font-weight: 800; color: #7f1d1d; font-size: 0.9rem; margin-bottom: 0.25rem;">
+                    <i class="fa-solid fa-triangle-exclamation" style="margin-right: 0.35rem; color: #dc2626;"></i>
+                    Last WebP Failure
+                </div>
+                <div style="color: #7f1d1d; font-size: 0.88rem;">
+                    {{ isset($mediaLastFailedAt) && $mediaLastFailedAt ? \Carbon\Carbon::parse($mediaLastFailedAt)->diffForHumans() : '—' }}
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-bottom: 1rem;">
+                <div class="admin-card" style="padding: 0.85rem; background: #fffbeb; border: 1px solid #fde68a;">
+                    <div style="font-weight: 800; color: #d97706;">Pending</div>
+                    <div style="font-size: 1.5rem; font-weight: 900; color: #b45309;">{{ $pending }}</div>
+                </div>
+                <div class="admin-card" style="padding: 0.85rem; background: #f0f9ff; border: 1px solid #bae6fd;">
+                    <div style="font-weight: 800; color: #0ea5e9;">Processing</div>
+                    <div style="font-size: 1.5rem; font-weight: 900; color: #0369a1;">{{ $processing }}</div>
+                </div>
+                <div class="admin-card" style="padding: 0.85rem; background: #ecfdf5; border: 1px solid #bbf7d0;">
+                    <div style="font-weight: 800; color: #10b981;">Ready</div>
+                    <div style="font-size: 1.5rem; font-weight: 900; color: #059669;">{{ $ready }}</div>
+                </div>
+                <div class="admin-card" style="padding: 0.85rem; background: #fef2f2; border: 1px solid #fecaca;">
+                    <div style="font-weight: 800; color: #ef4444;">Failed</div>
+                    <div style="font-size: 1.5rem; font-weight: 900; color: #dc2626;">{{ $failed }}</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 0.75rem;">
+                <h4 style="margin: 0 0 0.75rem; font-size: 0.95rem; color: #334155;">
+                    <i class="fa-solid fa-clock-rotate-left" style="margin-right: 0.35rem;"></i>
+                    Recent WebP Conversions
+                </h4>
+
+                @forelse($recentMedia as $media)
+                    @php
+                        $readyCount = $media->derivatives->where('status', 'ready')->count();
+                        $failedCount = $media->derivatives->where('status', 'failed')->count();
+                    @endphp
+                    <div class="panel-list-item" style="margin-bottom: 0.75rem;">
+                        <div class="news-list-icon" style="background: rgba(16,185,129,0.08); color: #0f172a;">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <div class="item-content">
+                            <h4 class="item-title" style="margin: 0 0 0.25rem;">
+                                Media #{{ $media->id }}
+                            </h4>
+                            <div class="item-meta">
+                                <span>
+                                    <i class="fa-solid fa-check-circle" style="color: #10b981;"></i>
+                                    {{ $readyCount }}/3 ready
+                                </span>
+                                @if($failedCount > 0)
+                                    <span class="meta-dot"></span>
+                                    <span style="color: #ef4444; font-weight: 700;">{{ $failedCount }} failed</span>
+                                @endif
+                            </div>
+                            <div style="color: #6b7280; font-size: 0.82rem; margin-top: 0.35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                {{ $media->original_path }}
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="panel-empty-state">
+                        <i class="fa-solid fa-file-image panel-empty-icon"></i>
+                        <p class="panel-empty-text">No media conversion data yet.</p>
+                    </div>
+                @endforelse
+            </div>
         </div>
     </div>
 </div>

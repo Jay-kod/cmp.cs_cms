@@ -8,6 +8,7 @@ use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Services\MediaOptimizationService;
 
 class StaffController extends Controller
 {
@@ -52,8 +53,15 @@ class StaffController extends Controller
         if(!isset($data['status'])) $data['status'] = 'Tenure';
 
         if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('public/staff_photos');
+            $photoFile = $request->file('photo');
+            $data['photo'] = $photoFile->store('public/staff_photos');
             $data['photo'] = str_replace('public/', '', $data['photo']);
+
+            // Enqueue WebP optimization in the background.
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['photo'],
+                $photoFile->getClientMimeType()
+            );
         }
 
         if($data['is_hod']) {
@@ -103,8 +111,15 @@ class StaffController extends Controller
 
         if ($request->hasFile('photo')) {
             if($staff->photo) Storage::delete('public/'.$staff->photo);
-            $data['photo'] = $request->file('photo')->store('public/staff_photos');
+            $photoFile = $request->file('photo');
+            $data['photo'] = $photoFile->store('public/staff_photos');
             $data['photo'] = str_replace('public/', '', $data['photo']);
+
+            // Enqueue WebP optimization in the background.
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['photo'],
+                $photoFile->getClientMimeType()
+            );
         }
 
         if($data['is_hod'] && !$staff->is_hod) {

@@ -10,30 +10,39 @@
             
             <div class="blog-events-list" style="display: flex; flex-direction: column; gap: 1.2rem;">
                 @forelse($events as $event)
-                <div class="blog-event-card" style="display: flex; background: white; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; align-items: stretch; flex-wrap: wrap;"
-                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 25px -8px rgba(0,0,0,0.08)'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div class="blog-event-card" style="display: flex; background: white; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); align-items: stretch; flex-wrap: wrap;"
+                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 15px 30px -10px rgba(0,0,0,0.1)'; this.style.borderColor='#cbd5e1'"
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.03)'; this.style.borderColor='#e2e8f0'">
                     
                     <!-- Date Box -->
-                    <div class="blog-event-date" style="background: linear-gradient(135deg, var(--color-primary), #047857); color: white; padding: 1.5rem 2rem; text-align: center; display: flex; flex-direction: column; justify-content: center; min-width: 120px;">
-                        <span style="font-size: 1rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; color: #a7f3d0;">{{ \Carbon\Carbon::parse($event->date)->format('M') }}</span>
-                        <span style="font-size: 2.8rem; font-weight: 800; line-height: 1; margin: 0.2rem 0; font-family: var(--font-heading);">{{ \Carbon\Carbon::parse($event->date)->format('d') }}</span>
-                        <span style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">{{ \Carbon\Carbon::parse($event->date)->format('Y') }}</span>
+                    <div class="blog-event-date" style="background: linear-gradient(135deg, var(--color-primary), #047857); color: white; padding: 1.5rem 2rem; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; min-width: 140px; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -10px; right: -15px; opacity: 0.1; font-size: 5.5rem;">
+                            <i class="fa-regular fa-calendar"></i>
+                        </div>
+                        <span style="font-size: 1.15rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1.5px; color: rgba(255,255,255,0.9); z-index: 1;">{{ \Carbon\Carbon::parse($event->date)->format('M') }}</span>
+                        <span style="font-size: 3.2rem; font-weight: 800; line-height: 1; margin: 0.3rem 0; font-family: var(--font-heading); z-index: 1;">{{ \Carbon\Carbon::parse($event->date)->format('d') }}</span>
+                        <span style="font-size: 1.05rem; color: rgba(255,255,255,0.8); font-weight: 600; z-index: 1;">{{ \Carbon\Carbon::parse($event->date)->format('Y') }}</span>
                     </div>
 
                     <!-- Details Box -->
-                    <div class="blog-event-details" style="padding: 1.5rem 1.8rem; flex: 1; min-width: 250px;">
-                        <h3 style="margin: 0 0 0.5rem; font-size: 1.3rem; color: #1e293b; font-family: var(--font-heading);">{{ $event->title }}</h3>
-                        <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6; margin: 0 0 1rem;">{{ $event->description }}</p>
+                    <div class="blog-event-details" style="padding: 1.8rem 2rem; flex: 1; min-width: 250px; display: flex; flex-direction: column; justify-content: center;">
+                        <h3 style="margin: 0 0 0.6rem; font-size: 1.35rem; color: #0f172a; font-family: var(--font-heading); font-weight: 800; line-height: 1.35;">{{ $event->title }}</h3>
+                        <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6; margin: 0 0 1.2rem;">{{ $event->description }}</p>
                         
-                        <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; color: #475569; font-size: 0.9rem; font-weight: 500;">
-                            <span style="display: flex; align-items: center; gap: 0.4rem; background: #f1f5f9; padding: 0.4rem 0.8rem; border-radius: 8px;">
-                                <i class="fa-regular fa-clock" style="color: var(--color-primary);"></i> {{ \Carbon\Carbon::parse($event->date)->format('h:i A') }}
-                            </span>
+                        <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+                            <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.4rem 1rem 0.4rem 0.4rem; border-radius: 50px;">
+                                <div style="width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+                                    <i class="fa-solid fa-clock" style="color: #10b981; font-size: 0.85rem;"></i>
+                                </div>
+                                <span style="font-size: 0.9rem; font-weight: 600; color: #334155;">{{ \Carbon\Carbon::parse($event->date)->format('h:i A') }}</span>
+                            </div>
                             @if($event->venue)
-                            <span style="display: flex; align-items: center; gap: 0.4rem; background: #f1f5f9; padding: 0.4rem 0.8rem; border-radius: 8px;">
-                                <i class="fa-solid fa-location-dot" style="color: #ef4444;"></i> {{ $event->venue }}
-                            </span>
+                            <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.4rem 1rem 0.4rem 0.4rem; border-radius: 50px;">
+                                <div style="width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+                                    <i class="fa-solid fa-location-dot" style="color: #ef4444; font-size: 0.85rem;"></i>
+                                </div>
+                                <span style="font-size: 0.9rem; font-weight: 600; color: #334155;">{{ $event->venue }}</span>
+                            </div>
                             @endif
                         </div>
                     </div>

@@ -5,6 +5,8 @@ namespace App\Http\Requests\Auth;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -41,11 +43,26 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        // Normalize email to avoid invisible whitespace mismatches.
+        $email = trim((string) $this->input('email'));
+        $password = (string) $this->input('password');
+
+        if (! Auth::attempt(['email' => $email, 'password' => $password], $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
+            $message = trans('auth.failed');
+
+            if (config('app.debug')) {
+                $user = User::where('email', $email)->first();
+                $emailFound = $user ? 'yes' : 'no';
+                $role = $user ? ($user->role ?? 'NULL') : 'n/a';
+                $passwordMatch = $user ? (Hash::check($password, $user->password) ? 'yes' : 'no') : 'n/a';
+
+                $message .= " Debug: email_found={$emailFound}, role={$role}, password_match={$passwordMatch}.";
+            }
+
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => $message,
             ]);
         }
 

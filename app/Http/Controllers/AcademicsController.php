@@ -11,15 +11,12 @@ class AcademicsController extends Controller
 {
     public function index()
     {
-        $categories = ProgrammeCategory::active()
-            ->ordered()
-            ->with(['programmes' => function ($q) {
-                $q->where('is_active', true)->orderBy('sort_order');
-            }])
+        $programmes = Programme::with('category')
+            ->where('is_active', true)
             ->get();
 
         $courses = Course::with('programme')->orderBy('semester')->get()->groupBy('level');
 
-        return view('pages.academics', compact('categories', 'courses'));
+        return view('pages.academics', compact('programmes', 'courses'));
     }
 }

@@ -1,0 +1,11 @@
+node_modules
+vendor
+storage
+bootstrap/cache
+.env
+*.bat
+*.py
+current_show_blade.txt
+people-bkp.txt
+.vscode
+

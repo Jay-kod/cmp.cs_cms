@@ -27,6 +27,9 @@ class CarouselSlide extends Model
 
     public function getImageUrlAttribute()
     {
+        if ($this->image && str_starts_with($this->image, 'http')) {
+            return $this->image;
+        }
         if ($this->image && file_exists(storage_path('app/public/' . $this->image))) {
             return asset('storage/' . $this->image);
         }

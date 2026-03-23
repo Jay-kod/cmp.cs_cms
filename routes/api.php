@@ -44,6 +44,17 @@ Route::get('/content-updated', function () {
 });
 
 Route::get('/search', function (Request $request) {
+    $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+        'q' => 'nullable|string|max:100',
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'message' => 'The given data was invalid.',
+            'errors' => $validator->errors(),
+        ], 422);
+    }
+
     $q = $request->input('q', '');
     if (strlen($q) < 2) {
         return response()->json(['results' => []]);

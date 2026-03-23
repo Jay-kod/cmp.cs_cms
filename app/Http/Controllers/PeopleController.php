@@ -10,6 +10,9 @@ class PeopleController extends Controller
     public function index(Request $request)
     {
         $hod = Staff::where('is_hod', true)->with('courses')->first();
+        
+        $query = Staff::orderBy('sort_order');
+
         // Search filter
         if ($search = $request->query('search')) {
             $query->where(function ($q) use ($search) {
@@ -32,9 +35,17 @@ class PeopleController extends Controller
 
     public function search(Request $request)
     {
+        $validated = $request->validate([
+            'search' => 'nullable|string|max:100',
+            'status' => 'nullable|in:Tenure,Visiting,Sabbatical',
+        ]);
+
+        $search = $validated['search'] ?? null;
+        $status = $validated['status'] ?? null;
+
         $query = Staff::orderByDesc('is_hod')->orderBy('sort_order');
 
-        if ($search = $request->query('search')) {
+        if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
                   ->orWhere('rank', 'like', "%{$search}%")
@@ -43,13 +54,13 @@ class PeopleController extends Controller
             });
         }
 
-        if ($status = $request->query('status')) {
+        if ($status) {
             $query->where('status', $status);
         }
 
         $staff = $query->with('courses')->get();
         $hod = Staff::where('is_hod', true)->first();
-        $isFiltering = $request->query('search') || $request->query('status');
+        $isFiltering = $search || $status;
 
         return response()->json([
             'staff' => $staff->map(function ($member) use ($hod, $isFiltering) {

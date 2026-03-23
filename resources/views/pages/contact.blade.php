@@ -103,23 +103,22 @@
 .contact-info-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
+    gap: 1.2rem;
     margin-bottom: 2.5rem;
 }
 .contact-info-card {
     background: white;
     border-radius: 16px;
-    padding: 1.8rem 1.4rem 1.6rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.04);
-    border: 1px solid #f1f5f9;
-    border-top: 3px solid var(--card-accent, #e2e8f0);
+    padding: 1.5rem 1.2rem;
+    box-shadow: 0 8px 24px -5px rgba(0,0,0,0.04);
+    border: 1px solid #e2e8f0;
+    border-top: 4px solid var(--card-accent, #e2e8f0);
     text-align: center;
-    transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1), border-color 0.3s ease;
+    transition: all 0.3s ease;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: pointer;
     position: relative;
     overflow: hidden;
 }
@@ -127,51 +126,52 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, var(--card-accent, transparent) 0%, transparent 60%);
+    background: linear-gradient(180deg, var(--card-accent, transparent) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.3s ease;
     border-radius: inherit;
+    pointer-events: none;
 }
 .contact-info-card:hover::before { opacity: 0.04; }
 .contact-info-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.04);
-    border-top-color: var(--card-accent, #e2e8f0);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px -8px rgba(0,0,0,0.08);
 }
 .info-card-icon {
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.1rem;
-    font-size: 1.25rem;
-    transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s ease;
+    margin: 0 auto 1rem;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
     position: relative;
     z-index: 1;
 }
 .contact-info-card:hover .info-card-icon {
-    transform: scale(1.12) translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 6px 14px -4px var(--card-accent, rgba(0,0,0,0.1));
 }
 .info-card-title {
     font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 0.95rem;
-    margin: 0 0 0.45rem;
-    color: #1e293b;
+    font-weight: 800;
+    font-size: 1.05rem;
+    margin: 0 0 0.4rem;
+    color: #0f172a;
     position: relative;
     z-index: 1;
     letter-spacing: -0.01em;
 }
 .info-card-text {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: #64748b;
     margin: 0;
-    line-height: 1.55;
+    line-height: 1.5;
     position: relative;
     z-index: 1;
+    font-weight: 500;
 }
 
 /* Main Layout */

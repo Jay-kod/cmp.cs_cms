@@ -65,6 +65,28 @@
                     <label class="form-label">Current Status / Location</label>
                     <input type="text" name="current_status" value="{{ old('current_status', $president->current_status) }}" class="form-control" placeholder="e.g. Graduated, Working at XYZ">
                 </div>
+                
+                <h3 style="margin-top: 2rem; font-size: 0.95rem; color: #374151; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1rem;">Contact Info (Optional)</h3>
+                
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-solid fa-envelope" style="color: #6b7280; margin-right: 5px;"></i> Gmail Address</label>
+                    <input type="email" name="email" value="{{ old('email', $president->email) }}" class="form-control" placeholder="e.g. president@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label"><i class="fa-brands fa-whatsapp" style="color: #25D366; margin-right: 5px;"></i> WhatsApp Number</label>
+                    <input type="text" name="whatsapp" value="{{ old('whatsapp', $president->whatsapp) }}" class="form-control" placeholder="e.g. +2348012345678">
+                </div>
+
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label class="form-label"><i class="fa-brands fa-facebook-f" style="color: #3b82f6; margin-right: 5px;"></i> Facebook URL</label>
+                    <input type="text" name="facebook" value="{{ old('facebook', $president->facebook) }}" class="form-control" placeholder="e.g. https://facebook.com/yourpage">
+                </div>
+
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label class="form-label"><i class="fa-brands fa-x-twitter" style="color: #111827; margin-right: 5px;"></i> X (Twitter) URL</label>
+                    <input type="text" name="x" value="{{ old('x', $president->x) }}" class="form-control" placeholder="e.g. https://x.com/yourhandle">
+                </div>
             </div>
             
         </div>

@@ -8,6 +8,7 @@ use App\Models\GalleryImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Services\MediaOptimizationService;
 
 class GalleryController extends Controller
 {
@@ -30,6 +31,7 @@ class GalleryController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'date' => 'required|date',
+            'department_code' => 'nullable|string|in:cs,cyb,ds',
             'cover_image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
             'images.*' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:5120',
         ]);
@@ -37,8 +39,14 @@ class GalleryController extends Controller
         $data['slug'] = Str::slug($data['title']) . '-' . time();
 
         if ($request->hasFile('cover_image')) {
-            $data['cover_image'] = $request->file('cover_image')->store('public/gallery_covers');
+            $coverFile = $request->file('cover_image');
+            $data['cover_image'] = $coverFile->store('public/gallery_covers');
             $data['cover_image'] = str_replace('public/', '', $data['cover_image']);
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['cover_image'],
+                $coverFile->getClientMimeType()
+            );
         }
 
         $album = GalleryAlbum::create($data);
@@ -47,11 +55,17 @@ class GalleryController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
                 $path = $file->store('public/gallery_images');
+                $relativePath = str_replace('public/', '', $path);
                 GalleryImage::create([
                     'album_id' => $album->id,
-                    'image_path' => str_replace('public/', '', $path),
+                    'image_path' => $relativePath,
                     'caption' => null
                 ]);
+
+                app(MediaOptimizationService::class)->enqueueImageToWebp(
+                    $relativePath,
+                    $file->getClientMimeType()
+                );
             }
         }
 
@@ -69,6 +83,7 @@ class GalleryController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'date' => 'required|date',
+            'department_code' => 'nullable|string|in:cs,cyb,ds',
             'cover_image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
             'images.*' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:5120',
         ]);
@@ -79,8 +94,14 @@ class GalleryController extends Controller
 
         if ($request->hasFile('cover_image')) {
             if($gallery->cover_image) Storage::delete('public/'.$gallery->cover_image);
-            $data['cover_image'] = $request->file('cover_image')->store('public/gallery_covers');
+            $coverFile = $request->file('cover_image');
+            $data['cover_image'] = $coverFile->store('public/gallery_covers');
             $data['cover_image'] = str_replace('public/', '', $data['cover_image']);
+
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['cover_image'],
+                $coverFile->getClientMimeType()
+            );
         }
 
         $gallery->update($data);
@@ -89,11 +110,17 @@ class GalleryController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
                 $path = $file->store('public/gallery_images');
+                $relativePath = str_replace('public/', '', $path);
                 GalleryImage::create([
                     'album_id' => $gallery->id,
-                    'image_path' => str_replace('public/', '', $path),
+                    'image_path' => $relativePath,
                     'caption' => null
                 ]);
+
+                app(MediaOptimizationService::class)->enqueueImageToWebp(
+                    $relativePath,
+                    $file->getClientMimeType()
+                );
             }
         }
 

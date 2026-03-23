@@ -16,10 +16,10 @@ class SuperAdminSeeder extends Seeder
     {
         // ── Super Admin ──
         User::updateOrCreate(
-            ['email' => 'admin@dcms.nsuk.edu.ng'],
+            ['email' => 'superadmin@cmpnsuk.edu.ng'],
             [
                 'name'              => 'Super Admin',
-                'password'          => Hash::make('password'),
+                'password'          => Hash::make('12345678'),
                 'is_admin'          => true,
                 'role'              => User::ROLE_SUPER_ADMIN,
                 'email_verified_at' => now(),
@@ -28,10 +28,10 @@ class SuperAdminSeeder extends Seeder
 
         // ── Regular Admin ──
         User::updateOrCreate(
-            ['email' => 'staff@dcms.nsuk.edu.ng'],
+            ['email' => 'admin@cmpnsuk.edu.ng'],
             [
                 'name'              => 'Admin User',
-                'password'          => Hash::make('password'),
+                'password'          => Hash::make('12345678'),
                 'is_admin'          => true,
                 'role'              => User::ROLE_ADMIN,
                 'email_verified_at' => now(),
@@ -42,8 +42,8 @@ class SuperAdminSeeder extends Seeder
         $this->command->info('  ┌───────────────────────────────────────────────────────┐');
         $this->command->info('  │  SEEDED USERS                                        │');
         $this->command->info('  ├───────────────────────────────────────────────────────┤');
-        $this->command->info('  │  Super Admin: admin@dcms.nsuk.edu.ng / password       │');
-        $this->command->info('  │  Admin:       staff@dcms.nsuk.edu.ng / password       │');
+        $this->command->info('  │  Super Admin: superadmin@cmpnsuk.edu.ng / 12345678 │');
+        $this->command->info('  │  Admin:       admin@cmpnsuk.edu.ng / 12345678      │');
         $this->command->info('  └───────────────────────────────────────────────────────┘');
         $this->command->info('');
     }

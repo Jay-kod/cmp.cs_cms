@@ -23,6 +23,8 @@
 
 @include('pages.home-partials.news-events')
 
+@include('pages.home-partials.timetable')
+
 @include('pages.home-partials.partners')
 
 @include('pages.home-partials.cta')

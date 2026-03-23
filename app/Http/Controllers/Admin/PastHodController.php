@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PastHod;
 use Illuminate\Support\Facades\Storage;
+use App\Services\MediaOptimizationService;
 
 class PastHodController extends Controller
 {
@@ -35,7 +36,14 @@ class PastHodController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('past-hods', 'public');
+            $photoFile = $request->file('photo');
+            $data['photo'] = $photoFile->store('past-hods', 'public');
+
+            // Enqueue WebP optimization in the background.
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['photo'],
+                $photoFile->getClientMimeType()
+            );
         }
 
         PastHod::create($data);
@@ -64,7 +72,14 @@ class PastHodController extends Controller
             if ($past_hod->photo) {
                 Storage::disk('public')->delete($past_hod->photo);
             }
-            $data['photo'] = $request->file('photo')->store('past-hods', 'public');
+            $photoFile = $request->file('photo');
+            $data['photo'] = $photoFile->store('past-hods', 'public');
+
+            // Enqueue WebP optimization in the background.
+            app(MediaOptimizationService::class)->enqueueImageToWebp(
+                $data['photo'],
+                $photoFile->getClientMimeType()
+            );
         }
 
         $past_hod->update($data);

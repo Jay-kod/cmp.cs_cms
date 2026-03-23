@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AcademicsController;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\ResearchNewsController;
@@ -36,6 +37,11 @@ use App\Http\Controllers\Admin\AnalyticsController;
 use App\Http\Controllers\Admin\PublicationController;
 use App\Http\Controllers\Admin\BulkImportController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\Admin\MediaOptimizationController;
+use App\Http\Controllers\SuperAdmin\MediaOptimizationController as SuperAdminMediaOptimizationController;
+use App\Http\Controllers\ResourcesController;
+use App\Http\Controllers\Admin\ResourceCategoryController;
+use App\Http\Controllers\Admin\ResourceItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +57,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/department/{slug}', [DepartmentController::class, 'show'])->name('department.show');
 Route::get('/past-hods', [AboutController::class, 'pastHods'])->name('past-hods');
 Route::get('/academics', [AcademicsController::class, 'index'])->name('academics');
 Route::get('/people', [PeopleController::class, 'index'])->name('people.index');
@@ -69,8 +76,9 @@ Route::get('/gallery', [PublicGalleryController::class, 'index'])->name('gallery
 Route::get('/gallery/{album}', [PublicGalleryController::class, 'show'])->name('gallery.show');
 Route::get('/page/{page}', [PageController::class, 'show'])->name('page.show');
 Route::get('/events', [\App\Http\Controllers\EventPublicController::class, 'index'])->name('events.index');
+Route::get('/resources', [ResourcesController::class, 'index'])->name('resources.index');
 
-Route::middleware(['auth:web,super_admin', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth:web,super_admin', 'verified', 'admin', \App\Http\Middleware\SetAdminLayoutForSuperAdmins::class])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // ── Content Management (all admins: admin + super_admin) ──
@@ -88,6 +96,10 @@ Route::middleware(['auth:web,super_admin', 'verified', 'admin'])->prefix('admin'
     Route::resource('gallery', GalleryController::class);
     Route::delete('gallery/image/{image}', [GalleryController::class, 'destroyImage'])->name('gallery.image.destroy');
     Route::resource('publications', PublicationController::class);
+
+    // Resources Catalog (DB-driven files)
+    Route::resource('resource-categories', ResourceCategoryController::class)->except(['show']);
+    Route::resource('resources', ResourceItemController::class)->except(['show']);
 
     // Carousel & Media
     Route::resource('carousel', CarouselController::class)->except(['show']);
@@ -107,9 +119,17 @@ Route::middleware(['auth:web,super_admin', 'verified', 'admin'])->prefix('admin'
     // Pages
     Route::resource('pages', AdminPageController::class);
 
+    // Departmental Timetable
+    Route::get('/timetable-upload', [\App\Http\Controllers\Admin\TimetableController::class, 'showUpload'])->name('timetable.upload');
+    Route::post('/timetable-upload', [\App\Http\Controllers\Admin\TimetableController::class, 'upload'])->name('timetable.upload');
+
     // Analytics & Reports
     Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics.index');
     Route::get('/analytics/download', [AnalyticsController::class, 'download'])->name('analytics.download');
+
+    // Media Optimization (WebP)
+    Route::get('/media-optimization', [MediaOptimizationController::class, 'index'])->name('media-optimization.index');
+    Route::post('/media-optimization/{mediaFile}/requeue', [MediaOptimizationController::class, 'requeue'])->name('media-optimization.requeue');
 
     // Bulk Import
     Route::get('/bulk-import/{type}', [BulkImportController::class, 'show'])->name('bulk-import.show');
@@ -124,7 +144,7 @@ Route::middleware(['auth:web,super_admin', 'verified', 'admin'])->prefix('admin'
 // ══════════════════════════════════════════════════════════
 // ── Super Admin Panel (completely separate URL prefix)
 // ══════════════════════════════════════════════════════════
-Route::middleware(['auth:super_admin', 'super_admin'])->prefix('super-admin')->name('super-admin.')->group(function () {
+Route::middleware(['auth:super_admin', 'super_admin', \App\Http\Middleware\SetAdminLayoutForSuperAdmins::class])->prefix('super-admin')->name('super-admin.')->group(function () {
     Route::get('/', [SuperAdminDashboardController::class, 'index'])->name('dashboard');
 
     // User Management
@@ -137,6 +157,56 @@ Route::middleware(['auth:super_admin', 'super_admin'])->prefix('super-admin')->n
     // Backup
     Route::get('/backup', [SuperAdminBackupController::class, 'index'])->name('backup.index');
     Route::post('/backup', [SuperAdminBackupController::class, 'download'])->name('backup.download');
+
+    // Media Optimization (WebP)
+    Route::get('/media-optimization', [SuperAdminMediaOptimizationController::class, 'index'])->name('media-optimization.index');
+    Route::post('/media-optimization/{mediaFile}/requeue', [SuperAdminMediaOptimizationController::class, 'requeue'])->name('media-optimization.requeue');
+    Route::post('/media-optimization/requeue-all', [SuperAdminMediaOptimizationController::class, 'requeueAllNonReady'])->name('media-optimization.requeue-all');
+
+    // ── Admin CRUD modules (super-admin can do everything admin can, plus more) ──
+    Route::resource('news', NewsController::class);
+    Route::resource('events', EventController::class);
+    Route::resource('announcements', AnnouncementController::class);
+    Route::resource('staff', StaffController::class);
+    Route::resource('staff-roles', StaffRoleController::class);
+    Route::resource('programmes', ProgrammeController::class);
+    Route::resource('programme-categories', ProgrammeCategoryController::class);
+    Route::resource('courses', CourseController::class);
+    Route::resource('nacos-presidents', NacosPresidentController::class);
+    Route::resource('past-hods', PastHodController::class);
+    Route::resource('partners', PartnerController::class);
+    Route::resource('gallery', GalleryController::class);
+    Route::resource('publications', PublicationController::class);
+
+    // Resources Catalog (DB-driven files)
+    Route::resource('resource-categories', ResourceCategoryController::class)->except(['show']);
+    Route::resource('resources', ResourceItemController::class)->except(['show']);
+
+    Route::resource('carousel', CarouselController::class)->except(['show']);
+    Route::get('/carousel-footer-bg', [CarouselController::class, 'footerBg'])->name('carousel.footer-bg');
+    Route::post('/carousel-footer-bg', [CarouselController::class, 'updateFooterBg'])->name('carousel.footer-bg.update');
+    Route::get('/carousel-page-heroes', [CarouselController::class, 'pageHeroes'])->name('carousel.page-heroes');
+    Route::post('/carousel-page-heroes', [CarouselController::class, 'updatePageHeroes'])->name('carousel.page-heroes.update');
+
+    Route::resource('external-systems', ExternalSystemController::class)->except(['show']);
+    Route::resource('social-links', SocialLinkController::class)->except(['show']);
+
+    Route::get('/page-content/{page}', [\App\Http\Controllers\Admin\PageContentController::class, 'showPage'])->name('page-content.show');
+    Route::post('/page-content/{page}', [\App\Http\Controllers\Admin\PageContentController::class, 'updatePage'])->name('page-content.update');
+
+    Route::resource('pages', AdminPageController::class);
+
+    Route::get('/timetable-upload', [\App\Http\Controllers\Admin\TimetableController::class, 'showUpload'])->name('timetable.upload');
+    Route::post('/timetable-upload', [\App\Http\Controllers\Admin\TimetableController::class, 'upload'])->name('timetable.upload');
+
+    Route::get('/analytics', [\App\Http\Controllers\Admin\AnalyticsController::class, 'index'])->name('analytics.index');
+    Route::get('/analytics/download', [\App\Http\Controllers\Admin\AnalyticsController::class, 'download'])->name('analytics.download');
+
+    Route::get('/bulk-import/{type}', [BulkImportController::class, 'show'])->name('bulk-import.show');
+    Route::get('/bulk-import/{type}/template', [BulkImportController::class, 'template'])->name('bulk-import.template');
+    Route::post('/bulk-import/{type}', [BulkImportController::class, 'import'])->name('bulk-import.import');
+    Route::post('/bulk-import/{type}/preview', [BulkImportController::class, 'preview'])->name('bulk-import.preview');
+    Route::post('/bulk-import/{type}/confirm', [BulkImportController::class, 'confirmImport'])->name('bulk-import.confirm');
 });
 
 Route::middleware('auth:web,super_admin')->group(function () {
