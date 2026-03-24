@@ -54,7 +54,31 @@
                             <i id="icon-preview" class="{{ old('icon', $system->icon ?? 'fa-solid fa-arrow-up-right-from-square') }}" style="color: var(--color-primary); font-size: 1rem;"></i>
                         </div>
                     </div>
-                    <p style="margin: 0.3rem 0 0; font-size: 0.75rem; color: #9ca3af;">Font Awesome 6 class name</p>
+                    <p style="margin: 0.3rem 0 0.8rem; font-size: 0.75rem; color: #9ca3af;">Font Awesome 6 class name</p>
+
+                    <div style="margin-top: 0.6rem;">
+                        <p style="margin: 0 0 0.4rem; font-size: 0.75rem; font-weight: 600; color: #4b5563;">Suggestions:</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                            @php
+                                $sampleIcons = [
+                                    'fa-solid fa-laptop-code', 'fa-solid fa-graduation-cap', 'fa-solid fa-server',
+                                    'fa-solid fa-globe', 'fa-solid fa-network-wired', 'fa-solid fa-book',
+                                    'fa-solid fa-users', 'fa-solid fa-envelope', 'fa-solid fa-chart-line',
+                                    'fa-solid fa-briefcase', 'fa-solid fa-link', 'fa-solid fa-building-columns'
+                                ];
+                            @endphp
+                            @foreach($sampleIcons as $sample)
+                                <button type="button" 
+                                    onclick="document.getElementById('icon').value='{{ $sample }}'; document.getElementById('icon-preview').className='{{ $sample }}';"
+                                    style="width: 32px; height: 32px; border: 1px solid #e5e7eb; border-radius: 4px; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; color: #4b5563;"
+                                    title="{{ $sample }}"
+                                    onmouseover="this.style.borderColor='var(--color-primary)'; this.style.color='var(--color-primary)';"
+                                    onmouseout="this.style.borderColor='#e5e7eb'; this.style.color='#4b5563';">
+                                    <i class="{{ $sample }}"></i>
+                                </button>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
 
                 <div style="margin-bottom: 1rem;">
