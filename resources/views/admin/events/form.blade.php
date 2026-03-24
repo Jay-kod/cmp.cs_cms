@@ -60,7 +60,7 @@
             <div>
                 <div class="form-group">
                     <label class="form-label">Event Details / Description <span style="color: red;">*</span></label>
-                    <textarea name="description" class="form-control" rows="14" required placeholder="Provide full details about the event, agenda, speakers, registration links, etc." style="font-family: inherit;">{{ old('description', $event->description) }}</textarea>
+                    <textarea name="description" class="form-control richtext" rows="14" placeholder="Provide full details about the event, agenda, speakers, registration links, etc." style="font-family: inherit;">{{ old('description', $event->description) }}</textarea>
                     <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: #6b7280;">Basic HTML is supported.</p>
                 </div>
             </div>

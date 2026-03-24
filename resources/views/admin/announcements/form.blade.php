@@ -54,7 +54,7 @@
 
         <div class="form-group" style="margin-top: 1.5rem;">
             <label class="form-label">Detailed Message</label>
-            <textarea name="body" class="form-control" rows="6" placeholder="Brief details about the announcement. Optional.">{{ old('body', $announcement->body) }}</textarea>
+            <textarea name="body" class="form-control richtext" rows="6" placeholder="Brief details about the announcement. Optional.">{{ old('body', $announcement->body) }}</textarea>
         </div>
         
         <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; display: flex; justify-content: flex-end; gap: 1rem;">
