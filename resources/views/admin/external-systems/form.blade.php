@@ -78,8 +78,8 @@
 
                 @if($system)
                 <div style="padding-top: 0.8rem; border-top: 1px solid #e5e7eb; font-size: 0.78rem; color: #9ca3af;">
-                    <p style="margin: 0;">Created: {{ $system->created_at->format('M j, Y g:i A') }}</p>
-                    <p style="margin: 0.2rem 0 0;">Updated: {{ $system->updated_at->format('M j, Y g:i A') }}</p>
+                    <p style="margin: 0;">Created: {{ $system->created_at?->format('M j, Y g:i A') }}</p>
+                    <p style="margin: 0.2rem 0 0;">Updated: {{ $system->updated_at?->format('M j, Y g:i A') }}</p>
                 </div>
                 @endif
             </div>
