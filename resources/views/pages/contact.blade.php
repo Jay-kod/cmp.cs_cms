@@ -780,17 +780,9 @@
             }
             $mapProvider = 'custom';
         } else {
-            // Use OpenStreetMap embed (no API key required, always works)
-            $bbox = [
-                (float)$mapLng - 0.012,
-                (float)$mapLat - 0.008,
-                (float)$mapLng + 0.012,
-                (float)$mapLat + 0.008,
-            ];
-            $mapEmbedUrl = 'https://www.openstreetmap.org/export/embed.html?bbox='
-                . implode(',', $bbox)
-                . '&layer=mapnik&marker=' . $mapLat . ',' . $mapLng;
-            $mapProvider = 'osm';
+            // Use Google Maps embed (no API key required for simple coordinate viewing)
+            $mapEmbedUrl = 'https://maps.google.com/maps?q=' . $mapLat . ',' . $mapLng . '&t=&z=' . $mapZoom . '&ie=UTF8&iwloc=&output=embed';
+            $mapProvider = 'google';
         }
 
         $mapDirectionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' . $mapLat . ',' . $mapLng;
