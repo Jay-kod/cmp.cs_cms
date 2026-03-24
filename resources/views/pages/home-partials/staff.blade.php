@@ -28,7 +28,7 @@
         </div>
 
         <div style="text-align: center; margin-top: 3rem;">
-            <a href="/people" style="display: inline-flex; align-items: center; gap: 0.6rem; background: var(--color-primary); color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(22,163,74,0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(22,163,74,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(22,163,74,0.3)'">
+            <a href="{{ url('/people') }}" style="display: inline-flex; align-items: center; gap: 0.6rem; background: var(--color-primary); color: white; padding: 0.8rem 2rem; border-radius: 10px; font-size: 1rem; font-weight: 700; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(22,163,74,0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(22,163,74,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(22,163,74,0.3)'">
                 {{ $gs('home_staff_btn_text','View All Staff') }} <i class="fa-solid fa-arrow-right-long"></i>
             </a>
         </div>

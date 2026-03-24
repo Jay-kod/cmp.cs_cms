@@ -5,7 +5,7 @@
     <div class="container navbar-inner">
         <!-- Brand Wrapper -->
         <div class="navbar-brand-wrapper">
-            <a href="/" class="navbar-brand" style="margin-left: -0.6rem; gap: 0.3rem;">
+            <a href="{{ url('/') }}" class="navbar-brand" style="margin-left: -0.6rem; gap: 0.3rem;">
                 <img src="{{ asset(config('university.logo', 'build/assets/logo.png')) }}" alt="Logo" class="navbar-logo" onerror="this.src='https://via.placeholder.com/44?text=Logo'">
                 <div class="navbar-brand-text">
                     <strong class="desktop-only text-base">{{ config('university.name') }}</strong>
@@ -20,8 +20,8 @@
         <div class="navbar-nav-wrapper" style="display: flex; align-items: center; justify-content: flex-end; flex: 1; gap: 1rem;">
             <!-- Desktop Nav -->
             <nav class="navbar-nav desktop-only" id="primary-nav" style="display: flex; justify-content: flex-end; gap: 0; flex: 1;">
-                <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
-            <a href="/about" class="nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
+                <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
+            <a href="{{ url('/about') }}" class="nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
 
             <details class="nav-dropdown">
                 <summary class="nav-link nav-dropdown-summary" aria-label="Departments dropdown">
@@ -39,11 +39,11 @@
                     Academics <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
                 </summary>
                 <div class="nav-dropdown-menu" role="menu">
-                    <a href="/academics" class="nav-dropdown-item" role="menuitem">Academics Overview</a>
-                    <a href="/resources#handbook" class="nav-dropdown-item" role="menuitem">Department Handbook</a>
-                    <a href="/resources#timetable" class="nav-dropdown-item" role="menuitem">Timetable</a>
-                    <a href="/resources#rules" class="nav-dropdown-item" role="menuitem">Rules &amp; Regulations</a>
-                    <a href="/resources#forms" class="nav-dropdown-item" role="menuitem">Forms</a>
+                    <a href="{{ url('/academics') }}" class="nav-dropdown-item" role="menuitem">Academics Overview</a>
+                    <a href="{{ url('/resources#handbook') }}" class="nav-dropdown-item" role="menuitem">Department Handbook</a>
+                    <a href="{{ url('/resources#timetable') }}" class="nav-dropdown-item" role="menuitem">Timetable</a>
+                    <a href="{{ url('/resources#rules') }}" class="nav-dropdown-item" role="menuitem">Rules &amp; Regulations</a>
+                    <a href="{{ url('/resources#forms') }}" class="nav-dropdown-item" role="menuitem">Forms</a>
                 </div>
             </details>
 
@@ -52,10 +52,10 @@
                     News &amp; Events <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
                 </summary>
                 <div class="nav-dropdown-menu" role="menu">
-                    <a href="/research-news" class="nav-dropdown-item" role="menuitem">News</a>
-                    <a href="/events" class="nav-dropdown-item" role="menuitem">Events</a>
-                    <a href="/gallery" class="nav-dropdown-item" role="menuitem">Gallery</a>
-                    <a href="/nacos-presidents" class="nav-dropdown-item" role="menuitem">NACOS</a>
+                    <a href="{{ url('/research-news') }}" class="nav-dropdown-item" role="menuitem">News</a>
+                    <a href="{{ url('/events') }}" class="nav-dropdown-item" role="menuitem">Events</a>
+                    <a href="{{ url('/gallery') }}" class="nav-dropdown-item" role="menuitem">Gallery</a>
+                    <a href="{{ url('/nacos-presidents') }}" class="nav-dropdown-item" role="menuitem">NACOS</a>
                 </div>
             </details>
 
@@ -82,7 +82,7 @@
                 </div>
             </details>
 
-            <a href="/contact" class="nav-link btn btn-primary {{ request()->is('contact') ? 'active' : '' }}" style="background-color: #2e7d32; color: white; padding: 0.5rem 1rem; border-radius: 4px; border: none; font-weight: 500;">
+            <a href="{{ url('/contact') }}" class="nav-link btn btn-primary {{ request()->is('contact') ? 'active' : '' }}" style="background-color: #2e7d32; color: white; padding: 0.5rem 1rem; border-radius: 4px; border: none; font-weight: 500;">
                 Contact Us
             </a>
         </nav>
@@ -113,10 +113,10 @@
             </button>
         </div>
         <div class="mobile-drawer-content">
-            <a href="/" class="mobile-link {{ request()->is('/') ? 'active' : '' }}">
+            <a href="{{ url('/') }}" class="mobile-link {{ request()->is('/') ? 'active' : '' }}">
                 <i class="fa-solid fa-house"></i> Home
             </a>
-            <a href="/about" class="mobile-link {{ request()->is('about') ? 'active' : '' }}">
+            <a href="{{ url('/about') }}" class="mobile-link {{ request()->is('about') ? 'active' : '' }}">
                 <i class="fa-solid fa-circle-info"></i> About
             </a>
 
@@ -138,11 +138,11 @@
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="/academics" class="mobile-link mobile-sub-link">Academics Overview</a>
-                    <a href="/resources#handbook" class="mobile-link mobile-sub-link">Department Handbook</a>
-                    <a href="/resources#timetable" class="mobile-link mobile-sub-link">Timetable</a>
-                    <a href="/resources#rules" class="mobile-link mobile-sub-link">Rules &amp; Regulations</a>
-                    <a href="/resources#forms" class="mobile-link mobile-sub-link">Forms</a>
+                    <a href="{{ url('/academics') }}" class="mobile-link mobile-sub-link">Academics Overview</a>
+                    <a href="{{ url('/resources#handbook') }}" class="mobile-link mobile-sub-link">Department Handbook</a>
+                    <a href="{{ url('/resources#timetable') }}" class="mobile-link mobile-sub-link">Timetable</a>
+                    <a href="{{ url('/resources#rules') }}" class="mobile-link mobile-sub-link">Rules &amp; Regulations</a>
+                    <a href="{{ url('/resources#forms') }}" class="mobile-link mobile-sub-link">Forms</a>
                 </div>
             </details>
 
@@ -152,10 +152,10 @@
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="/research-news" class="mobile-link mobile-sub-link">News</a>
-                    <a href="/events" class="mobile-link mobile-sub-link">Events</a>
-                    <a href="/gallery" class="mobile-link mobile-sub-link">Gallery</a>
-                    <a href="/nacos-presidents" class="mobile-link mobile-sub-link">NACOS</a>
+                    <a href="{{ url('/research-news') }}" class="mobile-link mobile-sub-link">News</a>
+                    <a href="{{ url('/events') }}" class="mobile-link mobile-sub-link">Events</a>
+                    <a href="{{ url('/gallery') }}" class="mobile-link mobile-sub-link">Gallery</a>
+                    <a href="{{ url('/nacos-presidents') }}" class="mobile-link mobile-sub-link">NACOS</a>
                 </div>
             </details>
 
@@ -182,7 +182,7 @@
                 </div>
             </details>
 
-            <a href="/contact" class="mobile-cta">
+            <a href="{{ url('/contact') }}" class="mobile-cta">
                 <i class="fa-solid fa-envelope" style="margin-right:0.5rem;"></i> Contact Us
             </a>
         </div>

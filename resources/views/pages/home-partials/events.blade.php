@@ -6,7 +6,7 @@
                 <span style="display: inline-block; color: #ef4444; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.5rem; background: rgba(239,68,68,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_events_badge','Mark Your Calendar') }}</span>
                 <h2 style="margin: 0; font-size: 2.4rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a;">{{ $gs('home_events_title','Upcoming Events') }}</h2>
             </div>
-            <a href="/events" style="background: white; color: #ef4444; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none; border: 1px solid #e2e8f0; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;" onmouseover="this.style.background='#ef4444'; this.style.color='white'; this.style.borderColor='#ef4444'" onmouseout="this.style.background='white'; this.style.color='#ef4444'; this.style.borderColor='#e2e8f0'">
+            <a href="{{ url('/events') }}" style="background: white; color: #ef4444; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none; border: 1px solid #e2e8f0; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;" onmouseover="this.style.background='#ef4444'; this.style.color='white'; this.style.borderColor='#ef4444'" onmouseout="this.style.background='white'; this.style.color='#ef4444'; this.style.borderColor='#e2e8f0'">
                 {{ $gs('home_events_btn_text','All Events') }} <i class="fa-solid fa-arrow-right-long"></i>
             </a>
         </div>

@@ -29,6 +29,6 @@
                 @endforeach
             </div>
             <div style="text-align: center; margin-top: 1.5rem;">
-                <a href="/academics" style="display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--color-primary); font-weight: 600; text-decoration: none; padding: 0.6rem 1.5rem; border: 2px solid var(--color-primary); border-radius: 10px; transition: all 0.3s;" onmouseover="this.style.background='var(--color-primary)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='var(--color-primary)'">See Full Admission Details <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                <a href="{{ url('/academics') }}" style="display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--color-primary); font-weight: 600; text-decoration: none; padding: 0.6rem 1.5rem; border: 2px solid var(--color-primary); border-radius: 10px; transition: all 0.3s;" onmouseover="this.style.background='var(--color-primary)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='var(--color-primary)'">See Full Admission Details <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i></a>
             </div>
         </section>

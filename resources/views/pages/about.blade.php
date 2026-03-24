@@ -280,7 +280,7 @@
                         @endforeach
                     </ul>
                     @if(!$isDark)
-                    <a href="/academics" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; font-size: 0.88rem; color: var(--color-primary); font-weight: 600; text-decoration: none;" onmouseover="this.style.gap='0.8rem'" onmouseout="this.style.gap='0.5rem'">View full programme details <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem; transition: transform 0.2s;"></i></a>
+                    <a href="{{ url('/academics') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; font-size: 0.88rem; color: var(--color-primary); font-weight: 600; text-decoration: none;" onmouseover="this.style.gap='0.8rem'" onmouseout="this.style.gap='0.5rem'">View full programme details <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem; transition: transform 0.2s;"></i></a>
                     @endif
                 </div>
                 @endforeach

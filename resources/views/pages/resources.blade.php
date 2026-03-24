@@ -8,7 +8,7 @@
     <div class="container reveal reveal-up">
         <!-- Breadcrumb -->
         <div style="margin-bottom: 1.5rem; font-size: 0.9rem; font-weight: 500;">
-            <a href="/" style="color: #F0F9F3; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;"><i class="fa-solid fa-house"></i> Home</a> 
+            <a href="{{ url('/') }}" style="color: #F0F9F3; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;"><i class="fa-solid fa-house"></i> Home</a> 
             <span style="margin: 0 0.5rem; color: #a7f3d0;">/</span> 
             <span style="color: #F4C430;">Student Resources</span>
         </div>
