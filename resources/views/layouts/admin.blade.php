@@ -184,11 +184,35 @@
                             <span>About</span>
                         </a>
                     </li>
-                    {{-- Academics --}}
+                    {{-- Academics Group --}}
                     <li>
-                        <a href="{{ route('admin.page-content.show', 'academics') }}" class="admin-nav-item {{ request()->is('admin/page-content/academics') ? 'active' : '' }}" title="Academics Page">
+                        <a href="{{ route('admin.page-content.show', 'academics') }}" class="admin-nav-item {{ request()->is('admin/page-content/academics') ? 'active' : '' }}" title="Academics Overview">
                             <div class="nav-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                            <span>Academics</span>
+                            <span>Academics Overview</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.timetable.upload') ?? route('admin.resources.index') }}" class="admin-nav-item {{ request()->routeIs('admin.timetable.*') ? 'active' : '' }}" title="Timetable" style="padding-left: 2.8rem; min-height: 38px;">
+                            <div class="nav-icon" style="width: 24px; height: 24px; font-size: 0.75rem; background: transparent; color: #64748b;"><i class="fa-solid fa-calendar-week"></i></div>
+                            <span style="font-size: 0.82rem;">Timetable</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.resources.index') }}?search=Handbook" class="admin-nav-item" title="Department Handbook" style="padding-left: 2.8rem; min-height: 38px;">
+                            <div class="nav-icon" style="width: 24px; height: 24px; font-size: 0.75rem; background: transparent; color: #64748b;"><i class="fa-solid fa-book"></i></div>
+                            <span style="font-size: 0.82rem;">Handbook</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.resources.index') }}?search=Rules" class="admin-nav-item" title="Rules & Regulations" style="padding-left: 2.8rem; min-height: 38px;">
+                            <div class="nav-icon" style="width: 24px; height: 24px; font-size: 0.75rem; background: transparent; color: #64748b;"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <span style="font-size: 0.82rem;">Rules & Regs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.resources.index') }}?search=Form" class="admin-nav-item" title="Forms" style="padding-left: 2.8rem; min-height: 38px;">
+                            <div class="nav-icon" style="width: 24px; height: 24px; font-size: 0.75rem; background: transparent; color: #64748b;"><i class="fa-solid fa-file-signature"></i></div>
+                            <span style="font-size: 0.82rem;">Forms</span>
                         </a>
                     </li>
                     {{-- People --}}
