@@ -740,7 +740,7 @@
     flex-direction: column;
     gap: 1.5rem;
     position: sticky;
-    top: 2rem;
+    top: 7rem;
 }
 .nd-sidebar-card {
     background: #fff;
