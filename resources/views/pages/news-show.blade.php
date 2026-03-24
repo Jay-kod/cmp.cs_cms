@@ -126,8 +126,9 @@
     font-size: 1.05rem;
     line-height: 1.9;
     color: #334155;
+    text-align: justify;
 }
-.nd-article-body p { margin-bottom: 1.2rem; }
+.nd-article-body p { margin-bottom: 1.2rem; text-align: justify; }
 .nd-article-body h2, .nd-article-body h3 { font-family: var(--font-heading); color: #0f172a; margin: 2rem 0 0.8rem; }
 .nd-article-body a { color: var(--color-primary); text-decoration: underline; text-decoration-color: rgba(var(--color-primary-rgb,22,163,106),0.3); transition: text-decoration-color 0.2s; }
 .nd-article-body a:hover { text-decoration-color: var(--color-primary); }
