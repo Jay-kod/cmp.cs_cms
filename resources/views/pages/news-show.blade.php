@@ -895,7 +895,7 @@
 
             <div class="nd-article-body-wrap">
                 <div class="nd-article-body">
-                    {!! nl2br(e($article->body)) !!}
+                    {!! $article->body !!}
                 </div>
             </div>
 
