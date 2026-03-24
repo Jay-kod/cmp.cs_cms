@@ -44,6 +44,7 @@
                         ['fa-brands fa-tiktok', 'TikTok'],
                         ['fa-brands fa-whatsapp', 'WhatsApp'],
                         ['fa-brands fa-telegram', 'Telegram'],
+                        ['fa-solid fa-envelope', 'Email / Gmail'],
                         ['fa-brands fa-github', 'GitHub'],
                         ['fa-brands fa-pinterest', 'Pinterest'],
                         ['fa-brands fa-snapchat', 'Snapchat'],
