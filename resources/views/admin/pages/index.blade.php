@@ -60,7 +60,7 @@
                 <td style="font-size: 0.82rem; color: #6b7280;">{{ $pg->updated_at->format('M j, Y') }}</td>
                 <td>
                     <div class="actions">
-                        <a href="/page/{{ $pg->slug }}" target="_blank" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #f0fdf4; color: #166534; text-decoration: none; border-radius: 4px;"><i class="fa-solid fa-eye"></i> View</a>
+                        <a href="{{ url('/page/{{ $pg->slug }}') }}" target="_blank" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #f0fdf4; color: #166534; text-decoration: none; border-radius: 4px;"><i class="fa-solid fa-eye"></i> View</a>
                         <a href="{{ route('admin.pages.edit', $pg) }}" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #e5e7eb; color: #374151; text-decoration: none; border-radius: 4px;"><i class="fa-solid fa-edit"></i> Edit</a>
                         @if(!$pg->is_system)
                         <form action="{{ route('admin.pages.destroy', $pg) }}" method="POST" data-confirm="Delete this page permanently?" style="display:inline;">
