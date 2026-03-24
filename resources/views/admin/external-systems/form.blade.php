@@ -61,10 +61,27 @@
                         <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
                             @php
                                 $sampleIcons = [
-                                    'fa-solid fa-laptop-code', 'fa-solid fa-graduation-cap', 'fa-solid fa-server',
-                                    'fa-solid fa-globe', 'fa-solid fa-network-wired', 'fa-solid fa-book',
-                                    'fa-solid fa-users', 'fa-solid fa-envelope', 'fa-solid fa-chart-line',
-                                    'fa-solid fa-briefcase', 'fa-solid fa-link', 'fa-solid fa-building-columns'
+                                    // IT & Technology
+                                    'fa-solid fa-laptop-code', 'fa-solid fa-server', 'fa-solid fa-database',
+                                    'fa-solid fa-cloud', 'fa-solid fa-network-wired', 'fa-solid fa-globe',
+                                    'fa-solid fa-terminal', 'fa-solid fa-code', 'fa-solid fa-desktop',
+                                    'fa-solid fa-gears', 'fa-solid fa-microchip', 'fa-solid fa-plug',
+                                    
+                                    // Academic & Education
+                                    'fa-solid fa-graduation-cap', 'fa-solid fa-book', 'fa-solid fa-book-open',
+                                    'fa-solid fa-chalkboard-user', 'fa-solid fa-school', 'fa-solid fa-microscope',
+                                    
+                                    // Admin, Access & Portals
+                                    'fa-solid fa-users', 'fa-solid fa-user-graduate', 'fa-solid fa-id-card', 
+                                    'fa-solid fa-right-to-bracket', 'fa-solid fa-key', 'fa-solid fa-building-columns',
+                                    
+                                    // Office & Business
+                                    'fa-solid fa-briefcase', 'fa-solid fa-folder', 'fa-solid fa-file-invoice',
+                                    'fa-solid fa-chart-line', 'fa-solid fa-layer-group', 'fa-solid fa-list',
+                                    
+                                    // Communication & Links
+                                    'fa-solid fa-envelope', 'fa-solid fa-comments', 'fa-solid fa-video',
+                                    'fa-solid fa-link', 'fa-solid fa-arrow-up-right-from-square', 'fa-solid fa-circle-info'
                                 ];
                             @endphp
                             @foreach($sampleIcons as $sample)
