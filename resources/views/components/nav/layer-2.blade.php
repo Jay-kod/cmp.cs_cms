@@ -82,7 +82,7 @@
                 </div>
             </details>
 
-            <a href="/contact" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">
+            <a href="/contact" class="nav-link btn btn-primary {{ request()->is('contact') ? 'active' : '' }}" style="background-color: #2e7d32; color: white; padding: 0.5rem 1rem; border-radius: 4px; border: none; font-weight: 500;">
                 Contact Us
             </a>
         </nav>
