@@ -498,17 +498,17 @@
 
     {{-- ═══ Toast Notification System ═══ --}}
     @if(session('success') || session('error'))
-    <div id="toastContainer" style="position: fixed; top: 1.5rem; right: 1.5rem; z-index: 99999; display: flex; flex-direction: column; gap: 0.75rem; pointer-events: none;">
+    <div id="toastContainer" style="position: fixed; top: 1.5rem; right: 1.5rem; z-index: 99999; display: flex; flex-direction: column; gap: 0.5rem; pointer-events: none;">
         @if(session('success'))
-        <div class="admin-toast" data-type="success" style="pointer-events: auto; min-width: 250px; max-width: 350px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.3); overflow: hidden; animation: toastSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform: translateX(120%);">
-            <div style="display: flex; align-items: center; gap: 0.8rem; padding: 0.85rem 1rem;">
-                <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(34, 197, 94, 0.15); color: #4ade80; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; box-shadow: inset 0 0 8px rgba(34, 197, 94, 0.2);">
+        <div class="admin-toast" data-type="success" style="pointer-events: auto; min-width: 200px; max-width: 300px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3); overflow: hidden; animation: toastSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform: translateX(120%);">
+            <div style="display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.8rem;">
+                <div style="width: 20px; height: 20px; border-radius: 50%; background: rgba(34, 197, 94, 0.15); color: #4ade80; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; box-shadow: inset 0 0 8px rgba(34, 197, 94, 0.2);">
                     <i class="fa-solid fa-check"></i>
                 </div>
                 <div style="flex: 1; min-width: 0;">
-                    <p style="margin: 0; font-weight: 500; font-size: 0.88rem; color: #f8fafc; letter-spacing: 0.2px; line-height: 1.4;">{{ session('success') }}</p>
+                    <p style="margin: 0; font-weight: 500; font-size: 0.82rem; color: #f8fafc; letter-spacing: 0.2px; line-height: 1.3;">{{ session('success') }}</p>
                 </div>
-                <button onclick="dismissToast(this.closest('.admin-toast'))" style="background: none; border: none; color: #64748b; cursor: pointer; font-size: 0.95rem; padding: 0.2rem; line-height: 1; flex-shrink: 0; transition: color 0.2s;" onmouseover="this.style.color='#f8fafc'" onmouseout="this.style.color='#64748b'" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                <button onclick="dismissToast(this.closest('.admin-toast'))" style="background: none; border: none; color: #64748b; cursor: pointer; font-size: 0.8rem; padding: 0.2rem; line-height: 1; flex-shrink: 0; transition: color 0.2s;" onmouseover="this.style.color='#f8fafc'" onmouseout="this.style.color='#64748b'" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div style="height: 2px; background: rgba(255,255,255,0.05); overflow: hidden;">
                 <div class="toast-progress" style="height: 100%; background: #4ade80; box-shadow: 0 0 8px rgba(74,222,128,0.5); width: 100%; animation: toastCountdown 10s linear forwards;"></div>
@@ -516,15 +516,15 @@
         </div>
         @endif
         @if(session('error'))
-        <div class="admin-toast" data-type="error" style="pointer-events: auto; min-width: 250px; max-width: 350px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.3); overflow: hidden; animation: toastSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform: translateX(120%);">
-            <div style="display: flex; align-items: center; gap: 0.8rem; padding: 0.85rem 1rem;">
-                <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(239, 68, 68, 0.15); color: #f87171; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; box-shadow: inset 0 0 8px rgba(239, 68, 68, 0.2);">
+        <div class="admin-toast" data-type="error" style="pointer-events: auto; min-width: 200px; max-width: 300px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3); overflow: hidden; animation: toastSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform: translateX(120%);">
+            <div style="display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.8rem;">
+                <div style="width: 20px; height: 20px; border-radius: 50%; background: rgba(239, 68, 68, 0.15); color: #f87171; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; box-shadow: inset 0 0 8px rgba(239, 68, 68, 0.2);">
                     <i class="fa-solid fa-exclamation"></i>
                 </div>
                 <div style="flex: 1; min-width: 0;">
-                    <p style="margin: 0; font-weight: 500; font-size: 0.88rem; color: #f8fafc; letter-spacing: 0.2px; line-height: 1.4;">{{ session('error') }}</p>
+                    <p style="margin: 0; font-weight: 500; font-size: 0.82rem; color: #f8fafc; letter-spacing: 0.2px; line-height: 1.3;">{{ session('error') }}</p>
                 </div>
-                <button onclick="dismissToast(this.closest('.admin-toast'))" style="background: none; border: none; color: #64748b; cursor: pointer; font-size: 0.95rem; padding: 0.2rem; line-height: 1; flex-shrink: 0; transition: color 0.2s;" onmouseover="this.style.color='#f8fafc'" onmouseout="this.style.color='#64748b'" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                <button onclick="dismissToast(this.closest('.admin-toast'))" style="background: none; border: none; color: #64748b; cursor: pointer; font-size: 0.8rem; padding: 0.2rem; line-height: 1; flex-shrink: 0; transition: color 0.2s;" onmouseover="this.style.color='#f8fafc'" onmouseout="this.style.color='#64748b'" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div style="height: 2px; background: rgba(255,255,255,0.05); overflow: hidden;">
                 <div class="toast-progress" style="height: 100%; background: #f87171; box-shadow: 0 0 8px rgba(248,113,113,0.5); width: 100%; animation: toastCountdown 10s linear forwards;"></div>
