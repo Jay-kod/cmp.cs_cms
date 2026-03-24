@@ -558,5 +558,29 @@
         });
     </script>
     @endif
+
+    {{-- ═══ Rich Text Editor (CKEditor) ═══ --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('textarea.richtext').forEach(function(el) {
+                ClassicEditor
+                    .create(el, {
+                        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo' ]
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            });
+        });
+    </script>
+    <style>
+        .ck-editor__editable_inline {
+            min-height: 250px;
+            font-family: var(--font-body, inherit);
+            color: #1e293b;
+            font-size: 0.95rem;
+        }
+    </style>
 </body>
 </html>
