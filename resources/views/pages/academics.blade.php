@@ -50,12 +50,12 @@
                 <div class="acad-section-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.1)); color: #3b82f6; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-layer-group"></i>
                 </div>
-                <h2 style="margin: 0; font-size: 2rem; color: #0f172a; font-family: var(--font-heading); font-weight: 700;">Degree Programmes</h2>
+                <h2 style="margin: 0; font-size: 2rem; color: #0f172a; font-family: var(--font-heading); font-weight: 700;">{{ $gs('academics_overview_title', 'Degree Programmes') }}</h2>
             </div>
             <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #3b82f6, #6366f1); margin-bottom: 2rem; border-radius: 2px;"></div>
             
             <p style="font-size: 1.05rem; line-height: 1.8; color: #475569; margin-bottom: 2.5rem;">
-                We offer rigorous academic paths ranging from undergraduate to doctoral studies, customized to meet global technology demands and equip our graduates with both theoretical depth and practical prowess.
+                {{ $gs('academics_overview_desc', 'We offer rigorous academic paths ranging from undergraduate to doctoral studies, customized to meet global technology demands and equip our graduates with both theoretical depth and practical prowess.') }}
             </p>
 
             {{-- Category Quick Nav Cards --}}
@@ -101,27 +101,29 @@
             <div style="position: absolute; top: 0; right: 0; width: 300px; height: 300px; background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 60%); pointer-events: none;"></div>
             
             <div style="text-align: center; margin-bottom: 2.5rem; position: relative; z-index: 2;">
-                <span style="display: inline-block; padding: 0.3rem 1rem; background: rgba(255,255,255,0.1); color: #a7f3d0; border-radius: 20px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem;">Admissions</span>
-                <h2 style="margin: 0 0 1rem; font-size: 2rem; font-family: var(--font-heading); color: white;">How to Apply</h2>
-                <p style="color: #cbd5e1; font-size: 1.05rem; max-width: 500px; margin: 0 auto;">Join our vibrant academic community in three simple steps.</p>
+                <span style="display: inline-block; padding: 0.3rem 1rem; background: rgba(255,255,255,0.1); color: #a7f3d0; border-radius: 20px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem;">{{ $gs('academics_apply_badge', 'Admissions') }}</span>
+                <h2 style="margin: 0 0 1rem; font-size: 2rem; font-family: var(--font-heading); color: white;">{{ $gs('academics_apply_title', 'How to Apply') }}</h2>
+                <p style="color: #cbd5e1; font-size: 1.05rem; max-width: 500px; margin: 0 auto;">{{ $gs('academics_apply_subtitle', 'Join our vibrant academic community in three simple steps.') }}</p>
             </div>
 
             <div class="acad-steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; position: relative; z-index: 2;">
+                @php
+                    $applySteps = json_decode(\App\Models\DepartmentSetting::where('key', 'academics_apply_steps')->value('value') ?? '[]', true) ?? [];
+                    if (empty($applySteps)) {
+                        $applySteps = [
+                            ['title' => 'Check Requirements', 'desc' => 'Review the entry requirements for your desired programme under its details below.'],
+                            ['title' => 'University Portal', 'desc' => 'Visit the central NSUK admissions portal to purchase forms during the intake window.'],
+                            ['title' => 'Screening', 'desc' => 'Attend the departmental screening exercise with your credentials.']
+                        ];
+                    }
+                @endphp
+                @foreach($applySteps as $i => $step)
                 <div class="acad-step-card" style="background: linear-gradient(145deg, rgba(30,41,59,0.7), rgba(15,23,42,0.9)); padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); text-align: center; backdrop-filter: blur(10px); transition: all 0.4s ease; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.3);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(16,185,129,0.4)'; this.style.boxShadow='0 20px 40px -5px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(16,185,129,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.08)'; this.style.boxShadow='0 10px 30px -5px rgba(0,0,0,0.3)'">
-                    <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--color-primary), #047857); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(16,185,129,0.3); border: 2px solid rgba(255,255,255,0.1);">1</div>
-                    <strong style="display: block; font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 0.8rem; color: white;">Check Requirements</strong>
-                    <p style="font-size: 0.95rem; color: #94a3b8; margin: 0; line-height: 1.6;">Review the entry requirements for your desired programme under its details below.</p>
+                    <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--color-primary), #047857); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(16,185,129,0.3); border: 2px solid rgba(255,255,255,0.1);">{{ $i + 1 }}</div>
+                    <strong style="display: block; font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 0.8rem; color: white;">{{ $step['title'] ?? '' }}</strong>
+                    <p style="font-size: 0.95rem; color: #94a3b8; margin: 0; line-height: 1.6;">{{ $step['desc'] ?? '' }}</p>
                 </div>
-                <div class="acad-step-card" style="background: linear-gradient(145deg, rgba(30,41,59,0.7), rgba(15,23,42,0.9)); padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); text-align: center; backdrop-filter: blur(10px); transition: all 0.4s ease; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.3);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(16,185,129,0.4)'; this.style.boxShadow='0 20px 40px -5px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(16,185,129,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.08)'; this.style.boxShadow='0 10px 30px -5px rgba(0,0,0,0.3)'">
-                    <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--color-primary), #047857); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(16,185,129,0.3); border: 2px solid rgba(255,255,255,0.1);">2</div>
-                    <strong style="display: block; font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 0.8rem; color: white;">University Portal</strong>
-                    <p style="font-size: 0.95rem; color: #94a3b8; margin: 0; line-height: 1.6;">Visit the central NSUK admissions portal to purchase forms during the intake window.</p>
-                </div>
-                <div class="acad-step-card" style="background: linear-gradient(145deg, rgba(30,41,59,0.7), rgba(15,23,42,0.9)); padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); text-align: center; backdrop-filter: blur(10px); transition: all 0.4s ease; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.3);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(16,185,129,0.4)'; this.style.boxShadow='0 20px 40px -5px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(16,185,129,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.08)'; this.style.boxShadow='0 10px 30px -5px rgba(0,0,0,0.3)'">
-                    <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--color-primary), #047857); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(16,185,129,0.3); border: 2px solid rgba(255,255,255,0.1);">3</div>
-                    <strong style="display: block; font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 0.8rem; color: white;">Screening</strong>
-                    <p style="font-size: 0.95rem; color: #94a3b8; margin: 0; line-height: 1.6;">Attend the departmental screening exercise with your credentials.</p>
-                </div>
+                @endforeach
             </div>
         </section>
 
@@ -246,11 +248,11 @@
                 <div class="acad-section-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(225, 29, 72, 0.1)); color: #ec4899; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-diagram-project"></i>
                 </div>
-                <h2 style="margin: 0; font-size: 2rem; color: #0f172a; font-family: var(--font-heading); font-weight: 700;">Course Structure</h2>
+                <h2 style="margin: 0; font-size: 2rem; color: #0f172a; font-family: var(--font-heading); font-weight: 700;">{{ $gs('academics_courses_title', 'Course Structure') }}</h2>
             </div>
             <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #ec4899, #e11d48); margin-bottom: 1.5rem; border-radius: 2px;"></div>
             
-            <p style="font-size: 1.05rem; color: #475569; margin-bottom: 2.5rem;">Browse the unified curriculum outline showing core and elective courses across different academic levels.</p>
+            <p style="font-size: 1.05rem; color: #475569; margin-bottom: 2.5rem;">{{ $gs('academics_courses_desc', 'Browse the unified curriculum outline showing core and elective courses across different academic levels.') }}</p>
 
             @foreach($courses as $level => $levelCourses)
             <div style="background: white; border: 1px solid #e2e8f0; border-radius: 16px; margin-bottom: 2.5rem; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01);">
