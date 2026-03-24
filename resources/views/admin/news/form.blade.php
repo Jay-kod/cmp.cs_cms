@@ -28,7 +28,7 @@
                 
                 <div class="form-group" style="margin-top: 1.5rem;">
                     <label class="form-label">Article Content <span style="color: red;">*</span></label>
-                    <textarea name="body" class="form-control" rows="15" required style="font-family: inherit;">{{ old('body', $news->body) }}</textarea>
+                    <textarea name="body" class="form-control richtext" rows="15" style="font-family: inherit;">{{ old('body', $news->body) }}</textarea>
                     <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: #6b7280;">Basic HTML is supported.</p>
                 </div>
             </div>
