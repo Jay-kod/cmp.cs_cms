@@ -24,561 +24,660 @@
             ['role' => 'Exam Officer', 'name' => 'Mr. Example Name', 'email' => 'exams@cs.nsuk.edu.ng', 'phone' => '+234 800 000 0003'],
         ];
     }
+
+    $navSections = [
+        'sec-hero'    => ['icon' => 'fa-image',          'label' => 'Hero Section', 'color' => '#6366f1'],
+        'sec-cards'   => ['icon' => 'fa-id-card',        'label' => 'Info Cards',   'color' => '#ec4899'],
+        'sec-form'    => ['icon' => 'fa-pen-to-square',  'label' => 'Form Text',    'color' => '#10b981'],
+        'sec-about'   => ['icon' => 'fa-building-columns','label' => 'About Sidebar', 'color' => '#8b5cf6'],
+        'sec-partner' => ['icon' => 'fa-handshake',      'label' => 'Partnership',  'color' => '#06b6d4'],
+        'sec-map'     => ['icon' => 'fa-map-location-dot','label' => 'Map Settings','color' => '#f59e0b'],
+        'sec-vis'     => ['icon' => 'fa-eye',            'label' => 'Visibility',   'color' => '#64748b'],
+        'sec-contacts'=> ['icon' => 'fa-user-tie',       'label' => 'Key Contacts', 'color' => '#ef4444'],
+        'sec-faqs'    => ['icon' => 'fa-circle-question','label' => 'FAQs',         'color' => '#a855f7'],
+        'sec-quick'   => ['icon' => 'fa-bolt',           'label' => 'Quick Actions','color' => '#3b82f6'],
+    ];
 @endphp
 
 <style>
-.pc-card{background:white;border-radius:12px;border:1px solid #e2e8f0;margin-bottom:1.5rem;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-.pc-card-header{padding:1rem 1.5rem;background:#f8fafc;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
-.pc-card-header h3{margin:0;font-size:1rem;font-weight:700;color:#0f172a;display:flex;align-items:center;gap:.6rem}
-.pc-card-body{padding:1.5rem}
-.pc-card-body.collapsed{display:none}
-.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-bottom:1rem}
-.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.8rem}
-.form-group label{font-size:.85rem;font-weight:600;color:#475569;display:flex;align-items:center;gap:.4rem}
-.form-group input,.form-group textarea{width:100%;padding:.6rem .9rem;border:1px solid #cbd5e1;border-radius:8px;font-family:inherit;font-size:.95rem;color:#334155;box-sizing:border-box;transition:border-color .2s}
-.form-group input:focus,.form-group textarea:focus{border-color:var(--color-primary);outline:none}
-.form-group textarea{resize:vertical;min-height:80px}
-.form-group .hint{font-size:.75rem;color:#94a3b8;margin-top:2px}
-.toggle-icon{font-size:.8rem;color:#64748b;transition:transform .2s}
-.pc-card-header.open .toggle-icon{transform:rotate(180deg)}
-.section-badge{display:inline-flex;align-items:center;gap:.3rem;background:#f0fdf4;color:var(--color-primary);font-size:.7rem;font-weight:700;padding:.15rem .5rem;border-radius:6px;border:1px solid rgba(22,163,74,.15);margin-left:.5rem}
+/* ── Page shell ── */
+.apc-shell { display: flex; gap: 1.5rem; align-items: flex-start; }
+
+/* ── Fixed left nav ── */
+.apc-sidenav { display: flex; flex-direction: column;
+    width: 190px;
+    flex-shrink: 0;
+    background: white;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    align-self: flex-start;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #e2e8f0 transparent;
+    z-index: 40;
+}
+.apc-sidenav-head { padding: 0.9rem 1rem; background: #0f172a; color: #94a3b8; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+.apc-sidenav a { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1rem; font-size: 0.82rem; font-weight: 500; color: #475569; text-decoration: none; border-left: 3px solid transparent; transition: all 0.15s; }
+.apc-sidenav a:hover { background: #f8fafc; color: #0f172a; }
+.apc-sidenav a.active { background: #f0f9ff; color: #0284c7; border-left-color: #0284c7; font-weight: 600; }
+.apc-sidenav-icon { width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; flex-shrink: 0; }
+
+/* ── Main form area ── */
+.apc-main { flex: 1; min-width: 0; }
+
+/* ── Section cards ── */
+.apc-section { background: white; border-radius: 14px; border: 1px solid #e2e8f0; margin-bottom: 1.25rem; box-shadow: 0 1px 4px rgba(0,0,0,0.03); overflow: hidden; scroll-margin-top: 90px; }
+.apc-section-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; cursor: pointer; user-select: none; background: #fafafa; border-bottom: 1px solid #f1f5f9; gap: 0.8rem; }
+.apc-section-header:hover { background: #f1f5f9; }
+.apc-section-header-left { display: flex; align-items: center; gap: 0.75rem; }
+.apc-section-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: white; flex-shrink: 0; }
+.apc-section-title { font-size: 0.95rem; font-weight: 700; color: #1e293b; margin: 0; }
+.apc-section-subtitle { font-size: 0.75rem; color: #94a3b8; margin: 0; margin-top: 1px; }
+.apc-chevron { font-size: 0.75rem; color: #94a3b8; transition: transform 0.2s; flex-shrink: 0; }
+.apc-section-header.open .apc-chevron { transform: rotate(180deg); }
+.apc-section-body { padding: 1.5rem; display: block; }
+.apc-section-body.collapsed { display: none; }
+
+/* ── Form groups ── */
+.apc-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.9rem; margin-bottom: 0.9rem; }
+.apc-field { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.8rem; }
+.apc-label { font-size: 0.78rem; font-weight: 600; color: #64748b; letter-spacing: 0.3px; display: flex; align-items: center; gap: 0.4rem; }
+.apc-hint { font-size: 0.72rem; color: #94a3b8; margin-top: 0.15rem; }
+.apc-input, .apc-textarea { width: 100%; padding: 0.55rem 0.85rem; border: 1.5px solid #e2e8f0; border-radius: 8px; font-family: inherit; font-size: 0.9rem; color: #1e293b; box-sizing: border-box; background: white; transition: border-color 0.15s, box-shadow 0.15s; }
+.apc-input:focus, .apc-textarea:focus { outline: none; border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.08); }
+.apc-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+
+/* ── Save bar ── */
+.apc-save-bar { position: sticky; bottom: 1rem; background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.9rem 1.25rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 8px 25px -5px rgba(0,0,0,0.1); margin-top: 1.25rem; z-index: 10; }
+.apc-save-btn { background: linear-gradient(135deg, #059669, #10b981); color: white; border: none; padding: 0.65rem 2rem; border-radius: 9px; font-size: 0.9rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(16,185,129,0.35); transition: all 0.2s; }
+.apc-save-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(16,185,129,0.45); }
+
+/* Toast */
+.toast-success { position: fixed; top: 1.5rem; right: 1.5rem; background: #065f46; color: white; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.6rem; z-index: 9999; box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: slideIn 0.4s ease, fadeOut 0.4s ease 3.5s forwards; }
+@keyframes slideIn { from { transform: translateX(100%) scale(0.9); opacity: 0; } to { transform: translateX(0) scale(1); opacity: 1; } }
+@keyframes fadeOut { to { transform: translateX(100%); opacity: 0; } }
+
+/* Repeaters */
+.repeater-row { border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 1rem; margin-bottom: 0.8rem; background: #fafafa; position: relative; }
+.remove-btn { position: absolute; top: 0.5rem; right: 0.5rem; background: #fee2e2; color: #ef4444; border: none; border-radius: 6px; width: 28px; height: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.remove-btn:hover { background: #fca5a5; color: #991b1b; }
+.add-btn { background: #f0fdf4; border: 1px dashed var(--color-primary); color: var(--color-primary); padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s; display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+.add-btn:hover { background: #dcfce7; }
 </style>
 
-{{-- Toast --}}
 @if(session('success'))
-<div style="background:#dcfce7;color:#166534;padding:.8rem 1.2rem;border-radius:10px;border:1px solid #bbf7d0;margin-bottom:1.2rem;font-size:.88rem;display:flex;align-items:center;gap:.5rem;animation:fadeIn .3s">
-    <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
-</div>
+<div class="toast-success"><i class="fa-solid fa-circle-check"></i> {{ session('success') }}</div>
 @endif
 
-{{-- Header Bar --}}
-<div style="background:#1e293b;padding:.8rem 1.5rem;border-radius:12px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between">
-    <span style="color:#94a3b8;font-size:.9rem"><i class="fa-solid fa-address-book" style="margin-right:6px"></i>Editing: <strong style="color:white">Contact Page</strong></span>
-    <a href="{{ route('contact') }}" target="_blank" style="background:var(--color-primary);color:white;padding:.4rem 1rem;border-radius:8px;font-size:.85rem;font-weight:600;text-decoration:none"><i class="fa-solid fa-eye"></i> Preview</a>
+{{-- Top bar --}}
+<div style="background: #0f172a; padding: 0.8rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; margin-left: calc(190px + 1.5rem); display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; align-items: center; gap: 0.7rem;">
+        <div style="width: 8px; height: 8px; background: #16a34a; border-radius: 50%;"></div>
+        <span style="color: #94a3b8; font-size: 0.85rem;">Editing: <strong style="color: white;">Contact Page</strong></span>
+    </div>
+    <a href="{{ route('contact') }}" target="_blank" style="background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.1); display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <i class="fa-solid fa-up-right-from-square" style="font-size: 0.75rem;"></i> Preview Page
+    </a>
 </div>
 
-<form method="POST" action="{{ route('admin.page-content.update', 'contact') }}" enctype="multipart/form-data">@csrf
+<form method="POST" action="{{ route('admin.page-content.update', 'contact') }}" enctype="multipart/form-data">
+@csrf
 
-{{-- ═══════════════ HERO SECTION ═══════════════ --}}
-<div class="pc-card">
-    <div class="pc-card-header open" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-image" style="color:var(--color-primary)"></i> Hero Section</h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body">
-        <div class="form-row">
-            <div class="form-group">
-                <label><i class="fa-solid fa-tag"></i> Badge Text</label>
-                <input type="text" name="contact_hero_badge" value="{{ $s('contact_hero_badge','Get in Touch') }}" placeholder="Get in Touch">
-            </div>
-            <div class="form-group">
-                <label><i class="fa-solid fa-heading"></i> Page Title</label>
-                <input type="text" name="contact_hero_title" value="{{ $s('contact_hero_title','Contact the Department') }}" placeholder="Contact the Department">
-            </div>
+<div class="apc-shell">
+
+    {{-- ══ SIDE NAV ══ --}}
+    <nav class="apc-sidenav">
+        <div class="apc-sidenav-head">Sections</div>
+        @foreach($navSections as $id => $nav)
+        <a href="#{{ $id }}" onclick="openSection('{{ $id }}')">
+            <span class="apc-sidenav-icon" style="background: {{ $nav['color'] }}22; color: {{ $nav['color'] }};"><i class="fa-solid {{ $nav['icon'] }}"></i></span>
+            {{ $nav['label'] }}
+        </a>
+        @endforeach
+    
+<div style="padding: 1rem; margin-top: auto; position: sticky; bottom: 0; background: white; border-top: 1px solid #e2e8f0; z-index: 10;">
+            <button type="submit" class="apc-save-btn" style="width: 100%; justify-content: center;">
+                <i class="fa-solid fa-save"></i> Save Content
+            </button>
         </div>
-        <div class="form-group">
-            <label><i class="fa-solid fa-align-left"></i> Subtitle</label>
-            <textarea name="contact_hero_subtitle" rows="2" placeholder="Have questions, feedback, or...">{{ $s('contact_hero_subtitle','Have questions, feedback, or partnership inquiries? We\'d love to hear from you.') }}</textarea>
-        </div>
-    </div>
-</div>
+    </nav>
 
-{{-- ═══════════════ CONTACT INFO CARDS ═══════════════ --}}
-<div class="pc-card">
-    <div class="pc-card-header open" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-id-card" style="color:var(--color-primary)"></i> Contact Information Cards <span class="section-badge">4 Cards</span></h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body">
-        <p style="font-size:.82rem;color:#64748b;margin:0 0 1.2rem;line-height:1.5"><i class="fa-solid fa-circle-info" style="color:var(--color-primary)"></i> These 4 cards appear at the top of the contact page showing your department's key contact details.</p>
+    {{-- ══ MAIN CONTENT ══ --}}
+    <div class="apc-main">
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-            {{-- Address --}}
-            <div style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc">
-                <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem">
-                    <div style="width:28px;height:28px;background:#dcfce7;border-radius:6px;display:flex;align-items:center;justify-content:center"><i class="fa-solid fa-location-dot" style="color:#16a34a;font-size:.75rem"></i></div>
-                    <strong style="font-size:.85rem;color:#334155">Address</strong>
+        {{-- ── HERO SECTION ── --}}
+        <div class="apc-section" id="sec-hero">
+            <div class="apc-section-header open" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-hero']['color'] }};"><i class="fa-solid {{ $navSections['sec-hero']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Hero Section</p>
+                        <p class="apc-section-subtitle">Top header banner for the contact page</p>
+                    </div>
                 </div>
-                <div class="form-group" style="margin:0">
-                    <textarea name="contact_address" rows="2" placeholder="University name, Keffi, Nasarawa State">{{ $s('contact_address', config('university.university').',\nKeffi, Nasarawa State') }}</textarea>
-                    <span class="hint">HTML allowed (e.g. &lt;br&gt; for line breaks)</span>
-                </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
             </div>
-
-            {{-- Email --}}
-            <div style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc">
-                <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem">
-                    <div style="width:28px;height:28px;background:#cffafe;border-radius:6px;display:flex;align-items:center;justify-content:center"><i class="fa-solid fa-envelope" style="color:#0891b2;font-size:.75rem"></i></div>
-                    <strong style="font-size:.85rem;color:#334155">Email</strong>
+            <div class="apc-section-body">
+                <div class="apc-row">
+                    <div class="apc-field">
+                        <label class="apc-label">Badge Text</label>
+                        <input class="apc-input" type="text" name="contact_hero_badge" value="{{ $s('contact_hero_badge', 'Get in Touch') }}">
+                    </div>
+                    <div class="apc-field">
+                        <label class="apc-label">Page Title</label>
+                        <input class="apc-input" type="text" name="contact_hero_title" value="{{ $s('contact_hero_title', 'Contact the Department') }}">
+                    </div>
                 </div>
-                <div class="form-group" style="margin:0">
-                    <input type="text" name="contact_email" value="{{ $s('contact_email','info@dcms.nsuk.edu.ng') }}" placeholder="info@dcms.nsuk.edu.ng">
-                    <span class="hint">Also used as the recipient for contact form submissions</span>
-                </div>
-            </div>
-
-            {{-- Phone --}}
-            <div style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc">
-                <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem">
-                    <div style="width:28px;height:28px;background:#ede9fe;border-radius:6px;display:flex;align-items:center;justify-content:center"><i class="fa-solid fa-phone" style="color:#7c3aed;font-size:.75rem"></i></div>
-                    <strong style="font-size:.85rem;color:#334155">Phone</strong>
-                </div>
-                <div class="form-group" style="margin:0">
-                    <input type="text" name="contact_phone" value="{{ $s('contact_phone','+234 (0) 123 456 7890') }}" placeholder="+234 (0) 123 456 7890">
-                </div>
-            </div>
-
-            {{-- Office Hours --}}
-            <div style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc">
-                <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem">
-                    <div style="width:28px;height:28px;background:#ffedd5;border-radius:6px;display:flex;align-items:center;justify-content:center"><i class="fa-solid fa-clock" style="color:#ea580c;font-size:.75rem"></i></div>
-                    <strong style="font-size:.85rem;color:#334155">Office Hours</strong>
-                </div>
-                <div class="form-group" style="margin:0">
-                    <input type="text" name="contact_hours" value="{{ $s('contact_hours','Mon – Fri: 8 AM – 4 PM') }}" placeholder="Mon – Fri: 8 AM – 4 PM">
+                <div class="apc-field">
+                    <label class="apc-label">Subtitle</label>
+                    <textarea class="apc-textarea" name="contact_hero_subtitle" rows="2">{{ $s('contact_hero_subtitle', 'Have questions, feedback, or partnership inquiries? We\'d love to hear from you.') }}</textarea>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-{{-- ═══════════════ CONTACT FORM TEXT ═══════════════ --}}
-<div class="pc-card">
-    <div class="pc-card-header open" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-pen-to-square" style="color:var(--color-primary)"></i> Contact Form Text</h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body">
-        <p style="font-size:.82rem;color:#64748b;margin:0 0 1rem;line-height:1.5"><i class="fa-solid fa-circle-info" style="color:var(--color-primary)"></i> The heading and description shown above the contact form.</p>
-        <div class="form-row">
-            <div class="form-group">
-                <label><i class="fa-solid fa-heading"></i> Form Title</label>
-                <input type="text" name="contact_form_title" value="{{ $s('contact_form_title','Send Us a Message') }}" placeholder="Send Us a Message">
-            </div>
-            <div class="form-group">
-                <label><i class="fa-solid fa-align-left"></i> Form Subtitle</label>
-                <input type="text" name="contact_form_subtitle" value="{{ $s('contact_form_subtitle','Fill out the form below and we\'ll get back to you as soon as possible.') }}" placeholder="Fill out the form below...">
-            </div>
-        </div>
-    </div>
-</div>
-
-{{-- ═══════════════ ABOUT SIDEBAR CARD ═══════════════ --}}
-<div class="pc-card">
-    <div class="pc-card-header open" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-building-columns" style="color:var(--color-primary)"></i> About Department Card <span class="section-badge">Sidebar</span></h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body">
-        <p style="font-size:.82rem;color:#64748b;margin:0 0 1rem;line-height:1.5"><i class="fa-solid fa-circle-info" style="color:var(--color-primary)"></i> The "About the Department" card shown on the right side of the contact form.</p>
-        <div class="form-group">
-            <label><i class="fa-solid fa-heading"></i> Card Title</label>
-            <input type="text" name="contact_about_title" value="{{ $s('contact_about_title','About the Department') }}" placeholder="About the Department">
-        </div>
-        <div class="form-group">
-            <label><i class="fa-solid fa-align-left"></i> Description</label>
-            <textarea name="contact_about_text" rows="3" placeholder="Brief description of the department...">{{ $s('contact_about_text','The Department of Computer Science at Nasarawa State University, Keffi is dedicated to producing world-class computing professionals through quality education, research, and community engagement.') }}</textarea>
-        </div>
-    </div>
-</div>
-
-{{-- ═══════════════ PARTNERSHIP CARD ═══════════════ --}}
-<div class="pc-card">
-    <div class="pc-card-header open" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-handshake" style="color:var(--color-primary)"></i> Partnership Card <span class="section-badge">Sidebar</span></h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body">
-        <p style="font-size:.82rem;color:#64748b;margin:0 0 1rem;line-height:1.5"><i class="fa-solid fa-circle-info" style="color:var(--color-primary)"></i> The green "Partner With Us" card in the sidebar.</p>
-        <div class="form-group">
-            <label><i class="fa-solid fa-heading"></i> Card Title</label>
-            <input type="text" name="contact_partner_title" value="{{ $s('contact_partner_title','Partner With Us') }}" placeholder="Partner With Us">
-        </div>
-        <div class="form-group">
-            <label><i class="fa-solid fa-align-left"></i> Description</label>
-            <textarea name="contact_partner_text" rows="3" placeholder="We collaborate with tech companies...">{{ $s('contact_partner_text','We collaborate with tech companies and organizations for internships, joint research, and curriculum development. Let\'s shape the next generation of IT leaders together.') }}</textarea>
-        </div>
-        <div class="form-group">
-            <label><i class="fa-solid fa-mouse-pointer"></i> Button Text</label>
-            <input type="text" name="contact_partner_btn" value="{{ $s('contact_partner_btn','Propose Partnership') }}" placeholder="Propose Partnership">
-        </div>
-    </div>
-</div>
-
-{{-- ═══════════════ MAP ═══════════════ --}}
-<div class="pc-card">
-    <div class="pc-card-header" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-map-location-dot" style="color:var(--color-primary)"></i> Map Settings</h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body collapsed">
-
-        {{-- Map Mode Toggle --}}
-        <div style="display:flex;gap:.6rem;margin-bottom:1.2rem">
-            @foreach(['embed' => ['icon' => 'fa-solid fa-code', 'label' => 'Embed URL'], 'coords' => ['icon' => 'fa-solid fa-location-crosshairs', 'label' => 'Coordinates']] as $mode => $info)
-            <label style="flex:1;display:flex;align-items:center;gap:.6rem;padding:.75rem 1rem;border-radius:10px;border:2px solid #e2e8f0;cursor:pointer;transition:all .2s;background:#fafbfc;user-select:none" id="mapModeLabel_{{ $mode }}">
-                <input type="radio" name="contact_map_mode" value="{{ $mode }}" {{ $s('contact_map_mode','embed') === $mode ? 'checked' : '' }} onchange="toggleMapMode()" style="accent-color:var(--color-primary);width:16px;height:16px">
-                <i class="{{ $info['icon'] }}" style="color:var(--color-primary);font-size:.9rem"></i>
-                <strong style="font-size:.85rem;color:#334155">{{ $info['label'] }}</strong>
-            </label>
-            @endforeach
-        </div>
-
-        {{-- ── Option 1: Embed URL ── --}}
-        <div id="mapModeEmbed">
-            <p style="font-size:.82rem;color:#64748b;margin:0 0 1rem;line-height:1.5">
-                <i class="fa-solid fa-circle-info" style="color:var(--color-primary)"></i>
-                Paste the full iframe embed URL from Google Maps. Go to <a href="https://maps.google.com" target="_blank" style="color:var(--color-primary);font-weight:600">Google Maps</a> → Share → Embed a map → copy the <code>src="..."</code> URL.
-            </p>
-            <div class="form-group">
-                <label><i class="fa-solid fa-code"></i> Map Embed URL or Iframe Code</label>
-                <textarea name="contact_map_embed" id="contact_map_embed" rows="3" placeholder="Paste the embed URL or the full <iframe> code from Google Maps" oninput="cleanEmbedInput();updateMapPreview()">{{ $s('contact_map_embed','') }}</textarea>
-                <span class="hint">You can paste either just the URL or the entire <code>&lt;iframe&gt;</code> code — the system will extract the URL automatically.</span>
-            </div>
-        </div>
-
-        {{-- ── Option 2: Coordinates ── --}}
-        <div id="mapModeCoords">
-            <p style="font-size:.82rem;color:#64748b;margin:0 0 1rem;line-height:1.5">
-                <i class="fa-solid fa-circle-info" style="color:var(--color-primary)"></i>
-                Enter latitude and longitude. Right-click any spot on <a href="https://maps.google.com" target="_blank" style="color:var(--color-primary);font-weight:600">Google Maps</a> to copy coordinates.
-            </p>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-                <div class="form-group" style="margin-bottom:0">
-                    <label><i class="fa-solid fa-arrows-up-down"></i> Latitude</label>
-                    <input type="text" name="contact_map_lat" id="contact_map_lat" value="{{ $s('contact_map_lat','8.8467') }}" placeholder="e.g. 8.8467" oninput="updateMapPreview()">
-                    <span class="hint">North/South position (e.g. 8.8467)</span>
+        {{-- ── CONTACT INFO CARDS ── --}}
+        <div class="apc-section" id="sec-cards">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-cards']['color'] }};"><i class="fa-solid {{ $navSections['sec-cards']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Contact Info Cards</p>
+                        <p class="apc-section-subtitle">Address, Email, Phone, Office Hours</p>
+                    </div>
                 </div>
-                <div class="form-group" style="margin-bottom:0">
-                    <label><i class="fa-solid fa-arrows-left-right"></i> Longitude</label>
-                    <input type="text" name="contact_map_lng" id="contact_map_lng" value="{{ $s('contact_map_lng','7.8736') }}" placeholder="e.g. 7.8736" oninput="updateMapPreview()">
-                    <span class="hint">East/West position (e.g. 7.8736)</span>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body collapsed">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+                    <div style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc">
+                        <strong style="font-size:.85rem;color:#334155;display:block;margin-bottom:0.5rem">Office Address</strong>
+                        <textarea class="apc-textarea" name="contact_address" rows="2">{{ $s('contact_address', config('university.university').',\nKeffi, Nasarawa State') }}</textarea>
+                    </div>
+                    <div style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc">
+                        <strong style="font-size:.85rem;color:#334155;display:block;margin-bottom:0.5rem">Email Address</strong>
+                        <input class="apc-input" type="text" name="contact_email" value="{{ $s('contact_email','info@dcms.nsuk.edu.ng') }}">
+                    </div>
+                    <div style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc">
+                        <strong style="font-size:.85rem;color:#334155;display:block;margin-bottom:0.5rem">Phone Number</strong>
+                        <input class="apc-input" type="text" name="contact_phone" value="{{ $s('contact_phone','+234 (0) 123 456 7890') }}">
+                    </div>
+                    <div style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc">
+                        <strong style="font-size:.85rem;color:#334155;display:block;margin-bottom:0.5rem">Office Hours</strong>
+                        <input class="apc-input" type="text" name="contact_hours" value="{{ $s('contact_hours','Mon – Fri: 8 AM – 4 PM') }}">
+                    </div>
                 </div>
             </div>
-            <div class="form-group" style="margin-bottom:1rem">
-                <label><i class="fa-solid fa-search-plus"></i> Zoom Level</label>
-                <div style="display:flex;align-items:center;gap:1rem">
-                    <input type="range" name="contact_map_zoom" id="contact_map_zoom" min="1" max="20" step="1" value="{{ $s('contact_map_zoom','15') }}" oninput="document.getElementById('zoomValue').textContent=this.value;updateMapPreview()" style="flex:1;accent-color:var(--color-primary)">
-                    <span id="zoomValue" style="font-weight:700;font-size:.9rem;color:#334155;min-width:24px;text-align:center">{{ $s('contact_map_zoom','15') }}</span>
+        </div>
+
+        {{-- ── FORM TEXT ── --}}
+        <div class="apc-section" id="sec-form">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-form']['color'] }};"><i class="fa-solid {{ $navSections['sec-form']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Contact Form Text</p>
+                        <p class="apc-section-subtitle">Heading above the main contact form</p>
+                    </div>
                 </div>
-                <span class="hint">1 = world view, 20 = building-level detail. Recommended: 14–17.</span>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body collapsed">
+                <div class="apc-row">
+                    <div class="apc-field">
+                        <label class="apc-label">Form Title</label>
+                        <input class="apc-input" type="text" name="contact_form_title" value="{{ $s('contact_form_title','Send Us a Message') }}">
+                    </div>
+                    <div class="apc-field">
+                        <label class="apc-label">Form Subtitle</label>
+                        <input class="apc-input" type="text" name="contact_form_subtitle" value="{{ $s('contact_form_subtitle','Fill out the form below and we\'ll get back to you as soon as possible.') }}">
+                    </div>
+                </div>
             </div>
         </div>
 
-        {{-- Live Preview --}}
-        <div style="border:1.5px solid #e2e8f0;border-radius:12px;overflow:hidden;margin-top:.5rem">
-            <div style="padding:.6rem 1rem;background:#f8fafc;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between">
-                <span style="font-size:.8rem;font-weight:600;color:#475569"><i class="fa-solid fa-eye" style="color:var(--color-primary);margin-right:.3rem"></i> Live Preview</span>
-                <button type="button" onclick="updateMapPreview()" style="font-size:.75rem;padding:.25rem .7rem;border-radius:6px;border:1px solid #e2e8f0;background:white;color:#475569;cursor:pointer;display:flex;align-items:center;gap:.3rem;transition:all .15s" onmouseover="this.style.borderColor='var(--color-primary)';this.style.color='var(--color-primary)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#475569'">
-                    <i class="fa-solid fa-rotate"></i> Refresh
+        {{-- ── ABOUT SIDEBAR ── --}}
+        <div class="apc-section" id="sec-about">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-about']['color'] }};"><i class="fa-solid {{ $navSections['sec-about']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">About Department Card</p>
+                        <p class="apc-section-subtitle">Sidebar widget over the form</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body collapsed">
+                <div class="apc-field">
+                    <label class="apc-label">Card Title</label>
+                    <input class="apc-input" type="text" name="contact_about_title" value="{{ $s('contact_about_title','About the Department') }}">
+                </div>
+                <div class="apc-field">
+                    <label class="apc-label">Description</label>
+                    <textarea class="apc-textarea" name="contact_about_text" rows="3">{{ $s('contact_about_text','The Department of Computer Science at Nasarawa State University, Keffi is dedicated to producing world-class computing professionals through quality education, research, and community engagement.') }}</textarea>
+                </div>
+            </div>
+        </div>
+
+        {{-- ── PARTNERSHIP ── --}}
+        <div class="apc-section" id="sec-partner">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-partner']['color'] }};"><i class="fa-solid {{ $navSections['sec-partner']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Partnership Card</p>
+                        <p class="apc-section-subtitle">Call-to-action block for partners</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body collapsed">
+                <div class="apc-field">
+                    <label class="apc-label">Card Title</label>
+                    <input class="apc-input" type="text" name="contact_partner_title" value="{{ $s('contact_partner_title','Partner With Us') }}">
+                </div>
+                <div class="apc-field">
+                    <label class="apc-label">Description</label>
+                    <textarea class="apc-textarea" name="contact_partner_text" rows="3">{{ $s('contact_partner_text','We collaborate with tech companies and organizations for internships, joint research, and curriculum development. Let\'s shape the next generation of IT leaders together.') }}</textarea>
+                </div>
+                <div class="apc-field">
+                    <label class="apc-label">Button Text</label>
+                    <input class="apc-input" type="text" name="contact_partner_btn" value="{{ $s('contact_partner_btn','Propose Partnership') }}">
+                </div>
+            </div>
+        </div>
+
+        {{-- ── MAP SETTINGS ── --}}
+        <div class="apc-section" id="sec-map">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-map']['color'] }};"><i class="fa-solid {{ $navSections['sec-map']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Map Settings</p>
+                        <p class="apc-section-subtitle">Google Maps location configuration</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body collapsed">
+                {{-- Map Mode Toggle --}}
+                <div style="display:flex;gap:.6rem;margin-bottom:1.2rem">
+                    @foreach(['embed' => ['icon' => 'fa-solid fa-code', 'label' => 'Embed URL'], 'coords' => ['icon' => 'fa-solid fa-location-crosshairs', 'label' => 'Coordinates']] as $mode => $info)
+                    <label style="flex:1;display:flex;align-items:center;gap:.6rem;padding:.75rem 1rem;border-radius:10px;border:2px solid #e2e8f0;cursor:pointer;transition:all .2s;background:#fafbfc;user-select:none" id="mapModeLabel_{{ $mode }}">
+                        <input type="radio" name="contact_map_mode" value="{{ $mode }}" {{ $s('contact_map_mode','embed') === $mode ? 'checked' : '' }} onchange="toggleMapMode()" style="accent-color:var(--color-primary);width:16px;height:16px">
+                        <i class="{{ $info['icon'] }}" style="color:var(--color-primary);font-size:.9rem"></i>
+                        <strong style="font-size:.85rem;color:#334155">{{ $info['label'] }}</strong>
+                    </label>
+                    @endforeach
+                </div>
+
+                {{-- Option 1: Embed URL --}}
+                <div id="mapModeEmbed">
+                    <div class="apc-field">
+                        <label class="apc-label">Map Embed URL or Iframe Code</label>
+                        <textarea class="apc-textarea" name="contact_map_embed" id="contact_map_embed" rows="3" oninput="cleanEmbedInput();updateMapPreview()">{{ $s('contact_map_embed','') }}</textarea>
+                    </div>
+                </div>
+
+                {{-- Option 2: Coordinates --}}
+                <div id="mapModeCoords">
+                    <div class="apc-row">
+                        <div class="apc-field">
+                            <label class="apc-label">Latitude</label>
+                            <input class="apc-input" type="text" name="contact_map_lat" id="contact_map_lat" value="{{ $s('contact_map_lat','8.8467') }}" oninput="updateMapPreview()">
+                        </div>
+                        <div class="apc-field">
+                            <label class="apc-label">Longitude</label>
+                            <input class="apc-input" type="text" name="contact_map_lng" id="contact_map_lng" value="{{ $s('contact_map_lng','7.8736') }}" oninput="updateMapPreview()">
+                        </div>
+                    </div>
+                    <div class="apc-field">
+                        <label class="apc-label">Zoom Level</label>
+                        <input type="range" name="contact_map_zoom" id="contact_map_zoom" min="1" max="20" step="1" value="{{ $s('contact_map_zoom','15') }}" oninput="updateMapPreview()">
+                    </div>
+                </div>
+
+                <iframe id="mapPreview" width="100%" height="200" style="border:1px solid #e2e8f0; border-radius: 8px; margin-top: 1rem; display:block" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        {{-- ── VISIBILITY ── --}}
+        <div class="apc-section" id="sec-vis">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-vis']['color'] }};"><i class="fa-solid {{ $navSections['sec-vis']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Section Visibility</p>
+                        <p class="apc-section-subtitle">Toggle sections on the live page</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body collapsed">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+                    @foreach([
+                        ['key' => 'contact_show_partnership', 'label' => 'Partnership Card', 'icon' => 'fa-solid fa-handshake', 'color' => '#16a34a'],
+                        ['key' => 'contact_show_key_contacts', 'label' => 'Key Contacts', 'icon' => 'fa-solid fa-user-tie', 'color' => '#0891b2'],
+                        ['key' => 'contact_show_faqs', 'label' => 'FAQ Section', 'icon' => 'fa-solid fa-circle-question', 'color' => '#7c3aed'],
+                        ['key' => 'contact_show_map', 'label' => 'Google Map', 'icon' => 'fa-solid fa-map-location-dot', 'color' => '#ea580c'],
+                    ] as $toggle)
+                    <label style="display:flex;align-items:center;gap:.8rem;padding:.9rem;border-radius:10px;border:1.5px solid #e2e8f0;background:#fafbfc;cursor:pointer;transition:all .15s;user-select:none" onmouseover="this.style.borderColor='{{ $toggle['color'] }}';this.style.background='{{ $toggle['color'] }}08'" onmouseout="this.style.borderColor='#e2e8f0';this.style.background='#fafbfc'">
+                        <input type="hidden" name="{{ $toggle['key'] }}" value="0">
+                        <input type="checkbox" name="{{ $toggle['key'] }}" value="1" {{ $s($toggle['key'], '1') === '1' ? 'checked' : '' }} style="width:18px;height:18px;accent-color:{{ $toggle['color'] }};cursor:pointer" onchange="this.previousElementSibling.disabled=this.checked">
+                        <div style="display:flex;align-items:center;gap:.5rem">
+                            <i class="{{ $toggle['icon'] }}" style="color:{{ $toggle['color'] }};font-size:.85rem"></i>
+                            <strong style="font-size:.85rem;color:#334155">{{ $toggle['label'] }}</strong>
+                        </div>
+                    </label>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        {{-- ── KEY CONTACTS ── --}}
+        <div class="apc-section" id="sec-contacts">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-contacts']['color'] }};"><i class="fa-solid {{ $navSections['sec-contacts']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Key Contacts</p>
+                        <p class="apc-section-subtitle">Important staff or roles shown in a list</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body collapsed">
+                <div class="apc-row">
+                    <div class="apc-field">
+                        <label class="apc-label">Section Title</label>
+                        <input class="apc-input" type="text" name="contact_key_contacts_title" value="{{ $s('contact_key_contacts_title','Key Department Contacts') }}">
+                    </div>
+                    <div class="apc-field">
+                        <label class="apc-label">Section Subtitle</label>
+                        <input class="apc-input" type="text" name="contact_key_contacts_subtitle" value="{{ $s('contact_key_contacts_subtitle','Reach out directly to the relevant office for faster assistance.') }}">
+                    </div>
+                </div>
+                <div id="keyContactsContainer">
+                    @foreach($keyContacts as $i => $contact)
+                    <div class="repeater-row kc-row">
+                        <button type="button" class="remove-btn" onclick="this.closest('.kc-row').remove();updateKeyContactsJson()"><i class="fa-solid fa-xmark"></i></button>
+                        <div class="apc-row">
+                            <div class="apc-field">
+                                <label class="apc-label">Role</label>
+                                <input class="apc-input kc-role" type="text" value="{{ $contact['role'] ?? '' }}" oninput="updateKeyContactsJson()">
+                            </div>
+                            <div class="apc-field">
+                                <label class="apc-label">Name</label>
+                                <input class="apc-input kc-name" type="text" value="{{ $contact['name'] ?? '' }}" oninput="updateKeyContactsJson()">
+                            </div>
+                        </div>
+                        <div class="apc-row">
+                            <div class="apc-field">
+                                <label class="apc-label">Email</label>
+                                <input class="apc-input kc-email" type="email" value="{{ $contact['email'] ?? '' }}" oninput="updateKeyContactsJson()">
+                            </div>
+                            <div class="apc-field">
+                                <label class="apc-label">Phone</label>
+                                <input class="apc-input kc-phone" type="text" value="{{ $contact['phone'] ?? '' }}" oninput="updateKeyContactsJson()">
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <input type="hidden" name="contact_key_contacts" id="keyContactsHidden" value="{{ json_encode($keyContacts) }}">
+                <button type="button" class="add-btn" onclick="addKeyContact()">
+                    <i class="fa-solid fa-plus"></i> Add Key Contact
                 </button>
             </div>
-            <iframe id="mapPreview" width="100%" height="250" style="border:0;display:block" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
-        <script>
-        function extractSrcFromIframe(val) {
-            val = val.trim();
-            if (val.toLowerCase().startsWith('<iframe')) {
-                const m = val.match(/src=["']([^"']+)["']/i);
-                return m ? m[1] : val;
-            }
-            return val;
-        }
-        function cleanEmbedInput() {
-            const ta = document.getElementById('contact_map_embed');
-            const raw = ta.value.trim();
-            if (raw.toLowerCase().startsWith('<iframe')) {
-                const extracted = extractSrcFromIframe(raw);
-                if (extracted !== raw) {
-                    ta.value = extracted;
-                }
-            }
-        }
-        function getMapMode() {
-            return document.querySelector('input[name="contact_map_mode"]:checked')?.value || 'embed';
-        }
-        function toggleMapMode() {
-            const mode = getMapMode();
-            document.getElementById('mapModeEmbed').style.display = mode === 'embed' ? 'block' : 'none';
-            document.getElementById('mapModeCoords').style.display = mode === 'coords' ? 'block' : 'none';
-            // Style the selected label
-            document.getElementById('mapModeLabel_embed').style.borderColor = mode === 'embed' ? 'var(--color-primary)' : '#e2e8f0';
-            document.getElementById('mapModeLabel_embed').style.background = mode === 'embed' ? 'var(--color-primary-light, #f0fdf4)' : '#fafbfc';
-            document.getElementById('mapModeLabel_coords').style.borderColor = mode === 'coords' ? 'var(--color-primary)' : '#e2e8f0';
-            document.getElementById('mapModeLabel_coords').style.background = mode === 'coords' ? 'var(--color-primary-light, #f0fdf4)' : '#fafbfc';
-            updateMapPreview();
-        }
-        function updateMapPreview() {
-            const mode = getMapMode();
-            let url = '';
-            if (mode === 'embed') {
-                url = document.getElementById('contact_map_embed').value.trim();
-            } else {
-                const lat = document.getElementById('contact_map_lat').value.trim();
-                const lng = document.getElementById('contact_map_lng').value.trim();
-                const zoom = document.getElementById('contact_map_zoom').value;
-                if (lat && lng && !isNaN(lat) && !isNaN(lng)) {
-                    url = 'https://www.google.com/maps?q=' + lat + ',' + lng + '&z=' + zoom + '&output=embed';
-                }
-            }
-            if (url) {
-                document.getElementById('mapPreview').src = url;
-            }
-        }
-        document.addEventListener('DOMContentLoaded', function() { toggleMapMode(); });
-        </script>
-    </div>
-</div>
-
-{{-- ═══════════════ SECTION VISIBILITY ═══════════════ --}}
-<div class="pc-card">
-    <div class="pc-card-header open" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-eye" style="color:var(--color-primary)"></i> Section Visibility <span class="section-badge">Toggles</span></h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body">
-        <p style="font-size:.82rem;color:#64748b;margin:0 0 1.2rem;line-height:1.5"><i class="fa-solid fa-circle-info" style="color:var(--color-primary)"></i> Control which sections appear on the public contact page. Toggle off any section to hide it.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
-            @foreach([
-                ['key' => 'contact_show_partnership', 'label' => 'Partnership Card', 'icon' => 'fa-solid fa-handshake', 'color' => '#16a34a'],
-                ['key' => 'contact_show_key_contacts', 'label' => 'Key Contacts', 'icon' => 'fa-solid fa-user-tie', 'color' => '#0891b2'],
-                ['key' => 'contact_show_faqs', 'label' => 'FAQ Section', 'icon' => 'fa-solid fa-circle-question', 'color' => '#7c3aed'],
-                ['key' => 'contact_show_map', 'label' => 'Google Map', 'icon' => 'fa-solid fa-map-location-dot', 'color' => '#ea580c'],
-            ] as $toggle)
-            <label style="display:flex;align-items:center;gap:.8rem;padding:.9rem;border-radius:10px;border:1.5px solid #e2e8f0;background:#fafbfc;cursor:pointer;transition:all .15s;user-select:none" onmouseover="this.style.borderColor='{{ $toggle['color'] }}';this.style.background='{{ $toggle['color'] }}08'" onmouseout="this.style.borderColor='#e2e8f0';this.style.background='#fafbfc'">
-                <input type="hidden" name="{{ $toggle['key'] }}" value="0">
-                <input type="checkbox" name="{{ $toggle['key'] }}" value="1" {{ $s($toggle['key'], '1') === '1' ? 'checked' : '' }} style="width:18px;height:18px;accent-color:{{ $toggle['color'] }};cursor:pointer" onchange="this.previousElementSibling.disabled=this.checked">
-                <div style="display:flex;align-items:center;gap:.5rem">
-                    <i class="{{ $toggle['icon'] }}" style="color:{{ $toggle['color'] }};font-size:.85rem"></i>
-                    <strong style="font-size:.85rem;color:#334155">{{ $toggle['label'] }}</strong>
-                </div>
-            </label>
-            @endforeach
-        </div>
-    </div>
-</div>
-
-{{-- ═══════════════ KEY DEPARTMENT CONTACTS ═══════════════ --}}
-<div class="pc-card">
-    <div class="pc-card-header open" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-user-tie" style="color:var(--color-primary)"></i> Key Department Contacts <span class="section-badge">{{ count($keyContacts) }} Contacts</span></h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body">
-        <p style="font-size:.82rem;color:#64748b;margin:0 0 1rem;line-height:1.5"><i class="fa-solid fa-circle-info" style="color:var(--color-primary)"></i> Show key department contacts with their roles, emails, and phone numbers. Visitors can click to directly email or call.</p>
-        <div class="form-row">
-            <div class="form-group">
-                <label><i class="fa-solid fa-heading"></i> Section Title</label>
-                <input type="text" name="contact_key_contacts_title" value="{{ $s('contact_key_contacts_title','Key Department Contacts') }}" placeholder="Key Department Contacts">
-            </div>
-            <div class="form-group">
-                <label><i class="fa-solid fa-align-left"></i> Section Subtitle</label>
-                <input type="text" name="contact_key_contacts_subtitle" value="{{ $s('contact_key_contacts_subtitle','Reach out directly to the relevant office for faster assistance.') }}" placeholder="Reach out directly...">
-            </div>
-        </div>
-        <div id="keyContactsContainer">
-            @foreach($keyContacts as $i => $contact)
-            <div class="kc-row" style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc;margin-bottom:.8rem;position:relative">
-                <button type="button" onclick="this.closest('.kc-row').remove();updateKeyContactsJson()" style="position:absolute;top:.5rem;right:.5rem;background:#fee2e2;color:#dc2626;border:none;border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:.75rem;display:flex;align-items:center;justify-content:center" title="Remove"><i class="fa-solid fa-trash"></i></button>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
-                    <div class="form-group" style="margin:0">
-                        <label style="font-size:.78rem"><i class="fa-solid fa-user"></i> Role / Title</label>
-                        <input type="text" class="kc-role" value="{{ $contact['role'] ?? '' }}" placeholder="e.g. Head of Department" oninput="updateKeyContactsJson()">
-                    </div>
-                    <div class="form-group" style="margin:0">
-                        <label style="font-size:.78rem"><i class="fa-solid fa-id-badge"></i> Name</label>
-                        <input type="text" class="kc-name" value="{{ $contact['name'] ?? '' }}" placeholder="e.g. Dr. John Doe" oninput="updateKeyContactsJson()">
-                    </div>
-                    <div class="form-group" style="margin:0">
-                        <label style="font-size:.78rem"><i class="fa-solid fa-envelope"></i> Email</label>
-                        <input type="email" class="kc-email" value="{{ $contact['email'] ?? '' }}" placeholder="e.g. hod@cs.nsuk.edu.ng" oninput="updateKeyContactsJson()">
-                    </div>
-                    <div class="form-group" style="margin:0">
-                        <label style="font-size:.78rem"><i class="fa-solid fa-phone"></i> Phone</label>
-                        <input type="text" class="kc-phone" value="{{ $contact['phone'] ?? '' }}" placeholder="e.g. +234 800 000 0001" oninput="updateKeyContactsJson()">
+        {{-- ── FAQS ── --}}
+        <div class="apc-section" id="sec-faqs">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-faqs']['color'] }};"><i class="fa-solid {{ $navSections['sec-faqs']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">FAQs</p>
+                        <p class="apc-section-subtitle">Frequently Asked Questions list</p>
                     </div>
                 </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
             </div>
-            @endforeach
-        </div>
-        <input type="hidden" name="contact_key_contacts" id="keyContactsHidden" value="{{ json_encode($keyContacts) }}">
-        <button type="button" onclick="addKeyContact()" style="display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.2rem;border-radius:8px;border:1.5px dashed #cbd5e1;background:white;color:#475569;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--color-primary)';this.style.color='var(--color-primary)'" onmouseout="this.style.borderColor='#cbd5e1';this.style.color='#475569'">
-            <i class="fa-solid fa-plus"></i> Add Contact
-        </button>
-    </div>
-</div>
-
-{{-- ═══════════════ FAQ SECTION ═══════════════ --}}
-<div class="pc-card">
-    <div class="pc-card-header open" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-circle-question" style="color:var(--color-primary)"></i> Frequently Asked Questions <span class="section-badge">{{ count($faqs) }} FAQs</span></h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body">
-        <p style="font-size:.82rem;color:#64748b;margin:0 0 1rem;line-height:1.5"><i class="fa-solid fa-circle-info" style="color:var(--color-primary)"></i> Add common questions and answers. These appear as an accordion on the contact page.</p>
-        <div class="form-row">
-            <div class="form-group">
-                <label><i class="fa-solid fa-heading"></i> FAQ Section Title</label>
-                <input type="text" name="contact_faq_title" value="{{ $s('contact_faq_title','Frequently Asked Questions') }}" placeholder="Frequently Asked Questions">
-            </div>
-            <div class="form-group">
-                <label><i class="fa-solid fa-align-left"></i> FAQ Section Subtitle</label>
-                <input type="text" name="contact_faq_subtitle" value="{{ $s('contact_faq_subtitle','Quick answers to common questions about the department.') }}" placeholder="Quick answers to common questions...">
-            </div>
-        </div>
-        <div id="faqContainer">
-            @foreach($faqs as $i => $faq)
-            <div class="faq-row" style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc;margin-bottom:.8rem;position:relative">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem">
-                    <span style="font-size:.78rem;font-weight:700;color:var(--color-primary);background:rgba(22,163,74,.08);padding:.15rem .5rem;border-radius:5px">Q{{ $i + 1 }}</span>
-                    <button type="button" onclick="this.closest('.faq-row').remove();updateFaqsJson()" style="background:#fee2e2;color:#dc2626;border:none;border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:.75rem;display:flex;align-items:center;justify-content:center" title="Remove"><i class="fa-solid fa-trash"></i></button>
+            <div class="apc-section-body collapsed">
+                <div class="apc-row">
+                    <div class="apc-field">
+                        <label class="apc-label">Section Title</label>
+                        <input class="apc-input" type="text" name="contact_faq_title" value="{{ $s('contact_faq_title','Frequently Asked Questions') }}">
+                    </div>
+                    <div class="apc-field">
+                        <label class="apc-label">Section Subtitle</label>
+                        <input class="apc-input" type="text" name="contact_faq_subtitle" value="{{ $s('contact_faq_subtitle','Quick answers to common questions about the department.') }}">
+                    </div>
                 </div>
-                <div class="form-group" style="margin-bottom:.6rem">
-                    <label style="font-size:.78rem"><i class="fa-solid fa-question"></i> Question</label>
-                    <input type="text" class="faq-q" value="{{ $faq['q'] ?? '' }}" placeholder="e.g. How do I apply for admission?" oninput="updateFaqsJson()">
+                <div id="faqContainer">
+                    @foreach($faqs as $i => $faq)
+                    <div class="repeater-row faq-row">
+                        <button type="button" class="remove-btn" onclick="this.closest('.faq-row').remove();updateFaqsJson()"><i class="fa-solid fa-xmark"></i></button>
+                        <div class="apc-field">
+                            <label class="apc-label">Question</label>
+                            <input class="apc-input faq-q" type="text" value="{{ $faq['q'] ?? '' }}" oninput="updateFaqsJson()">
+                        </div>
+                        <div class="apc-field">
+                            <label class="apc-label">Answer</label>
+                            <textarea class="apc-textarea faq-a" rows="2" oninput="updateFaqsJson()">{{ $faq['a'] ?? '' }}</textarea>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
-                <div class="form-group" style="margin:0">
-                    <label style="font-size:.78rem"><i class="fa-solid fa-comment-dots"></i> Answer</label>
-                    <textarea class="faq-a" rows="2" placeholder="Provide a clear, helpful answer..." oninput="updateFaqsJson()">{{ $faq['a'] ?? '' }}</textarea>
+                <input type="hidden" name="contact_faqs" id="faqsHidden" value="{{ json_encode($faqs) }}">
+                <button type="button" class="add-btn" onclick="addFaq()">
+                    <i class="fa-solid fa-plus"></i> Add FAQ
+                </button>
+            </div>
+        </div>
+
+        {{-- ── QUICK ACTIONS ── --}}
+        <div class="apc-section" id="sec-quick">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-quick']['color'] }};"><i class="fa-solid {{ $navSections['sec-quick']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Quick Actions</p>
+                        <p class="apc-section-subtitle">Relevant system links</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body collapsed">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem">
+                    <a href="{{ route('admin.social-links.index') }}" style="display:flex;align-items:center;gap:.8rem;padding:.9rem;border-radius:10px;border:1.5px solid #e2e8f0;text-decoration:none;color:#334155;transition:all .15s;background:#fafbfc">
+                        <div style="width:36px;height:36px;background:rgba(22,163,74,.1);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fa-solid fa-share-nodes" style="color:var(--color-primary)"></i></div>
+                        <div><strong style="font-size:.85rem;display:block">Social Links</strong></div>
+                    </a>
                 </div>
             </div>
-            @endforeach
         </div>
-        <input type="hidden" name="contact_faqs" id="faqsHidden" value="{{ json_encode($faqs) }}">
-        <button type="button" onclick="addFaq()" style="display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.2rem;border-radius:8px;border:1.5px dashed #cbd5e1;background:white;color:#475569;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--color-primary)';this.style.color='var(--color-primary)'" onmouseout="this.style.borderColor='#cbd5e1';this.style.color='#475569'">
-            <i class="fa-solid fa-plus"></i> Add FAQ
-        </button>
-    </div>
-</div>
 
-{{-- ═══════════════ QUICK ACTIONS ═══════════════ --}}
-<div class="pc-card">
-    <div class="pc-card-header" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-bolt" style="color:var(--color-primary)"></i> Quick Actions</h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body collapsed">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem">
-            <a href="{{ route('admin.social-links.index') }}" style="display:flex;align-items:center;gap:.8rem;padding:.9rem;border-radius:10px;border:1.5px solid #e2e8f0;text-decoration:none;color:#334155;transition:all .15s;background:#fafbfc" onmouseover="this.style.borderColor='var(--color-primary)';this.style.background='#f0fdf4'" onmouseout="this.style.borderColor='#e2e8f0';this.style.background='#fafbfc'">
-                <div style="width:36px;height:36px;background:rgba(22,163,74,.1);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fa-solid fa-share-nodes" style="color:var(--color-primary)"></i></div>
-                <div><strong style="font-size:.85rem;display:block">Social Links</strong><span style="font-size:.75rem;color:#64748b">Manage icons & URLs</span></div>
-            </a>
-            <a href="{{ route('contact') }}" target="_blank" style="display:flex;align-items:center;gap:.8rem;padding:.9rem;border-radius:10px;border:1.5px solid #e2e8f0;text-decoration:none;color:#334155;transition:all .15s;background:#fafbfc" onmouseover="this.style.borderColor='#0891b2';this.style.background='#ecfeff'" onmouseout="this.style.borderColor='#e2e8f0';this.style.background='#fafbfc'">
-                <div style="width:36px;height:36px;background:rgba(8,145,178,.1);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fa-solid fa-eye" style="color:#0891b2"></i></div>
-                <div><strong style="font-size:.85rem;display:block">View Public Page</strong><span style="font-size:.75rem;color:#64748b">See what visitors see</span></div>
-            </a>
-            @if(auth()->user()->isSuperAdmin())
-            <a href="{{ route('super-admin.settings.index') }}" style="display:flex;align-items:center;gap:.8rem;padding:.9rem;border-radius:10px;border:1.5px solid #e2e8f0;text-decoration:none;color:#334155;transition:all .15s;background:#fafbfc" onmouseover="this.style.borderColor='#7c3aed';this.style.background='#f5f3ff'" onmouseout="this.style.borderColor='#e2e8f0';this.style.background='#fafbfc'">
-                <div style="width:36px;height:36px;background:rgba(124,58,237,.1);border-radius:8px;display:flex;align-items:center;justify-content:center"><i class="fa-solid fa-gear" style="color:#7c3aed"></i></div>
-                <div><strong style="font-size:.85rem;display:block">Site Settings</strong><span style="font-size:.75rem;color:#64748b">Global contact & metadata</span></div>
-            </a>
-            @endif
-        </div>
-    </div>
-</div>
+        
 
-{{-- ═══════════════ SAVE BUTTON ═══════════════ --}}
-<div style="display:flex;justify-content:flex-end;gap:1rem;padding:1rem 0">
-    <a href="{{ route('contact') }}" target="_blank" style="padding:.65rem 1.5rem;border-radius:10px;font-weight:600;font-size:.9rem;text-decoration:none;color:#475569;border:1.5px solid #e2e8f0;display:inline-flex;align-items:center;gap:.4rem;transition:all .15s" onmouseover="this.style.borderColor='#94a3b8'" onmouseout="this.style.borderColor='#e2e8f0'"><i class="fa-solid fa-eye"></i> Preview</a>
-    <button type="submit" style="background:var(--color-primary);color:white;padding:.65rem 2rem;border:none;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;box-shadow:0 2px 8px rgba(22,163,74,.25)" onmouseover="this.style.background='#15803d'" onmouseout="this.style.background='var(--color-primary)'"><i class="fa-solid fa-save"></i> Save Contact Page</button>
-</div>
+    </div>{{-- end .apc-main --}}
+</div>{{-- end .apc-shell --}}
 </form>
 
 <script>
-function toggleSection(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('collapsed')}
-document.addEventListener('DOMContentLoaded',function(){const t=document.querySelector('[style*="animation:fadeIn"]');if(t)setTimeout(()=>t.remove(),4000)});
-
-// ── FAQ Management ──
-function updateFaqsJson() {
-    const rows = document.querySelectorAll('#faqContainer .faq-row');
-    const faqs = [];
-    rows.forEach(row => {
-        const q = row.querySelector('.faq-q')?.value?.trim() || '';
-        const a = row.querySelector('.faq-a')?.value?.trim() || '';
-        if (q || a) faqs.push({ q, a });
-    });
-    document.getElementById('faqsHidden').value = JSON.stringify(faqs);
-    // Update badge numbers
-    rows.forEach((row, i) => {
-        const badge = row.querySelector('span[style*="color:var(--color-primary)"]');
-        if (badge) badge.textContent = 'Q' + (i + 1);
-    });
+// ── Collapsible Sections ──
+function toggleSection(header) {
+    header.classList.toggle('open');
+    header.nextElementSibling.classList.toggle('collapsed');
 }
 
-function addFaq() {
-    const container = document.getElementById('faqContainer');
-    const idx = container.querySelectorAll('.faq-row').length + 1;
-    const html = `<div class="faq-row" style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc;margin-bottom:.8rem;position:relative">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem">
-            <span style="font-size:.78rem;font-weight:700;color:var(--color-primary);background:rgba(22,163,74,.08);padding:.15rem .5rem;border-radius:5px">Q${idx}</span>
-            <button type="button" onclick="this.closest('.faq-row').remove();updateFaqsJson()" style="background:#fee2e2;color:#dc2626;border:none;border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:.75rem;display:flex;align-items:center;justify-content:center" title="Remove"><i class="fa-solid fa-trash"></i></button>
-        </div>
-        <div class="form-group" style="margin-bottom:.6rem">
-            <label style="font-size:.78rem"><i class="fa-solid fa-question"></i> Question</label>
-            <input type="text" class="faq-q" value="" placeholder="e.g. How do I apply for admission?" oninput="updateFaqsJson()">
-        </div>
-        <div class="form-group" style="margin:0">
-            <label style="font-size:.78rem"><i class="fa-solid fa-comment-dots"></i> Answer</label>
-            <textarea class="faq-a" rows="2" placeholder="Provide a clear, helpful answer..." oninput="updateFaqsJson()"></textarea>
-        </div>
-    </div>`;
-    container.insertAdjacentHTML('beforeend', html);
-    container.lastElementChild.querySelector('.faq-q').focus();
-    updateFaqsJson();
+function openSection(id) {
+    const sec = document.getElementById(id);
+    if (!sec) return;
+
+    const header = sec.querySelector('.apc-section-header');
+    const body   = sec.querySelector('.apc-section-body');
+    if (body && body.classList.contains('collapsed')) {
+        header.classList.add('open');
+        body.classList.remove('collapsed');
+    }
+
+    const offset = 90;
+    const top = sec.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+
+    document.querySelectorAll('.apc-sidenav a').forEach(l => l.classList.remove('active'));
+    const match = document.querySelector(`.apc-sidenav a[href="#${id}"]`);
+    if (match) match.classList.add('active');
 }
 
-// ── Key Contacts Management ──
+// ── Map Preview ──
+function getMapMode() {
+    return document.querySelector('input[name="contact_map_mode"]:checked')?.value || 'embed';
+}
+function toggleMapMode() {
+    const mode = getMapMode();
+    document.getElementById('mapModeEmbed').style.display = mode === 'embed' ? 'block' : 'none';
+    document.getElementById('mapModeCoords').style.display = mode === 'coords' ? 'block' : 'none';
+    
+    document.getElementById('mapModeLabel_embed').style.borderColor = mode === 'embed' ? 'var(--color-primary)' : '#e2e8f0';
+    document.getElementById('mapModeLabel_coords').style.borderColor = mode === 'coords' ? 'var(--color-primary)' : '#e2e8f0';
+    updateMapPreview();
+}
+function cleanEmbedInput() {
+    const ta = document.getElementById('contact_map_embed');
+    const raw = ta.value.trim();
+    if (raw.toLowerCase().startsWith('<iframe')) {
+        const m = raw.match(/src=["']([^"']+)["']/i);
+        if (m) ta.value = m[1];
+    }
+}
+function updateMapPreview() {
+    const mode = getMapMode();
+    let url = '';
+    if (mode === 'embed') {
+        url = document.getElementById('contact_map_embed').value.trim();
+    } else {
+        const lat = document.getElementById('contact_map_lat').value.trim();
+        const lng = document.getElementById('contact_map_lng').value.trim();
+        const zoom = document.getElementById('contact_map_zoom').value;
+        if (lat && lng) {
+            url = 'https://www.google.com/maps?q=' + lat + ',' + lng + '&z=' + zoom + '&output=embed';
+        }
+    }
+    document.getElementById('mapPreview').src = url;
+}
+
+// ── Repeater Utils ──
 function updateKeyContactsJson() {
-    const rows = document.querySelectorAll('#keyContactsContainer .kc-row');
-    const contacts = [];
-    rows.forEach(row => {
-        const role = row.querySelector('.kc-role')?.value?.trim() || '';
-        const name = row.querySelector('.kc-name')?.value?.trim() || '';
-        const email = row.querySelector('.kc-email')?.value?.trim() || '';
-        const phone = row.querySelector('.kc-phone')?.value?.trim() || '';
-        if (role || name || email || phone) contacts.push({ role, name, email, phone });
-    });
+    const rows = document.querySelectorAll('.kc-row');
+    const contacts = Array.from(rows).map(row => ({
+        role: row.querySelector('.kc-role').value.trim(),
+        name: row.querySelector('.kc-name').value.trim(),
+        email: row.querySelector('.kc-email').value.trim(),
+        phone: row.querySelector('.kc-phone').value.trim()
+    })).filter(c => c.role || c.name || c.email || c.phone);
     document.getElementById('keyContactsHidden').value = JSON.stringify(contacts);
 }
-
 function addKeyContact() {
-    const container = document.getElementById('keyContactsContainer');
-    const html = `<div class="kc-row" style="border:1.5px solid #e2e8f0;border-radius:10px;padding:1rem;background:#fafbfc;margin-bottom:.8rem;position:relative">
-        <button type="button" onclick="this.closest('.kc-row').remove();updateKeyContactsJson()" style="position:absolute;top:.5rem;right:.5rem;background:#fee2e2;color:#dc2626;border:none;border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:.75rem;display:flex;align-items:center;justify-content:center" title="Remove"><i class="fa-solid fa-trash"></i></button>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
-            <div class="form-group" style="margin:0">
-                <label style="font-size:.78rem"><i class="fa-solid fa-user"></i> Role / Title</label>
-                <input type="text" class="kc-role" value="" placeholder="e.g. Head of Department" oninput="updateKeyContactsJson()">
+    const html = `
+    <div class="repeater-row kc-row">
+        <button type="button" class="remove-btn" onclick="this.closest('.kc-row').remove();updateKeyContactsJson()"><i class="fa-solid fa-xmark"></i></button>
+        <div class="apc-row">
+            <div class="apc-field">
+                <label class="apc-label">Role</label>
+                <input class="apc-input kc-role" type="text" value="" oninput="updateKeyContactsJson()">
             </div>
-            <div class="form-group" style="margin:0">
-                <label style="font-size:.78rem"><i class="fa-solid fa-id-badge"></i> Name</label>
-                <input type="text" class="kc-name" value="" placeholder="e.g. Dr. John Doe" oninput="updateKeyContactsJson()">
+            <div class="apc-field">
+                <label class="apc-label">Name</label>
+                <input class="apc-input kc-name" type="text" value="" oninput="updateKeyContactsJson()">
             </div>
-            <div class="form-group" style="margin:0">
-                <label style="font-size:.78rem"><i class="fa-solid fa-envelope"></i> Email</label>
-                <input type="email" class="kc-email" value="" placeholder="e.g. hod@cs.nsuk.edu.ng" oninput="updateKeyContactsJson()">
+        </div>
+        <div class="apc-row">
+            <div class="apc-field">
+                <label class="apc-label">Email</label>
+                <input class="apc-input kc-email" type="email" value="" oninput="updateKeyContactsJson()">
             </div>
-            <div class="form-group" style="margin:0">
-                <label style="font-size:.78rem"><i class="fa-solid fa-phone"></i> Phone</label>
-                <input type="text" class="kc-phone" value="" placeholder="e.g. +234 800 000 0001" oninput="updateKeyContactsJson()">
+            <div class="apc-field">
+                <label class="apc-label">Phone</label>
+                <input class="apc-input kc-phone" type="text" value="" oninput="updateKeyContactsJson()">
             </div>
         </div>
     </div>`;
-    container.insertAdjacentHTML('beforeend', html);
-    container.lastElementChild.querySelector('.kc-role').focus();
+    document.getElementById('keyContactsContainer').insertAdjacentHTML('beforeend', html);
     updateKeyContactsJson();
 }
 
-// Initialize hidden fields on page load
-document.addEventListener('DOMContentLoaded', function() {
+function updateFaqsJson() {
+    const rows = document.querySelectorAll('.faq-row');
+    const faqs = Array.from(rows).map(row => ({
+        q: row.querySelector('.faq-q').value.trim(),
+        a: row.querySelector('.faq-a').value.trim()
+    })).filter(c => c.q || c.a);
+    document.getElementById('faqsHidden').value = JSON.stringify(faqs);
+}
+function addFaq() {
+    const html = `
+    <div class="repeater-row faq-row">
+        <button type="button" class="remove-btn" onclick="this.closest('.faq-row').remove();updateFaqsJson()"><i class="fa-solid fa-xmark"></i></button>
+        <div class="apc-field">
+            <label class="apc-label">Question</label>
+            <input class="apc-input faq-q" type="text" value="" oninput="updateFaqsJson()">
+        </div>
+        <div class="apc-field">
+            <label class="apc-label">Answer</label>
+            <textarea class="apc-textarea faq-a" rows="2" oninput="updateFaqsJson()"></textarea>
+        </div>
+    </div>`;
+    document.getElementById('faqContainer').insertAdjacentHTML('beforeend', html);
     updateFaqsJson();
-    updateKeyContactsJson();
-    // Handle checkbox toggle - ensure hidden field is disabled when checkbox is checked
-    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        const hidden = cb.previousElementSibling;
-        if (hidden && hidden.type === 'hidden') hidden.disabled = cb.checked;
-    });
+}
+
+// ── Fix sidenav to viewport on load ──
+document.addEventListener('DOMContentLoaded', () => {
+    toggleMapMode();
+
+    const nav = document.querySelector('.apc-sidenav');
+    const shell = document.querySelector('.apc-shell');
+    if (!nav || !shell) return;
+    function pinNav() {
+        nav.style.position = ''; nav.style.left = ''; nav.style.width = ''; nav.style.top = '';
+        const rect = nav.getBoundingClientRect();
+        nav.style.position = 'fixed'; nav.style.top = '85px'; nav.style.left = rect.left + 'px'; nav.style.width = rect.width + 'px';
+        let spacer = shell.querySelector('.apc-sidenav-spacer');
+        if (!spacer) {
+            spacer = document.createElement('div'); spacer.className = 'apc-sidenav-spacer'; spacer.style.flexShrink = '0';
+            shell.insertBefore(spacer, nav);
+        }
+        spacer.style.width = rect.width + 'px';
+    }
+    pinNav();
+    window.addEventListener('resize', pinNav);
+});
+
+// ── Highlight active sidenav link on scroll ──
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.apc-sidenav a');
+    const sections = Array.from(document.querySelectorAll('.apc-section'));
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                links.forEach(l => l.classList.remove('active'));
+                const match = document.querySelector(`.apc-sidenav a[href="#${e.target.id}"]`);
+                if (match) match.classList.add('active');
+            }
+        });
+    }, { threshold: 0.25 });
+    sections.forEach(s => observer.observe(s));
+});
+
+// ── Auto dismiss toast ──
+document.addEventListener('DOMContentLoaded', function() {
+    const toast = document.querySelector('.toast-success');
+    if (toast) setTimeout(() => toast.remove(), 4000);
 });
 </script>
 @endsection

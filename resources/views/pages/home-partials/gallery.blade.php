@@ -14,14 +14,35 @@
             </a>
         </div>
 
-        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;">
-            @foreach($galleryImages as $img)
-            <div class="gallery-home-item" style="aspect-ratio: {{ $loop->first || $loop->index === 3 ? '1/1' : '4/3' }}; border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; {{ $loop->first ? 'grid-row: span 2;' : '' }}">
-                <img src="{{ asset('storage/'.$img->image_path) }}" alt="{{ $img->caption ?? '' }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;">
-                <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 1rem;" class="gallery-overlay">
-                    @if($img->caption)
-                    <span style="color: white; font-size: 0.85rem; font-weight: 600;">{{ $img->caption }}</span>
-                    @endif
+        <!-- Sharp Professional Grid Layout -->
+        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 4px; grid-auto-rows: 250px;">
+            @foreach($galleryImages as $index => $img)
+            @php
+                // Create a professional looking dynamic grid layout
+                $isLarge = false;
+                $isTall = false;
+                $isWide = false;
+                
+                // For a dynamic, sharp asymmetric grid up to 8 items
+                if ($index === 0) $isLarge = true; // First item is focal point
+                elseif ($index === 3 || $index === 6) $isWide = true; // Some wide items
+                elseif ($index === 4) $isTall = true; // Some tall items
+                
+                $gridSpan = '';
+                if ($isLarge) $gridSpan = 'grid-column: span 2; grid-row: span 2;';
+                elseif ($isWide) $gridSpan = 'grid-column: span 2; grid-row: span 1;';
+                elseif ($isTall) $gridSpan = 'grid-column: span 1; grid-row: span 2;';
+                else $gridSpan = 'grid-column: span 1; grid-row: span 1;';
+            @endphp
+            <div class="gallery-home-item group" style="{{ $gridSpan }} border-radius: 2px; overflow: hidden; position: relative; cursor: pointer;">
+                <img src="{{ asset('storage/'.$img->image_path) }}" alt="{{ $img->caption ?? 'Gallery image' }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); filter: brightness(0.95);">
+                <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%); opacity: 0; transition: opacity 0.4s ease-in-out; display: flex; align-items: flex-end; padding: 1.5rem;" class="gallery-overlay">
+                    <div>
+                        @if($img->caption)
+                        <h4 style="color: white; font-size: 1.1rem; font-weight: 500; font-family: var(--font-heading); margin: 0; transform: translateY(10px); transition: transform 0.4s ease-in-out;" class="gallery-caption">{{ $img->caption }}</h4>
+                        @endif
+                        <div style="width: 20px; height: 2px; background: #86efac; margin-top: 8px; transform: scaleX(0); transition: transform 0.4s ease-in-out; transform-origin: left;" class="gallery-line"></div>
+                    </div>
                 </div>
             </div>
             @endforeach

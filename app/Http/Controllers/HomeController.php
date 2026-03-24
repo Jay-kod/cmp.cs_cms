@@ -46,12 +46,17 @@ class HomeController extends Controller
         $nacosPresidents = NacosPresident::orderByDesc('tenure_end')->take(4)->get();
         $nacosTotalCount = NacosPresident::count();
 
+        // Timetables
+        $timetables = \App\Models\ResourceItem::whereHas('category', function($q) {
+            $q->where('slug', 'timetable');
+        })->where('is_active', true)->latest()->take(3)->get();
+
         return view('pages.home', compact(
             'programmes', 'news', 'events', 'announcements', 'hod',
             'staffCount', 'courseCount', 'carouselSlides',
             'featuredStaff', 'galleryImages', 'galleryAlbumCount',
             'externalSystems', 'cmsPages', 'partners',
-            'nacosPresidents', 'nacosTotalCount'
+            'nacosPresidents', 'nacosTotalCount', 'timetables'
         ));
     }
 }

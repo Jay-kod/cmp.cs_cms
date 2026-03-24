@@ -131,11 +131,41 @@
 }
 
 /* Gallery Home Items */
+.gallery-home-item {
+    transition: box-shadow 0.3s ease;
+}
+.gallery-home-item:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 10;
+}
 .gallery-home-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.05) !important;
+    filter: brightness(1) !important;
 }
 .gallery-home-item:hover .gallery-overlay {
     opacity: 1 !important;
+}
+.gallery-home-item:hover .gallery-caption {
+    transform: translateY(0) !important;
+}
+.gallery-home-item:hover .gallery-line {
+    transform: scaleX(1) !important;
+}
+@media (max-width: 991px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-auto-rows: 200px !important;
+    }
+    .gallery-home-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+    }
+}
+@media (max-width: 575px) {
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+        grid-auto-rows: 250px !important;
+    }
 }
 
 /* System Cards */

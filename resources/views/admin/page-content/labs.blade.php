@@ -1,18 +1,15 @@
 @extends($adminLayout ?? 'layouts.admin')
-@section('title', 'Blog / Research Page Content')
-@section('header', 'Blog & Research Page Editor')
+@section('title', 'Labs Page Content')
+@section('header', 'Labs Page Editor')
 
 @section('content')
 @php
     $s = fn(string $key, string $default = '') => $settings[$key] ?? $default;
-    $defaultAreas = '[{"icon":"fa-solid fa-brain","title":"Artificial Intelligence","description":"","color":"#8b5cf6"},{"icon":"fa-solid fa-shield-halved","title":"Cybersecurity","description":"","color":"#ef4444"},{"icon":"fa-solid fa-database","title":"Data Science","description":"","color":"#3b82f6"}]';
-    $areas = json_decode($s('blog_research_areas', $defaultAreas), true) ?? [];
+    $facilities  = json_decode($s('about_facilities', '[]'), true) ?? [];
 
     $navSections = [
-        'sec-hero'      => ['icon' => 'fa-image',   'label' => 'Hero Section',      'color' => '#6366f1'],
-        'sec-research'  => ['icon' => 'fa-flask',   'label' => 'Research Areas',    'color' => '#10b981'],
-        'sec-headers'   => ['icon' => 'fa-heading', 'label' => 'Section Headers',   'color' => '#f59e0b'],
-        'sec-news'      => ['icon' => 'fa-newspaper','label' => 'News Directory',   'color' => '#0ea5e9'],
+        'sec-desc'  => ['icon' => 'fa-server',   'label' => 'Description', 'color' => '#6366f1'],
+        'sec-fac'   => ['icon' => 'fa-building', 'label' => 'Facilities',  'color' => '#10b981'],
     ];
 @endphp
 
@@ -77,7 +74,7 @@
 @keyframes slideIn { from { transform: translateX(100%) scale(0.9); opacity: 0; } to { transform: translateX(0) scale(1); opacity: 1; } }
 @keyframes fadeOut { to { transform: translateX(100%); opacity: 0; } }
 
-.area-row { border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; background: #fafafa; position: relative; }
+.repeater-row { border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; background: #fafafa; position: relative; }
 .remove-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: #fee2e2; color: #ef4444; border: none; border-radius: 6px; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
 .remove-btn:hover { background: #fca5a5; color: #991b1b; }
 .add-btn { background: #f0fdf4; border: 1px dashed #10b981; color: #10b981; padding: 0.75rem; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s; display: flex; justify-content: center; align-items: center; gap: 0.5rem; }
@@ -91,16 +88,17 @@
 {{-- Top bar --}}
 <div style="background: #0f172a; padding: 0.8rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; margin-left: calc(190px + 1.5rem); display: flex; align-items: center; justify-content: space-between;">
     <div style="display: flex; align-items: center; gap: 0.7rem;">
-        <div style="width: 8px; height: 8px; background: #8b5cf6; border-radius: 50%;"></div>
-        <span style="color: #94a3b8; font-size: 0.85rem;">Editing: <strong style="color: white;">Blog & Research Page</strong></span>
+        <div style="width: 8px; height: 8px; background: #06b6d4; border-radius: 50%;"></div>
+        <span style="color: #94a3b8; font-size: 0.85rem;">Editing: <strong style="color: white;">Labs Page</strong></span>
     </div>
-    <a href="{{ route('research-news') }}" target="_blank" style="background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.1); display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+    <a href="{{ route('labs') }}" target="_blank" style="background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.1); display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
         <i class="fa-solid fa-up-right-from-square" style="font-size: 0.75rem;"></i> Preview Page
     </a>
 </div>
 
-<form method="POST" action="{{ route('admin.page-content.update', 'blog') }}" enctype="multipart/form-data">
+<form action="{{ route('admin.page-content.update', $page ?? 'labs') }}" method="POST" enctype="multipart/form-data">
 @csrf
+@method('PUT')
 
 <div class="apc-shell">
 
@@ -124,141 +122,64 @@
     {{-- ══ MAIN CONTENT ══ --}}
     <div class="apc-main">
 
-        {{-- ── HERO SECTION ── --}}
-        <div class="apc-section" id="sec-hero">
+        {{-- ── DESCRIPTION SECTION ── --}}
+        <div class="apc-section" id="sec-desc">
             <div class="apc-section-header open" onclick="toggleSection(this)">
                 <div class="apc-section-header-left">
-                    <div class="apc-section-icon" style="background: {{ $navSections['sec-hero']['color'] }};"><i class="fa-solid {{ $navSections['sec-hero']['icon'] }}"></i></div>
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-desc']['color'] }};"><i class="fa-solid {{ $navSections['sec-desc']['icon'] }}"></i></div>
                     <div>
-                        <p class="apc-section-title">Hero Section</p>
-                        <p class="apc-section-subtitle">Top header banner for the Research & News page</p>
+                        <p class="apc-section-title">Labs Description</p>
+                        <p class="apc-section-subtitle">Overall intro text for the Labs section</p>
                     </div>
                 </div>
                 <i class="fa-solid fa-chevron-down apc-chevron"></i>
             </div>
             <div class="apc-section-body">
-                <div class="apc-row">
-                    <div class="apc-field">
-                        <label class="apc-label">Badge Text</label>
-                        <input class="apc-input" type="text" name="blog_hero_badge" value="{{ $s('blog_hero_badge', 'Innovation & Insights') }}">
-                    </div>
-                    <div class="apc-field">
-                        <label class="apc-label">Hero Title</label>
-                        <input class="apc-input" type="text" name="blog_hero_title" value="{{ $s('blog_hero_title', 'Research, News & Events') }}">
-                    </div>
-                </div>
-                <div class="apc-field" style="margin-bottom: 1.25rem;">
-                    <label class="apc-label">Hero Subtitle</label>
-                    <textarea class="apc-textarea" name="blog_hero_subtitle" rows="2">{{ $s('blog_hero_subtitle', 'Stay updated with our latest technological breakthroughs and upcoming academic events.') }}</textarea>
-                </div>
                 <div class="apc-field">
-                    <label class="apc-label"><i class="fa-solid fa-image"></i> Hero Background Image</label>
-                    <div style="display: flex; gap: 1rem; align-items: flex-end;">
-                        @if($s('hero_blog'))
-                            <img src="{{ asset('storage/'.$s('hero_blog')) }}" style="height: 60px; width: 100px; border-radius: 8px; object-fit: cover; border: 1px solid #e2e8f0;">
-                        @else
-                            <div style="height: 60px; width: 100px; border-radius: 8px; background: #f8fafc; border: 1px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i class="fa-solid fa-camera fa-lg"></i></div>
-                        @endif
-                        <input class="apc-input" type="file" name="hero_blog" accept="image/jpeg,image/png,image/webp" style="padding: 0.4rem;">
-                    </div>
+                    <label class="apc-label">Description</label>
+                    <textarea class="apc-textarea" name="about_facilities_desc" rows="3">{{ $s('about_facilities_desc', 'Our department boasts state-of-the-art laboratories to support practical learning and research across various IT domains.') }}</textarea>
                 </div>
             </div>
         </div>
 
-        {{-- ── CORE RESEARCH AREAS ── --}}
-        <div class="apc-section" id="sec-research">
+        {{-- ── FACILITIES ── --}}
+        <div class="apc-section" id="sec-fac">
             <div class="apc-section-header" onclick="toggleSection(this)">
                 <div class="apc-section-header-left">
-                    <div class="apc-section-icon" style="background: {{ $navSections['sec-research']['color'] }};"><i class="fa-solid {{ $navSections['sec-research']['icon'] }}"></i></div>
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-fac']['color'] }};"><i class="fa-solid {{ $navSections['sec-fac']['icon'] }}"></i></div>
                     <div>
-                        <p class="apc-section-title">Core Research Areas</p>
-                        <p class="apc-section-subtitle">Manage feature cards displayed below the hero</p>
-                    </div>
-                </div>
-                <div style="display:flex; align-items:center; gap:0.6rem;">
-                    <span style="background:#dcfce7; color:#16a34a; font-size:0.7rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:20px;">Grid Section</span>
-                    <i class="fa-solid fa-chevron-down apc-chevron"></i>
-                </div>
-            </div>
-            <div class="apc-section-body collapsed">
-                <div id="areasRepeater">
-                    @foreach($areas as $i => $area)
-                    <div class="area-row">
-                        <button type="button" class="remove-btn" onclick="this.closest('.area-row').remove()"><i class="fa-solid fa-xmark"></i></button>
-                        <div style="font-size: 0.8rem; font-weight: 800; color: #64748b; margin-bottom: 0.8rem;">RESEARCH AREA</div>
-                        <div class="apc-row">
-                            <div class="apc-field">
-                                <label class="apc-label">Icon (FA class)</label>
-                                <input class="apc-input" type="text" name="blog_research_areas[{{ $i }}][icon]" value="{{ $area['icon'] ?? '' }}" placeholder="fa-solid fa-brain">
-                            </div>
-                            <div class="apc-field">
-                                <label class="apc-label">Title</label>
-                                <input class="apc-input" type="text" name="blog_research_areas[{{ $i }}][title]" value="{{ $area['title'] ?? '' }}">
-                            </div>
-                            <div class="apc-field" style="flex: 0.4;">
-                                <label class="apc-label">Color</label>
-                                <input type="color" name="blog_research_areas[{{ $i }}][color]" value="{{ $area['color'] ?? '#8b5cf6' }}" style="height:38px; width: 100%; border: 1.5px solid #e2e8f0; border-radius: 8px; cursor: pointer; padding: 0.2rem;">
-                            </div>
-                        </div>
-                        <div class="apc-field">
-                            <label class="apc-label">Description</label>
-                            <textarea class="apc-textarea" name="blog_research_areas[{{ $i }}][description]" rows="2">{{ $area['description'] ?? '' }}</textarea>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <button type="button" class="add-btn" onclick="addArea()">
-                    <i class="fa-solid fa-plus"></i> Add Research Area
-                </button>
-            </div>
-        </div>
-
-        {{-- ── SECTION HEADERS ── --}}
-        <div class="apc-section" id="sec-headers">
-            <div class="apc-section-header" onclick="toggleSection(this)">
-                <div class="apc-section-header-left">
-                    <div class="apc-section-icon" style="background: {{ $navSections['sec-headers']['color'] }};"><i class="fa-solid {{ $navSections['sec-headers']['icon'] }}"></i></div>
-                    <div>
-                        <p class="apc-section-title">Section Headers</p>
-                        <p class="apc-section-subtitle">Customize the headings for different content blocks</p>
+                        <p class="apc-section-title">Facilities</p>
+                        <p class="apc-section-subtitle">Manage laboratory listings</p>
                     </div>
                 </div>
                 <i class="fa-solid fa-chevron-down apc-chevron"></i>
             </div>
             <div class="apc-section-body collapsed">
-                <div class="apc-row">
-                    <div class="apc-field">
-                        <label class="apc-label">Publications Title</label>
-                        <input class="apc-input" type="text" name="blog_publications_title" value="{{ $s('blog_publications_title', 'Recent Publications') }}">
+                <div id="facilitiesRepeater">
+                    @foreach($facilities as $i => $f)
+                    <div class="repeater-row">
+                        <button type="button" class="remove-btn" onclick="this.closest('.repeater-row').remove()"><i class="fa-solid fa-xmark"></i></button>
+                        <div style="font-size: 0.8rem; font-weight: 800; color: #64748b; margin-bottom: 0.8rem;">FACILITY</div>
+                        <div class="apc-row">
+                            <div class="apc-field">
+                                <label class="apc-label">Icon (FA class)</label>
+                                <input class="apc-input" type="text" name="about_facilities[{{ $i }}][icon]" value="{{ $f['icon'] ?? '' }}" placeholder="fa-solid fa-desktop">
+                            </div>
+                            <div class="apc-field">
+                                <label class="apc-label">Name</label>
+                                <input class="apc-input" type="text" name="about_facilities[{{ $i }}][name]" value="{{ $f['name'] ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="apc-field">
+                            <label class="apc-label">Description</label>
+                            <textarea class="apc-textarea" name="about_facilities[{{ $i }}][description]" rows="2">{{ $f['description'] ?? '' }}</textarea>
+                        </div>
                     </div>
-                    <div class="apc-field">
-                        <label class="apc-label">News Title</label>
-                        <input class="apc-input" type="text" name="blog_news_title" value="{{ $s('blog_news_title', 'Department News') }}">
-                    </div>
-                    <div class="apc-field">
-                        <label class="apc-label">Events Title</label>
-                        <input class="apc-input" type="text" name="blog_events_title" value="{{ $s('blog_events_title', 'Upcoming Events') }}">
-                    </div>
+                    @endforeach
                 </div>
-            </div>
-        </div>
-
-        {{-- ── NEWS DIRECTORY ── --}}
-        <div class="apc-section" id="sec-news">
-            <div class="apc-section-header">
-                <div class="apc-section-header-left">
-                    <div class="apc-section-icon" style="background: {{ $navSections['sec-news']['color'] }};"><i class="fa-solid {{ $navSections['sec-news']['icon'] }}"></i></div>
-                    <div>
-                        <p class="apc-section-title">News & Articles</p>
-                        <p class="apc-section-subtitle">Manage individual news articles</p>
-                    </div>
-                </div>
-            </div>
-            <div class="apc-section-body" style="text-align: center; padding: 2.5rem 1rem;">
-                <i class="fa-solid fa-newspaper fa-2x" style="color: {{ $navSections['sec-news']['color'] }}; margin-bottom: 0.8rem;"></i>
-                <h4 style="margin:0 0 0.5rem; color:#1e293b;">Managed Separately</h4>
-                <p style="color:#64748b; font-size:0.85rem; margin-bottom:1.5rem;">The news articles and features are managed in the main News directory.</p>
-                <a href="{{ route('admin.news.index') }}" style="display:inline-flex; align-items:center; gap:0.5rem; background:#1e293b; color:white; padding:0.6rem 1.5rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;"><i class="fa-solid fa-arrow-right"></i> Open News Manager</a>
+                <button type="button" class="add-btn" onclick="addFacility()">
+                    <i class="fa-solid fa-plus"></i> Add Facility
+                </button>
             </div>
         </div>
 
@@ -296,35 +217,31 @@ function openSection(id) {
 }
 
 // ── Repeater Logic ──
-let ai = {{ count($areas) }};
-function addArea() {
+let facIdx = {{ count($facilities) }};
+function addFacility() {
     const html = `
-    <div class="area-row">
-        <button type="button" class="remove-btn" onclick="this.closest('.area-row').remove()">
+    <div class="repeater-row">
+        <button type="button" class="remove-btn" onclick="this.closest('.repeater-row').remove()">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <div style="font-size: 0.8rem; font-weight: 800; color: #64748b; margin-bottom: 0.8rem;">RESEARCH AREA</div>
+        <div style="font-size: 0.8rem; font-weight: 800; color: #64748b; margin-bottom: 0.8rem;">FACILITY</div>
         <div class="apc-row">
             <div class="apc-field">
-                <label class="apc-label">Icon</label>
-                <input class="apc-input" type="text" name="blog_research_areas[${ai}][icon]" placeholder="fa-solid fa-brain">
+                <label class="apc-label">Icon (FA Class)</label>
+                <input class="apc-input" type="text" name="about_facilities[${facIdx}][icon]" placeholder="fa-solid fa-desktop">
             </div>
             <div class="apc-field">
-                <label class="apc-label">Title</label>
-                <input class="apc-input" type="text" name="blog_research_areas[${ai}][title]">
-            </div>
-            <div class="apc-field" style="flex: 0.4;">
-                <label class="apc-label">Color</label>
-                <input type="color" name="blog_research_areas[${ai}][color]" value="#8b5cf6" style="height:38px; width: 100%; border: 1.5px solid #e2e8f0; border-radius: 8px; cursor: pointer; padding: 0.2rem;">
+                <label class="apc-label">Lab Name</label>
+                <input class="apc-input" type="text" name="about_facilities[${facIdx}][name]">
             </div>
         </div>
         <div class="apc-field">
             <label class="apc-label">Description</label>
-            <textarea class="apc-textarea" name="blog_research_areas[${ai}][description]" rows="2"></textarea>
+            <textarea class="apc-textarea" name="about_facilities[${facIdx}][description]" rows="2"></textarea>
         </div>
     </div>`;
-    document.getElementById('areasRepeater').insertAdjacentHTML('beforeend', html);
-    ai++;
+    document.getElementById('facilitiesRepeater').insertAdjacentHTML('beforeend', html);
+    facIdx++;
 }
 
 // ── Fix sidenav to viewport on load ──

@@ -376,6 +376,12 @@
                     localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
                 });
             }
+
+            // Scroll the active nav item into view inside the sidebar
+            const activeNavItem = sidebar ? sidebar.querySelector('.admin-nav-item.active') : null;
+            if (activeNavItem) {
+                activeNavItem.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+            }
             
             // Close logout modal when clicking outside
             const logoutModal = document.getElementById('logoutModal');

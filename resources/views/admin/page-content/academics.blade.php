@@ -6,132 +6,320 @@
 @php
     $s = fn(string $key, string $default = '') => $settings[$key] ?? $default;
     $steps = json_decode($s('academics_admission_steps', '[{"number":1,"title":"Check Requirements","description":""},{"number":2,"title":"University Portal","description":""},{"number":3,"title":"Screening","description":""}]'), true) ?? [];
+
+    $navSections = [
+        'sec-hero'       => ['icon' => 'fa-image',           'label' => 'Hero Section',     'color' => '#6366f1'],
+        'sec-intro'      => ['icon' => 'fa-align-left',      'label' => 'Introduction',     'color' => '#f59e0b'],
+        'sec-admission'  => ['icon' => 'fa-list-ol',         'label' => 'Admission Steps',  'color' => '#10b981'],
+        'sec-course'     => ['icon' => 'fa-diagram-project', 'label' => 'Course Structure', 'color' => '#8b5cf6'],
+    ];
 @endphp
 
 <style>
-.pc-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 1.5rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-.pc-card-header { padding: 1rem 1.5rem; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
-.pc-card-header h3 { margin: 0; font-size: 1rem; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 0.6rem; }
-.pc-card-body { padding: 1.5rem; display: block; }
-.pc-card-body.collapsed { display: none; }
-.form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
-.form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.8rem; }
-.form-group label { font-size: 0.85rem; font-weight: 600; color: #475569; }
-.form-group input, .form-group textarea { width: 100%; padding: 0.6rem 0.9rem; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-size: 0.95rem; color: #334155; box-sizing: border-box; transition: border-color 0.2s; }
-.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(22,163,74,0.1); }
-.form-group textarea { resize: vertical; min-height: 80px; }
-.toggle-icon { font-size: 0.8rem; color: #64748b; transition: transform 0.2s; }
-.pc-card-header.open .toggle-icon { transform: rotate(180deg); }
-.step-row { border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; margin-bottom: 0.8rem; background: #fafafa; }
-.step-row h4 { margin: 0 0 0.8rem; font-size: 0.9rem; color: #475569; font-weight: 700; }
+/* ── Page shell ── */
+.apc-shell { display: flex; gap: 1.5rem; align-items: flex-start; }
+
+/* ── Fixed left nav ── */
+.apc-sidenav { display: flex; flex-direction: column;
+    width: 190px;
+    flex-shrink: 0;
+    background: white;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    align-self: flex-start;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #e2e8f0 transparent;
+    z-index: 40;
+}
+.apc-sidenav-head { padding: 0.9rem 1rem; background: #0f172a; color: #94a3b8; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+.apc-sidenav a { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1rem; font-size: 0.82rem; font-weight: 500; color: #475569; text-decoration: none; border-left: 3px solid transparent; transition: all 0.15s; }
+.apc-sidenav a:hover { background: #f8fafc; color: #0f172a; }
+.apc-sidenav a.active { background: #f0f9ff; color: #0284c7; border-left-color: #0284c7; font-weight: 600; }
+.apc-sidenav-icon { width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; flex-shrink: 0; }
+
+/* ── Main form area ── */
+.apc-main { flex: 1; min-width: 0; }
+
+/* ── Section cards ── */
+.apc-section { background: white; border-radius: 14px; border: 1px solid #e2e8f0; margin-bottom: 1.25rem; box-shadow: 0 1px 4px rgba(0,0,0,0.03); overflow: hidden; scroll-margin-top: 90px; }
+.apc-section-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; cursor: pointer; user-select: none; background: #fafafa; border-bottom: 1px solid #f1f5f9; gap: 0.8rem; }
+.apc-section-header:hover { background: #f1f5f9; }
+.apc-section-header-left { display: flex; align-items: center; gap: 0.75rem; }
+.apc-section-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: white; flex-shrink: 0; }
+.apc-section-title { font-size: 0.95rem; font-weight: 700; color: #1e293b; margin: 0; }
+.apc-section-subtitle { font-size: 0.75rem; color: #94a3b8; margin: 0; margin-top: 1px; }
+.apc-chevron { font-size: 0.75rem; color: #94a3b8; transition: transform 0.2s; flex-shrink: 0; }
+.apc-section-header.open .apc-chevron { transform: rotate(180deg); }
+.apc-section-body { padding: 1.5rem; display: block; }
+.apc-section-body.collapsed { display: none; }
+
+/* ── Form groups ── */
+.apc-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.9rem; margin-bottom: 0.9rem; }
+.apc-field { display: flex; flex-direction: column; gap: 0.35rem; }
+.apc-label { font-size: 0.78rem; font-weight: 600; color: #64748b; letter-spacing: 0.3px; display: flex; align-items: center; gap: 0.4rem; }
+.apc-hint { font-size: 0.72rem; color: #94a3b8; margin-top: 0.15rem; }
+.apc-input, .apc-textarea { width: 100%; padding: 0.55rem 0.85rem; border: 1.5px solid #e2e8f0; border-radius: 8px; font-family: inherit; font-size: 0.9rem; color: #1e293b; box-sizing: border-box; background: white; transition: border-color 0.15s, box-shadow 0.15s; }
+.apc-input:focus, .apc-textarea:focus { outline: none; border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.08); }
+.apc-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+
+/* ── Save bar ── */
+.apc-save-bar { position: sticky; bottom: 1rem; background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.9rem 1.25rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 8px 25px -5px rgba(0,0,0,0.1); margin-top: 1.25rem; z-index: 10; }
+.apc-save-btn { background: linear-gradient(135deg, #059669, #10b981); color: white; border: none; padding: 0.65rem 2rem; border-radius: 9px; font-size: 0.9rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(16,185,129,0.35); transition: all 0.2s; }
+.apc-save-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(16,185,129,0.45); }
+
+/* Toast */
+.toast-success { position: fixed; top: 1.5rem; right: 1.5rem; background: #065f46; color: white; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.6rem; z-index: 9999; box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: slideIn 0.4s ease, fadeOut 0.4s ease 3.5s forwards; }
+@keyframes slideIn { from { transform: translateX(100%) scale(0.9); opacity: 0; } to { transform: translateX(0) scale(1); opacity: 1; } }
+@keyframes fadeOut { to { transform: translateX(100%); opacity: 0; } }
+
+.step-box { border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; background: #fafafa; position: relative; }
 </style>
 
-<div style="background: #1e293b; padding: 0.8rem 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-    <span style="color: #94a3b8; font-size: 0.9rem;"><i class="fa-solid fa-graduation-cap" style="margin-right: 6px;"></i>Editing: <strong style="color: white;">Academics Page</strong></span>
-    <a href="{{ route('academics') }}" target="_blank" style="background: var(--color-primary); color: white; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;"><i class="fa-solid fa-eye"></i> Preview</a>
+@if(session('success'))
+<div class="toast-success"><i class="fa-solid fa-circle-check"></i> {{ session('success') }}</div>
+@endif
+
+{{-- Top bar --}}
+<div style="background: #0f172a; padding: 0.8rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; margin-left: calc(190px + 1.5rem); display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; align-items: center; gap: 0.7rem;">
+        <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></div>
+        <span style="color: #94a3b8; font-size: 0.85rem;">Editing: <strong style="color: white;">Academics Page</strong></span>
+    </div>
+    <a href="{{ route('academics') }}" target="_blank" style="background: rgba(255,255,255,0.08); color: #e2e8f0; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.1); display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <i class="fa-solid fa-up-right-from-square" style="font-size: 0.75rem;"></i> Preview Page
+    </a>
 </div>
 
 <form method="POST" action="{{ route('admin.page-content.update', 'academics') }}" enctype="multipart/form-data">
 @csrf
 
-{{-- ── HERO ── --}}
-<div class="pc-card">
-    <div class="pc-card-header open" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-image" style="color: var(--color-primary);"></i> Hero Section</h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body">
-        <div class="form-row">
-            <div class="form-group">
-                <label>Badge Text</label>
-                <input type="text" name="academics_hero_badge" value="{{ $s('academics_hero_badge', 'Explore Our Programs') }}">
-            </div>
-            <div class="form-group">
-                <label>Hero Title</label>
-                <input type="text" name="academics_hero_title" value="{{ $s('academics_hero_title', 'Discover Academic Excellence') }}">
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Hero Subtitle</label>
-            <textarea name="academics_hero_subtitle" rows="2">{{ $s('academics_hero_subtitle', 'Rigorous computing programmes designed to equip you with cutting-edge skills.') }}</textarea>
-        </div>
-        <div class="form-group">
-            <label>Hero Background Image</label>
-            @if($s('hero_academics'))
-            <div style="margin-bottom: 0.5rem;"><img src="{{ asset('storage/'.$s('hero_academics')) }}" style="height: 80px; border-radius: 8px; object-fit: cover;"></div>
-            @endif
-            <input type="file" name="hero_academics" accept="image/jpeg,image/png,image/webp">
-        </div>
-    </div>
-</div>
+<div class="apc-shell">
 
-{{-- ── PAGE INTRO ── --}}
-<div class="pc-card">
-    <div class="pc-card-header open" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-align-left" style="color: var(--color-primary);"></i> Page Introduction Text</h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body">
-        <div class="form-group">
-            <label>Introduction Paragraph</label>
-            <textarea name="academics_intro" rows="4">{{ $s('academics_intro', 'We offer rigorous academic paths ranging from undergraduate to doctoral studies.') }}</textarea>
+    {{-- ══ SIDE NAV ══ --}}
+    <nav class="apc-sidenav">
+        <div class="apc-sidenav-head">Sections</div>
+        @foreach($navSections as $id => $nav)
+        <a href="#{{ $id }}" onclick="openSection('{{ $id }}')">
+            <span class="apc-sidenav-icon" style="background: {{ $nav['color'] }}22; color: {{ $nav['color'] }};"><i class="fa-solid {{ $nav['icon'] }}"></i></span>
+            {{ $nav['label'] }}
+        </a>
+        @endforeach
+    
+<div style="padding: 1rem; margin-top: auto; position: sticky; bottom: 0; background: white; border-top: 1px solid #e2e8f0; z-index: 10;">
+            <button type="submit" class="apc-save-btn" style="width: 100%; justify-content: center;">
+                <i class="fa-solid fa-save"></i> Save Content
+            </button>
         </div>
-    </div>
-</div>
+    </nav>
 
-{{-- ── ADMISSION PROCESS ── --}}
-<div class="pc-card">
-    <div class="pc-card-header open" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-list-ol" style="color: var(--color-primary);"></i> Admission Process Steps</h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body">
-        @foreach($steps as $i => $step)
-        <div class="step-row">
-            <h4>Step {{ $step['number'] ?? ($i + 1) }}</h4>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" name="academics_admission_steps[{{ $i }}][number]" value="{{ $step['number'] ?? ($i + 1) }}" type="hidden" style="display:none">
-                    <input type="text" name="academics_admission_steps[{{ $i }}][title]" value="{{ $step['title'] ?? '' }}">
+    {{-- ══ MAIN CONTENT ══ --}}
+    <div class="apc-main">
+
+        {{-- ── HERO SECTION ── --}}
+        <div class="apc-section" id="sec-hero">
+            <div class="apc-section-header open" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-hero']['color'] }};"><i class="fa-solid {{ $navSections['sec-hero']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Hero Section</p>
+                        <p class="apc-section-subtitle">Top header area</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body">
+                <div class="apc-row">
+                    <div class="apc-field">
+                        <label class="apc-label">Badge Text</label>
+                        <input class="apc-input" type="text" name="academics_hero_badge" value="{{ $s('academics_hero_badge', 'Explore Our Programs') }}">
+                    </div>
+                    <div class="apc-field">
+                        <label class="apc-label">Hero Title</label>
+                        <input class="apc-input" type="text" name="academics_hero_title" value="{{ $s('academics_hero_title', 'Discover Academic Excellence') }}">
+                    </div>
+                </div>
+                <div class="apc-field" style="margin-bottom: 1.25rem;">
+                    <label class="apc-label">Hero Subtitle</label>
+                    <textarea class="apc-textarea" name="academics_hero_subtitle" rows="2">{{ $s('academics_hero_subtitle', 'Rigorous computing programmes designed to equip you with cutting-edge skills.') }}</textarea>
+                </div>
+                <div class="apc-field">
+                    <label class="apc-label"><i class="fa-solid fa-image"></i> Hero Background Image</label>
+                    <div style="display: flex; gap: 1rem; align-items: flex-end;">
+                        @if($s('hero_academics'))
+                            <img src="{{ asset('storage/'.$s('hero_academics')) }}" style="height: 60px; width: 100px; border-radius: 8px; object-fit: cover; border: 1px solid #e2e8f0;">
+                        @else
+                            <div style="height: 60px; width: 100px; border-radius: 8px; background: #f8fafc; border: 1px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; color: #94a3b8;"><i class="fa-solid fa-camera fa-lg"></i></div>
+                        @endif
+                        <input type="file" name="hero_academics" accept="image/jpeg,image/png,image/webp" class="apc-input" style="padding: 0.4rem;">
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label>Description</label>
-                <textarea name="academics_admission_steps[{{ $i }}][description]" rows="2">{{ $step['description'] ?? '' }}</textarea>
+        </div>
+
+        {{-- ── INTRODUCTION TEXT ── --}}
+        <div class="apc-section" id="sec-intro">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-intro']['color'] }};"><i class="fa-solid {{ $navSections['sec-intro']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Page Introduction Text</p>
+                        <p class="apc-section-subtitle">Text directly below the hero section</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body collapsed">
+                <div class="apc-field">
+                    <label class="apc-label">Introduction Paragraph</label>
+                    <textarea class="apc-textarea" name="academics_intro" rows="4">{{ $s('academics_intro', 'We offer rigorous academic paths ranging from undergraduate to doctoral studies.') }}</textarea>
+                </div>
             </div>
         </div>
-        @endforeach
-    </div>
-</div>
 
-{{-- ── COURSE STRUCTURE ── --}}
-<div class="pc-card">
-    <div class="pc-card-header" onclick="toggleSection(this)">
-        <h3><i class="fa-solid fa-diagram-project" style="color: var(--color-primary);"></i> Course Structure Section</h3>
-        <i class="fa-solid fa-chevron-down toggle-icon"></i>
-    </div>
-    <div class="pc-card-body collapsed">
-        <div class="form-group">
-            <label>Intro Text below "Course Structure" heading</label>
-            <textarea name="academics_course_structure_intro" rows="3">{{ $s('academics_course_structure_intro', 'Browse the unified curriculum outline showing core and elective courses across different academic levels.') }}</textarea>
+        {{-- ── ADMISSION PROCESS ── --}}
+        <div class="apc-section" id="sec-admission">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-admission']['color'] }};"><i class="fa-solid {{ $navSections['sec-admission']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Admission Process Steps</p>
+                        <p class="apc-section-subtitle">Step-by-step guide for applicants</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body collapsed">
+                @foreach($steps as $i => $step)
+                <div class="step-box">
+                    <div style="font-size: 0.8rem; font-weight: 800; color: #64748b; margin-bottom: 0.8rem;"><i class="fa-solid fa-list-ol" style="color:#10b981; margin-right:4px;"></i> STEP {{ $step['number'] ?? ($i + 1) }}</div>
+                    <div class="apc-row" style="margin-bottom: 0.8rem;">
+                        <div class="apc-field">
+                            <label class="apc-label">Title</label>
+                            <input type="hidden" name="academics_admission_steps[{{ $i }}][number]" value="{{ $step['number'] ?? ($i + 1) }}">
+                            <input class="apc-input" type="text" name="academics_admission_steps[{{ $i }}][title]" value="{{ $step['title'] ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="apc-field">
+                        <label class="apc-label">Description</label>
+                        <textarea class="apc-textarea" name="academics_admission_steps[{{ $i }}][description]" rows="2">{{ $step['description'] ?? '' }}</textarea>
+                    </div>
+                </div>
+                @endforeach
+            </div>
         </div>
-    </div>
-</div>
 
-{{-- SAVE --}}
-<div style="display: flex; justify-content: flex-end; gap: 1rem; padding: 1rem 0;">
-    <a href="{{ route('academics') }}" target="_blank" class="btn btn-secondary">Preview</a>
-    <button type="submit" class="btn" style="background: var(--color-primary); color: white; padding: 0.75rem 2rem; border: none; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer;">
-        <i class="fa-solid fa-save"></i> Save Academics Page
-    </button>
-</div>
+        {{-- ── COURSE STRUCTURE ── --}}
+        <div class="apc-section" id="sec-course">
+            <div class="apc-section-header" onclick="toggleSection(this)">
+                <div class="apc-section-header-left">
+                    <div class="apc-section-icon" style="background: {{ $navSections['sec-course']['color'] }};"><i class="fa-solid {{ $navSections['sec-course']['icon'] }}"></i></div>
+                    <div>
+                        <p class="apc-section-title">Course Structure Section</p>
+                        <p class="apc-section-subtitle">Heading above the unified curriculum outline</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down apc-chevron"></i>
+            </div>
+            <div class="apc-section-body collapsed">
+                <div class="apc-field">
+                    <label class="apc-label">Intro Text below "Course Structure" heading</label>
+                    <textarea class="apc-textarea" name="academics_course_structure_intro" rows="3">{{ $s('academics_course_structure_intro', 'Browse the unified curriculum outline showing core and elective courses across different academic levels.') }}</textarea>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>{{-- end .apc-main --}}
+</div>{{-- end .apc-shell --}}
 </form>
 
 <script>
+// ── Collapsible Sections ──
 function toggleSection(header) {
     header.classList.toggle('open');
     header.nextElementSibling.classList.toggle('collapsed');
 }
+
+function openSection(id) {
+    const sec = document.getElementById(id);
+    if (!sec) return;
+
+    const header = sec.querySelector('.apc-section-header');
+    const body   = sec.querySelector('.apc-section-body');
+    if (body && body.classList.contains('collapsed')) {
+        header.classList.add('open');
+        body.classList.remove('collapsed');
+    }
+
+    const offset = 90;
+    const top = sec.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+
+    document.querySelectorAll('.apc-sidenav a').forEach(l => l.classList.remove('active'));
+    const match = document.querySelector(`.apc-sidenav a[href="#${id}"]`);
+    if (match) match.classList.add('active');
+}
+
+// ── Fix sidenav to viewport on load ──
+document.addEventListener('DOMContentLoaded', () => {
+    const nav   = document.querySelector('.apc-sidenav');
+    const shell = document.querySelector('.apc-shell');
+    if (!nav || !shell) return;
+
+    function pinNav() {
+        nav.style.position = '';
+        nav.style.left     = '';
+        nav.style.width    = '';
+        nav.style.top      = '';
+
+        const rect = nav.getBoundingClientRect();
+
+        nav.style.position = 'fixed';
+        nav.style.top      = '85px';
+        nav.style.left     = rect.left + 'px';
+        nav.style.width    = rect.width + 'px';
+
+        let spacer = shell.querySelector('.apc-sidenav-spacer');
+        if (!spacer) {
+            spacer = document.createElement('div');
+            spacer.className   = 'apc-sidenav-spacer';
+            spacer.style.flexShrink = '0';
+            shell.insertBefore(spacer, nav);
+        }
+        spacer.style.width = rect.width + 'px';
+    }
+
+    pinNav();
+    window.addEventListener('resize', pinNav);
+});
+
+// ── Highlight active sidenav link on scroll ──
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.apc-sidenav a');
+    const sections = Array.from(document.querySelectorAll('.apc-section'));
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                links.forEach(l => l.classList.remove('active'));
+                const match = document.querySelector(`.apc-sidenav a[href="#${e.target.id}"]`);
+                if (match) match.classList.add('active');
+            }
+        });
+    }, { threshold: 0.25 });
+    sections.forEach(s => observer.observe(s));
+});
+
+// ── Auto-dismiss toast ──
+document.addEventListener('DOMContentLoaded', function() {
+    const toast = document.querySelector('.toast-success');
+    if (toast) {
+        setTimeout(() => toast.remove(), 4000);
+    }
+});
 </script>
 @endsection
