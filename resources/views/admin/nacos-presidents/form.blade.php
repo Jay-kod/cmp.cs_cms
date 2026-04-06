@@ -56,14 +56,25 @@
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label">Tenure End</label>
-                        <input type="text" name="tenure_end" value="{{ old('tenure_end', $president->tenure_end) }}" class="form-control" placeholder="e.g. 2019 or Present">
+                        <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>Tenure End</span>
+                            <span id="computed-status-pill" style="display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 12px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.5px;">-</span>
+                        </label>
+                        <input type="text" name="tenure_end" id="tenure_end_input" value="{{ old('tenure_end', $president->tenure_end) }}" class="form-control" placeholder="e.g. 2019 or Present">
+                        <small style="display: block; margin-top: 0.4rem; color: #6b7280; font-size: 0.75rem;">
+                            The homepage will automatically tag this leader as <strong style="color: #0ea5e9;">CURRENT</strong>, <strong style="color: #f59e0b;">JUST GRADUATED</strong>, or <strong style="color: #64748b;">PAST</strong> based on this year.
+                        </small>
                     </div>
                 </div>
-                
+
                 <div class="form-group" style="margin-top: 1rem;">
-                    <label class="form-label">Current Status / Location</label>
-                    <input type="text" name="current_status" value="{{ old('current_status', $president->current_status) }}" class="form-control" placeholder="e.g. Graduated, Working at XYZ">
+                    <label class="form-label">Current Status</label>
+                    <select name="current_status" class="form-control">
+                        <option value="" {{ old('current_status', $president->current_status) ? '' : 'selected' }}>Automatic (Calculated from Tenure)</option>
+                        <option value="CURRENT PRESIDENT" {{ old('current_status', $president->current_status) == 'CURRENT PRESIDENT' ? 'selected' : '' }}>CURRENT PRESIDENT</option>
+                        <option value="JUST GRADUATED" {{ old('current_status', $president->current_status) == 'JUST GRADUATED' ? 'selected' : '' }}>JUST GRADUATED</option>
+                        <option value="PAST" {{ old('current_status', $president->current_status) == 'PAST' ? 'selected' : '' }}>PAST</option>
+                    </select>
                 </div>
                 
                 <h3 style="margin-top: 2rem; font-size: 0.95rem; color: #374151; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1rem;">Contact Info (Optional)</h3>
@@ -97,4 +108,42 @@
         </div>
     </form>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const input = document.getElementById('tenure_end_input');
+    const pill = document.getElementById('computed-status-pill');
+    
+    if(!input || !pill) return;
+
+    function updatePill() {
+        const val = input.value.trim().toLowerCase();
+        const currentYear = new Date().getFullYear();
+        
+        if (!val || val === 'present' || val === 'current') {
+            pill.textContent = 'CURRENT PRESIDENT';
+            pill.style.backgroundColor = 'rgba(14, 165, 233, 0.1)';
+            pill.style.color = '#0ea5e9';
+            pill.style.border = '1px solid rgba(14, 165, 233, 0.2)';
+        } else {
+            const endYear = parseInt(val, 10);
+            if (!isNaN(endYear) && endYear >= currentYear - 1) {
+                pill.textContent = 'JUST GRADUATED';
+                pill.style.backgroundColor = 'rgba(245, 158, 11, 0.1)';
+                pill.style.color = '#f59e0b';
+                pill.style.border = '1px solid rgba(245, 158, 11, 0.2)';
+            } else {
+                pill.textContent = 'PAST';
+                pill.style.backgroundColor = 'rgba(100, 116, 139, 0.1)';
+                pill.style.color = '#64748b';
+                pill.style.border = '1px solid rgba(100, 116, 139, 0.2)';
+            }
+        }
+    }
+    
+    input.addEventListener('input', updatePill);
+    updatePill(); // initialize on load
+});
+</script>
+
 @endsection

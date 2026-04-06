@@ -4,7 +4,7 @@
 @section('content')
 @php
     $hs = \App\Models\DepartmentSetting::where('group', 'page_people')->pluck('value', 'key')->toArray();
-    $heroImg = \App\Models\DepartmentSetting::where('key', 'hero_people')->value('value');
+    $heroImg = \App\Models\DepartmentSetting::getCached('hero_people');
     $heroUrl = $heroImg && file_exists(storage_path('app/public/' . $heroImg))
         ? asset('storage/' . $heroImg)
         : null;
@@ -169,6 +169,8 @@
                 border: 2px solid #86efac;
                 box-shadow: 0 8px 40px -8px rgba(5,150,105,0.15), 0 0 0 1px rgba(134,239,172,0.1);
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                max-width: 800px;
+                margin: 0 auto;
             }
             .hod-spotlight-card:hover {
                 transform: translateY(-6px);

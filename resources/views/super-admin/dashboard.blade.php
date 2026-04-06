@@ -3,14 +3,31 @@
 @section('header', 'System Overview')
 
 @section('content')
-<div class="dashboard-header">
-    <div>
+<div class="dashboard-header" style="flex-wrap: wrap; gap: 1.5rem;">
+    <div style="flex: 1; min-width: 280px;">
         <h2 class="dashboard-title">System Control Panel <i class="fa-solid fa-shield-halved" style="color: #b91c1c;"></i></h2>
         <p class="dashboard-subtitle">Full system oversight — manage content, users, and settings from one place.</p>
     </div>
-    <div class="dashboard-date-widget">
-        <div class="date-label">System Date</div>
-        <div class="date-value">{{ now()->format('l, jS F Y') }}</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+        <div class="dashboard-date-widget" style="margin: 0; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center;">
+            <div class="date-label" style="font-size: 0.8rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; text-align: left;">System Date</div>
+            <div class="date-value" style="font-size: 1.1rem; color: #111827; font-weight: 700; text-align: left;">{{ now()->format('l, jS F Y') }}</div>
+        </div>
+
+        <div style="padding: 0.75rem 1rem; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); flex: 1; min-width: 320px;">
+            <div style="font-size: 0.8rem; color: var(--color-primary, #b91c1c); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 0.4rem;">Academic Session & Semester</div>
+            <form action="{{ route('admin.settings.academic-session') }}" method="POST" style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+                @csrf
+                <input type="text" name="academic_session" value="{{ \App\Models\DepartmentSetting::getCached('academic_session', '2024/2025') }}" placeholder="e.g. 2025/2026" required style="padding: 0.45rem 0.6rem; border: 1px solid #d1d5db; border-radius: 4px; font-size: 0.95rem; width: 110px; outline: none; flex-grow: 1;">
+                <select name="academic_semester" required style="padding: 0.45rem 0.6rem; border: 1px solid #d1d5db; border-radius: 4px; font-size: 0.95rem; outline: none; flex-grow: 2; min-width: 140px;">
+                    @php $curSem = \App\Models\DepartmentSetting::getCached('academic_semester', 'First'); @endphp
+                    <option value="First" {{ $curSem == 'First' ? 'selected' : '' }}>First Semester</option>
+                    <option value="Second" {{ $curSem == 'Second' ? 'selected' : '' }}>Second Semester</option>
+                    <option value="Third" {{ $curSem == 'Third' ? 'selected' : '' }}>Third Semester</option>
+                </select>
+                <button type="submit" style="background: var(--color-primary, #b91c1c); color: white; border: none; padding: 0.45rem 1rem; border-radius: 4px; font-weight: 600; cursor: pointer; transition: background 0.2s; flex-grow: 1;">Set</button>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -313,6 +330,9 @@
                     </h4>
                     <div class="item-meta">
                         <span><i class="fa-regular fa-clock"></i> {{ $news->published_at ? \Carbon\Carbon::parse($news->published_at)->diffForHumans() : 'Draft' }}</span>
+                        <span class="meta-dot" style="margin: 0 0.4rem; color: #cbd5e1;">&bull;</span>
+                        <span title="Reactions" style="margin-right: 0.3rem;"><i class="fa-regular fa-thumbs-up" style="color: #16a34a;"></i> {{ $news->reactions_count ?? 0 }}</span>
+                        <span title="Comments"><i class="fa-regular fa-comment" style="color: #64748b;"></i> {{ $news->comments_count ?? 0 }}</span>
                     </div>
                 </div>
             </div>

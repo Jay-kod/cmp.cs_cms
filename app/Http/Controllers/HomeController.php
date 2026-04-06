@@ -16,47 +16,40 @@ use App\Models\GalleryAlbum;
 use App\Models\Page;
 use App\Models\DepartmentSetting;
 use App\Models\NacosPresident;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $programmes = Programme::where('is_active', true)->orderBy('sort_order')->get();
-        $news = News::latest('published_at')->take(2)->get();
-        $events = Event::where('date', '>=', now())->orderBy('date')->take(3)->get();
-        $announcements = Announcement::where('expires_at', '>=', now())->orWhereNull('expires_at')->take(3)->get();
-        
-        $hod = Staff::where('is_hod', true)->first();
-        $staffCount = Staff::count();
-        $courseCount = Course::count();
-        $carouselSlides = CarouselSlide::active()->ordered()->get();
+        $data = Cache::remember('home_page_data_optimized', 360, function() {
+            $staffLimit   = (int) (DepartmentSetting::getCached('home_staff_count') ?? 4);
+            $galleryLimit = (int) (DepartmentSetting::getCached('home_gallery_count') ?? 8);
 
-        // New sections data (counts configurable from admin)
-        $staffLimit   = (int) (DepartmentSetting::where('key', 'home_staff_count')->value('value') ?? 4);
-        $galleryLimit = (int) (DepartmentSetting::where('key', 'home_gallery_count')->value('value') ?? 8);
+            return [
+                'programmes' => Programme::where('is_active', true)->orderBy('sort_order')->get(),
+                'news' => News::latest('published_at')->take(2)->get(),
+                'events' => Event::where('date', '>=', now())->orderBy('date')->take(3)->get(),
+                'announcements' => Announcement::where('expires_at', '>=', now())->orWhereNull('expires_at')->take(3)->get(),
+                'hod' => Staff::where('is_hod', true)->first(),
+                'staffCount' => Staff::count(),
+                'courseCount' => Course::count(),
+                'carouselSlides' => CarouselSlide::active()->ordered()->get(),
+                'featuredStaff' => Staff::orderByDesc('is_hod')->orderBy('sort_order')->take($staffLimit)->get(),
+                'galleryImages' => GalleryImage::latest()->take($galleryLimit)->get(),
+                'galleryAlbumCount' => GalleryAlbum::count(),
+                'externalSystems' => ExternalSystem::active()->ordered()->get(),
+                'cmsPages' => Page::where('is_active', true)->get(),
+                'partners' => \App\Models\Partner::where('is_active', true)->orderBy('sort_order')->orderBy('name')->get(),
+                'nacosPresidents' => NacosPresident::orderByRaw("CASE WHEN tenure_end IS NULL OR tenure_end = 'Present' THEN 1 ELSE 0 END DESC")->orderByDesc('tenure_end')->take(3)->get(),
+                'nacosTotalCount' => NacosPresident::count(),
+                'timetables' => \App\Models\ResourceItem::whereHas('category', function($q) {
+                    $q->where('slug', 'timetable');
+                })->where('is_active', true)->latest()->take(3)->get(),
+                'uploadedTimetable' => \Illuminate\Support\Facades\Storage::disk('public')->files('timetable')[0] ?? null,
+            ];
+        });
 
-        $featuredStaff = Staff::orderByDesc('is_hod')->orderBy('sort_order')->take($staffLimit)->get();
-        $galleryImages = GalleryImage::latest()->take($galleryLimit)->get();
-        $galleryAlbumCount = GalleryAlbum::count();
-        $externalSystems = ExternalSystem::active()->ordered()->get();
-        $cmsPages = Page::where('is_active', true)->get();
-        $partners = \App\Models\Partner::where('is_active', true)->orderBy('sort_order')->orderBy('name')->get();
-
-        // NACOS data
-        $nacosPresidents = NacosPresident::orderByDesc('tenure_end')->take(4)->get();
-        $nacosTotalCount = NacosPresident::count();
-
-        // Timetables
-        $timetables = \App\Models\ResourceItem::whereHas('category', function($q) {
-            $q->where('slug', 'timetable');
-        })->where('is_active', true)->latest()->take(3)->get();
-
-        return view('pages.home', compact(
-            'programmes', 'news', 'events', 'announcements', 'hod',
-            'staffCount', 'courseCount', 'carouselSlides',
-            'featuredStaff', 'galleryImages', 'galleryAlbumCount',
-            'externalSystems', 'cmsPages', 'partners',
-            'nacosPresidents', 'nacosTotalCount', 'timetables'
-        ));
+        return view('pages.home', $data);
     }
 }

@@ -3,69 +3,198 @@
 @section('header', 'Static Pages')
 
 @section('content')
-<div class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+<style>
+    .modern-create-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        opacity: 0.95;
+    }
+    .action-icon-btn {
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        transition: all 0.2s;
+        color: #64748b;
+        background: white;
+        border: 1px solid #e2e8f0;
+        cursor: pointer;
+    }
+    .action-icon-btn:hover {
+        transform: scale(1.05);
+    }
+    .btn-view:hover { background: #f0fdf4; color: #16a34a; border-color: #bbf7d0; }
+    .btn-edit:hover { background: #eff6ff; color: #3b82f6; border-color: #bfdbfe; }
+    .btn-delete:hover { background: #fef2f2; color: #ef4444; border-color: #fecaca; }
+    
+    .modern-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .modern-table th {
+        background: #f8fafc;
+        color: #475569;
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 1rem 1.25rem;
+        text-align: left;
+        border-bottom: 2px solid #e2e8f0;
+        white-space: nowrap;
+    }
+    .modern-table td {
+        padding: 1.25rem;
+        border-bottom: 1px solid #f1f5f9;
+        color: #334155;
+        vertical-align: middle;
+    }
+    .modern-table tr:hover td {
+        background: #f8fafc;
+    }
+    .modern-table tr:last-child td {
+        border-bottom: none;
+    }
+    .role-badge {
+        display: inline-flex;
+        align-items: center;
+        background: #f3f4f6;
+        color: #4b5563;
+        padding: 0.25rem 0.6rem;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border: 1px solid #e5e7eb;
+        white-space: nowrap;
+    }
+    .role-badge.active {
+        background: #ecfdf5;
+        color: #059669;
+        border-color: #a7f3d0;
+    }
+    .role-badge.hidden {
+        background: #f1f5f9;
+        color: #64748b;
+        border-color: #e2e8f0;
+    }
+    .role-badge.system {
+        background: #eff6ff;
+        color: #1d4ed8;
+        border-color: #bfdbfe;
+    }
+</style>
+
+<div class="admin-header-modern" style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0; flex-wrap: wrap; gap: 1rem;">
     <div>
-        <h2 style="margin: 0; font-size: 1.1rem;">All Pages</h2>
-        <p style="margin: 0; color: #6b7280; font-size: 0.85rem;">Manage legal and informational pages (Privacy Policy, Terms, Sitemap, etc.)</p>
+        <h2 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; color: #0f172a; font-weight: 700; display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fa-solid fa-file-lines" style="color: var(--color-primary); opacity: 0.8;"></i> 
+            All Pages
+        </h2>
+        <p style="margin: 0; color: #64748b; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-file-alt" style="font-size: 0.8rem;"></i>
+            Manage legal and informational pages (Privacy Policy, Terms, etc.)
+        </p>
     </div>
-    <a href="{{ route('admin.pages.create') }}" class="btn btn-secondary" style="background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none;"><i class="fa-solid fa-plus"></i> Add New Page</a>
+    <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+        <a href="{{ route('admin.pages.create') }}" class="modern-create-btn" style="background: var(--color-primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); transition: all 0.2s ease;">
+            <i class="fa-solid fa-plus" style="font-size: 0.9em;"></i> Add New Page
+        </a>
+    </div>
 </div>
 
 @if(session('success'))
-<div style="background: #dcfce7; color: #166534; padding: 0.8rem 1rem; border-radius: 6px; margin-bottom: 1rem; border: 1px solid #86efac; font-size: 0.9rem;">
-    <i class="fa-solid fa-check-circle"></i> {{ session('success') }}
+<div style="background: #ecfdf5; color: #065f46; padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #a7f3d0; font-size: 0.95rem; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+    <i class="fa-solid fa-circle-check" style="color: #10b981; font-size: 1.1em;"></i> {{ session('success') }}
 </div>
 @endif
 
 @if(session('error'))
-<div style="background: #fee2e2; color: #b91c1c; padding: 0.8rem 1rem; border-radius: 6px; margin-bottom: 1rem; border: 1px solid #f87171; font-size: 0.9rem;">
-    <i class="fa-solid fa-triangle-exclamation"></i> {{ session('error') }}
+<div style="background: #fef2f2; color: #991b1b; padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #fecaca; font-size: 0.95rem; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+    <i class="fa-solid fa-triangle-exclamation" style="color: #ef4444; font-size: 1.1em;"></i> {{ session('error') }}
 </div>
 @endif
 
-<div class="admin-table-container">
-    <table class="admin-table">
+<div style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); overflow-x: auto;">
+    <table class="modern-table">
         <thead>
             <tr>
-                <th>Page Title</th>
-                <th>Slug (URL)</th>
+                <th style="width: 1%;">S/N</th>
+                <th>Page Details</th>
                 <th>Type</th>
                 <th>Status</th>
                 <th>Last Updated</th>
-                <th>Actions</th>
+                <th style="text-align: center; width: 1%;">Actions</th>
             </tr>
         </thead>
         <tbody>
             @forelse($pages as $pg)
             <tr>
-                <td>
-                    @if($pg->icon)<i class="{{ $pg->icon }}" style="color: var(--color-primary); margin-right: 0.3rem;"></i>@endif
-                    <strong>{{ $pg->title }}</strong>
+                <td style="color: #94a3b8; font-weight: 600; text-align: center; font-variant-numeric: tabular-nums;">
+                    {{ $pages->firstItem() + $loop->index }}
                 </td>
-                <td><code style="background: #f3f4f6; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">/page/{{ $pg->slug }}</code></td>
+                <td>
+                    <div style="display: flex; flex-direction: column; gap: 0.3rem; min-width: 220px;">
+                        <strong style="font-size: 1.05rem; color: #0f172a; display: flex; align-items: center; gap: 0.5rem;">
+                            @if($pg->icon)
+                                <i class="{{ $pg->icon }}" style="color: var(--color-primary); font-size: 0.9em;"></i>
+                            @else
+                                <i class="fa-regular fa-file-lines" style="color: #94a3b8; font-size: 0.9em;"></i>
+                            @endif
+                            {{ $pg->title }}
+                        </strong>
+                        <div style="display: flex; align-items: center; gap: 0.4rem; color: #64748b; font-size: 0.85rem;">
+                            <i class="fa-solid fa-link" style="font-size: 0.8em; color: #94a3b8;"></i> 
+                            <code style="background: #f1f5f9; padding: 0.1rem 0.4rem; border-radius: 4px; border: 1px solid #e2e8f0; color: #475569;">/page/{{ $pg->slug }}</code>
+                        </div>
+                    </div>
+                </td>
                 <td>
                     @if($pg->is_system)
-                        <span style="background: #dbeafe; color: #1e40af; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;"><i class="fa-solid fa-lock" style="font-size: 0.65rem;"></i> System</span>
+                        <span class="role-badge system" title="System pages cannot be deleted">
+                            <i class="fa-solid fa-lock" style="font-size: 0.7rem; margin-right: 0.3rem;"></i> System
+                        </span>
                     @else
-                        <span style="background: #f3f4f6; color: #6b7280; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">Custom</span>
+                        <span class="role-badge" title="Custom created page">
+                            <i class="fa-solid fa-user-pen" style="font-size: 0.7rem; margin-right: 0.3rem; color: #94a3b8;"></i> Custom
+                        </span>
                     @endif
                 </td>
                 <td>
                     @if($pg->is_active)
-                        <span style="color: #10B981; font-weight: bold; font-size: 0.85rem;"><i class="fa-solid fa-circle-check"></i> Active</span>
+                        <span class="role-badge active">
+                            <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; display: inline-block; margin-right: 0.3rem;"></span> Active
+                        </span>
                     @else
-                        <span style="color: #6b7280; font-weight: bold; font-size: 0.85rem;"><i class="fa-solid fa-circle-minus"></i> Hidden</span>
+                        <span class="role-badge hidden">
+                            <span style="width: 6px; height: 6px; background: #94a3b8; border-radius: 50%; display: inline-block; margin-right: 0.3rem;"></span> Hidden
+                        </span>
                     @endif
                 </td>
-                <td style="font-size: 0.82rem; color: #6b7280;">{{ $pg->updated_at->format('M j, Y') }}</td>
                 <td>
-                    <div class="actions">
-                        <a href="{{ url('/page/{{ $pg->slug }}') }}" target="_blank" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #f0fdf4; color: #166534; text-decoration: none; border-radius: 4px;"><i class="fa-solid fa-eye"></i> View</a>
-                        <a href="{{ route('admin.pages.edit', $pg) }}" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #e5e7eb; color: #374151; text-decoration: none; border-radius: 4px;"><i class="fa-solid fa-edit"></i> Edit</a>
+                    <div style="color: #475569; font-weight: 500; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem;">
+                        <i class="fa-regular fa-calendar" style="color: #94a3b8; font-size: 0.9em;"></i>
+                        {{ $pg->updated_at->format('M j, Y') }}
+                    </div>
+                </td>
+                <td>
+                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                        <a href="{{ url('/page/' . $pg->slug) }}" target="_blank" class="action-icon-btn btn-view" title="View Live Page">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                        <a href="{{ route('admin.pages.edit', $pg) }}" class="action-icon-btn btn-edit" title="Edit Page">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
                         @if(!$pg->is_system)
-                        <form action="{{ route('admin.pages.destroy', $pg) }}" method="POST" data-confirm="Delete this page permanently?" style="display:inline;">
+                        <form action="{{ route('admin.pages.destroy', $pg) }}" method="POST" style="margin: 0;" data-confirm="Are you sure you want to permanently delete '{{ $pg->title }}'?">
                             @csrf @method('DELETE')
-                            <button type="submit" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #fee2e2; color: #b91c1c; border: none; cursor: pointer; border-radius: 4px;"><i class="fa-solid fa-trash"></i> Delete</button>
+                            <button type="submit" class="action-icon-btn btn-delete" title="Delete Page">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
                         </form>
                         @endif
                     </div>
@@ -73,22 +202,27 @@
             </tr>
             @empty
             <tr>
-                <td colspan="6" style="text-align: center; padding: 3rem 1rem;">
-                    <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem;">
-                        <i class="fa-solid fa-file-lines" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 1rem;"></i>
-                        <h3 style="margin: 0 0 0.5rem; color: #334155; font-size: 1.2rem;">No Pages Found</h3>
-                        <p style="margin: 0; color: #64748b;">No pages found.</p>
+                <td colspan="6">
+                    <div style="padding: 4rem 2rem; text-align: center;">
+                        <div style="width: 80px; height: 80px; background: #f8fafc; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto; border: 1px solid #f1f5f9;">
+                            <i class="fa-solid fa-file-lines" style="font-size: 2.5rem; color: #94a3b8;"></i>
+                        </div>
+                        <h3 style="margin: 0 0 0.5rem 0; color: #0f172a; font-size: 1.25rem; font-weight: 600;">No Pages Found</h3>
+                        <p style="margin: 0 0 1.5rem 0; color: #64748b; font-size: 0.95rem;">Create informational and static pages for your site.</p>
+                        <a href="{{ route('admin.pages.create') }}" class="modern-create-btn" style="background: var(--color-primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); transition: all 0.2s ease;">
+                            <i class="fa-solid fa-plus" style="font-size: 0.9em;"></i> Add First Page
+                        </a>
                     </div>
                 </td>
             </tr>
             @endforelse
         </tbody>
     </table>
-
-    @if($pages->hasPages())
-    <div style="padding: 1rem; border-top: 1px solid #e5e7eb;">
-        {{ $pages->links() }}
-    </div>
-    @endif
 </div>
+
+@if($pages->hasPages())
+<div style="margin-top: 1.5rem;">
+    {{ $pages->links() }}
+</div>
+@endif
 @endsection

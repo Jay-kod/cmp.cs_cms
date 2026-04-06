@@ -49,8 +49,9 @@ class GalleryController extends Controller
             );
         }
 
+        unset($data['images']);
         $album = GalleryAlbum::create($data);
-        
+
         // Handle multiple image uploads if provided in same request
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
@@ -104,6 +105,7 @@ class GalleryController extends Controller
             );
         }
 
+        unset($data['images']);
         $gallery->update($data);
 
         // Handle additional image uploads

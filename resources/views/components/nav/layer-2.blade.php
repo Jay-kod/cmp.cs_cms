@@ -28,9 +28,9 @@
                     Departments <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
                 </summary>
                 <div class="nav-dropdown-menu" role="menu">
-                    <a href="{{ route('department.show', 'computer-science') }}" class="nav-dropdown-item" role="menuitem">Computer Science</a>
-                    <a href="{{ route('department.show', 'cyber-security') }}" class="nav-dropdown-item" role="menuitem">Cyber Security</a>
-                    <a href="{{ route('department.show', 'data-science') }}" class="nav-dropdown-item" role="menuitem">Data Science</a>
+                    @foreach(\App\Models\SubDepartment::active()->get() as $dept)
+                    <a href="{{ route('department.show', $dept->slug) }}" class="nav-dropdown-item" role="menuitem">{{ str_replace('Department of ', '', $dept->name) }}</a>
+                    @endforeach
                 </div>
             </details>
 
@@ -126,9 +126,9 @@
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="{{ route('department.show', 'computer-science') }}" class="mobile-link mobile-sub-link">Computer Science</a>
-                    <a href="{{ route('department.show', 'cyber-security') }}" class="mobile-link mobile-sub-link">Cyber Security</a>
-                    <a href="{{ route('department.show', 'data-science') }}" class="mobile-link mobile-sub-link">Data Science</a>
+                    @foreach(\App\Models\SubDepartment::active()->get() as $dept)
+                    <a href="{{ route('department.show', $dept->slug) }}" class="mobile-link mobile-sub-link">{{ str_replace('Department of ', '', $dept->name) }}</a>
+                    @endforeach
                 </div>
             </details>
 
@@ -189,8 +189,8 @@
 
         <div class="mobile-drawer-footer">
             @php
-                $__drawerPhone = \App\Models\DepartmentSetting::where('key', 'contact_phone')->value('value') ?? '+234 (0) 123 456 7890';
-                $__drawerEmail = \App\Models\DepartmentSetting::where('key', 'contact_email')->value('value') ?? 'info@dcms.nsuk.edu.ng';
+                $__drawerPhone = \App\Models\DepartmentSetting::getCached('contact_phone') ?? '+234 (0) 123 456 7890';
+                $__drawerEmail = \App\Models\DepartmentSetting::getCached('contact_email') ?? 'info@dcms.nsuk.edu.ng';
                 $__drawerSocials = \App\Models\SocialLink::active()->ordered()->get();
             @endphp
             <div class="mobile-contact-info">

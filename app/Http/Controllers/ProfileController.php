@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\SystemLog;
 
 class ProfileController extends Controller
 {
@@ -16,8 +17,20 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $user = $request->user();
+        
+        // Fetch recent logs associated with this user
+        $recentLogs = [];
+        if (class_exists(SystemLog::class)) {
+            $recentLogs = SystemLog::where('user_id', $user->id)
+                ->orderBy('created_at', 'desc')
+                ->take(5)
+                ->get();
+        }
+
         return view('profile.edit', [
-            'user' => $request->user(),
+            'user' => $user,
+            'recentLogs' => $recentLogs
         ]);
     }
 

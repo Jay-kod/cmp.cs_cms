@@ -21,7 +21,7 @@ class TimetableController extends Controller
     public function upload(Request $request)
     {
         $request->validate([
-            'timetable' => 'required|file|mimes:pdf,xlsx,csv|max:5120',
+            'timetable' => 'required|file|mimes:pdf,xlsx,csv,jpg,jpeg,png,webp,gif|max:5120',
         ]);
         // Remove old timetable
         $files = Storage::disk('public')->files('timetable');

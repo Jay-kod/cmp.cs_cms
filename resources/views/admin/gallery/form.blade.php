@@ -67,7 +67,9 @@
         
         <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; display: flex; justify-content: flex-end; gap: 1rem;">
             <a href="{{ route('admin.gallery.index') }}" class="btn btn-secondary" style="background: white; border: 1px solid #d1d5db; color: #374151; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 4px;">Cancel</a>
-            <button type="submit" class="btn btn-primary" style="background: var(--color-primary); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: bold; cursor: pointer;">{{ isset($album) && $album->exists ? 'Update Album & Upload Photos' : 'Create Album & Upload Photos' }}</button>
+            <button type="submit" class="btn btn-primary" style="background: var(--color-primary); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: bold; cursor: pointer;">{{ isset($album) && $album->exists ? 'Save Edits' : 'Create Album' }}</button>
+            <button type="submit" class="btn btn-primary" style="background: var(--color-secondary, #15803d); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: bold; cursor: pointer;">Upload Selected Photos</button>
+        </div>
         </div>
     </form>
 </div>

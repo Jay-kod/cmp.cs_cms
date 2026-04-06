@@ -29,6 +29,26 @@ class ResourceItemController extends Controller
 
         $items = $itemsQuery->paginate(15)->withQueryString();
 
+        // Inject the standalone timetable file into the collection if applicable
+        $timetableCategory = $categories->firstWhere('slug', 'timetable');
+        if ($timetableCategory && (!$categoryId || (int)$categoryId === $timetableCategory->id)) {
+            $timetableFiles = Storage::disk('public')->files('timetable');
+            if (!empty($timetableFiles) && $items->currentPage() === 1) {
+                $tItem = new ResourceItem([
+                    'title' => 'Official Department Timetable (Standalone)',
+                    'description' => 'Managed via the Timetable Uploader',
+                    'file_path' => $timetableFiles[0],
+                    'is_active' => true,
+                ]);
+                // Fake ID for rendering
+                $tItem->id = 0;
+                $tItem->setRelation('category', $timetableCategory);
+                
+                // Prepend to the paginator's underlying collection
+                $items->setCollection(collect([$tItem])->merge($items->getCollection()));
+            }
+        }
+
         return view('admin.resources.index', [
             'items' => $items,
             'categories' => $categories,

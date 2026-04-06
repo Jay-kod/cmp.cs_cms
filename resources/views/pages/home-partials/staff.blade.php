@@ -5,7 +5,7 @@
         <div style="text-align: center; margin-bottom: 4rem;">
             <span style="display: inline-block; color: var(--color-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; background: rgba(22,163,74,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_staff_badge','Our Team') }}</span>
             <h2 style="font-size: 2.8rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin-bottom: 1rem;">{{ $gs('home_staff_title','Meet Our Faculty') }}</h2>
-            <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.7;">{{ $gs('home_staff_subtitle','Dedicated academics and researchers shaping the future of computer science education.') }}</p>
+            <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.7; text-align: center !important;">{{ $gs('home_staff_subtitle','Dedicated academics and researchers shaping the future of computer science education.') }}</p>
         </div>
 
         <div class="staff-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
@@ -21,7 +21,7 @@
                 </div>
                 <div style="padding: 1.2rem 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                     <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.3rem; font-family: var(--font-heading); text-align: center; width: 100%;">{{ $member->name }}</h3>
-                    <p style="font-size: 0.85rem; color: var(--color-primary); font-weight: 600; margin: 0; text-align: center; width: 100%;">{{ $member->rank ?? 'Lecturer' }}</p>
+                    <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 600; margin: 0 auto; text-align: center; width: 100%;">{{ $member->rank ?? 'Lecturer' }}</div>
                 </div>
             </a>
             @endforeach

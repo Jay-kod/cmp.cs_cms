@@ -31,7 +31,39 @@
                     <textarea name="body" class="form-control richtext" rows="15" style="font-family: inherit;">{{ old('body', $news->body) }}</textarea>
                     <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: #6b7280;">Basic HTML is supported.</p>
                 </div>
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label class="form-label">Author <span style="color: red;">*</span></label>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 0.75rem;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 0.6rem 1rem; border: 2px solid #e5e7eb; border-radius: 6px; flex: 1; transition: all 0.2s;" id="author-admin-label">
+                            <input type="radio" name="author_type" value="admin" id="author_admin"
+                                {{ old('author_type', $news->author_type ?? 'admin') == 'admin' ? 'checked' : '' }}
+                                onchange="toggleAuthorName(this)"
+                                style="width: 16px; height: 16px;">
+                            <div>
+                                <strong style="display: block; font-size: 0.88rem;">Admin</strong>
+                                <span style="font-size: 0.75rem; color: #6b7280;">Written by the site admin</span>
+                            </div>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 0.6rem 1rem; border: 2px solid #e5e7eb; border-radius: 6px; flex: 1; transition: all 0.2s;" id="author-outside-label">
+                            <input type="radio" name="author_type" value="outside" id="author_outside"
+                                {{ old('author_type', $news->author_type ?? 'admin') == 'outside' ? 'checked' : '' }}
+                                onchange="toggleAuthorName(this)"
+                                style="width: 16px; height: 16px;">
+                            <div>
+                                <strong style="display: block; font-size: 0.88rem;">Outside Author</strong>
+                                <span style="font-size: 0.75rem; color: #6b7280;">Written by an external contributor</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div id="author-name-wrapper" style="display: none; margin-top: 0.5rem;">
+                        <input type="text" name="author_name" id="author_name_input"
+                            value="{{ old('author_name', $news->author_name ?? '') }}"
+                            class="form-control"
+                            placeholder="Full name of the author (required)">
+                    </div>
+                </div>
             </div>
+
 
             <!-- Right Column: Meta & Settings -->
             <div>
@@ -100,4 +132,31 @@
         </div>
     </form>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+function toggleAuthorName(radio) {
+    const wrapper = document.getElementById('author-name-wrapper');
+    const nameInput = document.getElementById('author_name_input');
+    const adminLabel = document.getElementById('author-admin-label');
+    const outsideLabel = document.getElementById('author-outside-label');
+
+    const isOutside = radio.value === 'outside';
+
+    wrapper.style.display = isOutside ? 'block' : 'none';
+    nameInput.required = isOutside;
+
+    adminLabel.style.borderColor = !isOutside ? 'var(--color-primary, #2563eb)' : '#e5e7eb';
+    adminLabel.style.background = !isOutside ? '#eff6ff' : '';
+    outsideLabel.style.borderColor = isOutside ? 'var(--color-primary, #2563eb)' : '#e5e7eb';
+    outsideLabel.style.background = isOutside ? '#eff6ff' : '';
+}
+
+// Run on page load to reflect existing state
+document.addEventListener('DOMContentLoaded', function () {
+    const selected = document.querySelector('input[name="author_type"]:checked');
+    if (selected) toggleAuthorName(selected);
+});
+</script>
 @endsection

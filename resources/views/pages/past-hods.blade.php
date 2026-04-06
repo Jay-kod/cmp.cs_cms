@@ -4,7 +4,7 @@
 @section('content')
 @php
     $hs = \App\Models\DepartmentSetting::where('group', 'page_past-hods')->pluck('value', 'key')->toArray();
-    $heroImg = \App\Models\DepartmentSetting::where('key', 'hero_past-hods')->value('value');
+    $heroImg = \App\Models\DepartmentSetting::getCached('hero_past-hods');
     $heroUrl = $heroImg && file_exists(storage_path('app/public/' . $heroImg)) 
         ? asset('storage/' . $heroImg) 
         : null;

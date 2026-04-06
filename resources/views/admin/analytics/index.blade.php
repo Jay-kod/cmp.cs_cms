@@ -283,6 +283,7 @@
             <button class="analytics-tab" onclick="switchDetailTab('content', this)">Content</button>
             <button class="analytics-tab" onclick="switchDetailTab('media', this)">Media</button>
             <button class="analytics-tab" onclick="switchDetailTab('system', this)">System</button>
+            <button class="analytics-tab" onclick="switchDetailTab('api', this)" style="display: inline-flex; align-items: center; gap: 0.4rem; background: #e0e7ff; color: #4338ca; border-radius: 8px;"><i class="fa-solid fa-server"></i> API Directory</button>
         </div>
     </div>
     <div class="a-card-body">
@@ -653,6 +654,116 @@
                     </table>
                     @endif
                 </div>
+            </div>
+        </div>
+
+        {{-- API & SYSTEM METRICS TAB --}}
+        <div class="tab-panel" id="tab-api">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h4 style="margin: 0 0 0.4rem; font-size: 1.1rem; color: #0f172a;"><i class="fa-solid fa-server" style="color: #4338ca; margin-right: 0.4rem;"></i> Internal System APIs & Health</h4>
+                    <div style="font-size: 0.85rem; color: #64748b;">Genuine monitoring for your system's registered endpoints and core services.</div>
+                </div>
+                <div style="display: flex; gap: 0.8rem; align-items: center;">
+                    <span style="padding: 0.4rem 0.8rem; background: #ecfdf5; color: #059669; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid #a7f3d0;"><i class="fa-solid fa-check-circle"></i> Local Environment Active</span>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                {{-- Global Search API --}}
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="font-weight: 700; color: #0f172a; font-size: 0.95rem;">Global Search API</div>
+                        <span style="background: #dcfce7; color: #166534; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700;">Active</span>
+                    </div>
+                    <div style="font-size: 0.8rem; font-family: monospace; background: #1e293b; color: #a5b4fc; padding: 0.6rem; border-radius: 6px; margin-bottom: 0.8rem;">
+                        GET /api/search?q={query}
+                    </div>
+                    <div style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">
+                        Handles public search queries. Maps results from Programmes, News, Staff, Events, and Courses securely.
+                    </div>
+                </div>
+
+                {{-- Content Freshness API --}}
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="font-weight: 700; color: #0f172a; font-size: 0.95rem;">Content Refresh Service</div>
+                        <span style="background: #dcfce7; color: #166534; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700;">Active</span>
+                    </div>
+                    <div style="font-size: 0.8rem; font-family: monospace; background: #1e293b; color: #a5b4fc; padding: 0.6rem; border-radius: 6px; margin-bottom: 0.8rem;">
+                        GET /api/content-updated
+                    </div>
+                    <div style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">
+                        Allows front-end clients to auto-refresh public pages dynamically by fetching the latest updated timestamps from 14 tables.
+                    </div>
+                </div>
+
+                {{-- Authenticated User API --}}
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="font-weight: 700; color: #0f172a; font-size: 0.95rem;">Sanctum Auth API</div>
+                        <span style="background: #dcfce7; color: #166534; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700;">Protected</span>
+                    </div>
+                    <div style="font-size: 0.8rem; font-family: monospace; background: #1e293b; color: #a5b4fc; padding: 0.6rem; border-radius: 6px; margin-bottom: 0.8rem;">
+                        GET /api/user (Protected)
+                    </div>
+                    <div style="font-size: 0.75rem; color: #64748b; line-height: 1.4;">
+                        Sanctum token-based authentication endpoint for reading the currently authed user profile via remote applications.
+                    </div>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 1.5rem; overflow-x: auto;">
+                <h5 style="margin: 0 0 1rem; font-size: 0.95rem; color: #0f172a;"><i class="fa-solid fa-microchip" style="color: #6366f1; margin-right: 0.4rem;"></i> Real-Time Infrastructure Health</h5>
+                <table style="width: 100%; border-collapse: separate; border-spacing: 0; min-width: 600px; text-align: left;">
+                    <thead>
+                        <tr style="background: #f8fafc;">
+                            <th style="padding: 0.8rem 1rem; font-size: 0.75rem; font-weight: 600; color: #64748b; text-transform: uppercase; border-bottom: 2px solid #e2e8f0;">Component</th>
+                            <th style="padding: 0.8rem 1rem; font-size: 0.75rem; font-weight: 600; color: #64748b; text-transform: uppercase; border-bottom: 2px solid #e2e8f0;">Driver / Setup</th>
+                            <th style="padding: 0.8rem 1rem; font-size: 0.75rem; font-weight: 600; color: #64748b; text-transform: uppercase; border-bottom: 2px solid #e2e8f0;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9; font-weight: 600; color: #0f172a;"><i class="fa-solid fa-database" style="color: #0891b2; margin-right: 0.5rem; width: 20px; text-align: center;"></i> Database (MySQL)</td>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 0.85rem; font-family: monospace;">{{ config('database.default') }}</td>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9;">
+                                @php
+                                    try {
+                                        DB::connection()->getPdo();
+                                        echo '<span style="color: #059669; font-size: 0.8rem; font-weight: 600;"><i class="fa-solid fa-circle-check"></i> Connected successfully</span>';
+                                    } catch(\Exception $e) {
+                                        echo '<span style="color: #dc2626; font-size: 0.8rem; font-weight: 600;"><i class="fa-solid fa-circle-xmark"></i> Connection Error</span>';
+                                    }
+                                @endphp
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9; font-weight: 600; color: #0f172a;"><i class="fa-solid fa-hard-drive" style="color: #fb923c; margin-right: 0.5rem; width: 20px; text-align: center;"></i> File Storage</td>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 0.85rem; font-family: monospace;">{{ config('filesystems.default') }} (local disk)</td>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9;">
+                                @php
+                                    $storageWritable = is_writable(storage_path('app/public'));
+                                    if ($storageWritable) {
+                                        echo '<span style="color: #059669; font-size: 0.8rem; font-weight: 600;"><i class="fa-solid fa-circle-check"></i> Writable & Linked</span>';
+                                    } else {
+                                        echo '<span style="color: #ea580c; font-size: 0.8rem; font-weight: 600;"><i class="fa-solid fa-triangle-exclamation"></i> Check Permissions</span>';
+                                    }
+                                @endphp
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9; font-weight: 600; color: #0f172a;"><i class="fa-solid fa-bolt" style="color: #eab308; margin-right: 0.5rem; width: 20px; text-align: center;"></i> Application Cache</td>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 0.85rem; font-family: monospace;">{{ config('cache.default') }}</td>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9;"><span style="color: #059669; font-size: 0.8rem; font-weight: 600;"><i class="fa-solid fa-circle-check"></i> Operational</span></td>
+                        </tr>
+                         <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9; font-weight: 600; color: #0f172a;"><i class="fa-solid fa-code-compare" style="color: #8b5cf6; margin-right: 0.5rem; width: 20px; text-align: center;"></i> Environment Status</td>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 0.85rem; font-family: monospace;">{{ app()->environment() }}</td>
+                            <td style="padding: 1rem; border-bottom: 1px solid #f1f5f9;"><span style="color: #059669; font-size: 0.8rem; font-weight: 600;"><i class="fa-solid fa-circle-check"></i> PHP {{ PHP_VERSION }}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

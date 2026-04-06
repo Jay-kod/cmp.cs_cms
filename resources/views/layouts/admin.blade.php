@@ -66,8 +66,12 @@
                             <div class="nav-icon"><i class="fa-solid fa-border-all"></i></div>
                             <span>Dashboard</span>
                         </a>
-                    </li>
-                    <li>
+                    </li>                      <li>
+                          <a href="{{ route('admin.system-logs.index') }}" class="admin-nav-item {{ request()->routeIs('admin.system-logs.*') ? 'active' : '' }}" title="System Logs">
+                              <div class="nav-icon"><i class="fa-solid fa-server"></i></div>
+                              <span>System Logs</span>
+                          </a>
+                      </li>                    <li>
                         <a href="{{ route('admin.analytics.index') }}" class="admin-nav-item {{ request()->routeIs('admin.analytics.*') ? 'active' : '' }}" title="Analytics & Reports">
                             <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
                             <span>Analytics & Reports</span>
@@ -75,6 +79,22 @@
                     </li>
                     
                     @if(auth()->user()->isAdmin())
+                    <li class="nav-section-title"><span>Departments</span></li>
+                    @foreach(\App\Models\SubDepartment::orderBy('name')->get() as $navDept)
+                    <li>
+                        <a href="{{ route('admin.sub-departments.edit', $navDept->id) }}" class="admin-nav-item {{ request()->url() == route('admin.sub-departments.edit', $navDept->id) ? 'active' : '' }}" title="{{ $navDept->name }}">
+                            <div class="nav-icon"><i class="fa-solid fa-building-user" style="font-size: 0.85em; opacity: 0.8;"></i></div>
+                            <span style="font-size: 0.9em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ strtoupper($navDept->prefix) }} Dept.</span>
+                        </a>
+                    </li>
+                    @endforeach
+                    <li>
+                        <a href="{{ route('admin.sub-departments.index') }}" class="admin-nav-item {{ request()->routeIs('admin.sub-departments.index') || request()->routeIs('admin.sub-departments.create') ? 'active' : '' }}" title="Manage All Departments" style="opacity: 0.8;">
+                            <div class="nav-icon"><i class="fa-solid fa-gears"></i></div>
+                            <span>Manage Depts</span>
+                        </a>
+                    </li>
+
                     <li class="nav-section-title"><span>Management</span></li>
                     <li>
                         <a href="{{ route('admin.programmes.index') }}" class="admin-nav-item {{ request()->routeIs('admin.programmes.*') || request()->routeIs('admin.programme-categories.*') ? 'active' : '' }}" title="Programmes">
@@ -153,15 +173,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.resources.index') }}" class="admin-nav-item {{ request()->routeIs('admin.resources.*') ? 'active' : '' }}" title="Resources Catalog">
+                        <a href="{{ route('admin.resources.index') }}" class="admin-nav-item {{ request()->routeIs('admin.resources.*') || request()->routeIs('admin.resource-categories.*') ? 'active' : '' }}" title="Resources Catalog">
                             <div class="nav-icon"><i class="fa-solid fa-file-lines"></i></div>
                             <span>Resources Catalog</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.resource-categories.index') }}" class="admin-nav-item {{ request()->routeIs('admin.resource-categories.*') ? 'active' : '' }}" title="Resource Categories">
-                            <div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div>
-                            <span>Resource Categories</span>
                         </a>
                     </li>
                     @endif {{-- end isAdmin for Content & Media --}}
@@ -582,5 +596,6 @@
             font-size: 0.95rem;
         }
     </style>
+    @yield('scripts')
 </body>
 </html>

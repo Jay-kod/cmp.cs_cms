@@ -10,7 +10,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $settings = DepartmentSetting::where('group', 'about')->pluck('value', 'key');
+        $settings = DepartmentSetting::where('group', 'about')->orWhere('group', 'page_about')->pluck('value', 'key');
         $hod = Staff::where('is_hod', true)->first();
         return view('pages.about', compact('settings', 'hod'));
     }
@@ -19,5 +19,11 @@ class AboutController extends Controller
     {
         $hods = \App\Models\PastHod::orderBy('tenure_end', 'desc')->get();
         return view('pages.past-hods', compact('hods'));
+    }
+
+    public function labs()
+    {
+        $settings = DepartmentSetting::where('group', 'about')->orWhere('group', 'page_about')->orWhere('group', 'page_labs')->pluck('value', 'key');
+        return view('pages.labs', compact('settings'));
     }
 }

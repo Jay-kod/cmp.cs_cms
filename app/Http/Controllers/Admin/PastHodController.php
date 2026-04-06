@@ -29,6 +29,13 @@ class PastHodController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'email' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:50',
+            'rank' => 'nullable|string|max:255',
+            'qualifications' => 'nullable|string|max:255',
+            'area_of_specialization' => 'nullable|string|max:255',
+            'status' => 'nullable|string|max:50',
+            'position' => 'nullable|string|max:255',
             'tenure_start' => 'nullable|string|max:50',
             'tenure_end' => 'nullable|string|max:50',
             'bio' => 'nullable|string',
@@ -62,6 +69,13 @@ class PastHodController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'email' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:50',
+            'rank' => 'nullable|string|max:255',
+            'qualifications' => 'nullable|string|max:255',
+            'area_of_specialization' => 'nullable|string|max:255',
+            'status' => 'nullable|string|max:50',
+            'position' => 'nullable|string|max:255',
             'tenure_start' => 'nullable|string|max:50',
             'tenure_end' => 'nullable|string|max:50',
             'bio' => 'nullable|string',

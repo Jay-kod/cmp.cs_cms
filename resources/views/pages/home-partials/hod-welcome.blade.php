@@ -62,8 +62,16 @@
             @foreach([1,2,3,4,5] as $n)
             @php
                 $statIcon  = $gs("stat_{$n}_icon",  ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-medal'][$n-1]);
-                $statValue = $gs("stat_{$n}_value", [config('university.established'), $courseCount, $programmes->count(), '6', 'NUC'][$n-1]);
                 $statLabel = $gs("stat_{$n}_label", ['Established','Courses','Programmes','Departments','Full Accreditation'][$n-1]);
+                if ($n == 2 || stripos($statLabel, 'courses') !== false) {
+                    $statValue = \App\Models\Course::count();
+                } elseif ($n == 3 || stripos($statLabel, 'programmes') !== false) {
+                    $statValue = \App\Models\Programme::where('is_active', true)->count();
+                } elseif ($n == 4 || stripos($statLabel, 'departments') !== false) {
+                    $statValue = \App\Models\ProgrammeCategory::count();
+                } else {
+                    $statValue = $gs("stat_{$n}_value", [config('university.established'), '', '', '', 'NUC'][$n-1]);
+                }
             @endphp
             <div class="stat-card">
                 <div class="stat-bg-icon"><i class="{{ $statIcon }}"></i></div>
@@ -74,3 +82,5 @@
         </div>
     </div>
 </section>
+
+

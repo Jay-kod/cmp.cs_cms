@@ -16,7 +16,7 @@
         <style>
             .page-content h2 { font-size: 1.6rem; color: var(--color-primary); margin-top: 0; margin-bottom: 1rem; font-family: var(--font-heading); }
             .page-content h3 { font-size: 1.2rem; color: #1f2937; margin-top: 2rem; margin-bottom: 0.8rem; font-family: var(--font-heading); }
-            .page-content p { margin-bottom: 1rem; color: #374151; }
+            .page-content p { margin-bottom: 1rem; color: #374151; text-align: justify; }
             .page-content ul { padding-left: 1.5rem; margin-bottom: 1.2rem; }
             .page-content ul li { margin-bottom: 0.5rem; color: #374151; }
             .page-content a { color: var(--color-primary); text-decoration: underline; font-weight: 500; }

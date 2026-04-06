@@ -4,8 +4,8 @@
 
 @section('content')
 @php
-    $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::where('key', $key)->value('value') ?? $default;
-    $heroSetting = \App\Models\DepartmentSetting::where('key', 'hero_about')->first();
+    $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::getCached($key) ?? $default;
+    $heroSetting = (object)['value' => \App\Models\DepartmentSetting::getCached('hero_about')];
     $heroUrl = $heroSetting && $heroSetting->value && file_exists(storage_path('app/public/' . $heroSetting->value))
         ? asset('storage/' . $heroSetting->value) 
         : asset('images/campus-bg.jpg');

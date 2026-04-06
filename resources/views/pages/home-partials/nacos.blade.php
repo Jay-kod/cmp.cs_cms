@@ -17,9 +17,6 @@
                 <h2 style="font-size: 2.4rem; font-family: var(--font-heading); font-weight: 800; color: white; margin-bottom: 0.5rem; line-height: 1.15;">{{ $gs('home_nacos_title','NACOS') }}</h2>
                 <p style="color: #94a3b8; font-size: 0.95rem; max-width: 550px; line-height: 1.6; margin: 0;">{{ $gs('home_nacos_subtitle','The National Association of Computing Students (NUK Chapter) — empowering students through leadership, innovation and community.') }}</p>
             </div>
-            <a href="{{ route('nacos-presidents') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #4ade80; font-weight: 700; font-size: 0.85rem; text-decoration: none; padding: 0.5rem 1rem; border: 1.5px solid rgba(74,222,128,0.3); border-radius: 10px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.background='rgba(74,222,128,0.1)'; this.style.borderColor='rgba(74,222,128,0.6)'" onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(74,222,128,0.3)'">
-                View More About NACOS <i class="fa-solid fa-arrow-right" style="font-size: 0.8rem;"></i>
-            </a>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;">
@@ -60,31 +57,74 @@
 
             {{-- Right Column: Past Leaders Grid --}}
             <div>
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
-                    <h3 style="color: white; font-size: 1rem; font-weight: 700; margin: 0; font-family: var(--font-heading); display: flex; align-items: center; gap: 0.5rem;">
-                        <i class="fa-solid fa-award" style="color: #4ade80;"></i> Recent Leaders
-                    </h3>
-                    <span style="color: #475569; font-size: 0.75rem; font-weight: 600;">{{ $nacosTotalCount }} total</span>
-                </div>
-
                 @if($nacosPresidents->count() > 0)
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                    @foreach($nacosPresidents as $idx => $pres)
-                    <a href="{{ route('nacos-presidents') }}" style="display: block; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; text-decoration: none; transition: all 0.35s; position: relative; overflow: hidden;" onmouseover="this.style.background='rgba(255,255,255,0.09)'; this.style.borderColor='rgba(74,222,128,0.3)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)'">
-                        <div style="display: flex; align-items: center; gap: 0.8rem;">
-                            <div style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(74,222,128,0.3); overflow: hidden; flex-shrink: 0; background: linear-gradient(135deg, #1e293b, #0f172a);">
-                                <img src="{{ $pres->photo ? asset('storage/'.$pres->photo) : asset('images/avatar-placeholder.png') }}" alt="{{ $pres->name }}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($pres->name) }}&background=16a34a&color=fff&size=100'">
-                            </div>
-                            <div style="min-width: 0;">
-                                <h4 style="color: white; font-size: 0.88rem; font-weight: 700; margin: 0 0 0.15rem; font-family: var(--font-heading); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $pres->name }}</h4>
-                                <span style="display: inline-block; background: rgba(22,163,74,0.2); color: #4ade80; padding: 0.1rem 0.5rem; border-radius: 12px; font-size: 0.68rem; font-weight: 600;">{{ $pres->tenure_start ?? '?' }} – {{ $pres->tenure_end ?? 'Present' }}</span>
-                                @if($pres->current_status)
-                                <p style="color: #64748b; font-size: 0.78rem; margin: 0.3rem 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $pres->current_status }}</p>
-                                @endif
-                            </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+                    @foreach($nacosPresidents->take(3) as $idx => $pres)
+                    <a href="{{ route('nacos-presidents') }}" style="display: flex; flex-direction: column; background: linear-gradient(160deg, rgba(30,41,59,0.4) 0%, rgba(15,23,42,0.6) 100%); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; text-decoration: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" onmouseover="this.style.background='linear-gradient(160deg, rgba(30,41,59,0.7) 0%, rgba(15,23,42,0.9) 100%)'; this.style.borderColor='rgba(74,222,128,0.4)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 30px -5px rgba(22,163,74,0.15), inset 0 1px 0 rgba(255,255,255,0.1)'" onmouseout="this.style.background='linear-gradient(160deg, rgba(30,41,59,0.4) 0%, rgba(15,23,42,0.6) 100%)'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)'">
+                        
+                        {{-- Square Image Header --}}
+                        <div style="width: 100%; aspect-ratio: 1/1; position: relative; background: #0f172a; overflow: hidden; border-bottom: 2px solid rgba(74,222,128,0.2);">
+                            <img src="{{ $pres->photo ? asset('storage/'.$pres->photo) : asset('images/avatar-placeholder.png') }}" alt="{{ $pres->name }}" style="width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.6s ease;" onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($pres->name) }}&background=0f172a&color=4ade80&size=200&font-size=0.4&rounded=false'" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+                            
+                            {{-- Bottom fade effect so text pops beautifully --}}
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, rgba(15,23,42,1) 0%, transparent 100%); z-index: 1;"></div>
                         </div>
-                    </a>
-                    @endforeach
+
+                        {{-- Text content pulled slightly up over the gradient fade --}}
+                        <div style="text-align: center; padding: 0 0.8rem 1.2rem; position: relative; z-index: 2; margin-top: -1.5rem;">
+                            <h4 style="color: white; font-size: 0.95rem; font-weight: 800; margin: 0 0 0.3rem; font-family: var(--font-heading); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">{{ $pres->name }}</h4>
+                            
+                            <span style="display: inline-block; background: rgba(15,23,42,0.8); border: 1px solid rgba(74,222,128,0.3); color: #4ade80; padding: 0.15rem 0.6rem; border-radius: 6px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 0.4rem; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">{{ $pres->tenure_start ?? '?' }} &ndash; {{ $pres->tenure_end ?? 'Present' }}</span>
+                            
+                            @php
+                                $statusText = 'PAST';
+                                $statusColor = '#94a3b8'; // Default gray
+                                $dotColor = '#64748b';
+                                
+                                  // Check for explicitly set status first
+                                  $forcedStatus = trim(strtoupper($pres->current_status ?? ''));
+                                  
+                                  if ($forcedStatus === 'CURRENT PRESIDENT') {
+                                      $statusText = 'CURRENT PRESIDENT';
+                                      $statusColor = '#38bdf8';
+                                      $dotColor = '#0ea5e9';
+                                  } elseif ($forcedStatus === 'JUST GRADUATED') {
+                                      $statusText = 'JUST GRADUATED';
+                                      $statusColor = '#fcd34d';
+                                      $dotColor = '#f59e0b';
+                                  } elseif ($forcedStatus === 'PAST') {
+                                      $statusText = 'PAST';
+                                      $statusColor = '#94a3b8';
+                                      $dotColor = '#64748b';
+                                  } else {
+                                      // Fallback calculating by tenure end if no status set
+                                      $tEnd = strtolower(trim($pres->tenure_end ?? 'present'));
+                                      if (empty($tEnd) || $tEnd === 'present' || $tEnd === 'current') {
+                                          $statusText = 'CURRENT PRESIDENT';
+                                          $statusColor = '#38bdf8'; // Blue for active
+                                          $dotColor = '#0ea5e9';
+                                      } else {
+                                          $endYear = (int) $tEnd;
+                                          $currentYear = (int) date('Y');
+                                          if ($endYear > 0) {
+                                              if ($endYear >= $currentYear - 1) {
+                                                  $statusText = 'JUST GRADUATED';
+                                                  $statusColor = '#fcd34d'; // Gold for just graduated
+                                                  $dotColor = '#f59e0b';
+                                              }
+                                          }
+                                      }
+                                  }
+                              @endphp
+
+                              <div style="display: flex; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 0.2rem;">
+                                  <div style="width: 4px; height: 4px; border-radius: 50%; background: {{ $dotColor }}; box-shadow: 0 0 4px {{ $dotColor }};"></div>
+                                  <p style="color: {{ $statusColor }}; font-size: 0.72rem; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">{{ $statusText }}</p>
+                                  <div style="width: 4px; height: 4px; border-radius: 50%; background: {{ $dotColor }}; box-shadow: 0 0 4px {{ $dotColor }};"></div>
+                              </div>
+                          </div>
+                      </a>
+                      @endforeach
                 </div>
                 @else
                 <div style="background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; text-align: center;">
@@ -94,12 +134,12 @@
                 @endif
 
                 {{-- CTA Banner --}}
-                <a href="{{ route('nacos-presidents') }}" style="display: flex; align-items: center; justify-content: space-between; margin-top: 0.75rem; padding: 0.8rem 1.2rem; background: linear-gradient(135deg, rgba(22,163,74,0.15), rgba(22,163,74,0.05)); border: 1px solid rgba(22,163,74,0.25); border-radius: 12px; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='linear-gradient(135deg, rgba(22,163,74,0.25), rgba(22,163,74,0.1))'; this.style.borderColor='rgba(22,163,74,0.4)'" onmouseout="this.style.background='linear-gradient(135deg, rgba(22,163,74,0.15), rgba(22,163,74,0.05))'; this.style.borderColor='rgba(22,163,74,0.25)'">
+                <a href="{{ route('nacos-presidents') }}" style="display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem; padding: 1.2rem 1.5rem; background: linear-gradient(135deg, rgba(22,163,74,0.2), rgba(22,163,74,0.05)); border: 1.5px solid rgba(74,222,128,0.5); border-radius: 12px; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 20px -5px rgba(22,163,74,0.3);" onmouseover="this.style.background='linear-gradient(135deg, rgba(22,163,74,0.3), rgba(22,163,74,0.1))'; this.style.borderColor='rgba(74,222,128,0.8)'; this.style.boxShadow='0 8px 25px -5px rgba(22,163,74,0.5)';" onmouseout="this.style.background='linear-gradient(135deg, rgba(22,163,74,0.2), rgba(22,163,74,0.05))'; this.style.borderColor='rgba(74,222,128,0.5)'; this.style.boxShadow='0 4px 20px -5px rgba(22,163,74,0.3)';">
                     <div>
-                        <div style="color: white; font-weight: 700; font-size: 0.88rem; font-family: var(--font-heading);">{{ $gs('home_nacos_cta_title','Explore NACOS History') }}</div>
-                        <div style="color: #64748b; font-size: 0.75rem;">{{ $gs('home_nacos_cta_desc','See all past leaders, their tenure and achievements') }}</div>
+                        <div style="color: white; font-weight: 800; font-size: 1rem; font-family: var(--font-heading); margin-bottom: 0.2rem;">{{ $gs('home_nacos_cta_title','Explore NACOS History') }}</div>
+                        <div style="color: #94a3b8; font-size: 0.8rem;">{{ $gs('home_nacos_cta_desc','See all past leaders, their tenure and achievements') }}</div>
                     </div>
-                    <div style="width: 32px; height: 32px; background: rgba(22,163,74,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #4ade80; flex-shrink: 0; font-size: 0.85rem;">
+                    <div style="width: 38px; height: 38px; background: rgba(34,197,94,0.3); border: 1px solid rgba(74,222,128,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #4ade80; flex-shrink: 0; font-size: 1rem; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateX(4px)'" onmouseout="this.style.transform='translateX(0)'">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
                 </a>

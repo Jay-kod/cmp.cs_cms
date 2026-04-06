@@ -32,9 +32,9 @@
                         </div>
                         <div style="padding: 1.5rem;">
                             <h4 style="margin: 0 0 0.2rem; font-size: 1.15rem; color: #0f172a; font-weight: 700;">{{ $staff->name }}</h4>
-                            <p style="margin: 0; color: var(--color-primary); font-size: 0.9rem; font-weight: 500;">
+                            <div style="margin: 0; color: var(--color-primary); font-size: 0.9rem; font-weight: 500; text-align: center;">
                                 {{ $staff->rank ?? 'Academic Staff' }}
-                            </p>
+                            </div>
                         </div>
                     </div>
                 @endforeach

@@ -9,6 +9,13 @@ class PastHod extends Model
 {
     protected $fillable = [
         'name',
+        'email',
+        'phone',
+        'rank',
+        'qualifications',
+        'area_of_specialization',
+        'status',
+        'position',
         'photo',
         'tenure_start',
         'tenure_end',

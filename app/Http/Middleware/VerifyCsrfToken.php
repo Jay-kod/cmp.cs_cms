@@ -25,7 +25,7 @@ class VerifyCsrfToken extends Middleware
         parent::__construct($app, $encrypter);
 
         if ($app->environment('local')) {
-            $this->except = array_merge($this->except, ['super-admin/login']);
+            $this->except = array_merge($this->except, ['super-admin/login', 'login', 'admin/login']);
         }
     }
 }

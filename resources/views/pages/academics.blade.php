@@ -3,8 +3,8 @@
 
 @section('content')
 @php
-    $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::where('key', $key)->value('value') ?? $default;
-    $heroSetting = \App\Models\DepartmentSetting::where('key', 'hero_academics')->first();
+    $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::getCached($key) ?? $default;
+    $heroSetting = (object)['value' => \App\Models\DepartmentSetting::getCached('hero_academics')];
     $heroUrl = $heroSetting && $heroSetting->value && file_exists(storage_path('app/public/' . $heroSetting->value))
         ? asset('storage/' . $heroSetting->value) 
         : asset('images/campus-bg.jpg');
@@ -108,7 +108,7 @@
 
             <div class="acad-steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; position: relative; z-index: 2;">
                 @php
-                    $applySteps = json_decode(\App\Models\DepartmentSetting::where('key', 'academics_apply_steps')->value('value') ?? '[]', true) ?? [];
+                    $applySteps = json_decode(\App\Models\DepartmentSetting::getCached('academics_apply_steps') ?? '[]', true) ?? [];
                     if (empty($applySteps)) {
                         $applySteps = [
                             ['title' => 'Check Requirements', 'desc' => 'Review the entry requirements for your desired programme under its details below.'],

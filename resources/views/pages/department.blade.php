@@ -1,171 +1,242 @@
-@extends('layouts.public')
-@section('title', $departmentName)
+﻿@extends('layouts.public')
+
+@section('title', $subDept->name)
 
 @section('content')
-@php
-    $gs = fn(string $k, string $v = '') => \App\Models\DepartmentSetting::where('key', $k)->value('value') ?? $v;
-@endphp
 
-<!-- 1. Page Banner + Breadcrumb (#0D4F26) -->
-<section style="background: #0D4F26; padding: 4rem 0; color: #FFFFFF; text-align: center; position: relative;">
-    <div class="container reveal reveal-up">
-        <!-- Breadcrumb -->
-        <div style="margin-bottom: 1.5rem; font-size: 0.9rem; font-weight: 500;">
-            <a href="{{ url('/') }}" style="color: #F0F9F3; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;"><i class="fa-solid fa-house"></i> Home</a> 
-            <span style="margin: 0 0.5rem; color: #a7f3d0;">/</span> 
-            <span style="color: #F4C430;">Sub-Departments</span>
-        </div>
-        
-        <h1 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; color: #FFFFFF; font-family: var(--font-heading);">{{ $departmentName }}</h1>
-        <p style="font-size: 1.15rem; max-width: 800px; margin: 0 auto; color: #F0F9F3; line-height: 1.6;">
-            {{ $gs("{$departmentPrefix}_about_short", "Developing excellence and leading innovation in {$departmentName}.") }}
-        </p>
+<!-- Hero Section -->
+<section class="bg-[#111827] text-white py-20 lg:py-32 relative">
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-[#485b93] opacity-90"></div>
+    </div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10 text-center">
+        <span class="inline-block px-5 py-2 rounded-full bg-white/10 text-white font-bold text-sm mb-5 tracking-widest uppercase border border-white/20 backdrop-blur-sm">{{ strtoupper($subDept->prefix) }} Department Unit</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-[#45c363] tracking-tight mb-6">{{ $subDept->name }}</h1>
     </div>
 </section>
 
-<!-- 2. HOD Message / About Dept (#FFFFFF and #F0F9F3 Split) -->
-<section style="padding: 5rem 0; background: #FFFFFF;">
-    <div class="container reveal reveal-up">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-5">
-                <div style="background: #F0F9F3; padding: 2rem; border-radius: 16px; border-left: 5px solid #0D4F26; text-align: center;">
-                    <!-- Fetching custom image or using placeholder -->
-                    @php
-                        $hodImageKey = "{$departmentPrefix}_hod_image";
-                        $hodNameKey = "{$departmentPrefix}_hod_name";
-                        $hodRankKey = "{$departmentPrefix}_hod_title";
-                        
-                        $hodImagePath = \App\Models\DepartmentSetting::where('key', $hodImageKey)->value('value');
-                    @endphp
-                    
-                    <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin: 0 auto 1.5rem; border: 4px solid #FFFFFF; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                        @if($hodImagePath && file_exists(storage_path('app/public/'.$hodImagePath)))
-                            <img src="{{ asset('storage/'.$hodImagePath) }}" alt="HOD Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
-                        @else
-                            <div style="width: 100%; height: 100%; background: #0D4F26; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
-                                <i class="fa-solid fa-user-tie"></i>
-                            </div>
-                        @endif
-                    </div>
-                    
-                    <h3 style="font-size: 1.4rem; font-weight: 800; color: #0D4F26; margin-bottom: 0.3rem;">
-                        {{ $gs($hodNameKey, 'HOD Name Not Set') }}
-                    </h3>
-                    <p style="color: #64748b; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; margin-bottom: 1rem;">
-                        Head of {{ $departmentName }}
-                    </p>
+<!-- About the Department -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
+        <h2 class="text-3xl font-extrabold text-[#485b93] mb-6 relative inline-block">
+            About the Department
+            <span class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 h-1.5 bg-[#45c363] rounded-full"></span>
+        </h2>
+        <div class="text-[17px] text-gray-600 leading-loose mt-8 font-medium">
+            {{ $subDept->description ?? 'A center for academic excellence and pioneering research in ' . $subDept->name . '.' }}
+        </div>
+    </div>
+</section>
+
+<!-- Vision & Mission -->
+<section class="py-20 bg-gray-50 border-y border-gray-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+            <!-- Vision -->
+            <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:border-[#45c363]/50 transition-colors group">
+                <div class="w-16 h-16 bg-[#45c363]/10 rounded-2xl flex items-center justify-center text-[#45c363] text-3xl mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-eye"></i>
                 </div>
+                <h3 class="text-2xl font-black text-[#485b93] mb-4">Our Vision</h3>
+                <p class="text-gray-600 leading-relaxed text-[15px]">{{ $subDept->vision ?? 'To be a globally recognized center of excellence in '. $subDept->name . ', producing graduates capable of solving global challenges.' }}</p>
             </div>
             
-            <div class="col-lg-7">
-                <h2 style="font-size: 2.2rem; font-weight: 800; color: #0D4F26; margin-bottom: 1rem;">Welcome to the Department</h2>
-                <div style="width: 60px; height: 4px; background: #F4C430; margin-bottom: 2rem;"></div>
+            <!-- Mission -->
+            <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:border-[#485b93]/50 transition-colors group">
+                <div class="w-16 h-16 bg-[#485b93]/10 rounded-2xl flex items-center justify-center text-[#485b93] text-3xl mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <h3 class="text-2xl font-black text-[#485b93] mb-4">Our Mission</h3>
+                <p class="text-gray-600 leading-relaxed text-[15px]">{{ $subDept->mission ?? 'To provide high-quality education and foster innovative research in '. $subDept->name . ', while nurturing highly skilled and ethical professionals.' }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Programmes & Requirements -->
+<section class="py-24 bg-white relative">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-extrabold text-[#485b93]">Academic Programmes & Requirements</h2>
+            <div class="w-16 h-1.5 bg-[#45c363] mx-auto mt-5 rounded-full"></div>
+        </div>
+
+        <div class="space-y-10">
+            @forelse($programmes ?? [] as $programme)
+            <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300">
+                <!-- Header -->
+                <div class="bg-gray-50/80 px-8 py-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <h3 class="text-2xl font-black text-[#485b93] flex items-center gap-3">
+                        <i class="fa-solid fa-graduation-cap text-[#45c363]"></i>
+                        {{ $programme->level }} Programme
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-white px-4 py-1.5 rounded-lg text-sm font-bold text-gray-600 border border-gray-200 shadow-sm flex items-center gap-2"><i class="fa-regular fa-clock text-gray-400"></i> {{ $programme->duration ?? 'N/A' }}</span>
+                        <span class="bg-[#485b93]/10 text-[#485b93] px-4 py-1.5 rounded-lg text-sm font-bold shadow-sm flex items-center gap-2"><i class="fa-solid fa-layer-group text-[#485b93]/50"></i> {{ $programme->mode_of_study ?? 'Full Time' }}</span>
+                    </div>
+                </div>
                 
-                <div style="color: #475569; font-size: 1.05rem; line-height: 1.8;">
-                    {!! nl2br(e($gs("{$departmentPrefix}_hod_message", "Welcome to the $departmentName. We are committed to fostering learning, cutting-edge research, and critical problem-solving skills."))) !!}
+                <div class="p-8 sm:p-10">
+                    <!-- Overview -->
+                    <div class="mb-10">
+                        <h4 class="text-[13px] font-black tracking-widest text-gray-400 uppercase mb-4 border-b border-gray-100 pb-2">Programme Overview</h4>
+                        <p class="text-gray-700 leading-loose text-[15px]">{{ $programme->description ?? 'Comprehensive core curriculum structure.' }}</p>
+                    </div>
+
+                    <!-- Admission Requirements Grid -->
+                    <div>
+                        <h4 class="text-[13px] font-black tracking-widest text-[#45c363] uppercase mb-5 border-b border-gray-100 pb-2">Admission Requirements</h4>
+                        <div class="grid md:grid-cols-2 gap-6 mt-4">
+                            <!-- UTME -->
+                            <div class="bg-[#485b93]/5 p-6 rounded-2xl border border-[#485b93]/10 relative group hover:bg-[#485b93]/10 transition-colors">
+                                <div class="absolute top-6 right-6 text-[#485b93]/20 text-3xl group-hover:text-[#485b93]/30 transition-colors">
+                                    <i class="fa-solid fa-user-graduate"></i>
+                                </div>
+                                <h5 class="font-extrabold text-[#485b93] mb-3 flex items-center"><i class="fa-solid fa-circle-check text-[#45c363] mr-2 text-lg"></i> UTME Requirements</h5>
+                                <p class="text-gray-600 text-sm leading-loose relative z-10">{{ $programme->requirements_utme ?? 'Specific UTME entry guidelines are outlined in the central admission portal.' }}</p>
+                            </div>
+                            
+                            <!-- Direct Entry -->
+                            <div class="bg-[#45c363]/5 p-6 rounded-2xl border border-[#45c363]/20 relative group hover:bg-[#45c363]/10 transition-colors">
+                                <div class="absolute top-6 right-6 text-[#45c363]/20 text-3xl group-hover:text-[#45c363]/30 transition-colors">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
+                                <h5 class="font-extrabold text-[#485b93] mb-3 flex items-center"><i class="fa-solid fa-circle-check text-[#45c363] mr-2 text-lg"></i> Direct Entry Requirements</h5>
+                                <p class="text-gray-600 text-sm leading-loose relative z-10">{{ $programme->requirements_de ?? 'Specific DE guidelines are outlined in the central admission portal.' }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            @empty
+            <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300">
+                <!-- Header -->
+                <div class="bg-gray-50/80 px-8 py-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <h3 class="text-2xl font-black text-[#485b93] flex items-center gap-3">
+                        <i class="fa-solid fa-graduation-cap text-[#45c363]"></i>
+                        B.Sc. Programme (Sample Template)
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-white px-4 py-1.5 rounded-lg text-sm font-bold text-gray-600 border border-gray-200 shadow-sm flex items-center gap-2"><i class="fa-regular fa-clock text-gray-400"></i> 4 Years</span>
+                        <span class="bg-[#485b93]/10 text-[#485b93] px-4 py-1.5 rounded-lg text-sm font-bold shadow-sm flex items-center gap-2"><i class="fa-solid fa-layer-group text-[#485b93]/50"></i> Full Time</span>
+                    </div>
+                </div>
+                
+                <div class="p-8 sm:p-10">
+                    <div class="mb-10 block p-4 bg-yellow-50 border border-yellow-200 rounded-xl text-yellow-700 text-sm font-bold mb-6">
+                        <i class="fa-solid fa-triangle-exclamation mr-2"></i> Note: No actual programmes are attached to this department in the database yet. This is a layout preview.
+                    </div>
+                    <!-- Overview -->
+                    <div class="mb-10">
+                        <h4 class="text-[13px] font-black tracking-widest text-gray-400 uppercase mb-4 border-b border-gray-100 pb-2">Programme Overview</h4>
+                        <p class="text-gray-700 leading-loose text-[15px]">Comprehensive core curriculum structure. Details to be updated via admin dashboard.</p>
+                    </div>
+
+                    <!-- Admission Requirements Grid -->
+                    <div>
+                        <h4 class="text-[13px] font-black tracking-widest text-[#45c363] uppercase mb-5 border-b border-gray-100 pb-2">Admission Requirements</h4>
+                        <div class="grid md:grid-cols-2 gap-6 mt-4">
+                            <!-- UTME -->
+                            <div class="bg-[#485b93]/5 p-6 rounded-2xl border border-[#485b93]/10 relative group hover:bg-[#485b93]/10 transition-colors">
+                                <div class="absolute top-6 right-6 text-[#485b93]/20 text-3xl group-hover:text-[#485b93]/30 transition-colors">
+                                    <i class="fa-solid fa-user-graduate"></i>
+                                </div>
+                                <h5 class="font-extrabold text-[#485b93] mb-3 flex items-center"><i class="fa-solid fa-circle-check text-[#45c363] mr-2 text-lg"></i> UTME Requirements</h5>
+                                <p class="text-gray-600 text-sm leading-loose relative z-10">Specific UTME entry guidelines are outlined in the central admission portal.</p>
+                            </div>
+                            
+                            <!-- Direct Entry -->
+                            <div class="bg-[#45c363]/5 p-6 rounded-2xl border border-[#45c363]/20 relative group hover:bg-[#45c363]/10 transition-colors">
+                                <div class="absolute top-6 right-6 text-[#45c363]/20 text-3xl group-hover:text-[#45c363]/30 transition-colors">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
+                                <h5 class="font-extrabold text-[#485b93] mb-3 flex items-center"><i class="fa-solid fa-circle-check text-[#45c363] mr-2 text-lg"></i> Direct Entry Requirements</h5>
+                                <p class="text-gray-600 text-sm leading-loose relative z-10">Specific DE guidelines are outlined in the central admission portal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforelse
         </div>
     </div>
 </section>
 
-<!-- 3. Programmes (#F0F9F3) -->
-<section style="background: #F0F9F3; padding: 5rem 0;">
-    <div class="container reveal reveal-up">
-        <div style="text-align: center; margin-bottom: 3.5rem;">
-            <h2 style="font-size: 2.2rem; font-weight: 800; color: #0D4F26; font-family: var(--font-heading);">Programmes Offered</h2>
-            <div style="width: 60px; height: 4px; background: #F4C430; margin: 1rem auto;"></div>
+<!-- Research & Publications -->
+<section class="py-24 bg-gray-50 border-t border-gray-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-extrabold text-[#485b93]">Research & Publications</h2>
+            <div class="w-16 h-1.5 bg-[#45c363] mx-auto mt-5 rounded-full"></div>
+            <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Explore the latest research papers, journals, and academic contributions from our department.</p>
         </div>
-
-        @if(isset($programmes) && $programmes->count() > 0)
-        <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
-            @foreach($programmes as $prog)
-            <div class="col">
-                <div class="card h-100" style="background: #FFFFFF; border-radius: 12px; border: none; box-shadow: 0 10px 20px rgba(0,0,0,0.05); overflow: hidden; transition: transform 0.3s;">
-                    <div style="background: #0D4F26; padding: 1.5rem 1.5rem 2rem; position: relative;">
-                        <!-- Connector -->
-                        <div style="position: absolute; bottom: -20px; left: 0; right: 0; height: 40px; background: #FFFFFF; border-radius: 20px 20px 0 0;"></div>
-                        
-                        <div style="width: 50px; height: 50px; background: #F4C430; color: #0D4F26; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem;">
-                            <i class="{{ $prog->category->icon ?? 'fa-solid fa-graduation-cap' }}"></i>
-                        </div>
-                        <h4 style="margin: 0; color: #FFFFFF; font-size: 1.25rem; font-weight: 700; line-height: 1.4;">{{ $prog->name }}</h4>
-                    </div>
-                    
-                    <div class="card-body" style="padding: 1.5rem; z-index: 2; position: relative;">
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-                            @if($prog->level)
-                            <span style="background: #F0F9F3; color: #0D4F26; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; border: 1px solid #c6f6d5;">
-                                <i class="fa-solid fa-layer-group"></i> {{ $prog->level }}
-                            </span>
-                            @endif
-                            @if($prog->duration)
-                            <span style="background: #f8fafc; color: #475569; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; border: 1px solid #e2e8f0;">
-                                <i class="fa-regular fa-clock"></i> {{ $prog->duration }}
-                            </span>
-                            @endif
-                        </div>
-                        
-                        @if($prog->description)
-                        <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
-                            {{ Str::limit($prog->description, 100) }}
-                        </p>
-                        @endif
-                    </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @forelse($publications ?? [] as $pub)
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-[#45c363]/50 transition-colors group">
+                <div class="text-[12px] font-bold text-[#45c363] mb-2 uppercase tracking-wider">{{ $pub->year ?? 'Recent' }}</div>
+                <h3 class="text-lg font-bold text-[#485b93] mb-3 group-hover:text-[#45c363] transition-colors">{{ $pub->title }}</h3>
+                <p class="text-sm text-gray-600 mb-4 line-clamp-3">{{ $pub->abstract ?? 'Read the full publication to learn more about this research methodology and findings.' }}</p>
+                <div class="text-xs font-bold text-gray-500 bg-gray-50 px-3 py-2 rounded-lg inline-block">
+                    <i class="fa-solid fa-book-open mr-1 text-gray-400"></i> {{ $pub->journal ?? 'Academic Journal' }}
                 </div>
             </div>
-            @endforeach
+            @empty
+            <div class="col-span-full text-center py-16 bg-white rounded-3xl border border-dashed border-gray-200">
+                <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-gray-400 text-2xl mb-4">
+                    <i class="fa-solid fa-flask"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-800 mb-1">No Publications Yet</h3>
+                <p class="text-gray-500">Research publications and academic papers will be updated shortly.</p>
+            </div>
+            @endforelse
         </div>
-        <div class="text-center mt-5">
-            <a href="{{ route('academics') }}" class="btn" style="background: #0D4F26; color: #FFFFFF; padding: 0.8rem 2.5rem; border-radius: 30px; font-weight: 600; text-decoration: none;">View All Academic Postings <i class="fa-solid fa-arrow-right-long ml-2"></i></a>
-        </div>
-        @else
-        <div style="text-align: center; padding: 3rem; background: #FFFFFF; border-radius: 12px; border: 1px dashed #cbd5e1;">
-            <p style="color: #64748b; margin: 0; font-size: 1.1rem;">Academic programmes specifically for {{ $departmentName }} are currently being updated.</p>
-        </div>
-        @endif
     </div>
 </section>
 
-<!-- 4. Department News & Highlights (#FFFFFF) -->
-@if(isset($news) && $news->count() > 0)
-<section style="background: #FFFFFF; padding: 5rem 0;">
-    <div class="container reveal reveal-up">
-        <div style="text-align: center; margin-bottom: 3.5rem;">
-            <h2 style="font-size: 2.2rem; font-weight: 800; color: #0D4F26; font-family: var(--font-heading);">Insights & Updates</h2>
-            <div style="width: 60px; height: 4px; background: #F4C430; margin: 1rem auto;"></div>
+<!-- News & Updates -->
+<section class="py-24 bg-white border-t border-gray-100 relative">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-extrabold text-[#485b93]">Department News & Updates</h2>
+            <div class="w-16 h-1.5 bg-[#45c363] mx-auto mt-5 rounded-full"></div>
         </div>
 
-        <div class="row g-4">
-            @foreach($news->take(3) as $article)
-            <div class="col-md-4">
-                <div class="card h-100" style="border: none; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden;">
-                    @if($article->image)
-                    <div style="height: 200px; overflow: hidden; background: #0D4F26;">
-                        <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @forelse($news ?? [] as $item)
+            <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+                <div class="h-56 bg-gray-100 relative overflow-hidden">
+                    @if($item->image)
+                    <img src="{{ asset('storage/'.$item->image) }}" alt="{{ $item->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     @else
-                    <div style="height: 200px; background: #0D4F26; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.2);">
-                        <i class="fa-solid fa-newspaper" style="font-size: 4rem;"></i>
+                    <div class="w-full h-full flex items-center justify-center text-gray-300 group-hover:scale-105 transition-transform duration-500">
+                        <i class="fa-regular fa-image text-4xl"></i>
                     </div>
                     @endif
-                    <div class="card-body" style="padding: 1.5rem;">
-                        <div style="color: #64748b; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.8rem; text-transform: uppercase;">
-                            {{ \Carbon\Carbon::parse($article->published_at ?? $article->created_at)->format('M d, Y') }}
-                        </div>
-                        <h4 style="font-size: 1.2rem; font-weight: 700; color: #0D4F26; margin-bottom: 1rem;">
-                            {{ Str::limit($article->title, 60) }}
-                        </h4>
-                        <a href="{{ route('research-news.show', $article->slug ?? $article->id) }}" style="color: #0D4F26; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.3rem;">
-                            Read More <i class="fa-solid fa-arrow-right-long" style="color: #F4C430;"></i>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="text-[12px] font-bold text-[#45c363] mb-3 uppercase tracking-wider"><i class="fa-regular fa-calendar-alt mr-1"></i> {{ \Carbon\Carbon::parse($item->published_at ?? $item->created_at)->format('M d, Y') }}</div>
+                    <h3 class="text-xl font-black text-[#485b93] mb-3 line-clamp-2 hover:text-[#45c363] transition-colors"><a href="#">{{ $item->title }}</a></h3>
+                    <p class="text-sm text-gray-600 mb-6 line-clamp-3 leading-relaxed">{{ $item->excerpt ?? Str::limit(strip_tags($item->content), 120) }}</p>
+                    <div class="mt-auto pt-4 border-t border-gray-100">
+                        <a href="#" class="text-sm font-bold text-[#45c363] hover:text-[#485b93] transition-colors flex items-center">
+                            Read Full Story <i class="fa-solid fa-arrow-right-long ml-2"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <div class="col-span-full text-center py-16 bg-gray-50 rounded-3xl border border-dashed border-gray-200">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto text-gray-400 text-2xl mb-4 border border-gray-100 shadow-sm">
+                    <i class="fa-regular fa-newspaper"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-800 mb-1">No News Available</h3>
+                <p class="text-gray-500">Latest announcements and events will appear here.</p>
+            </div>
+            @endforelse
         </div>
     </div>
 </section>
-@endif
 
 @endsection
+

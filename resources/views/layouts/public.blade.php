@@ -110,14 +110,17 @@
     <footer style="margin-top: var(--spacing-xl);">
         <!-- Main Footer -->
         @php
-            $footerBgSetting = \App\Models\DepartmentSetting::where('key', 'footer_bg_image')->first();
-            $footerBgPath = $footerBgSetting ? $footerBgSetting->value : 'site/footer-bg.jpg';
-            $footerBgUrl = file_exists(storage_path('app/public/' . $footerBgPath)) ? asset('storage/' . $footerBgPath) : '';
+            $firstCarousel = \App\Models\CarouselSlide::where('is_active', true)->orderBy('sort_order', 'asc')->first();
+            if ($firstCarousel && $firstCarousel->image) {
+                $footerBgUrl = str_starts_with($firstCarousel->image, 'http') ? $firstCarousel->image : asset('storage/' . $firstCarousel->image);
+            } else {
+                $footerBgSetting = (object)['value' => \App\Models\DepartmentSetting::getCached('footer_bg_image')];
+                $footerBgPath = $footerBgSetting ? $footerBgSetting->value : 'site/footer-bg.jpg';
+                $footerBgUrl = file_exists(storage_path('app/public/' . $footerBgPath)) ? asset('storage/' . $footerBgPath) : '';
+            }
         @endphp
-        <div style="position: relative; color: #d1d5db; padding: 3.5rem 0 2.5rem; {{ $footerBgUrl ? "background: url('".$footerBgUrl."') center/cover no-repeat fixed;" : 'background: #0D4F26;' }}">
-            @if($footerBgUrl)
-            <div style="position: absolute; inset: 0; background: rgba(13,79,38,0.95);"></div>
-            @endif
+        <div style="position: relative; color: #d1d5db; padding: 3.5rem 0 2.5rem; {{ $footerBgUrl ? "background: url('".$footerBgUrl."') center/cover no-repeat;" : 'background: #0D4F26;' }}">
+            <div style="position: absolute; inset: 0; background: rgba(13,79,38,0.92); z-index: 0;"></div>
             <div class="container" style="position: relative; z-index: 1;">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem;">
                     
@@ -192,10 +195,12 @@
 
                     <!-- Contact Info -->
                     @php
-                        $__ftPhone = \App\Models\DepartmentSetting::where('key', 'contact_phone')->value('value') ?? '+234 (0) 123 456 7890';
-                        $__ftEmail = \App\Models\DepartmentSetting::where('key', 'contact_email')->value('value') ?? 'info@dcms.nsuk.edu.ng';
-                        $__ftAddr  = \App\Models\DepartmentSetting::where('key', 'contact_address')->value('value') ?? (config('university.university') . ', Keffi, Nasarawa State, Nigeria');
-                        $__ftHours = \App\Models\DepartmentSetting::where('key', 'contact_hours')->value('value') ?? 'Mon – Fri: 8:00 AM – 4:00 PM';
+                        $__ftPhone = \App\Models\DepartmentSetting::getCached('contact_phone') ?? '+234 (0) 123 456 7890';
+                        $__ftEmail = \App\Models\DepartmentSetting::getCached('contact_email') ?? 'info@dcms.nsuk.edu.ng';
+                        $__ftAddr  = \App\Models\DepartmentSetting::getCached('contact_address') ?? (config('university.university') . ', Keffi, Nasarawa State, Nigeria');
+                        $__ftHours = \App\Models\DepartmentSetting::getCached('contact_hours') ?? 'Mon – Fri: 8:00 AM – 4:00 PM';
+                        $__session = \App\Models\DepartmentSetting::getCached('academic_session') ?? '2024/2025';
+                        $__semester= \App\Models\DepartmentSetting::getCached('academic_semester') ?? 'First';
                     @endphp
                     <div>
                         <h4 style="color: #fff; font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.6rem;">
@@ -206,6 +211,10 @@
                             <li style="display: flex; align-items: flex-start; gap: 0.7rem;">
                                 <i class="fa-solid fa-location-dot" style="color: var(--color-primary); margin-top: 3px; width: 16px; text-align: center;"></i>
                                 <span style="font-size: 0.88rem; line-height: 1.5;">{!! $__ftAddr !!}</span>
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 0.7rem;">
+                                <i class="fa-solid fa-graduation-cap" style="color: var(--color-primary); width: 16px; text-align: center;"></i>
+                                <span style="font-size: 0.88rem; color: #d1d5db;">Academic Session: <strong style="color: #fff;">{{ $__session }} ({{ $__semester }} Semester)</strong></span>
                             </li>
                             <li style="display: flex; align-items: center; gap: 0.7rem;">
                                 <i class="fa-solid fa-phone" style="color: var(--color-primary); width: 16px; text-align: center;"></i>

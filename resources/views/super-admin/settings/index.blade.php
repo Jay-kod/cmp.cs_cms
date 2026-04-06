@@ -4,7 +4,7 @@
 
 @section('content')
 @php
-    $gs = fn(string $key, $default = '') => \App\Models\DepartmentSetting::where('key', $key)->value('value') ?? $default;
+    $gs = fn(string $key, $default = '') => \App\Models\DepartmentSetting::getCached($key) ?? $default;
 @endphp
 <div class="admin-card" style="margin-bottom: 1.5rem;">
     <h2 style="margin: 0; font-size: 1.1rem;">Global Configuration</h2>

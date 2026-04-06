@@ -40,7 +40,7 @@ class DashboardController extends Controller
             'publicationsCount' => Publication::count(),
         ];
         
-        $recentNews = News::latest()->take(5)->get();
+        $recentNews = News::withCount(['comments', 'reactions'])->latest()->take(5)->get();
         $upcomingEvents = Event::where('date', '>=', now())->orderBy('date')->take(5)->get();
 
         // Media optimization analysis (WebP derivatives)

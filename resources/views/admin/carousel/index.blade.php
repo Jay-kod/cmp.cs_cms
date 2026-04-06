@@ -3,111 +3,141 @@
 @section('header', 'Carousel & Media')
 
 @section('content')
-<div class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
     <div>
-        <h2 style="margin: 0; font-size: 1.1rem;">Homepage Carousel</h2>
-        <p style="margin: 0; color: #6b7280; font-size: 0.85rem;">Manage the hero carousel slides shown on the homepage</p>
+        <h2 style="margin: 0; font-size: 1.25rem; font-weight: 600; color: #1f2937;">Homepage Carousel</h2>
+        <p style="margin: 0.2rem 0 0; color: #64748b; font-size: 0.88rem;">Manage the scrolling hero slides shown on the public homepage.</p>
     </div>
     <div style="display: flex; gap: 0.6rem;">
-        <a href="{{ route('admin.carousel.page-heroes') }}" class="btn" style="background: #4b5563; color: white; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-size: 0.88rem;"><i class="fa-solid fa-images"></i> Page Heroes</a>
-        <a href="{{ route('admin.carousel.footer-bg') }}" class="btn" style="background: #1f2937; color: white; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-size: 0.88rem;"><i class="fa-solid fa-image"></i> Footer Background</a>
-        <a href="{{ route('admin.carousel.create') }}" class="btn" style="background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-size: 0.88rem;"><i class="fa-solid fa-plus"></i> Add Slide</a>
+        <a href="{{ route('admin.carousel.page-heroes') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f8fafc; color: #475569; padding: 0.6rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.85rem; border: 1px solid #e2e8f0; transition: all 0.2s;" onmouseover="this.style.background='#f1f5f9'; this.style.color='#0f172a'">
+            <i class="fa-solid fa-images"></i> Page Heroes
+        </a>
+        <a href="{{ route('admin.carousel.footer-bg') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f8fafc; color: #475569; padding: 0.6rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.85rem; border: 1px solid #e2e8f0; transition: all 0.2s;" onmouseover="this.style.background='#f1f5f9'; this.style.color='#0f172a'">
+            <i class="fa-solid fa-image"></i> Footer BG
+        </a>
+        <a href="{{ route('admin.carousel.create') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.85rem; box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.2); transition: background 0.2s;">
+            <i class="fa-solid fa-plus"></i> New Slide
+        </a>
     </div>
 </div>
 
 @if(session('success'))
-<div style="background: #dcfce7; color: #166534; padding: 0.8rem 1rem; border-radius: 6px; margin-bottom: 1rem; border: 1px solid #86efac; font-size: 0.9rem;">
-    <i class="fa-solid fa-check-circle"></i> {{ session('success') }}
+<div style="background: #ecfdf5; color: #047857; padding: 1rem 1.2rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid #a7f3d0; font-size: 0.9rem; display: flex; align-items: center; gap: 0.6rem;">
+    <i class="fa-solid fa-check-circle" style="font-size: 1.1rem;"></i> {{ session('success') }}
 </div>
 @endif
 
 {{-- Carousel Preview --}}
-<div class="admin-card" style="margin-bottom: 1.5rem; padding: 0; overflow: hidden;">
-    <div style="padding: 1rem 1.2rem; border-bottom: 1px solid #e5e7eb;">
-        <h4 style="margin: 0; font-size: 0.88rem; color: #6b7280; font-weight: 600;">Live Preview</h4>
+<div class="admin-card" style="margin-bottom: 2rem; padding: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="padding: 1rem 1.5rem; border-bottom: 1px solid #f1f5f9; background: #fff;">
+        <h4 style="margin: 0; font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.4rem;">
+            <i class="fa-solid fa-desktop"></i> Live Preview
+        </h4>
     </div>
-    <div style="position: relative; height: 200px; overflow: hidden;">
+    <div style="position: relative; height: 260px; overflow: hidden; background: #e2e8f0;">
         @php $previewSlides = $slides->where('is_active', true)->take(3); @endphp
         @forelse($previewSlides as $i => $pSlide)
-        <div style="position: absolute; inset: 0; {{ $i > 0 ? 'display:none;' : '' }} background: {{ $pSlide->image_url ? "url('".$pSlide->image_url."')" : 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}; background-size: cover; background-position: center;">
+        <div style="position: absolute; inset: 0; {{ $i > 0 ? 'display:none;' : '' }} background: {{ $pSlide->image_url ? "url('".$pSlide->image_url."')" : 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}; background-size: cover; background-position: center; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
             <div style="position: absolute; inset: 0; background: {{ $pSlide->overlay_color }};"></div>
-            <div style="position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; height: 100%; text-align: center; color: white; padding: 1rem;">
-                <div>
-                    <h3 style="margin: 0 0 0.3rem; font-size: 1.1rem; color: white;">{{ $pSlide->title }}</h3>
-                    <p style="margin: 0; font-size: 0.8rem; opacity: 0.9;">{{ Str::limit($pSlide->subtitle, 80) }}</p>
+            <div style="position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; height: 100%; text-align: center; color: white; padding: 2rem;">
+                <div style="max-width: 600px;">
+                    <h3 style="margin: 0 0 0.8rem; font-size: 1.8rem; color: white; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">{{ $pSlide->title }}</h3>
+                    <p style="margin: 0 0 1.2rem; font-size: 1rem; opacity: 0.95; line-height: 1.5; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">{{ Str::limit($pSlide->subtitle, 120) }}</p>
+                    @if($pSlide->button_text)
+                    <span style="display: inline-block; padding: 0.6rem 1.5rem; background: var(--color-primary); border-radius: 30px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+                        {{ $pSlide->button_text }}
+                    </span>
+                    @endif
                 </div>
             </div>
         </div>
         @empty
-        <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f3f4f6; color: #9ca3af;">
-            <span>No active slides to preview</span>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: #f8fafc; color: #94a3b8; gap: 0.5rem;">
+            <i class="fa-regular fa-image" style="font-size: 2.5rem; opacity: 0.5;"></i>
+            <span style="font-size: 0.9rem;">No active slides to preview</span>
         </div>
         @endforelse
     </div>
 </div>
 
-<div class="admin-table-container">
-    <table class="admin-table">
+<div class="admin-card" style="padding: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
+    <table style="width: 100%; border-collapse: collapse; text-align: left;">
         <thead>
-            <tr>
-                <th style="width: 40px;">#</th>
-                <th style="width: 80px;">Image</th>
-                <th>Title</th>
-                <th>Button</th>
-                <th>Status</th>
-                <th>Actions</th>
+            <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+                <th style="padding: 1rem 1.5rem; font-weight: 600; font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; width: 60px;">Ord</th>
+                <th style="padding: 1rem 1.5rem; font-weight: 600; font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Slide Content</th>
+                <th style="padding: 1rem 1.5rem; font-weight: 600; font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Call to Action</th>
+                <th style="padding: 1rem 1.5rem; font-weight: 600; font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Status</th>
+                <th style="padding: 1rem 1.5rem; font-weight: 600; font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; text-align: right;">Actions</th>
             </tr>
         </thead>
         <tbody>
             @forelse($slides as $slide)
-            <tr>
-                <td style="color: #9ca3af; font-size: 0.82rem;">{{ $slide->sort_order }}</td>
-                <td>
-                    @if($slide->image_url)
-                    <img src="{{ $slide->image_url }}" alt="" style="width: 70px; height: 45px; object-fit: cover; border-radius: 4px; border: 1px solid #e5e7eb;">
-                    @else
-                    <div style="width: 70px; height: 45px; border-radius: 4px; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); display: flex; align-items: center; justify-content: center;">
-                        <i class="fa-solid fa-image" style="color: white; font-size: 0.8rem;"></i>
+            <tr style="border-bottom: 1px solid #e2e8f0; transition: background 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
+                <td style="padding: 1.2rem 1.5rem;">
+                    <div style="width: 28px; height: 28px; background: #f1f5f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; color: #64748b;">
+                        {{ $slide->sort_order }}
                     </div>
-                    @endif
                 </td>
-                <td>
-                    <strong>{{ $slide->title }}</strong>
-                    <br><span style="font-size: 0.78rem; color: #9ca3af;">{{ Str::limit($slide->subtitle, 60) }}</span>
+                <td style="padding: 1.2rem 1.5rem;">
+                    <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                        @if($slide->image_url)
+                        <img src="{{ $slide->image_url }}" alt="" style="width: 90px; height: 50px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        @else
+                        <div style="width: 90px; height: 50px; border-radius: 6px; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                            <i class="fa-solid fa-image" style="color: white; font-size: 1rem; opacity: 0.8;"></i>
+                        </div>
+                        @endif
+                        <div>
+                            <strong style="display: block; color: #0f172a; font-size: 0.95rem; margin-bottom: 0.2rem;">{{ $slide->title }}</strong>
+                            <span style="display: block; font-size: 0.8rem; color: #64748b; line-height: 1.4;">{{ Str::limit($slide->subtitle, 80) }}</span>
+                        </div>
+                    </div>
                 </td>
-                <td>
+                <td style="padding: 1.2rem 1.5rem; vertical-align: middle;">
                     @if($slide->button_text)
-                    <code style="background: #f3f4f6; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.78rem;">{{ $slide->button_text }}</code>
-                    <br><span style="font-size: 0.72rem; color: #9ca3af;">{{ $slide->button_url }}</span>
+                    <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                        <span style="display: inline-block; background: #e0f2fe; color: #0284c7; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; width: fit-content;"><i class="fa-solid fa-link" style="margin-right: 0.2rem;"></i> {{ $slide->button_text }}</span>
+                        <span style="font-size: 0.75rem; color: #94a3b8; font-family: monospace;">{{ Str::limit($slide->button_url, 25) }}</span>
+                    </div>
                     @else
-                    <span style="color: #d1d5db; font-size: 0.82rem;">None</span>
+                    <span style="color: #cbd5e1; font-size: 0.85rem; font-style: italic;">No Button</span>
                     @endif
                 </td>
-                <td>
+                <td style="padding: 1.2rem 1.5rem; vertical-align: middle;">
                     @if($slide->is_active)
-                        <span style="color: #10B981; font-weight: bold; font-size: 0.85rem;"><i class="fa-solid fa-circle-check"></i> Active</span>
+                        <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: #ecfdf5; color: #059669; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; border: 1px solid #a7f3d0;">
+                            <div style="width: 6px; height: 6px; background: #10b981; border-radius: 50%;"></div> Active
+                        </div>
                     @else
-                        <span style="color: #6b7280; font-weight: bold; font-size: 0.85rem;"><i class="fa-solid fa-circle-minus"></i> Hidden</span>
+                        <div style="display: inline-flex; align-items: center; gap: 0.4rem; background: #f1f5f9; color: #64748b; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; border: 1px solid #e2e8f0;">
+                            <i class="fa-solid fa-eye-slash" style="font-size: 0.75rem;"></i> Hidden
+                        </div>
                     @endif
                 </td>
-                <td>
-                    <div class="actions">
-                        <a href="{{ route('admin.carousel.edit', $slide) }}" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #e5e7eb; color: #374151; text-decoration: none; border-radius: 4px;"><i class="fa-solid fa-edit"></i> Edit</a>
-                        <form action="{{ route('admin.carousel.destroy', $slide) }}" method="POST" data-confirm="Delete this slide?" style="display:inline;">
+                <td style="padding: 1.2rem 1.5rem; vertical-align: middle; text-align: right;">
+                    <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+                        <a href="{{ route('admin.carousel.edit', $slide) }}" style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 6px; background: #f1f5f9; color: #475569; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.background='#e2e8f0'; this.style.color='#0f172a'" title="Edit Slide">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <form action="{{ route('admin.carousel.destroy', $slide) }}" method="POST" data-confirm="Are you sure you want to delete this slide?" style="display:inline;">
                             @csrf @method('DELETE')
-                            <button type="submit" class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; background: #fee2e2; color: #b91c1c; border: none; cursor: pointer; border-radius: 4px;"><i class="fa-solid fa-trash"></i> Delete</button>
+                            <button type="submit" style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 6px; background: #fef2f2; color: #ef4444; border: none; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#fee2e2'; this.style.color='#b91c1c'" title="Delete Slide">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
                         </form>
                     </div>
                 </td>
             </tr>
             @empty
             <tr>
-                <td colspan="6" style="text-align: center; padding: 3rem 1rem;">
-                    <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem;">
-                        <i class="fa-solid fa-images" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 1rem;"></i>
-                        <h3 style="margin: 0 0 0.5rem; color: #334155; font-size: 1.2rem;">No Carousel Slides Found</h3>
-                        <p style="margin: 0; color: #64748b;">No carousel slides added yet.</p>
-                    </div>
+                <td colspan="5" style="text-align: center; padding: 4rem 2rem;">
+                    <i class="fa-regular fa-images" style="font-size: 3.5rem; color: #cbd5e1; margin-bottom: 1rem;"></i>
+                    <h3 style="margin: 0 0 0.5rem; color: #475569; font-size: 1.1rem; font-weight: 600;">No Slides Built Yet</h3>
+                    <p style="margin: 0 0 1.5rem; color: #94a3b8; font-size: 0.9rem;">Your homepage carousel is currently empty.</p>
+                    <a href="{{ route('admin.carousel.create') }}" style="display: inline-block; background: white; color: var(--color-primary); padding: 0.6rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1px solid var(--color-primary); transition: all 0.2s;" onmouseover="this.style.background='var(--color-primary)'; this.style.color='white'">
+                        Create First Slide
+                    </a>
                 </td>
             </tr>
             @endforelse

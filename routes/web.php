@@ -20,6 +20,7 @@ use App\Http\Controllers\SuperAdmin\BackupController as SuperAdminBackupControll
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\ProgrammeController;
 use App\Http\Controllers\Admin\ProgrammeCategoryController;
+use App\Http\Controllers\Admin\SubDepartmentController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\EventController;
@@ -81,6 +82,10 @@ Route::get('/resources', [ResourcesController::class, 'index'])->name('resources
 
 Route::middleware(['auth:web,super_admin', 'verified', 'admin', \App\Http\Middleware\SetAdminLayoutForSuperAdmins::class])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/system-logs', [\App\Http\Controllers\Admin\SystemLogController::class, 'index'])->name('system-logs.index');
+    
+    // Academic Session Settings
+    Route::post('/settings/academic-session', [\App\Http\Controllers\Admin\SettingsController::class, 'updateAcademicSession'])->name('settings.academic-session');
 
     // ── Content Management (all admins: admin + super_admin) ──
     Route::resource('news', NewsController::class);
@@ -90,6 +95,7 @@ Route::middleware(['auth:web,super_admin', 'verified', 'admin', \App\Http\Middle
     Route::resource('staff-roles', StaffRoleController::class);
     Route::resource('programmes', ProgrammeController::class);
     Route::resource('programme-categories', ProgrammeCategoryController::class);
+    Route::resource('sub-departments', SubDepartmentController::class);
     Route::resource('courses', CourseController::class);
     Route::resource('nacos-presidents', NacosPresidentController::class);
     Route::resource('past-hods', PastHodController::class);
@@ -122,7 +128,7 @@ Route::middleware(['auth:web,super_admin', 'verified', 'admin', \App\Http\Middle
 
     // Departmental Timetable
     Route::get('/timetable-upload', [\App\Http\Controllers\Admin\TimetableController::class, 'showUpload'])->name('timetable.upload');
-    Route::post('/timetable-upload', [\App\Http\Controllers\Admin\TimetableController::class, 'upload'])->name('timetable.upload');
+    Route::post('/timetable-upload', [\App\Http\Controllers\Admin\TimetableController::class, 'upload']);
 
     // Analytics & Reports
     Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics.index');
@@ -172,6 +178,7 @@ Route::middleware(['auth:super_admin', 'super_admin', \App\Http\Middleware\SetAd
     Route::resource('staff-roles', StaffRoleController::class);
     Route::resource('programmes', ProgrammeController::class);
     Route::resource('programme-categories', ProgrammeCategoryController::class);
+    Route::resource('sub-departments', SubDepartmentController::class);
     Route::resource('courses', CourseController::class);
     Route::resource('nacos-presidents', NacosPresidentController::class);
     Route::resource('past-hods', PastHodController::class);
@@ -198,7 +205,7 @@ Route::middleware(['auth:super_admin', 'super_admin', \App\Http\Middleware\SetAd
     Route::resource('pages', AdminPageController::class);
 
     Route::get('/timetable-upload', [\App\Http\Controllers\Admin\TimetableController::class, 'showUpload'])->name('timetable.upload');
-    Route::post('/timetable-upload', [\App\Http\Controllers\Admin\TimetableController::class, 'upload'])->name('timetable.upload');
+    Route::post('/timetable-upload', [\App\Http\Controllers\Admin\TimetableController::class, 'upload']);
 
     Route::get('/analytics', [\App\Http\Controllers\Admin\AnalyticsController::class, 'index'])->name('analytics.index');
     Route::get('/analytics/download', [\App\Http\Controllers\Admin\AnalyticsController::class, 'download'])->name('analytics.download');

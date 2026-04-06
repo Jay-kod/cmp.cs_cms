@@ -13,7 +13,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::latest()->paginate(20);
+        $news = News::withCount(['comments', 'reactions'])->latest()->paginate(20);
         return view('admin.news.index', compact('news'));
     }
 
@@ -29,10 +29,16 @@ class NewsController extends Controller
             'category' => 'required|string|max:100',
             'department_code' => 'nullable|string|in:cs,cyb,ds',
             'body' => 'required|string',
+            'author_type' => 'required|string|in:admin,outside',
+            'author_name' => 'required_if:author_type,outside|nullable|string|max:255',
             'is_featured' => 'boolean',
             'featured_image' => 'nullable|image|max:2048',
             'published_at' => 'nullable|date'
         ]);
+
+        if ($data['author_type'] === 'admin') {
+            $data['author_name'] = null;
+        }
 
         $data['slug'] = Str::slug($data['title']) . '-' . time();
         if(!$request->has('is_featured')) $data['is_featured'] = false;
@@ -64,10 +70,16 @@ class NewsController extends Controller
             'category' => 'required|string|max:100',
             'department_code' => 'nullable|string|in:cs,cyb,ds',
             'body' => 'required|string',
+            'author_type' => 'required|string|in:admin,outside',
+            'author_name' => 'required_if:author_type,outside|nullable|string|max:255',
             'is_featured' => 'boolean',
             'featured_image' => 'nullable|image|max:2048',
             'published_at' => 'nullable|date'
         ]);
+
+        if ($data['author_type'] === 'admin') {
+            $data['author_name'] = null;
+        }
 
         if ($data['title'] !== $news->title) {
             $data['slug'] = Str::slug($data['title']) . '-' . time();

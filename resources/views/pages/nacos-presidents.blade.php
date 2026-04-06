@@ -3,7 +3,7 @@
 
 @section('content')
 @php
-    $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::where('key', $key)->value('value') ?? $default;
+    $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::getCached($key) ?? $default;
 @endphp
 
 <!-- ═══════════════════════════════════════════════
