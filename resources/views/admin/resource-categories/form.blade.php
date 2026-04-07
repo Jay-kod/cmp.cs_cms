@@ -83,7 +83,7 @@
     }
 </style>
 
-<div class="admin-card" style="max-width: 850px; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; background: white; margin-bottom: 3rem;">
+<div data-aos="fade-up" class="admin-card" style="max-width: 850px; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; background: white; margin-bottom: 3rem;">
     <form action="{{ $category->exists ? route('admin.resource-categories.update', $category) : route('admin.resource-categories.store') }}" method="POST">
         @csrf
         @if($category->exists) @method('PUT') @endif

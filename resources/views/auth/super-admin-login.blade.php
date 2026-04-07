@@ -402,7 +402,7 @@
 
         {{-- Right Panel - Login Card --}}
         <div class="sa-right">
-            <div class="sa-card">
+            <div data-aos="fade-up" class="sa-card">
                 {{-- Mobile header --}}
                 <div class="sa-mobile-header">
                     <div class="sa-mobile-shield"><i class="fa-solid fa-shield-halved"></i></div>

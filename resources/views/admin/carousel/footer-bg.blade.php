@@ -3,7 +3,7 @@
 @section('header', 'Footer Background Image')
 
 @section('content')
-<div class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+<div data-aos="fade-up" class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
     <div>
         <h2 style="margin: 0; font-size: 1.1rem;">Footer Background</h2>
         <p style="margin: 0; color: #6b7280; font-size: 0.85rem;">Upload a background image for the website footer area</p>
@@ -25,7 +25,7 @@
 
 <div style="display: grid; grid-template-columns: 1fr 340px; gap: 1.5rem; align-items: start;">
     {{-- Preview --}}
-    <div class="admin-card" style="padding: 0; overflow: hidden;">
+    <div data-aos="fade-up" class="admin-card" style="padding: 0; overflow: hidden;">
         <div style="padding: 1rem 1.2rem; border-bottom: 1px solid #e5e7eb;">
             <h4 style="margin: 0; font-size: 0.88rem; color: #6b7280; font-weight: 600;">Current Footer Background</h4>
         </div>
@@ -55,7 +55,7 @@
     <div>
         <form method="POST" action="{{ route('admin.carousel.footer-bg.update') }}" enctype="multipart/form-data">
             @csrf
-            <div class="admin-card" style="padding: 1.2rem;">
+            <div data-aos="fade-up" class="admin-card" style="padding: 1.2rem;">
                 <h4 style="margin: 0 0 1rem; font-size: 0.92rem; font-weight: 600; padding-bottom: 0.6rem; border-bottom: 1px solid #e5e7eb;">Upload New Image</h4>
 
                 <div style="border: 2px dashed #d1d5db; border-radius: 8px; padding: 1.5rem; text-align: center; position: relative; transition: border-color 0.2s; margin-bottom: 1rem;" ondragover="event.preventDefault(); this.style.borderColor='var(--color-primary)'" ondragleave="this.style.borderColor='#d1d5db'" ondrop="event.preventDefault(); this.style.borderColor='#d1d5db'; document.getElementById('footer_bg').files = event.dataTransfer.files; previewFooterBg(event.dataTransfer.files[0]);">

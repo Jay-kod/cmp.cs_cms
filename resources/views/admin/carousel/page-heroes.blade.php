@@ -3,7 +3,7 @@
 @section('header', 'Page Hero Images')
 
 @section('content')
-<div class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+<div data-aos="fade-up" class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
     <div>
         <h2 style="margin: 0; font-size: 1.1rem;">Page Hero Images</h2>
         <p style="margin: 0; color: #6b7280; font-size: 0.85rem;">Manage the hero background images for public pages</p>
@@ -37,7 +37,7 @@
         @endphp
 
         @foreach($pages as $key => $page)
-        <div class="admin-card" style="padding: 1.2rem;">
+        <div data-aos="fade-up" class="admin-card" style="padding: 1.2rem;">
             <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid #e5e7eb;">
                 <div style="width: 36px; height: 36px; background: rgba(22, 163, 74, 0.1); color: var(--color-primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">
                     <i class="fa-solid {{ $page['icon'] }}"></i>
@@ -79,7 +79,7 @@
         @endforeach
     </div>
 
-    <div class="admin-card" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem;">
+    <div data-aos="fade-up" class="admin-card" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem;">
         <p style="margin: 0; font-size: 0.85rem; color: #6b7280;">
             <i class="fa-solid fa-info-circle"></i> Recommended aspect ratio is 16:9, minimum 1920x600 pixels.
         </p>

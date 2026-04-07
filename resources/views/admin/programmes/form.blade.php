@@ -3,7 +3,7 @@
 @section('header', $programme->exists ? 'Edit Programme' : 'Add New Programme')
 
 @section('content')
-<div class="admin-card">
+<div data-aos="fade-up" class="admin-card">
     @if ($errors->any())
         <div style="background: #fee2e2; color: #b91c1c; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; border: 1px solid #f87171;">
             <ul style="margin: 0; padding-left: 1.5rem;">

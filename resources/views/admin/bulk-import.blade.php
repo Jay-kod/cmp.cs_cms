@@ -43,7 +43,7 @@
 </div>
 @endif
 
-<div class="admin-card" style="max-width: 720px;">
+<div data-aos="fade-up" class="admin-card" style="max-width: 720px;">
     <h2 style="margin: 0 0 0.3rem; font-size: 1.15rem; color: #0f172a;">
         <i class="fa-solid fa-file-arrow-up" style="color: var(--color-primary); margin-right: 5px;"></i> Upload File
     </h2>

@@ -3,7 +3,7 @@
 @section('header', $role->exists ? 'Edit Role' : 'New Role')
 
 @section('content')
-<div class="admin-card" style="max-width: 600px;">
+<div data-aos="fade-up" class="admin-card" style="max-width: 600px;">
     <h2 style="margin: 0 0 1.5rem 0; font-size: 1.1rem;">{{ $role->exists ? 'Edit Role' : 'Create a New Role' }}</h2>
 
     <form action="{{ $role->exists ? route('admin.staff-roles.update', $role) : route('admin.staff-roles.store') }}" method="POST">

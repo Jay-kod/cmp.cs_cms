@@ -39,19 +39,19 @@
 
 <!-- Top KPI Row -->
 <div class="analytics-kpi-grid">
-    <div class="kpi-card" style="background: linear-gradient(135deg, white 0%, #f8fafc 100%);">
-        <div class="kpi-card-content">
+    <div data-aos="fade-up" class="kpi-card" style="background: linear-gradient(135deg, white 0%, #f8fafc 100%);">
+        <div data-aos="fade-up" class="kpi-card-content">
             <h3>Total Audit Logs</h3>
             <div>{{ number_format($totalLogs) }}</div>
             <span style="font-size: 0.75rem; color: #64748b; margin-top: 0.2rem; display: block;"><i class="fa-solid fa-server" style="color: #cbd5e1;"></i> Lifetime Platform Records</span>
         </div>
-        <div class="kpi-card-icon" style="background: #eff6ff; color: #3b82f6; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);">
+        <div data-aos="fade-up" class="kpi-card-icon" style="background: #eff6ff; color: #3b82f6; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);">
             <i class="fa-solid fa-database"></i>
         </div>
     </div>
     
-    <div class="kpi-card" style="border-top-color: #10b981; background: linear-gradient(135deg, white 0%, #f0fdf4 100%);">
-        <div class="kpi-card-content">
+    <div data-aos="fade-up" class="kpi-card" style="border-top-color: #10b981; background: linear-gradient(135deg, white 0%, #f0fdf4 100%);">
+        <div data-aos="fade-up" class="kpi-card-content">
             <h3>24h Activity</h3>
             <div>{{ number_format($todayLogs) }}</div>
             <span style="font-size: 0.75rem; color: #64748b; margin-top: 0.2rem; display: flex; align-items: center; gap: 0.4rem;">
@@ -61,13 +61,13 @@
                 from yesterday
             </span>
         </div>
-        <div class="kpi-card-icon" style="background: #ecfdf5; color: #10b981; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);">
+        <div data-aos="fade-up" class="kpi-card-icon" style="background: #ecfdf5; color: #10b981; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);">
             <i class="fa-solid fa-bolt"></i>
         </div>
     </div>
 
-    <div class="kpi-card" style="border-top-color: #f59e0b; background: linear-gradient(135deg, white 0%, #fffbeb 100%);">
-        <div class="kpi-card-content">
+    <div data-aos="fade-up" class="kpi-card" style="border-top-color: #f59e0b; background: linear-gradient(135deg, white 0%, #fffbeb 100%);">
+        <div data-aos="fade-up" class="kpi-card-content">
             <h3>Active Users (7d)</h3>
             <div>{{ number_format($uniqueUsersThisWeek) }}</div>
             <span style="font-size: 0.75rem; color: #64748b; margin-top: 0.2rem; display: flex; align-items: center; gap: 0.4rem;">
@@ -77,7 +77,7 @@
                 from last week
             </span>
         </div>
-        <div class="kpi-card-icon" style="background: #fffbeb; color: #f59e0b; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);">
+        <div data-aos="fade-up" class="kpi-card-icon" style="background: #fffbeb; color: #f59e0b; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);">
             <i class="fa-solid fa-users-viewfinder"></i>
         </div>
     </div>

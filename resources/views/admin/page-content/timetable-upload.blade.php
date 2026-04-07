@@ -32,7 +32,7 @@
 @endif
 
 <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; @if($currentTimetable) grid-template-columns: 2fr 1.2fr; align-items: start; @endif">
-    <div class="admin-card" style="padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); background: white;">
+    <div data-aos="fade-up" class="admin-card" style="padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); background: white;">
         <div style="margin-bottom: 1.5rem;">
             <h3 style="font-size: 1.1rem; color: #0f172a; font-weight: 700; margin: 0 0 0.4rem;">Upload New File</h3>
             <p style="margin: 0; color: #64748b; font-size: 0.85rem;">Uploading a new timetable will overwrite the actively displayed schedule.</p>
@@ -56,7 +56,7 @@
     </div>
 
     @if($currentTimetable)
-    <div class="admin-card" style="padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); background: white; border-top: 4px solid var(--color-primary);">
+    <div data-aos="fade-up" class="admin-card" style="padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); background: white; border-top: 4px solid var(--color-primary);">
         <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0;">
             <div style="width: 40px; height: 40px; border-radius: 10px; background: #f0fdf4; color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
                 <i class="fa-solid fa-calendar-check"></i>

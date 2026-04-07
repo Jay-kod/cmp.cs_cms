@@ -213,7 +213,7 @@
                 <i class="fa-solid fa-chevron-down apc-chevron"></i>
             </div>
             <div class="apc-section-body collapsed">
-                <div class="inner-card">
+                <div data-aos="fade-up" class="inner-card">
                     <div class="inner-card-header">
                         <div class="inner-card-number" style="background: {{ $navSections['sec-stats']['color'] }}">1</div>
                         <h4 class="inner-card-title">Auto-counted (Presidents)</h4>
@@ -224,7 +224,7 @@
                     </div>
                 </div>
 
-                <div class="inner-card">
+                <div data-aos="fade-up" class="inner-card">
                     <div class="inner-card-header">
                         <div class="inner-card-number" style="background: {{ $navSections['sec-stats']['color'] }}">2</div>
                         <h4 class="inner-card-title">Stat #2</h4>
@@ -241,7 +241,7 @@
                     </div>
                 </div>
 
-                <div class="inner-card">
+                <div data-aos="fade-up" class="inner-card">
                     <div class="inner-card-header">
                         <div class="inner-card-number" style="background: {{ $navSections['sec-stats']['color'] }}">3</div>
                         <h4 class="inner-card-title">Stat #3</h4>
@@ -350,7 +350,7 @@
                 <p style="font-size:0.85rem;font-weight:700;color:#475569;margin-bottom:1rem;">Mission / Vision / Values Cards</p>
 
                 @foreach([['num' => 1, 'default_title' => 'Our Mission', 'default_text' => 'To promote academic excellence, advance computing knowledge, and nurture future tech leaders through hands-on learning, mentorship, and industry collaboration.'], ['num' => 2, 'default_title' => 'Our Vision', 'default_text' => 'To be the foremost student body shaping innovative, ethical, and globally competitive computing professionals in Nigeria and beyond.'], ['num' => 3, 'default_title' => 'Our Values', 'default_text' => 'Innovation, integrity, collaboration, inclusivity, and continuous learning form the bedrock of everything we do as an association.']] as $card)
-                <div class="inner-card">
+                <div data-aos="fade-up" class="inner-card">
                     <div class="inner-card-header">
                         <div class="inner-card-number" style="background: {{ $navSections['sec-page-about']['color'] }}">{{ $card['num'] }}</div>
                         <strong class="inner-card-title">Pillar {{ $card['num'] }}</strong>
@@ -396,7 +396,7 @@
                     ['num' => 5, 'title' => 'Social & Sports Events', 'desc' => 'Building bonds beyond the classroom with get-togethers, game nights, and inter-departmental sports.'],
                     ['num' => 6, 'title' => 'Annual NACOS Week', 'desc' => 'A week-long celebration with talks, exhibitions, awards, and cultural events showcasing computing talent.'],
                 ] as $act)
-                <div class="inner-card">
+                <div data-aos="fade-up" class="inner-card">
                     <div class="inner-card-header">
                         <div class="inner-card-number" style="background: {{ $navSections['sec-page-act']['color'] }}">{{ $act['num'] }}</div>
                         <strong class="inner-card-title">Activity {{ $act['num'] }}</strong>
@@ -471,7 +471,7 @@
                 </div>
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem; margin-top: 1.5rem;">
-                    <a href="{{ route('admin.nacos-presidents.index') }}" class="quick-link-card">
+                    <a data-aos="fade-up" href="{{ route('admin.nacos-presidents.index') }}" class="quick-link-card">
                         <div class="ql-icon" style="background: rgba(22,163,74,0.1); color: #16a34a;"><i class="fa-solid fa-crown"></i></div>
                         <div class="ql-text">
                             <strong>Manage Presidents</strong>

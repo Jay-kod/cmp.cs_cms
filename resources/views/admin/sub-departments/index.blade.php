@@ -3,7 +3,7 @@
 @section('header', 'Departments (Sub-Departments)')
 
 @section('content')
-<div class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+<div data-aos="fade-up" class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
     <div>
         <h2 style="margin: 0; font-size: 1.1rem;">All Departments</h2>
         <p style="margin: 0; color: #6b7280; font-size: 0.85rem;">Manage sub-departments (e.g., Computer Science, Cyber Security).</p>

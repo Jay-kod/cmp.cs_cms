@@ -28,7 +28,7 @@
 @endif
 
 {{-- Carousel Preview --}}
-<div class="admin-card" style="margin-bottom: 2rem; padding: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+<div data-aos="fade-up" class="admin-card" style="margin-bottom: 2rem; padding: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
     <div style="padding: 1rem 1.5rem; border-bottom: 1px solid #f1f5f9; background: #fff;">
         <h4 style="margin: 0; font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.4rem;">
             <i class="fa-solid fa-desktop"></i> Live Preview
@@ -60,7 +60,7 @@
     </div>
 </div>
 
-<div class="admin-card" style="padding: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
+<div data-aos="fade-up" class="admin-card" style="padding: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
     <table style="width: 100%; border-collapse: collapse; text-align: left;">
         <thead>
             <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">

@@ -10,7 +10,7 @@
     <div style="display: grid; grid-template-columns: 1fr 340px; gap: 1.5rem; align-items: start;">
         
         {{-- Main Content --}}
-        <div class="admin-card" style="padding: 1.5rem;">
+        <div data-aos="fade-up" class="admin-card" style="padding: 1.5rem;">
             <h3 style="margin: 0 0 1.2rem 0; font-size: 1rem; font-weight: 600;">Social Link Details</h3>
 
             <div style="margin-bottom: 1.2rem;">
@@ -66,7 +66,7 @@
 
         {{-- Sidebar --}}
         <div>
-            <div class="admin-card" style="padding: 1.2rem;">
+            <div data-aos="fade-up" class="admin-card" style="padding: 1.2rem;">
                 <h4 style="margin: 0 0 1rem; font-size: 0.92rem; font-weight: 600; padding-bottom: 0.6rem; border-bottom: 1px solid #e5e7eb;">Settings</h4>
 
                 <div style="margin-bottom: 1rem;">

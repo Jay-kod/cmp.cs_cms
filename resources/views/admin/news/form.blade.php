@@ -3,7 +3,7 @@
 @section('header', $news->exists ? 'Edit News Article' : 'Write New Article')
 
 @section('content')
-<div class="admin-card">
+<div data-aos="fade-up" class="admin-card">
     @if ($errors->any())
         <div style="background: #fee2e2; color: #b91c1c; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; border: 1px solid #f87171;">
             <ul style="margin: 0; padding-left: 1.5rem;">
@@ -67,7 +67,7 @@
 
             <!-- Right Column: Meta & Settings -->
             <div>
-                <div class="admin-card" style="box-shadow: none; border: 1px solid #e5e7eb; padding: 1.2rem; background: #f9fafb;">
+                <div data-aos="fade-up" class="admin-card" style="box-shadow: none; border: 1px solid #e5e7eb; padding: 1.2rem; background: #f9fafb;">
                     <h3 style="margin-top: 0; font-size: 0.95rem; color: #374151; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1rem;">Publishing Options</h3>
                     
                     <div class="form-group">
@@ -109,7 +109,7 @@
                     </div>
                 </div>
 
-                <div class="admin-card" style="box-shadow: none; border: 1px solid #e5e7eb; padding: 1.2rem; margin-top: 1.5rem;">
+                <div data-aos="fade-up" class="admin-card" style="box-shadow: none; border: 1px solid #e5e7eb; padding: 1.2rem; margin-top: 1.5rem;">
                     <h3 style="margin-top: 0; font-size: 0.95rem; color: #374151; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1rem;">Featured Image</h3>
                     
                     @if($news->featured_image)

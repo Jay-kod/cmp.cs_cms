@@ -132,7 +132,7 @@
     <div style="display: grid; grid-template-columns: 1fr 380px; gap: 1.8rem; align-items: start;">
         
         {{-- Main Content --}}
-        <div class="admin-card" style="padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
+        <div data-aos="fade-up" class="admin-card" style="padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
             <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #f1f5f9;">
                 <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(22, 163, 74, 0.1); color: var(--color-primary); display: flex; align-items: center; justify-content: center;">
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -218,7 +218,7 @@
 
         {{-- Sidebar --}}
         <div style="position: sticky; top: 1.5rem;">
-            <div class="admin-card" style="padding: 1.8rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; margin-bottom: 1.5rem;">
+            <div data-aos="fade-up" class="admin-card" style="padding: 1.8rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; margin-bottom: 1.5rem;">
                 <h4 style="margin: 0 0 1.2rem; font-size: 1.05rem; font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 0.5rem;">
                     <i class="fa-solid fa-sliders" style="color: var(--color-primary);"></i> Configurations
                 </h4>
@@ -247,7 +247,7 @@
                 <div style="margin-bottom: 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
                     <div style="display: flex; align-items: flex-start; gap: 0.8rem;">
                         <div style="padding-top: 0.1rem;">
-                            <div class="custom-checkbox">
+                            <div data-aos="fade-up" class="custom-checkbox">
                                 <input type="checkbox" name="is_active" id="is_active" value="1" {{ old('is_active', $slide->is_active ?? true) ? 'checked' : '' }}
                                     style="width: 18px; height: 18px; accent-color: var(--color-primary); cursor: pointer;">
                             </div>

@@ -26,7 +26,7 @@
     </div>
 @endif
 
-<div class="admin-card" style="padding: 0; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; background: white; overflow: hidden;">
+<div data-aos="fade-up" class="admin-card" style="padding: 0; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; background: white; overflow: hidden;">
     <div style="padding: 1.5rem 2rem; border-bottom: 1px solid #f1f5f9; background: #f8fafc; display: flex; justify-content: space-between; align-items: center;">
         <h3 style="margin: 0; font-size: 1.1rem; font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 0.6rem;">
             <i class="fa-solid fa-list" style="color: #94a3b8;"></i> Active Categories

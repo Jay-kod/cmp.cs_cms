@@ -3,7 +3,7 @@
 @section('header', 'External Systems')
 
 @section('content')
-<div class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+<div data-aos="fade-up" class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
     <div>
         <h2 style="margin: 0; font-size: 1.1rem;">Departmental Systems</h2>
         <p style="margin: 0; color: #6b7280; font-size: 0.85rem;">Manage external system links shown in the website footer</p>

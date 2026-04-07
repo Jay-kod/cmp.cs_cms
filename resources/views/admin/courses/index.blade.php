@@ -19,7 +19,7 @@
     </a>
 </div>
 
-<div class="filter-card" style="background: white; padding: 1.25rem; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 2rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">
+<div data-aos="fade-up" class="filter-card" style="background: white; padding: 1.25rem; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 2rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">
     <form action="{{ route('admin.courses.index') }}" method="GET" style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap;">
         <div style="flex: 1; min-width: 250px;">
             <label class="form-label" style="font-size: 0.8rem; font-weight: 600; color: #475569; margin-bottom: 0.5rem; display: block; text-transform: uppercase; letter-spacing: 0.05em;">Filter by Programme</label>

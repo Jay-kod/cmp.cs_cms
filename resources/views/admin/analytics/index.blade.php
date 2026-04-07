@@ -163,7 +163,7 @@
 </style>
 
 {{-- ═══════════════ HERO BANNER ═══════════════ --}}
-<div class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f4c75 100%); border: none; border-radius: 16px; position: relative; overflow: hidden;">
+<div data-aos="fade-up" class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f4c75 100%); border: none; border-radius: 16px; position: relative; overflow: hidden;">
     <div style="position: absolute; right: 0; top: 0; width: 300px; height: 100%; opacity: 0.05;">
         <svg viewBox="0 0 200 200" fill="white" style="width: 100%; height: 100%;">
             <circle cx="100" cy="100" r="80" /><circle cx="160" cy="40" r="30" /><circle cx="40" cy="160" r="20" />
@@ -205,7 +205,7 @@
         ];
     @endphp
     @foreach($kpiCards as $i => $kpi)
-    <div class="kpi-card animate-in" style="animation-delay: {{ $i * 0.05 }}s;">
+    <div data-aos="fade-up" class="kpi-card animate-in" style="animation-delay: {{ $i * 0.05 }}s;">
         <i class="{{ $kpi['bgIcon'] }} kpi-bg-icon" style="color: {{ $kpi['color'] }};"></i>
         <div class="kpi-top">
             @if(isset($kpi['growth']))
@@ -229,15 +229,15 @@
 <div class="analytics-grid ag-3" style="margin-bottom: 1.5rem;">
 
     {{-- Content Health Score --}}
-    <div class="a-card">
+    <div data-aos="fade-up" class="a-card">
         <div class="a-card-header">
-            <div class="a-card-title">
+            <div data-aos="fade-up" class="a-card-title">
                 <i class="fa-solid fa-heart-pulse" style="color: {{ $healthScore >= 80 ? '#059669' : ($healthScore >= 50 ? '#d97706' : '#ef4444') }};"></i>
                 Content Health
             </div>
             <span style="font-size: 0.72rem; color: #94a3b8;">{{ collect($healthChecks)->filter()->count() }}/{{ count($healthChecks) }} checks</span>
         </div>
-        <div class="a-card-body" style="display: flex; flex-direction: column; align-items: center;">
+        <div data-aos="fade-up" class="a-card-body" style="display: flex; flex-direction: column; align-items: center;">
             <div class="health-ring-container" style="margin-bottom: 1.2rem;">
                 <canvas id="healthChart" width="160" height="160"></canvas>
                 <div class="health-ring-text">
@@ -247,7 +247,7 @@
             </div>
             <div style="width: 100%; max-height: 200px; overflow-y: auto;">
                 @foreach($healthChecks as $check => $passed)
-                <div class="health-check-item">
+                <div data-aos="fade-up" class="health-check-item">
                     <div class="health-check-icon {{ $passed ? 'pass' : 'fail' }}">
                         <i class="fa-solid {{ $passed ? 'fa-check' : 'fa-xmark' }}"></i>
                     </div>
@@ -259,24 +259,24 @@
     </div>
 
     {{-- Content Trend (12 months) --}}
-    <div class="a-card" style="grid-column: span 2;">
+    <div data-aos="fade-up" class="a-card" style="grid-column: span 2;">
         <div class="a-card-header">
-            <div class="a-card-title"><i class="fa-solid fa-chart-area" style="color: #6366f1;"></i> Content Trend (12 Months)</div>
+            <div data-aos="fade-up" class="a-card-title"><i class="fa-solid fa-chart-area" style="color: #6366f1;"></i> Content Trend (12 Months)</div>
             <div class="analytics-tabs no-print">
                 <button class="analytics-tab active" onclick="switchTrendView('line', this)">Line</button>
                 <button class="analytics-tab" onclick="switchTrendView('bar', this)">Bar</button>
             </div>
         </div>
-        <div class="a-card-body" style="position: relative; height: 280px;">
+        <div data-aos="fade-up" class="a-card-body" style="position: relative; height: 280px;">
             <canvas id="trendChart"></canvas>
         </div>
     </div>
 </div>
 
 {{-- ═══════════════ TABBED DETAIL SECTIONS ═══════════════ --}}
-<div class="a-card" style="margin-bottom: 1.5rem;">
+<div data-aos="fade-up" class="a-card" style="margin-bottom: 1.5rem;">
     <div class="a-card-header" style="flex-wrap: wrap; gap: 0.8rem;">
-        <div class="a-card-title"><i class="fa-solid fa-layer-group" style="color: #6366f1;"></i> Detailed Breakdown</div>
+        <div data-aos="fade-up" class="a-card-title"><i class="fa-solid fa-layer-group" style="color: #6366f1;"></i> Detailed Breakdown</div>
         <div class="analytics-tabs no-print" id="detailTabs">
             <button class="analytics-tab active" onclick="switchDetailTab('staff', this)">Staff</button>
             <button class="analytics-tab" onclick="switchDetailTab('academic', this)">Academic</button>
@@ -286,7 +286,7 @@
             <button class="analytics-tab" onclick="switchDetailTab('api', this)" style="display: inline-flex; align-items: center; gap: 0.4rem; background: #e0e7ff; color: #4338ca; border-radius: 8px;"><i class="fa-solid fa-server"></i> API Directory</button>
         </div>
     </div>
-    <div class="a-card-body">
+    <div data-aos="fade-up" class="a-card-body">
 
         {{-- STAFF TAB --}}
         <div class="tab-panel active" id="tab-staff">
@@ -773,14 +773,14 @@
 <div class="analytics-grid ag-3" style="margin-bottom: 2rem;">
 
     {{-- Recent Activity Timeline --}}
-    <div class="a-card" style="grid-column: span 2;">
+    <div data-aos="fade-up" class="a-card" style="grid-column: span 2;">
         <div class="a-card-header">
-            <div class="a-card-title"><i class="fa-solid fa-clock-rotate-left" style="color: #6366f1;"></i> Recent Activity</div>
+            <div data-aos="fade-up" class="a-card-title"><i class="fa-solid fa-clock-rotate-left" style="color: #6366f1;"></i> Recent Activity</div>
             <span style="font-size: 0.72rem; color: #94a3b8;">Latest 10 updates</span>
         </div>
-        <div class="a-card-body" style="max-height: 420px; overflow-y: auto;">
+        <div data-aos="fade-up" class="a-card-body" style="max-height: 420px; overflow-y: auto;">
             @forelse($recentActivity as $activity)
-            <a href="{{ $activity['url'] }}" class="timeline-item" style="text-decoration: none;">
+            <a data-aos="fade-up" href="{{ $activity['url'] }}" class="timeline-item" style="text-decoration: none;">
                 <div class="timeline-icon" style="background: {{ $activity['color'] }}15; color: {{ $activity['color'] }};">
                     <i class="fa-solid {{ $activity['icon'] }}"></i>
                 </div>
@@ -803,11 +803,11 @@
     </div>
 
     {{-- Quick Actions --}}
-    <div class="a-card">
+    <div data-aos="fade-up" class="a-card">
         <div class="a-card-header">
-            <div class="a-card-title"><i class="fa-solid fa-bolt" style="color: #f59e0b;"></i> Quick Actions</div>
+            <div data-aos="fade-up" class="a-card-title"><i class="fa-solid fa-bolt" style="color: #f59e0b;"></i> Quick Actions</div>
         </div>
-        <div class="a-card-body" style="display: flex; flex-direction: column; gap: 0.4rem;">
+        <div data-aos="fade-up" class="a-card-body" style="display: flex; flex-direction: column; gap: 0.4rem;">
             @php
                 $actions = [
                     ['label' => 'Add News Article', 'icon' => 'fa-newspaper', 'bg' => '#fef3c7', 'color' => '#d97706', 'route' => 'admin.news.create'],

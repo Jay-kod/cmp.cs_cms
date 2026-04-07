@@ -69,13 +69,13 @@
         <div class="section">
             <h3 class="section-title">Quick Summary</h3>
             <div class="metric-grid">
-                <div class="metric-box"><div class="metric-value">{{ $stats['staffCount'] }}</div><div class="metric-label">Staff Members</div></div>
-                <div class="metric-box"><div class="metric-value">{{ $stats['programmeCount'] }}</div><div class="metric-label">Programmes</div></div>
-                <div class="metric-box"><div class="metric-value">{{ $stats['courseCount'] }}</div><div class="metric-label">Courses</div></div>
-                <div class="metric-box"><div class="metric-value">{{ $stats['newsCount'] }}</div><div class="metric-label">News Articles</div></div>
-                <div class="metric-box"><div class="metric-value">{{ $stats['eventCount'] }}</div><div class="metric-label">Events</div></div>
-                <div class="metric-box"><div class="metric-value">{{ $stats['albumCount'] }}</div><div class="metric-label">Gallery Albums</div></div>
-                <div class="metric-box"><div class="metric-value">{{ $stats['publicationCount'] }}</div><div class="metric-label">Publications</div></div>
+                <div data-aos="fade-up" class="metric-box"><div class="metric-value">{{ $stats['staffCount'] }}</div><div class="metric-label">Staff Members</div></div>
+                <div data-aos="fade-up" class="metric-box"><div class="metric-value">{{ $stats['programmeCount'] }}</div><div class="metric-label">Programmes</div></div>
+                <div data-aos="fade-up" class="metric-box"><div class="metric-value">{{ $stats['courseCount'] }}</div><div class="metric-label">Courses</div></div>
+                <div data-aos="fade-up" class="metric-box"><div class="metric-value">{{ $stats['newsCount'] }}</div><div class="metric-label">News Articles</div></div>
+                <div data-aos="fade-up" class="metric-box"><div class="metric-value">{{ $stats['eventCount'] }}</div><div class="metric-label">Events</div></div>
+                <div data-aos="fade-up" class="metric-box"><div class="metric-value">{{ $stats['albumCount'] }}</div><div class="metric-label">Gallery Albums</div></div>
+                <div data-aos="fade-up" class="metric-box"><div class="metric-value">{{ $stats['publicationCount'] }}</div><div class="metric-label">Publications</div></div>
             </div>
         </div>
     @endif

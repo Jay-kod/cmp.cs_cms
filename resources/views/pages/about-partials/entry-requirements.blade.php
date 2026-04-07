@@ -19,7 +19,7 @@
                     ];
                 @endphp
                 @foreach($requirements as $req)
-                <div class="about-req-card hover-lift" style="padding: 1.5rem 1rem; background: {{ $req['bg'] }}; border-radius: 12px; text-align: center; border: 1px solid {{ $req['color'] }}15; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 30px -8px {{ $req['color'] }}25'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div data-aos="fade-up" class="about-req-card hover-lift" style="padding: 1.5rem 1rem; background: {{ $req['bg'] }}; border-radius: 12px; text-align: center; border: 1px solid {{ $req['color'] }}15; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 30px -8px {{ $req['color'] }}25'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                     <div style="width: 44px; height: 44px; background: {{ $req['color'] }}; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 0 auto 0.8rem; box-shadow: 0 6px 15px -3px {{ $req['color'] }}40; transition: transform 0.3s;" class="req-icon">
                         <i class="fa-solid {{ $req['icon'] }}"></i>
                     </div>

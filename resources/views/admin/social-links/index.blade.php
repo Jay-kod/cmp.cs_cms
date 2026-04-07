@@ -3,7 +3,7 @@
 @section('header', 'Social Links')
 
 @section('content')
-<div class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+<div data-aos="fade-up" class="admin-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
     <div>
         <h2 style="margin: 0; font-size: 1.1rem;">Social Media Links</h2>
         <p style="margin: 0; color: #6b7280; font-size: 0.85rem;">Manage the social media icons displayed in the website footer</p>
@@ -18,7 +18,7 @@
 @endif
 
 {{-- Preview --}}
-<div class="admin-card" style="margin-bottom: 1.5rem; padding: 1.2rem;">
+<div data-aos="fade-up" class="admin-card" style="margin-bottom: 1.5rem; padding: 1.2rem;">
     <h4 style="margin: 0 0 0.8rem; font-size: 0.88rem; color: #6b7280; font-weight: 600;">Footer Preview</h4>
     <div style="display: flex; gap: 0.6rem; background: #111827; padding: 1rem 1.2rem; border-radius: 8px;">
         @forelse($links->where('is_active', true) as $social)

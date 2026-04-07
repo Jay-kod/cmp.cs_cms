@@ -13,7 +13,7 @@
     </a>
 </div>
 
-<div class="admin-card" style="padding: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
+<div data-aos="fade-up" class="admin-card" style="padding: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
     <table style="width: 100%; border-collapse: collapse; text-align: left;">
         <thead>
             <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">

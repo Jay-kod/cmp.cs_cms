@@ -182,13 +182,13 @@
                                 <strong style="font-size: 1.05rem; color: #0f172a;">{{ $person->title }} {{ $person->name }}</strong>
                             </div>
                             @if($person->email)
-                                <div class="staff-contact-item"><i class="fa-regular fa-envelope"></i> <a href="mailto:{{ $person->email }}" style="color: inherit; text-decoration: none;">{{ $person->email }}</a></div>
+                                <div data-aos="fade-up" class="staff-contact-item"><i class="fa-regular fa-envelope"></i> <a href="mailto:{{ $person->email }}" style="color: inherit; text-decoration: none;">{{ $person->email }}</a></div>
                             @endif
                             @if($person->phone)
-                                <div class="staff-contact-item"><i class="fa-solid fa-phone"></i> {{ $person->phone }}</div>
+                                <div data-aos="fade-up" class="staff-contact-item"><i class="fa-solid fa-phone"></i> {{ $person->phone }}</div>
                             @endif
                             @if($person->address)
-                                <div class="staff-contact-item"><i class="fa-solid fa-location-dot"></i> {{ Str::limit($person->address, 35) }}</div>
+                                <div data-aos="fade-up" class="staff-contact-item"><i class="fa-solid fa-location-dot"></i> {{ Str::limit($person->address, 35) }}</div>
                             @endif
                         </div>
                     </div>

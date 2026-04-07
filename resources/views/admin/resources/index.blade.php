@@ -23,7 +23,7 @@
         </div>
     @endif
 
-    <div class="admin-card" style="margin-bottom: 1.5rem; padding: 1.2rem 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div data-aos="fade-up" class="admin-card" style="margin-bottom: 1.5rem; padding: 1.2rem 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
         <form method="GET" action="{{ route('admin.resources.index') }}" style="display:flex; align-items:end; gap: 1rem; flex-wrap: wrap;">
             <div style="flex: 1; min-width: 260px;">
                 <label style="display:block; font-weight:600; color:#475569; font-size:0.85rem; margin-bottom:0.4rem;"><i class="fa-solid fa-filter" style="margin-right: 0.3rem;"></i> Filter by Category</label>
@@ -42,7 +42,7 @@
         </form>
     </div>
 
-    <div class="admin-card" style="padding: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
+    <div data-aos="fade-up" class="admin-card" style="padding: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
         <table style="width: 100%; border-collapse: collapse; text-align: left;">
             <thead>
                 <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">

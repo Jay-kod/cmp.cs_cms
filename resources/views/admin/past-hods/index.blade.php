@@ -166,7 +166,7 @@
                     </div>
                 </td>
                 <td>
-                    <div class="staff-contact-item" style="color: #334155; font-weight: 500; font-size: 0.95rem;">
+                    <div data-aos="fade-up" class="staff-contact-item" style="color: #334155; font-weight: 500; font-size: 0.95rem;">
                         <i class="fa-regular fa-calendar-days"></i> 
                         {{ $h->tenure_start ?? 'Unknown' }} — {{ $h->tenure_end ?? 'Present' }}
                     </div>

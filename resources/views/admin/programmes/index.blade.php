@@ -112,7 +112,7 @@
 
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem;">
     @forelse($programmes as $prog)
-        <div class="programme-card">
+        <div data-aos="fade-up" class="programme-card">
             <div class="programme-header">
                 <div style="flex: 1; padding-right: 1rem;">
                     <h3 style="margin: 0 0 0.25rem 0; font-size: 1.1rem; color: #0f172a; font-weight: 700; line-height: 1.3;">
@@ -142,13 +142,13 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div style="background: #f8fafc; padding: 0.75rem; border-radius: 8px; border: 1px solid #f1f5f9;">
                         <span style="display: block; font-size: 0.7rem; text-transform: uppercase; color: #94a3b8; font-weight: 600; margin-bottom: 0.25rem;">Level</span>
-                        <div class="programme-meta-item" style="color: #334155; font-weight: 500;">
+                        <div data-aos="fade-up" class="programme-meta-item" style="color: #334155; font-weight: 500;">
                             <i class="fa-solid fa-layer-group"></i> {{ $prog->level }}
                         </div>
                     </div>
                     <div style="background: #f8fafc; padding: 0.75rem; border-radius: 8px; border: 1px solid #f1f5f9;">
                         <span style="display: block; font-size: 0.7rem; text-transform: uppercase; color: #94a3b8; font-weight: 600; margin-bottom: 0.25rem;">Duration</span>
-                        <div class="programme-meta-item" style="color: #334155; font-weight: 500;">
+                        <div data-aos="fade-up" class="programme-meta-item" style="color: #334155; font-weight: 500;">
                             <i class="fa-regular fa-calendar"></i> {{ $prog->duration }}
                         </div>
                     </div>

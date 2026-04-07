@@ -97,7 +97,7 @@
             </div>
             
             <div class="login-right">
-                <div class="login-card">
+                <div data-aos="fade-up" class="login-card">
                     <div style="text-align: center; margin-bottom: 2rem; display: none;" class="mobile-logo">
                         <x-application-logo />
                     </div>

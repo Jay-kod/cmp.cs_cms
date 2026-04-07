@@ -3,7 +3,7 @@
 @section('header', $publication->exists ? 'Edit Publication' : 'New Publication')
 
 @section('content')
-<div class="admin-card" style="max-width: 800px;">
+<div data-aos="fade-up" class="admin-card" style="max-width: 800px;">
     <form method="POST" action="{{ $publication->exists ? route('admin.publications.update', $publication) : route('admin.publications.store') }}">
         @csrf
         @if($publication->exists) @method('PUT') @endif

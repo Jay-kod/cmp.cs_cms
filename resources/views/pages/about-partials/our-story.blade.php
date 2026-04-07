@@ -10,7 +10,7 @@
 
             <div class="about-story-layout" style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem;">
                 {{-- HOD Card --}}
-                <div class="about-hod-card" style="flex: 0 0 220px; max-width: 220px;">
+                <div data-aos="fade-up" class="about-hod-card" style="flex: 0 0 220px; max-width: 220px;">
                     <div style="aspect-ratio: 1; border-radius: 14px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,0.1); border: 3px solid var(--color-accent);">
                         @if(isset($hod) && $hod && $hod->photo)
                             <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" style="width: 100%; height: 100%; object-fit: cover;">

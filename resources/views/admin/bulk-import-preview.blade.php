@@ -11,7 +11,7 @@
 </div>
 
 {{-- Summary card --}}
-<div class="admin-card" style="margin-bottom: 1.5rem;">
+<div data-aos="fade-up" class="admin-card" style="margin-bottom: 1.5rem;">
     <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
         <div style="display: flex; align-items: center; gap: 0.5rem;">
             <i class="fa-solid fa-file-lines" style="font-size: 1.2rem; color: var(--color-primary);"></i>
@@ -68,7 +68,7 @@
 @endif
 
 @if(count($records) === 0)
-    <div class="admin-card" style="text-align: center; padding: 3rem;">
+    <div data-aos="fade-up" class="admin-card" style="text-align: center; padding: 3rem;">
         <i class="fa-solid fa-file-circle-xmark" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 1rem; display: block;"></i>
         <h3 style="margin: 0 0 0.5rem; color: #334155;">No Valid Records Found</h3>
         <p style="color: #64748b;">The file was parsed but no valid records were detected. Check your column headers and data format.</p>

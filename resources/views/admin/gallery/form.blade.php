@@ -3,7 +3,7 @@
 @section('header', isset($album) && $album->exists ? 'Edit Photo Album' : 'Create Photo Album')
 
 @section('content')
-<div class="admin-card" style="margin-bottom: 2rem;">
+<div data-aos="fade-up" class="admin-card" style="margin-bottom: 2rem;">
     <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem;">Album Details</h3>
     
     @if ($errors->any())
@@ -75,7 +75,7 @@
 </div>
 
 @if(isset($album) && $album->exists && $album->images->count() > 0)
-<div class="admin-card">
+<div data-aos="fade-up" class="admin-card">
     <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;">
         Photos in this Album ({{ $album->images->count() }})
     </h3>

@@ -3,7 +3,7 @@
 @section('title', $partner->exists ? 'Edit Partner' : 'Add Partner')
 
 @section('content')
-<div class="admin-card" style="max-width: 800px; margin: 0 auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);">
+<div data-aos="fade-up" class="admin-card" style="max-width: 800px; margin: 0 auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">
         <div>
             <h2 style="margin: 0; font-size: 1.25rem; color: #0f172a; font-weight: 700;">{{ $partner->exists ? 'Edit Partner' : 'Add New Partner' }}</h2>
