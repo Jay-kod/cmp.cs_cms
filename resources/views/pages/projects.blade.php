@@ -30,7 +30,7 @@
             
             <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8" data-aos="fade-up">
                 <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
-                    <i class="fa-solid fa-project-diagram text-purple-600"></i> Course Overview
+                    <i class="fa-solid fa-project-diagram text-green-600"></i> Course Overview
                 </h2>
                 <div class="prose max-w-none text-gray-700 text-lg leading-relaxed">
                     <p>{{ $s('project_overview', 'The final year project is a mandatory course where students are expected to solve real-world computing problems...') }}</p>
@@ -42,13 +42,13 @@
             @if(count($rules) > 0)
             <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8" data-aos="fade-up">
                 <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
-                    <i class="fa-solid fa-book-open-reader text-purple-600"></i> Formatting & Typing Guidelines
+                    <i class="fa-solid fa-book-open-reader text-green-600"></i> Formatting & Typing Guidelines
                 </h2>
                 
                 <div class="space-y-6">
                     @foreach($rules as $index => $rule)
-                    <div class="p-5 bg-purple-50/50 border border-purple-100 rounded-xl relative group hover:shadow-md hover:border-purple-200 transition-all">
-                        <div class="absolute -left-3 -top-3 w-8 h-8 rounded-full bg-purple-200 text-purple-700 flex items-center justify-center shadow-sm font-bold text-xs ring-4 ring-white">
+                    <div class="p-5 bg-green-50/50 border border-green-100 rounded-xl relative group hover:shadow-md hover:border-green-200 transition-all">
+                        <div class="absolute -left-3 -top-3 w-8 h-8 rounded-full bg-green-200 text-green-700 flex items-center justify-center shadow-sm font-bold text-xs ring-4 ring-white">
                             <i class="fa-solid fa-bookmark"></i>
                         </div>
                         <h4 class="font-bold text-gray-900 text-lg mb-2">Rule {{ $index + 1 }}: {{ $rule['title'] }}</h4>
@@ -66,13 +66,13 @@
             @if(count($milestones) > 0)
             <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8" data-aos="fade-up">
                 <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
-                    <i class="fa-regular fa-calendar-check text-purple-600"></i> Important Deadlines
+                    <i class="fa-regular fa-calendar-check text-green-600"></i> Important Deadlines
                 </h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     @foreach($milestones as $index => $mile)
-                    <div class="border border-gray-100 bg-white shadow-sm p-4 rounded-lg flex gap-4 items-start group hover:border-purple-300 transition-colors">
-                        <div class="bg-purple-100 text-purple-700 p-3 rounded-lg flex flex-col items-center justify-center flex-shrink-0 group-hover:bg-purple-600 group-hover:text-white transition-colors min-w-[70px]">
+                    <div class="border border-gray-100 bg-white shadow-sm p-4 rounded-lg flex gap-4 items-start group hover:border-green-300 transition-colors">
+                        <div class="bg-green-100 text-green-700 p-3 rounded-lg flex flex-col items-center justify-center flex-shrink-0 group-hover:bg-green-600 group-hover:text-white transition-colors min-w-[70px]">
                             <i class="fa-solid fa-clock text-xl mb-1 opacity-80"></i>
                             <span class="text-xs font-bold text-center leading-tight">{{ $mile['date'] }}</span>
                         </div>
