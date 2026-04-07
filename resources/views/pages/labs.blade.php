@@ -4,9 +4,9 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="page-hero pt-5 pb-5" style="background: linear-gradient(135deg, var(--color-primary) 0%, #047857 100%); color: white; position: relative; overflow: hidden;">
+<section data-aos="fade-up" class="page-hero pt-5 pb-5" style="background: linear-gradient(135deg, var(--color-primary) 0%, #047857 100%); color: white; position: relative; overflow: hidden;">
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
-    <div class="container" style="position: relative; z-index: 10;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10;">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center col-md-10">
                 <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 1rem; background: rgba(255,255,255,0.1); color: #a7f3d0; border-radius: 20px; font-size: 0.85rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.15);">
@@ -22,7 +22,7 @@
 </section>
 
 <!-- Content Section -->
-<section class="py-5" style="background: #f8fafc;">
+<section data-aos="fade-up" class="py-5" style="background: #f8fafc;">
     <div class="container py-4">
         
         <div class="about-facilities-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">

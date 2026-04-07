@@ -1,5 +1,5 @@
 <div class="timetable-section" style="margin: 3rem 0;">
-    <div class="container">
+    <div class="container" data-aos="fade-up">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
             <h2 style="font-size: 1.5rem; color: #0f172a; font-family: var(--font-heading); font-weight: 800; margin: 0;">Departmental Timetables</h2>
             <a href="{{ url('/resources') }}" class="btn btn-primary" style="background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">

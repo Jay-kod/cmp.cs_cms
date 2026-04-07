@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="page-header" style="background: var(--color-primary); color: white; padding: 3.5rem 0; text-align: center; display: flex; flex-direction: column; align-items: center;">
-    <div class="container">
+    <div class="container" data-aos="fade-up">
         @if($page->icon)
         <i class="{{ $page->icon }}" style="font-size: 2rem; margin-bottom: 0.8rem; display: block; opacity: 0.85;"></i>
         @endif
@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="container reveal" style="margin-top: var(--spacing-lg); margin-bottom: var(--spacing-xl); max-width: 820px;">
+<div class="container" data-aos="fade-up" style="margin-top: var(--spacing-lg); margin-bottom: var(--spacing-xl); max-width: 820px;">
     <div class="page-content" style="background: var(--color-bg-alt); padding: 2.5rem; border-radius: 12px; line-height: 1.8; font-size: 1rem;">
         <style>
             .page-content h2 { font-size: 1.6rem; color: var(--color-primary); margin-top: 0; margin-bottom: 1rem; font-family: var(--font-heading); }

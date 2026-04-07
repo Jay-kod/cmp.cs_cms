@@ -1,5 +1,5 @@
         {{-- ═══════════ PHOTO GALLERY ═══════════ --}}
-        <section id="gallery" style="margin-bottom: 2rem;">
+        <section data-aos="fade-up" id="gallery" style="margin-bottom: 2rem;">
             <div class="blog-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="blog-section-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(219, 39, 119, 0.1)); color: #db2777; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-images"></i>

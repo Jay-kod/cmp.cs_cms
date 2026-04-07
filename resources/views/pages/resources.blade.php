@@ -4,10 +4,10 @@
 @section('content')
 
 <!-- 1. Premium Hero Banner -->
-<section style="background: url('{{ asset('images/pattern-grid.svg') }}') center/cover, linear-gradient(135deg, #0f172a 0%, #064e3b 100%); padding: 6rem 0 7rem; color: white; text-align: center; position: relative; overflow: hidden; border-bottom: 4px solid var(--color-accent);">
+<section data-aos="fade-up" style="background: url('{{ asset('images/pattern-grid.svg') }}') center/cover, linear-gradient(135deg, #0f172a 0%, #064e3b 100%); padding: 6rem 0 7rem; color: white; text-align: center; position: relative; overflow: hidden; border-bottom: 4px solid var(--color-accent);">
     <div style="position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(16, 185, 129, 0.15) 0%, transparent 60%); pointer-events: none;"></div>
 
-    <div class="container reveal reveal-up" style="position: relative; z-index: 1;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 1;">
         <nav aria-label="breadcrumb" style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
             <ol class="breadcrumb" style="list-style: none; margin: 0; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.1); display: inline-flex; align-items: center; gap: 0.8rem;">
                 <li style="margin: 0;"><a href="{{ url('/') }}" style="color: #cbd5e1; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#cbd5e1'"><i class="fa-solid fa-house" style="margin-right: 4px;"></i> Home</a></li>
@@ -26,8 +26,8 @@
 </section>
 
 <!-- 2. Essential Portals -->
-<section style="background: transparent; padding: 0; margin-top: -3.5rem; position: relative; z-index: 10; margin-bottom: 3rem;">
-    <div class="container reveal reveal-up">
+<section data-aos="fade-up" style="background: transparent; padding: 0; margin-top: -3.5rem; position: relative; z-index: 10; margin-bottom: 3rem;">
+    <div class="container" data-aos="fade-up">
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 800px; margin: 0 auto;">
             
             <!-- Timetable Shortcut -->
@@ -66,8 +66,8 @@
 </section>
 
 <!-- 3. Categorized Downloads -->
-<section id="downloads-section" style="background: white; padding: 4rem 0 8rem;">
-    <div class="container reveal reveal-up" style="max-width: 1000px;">
+<section data-aos="fade-up" id="downloads-section" style="background: white; padding: 4rem 0 8rem;">
+    <div class="container" data-aos="fade-up" style="max-width: 1000px;">
         <div style="text-align: center; margin-bottom: 4rem;">
             <span style="display: inline-block; background: #f0fdf4; color: var(--color-primary); font-size: 0.75rem; font-weight: 700; padding: 0.4rem 1.2rem; border-radius: 50px; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Document Archives</span>
             <h2 style="font-size: 2.2rem; font-weight: 900; color: #2d3748; font-family: var(--font-heading); margin-bottom: 0.8rem; letter-spacing: -0.5px;">Download Center</h2>

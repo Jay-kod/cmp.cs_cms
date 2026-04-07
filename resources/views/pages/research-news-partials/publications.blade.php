@@ -1,5 +1,5 @@
         {{-- ═══════════ RECENT PUBLICATIONS ═══════════ --}}
-        <section id="publications" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="publications" style="margin-bottom: 4rem;">
             <div class="blog-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="blog-section-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(14, 165, 233, 0.1)); color: #0891b2; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-book-journal-whills"></i>

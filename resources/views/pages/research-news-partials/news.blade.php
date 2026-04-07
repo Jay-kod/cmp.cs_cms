@@ -1,5 +1,5 @@
         {{-- ═══════════ DEPARTMENT NEWS ═══════════ --}}
-        <section id="news" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="news" style="margin-bottom: 4rem;">
             <div class="blog-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="blog-section-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.1)); color: #d97706; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-regular fa-newspaper"></i>

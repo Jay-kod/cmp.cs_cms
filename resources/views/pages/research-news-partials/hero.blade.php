@@ -7,7 +7,7 @@
     <div style="position: absolute; bottom: 10%; right: 5%; width: 250px; height: 250px; border: 1px solid rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none;"></div>
     <div style="position: absolute; bottom: 15%; right: 25%; font-size: 8rem; color: rgba(255,255,255,0.02); transform: rotate(-15deg); pointer-events: none;"><i class="fa-solid fa-microscope"></i></div>
     
-    <div class="container" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
         <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.2rem; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); color: #a7f3d0; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
             <i class="fa-solid fa-newspaper" style="font-size: 0.7rem;"></i> {{ $gs('blog_hero_badge', 'Innovation & Insights') }}
         </div>

@@ -153,7 +153,7 @@ html { scroll-behavior: smooth; }
         <div class="lg:col-span-2 space-y-8">
             
             <!-- Biography -->
-            <section id="biography" class="profile-section scroll-mt-24">
+            <section data-aos="fade-up" id="biography" class="profile-section scroll-mt-24">
                 <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
                     <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
                         <div class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center text-xl shadow-inner">
@@ -169,7 +169,7 @@ html { scroll-behavior: smooth; }
 
             <!-- Qualifications -->
             @if($staff->qualifications)
-            <section id="qualifications" class="profile-section scroll-mt-24">
+            <section data-aos="fade-up" id="qualifications" class="profile-section scroll-mt-24">
                 <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
                     <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
                         <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center text-xl shadow-inner">
@@ -184,7 +184,7 @@ html { scroll-behavior: smooth; }
 
             <!-- Specialisation -->
             @if($staff->specialisation)
-            <section id="specialisation" class="profile-section scroll-mt-24">
+            <section data-aos="fade-up" id="specialisation" class="profile-section scroll-mt-24">
                 <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
                     <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
                         <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl shadow-inner">
@@ -199,7 +199,7 @@ html { scroll-behavior: smooth; }
 
             <!-- Courses Taught -->
             @if($staff->courses->count() > 0)
-            <section id="courses" class="profile-section scroll-mt-24">
+            <section data-aos="fade-up" id="courses" class="profile-section scroll-mt-24">
                 <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
                     <div class="flex items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
                         <div class="flex items-center gap-4">
@@ -234,7 +234,7 @@ html { scroll-behavior: smooth; }
 
             <!-- Publications -->
             @if($staff->publications->count() > 0)
-            <section id="publications" class="profile-section scroll-mt-24">
+            <section data-aos="fade-up" id="publications" class="profile-section scroll-mt-24">
                 <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
                     <div class="flex items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
                         <div class="flex items-center gap-4">

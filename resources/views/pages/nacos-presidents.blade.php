@@ -9,13 +9,13 @@
 <!-- ═══════════════════════════════════════════════
      HERO
      ═══════════════════════════════════════════════ -->
-<section style="background: linear-gradient(165deg, #0f172a 0%, #1e293b 55%, #0f4c2e 100%); padding: 5rem 0 4rem; position: relative; overflow: hidden;">
+<section data-aos="fade-up" style="background: linear-gradient(165deg, #0f172a 0%, #1e293b 55%, #0f4c2e 100%); padding: 5rem 0 4rem; position: relative; overflow: hidden;">
     <div style="position: absolute; inset: 0; pointer-events: none;">
         <div style="position: absolute; top: -80px; right: -80px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(22,163,74,0.15) 0%, transparent 70%); border-radius: 50%;"></div>
         <div style="position: absolute; bottom: -40px; left: -40px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(22,163,74,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
         <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.5%22 fill=%22rgba(255,255,255,0.03)%22/></svg>');"></div>
     </div>
-    <div class="container" style="position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center;">
         <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(22,163,74,0.2); backdrop-filter: blur(8px); color: #4ade80; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.3rem 1rem; border-radius: 20px; margin-bottom: 1rem; border: 1px solid rgba(22,163,74,0.3);">
             <i class="fa-solid fa-users-rectangle"></i> Student Association
         </span>
@@ -43,8 +43,8 @@
 <!-- ═══════════════════════════════════════════════
      ABOUT NACOS + MISSION / VISION
      ═══════════════════════════════════════════════ -->
-<section id="about-nacos" style="padding: 4rem 0; background: white;">
-    <div class="container">
+<section data-aos="fade-up" id="about-nacos" style="padding: 4rem 0; background: white;">
+    <div class="container" data-aos="fade-up">
         {{-- About Row --}}
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 3.5rem;">
             <div>
@@ -131,8 +131,8 @@
 <!-- ═══════════════════════════════════════════════
      WHAT WE DO — Activities
      ═══════════════════════════════════════════════ -->
-<section style="padding: 3.5rem 0; background: #f8fafc; border-top: 1px solid #f1f5f9;">
-    <div class="container">
+<section data-aos="fade-up" style="padding: 3.5rem 0; background: #f8fafc; border-top: 1px solid #f1f5f9;">
+    <div class="container" data-aos="fade-up">
         <div style="text-align: center; margin-bottom: 2.5rem;">
             <span style="display: inline-block; color: var(--color-primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.6rem; background: rgba(22,163,74,0.1); padding: 0.25rem 0.9rem; border-radius: 20px;">What We Do</span>
             <h2 style="font-size: 2rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin: 0;">{{ $gs('nacos_page_activities_title', 'Our Activities') }}</h2>
@@ -166,8 +166,8 @@
 <!-- ═══════════════════════════════════════════════
      PAST LEADERS
      ═══════════════════════════════════════════════ -->
-<section id="past-leaders" style="padding: 4rem 0; background: white;">
-    <div class="container">
+<section data-aos="fade-up" id="past-leaders" style="padding: 4rem 0; background: white;">
+    <div class="container" data-aos="fade-up">
         <div style="text-align: center; margin-bottom: 2.5rem;">
             <span style="display: inline-block; color: var(--color-primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.6rem; background: rgba(22,163,74,0.1); padding: 0.25rem 0.9rem; border-radius: 20px;">Leadership</span>
             <h2 style="font-size: 2rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin: 0 0 0.5rem;">{{ $gs('nacos_page_leaders_title', 'Past NACOS Presidents') }}</h2>
@@ -272,9 +272,9 @@
 <!-- ═══════════════════════════════════════════════
      JOIN / CTA
      ═══════════════════════════════════════════════ -->
-<section style="padding: 3rem 0; background: linear-gradient(105deg, #14532d 0%, #15803d 100%); position: relative; overflow: hidden;">
+<section data-aos="fade-up" style="padding: 3rem 0; background: linear-gradient(105deg, #14532d 0%, #15803d 100%); position: relative; overflow: hidden;">
     <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.6%22 fill=%22rgba(255,255,255,0.04)%22/></svg>'); pointer-events: none;"></div>
-    <div class="container" style="position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
         <div style="flex: 1; min-width: 280px;">
             <h2 style="font-size: 1.6rem; font-family: var(--font-heading); font-weight: 800; color: white; margin: 0 0 0.4rem; line-height: 1.2;">{{ $gs('nacos_page_cta_title', 'Want to Know More?') }}</h2>
             <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0;">{{ $gs('nacos_page_cta_subtitle', 'Reach out to us for questions, collaborations, or if you want to get involved with NACOS.') }}</p>

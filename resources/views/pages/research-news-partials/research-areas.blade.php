@@ -1,5 +1,5 @@
         {{-- ═══════════ CORE RESEARCH AREAS ═══════════ --}}
-        <section id="research-areas" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="research-areas" style="margin-bottom: 4rem;">
             <div class="blog-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="blog-section-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(168, 85, 247, 0.1)); color: #8b5cf6; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-flask"></i>

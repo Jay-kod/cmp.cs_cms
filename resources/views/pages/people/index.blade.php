@@ -12,7 +12,7 @@
 
 {{-- Hero --}}
 <div style="{{ $heroUrl ? "background: linear-gradient(135deg, rgba(16,43,31,0.92), rgba(21,128,61,0.88)), url('{$heroUrl}') center/cover;" : 'background: linear-gradient(135deg, #102b1f 0%, #15803d 100%);' }} color: white; padding: 8rem 0 5rem; text-align: center;">
-    <div class="container">
+    <div class="container" data-aos="fade-up">
         <h1 style="color: white; font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 800; letter-spacing: -0.5px;">{{ $hs['people_hero_title'] ?? 'Our People' }}</h1>
         @if(!empty($hs['people_hero_subtitle']))
         <p style="margin-top: 0.8rem; color: rgba(255,255,255,0.75); font-size: 1.15rem; max-width: 600px; margin-left: auto; margin-right: auto;">{{ $hs['people_hero_subtitle'] }}</p>
@@ -21,7 +21,7 @@
     </div>
 </div>
 
-<div class="container" style="margin-top: -2rem; position: relative; z-index: 10;">
+<div class="container" data-aos="fade-up" style="margin-top: -2rem; position: relative; z-index: 10;">
 
     {{-- Search & Filter Bar --}}
     <div style="background: white; border-radius: 12px; padding: 1.2rem 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
@@ -51,7 +51,7 @@
     {{-- HOD Spotlight --}}
     <div id="hod-section">
     @if($hod && !request('search') && !request('status'))
-    <section class="hod-spotlight" style="margin-bottom: 3rem;">
+    <section data-aos="fade-up" class="hod-spotlight" style="margin-bottom: 3rem;">
         <a href="{{ route('people.show', $hod->slug) }}" style="text-decoration: none; color: inherit; display: block;">
             <div class="hod-spotlight-card">
                 {{-- Decorative background elements --}}
@@ -151,7 +151,7 @@
     </div>
 
     {{-- Staff Grid --}}
-    <section style="margin-bottom: 3rem;">
+    <section data-aos="fade-up" style="margin-bottom: 3rem;">
         <div id="all-staff-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
             <h2 style="margin: 0; font-size: 1.5rem; color: #0f172a;">All Staff</h2>
             <div style="flex: 1; height: 1px; background: #e2e8f0;"></div>
