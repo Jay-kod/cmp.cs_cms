@@ -4,7 +4,7 @@ import 'aos/dist/aos.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Dynamically inject AOS into component elements and cards before init
-    const animCards = document.querySelectorAll('.hover-card, .news-card, .staff-home-card, .staff-card, .gallery-item, .card, .stat-card, article, .info-box, [class*="-card"], .partner-logo, .system-card');
+    const animCards = document.querySelectorAll('.hover-card, .news-card, .staff-home-card, .staff-card, .gallery-item, .card, .stat-card, article, .info-box, [class*="-card"], [class*="-box"], [class*="-item"], [class*="-block"], [class$="-member"], .partner-logo, .system-card');
     
     animCards.forEach((el, idx) => {
         if (!el.hasAttribute('data-aos') && !el.closest('.nav-dropdown-menu') && el.tagName !== 'HEADER' && el.tagName !== 'NAV' && el.tagName !== 'FOOTER') {
