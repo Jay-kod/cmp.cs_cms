@@ -94,6 +94,35 @@
                             <span>Courses</span>
                         </a>
                     </li>
+                    @php
+                        $siwesPage = \App\Models\Page::where('slug', 'siwes')->first();
+                        $projectsPage = \App\Models\Page::where('slug', 'projects')->first();
+                        $academicCalendarPage = \App\Models\Page::where('slug', 'academic-calendar')->first();
+                    @endphp
+                    @if($siwesPage)
+                    <li>
+                        <a href="{{ route('admin.pages.edit', $siwesPage) }}" class="admin-nav-item {{ request()->url() == route('admin.pages.edit', $siwesPage) ? 'active' : '' }}" title="SIWES Information">
+                            <div class="nav-icon"><i class="fa-solid fa-industry"></i></div>
+                            <span>SIWES Details</span>
+                        </a>
+                    </li>
+                    @endif
+                    @if($projectsPage)
+                    <li>
+                        <a href="{{ route('admin.pages.edit', $projectsPage) }}" class="admin-nav-item {{ request()->url() == route('admin.pages.edit', $projectsPage) ? 'active' : '' }}" title="Final Year Projects">
+                            <div class="nav-icon"><i class="fa-solid fa-project-diagram"></i></div>
+                            <span>Final Year Projects</span>
+                        </a>
+                    </li>
+                    @endif
+                    @if($academicCalendarPage)
+                    <li>
+                        <a href="{{ route('admin.pages.edit', $academicCalendarPage) }}" class="admin-nav-item {{ request()->url() == route('admin.pages.edit', $academicCalendarPage) ? 'active' : '' }}" title="Academic Calendar">
+                            <div class="nav-icon"><i class="fa-solid fa-calendar-alt"></i></div>
+                            <span>Academic Calendar</span>
+                        </a>
+                    </li>
+                    @endif
                     @foreach(\App\Models\SubDepartment::orderBy('name')->get() as $navDept)
                     <li>
                         <a href="{{ route('admin.sub-departments.edit', $navDept->id) }}" class="admin-nav-item {{ request()->url() == route('admin.sub-departments.edit', $navDept->id) ? 'active' : '' }}" title="{{ $navDept->name }}">
