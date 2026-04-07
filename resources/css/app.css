@@ -69,6 +69,25 @@ body {
     transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
+/* Boxed Layout for Extra Large Screens */
+@media (min-width: 1441px) {
+    html {
+        background-color: #f1f5f9; /* Outer space */
+    }
+    [data-theme="dark"] html {
+        background-color: #020617; /* Dark mode outer space */
+    }
+    body {
+        max-width: 1440px;
+        margin: 0 auto;
+        box-shadow: 0 0 50px rgba(0,0,0,0.15);
+        position: relative;
+    }
+    [data-theme="dark"] body {
+        box-shadow: 0 0 60px rgba(0,0,0,0.6);
+    }
+}
+
 img, svg, video, canvas, audio, iframe, embed, object {
     display: block;
     max-width: 100%;
