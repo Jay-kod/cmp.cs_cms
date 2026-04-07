@@ -3,22 +3,24 @@
 
 
 :root {
-    /* Branding Colors — Green & White Theme */
-    --color-primary: #16a34a;
-    /* Primary Green */
-    --color-primary-light: #22c55e;
-    --color-accent: #bbf7d0;
-    /* Light Mint */
-    --color-accent-hover: #86efac;
-    --color-secondary: #15803d;
-    /* Deep Green */
+    /* Branding Colors */
+    --color-primary: #166534;        /* Primary (Deep Green) */
+    --color-primary-light: #22C55E;  /* Accent Green */
+    --color-accent: #EAB308;         /* Secondary (Accent Gold) */
+    --color-accent-hover: #ca8a04;
+    --color-secondary: #EAB308;      /* Secondary (Accent Gold) */
 
-    /* Neutral Colors */
-    --color-text-main: #333333;
-    --color-text-muted: #666666;
-    --color-bg-main: #ffffff;
-    --color-bg-alt: #f8f9fa;
-    --color-border: #e0e0e0;
+    /* Neutral Colors / Feedback */
+    --color-text-main: #1F2937;      /* Neutral Text/Elements */
+    --color-text-muted: #6b7280;
+    --color-bg-main: #ffffff;        /* Base (White) */
+    --color-bg-alt: #F3F4F6;         /* Neutral (Off White/Gray) */
+    --color-border: #e5e7eb;
+
+    --color-info: #3ABFF8;           /* Info (Light Blue) */
+    --color-success: #36D399;        /* Success (Mint Green) */
+    --color-warning: #FBBD23;        /* Warning (Yellow) */
+    --color-error: #F87272;          /* Error (Red) */
 
     /* Typography */
     --font-heading: 'Outfit', sans-serif;
