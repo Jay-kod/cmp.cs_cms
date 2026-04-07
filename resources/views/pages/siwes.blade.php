@@ -66,18 +66,15 @@
                     <i class="fa-solid fa-comments text-blue-600"></i> Frequently Asked Questions
                 </h2>
                 
-                <div class="space-y-4" x-data="{ activeFaq: null }">
+                <div class="space-y-4">
                     @foreach($faqs as $index => $faq)
                     <div class="border border-gray-200 rounded-lg overflow-hidden transition-all duration-300">
                         <button class="w-full text-left px-5 py-4 bg-gray-50 hover:bg-gray-100 font-bold text-gray-800 flex justify-between items-center transition"
-                                @click="activeFaq !== {{ $index }} ? activeFaq = {{ $index }} : activeFaq = null">
+                                onclick="const c = this.nextElementSibling; const i = this.querySelector('i'); if(c.style.display === 'none'){c.style.display='block';i.classList.add('rotate-180')}else{c.style.display='none';i.classList.remove('rotate-180')}">
                             {{ $faq['q'] }}
-                            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 text-sm" 
-                               :class="{'rotate-180': activeFaq === {{ $index }}}"></i>
+                            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 text-sm"></i>
                         </button>
-                        <div class="px-5 py-4 bg-white text-gray-600 leading-relaxed border-t border-gray-100" 
-                             x-show="activeFaq === {{ $index }}" 
-                             x-transition.opacity.duration.300ms style="display: none;">
+                        <div class="px-5 py-4 bg-white text-gray-600 leading-relaxed border-t border-gray-100" style="display: none;">
                             {{ $faq['a'] }}
                         </div>
                     </div>
