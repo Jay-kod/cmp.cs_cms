@@ -141,7 +141,7 @@
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="{{ url('/research-news') }}" class="mobile-link mobile-sub-link">News &amp; Announcements</a>
+                    <a href="{{ url('/research-news') }}" class="mobile-link mobile-sub-link">News</a>
                     <a href="{{ url('/research-innovations') }}" class="mobile-link mobile-sub-link">Research &amp; Innovations</a>
                     <a href="{{ url('/events') }}" class="mobile-link mobile-sub-link">Events &amp; Seminars</a>
                     <a href="{{ route('page.show', 'academic-calendar') }}" class="mobile-link mobile-sub-link">Academic Calendar</a>
