@@ -28,8 +28,7 @@
 
                 <div class="form-group">
                     <label class="form-label">Page Content <span style="color: red;">*</span></label>
-                    <p style="font-size: 0.8rem; color: #6b7280; margin-bottom: 0.5rem;">HTML is supported. Use &lt;h2&gt;, &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;a&gt; tags for formatting.</p>
-                    <textarea name="content" class="form-control" rows="22" required style="font-family: 'Courier New', monospace; font-size: 0.88rem; line-height: 1.6;">{{ old('content', $page->content) }}</textarea>
+                    <textarea name="content" class="form-control richtext" rows="30" required>{{ old('content', $page->content) }}</textarea>
                 </div>
             </div>
 
