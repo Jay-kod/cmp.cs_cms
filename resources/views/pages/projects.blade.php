@@ -88,7 +88,7 @@
         </div>
 
         <!-- Sidebar -->
-        <div class="lg:col-span-1 space-y-6">
+        <div class="lg:col-span-1 space-y-6" style="position: sticky; top: 120px; align-self: start;">
             
             <!-- Coordinator Profile -->
             <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100" data-aos="fade-left">
@@ -96,7 +96,7 @@
                     Project Coordinator
                 </h3>
                 <div class="flex items-center gap-4 mb-2">
-                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-xl shadow-inner border border-purple-200">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl shadow-inner border border-green-200">
                         <i class="fa-solid fa-chalkboard-user"></i>
                     </div>
                     <div>
@@ -107,44 +107,44 @@
             </div>
 
             <!-- Templates Downloads Widget -->
-            <div class="bg-gradient-to-br from-indigo-900 to-purple-800 p-6 rounded-2xl shadow-xl text-white relative overflow-hidden" data-aos="fade-left" data-aos-delay="100">
+            <div class="bg-gradient-to-br from-green-900 to-green-800 p-6 rounded-2xl shadow-xl text-white relative overflow-hidden" data-aos="fade-left" data-aos-delay="100">
                 <div class="absolute -right-4 top-0 opacity-10 text-7xl transform translate-x-1/4 translate-y-1/8">
                     <i class="fa-solid fa-file-word"></i>
                 </div>
                 
-                <h3 class="text-lg font-bold text-purple-50 border-b border-purple-700/50 pb-3 mb-4 font-heading relative z-10 flex items-center gap-2">
+                <h3 class="text-lg font-bold text-green-50 border-b border-green-700/50 pb-3 mb-4 font-heading relative z-10 flex items-center gap-2">
                     <i class="fa-solid fa-download"></i> Official Templates
                 </h3>
                 
-                <div class="text-sm text-purple-200 mb-3 relative z-10 leading-snug">Ensure you download and use the official Microsoft Word templates for structure compliance.</div>
+                <div class="text-sm text-green-200 mb-3 relative z-10 leading-snug">Ensure you download and use the official Microsoft Word templates for structure compliance.</div>
                 
                 <ul class="space-y-3 relative z-10">
                     @if($downloads && $downloads->items->count() > 0)
                         @foreach($downloads->items as $doc)
                             <li>
                                 <a href="{{ route('resources.index') }}?category={{ $downloads->id }}" class="flex items-center gap-3 p-3 bg-white/10 hover:bg-white/20 rounded-lg transition group border border-transparent hover:border-white/10">
-                                    <div class="bg-purple-100 text-purple-700 w-8 h-8 rounded flex items-center justify-center shadow shadow-black/10 group-hover:scale-110 transition-transform">
+                                    <div class="bg-green-100 text-green-700 w-8 h-8 rounded flex items-center justify-center shadow shadow-black/10 group-hover:scale-110 transition-transform">
                                         <i class="fa-solid fa-file-lines"></i>
                                     </div>
                                     <div class="flex-grow">
                                         <span class="block text-sm font-semibold text-white drop-shadow-md">{{ $doc->title }}</span>
                                     </div>
-                                    <i class="fa-solid fa-arrow-down shadow-black/20 text-purple-300 group-hover:text-white transition-colors"></i>
+                                    <i class="fa-solid fa-arrow-down shadow-black/20 text-green-300 group-hover:text-white transition-colors"></i>
                                 </a>
                             </li>
                         @endforeach
                     @else
                         <!-- Stub for when no resource items are uploaded yet -->
                         <li>
-                            <div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-purple-500/50 text-purple-200 text-sm">
-                                <i class="fa-solid fa-circle-info mt-[-2px] text-purple-300"></i>
+                            <div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-green-500/50 text-green-200 text-sm">
+                                <i class="fa-solid fa-circle-info mt-[-2px] text-green-300"></i>
                                 <span>No templates currently uploaded. Please check the Resource section.</span>
                             </div>
                         </li>
                     @endif
                 </ul>
-                <div class="mt-4 pt-3 border-t border-purple-700/50 text-center relative z-10">
-                    <a href="{{ route('resources.index') }}" class="text-xs text-purple-200 hover:text-white font-bold inline-flex items-center gap-1 transition">
+                <div class="mt-4 pt-3 border-t border-green-700/50 text-center relative z-10">
+                    <a href="{{ route('resources.index') }}" class="text-xs text-green-200 hover:text-white font-bold inline-flex items-center gap-1 transition">
                         View All Department Resources <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
