@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form action="{{ $page->exists ? route('admin.pages.update', $page) : route('admin.pages.store') }}" method="POST">
+    <form action="{{ $page->exists ? route('admin.pages.update', $page) : route('admin.pages.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if($page->exists) @method('PUT') @endif
 
