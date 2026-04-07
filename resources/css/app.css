@@ -800,3 +800,6 @@ a:hover {
 
 
 p { text-align: justify !important; }
+
+/* Fix AOS Sticky Bug */
+body[data-aos-easing], body[data-aos-duration], body[data-aos-delay] { overflow-x: clip !important; }
