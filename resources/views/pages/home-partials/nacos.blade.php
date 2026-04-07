@@ -1,5 +1,5 @@
 <!-- NACOS — Student Association Spotlight -->
-<section class="nacos-home-section" style="padding: 3.5rem 0; background: linear-gradient(165deg, #0f172a 0%, #1e293b 60%, #0f4c2e 100%); position: relative; overflow: hidden;">
+<section data-aos="fade-up" class="nacos-home-section" style="padding: 3.5rem 0; background: linear-gradient(165deg, #0f172a 0%, #1e293b 60%, #0f4c2e 100%); position: relative; overflow: hidden;">
     {{-- Decorative background --}}
     <div style="position: absolute; inset: 0; pointer-events: none;">
         <div style="position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(22,163,74,0.15) 0%, transparent 70%); border-radius: 50%;"></div>
@@ -7,7 +7,7 @@
         <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.5%22 fill=%22rgba(255,255,255,0.03)%22/></svg>');"></div>
     </div>
 
-    <div class="container" style="position: relative; z-index: 2;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 2;">
         {{-- Section Header --}}
         <div style="display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 1.5rem; margin-bottom: 2rem;">
             <div>

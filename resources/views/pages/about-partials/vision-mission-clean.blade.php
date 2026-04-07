@@ -1,5 +1,5 @@
-﻿<section style="margin-bottom: 2.5rem;">
-    <div class="reveal reveal-up" style="text-align: center;">                                                                              
+﻿<section data-aos="fade-up" style="margin-bottom: 2.5rem;">
+    <div class="" style="text-align: center;">                                                                              
         <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 1rem; background: #f0fdf4; border: 1px solid #dcfce7; border-radius: 20px; font-size: 0.75rem; font-weight: 700; color: #16a34a; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;">      
             <i class="fa-solid fa-crosshairs" style="font-size: 0.65rem;"></i> Our Goals                                                                            
         </div>

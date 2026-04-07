@@ -1,5 +1,5 @@
         <!-- ═══════════ FACULTY CTA ═══════════ -->
-        <section id="our-faculty">
+        <section data-aos="fade-up" id="our-faculty">
                 <div class="about-faculty-cta hover-lift" style="background: linear-gradient(135deg, var(--color-primary) 0%, #047857 50%, #0f766e 100%); border-radius: 16px; padding: 3.5rem; color: white; text-align: center; position: relative; overflow: hidden; box-shadow: 0 15px 30px -8px rgba(22, 163, 74, 0.4); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 25px 40px -12px rgba(22,163,74,0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 30px -8px rgba(22, 163, 74, 0.4)'">
                 <div style="position: absolute; top: -60px; right: -60px; width: 250px; height: 250px; background: rgba(255,255,255,0.06); border-radius: 50%; transition: transform 0.5s;" class="bg-shape-1"></div>
                 <div style="position: absolute; bottom: -80px; left: -40px; width: 200px; height: 200px; background: rgba(255,255,255,0.04); border-radius: 50%; transition: transform 0.5s;" class="bg-shape-2"></div>

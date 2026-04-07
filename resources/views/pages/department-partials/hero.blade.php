@@ -1,5 +1,5 @@
 <div class="department-hero" style="background: linear-gradient(135deg, rgba(13, 79, 38, 0.95) 0%, rgba(13, 79, 38, 0.85) 100%), url('{{ $heroImage }}') center/cover; padding: 6rem 0; position: relative;">
-    <div class="container reveal reveal-up" style="position: relative; z-index: 10;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10;">
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" style="margin-bottom: 2rem;">
             <ol class="breadcrumb" style="background: rgba(255, 255, 255, 0.1); display: inline-flex; padding: 0.5rem 1rem; border-radius: 8px; backdrop-filter: blur(4px);">

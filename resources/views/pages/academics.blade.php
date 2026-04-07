@@ -18,7 +18,7 @@
     <div style="position: absolute; bottom: 10%; left: 5%; width: 250px; height: 250px; border: 1px solid rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none;"></div>
     <div style="position: absolute; bottom: 20%; right: 25%; font-size: 8rem; color: rgba(255,255,255,0.02); transform: rotate(15deg); pointer-events: none;"><i class="fa-solid fa-laptop-code"></i></div>
     
-    <div class="container" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
         <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.2rem; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); color: #a7f3d0; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
             <i class="fa-solid fa-book-open" style="font-size: 0.7rem;"></i> {{ $gs('academics_hero_badge', 'Explore Our Programs') }}
         </div>
@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div class="container page-layout reveal" style="margin-top: -3rem; position: relative; z-index: 20; padding-bottom: 4rem;">
+<div class="container page-layout" style="margin-top: -3rem; position: relative; z-index: 20; padding-bottom: 4rem;">
     <div class="main-content acad-main" style="background: white; border-radius: 16px; box-shadow: 0 20px 50px -12px rgba(0,0,0,0.1); padding: 3rem 4rem;">
 
         {{-- Search / Filter Bar --}}
@@ -45,7 +45,7 @@
         </div>
 
         {{-- ═══════════ PROGRAMME CATEGORIES OVERVIEW ═══════════ --}}
-        <section id="overview" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="overview" style="margin-bottom: 4rem;">
             <div class="acad-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="acad-section-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.1)); color: #3b82f6; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-layer-group"></i>
@@ -97,7 +97,7 @@
         </section>
 
         {{-- ═══════════ HOW TO APPLY SUMMARY (NEW) ═══════════ --}}
-        <section id="admission-process" class="acad-admission" style="margin-bottom: 4rem; padding: 3rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 16px; color: white; position: relative; overflow: hidden; box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.5);">
+        <section data-aos="fade-up" id="admission-process" class="acad-admission" style="margin-bottom: 4rem; padding: 3rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 16px; color: white; position: relative; overflow: hidden; box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.5);">
             <div style="position: absolute; top: 0; right: 0; width: 300px; height: 300px; background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 60%); pointer-events: none;"></div>
             
             <div style="text-align: center; margin-bottom: 2.5rem; position: relative; z-index: 2;">
@@ -134,7 +134,7 @@
             $headers = ['#10b981', '#3b82f6', '#8b5cf6', '#ea580c'];
             $hc = $headers[$index % 4]; 
         @endphp
-        <section id="{{ $cat->slug }}" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="{{ $cat->slug }}" style="margin-bottom: 4rem;">
             <div class="acad-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;">
                 <div class="acad-section-icon" style="width: 44px; height: 44px; background: {{ $hc }}15; color: {{ $hc }}; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
                     <i class="{{ $cat->icon ?? 'fa-solid fa-graduation-cap' }}"></i>
@@ -243,7 +243,7 @@
         @endforeach
 
         {{-- ═══════════ COURSE STRUCTURE ═══════════ --}}
-        <section id="course-structure" style="margin-bottom: 2rem;">
+        <section data-aos="fade-up" id="course-structure" style="margin-bottom: 2rem;">
             <div class="acad-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="acad-section-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(225, 29, 72, 0.1)); color: #ec4899; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-diagram-project"></i>

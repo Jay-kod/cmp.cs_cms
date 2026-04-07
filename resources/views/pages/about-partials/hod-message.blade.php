@@ -1,5 +1,5 @@
 ﻿<div style="margin: 4rem 0;">
-    <div class="reveal reveal-up" style="text-align: center; margin-bottom: 2.5rem;">
+    <div class="" style="text-align: center; margin-bottom: 2.5rem;">
         <h3 style="font-size: 1.8rem; color: #0f172a; margin: 0 0 0.5rem; font-family: var(--font-heading); font-weight: 800;">From the HOD's Desk</h3>
     </div>
     

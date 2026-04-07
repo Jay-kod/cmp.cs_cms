@@ -1,5 +1,5 @@
         <!-- ═══════════ VISION & MISSION ═══════════ -->
-        <section id="vision-mission" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="vision-mission" style="margin-bottom: 4rem;">
             <div class="section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="section-heading-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(22, 163, 74, 0.15), rgba(16, 185, 129, 0.1)); color: var(--color-primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-compass"></i>
@@ -180,7 +180,7 @@ C:\xampp\htdocs\p\dcms\resources\views\pages\home-partials\hod-welcome.blade
 
     <!-- Stats Counter Cards — integrated into HOD section -->
 
-    <div class="container" style="margin-top: 4rem; padding-bottom: 4rem;">
+    <div class="container" data-aos="fade-up" style="margin-top: 4rem; padding-bottom: 4rem;">
 
         <div class="stats-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; text-align: center;">
 

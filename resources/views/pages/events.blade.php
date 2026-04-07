@@ -3,8 +3,8 @@
 
 @section('content')
 {{-- Hero --}}
-<section style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 4rem 0; color: white; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+<section data-aos="fade-up" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 4rem 0; color: white; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <div class="container" data-aos="fade-up" style="display: flex; flex-direction: column; align-items: center;">
         <span style="display: inline-block; background: rgba(22,163,74,0.2); color: var(--color-primary); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; border: 1px solid rgba(22,163,74,0.3);">
             <i class="fa-solid fa-calendar-days"></i> Department Events
         </span>
@@ -14,8 +14,8 @@
 </section>
 
 {{-- Search / Filter Bar --}}
-<section style="padding: 2rem 0 0;">
-    <div class="container">
+<section data-aos="fade-up" style="padding: 2rem 0 0;">
+    <div class="container" data-aos="fade-up">
         <div id="events-search-bar" style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1rem 1.5rem; display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; box-shadow: 0 4px 16px rgba(0,0,0,0.04);">
             <div style="flex: 1; min-width: 200px; position: relative;">
                 <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem;"></i>
@@ -33,8 +33,8 @@
 
 {{-- Upcoming Events --}}
 @if($upcoming->count())
-<section id="upcoming-section" style="padding: 3rem 0;">
-    <div class="container">
+<section data-aos="fade-up" id="upcoming-section" style="padding: 3rem 0;">
+    <div class="container" data-aos="fade-up">
         <h2 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; display: flex; align-items: center; gap: 0.6rem;">
             <i class="fa-solid fa-clock" style="color: var(--color-primary); font-size: 1.2rem;"></i> Upcoming Events
         </h2>
@@ -69,8 +69,8 @@
 @endif
 
 {{-- Past Events --}}
-<section id="past-section" style="padding: 3rem 0; background: #f8fafc;">
-    <div class="container">
+<section data-aos="fade-up" id="past-section" style="padding: 3rem 0; background: #f8fafc;">
+    <div class="container" data-aos="fade-up">
         <h2 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; display: flex; align-items: center; gap: 0.6rem;">
             <i class="fa-solid fa-clock-rotate-left" style="color: #64748b; font-size: 1.2rem;"></i> Past Events
         </h2>

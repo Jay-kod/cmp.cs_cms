@@ -1,5 +1,5 @@
-<section style="padding: 6rem 0; background: #FFFFFF; position: relative;">
-    <div class="container reveal reveal-up">
+<section data-aos="fade-up" style="padding: 6rem 0; background: #FFFFFF; position: relative;">
+    <div class="container" data-aos="fade-up">
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem;">
             
             <!-- Vision -->

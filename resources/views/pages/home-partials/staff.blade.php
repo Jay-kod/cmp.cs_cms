@@ -1,7 +1,7 @@
 <!-- MEET OUR STAFF -->
-<section style="padding: 6rem 0; background: #f4fcfa; position: relative; overflow: hidden;">
+<section data-aos="fade-up" style="padding: 6rem 0; background: #f4fcfa; position: relative; overflow: hidden;">
     <div style="position: absolute; top: -80px; left: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(22,163,74,0.06) 0%, transparent 70%); pointer-events: none;"></div>
-    <div class="container" style="position: relative; z-index: 2;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 2;">
         <div style="text-align: center; margin-bottom: 4rem;">
             <span style="display: inline-block; color: var(--color-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; background: rgba(22,163,74,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_staff_badge','Our Team') }}</span>
             <h2 style="font-size: 2.8rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin-bottom: 1rem;">{{ $gs('home_staff_title','Meet Our Faculty') }}</h2>

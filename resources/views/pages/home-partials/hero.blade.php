@@ -8,7 +8,7 @@
         opacity: 1;
     }
 </style>
-<section class="hero-carousel" style="position: relative; overflow: hidden; height: 652px;">
+<section data-aos="fade-up" class="hero-carousel" style="position: relative; overflow: hidden; height: 652px;">
     <!-- Slides -->
     <div class="carousel-track" id="carouselTrack" style="display: flex; height: 100%; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
         
@@ -21,7 +21,7 @@
             <div style="position: absolute; top: 15%; left: 10%; width: 120px; height: 120px; border: 1px solid rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none;"></div>
             <div style="position: absolute; bottom: 20%; right: 15%; width: 250px; height: 250px; border: 1px solid rgba(255,255,255,0.03); border-radius: 50%; pointer-events: none;"></div>
             
-            <div class="container" style="position: relative; z-index: 10; max-width: 850px; padding: 0 1.5rem; text-align: center; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+            <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; max-width: 850px; padding: 0 1.5rem; text-align: center; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
                 <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 0.4rem 1.2rem; border-radius: 30px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 1.5px; text-transform: uppercase; color: #a7f3d0; border: 1px solid rgba(255,255,255,0.15);">
                     <i class="fa-solid fa-code" style="font-size: 0.7rem;"></i> {{ config('university.short_name') }} &middot; Computer Science
                 </span>
@@ -46,7 +46,7 @@
             <div style="position: absolute; top: 15%; left: 10%; width: 120px; height: 120px; border: 1px solid rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none;"></div>
             <div style="position: absolute; bottom: 20%; right: 15%; width: 250px; height: 250px; border: 1px solid rgba(255,255,255,0.03); border-radius: 50%; pointer-events: none;"></div>
             
-            <div class="container" style="position: relative; z-index: 10; max-width: 850px; padding: 0 1.5rem; text-align: center; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+            <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; max-width: 850px; padding: 0 1.5rem; text-align: center; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
                 <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 0.4rem 1.2rem; border-radius: 30px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 1.5px; text-transform: uppercase; color: #a7f3d0; border: 1px solid rgba(255,255,255,0.15);">
                     <i class="fa-solid fa-laptop-code" style="font-size: 0.7rem;"></i> {{ config('university.short_name') }} &middot; Computer Science
                 </span>
@@ -81,7 +81,7 @@
     <!-- Glassmorphism Announcements Ticker (Overlaps Hero Bottom) -->
     @if($announcements->count() > 0)
     <div style="position: absolute; bottom: 0; left: 0; width: 100%; z-index: 20; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 2px solid var(--color-primary);">
-          <div class="container" style="display: flex; align-items: center; gap: 1rem; padding: 0.6rem 1rem;">
+          <div class="container" data-aos="fade-up" style="display: flex; align-items: center; gap: 1rem; padding: 0.6rem 1rem;">
               <div style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); color: #fff; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; white-space: nowrap; letter-spacing: 1px; box-shadow: 0 0 8px rgba(22, 163, 74, 0.8), inset 0 0 3px rgba(255, 255, 255, 0.2); display: flex; align-items: center; gap: 0.4rem; border: 1px solid rgba(255,255,255,0.2);">
                   <i class="fa-solid fa-bolt" style="font-size: 0.6rem;"></i> Notice
             </div>

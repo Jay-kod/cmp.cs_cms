@@ -75,7 +75,7 @@
 
     @if (!request()->is('/') && Breadcrumbs::exists())
     <div style="background: #f8faf9; border-bottom: 1px solid #e5e7eb; padding-top: 1rem;">
-        <div class="container" style="padding: 0.65rem 0;">
+        <div class="container" data-aos="fade-up" style="padding: 0.65rem 0;">
             <nav aria-label="Breadcrumb">
                 <ol style="display: flex; align-items: center; gap: 0; margin: 0; padding: 0; list-style: none; flex-wrap: wrap;">
                     @foreach(Breadcrumbs::generate() as $i => $crumb)
@@ -121,7 +121,7 @@
         @endphp
         <div style="position: relative; color: #d1d5db; padding: 3.5rem 0 2.5rem; {{ $footerBgUrl ? "background: url('".$footerBgUrl."') center/cover no-repeat;" : 'background: #0D4F26;' }}">
             <div style="position: absolute; inset: 0; background: rgba(13,79,38,0.92); z-index: 0;"></div>
-            <div class="container" style="position: relative; z-index: 1;">
+            <div class="container" data-aos="fade-up" style="position: relative; z-index: 1;">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem;">
                     
                     <!-- Brand Column -->
@@ -237,7 +237,7 @@
 
         <!-- Bottom Bar -->
         <div style="background: #0a0f1a; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.06);">
-            <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem;">
+            <div class="container" data-aos="fade-up" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem;">
                 <p style="margin: 0; font-size: 0.8rem; color: #d1d5db;">&copy; {{ date('Y') }} {{ config('university.name') }}, {{ config('university.university') }}. All rights reserved.</p>
                 <div style="display: flex; gap: 1.2rem;">
                     <a href="{{ url('/page/privacy-policy') }}" style="color: #d1d5db; font-size: 0.8rem; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#d1d5db'">Privacy Policy</a>

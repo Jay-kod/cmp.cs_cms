@@ -1,6 +1,6 @@
 ﻿<!-- QUICK STATS BAR -->
-<section style="background-color: #0D4F26; color: #FFFFFF; padding: 2.5rem 0; position: relative;">
-    <div class="container">
+<section data-aos="fade-up" style="background-color: #0D4F26; color: #FFFFFF; padding: 2.5rem 0; position: relative;">
+    <div class="container" data-aos="fade-up">
         <div class="stats-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; text-align: center;">
             @php
                 $statValues = [
@@ -26,7 +26,7 @@
                 ];
             @endphp
             @foreach([0,1,2,3,4] as $i)
-            <div class="stat-card reveal reveal-up" style="padding: 1rem; transition-delay: {{ $i * 100 }}ms;">
+            <div class="stat-card" style="padding: 1rem; transition-delay: {{ $i * 100 }}ms;">
                 <div style="font-size: 2rem; margin-bottom: 0.5rem; color: #a7f3d0;"><i class="{{ $statIcons[$i] }}"></i></div>
                 <h2 style="font-size: 2.2rem; font-weight: 800; margin: 0 0 0.2rem; color: #ffffff;">{{ $statValues[$i] }}</h2>
                 <p style="margin: 0; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #86efac;">{{ $statLabels[$i] }}</p>

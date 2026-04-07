@@ -5,7 +5,7 @@
 @section('content')
 
 <!-- Hero Section -->
-<section class="bg-[#111827] text-white py-20 lg:py-32 relative">
+<section data-aos="fade-up" class="bg-[#111827] text-white py-20 lg:py-32 relative">
     <div class="absolute inset-0 z-0">
         <div class="absolute inset-0 bg-[#485b93] opacity-90"></div>
     </div>
@@ -16,7 +16,7 @@
 </section>
 
 <!-- About the Department -->
-<section class="py-20 bg-white">
+<section data-aos="fade-up" class="py-20 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
         <h2 class="text-3xl font-extrabold text-[#485b93] mb-6 relative inline-block">
             About the Department
@@ -29,7 +29,7 @@
 </section>
 
 <!-- Vision & Mission -->
-<section class="py-20 bg-gray-50 border-y border-gray-100">
+<section data-aos="fade-up" class="py-20 bg-gray-50 border-y border-gray-100">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
             <!-- Vision -->
@@ -54,7 +54,7 @@
 </section>
 
 <!-- Programmes & Requirements -->
-<section class="py-24 bg-white relative">
+<section data-aos="fade-up" class="py-24 bg-white relative">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-extrabold text-[#485b93]">Academic Programmes & Requirements</h2>
@@ -163,7 +163,7 @@
 </section>
 
 <!-- Research & Publications -->
-<section class="py-24 bg-gray-50 border-t border-gray-100">
+<section data-aos="fade-up" class="py-24 bg-gray-50 border-t border-gray-100">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-extrabold text-[#485b93]">Research & Publications</h2>
@@ -195,7 +195,7 @@
 </section>
 
 <!-- News & Updates -->
-<section class="py-24 bg-white border-t border-gray-100 relative">
+<section data-aos="fade-up" class="py-24 bg-white border-t border-gray-100 relative">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-extrabold text-[#485b93]">Department News & Updates</h2>

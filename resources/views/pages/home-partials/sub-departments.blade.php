@@ -1,7 +1,7 @@
 ﻿<!-- SUB-DEPARTMENTS OVERVIEW -->
-<section style="padding: 6rem 0; background-color: #F0F9F3; position: relative;">
-    <div class="container">
-        <div class="reveal reveal-up" style="text-align: center; margin-bottom: 4rem;">
+<section data-aos="fade-up" style="padding: 6rem 0; background-color: #F0F9F3; position: relative;">
+    <div class="container" data-aos="fade-up">
+        <div class="" style="text-align: center; margin-bottom: 4rem;">
             <span style="display: inline-block; color: var(--color-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; background: rgba(22,163,74,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_subdepts_badge','Overview') }}</span>
             <h2 style="font-size: 2.8rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin-bottom: 1rem;">{{ $gs('home_subdepts_title','Our Departments') }}</h2>
             <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.7;">{{ $gs('home_subdepts_subtitle','The faculty incorporates three dynamic departments offering specialized programmes.') }}</p>

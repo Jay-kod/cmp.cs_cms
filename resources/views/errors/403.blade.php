@@ -3,8 +3,8 @@
 @section('title', 'Forbidden')
 
 @section('content')
-<section style="padding: 4rem 0; background: #f8fafc;">
-    <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 1rem;">
+<section data-aos="fade-up" style="padding: 4rem 0; background: #f8fafc;">
+    <div class="container" data-aos="fade-up" style="max-width: 900px; margin: 0 auto; padding: 0 1rem;">
         <div style="background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.04);">
             <div style="display:flex; align-items:flex-start; gap: 1.25rem; flex-wrap: wrap;">
                 <div style="width: 56px; height: 56px; border-radius: 14px; background: rgba(245, 158, 11, 0.12); display:flex; align-items:center; justify-content:center; color:#d97706; font-weight: 800; font-size: 1.3rem;">

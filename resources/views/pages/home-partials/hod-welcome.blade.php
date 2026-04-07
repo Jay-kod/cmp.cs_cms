@@ -1,5 +1,5 @@
 <!-- HOD WELCOME + STATS (Combined Section) -->
-<section class="hod-section" style="padding: 5rem 0 0; background: #f8fafc; position: relative; overflow: hidden;">
+<section data-aos="fade-up" class="hod-section" style="padding: 5rem 0 0; background: #f8fafc; position: relative; overflow: hidden;">
     <!-- Abstract Background Decor -->
     <div style="position: absolute; top: -100px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(22,163,74,0.08) 0%, transparent 70%); pointer-events: none;"></div>
     <div style="position: absolute; bottom: -50px; left: 10%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(22,163,74,0.06) 0%, transparent 70%); pointer-events: none;"></div>
@@ -57,7 +57,7 @@
     </div>
     
     <!-- Stats Counter Cards — integrated into HOD section -->
-    <div class="container" style="margin-top: 4rem; padding-bottom: 4rem;">
+    <div class="container" data-aos="fade-up" style="margin-top: 4rem; padding-bottom: 4rem;">
         <div class="stats-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; text-align: center;">
             @foreach([1,2,3,4,5] as $n)
             @php

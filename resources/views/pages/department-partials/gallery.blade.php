@@ -1,5 +1,5 @@
-<section style="padding: 6rem 0; background: #F0F9F3; position: relative;">
-    <div class="container reveal reveal-up">
+<section data-aos="fade-up" style="padding: 6rem 0; background: #F0F9F3; position: relative;">
+    <div class="container" data-aos="fade-up">
         <div class="section-heading" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem;">
             <div>
                 <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">

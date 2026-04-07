@@ -572,7 +572,7 @@
     </div>
 </div>
 
-<div class="container" style="max-width: 1100px; margin-top: -1.5rem; padding-bottom: 3rem; position: relative; z-index: 2;">
+<div class="container" data-aos="fade-up" style="max-width: 1100px; margin-top: -1.5rem; padding-bottom: 3rem; position: relative; z-index: 2;">
 
     {{-- ── Quick Info Cards ── --}}
     <div class="contact-info-grid">

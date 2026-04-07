@@ -1,8 +1,8 @@
 <!-- GALLERY SHOWCASE -->
 @if($galleryImages->count())
-<section style="padding: 6rem 0; background: #0f172a; position: relative; overflow: hidden;">
+<section data-aos="fade-up" style="padding: 6rem 0; background: #0f172a; position: relative; overflow: hidden;">
     <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(22,163,74,0.08) 0%, transparent 50%, rgba(22,163,74,0.05) 100%); pointer-events: none;"></div>
-    <div class="container" style="position: relative; z-index: 2;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 2;">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;">
             <div>
                 <span style="display: inline-block; color: #86efac; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; background: rgba(134,239,172,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_gallery_badge','Photo Gallery') }}</span>

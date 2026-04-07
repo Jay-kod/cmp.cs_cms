@@ -3,7 +3,7 @@
     <div style="position: absolute; inset: 0; background: radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.15), transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1), transparent 50%); pointer-events: none;"></div>
     <div style="position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border: 1px solid rgba(255,255,255,0.04); border-radius: 50%;"></div>
     <div style="position: absolute; bottom: -150px; left: -80px; width: 500px; height: 500px; border: 1px solid rgba(255,255,255,0.03); border-radius: 50%;"></div>
-    <div class="container" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
         <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.2rem; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); color: #a7f3d0; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
             <i class="fa-solid fa-landmark" style="font-size: 0.7rem;"></i> {{ $gs('about_hero_badge', 'About Us') }}
         </div>

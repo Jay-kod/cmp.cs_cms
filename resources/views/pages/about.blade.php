@@ -15,7 +15,7 @@
     <div style="position: absolute; inset: 0; background: radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.15), transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1), transparent 50%); pointer-events: none;"></div>
     <div style="position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border: 1px solid rgba(255,255,255,0.04); border-radius: 50%;"></div>
     <div style="position: absolute; bottom: -150px; left: -80px; width: 500px; height: 500px; border: 1px solid rgba(255,255,255,0.03); border-radius: 50%;"></div>
-    <div class="container" style="position: relative; z-index: 10; text-align: center;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; text-align: center;">
         <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.2rem; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); color: #a7f3d0; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
             <i class="fa-solid fa-landmark" style="font-size: 0.7rem;"></i> {{ $gs('about_hero_badge', 'About Us') }}
         </div>
@@ -24,11 +24,11 @@
     </div>
 </div>
 
-<div class="container page-layout reveal" style="margin-top: -3rem; position: relative; z-index: 20; padding-bottom: 4rem;">
+<div class="container page-layout" style="margin-top: -3rem; position: relative; z-index: 20; padding-bottom: 4rem;">
     <div class="main-content about-main" style="background: white; border-radius: 16px; box-shadow: 0 20px 50px -12px rgba(0,0,0,0.1); padding: 3rem 4rem;">
 
         <!-- ═══════════ OUR STORY ═══════════ -->
-        <section id="our-story" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="our-story" style="margin-bottom: 4rem;">
             <div class="section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="section-heading-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(22, 163, 74, 0.15), rgba(16, 185, 129, 0.1)); color: var(--color-primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-clock-rotate-left"></i>
@@ -110,7 +110,7 @@
         </section>
 
         <!-- ═══════════ VISION & MISSION ═══════════ -->
-        <section id="vision-mission" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="vision-mission" style="margin-bottom: 4rem;">
             <div class="section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="section-heading-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(22, 163, 74, 0.15), rgba(16, 185, 129, 0.1)); color: var(--color-primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-compass"></i>
@@ -180,7 +180,7 @@
         </section>
 
         <!-- ═══════════ CORE VALUES ═══════════ -->
-        <section id="core-values" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="core-values" style="margin-bottom: 4rem;">
             <div class="section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="section-heading-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(22, 163, 74, 0.15), rgba(16, 185, 129, 0.1)); color: var(--color-primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-star"></i>
@@ -222,7 +222,7 @@
         </section>
 
         <!-- ═══════════ PROGRAMMES OVERVIEW ═══════════ -->
-        <section id="programmes" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="programmes" style="margin-bottom: 4rem;">
             <div class="section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="section-heading-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(22, 163, 74, 0.15), rgba(16, 185, 129, 0.1)); color: var(--color-primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-graduation-cap"></i>
@@ -288,7 +288,7 @@
         </section>
 
         <!-- ═══════════ DEPARTMENTAL BOARD ═══════════ -->
-        <section id="departmental-board" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="departmental-board" style="margin-bottom: 4rem;">
             <div class="section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="section-heading-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(22, 163, 74, 0.15), rgba(16, 185, 129, 0.1)); color: var(--color-primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-sitemap"></i>
@@ -338,7 +338,7 @@
         </section>
 
         <!-- ═══════════ ENTRY REQUIREMENTS ═══════════ -->
-        <section id="entry-requirements" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="entry-requirements" style="margin-bottom: 4rem;">
             <div class="section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="section-heading-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(22, 163, 74, 0.15), rgba(16, 185, 129, 0.1)); color: var(--color-primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-clipboard-list"></i>
@@ -376,7 +376,7 @@
         </section>
 
         <!-- ═══════════ FACILITIES & LABS ═══════════ -->
-        <section id="facilities" style="margin-bottom: 4rem;">
+        <section data-aos="fade-up" id="facilities" style="margin-bottom: 4rem;">
             <div class="section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
                 <div class="section-heading-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(22, 163, 74, 0.15), rgba(16, 185, 129, 0.1)); color: var(--color-primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
                     <i class="fa-solid fa-server"></i>
@@ -414,7 +414,7 @@
         </section>
 
         <!-- ═══════════ FACULTY CTA ═══════════ -->
-        <section id="our-faculty">
+        <section data-aos="fade-up" id="our-faculty">
                 <div class="about-faculty-cta" style="background: linear-gradient(135deg, var(--color-primary) 0%, #047857 50%, #0f766e 100%); border-radius: 16px; padding: 3.5rem; color: white; text-align: center; position: relative; overflow: hidden; box-shadow: 0 15px 30px -8px rgba(22, 163, 74, 0.4);">
                 <div style="position: absolute; top: -60px; right: -60px; width: 250px; height: 250px; background: rgba(255,255,255,0.06); border-radius: 50%;"></div>
                 <div style="position: absolute; bottom: -80px; left: -40px; width: 200px; height: 200px; background: rgba(255,255,255,0.04); border-radius: 50%;"></div>

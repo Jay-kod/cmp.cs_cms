@@ -15,7 +15,7 @@
 <!-- Hero -->
 <div style="background: linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(4,120,87,0.88) 50%, rgba(15,23,42,0.93) 100%), url('{{ $heroUrl }}') center/cover; padding: 4.5rem 0 5.5rem; position: relative; overflow: hidden;">
     <div style="position: absolute; inset: 0; background: radial-gradient(circle at 20% 80%, rgba(16,185,129,0.12), transparent 50%), radial-gradient(circle at 80% 20%, rgba(59,130,246,0.08), transparent 50%); pointer-events: none;"></div>
-    <div class="container" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
         <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.2rem; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); color: #a7f3d0; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
             <i class="fa-solid fa-images" style="font-size: 0.7rem;"></i> {{ $gsData['gallery_hero_badge'] ?? 'Photo Gallery' }}
         </div>
@@ -25,7 +25,7 @@
 </div>
 
 <!-- Albums Grid -->
-<div class="container" style="padding: 3rem 0 5rem;">
+<div class="container" data-aos="fade-up" style="padding: 3rem 0 5rem;">
 
     @if($albums->count())
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.8rem;">

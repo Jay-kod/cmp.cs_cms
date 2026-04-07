@@ -1,6 +1,6 @@
 <!-- LATEST NEWS -->
-<section style="padding: 6rem 0; background-color: #F0F9F3; position: relative;">
-    <div class="container">
+<section data-aos="fade-up" style="padding: 6rem 0; background-color: #F0F9F3; position: relative;">
+    <div class="container" data-aos="fade-up">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem;">
             <div>
                 <span style="display: inline-block; color: var(--color-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.5rem; background: rgba(59,130,246,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_news_badge','Stay Informed') }}</span>

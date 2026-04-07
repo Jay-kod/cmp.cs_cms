@@ -1,6 +1,6 @@
 <!-- NEWS & EVENTS -->
-<section style="padding: 6rem 0; background: white; position: relative;">
-    <div class="container">
+<section data-aos="fade-up" style="padding: 6rem 0; background: white; position: relative;">
+    <div class="container" data-aos="fade-up">
         <div class="news-events-split" style="display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: start;">
             
             <!-- News Column -->

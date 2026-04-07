@@ -1,5 +1,5 @@
 <!-- PROGRAMMES — Premium Glassmorphism Hover Cards -->
-<section style="padding: 6rem 0; background: linear-gradient(to bottom, white 0%, #f8fafc 100%); position: relative;">
+<section data-aos="fade-up" style="padding: 6rem 0; background: linear-gradient(to bottom, white 0%, #f8fafc 100%); position: relative;">
     <!-- Abstract wavy shape at the top -->
     <div style="position: absolute; top: 0; left: 0; width: 100%; overflow: hidden; line-height: 0;">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" style="position: relative; display: block; width: calc(100% + 1.3px); height: 50px;">
@@ -7,7 +7,7 @@
         </svg>
     </div>
     
-    <div class="container" style="position: relative; z-index: 2;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 2;">
         <div style="text-align: center; margin-bottom: 4rem;">
             <span style="display: inline-block; color: var(--color-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; background: rgba(59,130,246,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_programmes_badge','What We Offer') }}</span>
             <h2 style="font-size: 2.8rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin-bottom: 1rem;">{{ $gs('home_programmes_title','Academic Programmes') }}</h2>

@@ -12,7 +12,7 @@
 <!-- Hero -->
 <div style="background: linear-gradient(135deg, rgba(15,23,42,0.93) 0%, rgba(4,120,87,0.85) 50%, rgba(15,23,42,0.93) 100%), url('{{ $coverSrc }}') center/cover; padding: 4rem 0 5rem; position: relative; overflow: hidden;">
     <div style="position: absolute; inset: 0; backdrop-filter: blur(2px); pointer-events: none;"></div>
-    <div class="container" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
+    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
         <a href="{{ route('gallery.index') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #a7f3d0; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 1.2rem; transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#a7f3d0'">
             <i class="fa-solid fa-arrow-left"></i> Back to Gallery
         </a>
@@ -30,7 +30,7 @@
 </div>
 
 <!-- Photo Grid -->
-<div class="container" style="padding: 3rem 0 5rem;">
+<div class="container" data-aos="fade-up" style="padding: 3rem 0 5rem;">
     @if($images->count())
     <div class="album-photo-grid" style="columns: 3; column-gap: 1rem;">
         @foreach($images as $img)
