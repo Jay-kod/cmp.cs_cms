@@ -167,6 +167,15 @@ a:hover {
     width: 100%;
     z-index: 1000;
 }
+
+@media (min-width: 1441px) {
+    .fixed-header {
+        max-width: 1440px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
 .fixed-header-inner {
     background: #fff;
     box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.04);
