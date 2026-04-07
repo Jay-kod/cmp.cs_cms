@@ -79,6 +79,8 @@ Route::get('/nacos-presidents', [ContactNacosController::class, 'presidents'])->
 Route::get('/gallery', [PublicGalleryController::class, 'index'])->name('gallery.index');
 Route::get('/gallery/{album}', [PublicGalleryController::class, 'show'])->name('gallery.show');
 Route::get('/page/{page}', [PageController::class, 'show'])->name('page.show');
+Route::get('/siwes', [SiwesController::class, 'index'])->name('siwes');
+Route::get('/final-year-projects', [ProjectGuideController::class, 'index'])->name('projects');
 Route::get('/events', [\App\Http\Controllers\EventPublicController::class, 'index'])->name('events.index');
 Route::get('/resources', [ResourcesController::class, 'index'])->name('resources.index');
 
