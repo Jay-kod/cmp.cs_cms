@@ -2,16 +2,33 @@
 @section('title', $page->title)
 
 @section('content')
-<div class="page-header" style="background: var(--color-primary); color: white; padding: 3.5rem 0; text-align: center; display: flex; flex-direction: column; align-items: center;">
-    <div class="container" data-aos="fade-up">
+<div class="page-header relative" style="@if($page->hero_image) background-image: url('{{ Storage::url($page->hero_image) }}'); background-size: cover; background-position: center; @else background: var(--color-primary); @endif color: white; padding: 5rem 0; text-align: center; display: flex; flex-direction: column; align-items: center; position: relative;">
+    @if($page->hero_image)
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(5, 150, 105, 0.85); z-index: 1;"></div>
+    @endif
+    <div class="container relative" data-aos="fade-up" style="z-index: 2;">
         @if($page->icon)
-        <i class="{{ $page->icon }}" style="font-size: 2rem; margin-bottom: 0.8rem; display: block; opacity: 0.85;"></i>
+        <i class="{{ $page->icon }}" style="font-size: 2.5rem; margin-bottom: 1rem; display: block; opacity: 0.9;"></i>
         @endif
-        <h1 style="color: white; font-size: 2.2rem; margin-bottom: 0;">{{ $page->title }}</h1>
+        <h1 style="color: white; font-size: 2.8rem; margin-bottom: 0; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">{{ $page->title }}</h1>
     </div>
 </div>
 
 <div class="container" data-aos="fade-up" style="margin-top: var(--spacing-lg); margin-bottom: var(--spacing-xl); max-width: 820px;">
+    
+    @if($page->attachment)
+    <div style="margin-bottom: 2rem; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 1.5rem; border-radius: 8px; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; text-align: center;" data-aos="fade-up">
+        <div style="background: #10b981; color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; box-shadow: 0 4px 6px rgba(16,185,129,0.3);">
+            <i class="fa-solid fa-file-pdf"></i>
+        </div>
+        <h3 style="margin: 0; color: #065f46; font-size: 1.2rem;">Official Document Available</h3>
+        <p style="margin: 0; color: #047857; font-size: 0.95rem;">You can download or view the attached file for "{{ $page->title }}" below.</p>
+        <a href="{{ Storage::url($page->attachment) }}" target="_blank" class="btn" style="background: #059669; color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 999px; font-weight: 600; font-size: 0.95rem; text-decoration: none; margin-top: 0.5rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: background 0.2s, transform 0.2s;" onmouseover="this.style.background='#047857'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#059669'; this.style.transform='translateY(0)'">
+            <i class="fa-solid fa-download"></i> Download / View Uploaded File
+        </a>
+    </div>
+    @endif
+
     <div class="page-content" style="background: var(--color-bg-alt); padding: 2.5rem; border-radius: 12px; line-height: 1.8; font-size: 1rem;">
         <style>
             .page-content h2 { font-size: 1.6rem; color: var(--color-primary); margin-top: 0; margin-bottom: 1rem; font-family: var(--font-heading); }
