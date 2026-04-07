@@ -1,6 +1,16 @@
 import './bootstrap';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize AOS Animation Library
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
+    });
+
     // TOC Intersection Observer
     const tocLinks = document.querySelectorAll('.toc-list a');
     const sections = Array.from(tocLinks).map(link => {
