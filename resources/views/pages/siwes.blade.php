@@ -85,7 +85,7 @@
         </div>
 
         <!-- Sidebar -->
-        <div class="lg:col-span-1 space-y-6">
+        <div class="lg:col-span-1 space-y-6" style="position: sticky; top: 120px; align-self: start;">
             
             <!-- Coordinator Info -->
             <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100" data-aos="fade-left">
@@ -93,7 +93,7 @@
                     Departmental Coordinator
                 </h3>
                 <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl shadow-inner">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl shadow-inner">
                         <i class="fa-solid fa-user-tie"></i>
                     </div>
                     <div>
@@ -104,14 +104,14 @@
                 
                 <div class="space-y-3 text-sm text-gray-600">
                     <div class="flex gap-3">
-                        <i class="fa-solid fa-envelope mt-1 text-blue-500"></i>
+                        <i class="fa-solid fa-envelope mt-1 text-green-500"></i>
                         <div>
                             <span class="block font-semibold text-gray-900">Email</span>
-                            <a href="mailto:{{ $s('siwes_coordinator_email') }}" class="text-blue-600 hover:underline">{{ $s('siwes_coordinator_email', 'siwes@department.edu.ng') }}</a>
+                            <a href="mailto:{{ $s('siwes_coordinator_email') }}" class="text-green-600 hover:underline">{{ $s('siwes_coordinator_email', 'siwes@department.edu.ng') }}</a>
                         </div>
                     </div>
                     <div class="flex gap-3">
-                        <i class="fa-regular fa-clock mt-1 text-blue-500"></i>
+                        <i class="fa-regular fa-clock mt-1 text-green-500"></i>
                         <div>
                             <span class="block font-semibold text-gray-900">Consultation Hours</span>
                             {{ $s('siwes_coordinator_hours', 'Mon - Wed, 10am - 1pm') }}
@@ -121,12 +121,12 @@
             </div>
 
             <!-- Downloads & Resources -->
-            <div class="bg-gradient-to-br from-blue-900 to-blue-800 p-6 rounded-2xl shadow-xl text-white relative overflow-hidden" data-aos="fade-left" data-aos-delay="100">
+            <div class="bg-gradient-to-br from-green-900 to-green-800 p-6 rounded-2xl shadow-xl text-white relative overflow-hidden" data-aos="fade-left" data-aos-delay="100">
                 <div class="absolute right-0 top-0 opacity-10 text-6xl transform translate-x-1/4 -translate-y-1/4">
                     <i class="fa-solid fa-folder-arrow-down"></i>
                 </div>
                 
-                <h3 class="text-lg font-bold text-blue-50 border-b border-blue-700/50 pb-3 mb-4 font-heading relative z-10 flex items-center gap-2">
+                <h3 class="text-lg font-bold text-green-50 border-b border-green-700/50 pb-3 mb-4 font-heading relative z-10 flex items-center gap-2">
                     <i class="fa-solid fa-download"></i> Required Documents
                 </h3>
                 
@@ -135,27 +135,27 @@
                         @foreach($downloads->items as $doc)
                             <li>
                                 <a href="{{ route('resources.index') }}?category={{ $downloads->id }}" class="flex items-center gap-3 p-3 bg-white/10 hover:bg-white/20 rounded-lg transition group">
-                                    <div class="bg-blue-100 text-blue-600 w-8 h-8 rounded-md flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                                    <div class="bg-green-100 text-green-600 w-8 h-8 rounded-md flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                                         <i class="fa-solid fa-file-pdf"></i>
                                     </div>
                                     <div class="flex-grow">
                                         <span class="block text-sm font-semibold text-white">{{ $doc->title }}</span>
                                     </div>
-                                    <i class="fa-solid fa-arrow-down text-blue-300 group-hover:text-white transition-colors"></i>
+                                    <i class="fa-solid fa-arrow-down text-green-300 group-hover:text-white transition-colors"></i>
                                 </a>
                             </li>
                         @endforeach
                     @else
                         <!-- Stub for when no resource items are uploaded yet -->
                         <li>
-                            <div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-blue-700/30 text-blue-200 text-sm">
+                            <div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-green-700/30 text-green-200 text-sm">
                                 <i class="fa-solid fa-circle-info"></i> No documents uploaded yet. Please check the specific category in the Resource Catalog.
                             </div>
                         </li>
                     @endif
                 </ul>
-                <div class="mt-4 pt-3 border-t border-blue-700/50 text-center relative z-10">
-                    <a href="{{ route('resources.index') }}" class="text-xs text-blue-200 hover:text-white font-bold inline-flex items-center gap-1 transition">
+                <div class="mt-4 pt-3 border-t border-green-700/50 text-center relative z-10">
+                    <a href="{{ route('resources.index') }}" class="text-xs text-green-200 hover:text-white font-bold inline-flex items-center gap-1 transition">
                         View All Department Resources <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
