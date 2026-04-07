@@ -17,50 +17,53 @@
         <!-- Navigation & Actions Wrapper -->
         <div class="navbar-nav-wrapper" style="display: flex; align-items: center; justify-content: flex-end; flex: 1; gap: 1rem;">
             <!-- Desktop Nav -->
-            <nav class="navbar-nav desktop-only" id="primary-nav" style="display: flex; justify-content: flex-end; gap: 0; flex: 1;">
-                <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
+            <nav class="navbar-nav desktop-only" id="primary-nav" style="display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem; flex: 1;">
+                <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}" style="font-weight: 600; font-size: 0.95rem; color: #047857; text-decoration: none; position: relative;">
+                    Home
+                    @if(request()->is('/'))<div style="position: absolute; bottom: -8px; left: 0; right: 0; height: 2px; background-color: #047857;"></div>@endif
+                </a>
 
-                <details class="nav-dropdown">
-                    <summary class="nav-link nav-dropdown-summary {{ request()->is('about*') ? 'active' : '' }}" aria-label="About dropdown">
-                        About <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
+                <details class="nav-dropdown" style="position: relative;">
+                    <summary class="nav-link nav-dropdown-summary {{ request()->is('about*') ? 'active' : '' }}" aria-label="About dropdown" style="font-weight: 500; font-size: 0.95rem; color: #374151; cursor: pointer; display: flex; align-items: center; gap: 0.25rem;">
+                        About <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; opacity: 0.7;"></i>
                     </summary>
-                    <div class="nav-dropdown-menu" role="menu">
-                        <a href="{{ url('/about') }}" class="nav-dropdown-item" role="menuitem">About the Department</a>
-                        <a href="{{ url('/about#vision-mission') }}" class="nav-dropdown-item" role="menuitem">Vision &amp; Mission</a>
-                        <a href="{{ url('/about#hod-message') }}" class="nav-dropdown-item" role="menuitem">HOD's Message</a>
-                        <a href="{{ url('/nacos-presidents') }}" class="nav-dropdown-item" role="menuitem">Our Association</a>
+                    <div class="nav-dropdown-menu" role="menu" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border-radius: 0.375rem; padding: 0.5rem 0; min-width: 200px; z-index: 50; margin-top: 0.5rem; border: 1px solid #f3f4f6;">
+                        <a href="{{ url('/about') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">About the Department</a>
+                        <a href="{{ url('/about#vision-mission') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Vision &amp; Mission</a>
+                        <a href="{{ url('/about#hod-message') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">HOD's Message</a>
+                        <a href="{{ url('/nacos-presidents') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Our Association</a>
                     </div>
                 </details>
 
-                <details class="nav-dropdown">
-                    <summary class="nav-link nav-dropdown-summary {{ request()->is('academics*') ? 'active' : '' }}" aria-label="Academics dropdown">
-                        Academics <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
+                <details class="nav-dropdown" style="position: relative;">
+                    <summary class="nav-link nav-dropdown-summary {{ request()->is('academics*') ? 'active' : '' }}" aria-label="Academics dropdown" style="font-weight: 500; font-size: 0.95rem; color: #374151; cursor: pointer; display: flex; align-items: center; gap: 0.25rem;">
+                        Academics <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; opacity: 0.7;"></i>
                     </summary>
-                    <div class="nav-dropdown-menu" role="menu">
-                        <a href="{{ url('/academics#programmes') }}" class="nav-dropdown-item" role="menuitem">Programmes (BSc, MSc, PhD)</a>
-                        <a href="{{ url('/academics#sub-departments') }}" class="nav-dropdown-item" role="menuitem">Sub-departments (Cyber Security, Data Science)</a>
-                        <a href="{{ url('/academics#siwes') }}" class="nav-dropdown-item" role="menuitem">SIWES Information</a>
-                        <a href="{{ url('/academics#projects') }}" class="nav-dropdown-item" role="menuitem">Final Year Projects</a>
+                    <div class="nav-dropdown-menu" role="menu" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border-radius: 0.375rem; padding: 0.5rem 0; min-width: 320px; z-index: 50; margin-top: 0.5rem; border: 1px solid #f3f4f6;">
+                        <a href="{{ url('/academics#programmes') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Programmes (BSc, MSc, PhD)</a>
+                        <a href="{{ url('/academics#sub-departments') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Sub-departments (Cyber Security, Data Science)</a>
+                        <a href="{{ url('/academics#siwes') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">SIWES Information</a>
+                        <a href="{{ url('/academics#projects') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Final Year Projects</a>
                     </div>
                 </details>
 
-                <details class="nav-dropdown">
-                    <summary class="nav-link nav-dropdown-summary {{ request()->is('people*') ? 'active' : '' }}" aria-label="People dropdown">
-                        People <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
+                <details class="nav-dropdown" style="position: relative;">
+                    <summary class="nav-link nav-dropdown-summary {{ request()->is('people*') ? 'active' : '' }}" aria-label="People dropdown" style="font-weight: 500; font-size: 0.95rem; color: #374151; cursor: pointer; display: flex; align-items: center; gap: 0.25rem;">
+                        People <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; opacity: 0.7;"></i>
                     </summary>
-                    <div class="nav-dropdown-menu" role="menu">
-                        <a href="{{ url('/people') }}" class="nav-dropdown-item" role="menuitem">Staff Directory</a>
+                    <div class="nav-dropdown-menu" role="menu" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border-radius: 0.375rem; padding: 0.5rem 0; min-width: 200px; z-index: 50; margin-top: 0.5rem; border: 1px solid #f3f4f6;">
+                        <a href="{{ url('/people') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Staff Directory</a>
                     </div>
                 </details>
 
-                <details class="nav-dropdown">
-                    <summary class="nav-link nav-dropdown-summary {{ request()->is('research-news*') || request()->is('events*') ? 'active' : '' }}" aria-label="News dropdown">
-                        News <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
+                <details class="nav-dropdown" style="position: relative;">
+                    <summary class="nav-link nav-dropdown-summary {{ request()->is('research-news*') || request()->is('events*') ? 'active' : '' }}" aria-label="News dropdown" style="font-weight: 500; font-size: 0.95rem; color: #374151; cursor: pointer; display: flex; align-items: center; gap: 0.25rem;">
+                        News <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; opacity: 0.7;"></i>
                     </summary>
-                    <div class="nav-dropdown-menu" role="menu" style="right: 0; left: auto;">
-                        <a href="{{ url('/research-news') }}" class="nav-dropdown-item" role="menuitem">News &amp; Announcements</a>
-                        <a href="{{ url('/events') }}" class="nav-dropdown-item" role="menuitem">Events &amp; Seminars</a>
-                        <a href="{{ url('/academic-calendar') }}" class="nav-dropdown-item" role="menuitem">Academic Calendar</a>
+                    <div class="nav-dropdown-menu" role="menu" style="position: absolute; top: 100%; right: 0; left: auto; background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border-radius: 0.375rem; padding: 0.5rem 0; min-width: 240px; z-index: 50; margin-top: 0.5rem; border: 1px solid #f3f4f6;">
+                        <a href="{{ url('/research-news') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">News &amp; Announcements</a>
+                        <a href="{{ url('/events') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Events &amp; Seminars</a>
+                        <a href="{{ url('/academic-calendar') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.5rem 1rem; color: #4b5563; font-size: 0.9rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f9fafb'; this.style.color='#047857'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Academic Calendar</a>
                     </div>
                 </details>
 
