@@ -63,7 +63,7 @@
             @if(count($faqs) > 0)
             <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100" data-aos="fade-up">
                 <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
-                    <i class="fa-solid fa-comments text-blue-600"></i> Frequently Asked Questions
+                    <i class="fa-solid fa-comments text-green-600"></i> Frequently Asked Questions
                 </h2>
                 
                 <div class="space-y-4">
