@@ -1,5 +1,5 @@
 @extends('layouts.public')
-@section('title', 'Research & News')
+@section('title', 'Department News')
 
 @section('content')
 @php
@@ -17,17 +17,11 @@
 
         @include('pages.research-news-partials.news')
 
-        @include('pages.research-news-partials.events')
-
-        @include('pages.research-news-partials.gallery')
-
-        @include('pages.research-news-partials.research-areas')
-
-        @include('pages.research-news-partials.publications')
-
     </div>
 
-    @include('pages.research-news-partials.toc')
+    <x-sticky-toc :sections="[
+        'news' => 'Department News'
+    ]" />
 </div>
 
 @include('pages.research-news-partials.styles')
