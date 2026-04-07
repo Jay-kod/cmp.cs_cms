@@ -38,7 +38,15 @@
             </div>
 
             <!-- Guidelines / Rules -->
-            @php $rules = json_decode($s('project_rules', '[]'), true) ?? []; @endphp
+            @php 
+                $defaultRules = [
+                    ['title' => 'Chapter Structure', 'desc' => "Chapter 1: Introduction\nChapter 2: Literature Review\nChapter 3: Methodology\nChapter 4: System Implementation & Results\nChapter 5: Summary, Conclusion and Recommendations."],
+                    ['title' => 'Plagiarism Policy', 'desc' => 'All projects will be scanned for plagiarism. Any research work with a similarity index above standard thresholds will be automatically rejected. Ensure all citations follow conventional academic formats.'],
+                    ['title' => 'Page Formatting', 'desc' => 'Use Times New Roman, 12pt font size. Line spacing must be 1.5 margins. Left margin: 1.5 inches for binding; Top, Bottom, and Right margins: 1.0 inch.']
+                ];
+                $rules = json_decode($s('project_rules', '[]'), true); 
+                if (empty($rules)) $rules = $defaultRules;
+            @endphp
             @if(count($rules) > 0)
             <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8" data-aos="fade-up">
                 <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
