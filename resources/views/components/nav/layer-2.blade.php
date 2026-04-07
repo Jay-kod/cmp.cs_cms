@@ -44,8 +44,8 @@
                     <div class="nav-dropdown-menu" role="menu" style="position: absolute; top: calc(100% + 15px); left: 50%; transform: translateX(-50%); background: white; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); border-radius: 0.5rem; padding: 0.5rem; min-width: 320px; z-index: 50; border: 1px solid #f3f4f6;">
                         <a href="{{ url('/academics#programmes') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.6rem 1rem; color: #4b5563; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 0.375rem; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.color='#059669'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Programmes (BSc, MSc, PhD)</a>
                         <a href="{{ url('/academics#sub-departments') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.6rem 1rem; color: #4b5563; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 0.375rem; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.color='#059669'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Sub-departments (Cyber Security, Data Science)</a>
-                        <a href="{{ url('/academics#siwes') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.6rem 1rem; color: #4b5563; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 0.375rem; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.color='#059669'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">SIWES Information</a>
-                        <a href="{{ url('/academics#projects') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.6rem 1rem; color: #4b5563; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 0.375rem; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.color='#059669'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Final Year Projects</a>
+                        <a href="{{ route('page.show', 'siwes') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.6rem 1rem; color: #4b5563; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 0.375rem; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.color='#059669'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">SIWES Information</a>
+                        <a href="{{ route('page.show', 'projects') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.6rem 1rem; color: #4b5563; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 0.375rem; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.color='#059669'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Final Year Projects</a>
                     </div>
                 </details>
 
@@ -110,7 +110,7 @@
                 <div class="mobile-details-menu">
                     <a href="{{ url('/about') }}" class="mobile-link mobile-sub-link">About the Department</a>
                     <a href="{{ url('/about#vision-mission') }}" class="mobile-link mobile-sub-link">Vision &amp; Mission</a>
-                    <a href="{{ url('/about#hod-message') }}" class="mobile-link mobile-sub-link">HOD's Message</a>
+                    <a href="{{ route('page.show', 'hod-message') }}" class="mobile-link mobile-sub-link">HOD's Message</a>
                     <a href="{{ url('/nacos-presidents') }}" class="mobile-link mobile-sub-link">Our Association</a>
                 </div>
             </details>
@@ -123,8 +123,8 @@
                 <div class="mobile-details-menu">
                     <a href="{{ url('/academics#programmes') }}" class="mobile-link mobile-sub-link">Programmes (BSc, MSc, PhD)</a>
                     <a href="{{ url('/academics#sub-departments') }}" class="mobile-link mobile-sub-link">Sub-departments (Cyber Security, Data Science)</a>
-                    <a href="{{ url('/academics#siwes') }}" class="mobile-link mobile-sub-link">SIWES Information</a>
-                    <a href="{{ url('/academics#projects') }}" class="mobile-link mobile-sub-link">Final Year Projects</a>
+                    <a href="{{ route('page.show', 'siwes') }}" class="mobile-link mobile-sub-link">SIWES Information</a>
+                    <a href="{{ route('page.show', 'projects') }}" class="mobile-link mobile-sub-link">Final Year Projects</a>
                 </div>
             </details>
 
