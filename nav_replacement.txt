@@ -172,9 +172,33 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('admin.page-content.show', 'gallery') }}" class="admin-nav-item {{ request()->is('admin/page-content/gallery') ? 'active' : '' }}" title="Gallery Page">
+                            <div class="nav-icon"><i class="fa-solid fa-images"></i></div>
+                            <span>Gallery Layout</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.page-content.show', 'past-hods') }}" class="admin-nav-item {{ request()->is('admin/page-content/past-hods') ? 'active' : '' }}" title="Past HODs Page">
+                            <div class="nav-icon"><i class="fa-solid fa-landmark"></i></div>
+                            <span>Past HODs Layout</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.page-content.show', 'blog') }}" class="admin-nav-item {{ request()->is('admin/page-content/blog') ? 'active' : '' }}" title="Blog / Research Page">
+                            <div class="nav-icon"><i class="fa-solid fa-flask"></i></div>
+                            <span>Blog/Research Layout</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.page-content.show', 'contact') }}" class="admin-nav-item {{ request()->is('admin/page-content/contact') ? 'active' : '' }}" title="Contact & NACOS Page">
                             <div class="nav-icon"><i class="fa-solid fa-address-book"></i></div>
                             <span>Contact Layout</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.page-content.show', 'nacos') }}" class="admin-nav-item {{ request()->is('admin/page-content/nacos') ? 'active' : '' }}" title="NACOS Section">
+                            <div class="nav-icon"><i class="fa-solid fa-users-rectangle"></i></div>
+                            <span>NACOS Layout</span>
                         </a>
                     </li>
                     
