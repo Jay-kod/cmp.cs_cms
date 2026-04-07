@@ -64,7 +64,7 @@
                     </div>
                 </details>
 
-                <a href="{{ url('/contact') }}" class="nav-link btn btn-primary {{ request()->is('contact') ? 'active' : '' }}" style="background-color: #2e7d32; color: white; padding: 0.5rem 1rem; border-radius: 4px; border: none; font-weight: 500;">
+                <a href="{{ url('/contact') }}" class="nav-link btn btn-primary {{ request()->is('contact') ? 'active' : '' }}" style="background-color: #2e8b57; color: white; padding: 0.5rem 1.25rem; border-radius: 0.375rem; border: none; font-weight: 600; font-size: 0.95rem; margin-left: 1rem; transition: background-color 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.05);" onmouseover="this.style.backgroundColor='#1f6b45'" onmouseout="this.style.backgroundColor='#2e8b57'">
                     Contact Us
                 </a>
             <span></span><span></span><span></span>
