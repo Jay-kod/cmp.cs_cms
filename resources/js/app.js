@@ -4,10 +4,10 @@ import 'aos/dist/aos.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Dynamically inject AOS into component elements and cards before init
-    const animCards = document.querySelectorAll('.hover-card, .news-card, .staff-home-card, .staff-card, .gallery-item, .card, .stat-card, article, .info-box, [class*="-card"], .partner-logo');
+    const animCards = document.querySelectorAll('.hover-card, .news-card, .staff-home-card, .staff-card, .gallery-item, .card, .stat-card, article, .info-box, [class*="-card"], .partner-logo, .system-card');
     
     animCards.forEach((el, idx) => {
-        if (!el.hasAttribute('data-aos')) {
+        if (!el.hasAttribute('data-aos') && !el.closest('.nav-dropdown-menu') && el.tagName !== 'HEADER' && el.tagName !== 'NAV' && el.tagName !== 'FOOTER') {
             el.setAttribute('data-aos', 'fade-up');
             // Create a staggered delay effect grouping by row roughly
             const delay = (idx % 6) * 100;
