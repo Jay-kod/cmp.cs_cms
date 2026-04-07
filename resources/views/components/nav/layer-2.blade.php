@@ -119,8 +119,8 @@
                 <div class="mobile-details-menu">
                     <a href="{{ route('page.show', 'programmes') }}" class="mobile-link mobile-sub-link">Programmes (BSc, MSc, PhD)</a>
                     <a href="{{ route('page.show', 'sub-departments') }}" class="mobile-link mobile-sub-link">Sub-departments (Cyber Security, Data Science)</a>
-                    <a href="{{ route('page.show', 'siwes') }}" class="mobile-link mobile-sub-link">SIWES Information</a>
-                    <a href="{{ route('page.show', 'projects') }}" class="mobile-link mobile-sub-link">Final Year Projects</a>
+                    <a href="{{ route('siwes') }}" class="mobile-link mobile-sub-link">SIWES Information</a>
+                    <a href="{{ route('projects') }}" class="mobile-link mobile-sub-link">Final Year Projects</a>
                 </div>
             </details>
 
