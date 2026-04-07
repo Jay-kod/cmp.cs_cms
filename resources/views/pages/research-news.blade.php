@@ -42,11 +42,20 @@
 
 <style>
     /* Make the TOC appear on the right side and smaller on this page */
+    .right-toc-wrapper {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 120px;
+        align-self: flex-start;
+        height: max-content;
+        z-index: 40;
+    }
     .right-toc-wrapper .sidebar-toc {
         width: 200px !important;
     }
     .right-toc-wrapper .toc-container {
         padding: 1rem !important;
+        position: static !important; /* since parent is sticky */
     }
     .right-toc-wrapper .toc-container h3 {
         font-size: 0.95rem !important;
