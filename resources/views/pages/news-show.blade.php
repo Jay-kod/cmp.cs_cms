@@ -889,7 +889,7 @@
 <div class="nd-layout">
     <!-- Article -->
     <div>
-        <article class="nd-article">
+        <article data-aos="fade-up" class="nd-article">
             @if($article->featured_image)
             <img src="{{ asset('storage/'.$article->featured_image) }}" alt="{{ $article->title }}" class="nd-featured-img">
             @endif
@@ -976,7 +976,7 @@
 
     <!-- Sidebar -->
     <aside class="nd-sidebar">
-        <div class="nd-sidebar-card">
+        <div data-aos="fade-up" class="nd-sidebar-card">
             <h4><i class="fa-solid fa-circle-info"></i> Article Details</h4>
             <div class="nd-detail-row">
                 <div class="nd-detail-icon"><i class="fa-solid fa-tag"></i></div>
@@ -999,7 +999,7 @@
         </div>
 
         @if($related->isNotEmpty())
-        <div class="nd-sidebar-card">
+        <div data-aos="fade-up" class="nd-sidebar-card">
             <h4><i class="fa-solid fa-newspaper"></i> Related News</h4>
             @foreach($related as $rel)
             <a href="{{ route('research-news.show', $rel->slug) }}" class="nd-related-item">
@@ -1028,21 +1028,21 @@
         </div>
 
         <!-- Card preview with overlay text -->
-        <div class="nd-share-card-wrap">
-            <div class="nd-share-card" id="share-card">
-                <div class="nd-share-card-visual">
+        <div data-aos="fade-up" class="nd-share-card-wrap">
+            <div data-aos="fade-up" class="nd-share-card" id="share-card">
+                <div data-aos="fade-up" class="nd-share-card-visual">
                     @if($article->featured_image)
                     <img src="{{ asset('storage/'.$article->featured_image) }}" alt="" class="nd-share-card-img">
                     @else
-                    <div class="nd-share-card-placeholder"><i class="fa-regular fa-newspaper"></i></div>
+                    <div data-aos="fade-up" class="nd-share-card-placeholder"><i class="fa-regular fa-newspaper"></i></div>
                     @endif
-                    <div class="nd-share-card-overlay">
-                        <div class="nd-share-card-cat">{{ $article->category }}</div>
+                    <div data-aos="fade-up" class="nd-share-card-overlay">
+                        <div data-aos="fade-up" class="nd-share-card-cat">{{ $article->category }}</div>
                         <h3 class="nd-share-card-title">{{ $article->title }}</h3>
                     </div>
                 </div>
-                <div class="nd-share-card-footer">
-                    <div class="nd-share-card-meta">
+                <div data-aos="fade-up" class="nd-share-card-footer">
+                    <div data-aos="fade-up" class="nd-share-card-meta">
                         <i class="fa-regular fa-calendar"></i>
                         {{ $publishDate->format('M d, Y') }}
                         @if($article->author)
@@ -1376,7 +1376,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function renderComment(c, isReply) {
         const sz = isReply ? 30 : 38;
-        let h = `<div class="nd-c-item" data-id="${c.id}">`;
+        let h = `<div data-aos="fade-up" class="nd-c-item" data-id="${c.id}">`;
         h += `<div class="nd-c-avatar" style="width:${sz}px;height:${sz}px;"><i class="fa-solid fa-user"></i></div>`;
         h += `<div class="nd-c-body">`;
         h += `<div class="nd-c-meta"><span class="nd-c-author">${c.author_name}</span>`;

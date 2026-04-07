@@ -39,7 +39,7 @@
 
             <div class="about-story-layout" style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap; margin-bottom: 2rem;">
                 {{-- HOD Card --}}
-                <div class="about-hod-card" style="flex: 0 0 220px; max-width: 220px;">
+                <div data-aos="fade-up" class="about-hod-card" style="flex: 0 0 220px; max-width: 220px;">
                     <div style="aspect-ratio: 1; border-radius: 14px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,0.1); border: 3px solid var(--color-accent);">
                         @if(isset($hod) && $hod && $hod->photo)
                             <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" style="width: 100%; height: 100%; object-fit: cover;">
@@ -121,7 +121,7 @@
 
             <div class="about-vm-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
                 <!-- Vision -->
-                <div class="about-vm-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 16px; padding: 2.5rem; position: relative; overflow: hidden; border: 1px solid rgba(22, 163, 74, 0.15); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 40px -12px rgba(22,163,74,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div data-aos="fade-up" class="about-vm-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 16px; padding: 2.5rem; position: relative; overflow: hidden; border: 1px solid rgba(22, 163, 74, 0.15); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 40px -12px rgba(22,163,74,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                     <div style="position: absolute; top: -20px; right: -20px; font-size: 7rem; color: rgba(22, 163, 74, 0.06); transform: rotate(-15deg); pointer-events: none;"><i class="fa-solid fa-eye"></i></div>
                     <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #16a34a, #15803d); color: white; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px -4px rgba(22, 163, 74, 0.4);">
                         <i class="fa-solid fa-eye"></i>
@@ -131,7 +131,7 @@
                 </div>
 
                 <!-- Mission -->
-                <div class="about-vm-card" style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-radius: 16px; padding: 2.5rem; position: relative; overflow: hidden; border: 1px solid rgba(16, 185, 129, 0.15); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 40px -12px rgba(16,185,129,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div data-aos="fade-up" class="about-vm-card" style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-radius: 16px; padding: 2.5rem; position: relative; overflow: hidden; border: 1px solid rgba(16, 185, 129, 0.15); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 40px -12px rgba(16,185,129,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                     <div style="position: absolute; top: -20px; right: -20px; font-size: 7rem; color: rgba(16, 185, 129, 0.06); transform: rotate(-15deg); pointer-events: none;"><i class="fa-solid fa-bullseye"></i></div>
                     <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #10b981, #059669); color: white; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px -4px rgba(16, 185, 129, 0.4);">
                         <i class="fa-solid fa-bullseye"></i>
@@ -400,7 +400,7 @@
                     $displayLabs = !empty($cmsLabs) ? $cmsLabs : $defaultLabs;
                 @endphp
                 @foreach($displayLabs as $i => $lab)
-                <div class="about-facilities-card" style="display: flex; gap: 1.2rem; background: #f8fafc; padding: 1.8rem; border-radius: 14px; border: 1px solid #e2e8f0; transition: all 0.3s;" onmouseover="this.style.background='#f1f5f9'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 25px -8px rgba(0,0,0,0.08)'" onmouseout="this.style.background='#f8fafc'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div data-aos="fade-up" class="about-facilities-card" style="display: flex; gap: 1.2rem; background: #f8fafc; padding: 1.8rem; border-radius: 14px; border: 1px solid #e2e8f0; transition: all 0.3s;" onmouseover="this.style.background='#f1f5f9'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 25px -8px rgba(0,0,0,0.08)'" onmouseout="this.style.background='#f8fafc'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                     <div style="width: 56px; height: 56px; border-radius: 14px; background: {{ $labColors[$i % count($labColors)] }}; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; box-shadow: 0 8px 20px -4px {{ $labShadows[$i % count($labShadows)] }};">
                         <i class="fa-solid {{ $lab['icon'] ?? 'fa-flask' }}"></i>
                     </div>

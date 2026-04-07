@@ -33,7 +33,7 @@
             <!-- Timetable Shortcut -->
             <div>
                 <a href="#downloads-section" style="text-decoration: none; color: inherit; display: block; height: 100%;">
-                    <div class="card portal-card h-100" style="background: white; padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); text-align: left; transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.08); position: relative; overflow: hidden; z-index: 1; display: flex; flex-direction: row; align-items: center; gap: 1.2rem;">
+                    <div data-aos="fade-up" class="card portal-card h-100" style="background: white; padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); text-align: left; transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.08); position: relative; overflow: hidden; z-index: 1; display: flex; flex-direction: row; align-items: center; gap: 1.2rem;">
                         <div class="portal-hover-bg" style="position: absolute; inset: 0; background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); opacity: 0; transition: opacity 0.4s ease; z-index: -1;"></div>
                         <div style="width: 64px; height: 64px; background: #f0fdf4; color: var(--color-primary); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0; box-shadow: 0 8px 20px rgba(22, 163, 74, 0.2); transition: transform 0.4s ease;">
                             <i class="fa-regular fa-calendar-days"></i>
@@ -49,7 +49,7 @@
             <!-- Library -->
             <div>
                 <a href="#" style="text-decoration: none; color: inherit; display: block; height: 100%;">
-                    <div class="card portal-card h-100" style="background: white; padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); text-align: left; transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.08); position: relative; overflow: hidden; z-index: 1; display: flex; flex-direction: row; align-items: center; gap: 1.2rem;">
+                    <div data-aos="fade-up" class="card portal-card h-100" style="background: white; padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); text-align: left; transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.08); position: relative; overflow: hidden; z-index: 1; display: flex; flex-direction: row; align-items: center; gap: 1.2rem;">
                         <div class="portal-hover-bg" style="position: absolute; inset: 0; background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); opacity: 0; transition: opacity 0.4s ease; z-index: -1;"></div>
                         <div style="width: 64px; height: 64px; background: #eff6ff; color: #3b82f6; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2); transition: transform 0.4s ease;">
                             <i class="fa-solid fa-book-open-reader"></i>

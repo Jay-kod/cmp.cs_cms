@@ -10,7 +10,7 @@
 
             <div class="about-vm-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
                 <!-- Vision -->
-                <div class="about-vm-card vision-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 16px; padding: 1.8rem; position: relative; overflow: hidden; border: 1px solid rgba(22, 163, 74, 0.15); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), cursor 0.3s;" onmouseover="this.style.transform='translateY(-8px) scale(1.02)'; this.style.boxShadow='0 25px 50px -12px rgba(22,163,74,0.3)'; this.style.cursor='pointer'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none'">
+                <div data-aos="fade-up" class="about-vm-card vision-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 16px; padding: 1.8rem; position: relative; overflow: hidden; border: 1px solid rgba(22, 163, 74, 0.15); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), cursor 0.3s;" onmouseover="this.style.transform='translateY(-8px) scale(1.02)'; this.style.boxShadow='0 25px 50px -12px rgba(22,163,74,0.3)'; this.style.cursor='pointer'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none'">
                     <div style="position: absolute; top: -15px; right: -15px; font-size: 6rem; color: rgba(22, 163, 74, 0.08); transform: rotate(-15deg); pointer-events: none; transition: transform 0.4s ease;" class="bg-icon"><i class="fa-solid fa-eye"></i></div>
                     <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #16a34a, #15803d); color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1.2rem; box-shadow: 0 8px 20px -4px rgba(22, 163, 74, 0.4); transition: transform 0.3s;" class="main-icon">
                         <i class="fa-solid fa-eye"></i>
@@ -20,7 +20,7 @@
                 </div>
 
                 <!-- Mission -->
-                <div class="about-vm-card mission-card" style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-radius: 16px; padding: 1.8rem; position: relative; overflow: hidden; border: 1px solid rgba(16, 185, 129, 0.15); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), cursor 0.3s;" onmouseover="this.style.transform='translateY(-8px) scale(1.02)'; this.style.boxShadow='0 25px 50px -12px rgba(16,185,129,0.3)'; this.style.cursor='pointer'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none'">
+                <div data-aos="fade-up" class="about-vm-card mission-card" style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-radius: 16px; padding: 1.8rem; position: relative; overflow: hidden; border: 1px solid rgba(16, 185, 129, 0.15); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), cursor 0.3s;" onmouseover="this.style.transform='translateY(-8px) scale(1.02)'; this.style.boxShadow='0 25px 50px -12px rgba(16,185,129,0.3)'; this.style.cursor='pointer'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none'">
                     <div style="position: absolute; top: -15px; right: -15px; font-size: 6rem; color: rgba(16, 185, 129, 0.08); transform: rotate(-15deg); pointer-events: none; transition: transform 0.4s ease;" class="bg-icon"><i class="fa-solid fa-bullseye"></i></div>
                     <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #10b981, #059669); color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1.2rem; box-shadow: 0 8px 20px -4px rgba(16, 185, 129, 0.4); transition: transform 0.3s;" class="main-icon">
                         <i class="fa-solid fa-bullseye"></i>
@@ -212,7 +212,7 @@ C:\xampp\htdocs\p\dcms\resources\views\pages\home-partials\hod-welcome.blade
 
             @endphp
 
-            <div class="stat-card">
+            <div data-aos="fade-up" class="stat-card">
 
                 <div class="stat-bg-icon"><i class="{{ $statIcon }}"></i></div>
 App
@@ -514,7 +514,7 @@ Ignition is built byFlare, the Laravel error reporting service.
 
                         {{-- Content Side --}}
                         <div class="obj-content-side">
-                            <div class="obj-content-card" style="border-left: 3px solid {{ $obj['color'] }};">
+                            <div data-aos="fade-up" class="obj-content-card" style="border-left: 3px solid {{ $obj['color'] }};">
                                 <div class="obj-content-header">
                                     <div class="obj-icon" style="background: {{ $obj['light'] }}; color: {{ $obj['color'] }};">
                                         <i class="fa-solid {{ $obj['icon'] }}"></i>

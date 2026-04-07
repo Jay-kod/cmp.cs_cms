@@ -3,7 +3,7 @@
 @section('header', isset($user) ? 'Edit User' : 'Add User')
 
 @section('content')
-<div class="card" style="max-width: 600px;">
+<div data-aos="fade-up" class="card" style="max-width: 600px;">
     <h2 style="margin-top: 0; margin-bottom: 1.5rem; font-size: 1.25rem;">
         {{ isset($user) ? 'Edit User Account' : 'Create New User Account' }}
     </h2>

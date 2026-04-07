@@ -26,7 +26,7 @@
                 ];
             @endphp
             @foreach([0,1,2,3,4] as $i)
-            <div class="stat-card" style="padding: 1rem; transition-delay: {{ $i * 100 }}ms;">
+            <div data-aos="fade-up" class="stat-card" style="padding: 1rem; transition-delay: {{ $i * 100 }}ms;">
                 <div style="font-size: 2rem; margin-bottom: 0.5rem; color: #a7f3d0;"><i class="{{ $statIcons[$i] }}"></i></div>
                 <h2 style="font-size: 2.2rem; font-weight: 800; margin: 0 0 0.2rem; color: #ffffff;">{{ $statValues[$i] }}</h2>
                 <p style="margin: 0; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #86efac;">{{ $statLabels[$i] }}</p>

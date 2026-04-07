@@ -10,7 +10,7 @@
             
             <div class="blog-events-list" style="display: flex; flex-direction: column; gap: 1.2rem;">
                 @forelse($events as $event)
-                <div class="blog-event-card" style="display: flex; background: white; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); align-items: stretch; flex-wrap: wrap;"
+                <div data-aos="fade-up" class="blog-event-card" style="display: flex; background: white; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); align-items: stretch; flex-wrap: wrap;"
                      onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 15px 30px -10px rgba(0,0,0,0.1)'; this.style.borderColor='#cbd5e1'"
                      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.03)'; this.style.borderColor='#e2e8f0'">
                     

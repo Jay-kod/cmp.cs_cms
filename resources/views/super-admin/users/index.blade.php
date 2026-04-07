@@ -3,7 +3,7 @@
 @section('header', 'User Management')
 
 @section('content')
-<div class="card">
+<div data-aos="fade-up" class="card">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h2 style="margin: 0; font-size: 1.25rem;">All System Users</h2>
         <a href="{{ route('super-admin.users.create') }}" class="btn" style="background: #b91c1c; border-color: #b91c1c;"><i class="fa-solid fa-user-plus"></i> Add New User</a>

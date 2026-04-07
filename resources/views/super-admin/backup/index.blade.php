@@ -119,7 +119,7 @@
 
 <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
     <!-- Top Hero Card -->
-    <div class="super-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: linear-gradient(to right, #ffffff, #f8fafc);">
+    <div data-aos="fade-up" class="super-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: linear-gradient(to right, #ffffff, #f8fafc);">
         <div>
             <h2 style="margin: 0 0 0.5rem; font-size: 1.4rem; color: #0f172a; display: flex; align-items: center; gap: 0.5rem;">
                 <i class="fa-solid fa-server" style="color: #64748b;"></i> Database Control Center
@@ -143,19 +143,19 @@
     
     <!-- Stats Grid -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
-        <div class="stat-card" style="border-left-color: #3b82f6;">
+        <div data-aos="fade-up" class="stat-card" style="border-left-color: #3b82f6;">
             <div class="stat-label">Database Size</div>
             <div class="stat-value"><i class="fa-solid fa-hard-drive" style="color: #93c5fd; font-size: 1.2rem;"></i> {{ $dbInfo['size_mb'] ?? '0' }}<span style="font-size: 1rem; color: #64748b;">MB</span></div>
         </div>
-        <div class="stat-card" style="border-left-color: #10b981;">
+        <div data-aos="fade-up" class="stat-card" style="border-left-color: #10b981;">
             <div class="stat-label">Active Tables</div>
             <div class="stat-value"><i class="fa-solid fa-table-list" style="color: #6ee7b7; font-size: 1.2rem;"></i> {{ $dbInfo['tables'] ?? '0' }}</div>
         </div>
-        <div class="stat-card" style="border-left-color: #f59e0b;">
+        <div data-aos="fade-up" class="stat-card" style="border-left-color: #f59e0b;">
             <div class="stat-label">MySQL Version</div>
             <div class="stat-value"><i class="fa-solid fa-database" style="color: #fcd34d; font-size: 1.2rem;"></i> {{ explode('-', $dbInfo['version'] ?? 'N/A')[0] }}</div>
         </div>
-        <div class="stat-card" style="border-left-color: #8b5cf6;">
+        <div data-aos="fade-up" class="stat-card" style="border-left-color: #8b5cf6;">
             <div class="stat-label">PHP Version</div>
             <div class="stat-value"><i class="fa-brands fa-php" style="color: #c4b5fd; font-size: 1.2rem;"></i> {{ phpversion() }}</div>
         </div>
@@ -164,7 +164,7 @@
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;">
     <!-- Technical Specs Module -->
-    <div class="super-card" style="padding: 0; overflow: hidden;">
+    <div data-aos="fade-up" class="super-card" style="padding: 0; overflow: hidden;">
         <div style="padding: 1.25rem 1.5rem; border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
             <h3 style="margin: 0; font-size: 1.1rem; color: #1e293b;"><i class="fa-solid fa-microchip" style="color: #64748b; margin-right: 0.5rem;"></i> Technical Specifications</h3>
         </div>
@@ -191,7 +191,7 @@
     </div>
 
     <!-- Backup Module -->
-    <div class="super-card" style="display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
+    <div data-aos="fade-up" class="super-card" style="display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
         <div style="position: absolute; right: -20px; top: -20px; opacity: 0.03; z-index: 0;">
             <i class="fa-solid fa-cloud-arrow-down" style="font-size: 12rem;"></i>
         </div>

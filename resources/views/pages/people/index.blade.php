@@ -53,9 +53,9 @@
     @if($hod && !request('search') && !request('status'))
     <section data-aos="fade-up" class="hod-spotlight" style="margin-bottom: 3rem;">
         <a href="{{ route('people.show', $hod->slug) }}" style="text-decoration: none; color: inherit; display: block;">
-            <div class="hod-spotlight-card">
+            <div data-aos="fade-up" class="hod-spotlight-card">
                 {{-- Decorative background elements --}}
-                <div class="hod-card-bg-decor">
+                <div data-aos="fade-up" class="hod-card-bg-decor">
                     <div class="hod-bg-circle hod-bg-circle-1"></div>
                     <div class="hod-bg-circle hod-bg-circle-2"></div>
                     <div class="hod-bg-pattern"></div>
@@ -64,7 +64,7 @@
                 {{-- Top accent bar --}}
                 <div class="hod-accent-bar"></div>
 
-                <div class="hod-card-inner">
+                <div data-aos="fade-up" class="hod-card-inner">
                     {{-- Photo Column --}}
                     <div class="hod-photo-col">
                         <div class="hod-photo-frame">
@@ -91,7 +91,7 @@
 
                         <div class="hod-info-details">
                             @if($hod->specialisation)
-                            <div class="hod-detail-item">
+                            <div data-aos="fade-up" class="hod-detail-item">
                                 <div class="hod-detail-icon">
                                     <i class="fa-solid fa-flask"></i>
                                 </div>
@@ -103,7 +103,7 @@
                             @endif
 
                             @if(!empty($hod->qualifications))
-                            <div class="hod-detail-item">
+                            <div data-aos="fade-up" class="hod-detail-item">
                                 <div class="hod-detail-icon">
                                     <i class="fa-solid fa-graduation-cap"></i>
                                 </div>
@@ -115,7 +115,7 @@
                             @endif
 
                             @if($hod->email)
-                            <div class="hod-detail-item">
+                            <div data-aos="fade-up" class="hod-detail-item">
                                 <div class="hod-detail-icon">
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>
@@ -127,7 +127,7 @@
                             @endif
                         </div>
 
-                        <div class="hod-card-actions">
+                        <div data-aos="fade-up" class="hod-card-actions">
                             <span class="hod-view-btn">
                                 View Full Profile <i class="fa-solid fa-arrow-right hod-arrow"></i>
                             </span>
@@ -737,10 +737,10 @@
                 @if($hod && $member->id === $hod->id && !request('search') && !request('status')) @continue @endif
 
                 <a href="{{ route('people.show', $member->slug) }}" class="staff-card-link">
-                    <div class="staff-card-v2">
-                        <div class="card-photo-side">
+                    <div data-aos="fade-up" class="staff-card-v2">
+                        <div data-aos="fade-up" class="card-photo-side">
                             <img class="card-photo-img" src="{{ $member->photo ? asset('storage/'.$member->photo) : 'https://ui-avatars.com/api/?name=' . urlencode($member->name) . '&size=300&background=1e3a8a&color=fff&bold=true&format=svg' }}" alt="{{ $member->name }}" onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=300&background=1e3a8a&color=fff&bold=true&format=svg'">
-                            <div class="card-photo-overlay"></div>
+                            <div data-aos="fade-up" class="card-photo-overlay"></div>
                             @if($member->status === 'Tenure')
                                 <span class="card-status-badge tenure"><span class="card-status-dot tenure"></span> Tenure</span>
                             @elseif($member->status === 'Visiting')
@@ -749,7 +749,7 @@
                                 <span class="card-status-badge sabbatical"><span class="card-status-dot sabbatical"></span> Sabbatical</span>
                             @endif
                         </div>
-                        <div class="card-info-side">
+                        <div data-aos="fade-up" class="card-info-side">
                             <div>
                                 <h3 class="card-name">{{ $member->title }} {{ $member->name }}</h3>
                                 @if($member->rank)<p class="card-rank">{{ $member->rank }}</p>@endif
@@ -757,8 +757,8 @@
                                     <p class="card-specialisation"><i class="fa-solid fa-flask" style="color: #94a3b8; margin-right: 3px; font-size: 0.7rem;"></i>{{ $member->specialisation }}</p>
                                 @endif
                             </div>
-                            <div class="card-footer">
-                                <div class="card-courses">
+                            <div data-aos="fade-up" class="card-footer">
+                                <div data-aos="fade-up" class="card-courses">
                                     @if($member->courses->count())
                                         @foreach($member->courses->take(2) as $course)
                                             <span class="card-course-tag"><i class="fa-solid fa-book-open" style="font-size: 0.6rem;"></i> {{ $course->code }}</span>
@@ -826,21 +826,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         return `
-        <a href="${m.profile_url}" class="staff-card-link">
-            <div class="staff-card-v2">
-                <div class="card-photo-side">
+        <a data-aos="fade-up" href="${m.profile_url}" class="staff-card-link">
+            <div data-aos="fade-up" class="staff-card-v2">
+                <div data-aos="fade-up" class="card-photo-side">
                     <img class="card-photo-img" src="${photo}" alt="${m.name}" onerror="this.src='${fallback}'">
-                    <div class="card-photo-overlay"></div>
+                    <div data-aos="fade-up" class="card-photo-overlay"></div>
                     ${statusBadgeHtml(m.status)}
                 </div>
-                <div class="card-info-side">
+                <div data-aos="fade-up" class="card-info-side">
                     <div>
                         <h3 class="card-name">${m.title} ${m.name}</h3>
                         ${m.rank ? `<p class="card-rank">${m.rank}</p>` : ''}
                         ${m.specialisation ? `<p class="card-specialisation"><i class="fa-solid fa-flask" style="color:#94a3b8;margin-right:3px;font-size:0.7rem;"></i>${m.specialisation}</p>` : ''}
                     </div>
-                    <div class="card-footer">
-                        <div class="card-courses">${coursesHtml}</div>
+                    <div data-aos="fade-up" class="card-footer">
+                        <div data-aos="fade-up" class="card-courses">${coursesHtml}</div>
                         <span class="card-profile-btn">View Profile <i class="fa-solid fa-arrow-right arrow-icon"></i></span>
                     </div>
                 </div>

@@ -34,7 +34,7 @@
                 elseif ($isTall) $gridSpan = 'grid-column: span 1; grid-row: span 2;';
                 else $gridSpan = 'grid-column: span 1; grid-row: span 1;';
             @endphp
-            <div class="gallery-home-item group" style="{{ $gridSpan }} border-radius: 2px; overflow: hidden; position: relative; cursor: pointer;">
+            <div data-aos="fade-up" class="gallery-home-item group" style="{{ $gridSpan }} border-radius: 2px; overflow: hidden; position: relative; cursor: pointer;">
                 <img src="{{ asset('storage/'.$img->image_path) }}" alt="{{ $img->caption ?? 'Gallery image' }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); filter: brightness(0.95);">
                 <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%); opacity: 0; transition: opacity 0.4s ease-in-out; display: flex; align-items: flex-end; padding: 1.5rem;" class="gallery-overlay">
                     <div>

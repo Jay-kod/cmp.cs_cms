@@ -26,7 +26,7 @@
         @if($staffMembers->count() > 0)
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem;">
                 @foreach($staffMembers as $staff)
-                    <div class="staff-card" style="background: #f8fafc; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div data-aos="fade-up" class="staff-card" style="background: #f8fafc; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                         <div style="width: 100%; height: 260px; overflow: hidden; position: relative;">
                             <img src="{{ $staff->photo ? app(\App\Services\MediaOptimizationService::class)->webpOrOriginalUrl($staff->photo, 400) : asset('images/default-avatar.jpg') }}" alt="{{ $staff->name }}" style="width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.5s ease;">
                         </div>

@@ -65,8 +65,8 @@
                     ];
                 @endphp
                 @foreach($pageStats as $stat)
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-2 sm:mb-3" style="background: {{ $stat['color'] }}15;">
+                <div data-aos="fade-up" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center">
+                    <div data-aos="fade-up" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-2 sm:mb-3" style="background: {{ $stat['color'] }}15;">
                         <i class="{{ $stat['icon'] }}" style="color: {{ $stat['color'] }}; font-size: 1.1rem;"></i>
                     </div>
                     <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-none mb-1 font-heading">{{ $stat['value'] }}</div>
@@ -115,7 +115,7 @@
                 {{-- Decorative background blur element --}}
                 <div class="absolute -right-8 -top-8 w-32 h-32 {{ $pillar['bg'] }} rounded-full blur-2xl opacity-60 group-hover:opacity-90 transition-opacity -z-10"></div>
                 
-                <div class="w-14 h-14 {{ $pillar['bg'] }} rounded-xl flex items-center justify-center mb-5 rotate-3 group-hover:rotate-0 transition-transform duration-300 shadow-sm border border-white/50">
+                <div data-aos="fade-up" class="w-14 h-14 {{ $pillar['bg'] }} rounded-xl flex items-center justify-center mb-5 rotate-3 group-hover:rotate-0 transition-transform duration-300 shadow-sm border border-white/50">
                     <i class="{{ $pillar['icon'] }} {{ $pillar['text_color'] }} text-xl drop-shadow-sm"></i>
                 </div>
                 
@@ -152,7 +152,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             @foreach($activities as $act)
             <div class="group bg-white border border-slate-200/60 rounded-2xl p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5 shadow-[0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)]">
-                <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green-600 transition-colors duration-300">
+                <div data-aos="fade-up" class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green-600 transition-colors duration-300">
                     <i class="{{ $act['icon'] }} text-green-600 text-[1.15rem] group-hover:text-white transition-colors duration-300"></i>
                 </div>
                 <h4 class="text-lg font-bold text-slate-800 mb-2.5 font-heading group-hover:text-green-700 transition-colors duration-300">{{ $act['title'] }}</h4>
@@ -183,7 +183,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @forelse($presidents as $p)
-            <div class="group bg-white border border-slate-200 rounded-2xl p-4 transition-all duration-300 hover:border-green-500 hover:-translate-y-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] flex flex-col items-center text-center">
+            <div data-aos="fade-up" class="group bg-white border border-slate-200 rounded-2xl p-4 transition-all duration-300 hover:border-green-500 hover:-translate-y-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] flex flex-col items-center text-center">
                 <!-- Square Picture -->
                 <div class="w-full aspect-square bg-slate-50 rounded-xl overflow-hidden relative shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] border border-slate-100 mb-4 group">
                     <img src="{{ $p->photo ? asset('storage/'.$p->photo) : asset('images/avatar-placeholder.png') }}" 
@@ -192,7 +192,7 @@
                          onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($p->name) }}&background=16a34a&color=fff&size=150'">
 
                     @if($p->email || $p->whatsapp || $p->facebook || $p->x)
-                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px]">
+                    <div data-aos="fade-up" class="absolute inset-0 bg-black/40 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px]">
                         @if($p->email)
                         <a href="mailto:{{ $p->email }}" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-red-500 hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
                             <i class="fa-solid fa-envelope"></i>
@@ -207,7 +207,7 @@
                         @php
                             $waNumber = preg_replace('/[^0-9]/', '', $p->whatsapp);
                         @endphp
-                        <a href="https://wa.me/{{ $waNumber }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-green-500 hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
+                        <a data-aos="fade-up" href="https://wa.me/{{ $waNumber }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-green-500 hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
                             <!-- Custom Tooltip -->
                             <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[0.7rem] font-semibold tracking-wide px-2.5 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-[5px] before:border-transparent before:border-t-slate-900 z-10 translate-y-2 group-hover/icon:translate-y-0">
@@ -222,7 +222,7 @@
                                 : null;
                         @endphp
                         @if($facebookUrl)
-                        <a href="{{ $facebookUrl }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
+                        <a data-aos="fade-up" href="{{ $facebookUrl }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
                             <i class="fa-brands fa-facebook-f text-lg"></i>
                             <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[0.7rem] font-semibold tracking-wide px-2.5 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-[5px] before:border-transparent before:border-t-slate-900 z-10 translate-y-2 group-hover/icon:translate-y-0">
                                 {{ $p->facebook }}
@@ -236,7 +236,7 @@
                                 : null;
                         @endphp
                         @if($xUrl)
-                        <a href="{{ $xUrl }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-black hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
+                        <a data-aos="fade-up" href="{{ $xUrl }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-black hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
                             <i class="fa-brands fa-x-twitter text-lg"></i>
                             <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[0.7rem] font-semibold tracking-wide px-2.5 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-[5px] before:border-transparent before:border-t-slate-900 z-10 translate-y-2 group-hover/icon:translate-y-0">
                                 {{ $p->x }}
@@ -248,7 +248,7 @@
                 </div>
 
                 <!-- Middle Aligned Content -->
-                <div class="flex flex-col flex-1 w-full items-center justify-start px-2">
+                <div data-aos="fade-up" class="flex flex-col flex-1 w-full items-center justify-start px-2">
                     <h3 class="m-0 mb-1 text-[1.15rem] font-bold text-slate-800 font-heading group-hover:text-green-600 transition-colors duration-300">{{ $p->name }}</h3>
                     
                     <div class="mb-3">

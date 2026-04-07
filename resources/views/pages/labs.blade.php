@@ -38,7 +38,7 @@
                 }
             @endphp
             @foreach($labs as $lab)
-            <div class="about-facilities-card" style="display: flex; flex-direction: column; gap: 1.5rem; background: white; padding: 2.5rem; border-radius: 16px; border: 1px solid #e2e8f0; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.03);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 40px -10px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.03)'">
+            <div data-aos="fade-up" class="about-facilities-card" style="display: flex; flex-direction: column; gap: 1.5rem; background: white; padding: 2.5rem; border-radius: 16px; border: 1px solid #e2e8f0; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.03);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 40px -10px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.03)'">
                 <div style="width: 72px; height: 72px; border-radius: 18px; background: {{ $lab['gradient'] ?? 'linear-gradient(135deg, #16a34a, #15803d)' }}; color: white; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 10px 25px -5px {{ $lab['shadow'] ?? 'rgba(22,163,74,0.3)' }};">
                     <i class="fa-solid {{ $lab['icon'] ?? 'fa-server' }}"></i>
                 </div>

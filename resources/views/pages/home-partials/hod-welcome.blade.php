@@ -73,7 +73,7 @@
                     $statValue = $gs("stat_{$n}_value", [config('university.established'), '', '', '', 'NUC'][$n-1]);
                 }
             @endphp
-            <div class="stat-card">
+            <div data-aos="fade-up" class="stat-card">
                 <div class="stat-bg-icon"><i class="{{ $statIcon }}"></i></div>
                 <h2 class="stat-number">{{ $statValue }}</h2>
                 <p>{{ $statLabel }}</p>

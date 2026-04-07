@@ -11,7 +11,7 @@
 
             <div class="about-programmes-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem;">
                 <!-- Postgraduate -->
-                <div class="about-prog-card" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 14px; padding: 1.8rem; color: white; position: relative; overflow: hidden; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 20px 40px -12px rgba(15,23,42,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div data-aos="fade-up" class="about-prog-card" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 14px; padding: 1.8rem; color: white; position: relative; overflow: hidden; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 20px 40px -12px rgba(15,23,42,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                     <div style="position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,0.04); transition: transform 0.4s;" class="bg-circle"></div>
                     <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem;">
                         <div style="width: 44px; height: 44px; background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: transform 0.3s;" class="main-icon">
@@ -32,7 +32,7 @@
                 </div>
 
                 <!-- Undergraduate -->
-                <div class="about-prog-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 14px; padding: 1.8rem; position: relative; overflow: hidden; border: 1px solid #bbf7d0; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 20px 40px -12px rgba(22,163,74,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div data-aos="fade-up" class="about-prog-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 14px; padding: 1.8rem; position: relative; overflow: hidden; border: 1px solid #bbf7d0; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 20px 40px -12px rgba(22,163,74,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                     <div style="position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; border-radius: 50%; background: rgba(22,163,74,0.06); transition: transform 0.4s;" class="bg-circle"></div>
                     <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem;">
                         <div style="width: 44px; height: 44px; background: rgba(22, 163, 74, 0.15); color: var(--color-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: transform 0.3s;" class="main-icon">

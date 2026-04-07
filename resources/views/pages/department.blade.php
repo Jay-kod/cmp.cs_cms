@@ -34,7 +34,7 @@
         <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
             <!-- Vision -->
             <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:border-[#45c363]/50 transition-colors group">
-                <div class="w-16 h-16 bg-[#45c363]/10 rounded-2xl flex items-center justify-center text-[#45c363] text-3xl mb-6 group-hover:scale-110 transition-transform">
+                <div data-aos="fade-up" class="w-16 h-16 bg-[#45c363]/10 rounded-2xl flex items-center justify-center text-[#45c363] text-3xl mb-6 group-hover:scale-110 transition-transform">
                     <i class="fa-solid fa-eye"></i>
                 </div>
                 <h3 class="text-2xl font-black text-[#485b93] mb-4">Our Vision</h3>
@@ -43,7 +43,7 @@
             
             <!-- Mission -->
             <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:border-[#485b93]/50 transition-colors group">
-                <div class="w-16 h-16 bg-[#485b93]/10 rounded-2xl flex items-center justify-center text-[#485b93] text-3xl mb-6 group-hover:scale-110 transition-transform">
+                <div data-aos="fade-up" class="w-16 h-16 bg-[#485b93]/10 rounded-2xl flex items-center justify-center text-[#485b93] text-3xl mb-6 group-hover:scale-110 transition-transform">
                     <i class="fa-solid fa-bullseye"></i>
                 </div>
                 <h3 class="text-2xl font-black text-[#485b93] mb-4">Our Mission</h3>
@@ -65,7 +65,7 @@
             @forelse($programmes ?? [] as $programme)
             <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300">
                 <!-- Header -->
-                <div class="bg-gray-50/80 px-8 py-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div data-aos="fade-up" class="bg-gray-50/80 px-8 py-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <h3 class="text-2xl font-black text-[#485b93] flex items-center gap-3">
                         <i class="fa-solid fa-graduation-cap text-[#45c363]"></i>
                         {{ $programme->level }} Programme
@@ -111,7 +111,7 @@
             @empty
             <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300">
                 <!-- Header -->
-                <div class="bg-gray-50/80 px-8 py-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div data-aos="fade-up" class="bg-gray-50/80 px-8 py-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <h3 class="text-2xl font-black text-[#485b93] flex items-center gap-3">
                         <i class="fa-solid fa-graduation-cap text-[#45c363]"></i>
                         B.Sc. Programme (Sample Template)
@@ -123,7 +123,7 @@
                 </div>
                 
                 <div class="p-8 sm:p-10">
-                    <div class="mb-10 block p-4 bg-yellow-50 border border-yellow-200 rounded-xl text-yellow-700 text-sm font-bold mb-6">
+                    <div data-aos="fade-up" class="mb-10 block p-4 bg-yellow-50 border border-yellow-200 rounded-xl text-yellow-700 text-sm font-bold mb-6">
                         <i class="fa-solid fa-triangle-exclamation mr-2"></i> Note: No actual programmes are attached to this department in the database yet. This is a layout preview.
                     </div>
                     <!-- Overview -->
@@ -177,13 +177,13 @@
                 <div class="text-[12px] font-bold text-[#45c363] mb-2 uppercase tracking-wider">{{ $pub->year ?? 'Recent' }}</div>
                 <h3 class="text-lg font-bold text-[#485b93] mb-3 group-hover:text-[#45c363] transition-colors">{{ $pub->title }}</h3>
                 <p class="text-sm text-gray-600 mb-4 line-clamp-3">{{ $pub->abstract ?? 'Read the full publication to learn more about this research methodology and findings.' }}</p>
-                <div class="text-xs font-bold text-gray-500 bg-gray-50 px-3 py-2 rounded-lg inline-block">
+                <div data-aos="fade-up" class="text-xs font-bold text-gray-500 bg-gray-50 px-3 py-2 rounded-lg inline-block">
                     <i class="fa-solid fa-book-open mr-1 text-gray-400"></i> {{ $pub->journal ?? 'Academic Journal' }}
                 </div>
             </div>
             @empty
             <div class="col-span-full text-center py-16 bg-white rounded-3xl border border-dashed border-gray-200">
-                <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-gray-400 text-2xl mb-4">
+                <div data-aos="fade-up" class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-gray-400 text-2xl mb-4">
                     <i class="fa-solid fa-flask"></i>
                 </div>
                 <h3 class="text-lg font-bold text-gray-800 mb-1">No Publications Yet</h3>
@@ -209,7 +209,7 @@
                     @if($item->image)
                     <img src="{{ asset('storage/'.$item->image) }}" alt="{{ $item->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     @else
-                    <div class="w-full h-full flex items-center justify-center text-gray-300 group-hover:scale-105 transition-transform duration-500">
+                    <div data-aos="fade-up" class="w-full h-full flex items-center justify-center text-gray-300 group-hover:scale-105 transition-transform duration-500">
                         <i class="fa-regular fa-image text-4xl"></i>
                     </div>
                     @endif
@@ -219,7 +219,7 @@
                     <h3 class="text-xl font-black text-[#485b93] mb-3 line-clamp-2 hover:text-[#45c363] transition-colors"><a href="#">{{ $item->title }}</a></h3>
                     <p class="text-sm text-gray-600 mb-6 line-clamp-3 leading-relaxed">{{ $item->excerpt ?? Str::limit(strip_tags($item->content), 120) }}</p>
                     <div class="mt-auto pt-4 border-t border-gray-100">
-                        <a href="#" class="text-sm font-bold text-[#45c363] hover:text-[#485b93] transition-colors flex items-center">
+                        <a data-aos="fade-up" href="#" class="text-sm font-bold text-[#45c363] hover:text-[#485b93] transition-colors flex items-center">
                             Read Full Story <i class="fa-solid fa-arrow-right-long ml-2"></i>
                         </a>
                     </div>
@@ -227,7 +227,7 @@
             </div>
             @empty
             <div class="col-span-full text-center py-16 bg-gray-50 rounded-3xl border border-dashed border-gray-200">
-                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto text-gray-400 text-2xl mb-4 border border-gray-100 shadow-sm">
+                <div data-aos="fade-up" class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto text-gray-400 text-2xl mb-4 border border-gray-100 shadow-sm">
                     <i class="fa-regular fa-newspaper"></i>
                 </div>
                 <h3 class="text-lg font-bold text-gray-800 mb-1">No News Available</h3>

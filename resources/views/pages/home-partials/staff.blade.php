@@ -11,7 +11,7 @@
         <div class="staff-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
             @foreach($featuredStaff as $member)
             <a href="{{ route('people.show', $member->slug) }}" class="staff-home-card" style="text-decoration: none; color: inherit; background: #f8fafc; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; transition: all 0.35s ease;">
-                <div class="staff-card-img" style="position: relative; padding-top: 125%; overflow: hidden;">
+                <div data-aos="fade-up" class="staff-card-img" style="position: relative; padding-top: 125%; overflow: hidden;">
                     @if($member->photo)
                         <img src="{{ asset('storage/'.$member->photo) }}" alt="{{ $member->name }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s;">
                     @else

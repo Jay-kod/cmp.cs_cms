@@ -14,7 +14,7 @@
             <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.7;">{{ $gs('home_programmes_subtitle','Comprehensive undergraduate and postgraduate programmes designed to shape the next generation of global tech leaders.') }}</p>
         </div>
         
-        <div class="hover-card-grid">
+        <div data-aos="fade-up" class="hover-card-grid">
             @php
                 $progColors = [
                     ['from' => '#16a34a', 'to' => '#059669', 'bg' => 'rgba(22,163,74,0.08)', 'badge' => '#dcfce7', 'badgeText' => '#15803d'],
@@ -52,7 +52,7 @@
                         <span style="display: flex; align-items: center; gap: 0.4rem;"><i class="fa-regular fa-clock" style="color: {{ $pc['from'] }}; opacity: 0.8;"></i> {{ $prog->duration }}</span>
                         <span style="display: flex; align-items: center; gap: 0.4rem;"><i class="fa-solid fa-book-open" style="color: {{ $pc['from'] }}; opacity: 0.8;"></i> {{ $prog->mode_of_study }}</span>
                     </div>
-                    <div style="width: 32px; height: 32px; border-radius: 50%; background: #f1f5f9; color: #64748b; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.3s ease;" class="card-arrow" data-color="{{ $pc['from'] }}" data-bg="{{ $pc['bg'] }}"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div data-aos="fade-up" style="width: 32px; height: 32px; border-radius: 50%; background: #f1f5f9; color: #64748b; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.3s ease;" class="card-arrow" data-color="{{ $pc['from'] }}" data-bg="{{ $pc['bg'] }}"><i class="fa-solid fa-arrow-right"></i></div>
                 </div>
             </a>
             @endforeach

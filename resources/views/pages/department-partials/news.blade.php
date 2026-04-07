@@ -28,7 +28,7 @@
         @if($departmentNews->count() > 0)
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 @foreach($departmentNews as $news)
-                    <div class="news-card" style="background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                    <div data-aos="fade-up" class="news-card" style="background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
                         <div class="news-img" style="height: 200px; overflow: hidden; position: relative;">
                             <img src="{{ $news->image ? asset('storage/'.$news->image) : asset('images/placeholder-news.jpg') }}" alt="{{ $news->title }}" style="width: 100%; height: 100%; object-fit: cover;">
                             <div style="position: absolute; top: 1rem; left: 1rem; background: var(--color-primary); color: white; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">

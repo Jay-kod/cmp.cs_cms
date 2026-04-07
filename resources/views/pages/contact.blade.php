@@ -585,8 +585,8 @@
             ];
         @endphp
         @foreach($cards as $card)
-        <a @if($card['href']) href="{{ $card['href'] }}" @endif class="contact-info-card" style="--card-accent: {{ $card['color'] }};" @if($card['href'] && str_starts_with($card['href'], 'mailto:')) target="_blank" @endif>
-            <div class="info-card-icon" style="background: {{ $card['bg'] }};">
+        <a data-aos="fade-up" @if($card['href']) href="{{ $card['href'] }}" @endif class="contact-info-card" style="--card-accent: {{ $card['color'] }};" @if($card['href'] && str_starts_with($card['href'], 'mailto:')) target="_blank" @endif>
+            <div data-aos="fade-up" class="info-card-icon" style="background: {{ $card['bg'] }};">
                 <i class="{{ $card['icon'] }}" style="color: {{ $card['color'] }};"></i>
             </div>
             <h4 class="info-card-title">{{ $card['title'] }}</h4>
@@ -598,7 +598,7 @@
     {{-- ── Main Content: Form + Sidebar ── --}}
     <div class="contact-main">
         {{-- Contact Form --}}
-        <div class="contact-form-card">
+        <div data-aos="fade-up" class="contact-form-card">
             @if(session('success'))
             <div class="contact-alert success">
                 <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
@@ -659,7 +659,7 @@
         <div class="contact-sidebar">
 
             {{-- About the Department --}}
-            <div class="sidebar-card">
+            <div data-aos="fade-up" class="sidebar-card">
                 <h3>
                     <i class="fa-solid fa-building-columns"></i> {{ $gs('contact_about_title', 'About the Department') }}
                 </h3>
@@ -670,7 +670,7 @@
 
             {{-- Partnership Card --}}
             @if($showPartnership)
-            <div class="partner-card">
+            <div data-aos="fade-up" class="partner-card">
                 <h3><i class="fa-solid fa-handshake"></i> {{ $gs('contact_partner_title', 'Partner With Us') }}</h3>
                 <p class="partner-desc">{{ $gs('contact_partner_text', 'We collaborate with tech companies and organizations for internships, joint research, and curriculum development. Let\'s shape the next generation of IT leaders together.') }}</p>
                 <a href="#" class="partner-cta" onclick="document.querySelector('select[name=subject]').value='Partnership / Collaboration'; document.querySelector('textarea[name=message]').focus(); return false;">
@@ -680,7 +680,7 @@
             @endif
 
             {{-- Quick Links --}}
-            <div class="sidebar-card">
+            <div data-aos="fade-up" class="sidebar-card">
                 <h3><i class="fa-solid fa-link"></i> Useful Links</h3>
                 <div style="display: flex; flex-direction: column; gap: 0.4rem;">
                     @foreach([
@@ -699,7 +699,7 @@
             {{-- Social Links --}}
             @php $socialLinks = \App\Models\SocialLink::where('is_active', true)->orderBy('sort_order')->get(); @endphp
             @if($socialLinks->count())
-            <div class="sidebar-card">
+            <div data-aos="fade-up" class="sidebar-card">
                 <h3><i class="fa-solid fa-share-nodes"></i> Connect With Us</h3>
                 <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
                     @foreach($socialLinks as $sl)
@@ -720,7 +720,7 @@
         <p class="section-desc">{{ $gs('contact_key_contacts_subtitle', 'Reach out directly to the relevant office for faster assistance.') }}</p>
         <div class="key-contacts-grid">
             @foreach($keyContacts as $contact)
-            <div class="key-contact-card">
+            <div data-aos="fade-up" class="key-contact-card">
                 <div class="key-contact-avatar">
                     <i class="fa-solid fa-user-tie"></i>
                 </div>
@@ -747,7 +747,7 @@
         <p class="section-desc">{{ $gs('contact_faq_subtitle', 'Quick answers to common questions about the department.') }}</p>
         <div class="faq-list">
             @foreach($faqs as $i => $faq)
-            <div class="faq-item{{ $i === 0 ? ' open' : '' }}">
+            <div data-aos="fade-up" class="faq-item{{ $i === 0 ? ' open' : '' }}">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <h4><span class="faq-num">{{ $i + 1 }}</span> {{ $faq['q'] }}</h4>
                     <div class="faq-toggle"><i class="fa-solid fa-chevron-down"></i></div>

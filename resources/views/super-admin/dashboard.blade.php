@@ -39,46 +39,46 @@
         <i class="fa-solid fa-users-gear"></i> User & System Overview
     </h3>
     <div class="dashboard-stats-grid">
-        <div class="admin-card stat-card" style="border-left: 4px solid #b91c1c;">
-            <div class="stat-card-bg-circle" style="background: rgba(185,28,28,0.08);"></div>
+        <div data-aos="fade-up" class="admin-card stat-card" style="border-left: 4px solid #b91c1c;">
+            <div data-aos="fade-up" class="stat-card-bg-circle" style="background: rgba(185,28,28,0.08);"></div>
             <div class="stat-content">
                 <h3 class="stat-label">Total Users</h3>
                 <p class="stat-value">{{ $systemStats['totalUsers'] }}</p>
             </div>
-            <div class="stat-icon-box" style="background: rgba(185,28,28,0.1); color: #b91c1c;">
+            <div data-aos="fade-up" class="stat-icon-box" style="background: rgba(185,28,28,0.1); color: #b91c1c;">
                 <i class="fa-solid fa-users"></i>
             </div>
         </div>
 
-        <div class="admin-card stat-card" style="border-left: 4px solid #f59e0b;">
-            <div class="stat-card-bg-circle color-orange"></div>
+        <div data-aos="fade-up" class="admin-card stat-card" style="border-left: 4px solid #f59e0b;">
+            <div data-aos="fade-up" class="stat-card-bg-circle color-orange"></div>
             <div class="stat-content">
                 <h3 class="stat-label">Super Admins</h3>
                 <p class="stat-value">{{ $systemStats['totalSuperAdmins'] }}</p>
             </div>
-            <div class="stat-icon-box color-orange">
+            <div data-aos="fade-up" class="stat-icon-box color-orange">
                 <i class="fa-solid fa-shield-halved"></i>
             </div>
         </div>
 
-        <div class="admin-card stat-card" style="border-left: 4px solid #3b82f6;">
-            <div class="stat-card-bg-circle color-blue"></div>
+        <div data-aos="fade-up" class="admin-card stat-card" style="border-left: 4px solid #3b82f6;">
+            <div data-aos="fade-up" class="stat-card-bg-circle color-blue"></div>
             <div class="stat-content">
                 <h3 class="stat-label">Admins</h3>
                 <p class="stat-value">{{ $systemStats['totalAdmins'] }}</p>
             </div>
-            <div class="stat-icon-box color-blue">
+            <div data-aos="fade-up" class="stat-icon-box color-blue">
                 <i class="fa-solid fa-user-gear"></i>
             </div>
         </div>
 
-        <div class="admin-card stat-card" style="border-left: 4px solid #10b981;">
-            <div class="stat-card-bg-circle color-green"></div>
+        <div data-aos="fade-up" class="admin-card stat-card" style="border-left: 4px solid #10b981;">
+            <div data-aos="fade-up" class="stat-card-bg-circle color-green"></div>
             <div class="stat-content">
                 <h3 class="stat-label">External Systems</h3>
                 <p class="stat-value">{{ $systemStats['totalExternalSystems'] }}</p>
             </div>
-            <div class="stat-icon-box color-green">
+            <div data-aos="fade-up" class="stat-icon-box color-green">
                 <i class="fa-solid fa-server"></i>
             </div>
         </div>
@@ -93,46 +93,46 @@
         <i class="fa-solid fa-layer-group"></i> Content Overview
     </h3>
     <div class="dashboard-stats-grid">
-        <div class="admin-card stat-card">
-            <div class="stat-card-bg-circle color-blue"></div>
+        <div data-aos="fade-up" class="admin-card stat-card">
+            <div data-aos="fade-up" class="stat-card-bg-circle color-blue"></div>
             <div class="stat-content">
                 <h3 class="stat-label">Total Staff</h3>
                 <p class="stat-value">{{ $contentStats['staffCount'] }}</p>
             </div>
-            <div class="stat-icon-box color-blue">
+            <div data-aos="fade-up" class="stat-icon-box color-blue">
                 <i class="fa-solid fa-user-tie"></i>
             </div>
         </div>
 
-        <div class="admin-card stat-card">
-            <div class="stat-card-bg-circle color-green"></div>
+        <div data-aos="fade-up" class="admin-card stat-card">
+            <div data-aos="fade-up" class="stat-card-bg-circle color-green"></div>
             <div class="stat-content">
                 <h3 class="stat-label">Programmes</h3>
                 <p class="stat-value">{{ $contentStats['programmesCount'] }}</p>
             </div>
-            <div class="stat-icon-box color-green">
+            <div data-aos="fade-up" class="stat-icon-box color-green">
                 <i class="fa-solid fa-graduation-cap"></i>
             </div>
         </div>
 
-        <div class="admin-card stat-card">
-            <div class="stat-card-bg-circle color-purple"></div>
+        <div data-aos="fade-up" class="admin-card stat-card">
+            <div data-aos="fade-up" class="stat-card-bg-circle color-purple"></div>
             <div class="stat-content">
                 <h3 class="stat-label">Courses</h3>
                 <p class="stat-value">{{ $contentStats['coursesCount'] }}</p>
             </div>
-            <div class="stat-icon-box color-purple">
+            <div data-aos="fade-up" class="stat-icon-box color-purple">
                 <i class="fa-solid fa-book-open"></i>
             </div>
         </div>
 
-        <div class="admin-card stat-card">
-            <div class="stat-card-bg-circle color-orange"></div>
+        <div data-aos="fade-up" class="admin-card stat-card">
+            <div data-aos="fade-up" class="stat-card-bg-circle color-orange"></div>
             <div class="stat-content">
                 <h3 class="stat-label">News Articles</h3>
                 <p class="stat-value">{{ $contentStats['newsCount'] }}</p>
             </div>
-            <div class="stat-icon-box color-orange">
+            <div data-aos="fade-up" class="stat-icon-box color-orange">
                 <i class="fa-solid fa-newspaper"></i>
             </div>
         </div>
@@ -154,7 +154,7 @@
     ];
     @endphp
     @foreach($secondaryStats as $ss)
-    <div class="admin-card" style="padding: 1rem; display: flex; align-items: center; gap: 0.75rem;">
+    <div data-aos="fade-up" class="admin-card" style="padding: 1rem; display: flex; align-items: center; gap: 0.75rem;">
         <div style="width: 40px; height: 40px; border-radius: 10px; background: {{ $ss['bg'] }}; color: {{ $ss['color'] }}; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;">
             <i class="fa-solid {{ $ss['icon'] }}"></i>
         </div>
@@ -171,7 +171,7 @@
      ═══════════════════════════════════════════════ --}}
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
     <!-- System Health -->
-    <div class="admin-card dashboard-panel">
+    <div data-aos="fade-up" class="admin-card dashboard-panel">
         <div class="panel-header">
             <h3 class="panel-title">
                 <i class="fa-solid fa-heart-pulse" style="color: #b91c1c;"></i> System Health
@@ -213,7 +213,7 @@
     </div>
 
     <!-- Quick Actions -->
-    <div class="admin-card dashboard-panel">
+    <div data-aos="fade-up" class="admin-card dashboard-panel">
         <div class="panel-header">
             <h3 class="panel-title">
                 <i class="fa-solid fa-bolt" style="color: #f59e0b;"></i> Quick Actions
@@ -272,7 +272,7 @@
      ═══════════════════════════════════════════════ --}}
 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
     <!-- Users Panel -->
-    <div class="admin-card dashboard-panel">
+    <div data-aos="fade-up" class="admin-card dashboard-panel">
         <div class="panel-header">
             <h3 class="panel-title">
                 <i class="fa-solid fa-user-shield" style="color: #b91c1c;"></i> All Users
@@ -281,15 +281,15 @@
         </div>
         <div class="panel-body">
             @forelse($recentUsers as $user)
-            <div class="panel-list-item">
+            <div data-aos="fade-up" class="panel-list-item">
                 <div class="news-list-icon" style="background: {{ $user->isSuperAdmin() ? 'rgba(185,28,28,0.1)' : ($user->isAdmin() ? 'rgba(59,130,246,0.1)' : 'rgba(16,185,129,0.1)') }}; color: {{ $user->isSuperAdmin() ? '#b91c1c' : ($user->isAdmin() ? '#3b82f6' : '#10b981') }};">
                     <i class="fa-solid {{ $user->isSuperAdmin() ? 'fa-shield-halved' : ($user->isAdmin() ? 'fa-user-gear' : 'fa-user') }}"></i>
                 </div>
-                <div class="item-content">
+                <div data-aos="fade-up" class="item-content">
                     <h4 class="item-title">
-                        <a href="{{ route('super-admin.users.edit', $user) }}" class="item-link">{{ $user->name }}</a>
+                        <a data-aos="fade-up" href="{{ route('super-admin.users.edit', $user) }}" class="item-link">{{ $user->name }}</a>
                     </h4>
-                    <div class="item-meta">
+                    <div data-aos="fade-up" class="item-meta">
                         <span class="meta-badge" style="background: {{ $user->isSuperAdmin() ? '#fef2f2' : ($user->isAdmin() ? '#eff6ff' : '#f0fdf4') }}; color: {{ $user->isSuperAdmin() ? '#b91c1c' : ($user->isAdmin() ? '#2563eb' : '#059669') }};">
                             {{ $user->role_label }}
                         </span>
@@ -311,7 +311,7 @@
     </div>
 
     <!-- Recent News Panel -->
-    <div class="admin-card dashboard-panel">
+    <div data-aos="fade-up" class="admin-card dashboard-panel">
         <div class="panel-header">
             <h3 class="panel-title">
                 <i class="fa-solid fa-newspaper" style="color: #16a34a;"></i> Recent News
@@ -320,15 +320,15 @@
         </div>
         <div class="panel-body">
             @forelse($recentNews as $news)
-            <div class="panel-list-item">
+            <div data-aos="fade-up" class="panel-list-item">
                 <div class="news-list-icon" style="background: {{ $news->is_published ? 'rgba(16, 185, 129, 0.1)' : 'rgba(245, 158, 11, 0.1)' }}; color: {{ $news->is_published ? '#10b981' : '#f59e0b' }};">
                     <i class="fa-solid {{ $news->is_published ? 'fa-check' : 'fa-pen-ruler' }}"></i>
                 </div>
-                <div class="item-content">
+                <div data-aos="fade-up" class="item-content">
                     <h4 class="item-title">
-                        <a href="{{ route('super-admin.news.edit', $news) }}" class="item-link">{{ $news->title }}</a>
+                        <a data-aos="fade-up" href="{{ route('super-admin.news.edit', $news) }}" class="item-link">{{ $news->title }}</a>
                     </h4>
-                    <div class="item-meta">
+                    <div data-aos="fade-up" class="item-meta">
                         <span><i class="fa-regular fa-clock"></i> {{ $news->published_at ? \Carbon\Carbon::parse($news->published_at)->diffForHumans() : 'Draft' }}</span>
                         <span class="meta-dot" style="margin: 0 0.4rem; color: #cbd5e1;">&bull;</span>
                         <span title="Reactions" style="margin-right: 0.3rem;"><i class="fa-regular fa-thumbs-up" style="color: #16a34a;"></i> {{ $news->reactions_count ?? 0 }}</span>
@@ -351,7 +351,7 @@
     </div>
 
     <!-- Upcoming Events Panel -->
-    <div class="admin-card dashboard-panel">
+    <div data-aos="fade-up" class="admin-card dashboard-panel">
         <div class="panel-header">
             <h3 class="panel-title">
                 <i class="fa-regular fa-calendar-check" style="color: #3b82f6;"></i> Upcoming Events
@@ -360,16 +360,16 @@
         </div>
         <div class="panel-body">
             @forelse($upcomingEvents as $event)
-            <div class="panel-list-item">
+            <div data-aos="fade-up" class="panel-list-item">
                 <div class="event-date-badge">
                     <div class="event-month">{{ \Carbon\Carbon::parse($event->date)->format('M') }}</div>
                     <div class="event-day">{{ \Carbon\Carbon::parse($event->date)->format('d') }}</div>
                 </div>
-                <div class="item-content">
+                <div data-aos="fade-up" class="item-content">
                     <h4 class="item-title">
-                        <a href="{{ route('super-admin.events.edit', $event) }}" class="item-link">{{ $event->title }}</a>
+                        <a data-aos="fade-up" href="{{ route('super-admin.events.edit', $event) }}" class="item-link">{{ $event->title }}</a>
                     </h4>
-                    <div class="item-meta">
+                    <div data-aos="fade-up" class="item-meta">
                         <span><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::parse($event->time ?? $event->date)->format('h:i A') }}</span>
                         @if($event->location)
                         <span class="meta-dot"></span>
@@ -393,7 +393,7 @@
     </div>
 
     <!-- Media Optimization Panel -->
-    <div class="admin-card dashboard-panel">
+    <div data-aos="fade-up" class="admin-card dashboard-panel">
         <div class="panel-header">
             <h3 class="panel-title">
                 <i class="fa-solid fa-image" style="color: #10b981;"></i> Media Optimization (WebP)
@@ -432,19 +432,19 @@
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-bottom: 1rem;">
-                <div class="admin-card" style="padding: 0.85rem; background: #fffbeb; border: 1px solid #fde68a;">
+                <div data-aos="fade-up" class="admin-card" style="padding: 0.85rem; background: #fffbeb; border: 1px solid #fde68a;">
                     <div style="font-weight: 800; color: #d97706;">Pending</div>
                     <div style="font-size: 1.5rem; font-weight: 900; color: #b45309;">{{ $pending }}</div>
                 </div>
-                <div class="admin-card" style="padding: 0.85rem; background: #f0f9ff; border: 1px solid #bae6fd;">
+                <div data-aos="fade-up" class="admin-card" style="padding: 0.85rem; background: #f0f9ff; border: 1px solid #bae6fd;">
                     <div style="font-weight: 800; color: #0ea5e9;">Processing</div>
                     <div style="font-size: 1.5rem; font-weight: 900; color: #0369a1;">{{ $processing }}</div>
                 </div>
-                <div class="admin-card" style="padding: 0.85rem; background: #ecfdf5; border: 1px solid #bbf7d0;">
+                <div data-aos="fade-up" class="admin-card" style="padding: 0.85rem; background: #ecfdf5; border: 1px solid #bbf7d0;">
                     <div style="font-weight: 800; color: #10b981;">Ready</div>
                     <div style="font-size: 1.5rem; font-weight: 900; color: #059669;">{{ $ready }}</div>
                 </div>
-                <div class="admin-card" style="padding: 0.85rem; background: #fef2f2; border: 1px solid #fecaca;">
+                <div data-aos="fade-up" class="admin-card" style="padding: 0.85rem; background: #fef2f2; border: 1px solid #fecaca;">
                     <div style="font-weight: 800; color: #ef4444;">Failed</div>
                     <div style="font-size: 1.5rem; font-weight: 900; color: #dc2626;">{{ $failed }}</div>
                 </div>
@@ -461,15 +461,15 @@
                         $readyCount = $media->derivatives->where('status', 'ready')->count();
                         $failedCount = $media->derivatives->where('status', 'failed')->count();
                     @endphp
-                    <div class="panel-list-item" style="margin-bottom: 0.75rem;">
+                    <div data-aos="fade-up" class="panel-list-item" style="margin-bottom: 0.75rem;">
                         <div class="news-list-icon" style="background: rgba(16,185,129,0.08); color: #0f172a;">
                             <i class="fa-solid fa-layer-group"></i>
                         </div>
-                        <div class="item-content">
+                        <div data-aos="fade-up" class="item-content">
                             <h4 class="item-title" style="margin: 0 0 0.25rem;">
                                 Media #{{ $media->id }}
                             </h4>
-                            <div class="item-meta">
+                            <div data-aos="fade-up" class="item-meta">
                                 <span>
                                     <i class="fa-solid fa-check-circle" style="color: #10b981;"></i>
                                     {{ $readyCount }}/3 ready

@@ -6,7 +6,7 @@
 @php
     $gs = fn(string $key, $default = '') => \App\Models\DepartmentSetting::getCached($key) ?? $default;
 @endphp
-<div class="admin-card" style="margin-bottom: 1.5rem;">
+<div data-aos="fade-up" class="admin-card" style="margin-bottom: 1.5rem;">
     <h2 style="margin: 0; font-size: 1.1rem;">Global Configuration</h2>
     <p style="margin: 0; color: #6b7280; font-size: 0.85rem;">Manage contact details, social links, and site-wide metadata.</p>
 </div>
@@ -17,7 +17,7 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem;">
         
         <!-- Contact Information -->
-        <div class="admin-card">
+        <div data-aos="fade-up" class="admin-card">
             <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-address-book" style="color: #b91c1c; margin-right: 8px;"></i> Contact Information</h3>
             
             <div class="form-group">
@@ -42,7 +42,7 @@
         </div>
         
         <!-- Social Media Links -->
-        <div class="admin-card">
+        <div data-aos="fade-up" class="admin-card">
             <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-hashtag" style="color: #991b1b; margin-right: 8px;"></i> Social Media Presence</h3>
             
             <div class="form-group">
@@ -79,7 +79,7 @@
         </div>
 
         <!-- Academic Configuration -->
-        <div class="admin-card">
+        <div data-aos="fade-up" class="admin-card">
             <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-graduation-cap" style="color: #b91c1c; margin-right: 8px;"></i> Academic Calendar</h3>
             
             <div class="form-group">
@@ -105,7 +105,7 @@
         </div>
 
         <!-- Branding & Colors -->
-        <div class="admin-card">
+        <div data-aos="fade-up" class="admin-card">
             <h3 style="margin-top: 0; font-size: 1.05rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.8rem; margin-bottom: 1.5rem;"><i class="fa-solid fa-palette" style="color: #b91c1c; margin-right: 8px;"></i> Branding Colors</h3>
             <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 1.5rem;">These colors are applied across the entire public website and admin panel. Changes take effect immediately.</p>
             

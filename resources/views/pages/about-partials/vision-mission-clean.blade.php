@@ -31,7 +31,7 @@
             </div>
 
             <div class="obj-content-side">
-                <div class="obj-content-card" style="border-left: 3px solid {{ $obj['color'] }};">
+                <div data-aos="fade-up" class="obj-content-card" style="border-left: 3px solid {{ $obj['color'] }};">
                     <div class="obj-content-header">
                         <div class="obj-icon" style="background: {{ $obj['light'] }}; color: {{ $obj['color'] }};">                                                                     
                             <i class="fa-solid {{ $obj['icon'] }}"></i>                                                                                                             

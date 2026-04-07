@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    <div class="admin-card" style="margin-bottom: 1.5rem;">
+    <div data-aos="fade-up" class="admin-card" style="margin-bottom: 1.5rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
             <div>
                 <h2 style="margin: 0 0 0.25rem; font-size: 1.05rem;">Conversion Queue Status</h2>
@@ -34,19 +34,19 @@
                 $countFailed = $statusCounts['failed'] ?? 0;
             @endphp
 
-            <div class="admin-card" style="background: #f8fafc; border: 1px solid #e5e7eb;">
+            <div data-aos="fade-up" class="admin-card" style="background: #f8fafc; border: 1px solid #e5e7eb;">
                 <div style="font-weight: 800; color: #f59e0b; margin-bottom: 0.25rem;">Pending</div>
                 <div style="font-size: 1.6rem; font-weight: 900;">{{ $countPending }}</div>
             </div>
-            <div class="admin-card" style="background: #f0f9ff; border: 1px solid #bae6fd;">
+            <div data-aos="fade-up" class="admin-card" style="background: #f0f9ff; border: 1px solid #bae6fd;">
                 <div style="font-weight: 800; color: #0ea5e9; margin-bottom: 0.25rem;">Processing</div>
                 <div style="font-size: 1.6rem; font-weight: 900;">{{ $countProcessing }}</div>
             </div>
-            <div class="admin-card" style="background: #ecfdf5; border: 1px solid #bbf7d0;">
+            <div data-aos="fade-up" class="admin-card" style="background: #ecfdf5; border: 1px solid #bbf7d0;">
                 <div style="font-weight: 800; color: #10b981; margin-bottom: 0.25rem;">Ready</div>
                 <div style="font-size: 1.6rem; font-weight: 900;">{{ $countReady }}</div>
             </div>
-            <div class="admin-card" style="background: #fef2f2; border: 1px solid #fecaca;">
+            <div data-aos="fade-up" class="admin-card" style="background: #fef2f2; border: 1px solid #fecaca;">
                 <div style="font-weight: 800; color: #ef4444; margin-bottom: 0.25rem;">Failed</div>
                 <div style="font-size: 1.6rem; font-weight: 900;">{{ $countFailed }}</div>
             </div>

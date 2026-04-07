@@ -34,7 +34,7 @@
     @if($images->count())
     <div class="album-photo-grid" style="columns: 3; column-gap: 1rem;">
         @foreach($images as $img)
-        <div class="album-photo-item" style="break-inside: avoid; margin-bottom: 1rem; border-radius: 10px; overflow: hidden; position: relative; cursor: pointer;" onclick="openLightbox({{ $loop->index }})">
+        <div data-aos="fade-up" class="album-photo-item" style="break-inside: avoid; margin-bottom: 1rem; border-radius: 10px; overflow: hidden; position: relative; cursor: pointer;" onclick="openLightbox({{ $loop->index }})">
             <img src="{{ asset('storage/'.$img->image_path) }}" alt="{{ $img->caption ?? $album->title }}" style="width: 100%; display: block; transition: transform 0.4s;" loading="lazy">
             <div class="photo-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 1rem;">
                 @if($img->caption)

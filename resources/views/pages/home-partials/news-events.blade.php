@@ -57,7 +57,7 @@
                     <div style="position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));"></div>
                     
                     @forelse($events as $event)
-                    <div style="display: flex; gap: 1.2rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e2e8f0;" class="event-item">
+                    <div data-aos="fade-up" style="display: flex; gap: 1.2rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e2e8f0;" class="event-item">
                         <div style="text-align: center; min-width: 65px; background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.4rem 0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column;">
                             <span style="display: block; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: white; background: var(--color-primary); padding: 0.2rem 0;">{{ \Carbon\Carbon::parse($event->date)->format('M') }}</span>
                             <span style="display: block; font-size: 1.8rem; font-weight: 800; line-height: 1; margin-top: 0.4rem; color: #0f172a; font-family: var(--font-heading);">{{ \Carbon\Carbon::parse($event->date)->format('d') }}</span>

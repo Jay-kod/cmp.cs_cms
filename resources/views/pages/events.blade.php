@@ -40,7 +40,7 @@
         </h2>
         <div id="upcoming-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem;">
             @foreach($upcoming as $event)
-            <div class="event-card" data-type="upcoming" data-title="{{ strtolower($event->title) }}" data-location="{{ strtolower($event->location ?? '') }}" style="background: white; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; transition: all 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.08)'" onmouseout="this.style.transform=''; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)'">
+            <div data-aos="fade-up" class="event-card" data-type="upcoming" data-title="{{ strtolower($event->title) }}" data-location="{{ strtolower($event->location ?? '') }}" style="background: white; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; transition: all 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.08)'" onmouseout="this.style.transform=''; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)'">
                 <div style="display: flex; gap: 1rem; padding: 1.5rem;">
                     {{-- Date badge --}}
                     <div style="min-width: 60px; text-align: center; flex-shrink: 0;">
@@ -78,7 +78,7 @@
         @if($past->count())
         <div id="past-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.2rem;">
             @foreach($past as $event)
-            <div class="event-card" data-type="past" data-title="{{ strtolower($event->title) }}" data-location="{{ strtolower($event->location ?? '') }}" style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.2rem; display: flex; gap: 1rem; align-items: flex-start; opacity: 0.85;">
+            <div data-aos="fade-up" class="event-card" data-type="past" data-title="{{ strtolower($event->title) }}" data-location="{{ strtolower($event->location ?? '') }}" style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.2rem; display: flex; gap: 1rem; align-items: flex-start; opacity: 0.85;">
                 <div style="min-width: 50px; text-align: center; flex-shrink: 0;">
                     <div style="background: #64748b; color: white; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; padding: 3px 0; border-radius: 6px 6px 0 0;">{{ \Carbon\Carbon::parse($event->date)->format('M') }}</div>
                     <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 6px 6px; padding: 4px 0; font-size: 1.2rem; font-weight: 700; color: #475569;">{{ \Carbon\Carbon::parse($event->date)->format('d') }}</div>
