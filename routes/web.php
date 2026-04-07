@@ -12,6 +12,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactNacosController;
 use App\Http\Controllers\GalleryController as PublicGalleryController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SiwesController;
+use App\Http\Controllers\ProjectGuideController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\SuperAdmin\DashboardController as SuperAdminDashboardController;
 use App\Http\Controllers\SuperAdmin\UserController as SuperAdminUserController;
