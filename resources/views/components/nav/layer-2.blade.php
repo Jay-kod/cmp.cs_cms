@@ -178,4 +178,59 @@
             @endif
         </div>
     </div>
+    
+    <style>
+        .navbar-brand-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .desktop-only { display: none !important; }
+        .mobile-only { display: block !important; }
+        
+        @media (min-width: 1024px) {
+            .desktop-only { display: flex !important; }
+            .mobile-only { display: none !important; }
+        }
+
+        /* Hover behavior for details on desktop */
+        @media (min-width: 1024px) {
+            #primary-nav details.nav-dropdown {
+                position: relative;
+            }
+            #primary-nav details.nav-dropdown > summary::after {
+                content: none;
+            }
+            #primary-nav details.nav-dropdown summary::-webkit-details-marker {
+                display: none;
+            }
+            #primary-nav details.nav-dropdown > summary ~ div.nav-dropdown-menu {
+                display: none;
+            }
+            #primary-nav details.nav-dropdown:hover > summary ~ div.nav-dropdown-menu,
+            #primary-nav details.nav-dropdown[open] > summary ~ div.nav-dropdown-menu {
+                display: block;
+                animation: fade-in 0.2s ease-in-out forwards;
+            }
+            #primary-nav details.nav-dropdown:hover > summary,
+            #primary-nav details.nav-dropdown.active > summary {
+                color: #047857 !important;
+            }
+            #primary-nav details.nav-dropdown:hover > summary::after,
+            #primary-nav details.nav-dropdown.active > summary::after {
+                content: '';
+                position: absolute;
+                bottom: -8px;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background-color: #047857;
+                display: block !important;
+            }
+        }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translate(-50%, 10px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+    </style>
 </div>
