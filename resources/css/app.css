@@ -72,7 +72,7 @@ body {
 /* Boxed Layout for Extra Large Screens */
 @media (min-width: 1441px) {
     html {
-        background-color: #f1f5f9; /* Outer space */
+        background-color: #e2e8f0; /* Outer space */
     }
     [data-theme="dark"] html {
         background-color: #020617; /* Dark mode outer space */
