@@ -48,11 +48,17 @@
     --color-border: #333333;
 }
 
-/* Resets */
+/* Resets & Crisp Rendering */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 body {
@@ -61,6 +67,16 @@ body {
     background-color: var(--color-bg-main);
     line-height: 1.6;
     transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    image-rendering: -webkit-optimize-contrast; /* Crisp images on retina displays */
+    image-rendering: crisp-edges;
 }
 
 p {
