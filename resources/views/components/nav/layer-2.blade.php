@@ -146,7 +146,7 @@
                 <div class="mobile-details-menu">
                     <a href="{{ url('/research-news') }}" class="mobile-link mobile-sub-link">News &amp; Announcements</a>
                     <a href="{{ url('/events') }}" class="mobile-link mobile-sub-link">Events &amp; Seminars</a>
-                    <a href="{{ url('/academic-calendar') }}" class="mobile-link mobile-sub-link">Academic Calendar</a>
+                    <a href="{{ route('page.show', 'academic-calendar') }}" class="mobile-link mobile-sub-link">Academic Calendar</a>
                 </div>
             </details>
 
