@@ -88,7 +88,8 @@
         </div>
 
         <!-- Sidebar -->
-        <div class="lg:col-span-1 space-y-6" style="position: sticky; top: 120px; align-self: start;">
+        <div class="lg:col-span-1">
+            <div class="space-y-6" style="position: sticky; top: 120px; z-index: 10;">
             
             <!-- Coordinator Profile -->
             <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100" data-aos="fade-left">
