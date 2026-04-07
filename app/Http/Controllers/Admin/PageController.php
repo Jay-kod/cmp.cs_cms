@@ -53,10 +53,12 @@ class PageController extends Controller
     public function update(Request $request, Page $page)
     {
         $data = $request->validate([
-            'title'     => 'required|string|max:255',
-            'content'   => 'required|string',
-            'icon'      => 'nullable|string|max:100',
-            'is_active' => 'boolean',
+            'title'      => 'required|string|max:255',
+            'content'    => 'required|string',
+            'icon'       => 'nullable|string|max:100',
+            'hero_image' => 'nullable|image|max:3072',
+            'attachment' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
+            'is_active'  => 'boolean',
         ]);
 
         // Only update slug for non-system pages
@@ -64,6 +66,25 @@ class PageController extends Controller
             $data['slug'] = Str::slug($data['title']);
         }
         if (!$request->has('is_active')) $data['is_active'] = false;
+
+        if ($request->hasFile('hero_image')) {
+            if ($page->hero_image) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($page->hero_image);
+            }
+            $data['hero_image'] = $request->file('hero_image')->store('pages/heroes', 'public');
+        }
+        if ($request->has('remove_attachment')) {
+            if ($page->attachment) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($page->attachment);
+                $page->attachment = null;
+            }
+        }
+        if ($request->hasFile('attachment')) {
+            if ($page->attachment) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($page->attachment);
+            }
+            $data['attachment'] = $request->file('attachment')->store('pages/attachments', 'public');
+        }
 
         $page->update($data);
         return redirect()->route('admin.pages.index')->with('success', 'Page updated successfully.');
