@@ -248,6 +248,18 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('admin.page-content.show', 'siwes') }}" class="admin-nav-item {{ request()->is('admin/page-content/siwes') ? 'active' : '' }}" title="SIWES & IT">
+                            <div class="nav-icon"><i class="fa-solid fa-industry"></i></div>
+                            <span>SIWES Layout</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.page-content.show', 'projects') }}" class="admin-nav-item {{ request()->is('admin/page-content/projects') ? 'active' : '' }}" title="Final Year Projects">
+                            <div class="nav-icon"><i class="fa-solid fa-project-diagram"></i></div>
+                            <span>Projects Guideline</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.page-content.show', 'academics') }}" class="admin-nav-item {{ request()->is('admin/page-content/academics') ? 'active' : '' }}" title="Academics Overview">
                             <div class="nav-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                             <span>Academics Layout</span>
