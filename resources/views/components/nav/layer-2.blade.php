@@ -21,73 +21,54 @@
             <!-- Desktop Nav -->
             <nav class="navbar-nav desktop-only" id="primary-nav" style="display: flex; justify-content: flex-end; gap: 0; flex: 1;">
                 <a href="{{ url('/') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
-            <a href="{{ url('/about') }}" class="nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
 
-            <details class="nav-dropdown">
-                <summary class="nav-link nav-dropdown-summary" aria-label="Departments dropdown">
-                    Departments <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
-                </summary>
-                <div class="nav-dropdown-menu" role="menu">
-                    @foreach(\App\Models\SubDepartment::active()->get() as $dept)
-                    <a href="{{ route('department.show', $dept->slug) }}" class="nav-dropdown-item" role="menuitem">{{ str_replace('Department of ', '', $dept->name) }}</a>
-                    @endforeach
-                </div>
-            </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link nav-dropdown-summary {{ request()->is('about*') ? 'active' : '' }}" aria-label="About dropdown">
+                        About <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
+                    </summary>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="{{ url('/about') }}" class="nav-dropdown-item" role="menuitem">About the Department</a>
+                        <a href="{{ url('/about#vision-mission') }}" class="nav-dropdown-item" role="menuitem">Vision &amp; Mission</a>
+                        <a href="{{ url('/about#hod-message') }}" class="nav-dropdown-item" role="menuitem">HOD's Message</a>
+                        <a href="{{ url('/nacos-presidents') }}" class="nav-dropdown-item" role="menuitem">Our Association</a>
+                    </div>
+                </details>
 
-            <details class="nav-dropdown">
-                <summary class="nav-link nav-dropdown-summary {{ request()->is('academics*') ? 'active' : '' }}" aria-label="Academics dropdown">
-                    Academics <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
-                </summary>
-                <div class="nav-dropdown-menu" role="menu">
-                    <a href="{{ url('/academics') }}" class="nav-dropdown-item" role="menuitem">Academics Overview</a>
-                    <a href="{{ url('/resources#handbook') }}" class="nav-dropdown-item" role="menuitem">Department Handbook</a>
-                    <a href="{{ url('/resources#timetable') }}" class="nav-dropdown-item" role="menuitem">Timetable</a>
-                    <a href="{{ url('/resources#rules') }}" class="nav-dropdown-item" role="menuitem">Rules &amp; Regulations</a>
-                    <a href="{{ url('/resources#forms') }}" class="nav-dropdown-item" role="menuitem">Forms</a>
-                </div>
-            </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link nav-dropdown-summary {{ request()->is('academics*') ? 'active' : '' }}" aria-label="Academics dropdown">
+                        Academics <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
+                    </summary>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="{{ url('/academics#programmes') }}" class="nav-dropdown-item" role="menuitem">Programmes (BSc, MSc, PhD)</a>
+                        <a href="{{ url('/academics#sub-departments') }}" class="nav-dropdown-item" role="menuitem">Sub-departments (Cyber Security, Data Science)</a>
+                        <a href="{{ url('/academics#siwes') }}" class="nav-dropdown-item" role="menuitem">SIWES Information</a>
+                        <a href="{{ url('/academics#projects') }}" class="nav-dropdown-item" role="menuitem">Final Year Projects</a>
+                    </div>
+                </details>
 
-            <details class="nav-dropdown">
-                <summary class="nav-link nav-dropdown-summary" aria-label="News and Events dropdown">
-                    News &amp; Events <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
-                </summary>
-                <div class="nav-dropdown-menu" role="menu">
-                    <a href="{{ url('/research-news') }}" class="nav-dropdown-item" role="menuitem">News</a>
-                    <a href="{{ url('/events') }}" class="nav-dropdown-item" role="menuitem">Events</a>
-                    <a href="{{ url('/gallery') }}" class="nav-dropdown-item" role="menuitem">Gallery</a>
-                    <a href="{{ url('/nacos-presidents') }}" class="nav-dropdown-item" role="menuitem">NACOS</a>
-                </div>
-            </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link nav-dropdown-summary {{ request()->is('people*') ? 'active' : '' }}" aria-label="People dropdown">
+                        People <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
+                    </summary>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="{{ url('/people') }}" class="nav-dropdown-item" role="menuitem">Staff Directory</a>
+                    </div>
+                </details>
 
-            <details class="nav-dropdown">
-                <summary class="nav-link nav-dropdown-summary" aria-label="Systems dropdown">
-                    Systems <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
-                </summary>
-                <div class="nav-dropdown-menu" role="menu" style="right: 0; left: auto;">
-                    @forelse($externalSystems as $sys)
-                        <a
-                            href="{{ $sys->url }}"
-                            class="nav-dropdown-item"
-                            role="menuitem"
-                            @if($sys->open_in_new_tab) target="_blank" rel="noopener noreferrer" @endif
-                        >
-                            @if(!empty($sys->icon))
-                                <i class="{{ $sys->icon }}" style="font-size:0.95rem;"></i>
-                            @endif
-                            {{ $sys->name }}
-                        </a>
-                    @empty
-                        <span class="nav-dropdown-empty" role="note">Systems coming soon</span>
-                    @endforelse
-                </div>
-            </details>
+                <details class="nav-dropdown">
+                    <summary class="nav-link nav-dropdown-summary {{ request()->is('research-news*') || request()->is('events*') ? 'active' : '' }}" aria-label="News dropdown">
+                        News <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
+                    </summary>
+                    <div class="nav-dropdown-menu" role="menu" style="right: 0; left: auto;">
+                        <a href="{{ url('/research-news') }}" class="nav-dropdown-item" role="menuitem">News &amp; Announcements</a>
+                        <a href="{{ url('/events') }}" class="nav-dropdown-item" role="menuitem">Events &amp; Seminars</a>
+                        <a href="{{ url('/academic-calendar') }}" class="nav-dropdown-item" role="menuitem">Academic Calendar</a>
+                    </div>
+                </details>
 
-            <a href="{{ url('/contact') }}" class="nav-link btn btn-primary {{ request()->is('contact') ? 'active' : '' }}" style="background-color: #2e7d32; color: white; padding: 0.5rem 1rem; border-radius: 4px; border: none; font-weight: 500;">
-                Contact Us
-            </a>
-        </nav>
-
-        <button class="navbar-hamburger" id="mobile-menu-btn" aria-label="Toggle menu" style="margin-left: auto;">
+                <a href="{{ url('/contact') }}" class="nav-link btn btn-primary {{ request()->is('contact') ? 'active' : '' }}" style="background-color: #2e7d32; color: white; padding: 0.5rem 1rem; border-radius: 4px; border: none; font-weight: 500;">
+                    Contact Us
+                </a>
             <span></span><span></span><span></span>
         </button>
         </div>
