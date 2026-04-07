@@ -3,6 +3,20 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Dynamically inject AOS into component elements and cards before init
+    const animCards = document.querySelectorAll('.hover-card, .news-card, .staff-home-card, .staff-card, .gallery-item, .card, .stat-card, article, .info-box, [class*="-card"], .partner-logo');
+    
+    animCards.forEach((el, idx) => {
+        if (!el.hasAttribute('data-aos')) {
+            el.setAttribute('data-aos', 'fade-up');
+            // Create a staggered delay effect grouping by row roughly
+            const delay = (idx % 6) * 100;
+            if (delay > 0) {
+                el.setAttribute('data-aos-delay', delay.toString());
+            }
+        }
+    });
+
     // Initialize AOS Animation Library
     AOS.init({
         duration: 800,
