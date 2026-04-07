@@ -37,7 +37,18 @@
             </div>
 
             <!-- Workflow Steps -->
-            @php $steps = json_decode($s('siwes_steps', '[]'), true) ?? []; @endphp
+            @php 
+                $defaultSteps = [
+                    ['title' => 'Obtain SIWES Letter', 'desc' => 'Collect your official introduction letter from the departmental coordinator.'],
+                    ['title' => 'Secure Placement', 'desc' => 'Find a suitable IT firm or organization relevant to computer science.'],
+                    ['title' => 'Return Acceptance Letter', 'desc' => 'Submit your acceptance letter and assumption of duty form back to the department.'],
+                    ['title' => 'Maintain Logbook', 'desc' => 'Keep a daily and weekly record of all tasks and activities undertaken at your workplace.'],
+                    ['title' => 'Supervisor Visitation', 'desc' => 'A departmental supervisor will visit your workplace for on-site assessment.'],
+                    ['title' => 'Final Defense & Submission', 'desc' => 'Return to the department to submit your signed logbook, technical report, and defend your experience before a panel.']
+                ];
+                $steps = json_decode($s('siwes_steps', '[]'), true); 
+                if (empty($steps)) $steps = $defaultSteps;
+            @endphp
             @if(count($steps) > 0)
             <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8" data-aos="fade-up">
                 <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
@@ -59,7 +70,15 @@
             @endif
 
             <!-- FAQs -->
-            @php $faqs = json_decode($s('siwes_faqs', '[]'), true) ?? []; @endphp
+            @php 
+                $defaultFaqs = [
+                    ['q' => 'How long is the SIWES duration?', 'a' => 'The mandatory SIWES duration is 6 months, typically undertaken during the second semester of your 300 level.'],
+                    ['q' => 'Can I change my placement location?', 'a' => 'Changes are heavily discouraged once your assumption of duty is submitted unless under extreme circumstances, which must be approved by the Head of Department.'],
+                    ['q' => 'What happens if I lose my logbook?', 'a' => 'Lost logbooks result in an automatic carry-over of the course. Ensure it is kept safe and appropriately signed at all times.']
+                ];
+                $faqs = json_decode($s('siwes_faqs', '[]'), true); 
+                if (empty($faqs)) $faqs = $defaultFaqs;
+            @endphp
             @if(count($faqs) > 0)
             <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100" data-aos="fade-up">
                 <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">

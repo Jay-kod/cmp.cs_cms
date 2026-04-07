@@ -70,7 +70,16 @@
             @endif
 
             <!-- Calendar/Milestones -->
-            @php $milestones = json_decode($s('project_milestones', '[]'), true) ?? []; @endphp
+            @php 
+                $defaultMilestones = [
+                    ['date' => 'Early Sem 1', 'title' => 'Topic Approval', 'desc' => 'Submit three proposed project topics to your assigned supervisor.'],
+                    ['date' => 'Mid Sem 1', 'title' => 'Chapter 1 & 2 Submission', 'desc' => 'First draft of Introduction and Literature Review due for supervisor review.'],
+                    ['date' => 'Early Sem 2', 'title' => 'System Demonstration', 'desc' => 'Live demonstration of the proposed system/software working prototype.'],
+                    ['date' => 'End of Sem 2', 'title' => 'Final Defense & Binding', 'desc' => 'Defense before an external panel followed by the submission of 3 hardbound copies of the completed project plus CD-ROM.']
+                ];
+                $milestones = json_decode($s('project_milestones', '[]'), true); 
+                if (empty($milestones)) $milestones = $defaultMilestones;
+            @endphp
             @if(count($milestones) > 0)
             <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8" data-aos="fade-up">
                 <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
