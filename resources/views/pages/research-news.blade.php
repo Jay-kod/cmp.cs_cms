@@ -23,14 +23,17 @@
     </div>
 </div>
 
-<div class="container page-layout" style="margin-top: -3rem; position: relative; z-index: 20; padding-bottom: 4rem; display: flex; flex-direction: row-reverse; gap: 2rem;">
+<div class="container page-layout" style="margin-top: -3rem; position: relative; z-index: 20; padding-bottom: 4rem;">
     
-    <div class="sidebar-toc" style="width: 320px; flex-shrink: 0;">
-        @include('pages.research-news-partials.announcements')
-    </div>
+    <x-sticky-toc :sections="[
+        'news' => 'Department News',
+        'announcements' => 'Announcements'
+    ]" />
 
-    <div class="main-content blog-main" style="flex: 1; min-width: 0; background: white; border-radius: 16px; box-shadow: 0 20px 50px -12px rgba(0,0,0,0.1); padding: 3rem 4rem;">
+    <div class="main-content blog-main" style="background: white; border-radius: 16px; box-shadow: 0 20px 50px -12px rgba(0,0,0,0.1); padding: 3rem 4rem;">
         @include('pages.research-news-partials.news')
+        
+        @include('pages.research-news-partials.announcements')
     </div>
 
 </div>
