@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\Announcement;
 use App\Models\Publication;
 use App\Models\Event;
 use App\Models\GalleryAlbum;
@@ -13,7 +14,14 @@ class ResearchNewsController extends Controller
     public function index()
     {
         $news = News::latest('published_at')->paginate(12);
-        return view('pages.research-news', compact('news'));
+        $announcements = Announcement::where('expires_at', '>=', now())
+            ->orWhereNull('expires_at')
+            ->orderBy('priority', 'desc')
+            ->latest()
+            ->take(10)
+            ->get();
+        
+        return view('pages.research-news', compact('news', 'announcements'));
     }
 
     public function research()
