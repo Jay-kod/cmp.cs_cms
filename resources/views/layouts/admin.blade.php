@@ -57,7 +57,7 @@
                 </div>
             </div>
             
-            <nav style="flex: 1; overflow-y: auto; overflow-x: hidden; padding: 1.5rem 0;">
+                        <nav style="flex: 1; overflow-y: auto; overflow-x: hidden; padding: 1.5rem 0;">
                 <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.25rem;">
                     
                     <li class="nav-section-title"><span>Overview</span></li>
@@ -66,20 +66,34 @@
                             <div class="nav-icon"><i class="fa-solid fa-border-all"></i></div>
                             <span>Dashboard</span>
                         </a>
-                    </li>                      <li>
-                          <a href="{{ route('admin.system-logs.index') }}" class="admin-nav-item {{ request()->routeIs('admin.system-logs.*') ? 'active' : '' }}" title="System Logs">
-                              <div class="nav-icon"><i class="fa-solid fa-server"></i></div>
-                              <span>System Logs</span>
-                          </a>
-                      </li>                    <li>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.analytics.index') }}" class="admin-nav-item {{ request()->routeIs('admin.analytics.*') ? 'active' : '' }}" title="Analytics & Reports">
                             <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
                             <span>Analytics & Reports</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.system-logs.index') }}" class="admin-nav-item {{ request()->routeIs('admin.system-logs.*') ? 'active' : '' }}" title="System Logs">
+                            <div class="nav-icon"><i class="fa-solid fa-server"></i></div>
+                            <span>System Logs</span>
+                        </a>
+                    </li>
                     
                     @if(auth()->user()->isAdmin())
-                    <li class="nav-section-title"><span>Departments</span></li>
+                    <li class="nav-section-title"><span>Academics & Structure</span></li>
+                    <li>
+                        <a href="{{ route('admin.programmes.index') }}" class="admin-nav-item {{ request()->routeIs('admin.programmes.*') || request()->routeIs('admin.programme-categories.*') ? 'active' : '' }}" title="Programmes">
+                            <div class="nav-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <span>Programmes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.courses.index') }}" class="admin-nav-item {{ request()->routeIs('admin.courses.*') ? 'active' : '' }}" title="Courses">
+                            <div class="nav-icon"><i class="fa-solid fa-book"></i></div>
+                            <span>Courses</span>
+                        </a>
+                    </li>
                     @foreach(\App\Models\SubDepartment::orderBy('name')->get() as $navDept)
                     <li>
                         <a href="{{ route('admin.sub-departments.edit', $navDept->id) }}" class="admin-nav-item {{ request()->url() == route('admin.sub-departments.edit', $navDept->id) ? 'active' : '' }}" title="{{ $navDept->name }}">
@@ -95,19 +109,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-section-title"><span>Management</span></li>
-                    <li>
-                        <a href="{{ route('admin.programmes.index') }}" class="admin-nav-item {{ request()->routeIs('admin.programmes.*') || request()->routeIs('admin.programme-categories.*') ? 'active' : '' }}" title="Programmes">
-                            <div class="nav-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                            <span>Programmes</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.courses.index') }}" class="admin-nav-item {{ request()->routeIs('admin.courses.*') ? 'active' : '' }}" title="Courses">
-                            <div class="nav-icon"><i class="fa-solid fa-book"></i></div>
-                            <span>Courses</span>
-                        </a>
-                    </li>
+                    <li class="nav-section-title"><span>People & Faculty</span></li>
                     <li>
                         <a href="{{ route('admin.staff.index') }}" class="admin-nav-item {{ request()->routeIs('admin.staff.*') ? 'active' : '' }}" title="Staff Directory">
                             <div class="nav-icon"><i class="fa-solid fa-user-tie"></i></div>
@@ -126,16 +128,14 @@
                             <span>NACOS Presidents</span>
                         </a>
                     </li>
-                    @endif {{-- end isAdmin for Management --}}
-                    
-                    <li class="nav-section-title"><span>Content & Media</span></li>
-                    @if(auth()->user()->isAdmin())
                     <li>
-                        <a href="{{ route('admin.carousel.index') }}" class="admin-nav-item {{ request()->routeIs('admin.carousel.*') ? 'active' : '' }}" title="Carousel & Media">
-                            <div class="nav-icon"><i class="fa-solid fa-photo-film"></i></div>
-                            <span>Carousel & Media</span>
+                        <a href="{{ route('admin.partners.index') }}" class="admin-nav-item {{ request()->routeIs('admin.partners.*') ? 'active' : '' }}" title="Partners">
+                            <div class="nav-icon"><i class="fa-solid fa-handshake"></i></div>
+                            <span>Partners</span>
                         </a>
                     </li>
+
+                    <li class="nav-section-title"><span>Content & Media</span></li>
                     <li>
                         <a href="{{ route('admin.news.index') }}" class="admin-nav-item {{ request()->routeIs('admin.news.*') ? 'active' : '' }}" title="News & Blog">
                             <div class="nav-icon"><i class="fa-solid fa-newspaper"></i></div>
@@ -161,54 +161,29 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.partners.index') }}" class="admin-nav-item {{ request()->routeIs('admin.partners.*') ? 'active' : '' }}" title="Partners">
-                            <div class="nav-icon"><i class="fa-solid fa-handshake"></i></div>
-                            <span>Partners</span>
+                        <a href="{{ route('admin.carousel.index') }}" class="admin-nav-item {{ request()->routeIs('admin.carousel.*') ? 'active' : '' }}" title="Carousel & Media">
+                            <div class="nav-icon"><i class="fa-solid fa-photo-film"></i></div>
+                            <span>Carousel</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('admin.publications.index') }}" class="admin-nav-item {{ request()->routeIs('admin.publications.*') ? 'active' : '' }}" title="Publications">
-                            <div class="nav-icon"><i class="fa-solid fa-book-open"></i></div>
-                            <span>Publications</span>
-                        </a>
-                    </li>
+
+                    <li class="nav-section-title"><span>Resources & Docs</span></li>
                     <li>
                         <a href="{{ route('admin.resources.index') }}" class="admin-nav-item {{ request()->routeIs('admin.resources.*') || request()->routeIs('admin.resource-categories.*') ? 'active' : '' }}" title="Resources Catalog">
                             <div class="nav-icon"><i class="fa-solid fa-file-lines"></i></div>
                             <span>Resources Catalog</span>
                         </a>
                     </li>
-                    @endif {{-- end isAdmin for Content & Media --}}
-
-                    {{-- ── PAGES ── --}}
-                    @if(auth()->user()->isAdmin())
-                    <li class="nav-section-title"><span>Pages</span></li>
-
-                    {{-- Home --}}
-                    <li>
-                        <a href="{{ route('admin.page-content.show', 'home') }}" class="admin-nav-item {{ request()->is('admin/page-content/home') ? 'active' : '' }}" title="Home Page">
-                            <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    {{-- About --}}
-                    <li>
-                        <a href="{{ route('admin.page-content.show', 'about') }}" class="admin-nav-item {{ request()->is('admin/page-content/about') ? 'active' : '' }}" title="About Page">
-                            <div class="nav-icon"><i class="fa-solid fa-circle-info"></i></div>
-                            <span>About</span>
-                        </a>
-                    </li>
-                    {{-- Academics Group --}}
-                    <li>
-                        <a href="{{ route('admin.page-content.show', 'academics') }}" class="admin-nav-item {{ request()->is('admin/page-content/academics') ? 'active' : '' }}" title="Academics Overview">
-                            <div class="nav-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                            <span>Academics Overview</span>
-                        </a>
-                    </li>
                     <li>
                         <a href="{{ route('admin.timetable.upload') ?? route('admin.resources.index') }}" class="admin-nav-item {{ request()->routeIs('admin.timetable.*') ? 'active' : '' }}" title="Timetable" style="padding-left: 2.8rem; min-height: 38px;">
                             <div class="nav-icon" style="width: 24px; height: 24px; font-size: 0.75rem; background: transparent; color: #64748b;"><i class="fa-solid fa-calendar-week"></i></div>
                             <span style="font-size: 0.82rem;">Timetable</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.publications.index') }}" class="admin-nav-item {{ request()->routeIs('admin.publications.*') ? 'active' : '' }}" title="Publications" style="padding-left: 2.8rem; min-height: 38px;">
+                            <div class="nav-icon" style="width: 24px; height: 24px; font-size: 0.75rem; background: transparent; color: #64748b;"><i class="fa-solid fa-book-open"></i></div>
+                            <span style="font-size: 0.82rem;">Publications</span>
                         </a>
                     </li>
                     <li>
@@ -229,68 +204,80 @@
                             <span style="font-size: 0.82rem;">Forms</span>
                         </a>
                     </li>
-                    {{-- People --}}
+
+                    <li class="nav-section-title"><span>Visual Page Editor</span></li>
+                    <li>
+                        <a href="{{ route('admin.page-content.show', 'home') }}" class="admin-nav-item {{ request()->is('admin/page-content/home') ? 'active' : '' }}" title="Home Page">
+                            <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
+                            <span>Home Layout</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.page-content.show', 'about') }}" class="admin-nav-item {{ request()->is('admin/page-content/about') ? 'active' : '' }}" title="About Page">
+                            <div class="nav-icon"><i class="fa-solid fa-circle-info"></i></div>
+                            <span>About Layout</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.page-content.show', 'academics') }}" class="admin-nav-item {{ request()->is('admin/page-content/academics') ? 'active' : '' }}" title="Academics Overview">
+                            <div class="nav-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <span>Academics Layout</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="{{ route('admin.page-content.show', 'people') }}" class="admin-nav-item {{ request()->is('admin/page-content/people') ? 'active' : '' }}" title="Faculty & People Page">
                             <div class="nav-icon"><i class="fa-solid fa-users"></i></div>
-                            <span>Faculty & People</span>
+                            <span>People Layout</span>
                         </a>
                     </li>
-                    {{-- Gallery --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'gallery') }}" class="admin-nav-item {{ request()->is('admin/page-content/gallery') ? 'active' : '' }}" title="Gallery Page">
                             <div class="nav-icon"><i class="fa-solid fa-images"></i></div>
-                            <span>Gallery Page</span>
+                            <span>Gallery Layout</span>
                         </a>
                     </li>
-                    {{-- Past HODs --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'past-hods') }}" class="admin-nav-item {{ request()->is('admin/page-content/past-hods') ? 'active' : '' }}" title="Past HODs Page">
                             <div class="nav-icon"><i class="fa-solid fa-landmark"></i></div>
-                            <span>Past HODs Page</span>
+                            <span>Past HODs Layout</span>
                         </a>
                     </li>
-                    {{-- Blog --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'blog') }}" class="admin-nav-item {{ request()->is('admin/page-content/blog') ? 'active' : '' }}" title="Blog / Research Page">
                             <div class="nav-icon"><i class="fa-solid fa-flask"></i></div>
-                            <span>Blog / Research</span>
+                            <span>Blog/Research Layout</span>
                         </a>
                     </li>
-                    {{-- Contact --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'contact') }}" class="admin-nav-item {{ request()->is('admin/page-content/contact') ? 'active' : '' }}" title="Contact & NACOS Page">
                             <div class="nav-icon"><i class="fa-solid fa-address-book"></i></div>
-                            <span>Contact</span>
+                            <span>Contact Layout</span>
                         </a>
                     </li>
-                    {{-- NACOS --}}
                     <li>
                         <a href="{{ route('admin.page-content.show', 'nacos') }}" class="admin-nav-item {{ request()->is('admin/page-content/nacos') ? 'active' : '' }}" title="NACOS Section">
                             <div class="nav-icon"><i class="fa-solid fa-users-rectangle"></i></div>
-                            <span>NACOS</span>
+                            <span>NACOS Layout</span>
                         </a>
                     </li>
-                    @endif {{-- end isAdmin for Pages --}}
                     
-                    <li class="nav-section-title"><span>System</span></li>
-                    @if(auth()->user()->isAdmin())
+                    <li class="nav-section-title"><span>Content Manager & Config</span></li>
                     <li>
                         <a href="{{ route('admin.pages.index') }}" class="admin-nav-item {{ request()->routeIs('admin.pages.*') ? 'active' : '' }}" title="Pages">
                             <div class="nav-icon"><i class="fa-solid fa-file-lines"></i></div>
-                            <span>Pages</span>
+                            <span>Dynamic Pages</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.external-systems.index') }}" class="admin-nav-item {{ request()->routeIs('admin.external-systems.*') ? 'active' : '' }}" title="External Systems">
                             <div class="nav-icon"><i class="fa-solid fa-up-right-from-square"></i></div>
-                            <span>External Systems</span>
+                            <span>External Links</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('admin.social-links.index') }}" class="admin-nav-item {{ request()->routeIs('admin.social-links.*') ? 'active' : '' }}" title="Social Links">
                             <div class="nav-icon"><i class="fa-solid fa-share-nodes"></i></div>
-                            <span>Social Links</span>
+                            <span>Social Profiles</span>
                         </a>
                     </li>
                     @endif
