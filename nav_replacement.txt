@@ -22,7 +22,7 @@
                     </li>
                     
                     @if(auth()->user()->isAdmin())
-                    <li class="nav-section-title"><span>Académie & Structure</span></li>
+                    <li class="nav-section-title"><span>Academics & Structure</span></li>
                     <li>
                         <a href="{{ route('admin.programmes.index') }}" class="admin-nav-item {{ request()->routeIs('admin.programmes.*') || request()->routeIs('admin.programme-categories.*') ? 'active' : '' }}" title="Programmes">
                             <div class="nav-icon"><i class="fa-solid fa-graduation-cap"></i></div>
