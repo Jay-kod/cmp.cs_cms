@@ -27,3 +27,4 @@ class ResearchNewsController extends Controller
         return view('pages.news-show', compact('article', 'related'));
     }
 }
+ 
