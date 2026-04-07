@@ -5,13 +5,11 @@
     <div class="container navbar-inner">
         <!-- Brand Wrapper -->
         <div class="navbar-brand-wrapper">
-            <a href="{{ url('/') }}" class="navbar-brand" style="margin-left: -0.6rem; gap: 0.3rem;">
-                <img src="{{ asset(config('university.logo', 'build/assets/logo.png')) }}" alt="Logo" class="navbar-logo" onerror="this.src='https://via.placeholder.com/44?text=Logo'">
-                <div class="navbar-brand-text">
-                    <strong class="desktop-only text-base">{{ config('university.name') }}</strong>
-                    <strong class="mobile-only" style="font-size: 0.65rem; white-space: normal; line-height: 1.15; max-width: 220px;">DEPARTMENT OF COMPUTER SCIENCE</strong>
-                    <span class="desktop-only">{{ config('university.university') }}</span>
-                    <span class="mobile-only" style="font-size: 0.5rem; color: #6b7280; font-weight: 500; white-space: normal; line-height: 1.15; max-width: 220px; margin-top: 1px; letter-spacing: 0.2px;">NASARAWA STATE UNIVERSITY, KEFFI</span>
+            <a href="{{ url('/') }}" class="navbar-brand" style="margin-left: 0; gap: 0.75rem;">
+                <img src="{{ asset(config('university.logo', 'build/assets/logo.png')) }}" alt="Logo" class="navbar-logo" style="width: 48px; height: 48px; object-fit: contain;" onerror="this.src='https://via.placeholder.com/44?text=Logo'">
+                <div class="navbar-brand-text" style="display: flex; flex-direction: column;">
+                    <strong style="color: #047857; font-size: 1.125rem; font-weight: 700; line-height: 1.2;">{{ config('university.name', 'Department of Computer Science') }}</strong>
+                    <span style="color: #6b7280; font-size: 0.875rem; font-weight: 400; line-height: 1.2; margin-top: 0.125rem;">{{ config('university.university', 'Nasarawa State University, Keffi') }}</span>
                 </div>
             </a>
         </div>
