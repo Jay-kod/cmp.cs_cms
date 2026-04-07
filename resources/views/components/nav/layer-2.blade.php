@@ -97,19 +97,17 @@
             <a href="{{ url('/') }}" class="mobile-link {{ request()->is('/') ? 'active' : '' }}">
                 <i class="fa-solid fa-house"></i> Home
             </a>
-            <a href="{{ url('/about') }}" class="mobile-link {{ request()->is('about') ? 'active' : '' }}">
-                <i class="fa-solid fa-circle-info"></i> About
-            </a>
 
             <details class="mobile-details">
-                <summary class="mobile-link mobile-details-summary" aria-label="Departments dropdown (mobile)">
-                    <i class="fa-solid fa-layer-group"></i> Departments
+                <summary class="mobile-link mobile-details-summary {{ request()->is('about*') ? 'active' : '' }}" aria-label="About dropdown (mobile)">
+                    <i class="fa-solid fa-circle-info"></i> About
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    @foreach(\App\Models\SubDepartment::active()->get() as $dept)
-                    <a href="{{ route('department.show', $dept->slug) }}" class="mobile-link mobile-sub-link">{{ str_replace('Department of ', '', $dept->name) }}</a>
-                    @endforeach
+                    <a href="{{ url('/about') }}" class="mobile-link mobile-sub-link">About the Department</a>
+                    <a href="{{ url('/about#vision-mission') }}" class="mobile-link mobile-sub-link">Vision &amp; Mission</a>
+                    <a href="{{ url('/about#hod-message') }}" class="mobile-link mobile-sub-link">HOD's Message</a>
+                    <a href="{{ url('/nacos-presidents') }}" class="mobile-link mobile-sub-link">Our Association</a>
                 </div>
             </details>
 
@@ -119,47 +117,32 @@
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="{{ url('/academics') }}" class="mobile-link mobile-sub-link">Academics Overview</a>
-                    <a href="{{ url('/resources#handbook') }}" class="mobile-link mobile-sub-link">Department Handbook</a>
-                    <a href="{{ url('/resources#timetable') }}" class="mobile-link mobile-sub-link">Timetable</a>
-                    <a href="{{ url('/resources#rules') }}" class="mobile-link mobile-sub-link">Rules &amp; Regulations</a>
-                    <a href="{{ url('/resources#forms') }}" class="mobile-link mobile-sub-link">Forms</a>
+                    <a href="{{ url('/academics#programmes') }}" class="mobile-link mobile-sub-link">Programmes (BSc, MSc, PhD)</a>
+                    <a href="{{ url('/academics#sub-departments') }}" class="mobile-link mobile-sub-link">Sub-departments (Cyber Security, Data Science)</a>
+                    <a href="{{ url('/academics#siwes') }}" class="mobile-link mobile-sub-link">SIWES Information</a>
+                    <a href="{{ url('/academics#projects') }}" class="mobile-link mobile-sub-link">Final Year Projects</a>
                 </div>
             </details>
 
             <details class="mobile-details">
-                <summary class="mobile-link mobile-details-summary" aria-label="News and Events dropdown (mobile)">
-                    <i class="fa-regular fa-newspaper"></i> News &amp; Events
+                <summary class="mobile-link mobile-details-summary {{ request()->is('people*') ? 'active' : '' }}" aria-label="People dropdown (mobile)">
+                    <i class="fa-solid fa-users"></i> People
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="{{ url('/research-news') }}" class="mobile-link mobile-sub-link">News</a>
-                    <a href="{{ url('/events') }}" class="mobile-link mobile-sub-link">Events</a>
-                    <a href="{{ url('/gallery') }}" class="mobile-link mobile-sub-link">Gallery</a>
-                    <a href="{{ url('/nacos-presidents') }}" class="mobile-link mobile-sub-link">NACOS</a>
+                    <a href="{{ url('/people') }}" class="mobile-link mobile-sub-link">Staff Directory</a>
                 </div>
             </details>
 
             <details class="mobile-details">
-                <summary class="mobile-link mobile-details-summary" aria-label="Systems dropdown (mobile)">
-                    <i class="fa-solid fa-table-cells"></i> Systems
+                <summary class="mobile-link mobile-details-summary {{ request()->is('research-news*') || request()->is('events*') ? 'active' : '' }}" aria-label="News dropdown (mobile)">
+                    <i class="fa-regular fa-newspaper"></i> News
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    @forelse($externalSystems as $sys)
-                        <a
-                            href="{{ $sys->url }}"
-                            class="mobile-link mobile-sub-link"
-                            @if($sys->open_in_new_tab) target="_blank" rel="noopener noreferrer" @endif
-                        >
-                            @if(!empty($sys->icon))
-                                <i class="{{ $sys->icon }}" style="width:1.2rem; text-align:center;"></i>
-                            @endif
-                            {{ $sys->name }}
-                        </a>
-                    @empty
-                        <span class="mobile-systems-empty" role="note">Systems coming soon</span>
-                    @endforelse
+                    <a href="{{ url('/research-news') }}" class="mobile-link mobile-sub-link">News &amp; Announcements</a>
+                    <a href="{{ url('/events') }}" class="mobile-link mobile-sub-link">Events &amp; Seminars</a>
+                    <a href="{{ url('/academic-calendar') }}" class="mobile-link mobile-sub-link">Academic Calendar</a>
                 </div>
             </details>
 
