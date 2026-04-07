@@ -24,19 +24,39 @@
 </div>
 
 <div class="container page-layout" style="margin-top: -3rem; position: relative; z-index: 20; padding-bottom: 4rem;">
-    
-    <x-sticky-toc :sections="[
-        'news' => 'Department News',
-        'announcements' => 'Announcements'
-    ]" />
 
     <div class="main-content blog-main" style="background: white; border-radius: 16px; box-shadow: 0 20px 50px -12px rgba(0,0,0,0.1); padding: 3rem 4rem;">
         @include('pages.research-news-partials.news')
         
         @include('pages.research-news-partials.announcements')
     </div>
+    
+    <div class="right-toc-wrapper" style="flex-shrink: 0;">
+        <x-sticky-toc :sections="[
+            'news' => 'Department News',
+            'announcements' => 'Announcements'
+        ]" />
+    </div>
 
 </div>
+
+<style>
+    /* Make the TOC appear on the right side and smaller on this page */
+    .right-toc-wrapper .sidebar-toc {
+        width: 200px !important;
+    }
+    .right-toc-wrapper .toc-container {
+        padding: 1rem !important;
+    }
+    .right-toc-wrapper .toc-container h3 {
+        font-size: 0.95rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    .right-toc-wrapper .toc-list a {
+        font-size: 0.85rem !important;
+        padding: 0.25rem 0 !important;
+    }
+</style>
 
 @include('pages.research-news-partials.styles')
 @endsection
