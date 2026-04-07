@@ -8,21 +8,21 @@
             </div>
             <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #ef4444, #b91c1c); margin-bottom: 2rem; border-radius: 2px;"></div>
             
-            <div class="announcements-grid" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div class="announcements-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
                 @forelse($announcements as $announcement)
-                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid @if($announcement->priority == 'high') #ef4444 @else #3b82f6 @endif; border-radius: 8px; padding: 1.5rem; transition: transform 0.2s, box-shadow 0.2s;" class="hover:shadow-md hover:-translate-y-1">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.5rem;">
-                        <h3 style="margin: 0; font-size: 1.15rem; font-family: var(--font-heading); color: #1e293b;">
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid @if($announcement->priority == 'high') #ef4444 @else #3b82f6 @endif; border-radius: 8px; padding: 1rem; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column;" class="hover:shadow-md hover:-translate-y-1">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <h3 style="margin: 0; font-size: 1rem; font-family: var(--font-heading); color: #1e293b; line-height: 1.3;">
                             {{ $announcement->title }}
                         </h3>
-                        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: 600; @if($announcement->priority == 'high') background: #fee2e2; color: #b91c1c; @else background: #dbeafe; color: #1d4ed8; @endif">
+                        <span style="font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 12px; font-weight: 600; white-space: nowrap; @if($announcement->priority == 'high') background: #fee2e2; color: #b91c1c; @else background: #dbeafe; color: #1d4ed8; @endif">
                             {{ ucfirst($announcement->audience) }}
                         </span>
                     </div>
-                    <div style="color: #64748b; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.8rem;">
+                    <div style="color: #64748b; font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.8rem; flex-grow: 1;">
                         {!! nl2br(e($announcement->body)) !!}
                     </div>
-                    <div style="font-size: 0.8rem; color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
+                    <div style="font-size: 0.75rem; color: #94a3b8; display: flex; align-items: center; gap: 0.4rem; margin-top: auto;">
                         <i class="fa-regular fa-clock"></i> 
                         Posted {{ $announcement->created_at->diffForHumans() }}
                     </div>
