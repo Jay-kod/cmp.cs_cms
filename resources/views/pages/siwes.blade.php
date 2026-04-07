@@ -29,7 +29,7 @@
         <div class="lg:col-span-2">
             <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8" data-aos="fade-up">
                 <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
-                    <i class="fa-solid fa-info-circle text-blue-600"></i> Scheme Overview
+                    <i class="fa-solid fa-info-circle text-green-600"></i> Scheme Overview
                 </h2>
                 <div class="prose max-w-none text-gray-700 text-lg leading-relaxed">
                     <p>{{ $s('siwes_overview', 'The Student Industrial Work Experience Scheme (SIWES) is a skills training program designed to expose students to the work environment and prepare them for reality after graduation. It bridges the gap between theory and practical work.') }}</p>
@@ -41,13 +41,13 @@
             @if(count($steps) > 0)
             <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8" data-aos="fade-up">
                 <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
-                    <i class="fa-solid fa-route text-blue-600"></i> Process Workflow
+                    <i class="fa-solid fa-route text-green-600"></i> Process Workflow
                 </h2>
                 
-                <div class="relative border-l-4 border-blue-100 ml-4 space-y-8 pb-4">
+                <div class="relative border-l-4 border-green-100 ml-4 space-y-8 pb-4">
                     @foreach($steps as $index => $step)
                     <div class="relative pl-8">
-                        <div class="absolute w-8 h-8 bg-blue-600 rounded-full text-white flex items-center justify-center font-bold text-sm border-4 border-white shadow shadow-blue-200" style="left: -18px; top: 0;">
+                        <div class="absolute w-8 h-8 bg-green-600 rounded-full text-white flex items-center justify-center font-bold text-sm border-4 border-white shadow shadow-green-200" style="left: -18px; top: 0;">
                             {{ $index + 1 }}
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">{{ $step['title'] }}</h3>
