@@ -61,6 +61,29 @@
                         @endif
                     </div>
 
+                    <div class="form-group">
+                        <label class="form-label">Hero Background Image</label>
+                        <input type="file" name="hero_image" class="form-control" accept="image/*">
+                        @if($page->hero_image)
+                        <div style="margin-top: 0.5rem;">
+                            <img src="{{ Storage::url($page->hero_image) }}" alt="Hero Image" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #e5e7eb;">
+                        </div>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Calendar / Relevant Document</label>
+                        <input type="file" name="attachment" class="form-control" accept=".pdf,.doc,.docx,.xls,.xlsx">
+                        @if($page->attachment)
+                        <div style="margin-top: 0.5rem; background: #fff; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 4px;">
+                            <a href="{{ Storage::url($page->attachment) }}" target="_blank" style="color: var(--color-primary); text-decoration: underline; font-size: 0.85rem;"><i class="fa-solid fa-file-arrow-down"></i> Current file</a>
+                            <label style="display: block; margin-top: 0.5rem; font-size: 0.8rem; color: #b91c1c;">
+                                <input type="checkbox" name="remove_attachment" value="1"> Remove file
+                            </label>
+                        </div>
+                        @endif
+                    </div>
+
                     <div class="form-group" style="padding: 1rem; background: #fff; border-radius: 4px; border: 1px solid #e5e7eb;">
                         <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
                             <input type="checkbox" name="is_active" value="1" {{ old('is_active', $page->exists ? $page->is_active : true) ? 'checked' : '' }} style="width: 18px; height: 18px;">
