@@ -145,6 +145,8 @@
                 <div class="mobile-details-menu">
                     <a href="{{ url('/people') }}" class="mobile-link mobile-sub-link">Staff Directory</a>
                       <a href="{{ url('/gallery') }}" class="mobile-link mobile-sub-link">Gallery</a>
+                  </div>
+              </details>
 
             <details class="mobile-details">
                 <summary class="mobile-link mobile-details-summary {{ $isNewsActive ? 'active' : '' }}" aria-label="News dropdown (mobile)">
