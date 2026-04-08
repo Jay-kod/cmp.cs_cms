@@ -35,6 +35,14 @@
             .hod-photo-container {
                 max-width: 500px;
             }
+            .hod-quote-box {
+                padding-left: 0.2rem !important;
+            }
+            .hod-quote-mark {
+                left: -5px !important;
+                font-size: 2.5rem !important;
+                top: -5px !important;
+            }
         }
     </style>
 
@@ -45,8 +53,8 @@
             <span style="display: inline-block; color: var(--color-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; background: rgba(22,163,74,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_hod_badge','Welcome Message') }}</span>
             <h2 style="font-size: 2.8rem; margin-bottom: 1.5rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; line-height: 1.15;">{{ $gs('home_hod_title','From the Head of Department') }}</h2>
             
-            <div style="position: relative; padding-left: 2rem; margin-bottom: 2.5rem;">
-                <i class="fa-solid fa-quote-left" style="position: absolute; top: -10px; left: -10px; font-size: 3.5rem; color: rgba(22,163,74,0.1); z-index: 0;"></i>
+            <div class="hod-quote-box" style="position: relative; padding-left: 2rem; margin-bottom: 2.5rem;">
+                <i class="fa-solid fa-quote-left hod-quote-mark" style="position: absolute; top: -10px; left: -10px; font-size: 3.5rem; color: rgba(22,163,74,0.1); z-index: 0;"></i>
                 <blockquote style="position: relative; z-index: 1; font-size: 1.15rem; color: #475569; line-height: 1.8; margin: 0; font-style: italic; text-align: justify;">
                     "{!! nl2br(e($gs('hod_welcome_message', 'Welcome to the Department of Computer Science. We are committed to providing world-class computing education.'))) !!}"
                 </blockquote>
