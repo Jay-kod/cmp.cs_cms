@@ -4,7 +4,27 @@
     <div style="position: absolute; top: -100px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(22,163,74,0.08) 0%, transparent 70%); pointer-events: none;"></div>
     <div style="position: absolute; bottom: -50px; left: 10%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(22,163,74,0.06) 0%, transparent 70%); pointer-events: none;"></div>
     
-    <div class="container hod-grid" style="display: flex; gap: 5rem; align-items: stretch; flex-wrap: nowrap; position: relative; z-index: 2;">
+    <!-- Custom Styles for Responsive Reversal -->
+    <style>
+        .hod-flex-container {
+            display: flex;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        @media (max-width: 992px) {
+            .hod-flex-container {
+                flex-direction: column-reverse;
+                gap: 3.5rem;
+            }
+            .hod-photo {
+                margin: 0 auto;
+            }
+        }
+    </style>
+
+    <div class="container hod-flex-container">
         
         <!-- HoD Text -->
         <div class="hod-text" style="flex: 1; align-self: center;">
