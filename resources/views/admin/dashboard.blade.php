@@ -94,12 +94,12 @@
     ];
     @endphp
     @foreach($secondaryStats as $ss)
-    <div data-aos="fade-up" class="admin-card secondary-stat-card">
+    <div data-aos="fade-up" class="secondary-stat-card">
         <div class="secondary-stat-icon" style="background: {{ $ss['bg'] }}; color: {{ $ss['color'] }};">
             <i class="fa-solid {{ $ss['icon'] }}"></i>
         </div>
-        <div>
-            <div class="secondary-stat-value">{{ $ss['value'] }}</div>
+        <div style="flex: 1;">
+            <div class="secondary-stat-value">{{ number_format($ss['value']) }}</div>
             <div class="secondary-stat-label">{{ $ss['label'] }}</div>
         </div>
     </div>
