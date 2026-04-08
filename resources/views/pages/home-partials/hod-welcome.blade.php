@@ -97,19 +97,35 @@
     
     <!-- Stats Counter Cards — integrated into HOD section -->
     <div class="container" data-aos="fade-up" style="margin-top: 4rem; padding-bottom: 4rem;">
-        <div class="stats-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; text-align: center;">
-            @foreach([1,2,3,4,5] as $n)
+        <style>
+            .home-stats-grid {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                gap: 1.2rem;
+                text-align: center;
+            }
+            @media (max-width: 1024px) {
+                .home-stats-grid { grid-template-columns: repeat(3, 1fr); }
+            }
+            @media (max-width: 640px) {
+                .home-stats-grid { grid-template-columns: repeat(2, 1fr); }
+            }
+        </style>
+        <div class="home-stats-grid">
+            @foreach([1,2,3,4,5,6] as $n)
             @php
-                $statIcon  = $gs("stat_{$n}_icon",  ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-medal'][$n-1]);
-                $statLabel = $gs("stat_{$n}_label", ['Established','Courses','Programmes','Departments','Full Accreditation'][$n-1]);
+                $statIcon  = $gs("stat_{$n}_icon",  ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-medal','fa-solid fa-users-tie'][$n-1]);
+                $statLabel = $gs("stat_{$n}_label", ['Established','Courses','Programmes','Departments','Full Accreditation','Expert Staff'][$n-1]);
                 if ($n == 2 || stripos($statLabel, 'courses') !== false) {
                     $statValue = \App\Models\Course::count();
                 } elseif ($n == 3 || stripos($statLabel, 'programmes') !== false) {
                     $statValue = \App\Models\Programme::where('is_active', true)->count();
                 } elseif ($n == 4 || stripos($statLabel, 'departments') !== false) {
                     $statValue = \App\Models\ProgrammeCategory::count();
+                } elseif ($n == 6 || stripos($statLabel, 'staff') !== false) {
+                    $statValue = \App\Models\Staff::count() > 0 ? \App\Models\Staff::count() : '50+';
                 } else {
-                    $statValue = $gs("stat_{$n}_value", [config('university.established'), '', '', '', 'NUC'][$n-1]);
+                    $statValue = $gs("stat_{$n}_value", [config('university.established'), '', '', '', 'NUC', ''][$n-1]);
                 }
             @endphp
             <div data-aos="fade-up" class="stat-card">
