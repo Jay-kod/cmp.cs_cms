@@ -114,18 +114,27 @@
         <div class="home-stats-grid">
             @foreach([1,2,3,4,5,6] as $n)
             @php
-                $statIcon  = $gs("stat_{$n}_icon",  ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-user-graduate','fa-solid fa-users-tie'][$n-1]);
-                $statLabel = $gs("stat_{$n}_label", ['Established','Courses','Programmes','Departments','Active Students','Expert Staff'][$n-1]);
-                if ($n == 2 || stripos($statLabel, 'courses') !== false) {
+                $defaultIcons = ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-user-graduate','fa-solid fa-users-tie'];
+                $defaultLabels = ['Established','Courses','Programmes','Departments','Active Students','Expert Staff'];
+                
+                $statIcon  = $gs("stat_{$n}_icon", $defaultIcons[$n-1]);
+                $statLabel = $gs("stat_{$n}_label", $defaultLabels[$n-1]);
+
+                // Force override for Active Students (to prevent old database values from showing NUC)
+                if ($n == 5) {
+                    $statIcon = 'fa-solid fa-user-graduate';
+                    $statLabel = 'Active Students';
+                    $statValue = '1,500+';
+                } elseif ($n == 6) {
+                    $statIcon = 'fa-solid fa-users-tie';
+                    $statLabel = 'Expert Staff';
+                    $statValue = \App\Models\Staff::count() > 0 ? \App\Models\Staff::count() : '50+';
+                } elseif ($n == 2 || stripos($statLabel, 'courses') !== false) {
                     $statValue = \App\Models\Course::count();
                 } elseif ($n == 3 || stripos($statLabel, 'programmes') !== false) {
                     $statValue = \App\Models\Programme::where('is_active', true)->count();
                 } elseif ($n == 4 || stripos($statLabel, 'departments') !== false) {
                     $statValue = \App\Models\ProgrammeCategory::count();
-                } elseif ($n == 5 || stripos($statLabel, 'students') !== false) {
-                    $statValue = $gs('stat_5_value', '1,500+');
-                } elseif ($n == 6 || stripos($statLabel, 'staff') !== false) {
-                    $statValue = \App\Models\Staff::count() > 0 ? \App\Models\Staff::count() : '50+';
                 } else {
                     $statValue = $gs("stat_{$n}_value", [config('university.established'), '', '', '', '', ''][$n-1]);
                 }
