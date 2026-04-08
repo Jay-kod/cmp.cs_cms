@@ -19,9 +19,9 @@ class AnnouncementController extends Controller
         // Fallback for preview if none exist
         if ($activeAnnouncements->isEmpty()) {
             $activeAnnouncements = collect([
-                (object)['id' => 1, 'title' => 'Test Announcement 1', 'is_urgent' => true, 'link' => '#'],
-                (object)['id' => 2, 'title' => 'Test Announcement 2', 'is_urgent' => false, 'link' => '#'],
-                (object)['id' => 3, 'title' => 'Test Announcement 3', 'is_urgent' => false, 'link' => null],
+                (object)['id' => 1, 'title' => 'Test Announcement 1', 'is_urgent' => true, 'link' => '#', 'body' => 'This is a sample announcement body for the preview to test how the scroll speed looks on a real monitor.'],
+                (object)['id' => 2, 'title' => 'Test Announcement 2', 'is_urgent' => false, 'link' => '#', 'body' => 'Make sure to check the speed to see if it allows enough time to read the text.'],
+                (object)['id' => 3, 'title' => 'Test Announcement 3', 'is_urgent' => false, 'link' => null, 'body' => 'Another announcement string to ensure we have a realistic scroll width.'],
             ]);
         }
         
