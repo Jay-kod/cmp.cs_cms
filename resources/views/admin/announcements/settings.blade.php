@@ -105,6 +105,20 @@
 </form>
 
 <script>
+    function adjustSpeed(change) {
+        const range = document.getElementById('speedRange');
+        const number = document.getElementById('speedNumber');
+        let newValue = parseInt(number.value) + change;
+        
+        // Boundaries
+        if (newValue < 2) newValue = 2;
+        if (newValue > 120) newValue = 120;
+        
+        range.value = newValue;
+        number.value = newValue;
+        updatePreview();
+    }
+
     function updatePreview() {
         const speed = document.getElementById('speedRange').value;
         const box = document.getElementById('previewScrollBox');
