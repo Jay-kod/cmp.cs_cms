@@ -83,9 +83,15 @@
                     @if(auth()->user()->isAdmin())
                     <li class="nav-section-title"><span>Academics & Structure</span></li>
                     <li>
-                        <a href="{{ route('admin.programmes.index') }}" class="admin-nav-item {{ request()->routeIs('admin.programmes.*') || request()->routeIs('admin.programme-categories.*') ? 'active' : '' }}" title="Programmes">
+                        <a href="{{ route('admin.programmes.index') }}" class="admin-nav-item {{ request()->routeIs('admin.programmes.*') ? 'active' : '' }}" title="Programmes">
                             <div class="nav-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                             <span>Programmes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.programme-categories.index') }}" class="admin-nav-item {{ request()->routeIs('admin.programme-categories.*') ? 'active' : '' }}" title="Programme Categories">
+                            <div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div>
+                            <span>Prog. Categories</span>
                         </a>
                     </li>
                     <li>
