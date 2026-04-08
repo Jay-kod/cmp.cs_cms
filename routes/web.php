@@ -93,6 +93,8 @@ Route::middleware(['auth:web,super_admin', 'verified', 'admin', \App\Http\Middle
     Route::post('/settings/academic-session', [\App\Http\Controllers\Admin\SettingsController::class, 'updateAcademicSession'])->name('settings.academic-session');
 
     // ── Content Management (all admins: admin + super_admin) ──
+    Route::get('announcements/settings', [AnnouncementController::class, 'settings'])->name('announcements.settings');
+    Route::post('announcements/settings', [AnnouncementController::class, 'updateSettings'])->name('announcements.settings.update');
     Route::resource('news', NewsController::class);
     Route::resource('events', EventController::class);
     Route::resource('announcements', AnnouncementController::class);
