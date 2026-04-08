@@ -80,13 +80,16 @@
     
     <!-- Glassmorphism Announcements Ticker (Overlaps Hero Bottom) -->
     @if($announcements->count() > 0)
+    @php
+        $scrollSpeed = \App\Models\DepartmentSetting::getCached('announcement_scroll_speed', 10);
+    @endphp
     <div style="position: absolute; bottom: 0; left: 0; width: 100%; z-index: 20; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 2px solid var(--color-primary);">
           <div class="container" data-aos="fade-up" style="display: flex; align-items: center; gap: 1rem; padding: 0.6rem 1rem;">
               <div style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); color: #fff; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; white-space: nowrap; letter-spacing: 1px; box-shadow: 0 0 8px rgba(22, 163, 74, 0.8), inset 0 0 3px rgba(255, 255, 255, 0.2); display: flex; align-items: center; gap: 0.4rem; border: 1px solid rgba(255,255,255,0.2);">
                   <i class="fa-solid fa-bolt" style="font-size: 0.6rem;"></i> Notice
             </div>
             <div style="overflow: hidden; flex: 1;">
-                <div class="announcement-scroll" style="display: flex; gap: 4rem; animation: scrollAnnouncements 10s linear infinite; white-space: nowrap; padding-left: 100%;">
+                <div class="announcement-scroll" style="display: flex; gap: 4rem; animation: scrollAnnouncements {{ $scrollSpeed }}s linear infinite; white-space: nowrap; padding-left: 100%;">
                     @foreach($announcements as $announcement)
                     <span style="color: #cbd5e1; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.6rem;">
                         <strong style="color: white; font-weight: 600;">{{ $announcement->title }} <span style="color: #64748b; font-weight: 400; margin: 0 0.3rem;">&mdash;</span></strong> {{ Str::limit($announcement->body, 120) }}
