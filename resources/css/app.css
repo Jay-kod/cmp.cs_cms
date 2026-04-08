@@ -748,7 +748,7 @@ a:hover {
 
     .navbar-hamburger { display: flex; }
 
-    .brand-title { font-size: 1.125rem; } .brand-subtitle { font-size: 0.875rem; } @media (max-width: 768px) { .brand-title { font-size: 0.95rem !important; } .brand-subtitle { font-size: 0.75rem !important; } }
+    .brand-title { font-size: 1.125rem; } .brand-subtitle { font-size: 0.875rem; } @media (max-width: 768px) { .brand-title { font-size: 0.85rem !important; } .brand-subtitle { font-size: 0.65rem !important; } .navbar-logo { width: 36px !important; height: 36px !important; } .navbar-brand { gap: 0.4rem !important; } }
 }
 
 .mobile-only { display: none; }
