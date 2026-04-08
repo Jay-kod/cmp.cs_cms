@@ -30,7 +30,7 @@
         </div>
 
         <!-- HoD Photo -->
-        <div class="hod-photo" style="position: relative; max-width: 380px; margin: 0 auto; width: 100%;">
+        <div class="hod-photo" style="position: relative; max-width: 380px; width: 100%; flex-shrink: 0; align-self: center;">
             <div style="position: absolute; inset: -12px -12px 12px 12px; border: 2px solid var(--color-primary); border-radius: 14px; z-index: 1;"></div>
             <div style="position: absolute; inset: 12px 12px -12px -12px; background: rgba(22,163,74,0.1); border-radius: 14px; z-index: 1;"></div>
             
