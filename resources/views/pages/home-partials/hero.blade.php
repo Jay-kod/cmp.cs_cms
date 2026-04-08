@@ -86,7 +86,7 @@
                   <i class="fa-solid fa-bolt" style="font-size: 0.6rem;"></i> Notice
             </div>
             <div style="overflow: hidden; flex: 1;">
-                <div class="announcement-scroll" style="display: flex; gap: 4rem; animation: scrollAnnouncements 20s linear infinite; white-space: nowrap;">
+                <div class="announcement-scroll" style="display: flex; gap: 4rem; animation: scrollAnnouncements 20s linear infinite; white-space: nowrap; padding-left: 100%;">
                     @foreach($announcements as $announcement)
                     <span style="color: #cbd5e1; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.6rem;">
                         <strong style="color: white; font-weight: 600;">{{ $announcement->title }} <span style="color: #64748b; font-weight: 400; margin: 0 0.3rem;">&mdash;</span></strong> {{ Str::limit($announcement->body, 120) }}
