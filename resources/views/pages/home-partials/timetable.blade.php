@@ -11,7 +11,7 @@
             @if((isset($timetables) && $timetables->count() > 0) || !empty($uploadedTimetable))
                 
                 @if(!empty($uploadedTimetable))
-                <div style="padding: 2.5rem; border-bottom: 1px solid #cbd5e1; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: #e2e8f0; align-items: start;">
+                <div class="tt-responsive-grid" style="padding: 2.5rem; border-bottom: 1px solid #cbd5e1; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: #e2e8f0; align-items: start;">
                     <div>
                         <div style="display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 1.5rem;">
                             <div class="tt-icon" style="width: 56px; height: 56px; background: linear-gradient(135deg, rgba(22, 163, 74, 0.1) 0%, rgba(22, 163, 74, 0.05) 100%); color: var(--color-primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; border: 1px solid rgba(22, 163, 74, 0.2);">
@@ -68,7 +68,17 @@
                 {{-- Responsive CSS for the full preview block --}}
                 <style>
                     @media (max-width: 768px) {
-                        .timetable-section .container > div > div > div:nth-child(2) { grid-template-columns: 1fr !important; gap: 1.5rem !important; padding: 1.5rem !important; }
+                        .tt-responsive-grid {
+                            grid-template-columns: 1fr !important;
+                            gap: 1.5rem !important;
+                            padding: 1.5rem !important;
+                        }
+                        .tt-responsive-grid > div:first-child {
+                            order: 1;
+                        }
+                        .tt-responsive-grid > div:last-child {
+                            order: 2;
+                        }
                     }
                 </style>
                 @endif
