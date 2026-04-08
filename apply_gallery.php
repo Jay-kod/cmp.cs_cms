@@ -1,20 +1,9 @@
-<!-- GALLERY SHOWCASE -->
-@if($galleryImages->count())
-<section data-aos="fade-up" style="padding: 6rem 0; background: #0f172a; position: relative; overflow: hidden;">
-    <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(22,163,74,0.08) 0%, transparent 50%, rgba(22,163,74,0.05) 100%); pointer-events: none;"></div>
-    <div class="container" data-aos="fade-up" style="position: relative; z-index: 2;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;">
-            <div>
-                <span style="display: inline-block; color: #86efac; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; background: rgba(134,239,172,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_gallery_badge','Photo Gallery') }}</span>
-                <h2 style="font-size: 2.8rem; font-family: var(--font-heading); font-weight: 800; color: white; margin: 0;">{{ $gs('home_gallery_title','Department Life') }}</h2>
-                <p style="color: #94a3b8; font-size: 1.05rem; margin-top: 0.5rem;">{{ $gs('home_gallery_subtitle','Moments from events, lectures, and campus life') }} — {{ $galleryAlbumCount }} {{ Str::plural('album', $galleryAlbumCount) }}.</p>
-            </div>
-            <a href="{{ route('gallery.index') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #86efac; font-weight: 700; text-decoration: none; font-size: 0.95rem; transition: gap 0.2s;" onmouseover="this.style.gap='0.8rem'" onmouseout="this.style.gap='0.5rem'">
-                {{ $gs('home_gallery_btn_text','View All Photos') }} <i class="fa-solid fa-arrow-right-long"></i>
-            </a>
-        </div>
+<?php
+$file = 'resources/views/pages/home-partials/gallery.blade.php';
+$content = file_get_contents($file);
 
-                <!-- Modern Masonry Gallery Layout -->
+$newGallery = <<<EOT
+        <!-- Modern Masonry Gallery Layout -->
         <style>
             .home-gallery-masonry {
                 column-count: 1;
@@ -104,14 +93,14 @@
         </style>
         
         <div class="home-gallery-masonry" data-aos="fade-up" data-aos-delay="100">
-            @foreach( as  => )
+            @foreach($galleryImages as $index => $img)
             <div class="home-gallery-item group">
                 <a href="{{ route('gallery.index') }}">
-                    <img loading="lazy" src="{{ asset('storage/'.) }}" alt="{{  ?? 'Gallery image' }}">
+                    <img loading="lazy" src="{{ asset('storage/'.$img->image_path) }}" alt="{{ $img->caption ?? 'Gallery image' }}">
                     <div class="home-gallery-overlay">
                         <div>
-                            @if()
-                            <h4 class="home-gallery-caption">{{  }}</h4>
+                            @if($img->caption)
+                            <h4 class="home-gallery-caption">{{ $img->caption }}</h4>
                             @endif
                             <div class="home-gallery-line"></div>
                         </div>
@@ -120,6 +109,11 @@
             </div>
             @endforeach
         </div>
-    </div>
-</section>
-@endif
+EOT;
+
+$start = strpos($content, '<!-- Sharp Professional Grid Layout -->');
+$end = strpos($content, '</div>', strpos($content, '@endforeach')) + 6;
+
+$newContent = substr($content, 0, $start) . $newGallery . substr($content, $end);
+file_put_contents($file, $newContent);
+?>
