@@ -1172,3 +1172,4 @@ body { overflow-x: clip !important; } html { overflow-x: clip !important; }
         transform: translateY(-1px);
     }
 }
+@media (max-width: 768px) { .hod-grid { flex-direction: column-reverse !important; gap: 3rem !important; } .hod-photo { flex: 0 0 100% !important; width: 100% !important; max-width: 100% !important; } .hod-photo > div { border-radius: 16px !important; } }
