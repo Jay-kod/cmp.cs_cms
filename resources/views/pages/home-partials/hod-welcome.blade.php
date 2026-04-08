@@ -13,6 +13,15 @@
             position: relative;
             z-index: 2;
         }
+        .hod-photo-container {
+            flex-shrink: 0;
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            max-width: 380px;
+            width: 100%;
+        }
         @media (max-width: 992px) {
             .hod-flex-container {
                 flex-direction: column;
@@ -20,6 +29,11 @@
             }
             .hod-photo {
                 margin: 0 auto;
+            }
+        }
+        @media (max-width: 768px) {
+            .hod-photo-container {
+                max-width: 500px;
             }
         }
     </style>
