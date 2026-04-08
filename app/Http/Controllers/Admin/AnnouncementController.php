@@ -15,7 +15,7 @@ class AnnouncementController extends Controller
         // Fetch active announcements for the live preview
         $activeAnnouncements = Announcement::where(function($q) {
             $q->whereNull('expires_at')->orWhere('expires_at', '>', now());
-        })->where('is_active', true)->get();
+        })->get();
         // Fallback for preview if none exist
         if ($activeAnnouncements->isEmpty()) {
             $activeAnnouncements = collect([
