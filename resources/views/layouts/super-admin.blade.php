@@ -178,9 +178,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('super-admin.resources.index') }}" class="admin-nav-item {{ request()->routeIs('super-admin.resources.*') || request()->routeIs('super-admin.resource-categories.*') ? 'active' : '' }}" title="Resources Catalog">
+                        <a href="{{ route('super-admin.resources.index') }}" class="admin-nav-item {{ request()->routeIs('super-admin.resources.*') ? 'active' : '' }}" title="Resources Catalog">
                             <div class="nav-icon"><i class="fa-solid fa-file-lines"></i></div>
                             <span>Resources Catalog</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('super-admin.resource-categories.index') }}" class="admin-nav-item {{ request()->routeIs('super-admin.resource-categories.*') ? 'active' : '' }}" title="Resource Categories">
+                            <div class="nav-icon"><i class="fa-solid fa-folder-tree"></i></div>
+                            <span>Resource Categories</span>
                         </a>
                     </li>
 
