@@ -13,7 +13,7 @@
             $prefix = request()->route()->getPrefix();
             $routePrefix = $prefix === '/super-admin' ? 'super-admin.' : 'admin.';
         @endphp
-        <a href="{{ route('announcements.settings') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f8fafc; color: #475569; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.85rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); transition: background 0.2s;">
+        <a href="{{ route($routePrefix . 'announcements.settings') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f8fafc; color: #475569; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.85rem; border: 1px solid #cbd5e1; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); transition: background 0.2s;">
             <i class="fa-solid fa-cog"></i> Ticker Settings
         </a>
         <a href="{{ route($routePrefix . 'announcements.create') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.85rem; box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.2); transition: background 0.2s;">
