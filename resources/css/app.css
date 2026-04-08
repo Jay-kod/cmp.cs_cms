@@ -515,7 +515,7 @@ a:hover {
     flex-direction: column;
     position: fixed;
     top: 0;
-    left: -300px;
+    right: -300px; left: auto;
     width: 280px;
     height: 100vh;
     background: var(--color-secondary);
