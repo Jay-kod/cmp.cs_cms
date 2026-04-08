@@ -241,8 +241,8 @@
 .stat-content { z-index: 10; }
 .stat-label { margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #6b7280; font-weight: 500; }
 .stat-value { margin: 0; font-size: 2.25rem; font-weight: 700; color: #111827; line-height: 1; }
-.stat-icon-box { position: absolute; top: -10px; right: -10px; font-size: 5rem; z-index: 0; opacity: 0.15; padding: 0; background: transparent !important; display: block; width: auto; height: auto; transition: transform 0.3s; }
-.stat-card:hover .stat-icon-box { transform: scale(1.1) rotate(5deg); }
+.stat-icon-box { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); font-size: 5.5rem; z-index: 0; opacity: 0.15; padding: 0; background: transparent !important; display: block; width: auto; height: auto; transition: transform 0.3s; }
+.stat-card:hover .stat-icon-box { transform: translateY(-50%) scale(1.1) rotate(5deg); }
 .stat-icon-box.color-blue { color: #3b82f6; }
 .stat-icon-box.color-green { color: #10b981; }
 .stat-icon-box.color-purple { color: #8b5cf6; }
