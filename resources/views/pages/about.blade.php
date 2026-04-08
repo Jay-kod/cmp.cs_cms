@@ -88,7 +88,27 @@
             </div>
 
             <!-- Timeline Milestones -->
-            <div class="about-milestones" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 2.5rem;">
+            <style>
+                @media (min-width: 992px) {
+                    .about-milestones-grid {
+                        grid-template-columns: repeat(4, 1fr) !important;
+                    }
+                }
+                @media (max-width: 991px) {
+                    .about-milestones-grid {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                    }
+                }
+                @media (max-width: 575px) {
+                    .about-milestones-grid {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                    }
+                    .about-milestones-grid .milestone-year {
+                        font-size: 1.5rem !important;
+                    }
+                }
+            </style>
+            <div class="about-milestones about-milestones-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-top: 2.5rem;">
                 @php
                     $milestones = json_decode($settings['about_milestones'] ?? '[]', true) ?? [];
                     if (empty($milestones)) {
