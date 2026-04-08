@@ -17,11 +17,11 @@
                 <!-- Navigation & Actions Wrapper -->
         <div class="navbar-nav-wrapper" style="display: flex; align-items: center; justify-content: flex-end; flex: 1; gap: 1rem;">
             @php
-            $isHomeActive = $isHomeActive;
-            $isAboutActive = $isAboutActive || request()->is('nacos-presidents*');
-            $isAcademicsActive = $isAcademicsActive || request()->is('programmes*') || request()->is('pages/programmes*') || request()->is('siwes*') || request()->is('projects*') || request()->is('pages/sub-departments*') || request()->is('sub-departments*');
-            $isPeopleActive = $isPeopleActive;
-            $isNewsActive = $isNewsActive || request()->is('research-innovations*') || request()->is('pages/academic-calendar*');
+            $isHomeActive = request()->is('/');
+            $isAboutActive = request()->is('about*') || request()->is('nacos-presidents*');
+            $isAcademicsActive = request()->is('academics*') || request()->is('programmes*') || request()->is('pages/programmes*') || request()->is('siwes*') || request()->is('projects*') || request()->is('pages/sub-departments*') || request()->is('sub-departments*');
+            $isPeopleActive = request()->is('people*');
+            $isNewsActive = request()->is('research-news*') || request()->is('events*') || request()->is('research-innovations*') || request()->is('pages/academic-calendar*');
         @endphp
         <!-- Desktop Nav -->
             <nav class="navbar-nav desktop-only" id="primary-nav" style="display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; flex: 1;">
