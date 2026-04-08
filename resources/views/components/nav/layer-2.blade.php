@@ -4,12 +4,12 @@
     @endphp
     <div class="container navbar-inner">
         <!-- Brand Wrapper -->
-        <div class="navbar-brand-wrapper">
-            <a href="{{ url('/') }}" class="navbar-brand" style="margin-left: 0; gap: 0.75rem;">
-                <img src="{{ asset(config('university.logo', 'build/assets/logo.png')) }}" alt="Logo" class="navbar-logo" style="width: 48px; height: 48px; object-fit: contain;" onerror="this.src='https://via.placeholder.com/44?text=Logo'">
-                <div class="navbar-brand-text" style="display: flex; flex-direction: column;">
-                    <strong style="color: #047857; font-size: 1.125rem; font-weight: 700; line-height: 1.2;">{{ config('university.name', 'Department of Computer Science') }}</strong>
-                    <span style="color: #6b7280; font-size: 0.875rem; font-weight: 400; line-height: 1.2; margin-top: 0.125rem;">{{ config('university.university', 'Nasarawa State University, Keffi') }}</span>
+        <div class="navbar-brand-wrapper" style="min-width: 0; flex: 0 1 auto;">
+            <a href="{{ url('/') }}" class="navbar-brand" style="margin-left: 0; gap: 0.75rem; min-width: 0; overflow: hidden; text-decoration: none;">
+                <img src="{{ asset(config('university.logo', 'build/assets/logo.png')) }}" alt="Logo" class="navbar-logo" style="width: 48px; height: 48px; object-fit: contain; flex-shrink: 0;" onerror="this.src='https://via.placeholder.com/44?text=Logo'">
+                <div class="navbar-brand-text" style="display: flex; flex-direction: column; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                    <strong class="brand-title" style="color: #047857; font-weight: 700; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ config('university.name', 'Department of Computer Science') }}</strong>
+                    <span class="brand-subtitle" style="color: #6b7280; font-weight: 400; line-height: 1.2; margin-top: 0.125rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ config('university.university', 'Nasarawa State University, Keffi') }}</span>
                 </div>
             </a>
         </div>
