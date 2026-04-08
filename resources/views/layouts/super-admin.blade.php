@@ -92,9 +92,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('super-admin.programmes.index') }}" class="admin-nav-item {{ request()->routeIs('super-admin.programmes.*') || request()->routeIs('super-admin.programme-categories.*') ? 'active' : '' }}" title="Programmes">
+                        <a href="{{ route('super-admin.programmes.index') }}" class="admin-nav-item {{ request()->routeIs('super-admin.programmes.*') ? 'active' : '' }}" title="Programmes">
                             <div class="nav-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                             <span>Programmes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('super-admin.programme-categories.index') }}" class="admin-nav-item {{ request()->routeIs('super-admin.programme-categories.*') ? 'active' : '' }}" title="Programme Categories">
+                            <div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div>
+                            <span>Prog. Categories</span>
                         </a>
                     </li>
                     <li>
