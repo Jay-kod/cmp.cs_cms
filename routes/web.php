@@ -178,6 +178,8 @@ Route::middleware(['auth:super_admin', 'super_admin', \App\Http\Middleware\SetAd
     Route::post('/media-optimization/requeue-all', [SuperAdminMediaOptimizationController::class, 'requeueAllNonReady'])->name('media-optimization.requeue-all');
 
     // ── Admin CRUD modules (super-admin can do everything admin can, plus more) ──
+    Route::get('announcements/settings', [AnnouncementController::class, 'settings'])->name('announcements.settings');
+    Route::post('announcements/settings', [AnnouncementController::class, 'updateSettings'])->name('announcements.settings.update');
     Route::resource('news', NewsController::class);
     Route::resource('events', EventController::class);
     Route::resource('announcements', AnnouncementController::class);

@@ -8,6 +8,45 @@ use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller
 {
+    public function settings()
+    {
+        $speed = \App\Models\DepartmentSetting::getCached('announcement_scroll_speed') ?? 10;
+        
+        // Fetch active announcements for the live preview
+        $activeAnnouncements = Announcement::where(function($q) {
+            $q->whereNull('expires_at')->orWhere('expires_at', '>', now());
+        })->where('is_active', true)->get();
+        // Fallback for preview if none exist
+        if ($activeAnnouncements->isEmpty()) {
+            $activeAnnouncements = collect([
+                (object)['id' => 1, 'title' => 'Test Announcement 1', 'is_urgent' => true, 'link' => '#'],
+                (object)['id' => 2, 'title' => 'Test Announcement 2', 'is_urgent' => false, 'link' => '#'],
+                (object)['id' => 3, 'title' => 'Test Announcement 3', 'is_urgent' => false, 'link' => null],
+            ]);
+        }
+        
+        return view('admin.announcements.settings', compact('speed', 'activeAnnouncements'));
+    }
+
+    public function updateSettings(Request $request)
+    {
+        $request->validate([
+            'speed' => 'required|integer|min:2|max:300',
+        ]);
+        
+        \App\Models\DepartmentSetting::updateOrCreate(
+            ['group' => 'branding', 'key' => 'announcement_scroll_speed'],
+            ['value' => $request->speed]
+        );
+        \Illuminate\Support\Facades\Cache::forget('all_department_settings');
+        
+        // Determine the correct route based on the prefix
+        $prefix = request()->route()->getPrefix();
+        $routePrefix = $prefix === '/super-admin' ? 'super-admin.' : 'admin.';
+        
+        return redirect()->route($routePrefix . 'announcements.index')->with('success', 'Ticker settings updated successfully.');
+    }
+
     public function index()
     {
         $announcements = Announcement::orderBy('created_at', 'desc')->paginate(20);
