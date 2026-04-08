@@ -216,9 +216,15 @@
 
                     <li class="nav-section-title"><span>Resources & Docs</span></li>
                     <li>
-                        <a href="{{ route('admin.resources.index') }}" class="admin-nav-item {{ request()->routeIs('admin.resources.*') || request()->routeIs('admin.resource-categories.*') ? 'active' : '' }}" title="Resources Catalog">
+                        <a href="{{ route('admin.resources.index') }}" class="admin-nav-item {{ request()->routeIs('admin.resources.*') ? 'active' : '' }}" title="Resources Catalog">
                             <div class="nav-icon"><i class="fa-solid fa-file-lines"></i></div>
                             <span>Resources Catalog</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.resource-categories.index') }}" class="admin-nav-item {{ request()->routeIs('admin.resource-categories.*') ? 'active' : '' }}" title="Resource Categories">
+                            <div class="nav-icon"><i class="fa-solid fa-folder-tree"></i></div>
+                            <span>Resource Categories</span>
                         </a>
                     </li>
                     <li>
