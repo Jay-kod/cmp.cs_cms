@@ -1,0 +1,15 @@
+.hod-grid { display: flex; gap: 5rem; align-items: center; flex-wrap: wrap; }
+.hod-photo { flex: 0 0 350px; max-width: 100%; position: relative; }
+.hod-text { flex: 1; min-width: 320px; }
+
+@media (max-width: 992px) {
+    .hod-grid { gap: 3rem; }
+    .hod-photo { flex: 0 0 300px; }
+}
+
+@media (max-width: 768px) {
+    .hod-grid { flex-direction: column-reverse; gap: 3.5rem; text-align: center; }
+    .hod-photo { flex: 0 0 100%; width: 100%; max-width: 450px; margin: 0 auto; }
+    .hod-text { min-width: 100%; }
+    .hod-text > div { text-align: left; }
+}
