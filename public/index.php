@@ -45,7 +45,7 @@ require __DIR__.'/../vendor/autoload.php';
 */
 
 if (file_exists(__DIR__.'/../bootstrap/cache/routes-v7.php')) {
-    unlink(__DIR__.'/../bootstrap/cache/routes-v7.php');
+    @unlink(__DIR__.'/../bootstrap/cache/routes-v7.php');
 }
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
