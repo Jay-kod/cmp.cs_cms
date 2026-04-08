@@ -131,6 +131,7 @@
                     <a href="{{ route('page.show', 'sub-departments') }}" class="mobile-link mobile-sub-link">Sub-departments (Cyber Security, Data Science)</a>
                     <a href="{{ route('siwes') }}" class="mobile-link mobile-sub-link">SIWES Information</a>
                     <a href="{{ route('projects') }}" class="mobile-link mobile-sub-link">Final Year Projects</a>
+                    <a href="{{ url('/resources') }}" class="mobile-link mobile-sub-link">Student Resources</a>
                 </div>
             </details>
 
