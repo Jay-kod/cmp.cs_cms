@@ -19,7 +19,7 @@
             @php
             $isHomeActive = request()->is('/');
             $isAboutActive = request()->is('about*') || request()->is('nacos-presidents*');
-            $isAcademicsActive = request()->is('academics*') || request()->is('programmes*') || request()->is('pages/programmes*') || request()->is('siwes*') || request()->is('projects*') || request()->is('pages/sub-departments*') || request()->is('sub-departments*');
+            $isAcademicsActive = request()->is('academics*') || request()->is('programmes*') || request()->is('pages/programmes*') || request()->is('siwes*') || request()->is('projects*') || request()->is('pages/sub-departments*') || request()->is('sub-departments*') || request()->is('resources*');
             $isPeopleActive = request()->is('people*') || request()->is('gallery*');
             $isNewsActive = request()->is('research-news*') || request()->is('events*') || request()->is('research-innovations*') || request()->is('pages/academic-calendar*');
         @endphp
