@@ -1,7 +1,7 @@
 <!-- CALL TO ACTION — Contact & Apply -->
 <section data-aos="fade-up" style="padding: 2rem 0; position: relative;">
-    <div class="container">
-        <div style="background: linear-gradient(105deg, #14532d 0%, #15803d 100%); border-radius: 16px; padding: 2.5rem 1.5rem; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(21, 128, 61, 0.15); text-align: center;">
+    <div class="container" style="display: flex; justify-content: center;">
+        <div style="background: linear-gradient(105deg, #14532d 0%, #15803d 100%); border-radius: 16px; padding: 2.2rem 1.5rem; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(21, 128, 61, 0.15); text-align: center; width: 100%; max-width: 420px;">
             <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.6%22 fill=%22rgba(255,255,255,0.04)%22/></svg>'); pointer-events: none;"></div>
             
             <div style="position: relative; z-index: 2; max-width: 600px; margin: 0 auto;">
