@@ -530,7 +530,8 @@ a:hover {
     visibility: hidden;
 }
 .navbar-mobile-drawer.open {
-    left: 0;
+    right: 0;
+    left: auto;
     visibility: visible;
 }
 
