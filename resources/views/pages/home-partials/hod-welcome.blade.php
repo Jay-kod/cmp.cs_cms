@@ -15,7 +15,7 @@
         }
         @media (max-width: 992px) {
             .hod-flex-container {
-                flex-direction: column-reverse;
+                flex-direction: column;
                 gap: 3.5rem;
             }
             .hod-photo {
