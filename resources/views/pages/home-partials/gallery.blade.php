@@ -104,14 +104,14 @@
         </style>
         
         <div class="home-gallery-masonry" data-aos="fade-up" data-aos-delay="100">
-            @foreach( as  => )
+            @foreach($galleryImages as $index => $img)
             <div class="home-gallery-item group">
                 <a href="{{ route('gallery.index') }}">
-                    <img loading="lazy" src="{{ asset('storage/'.) }}" alt="{{  ?? 'Gallery image' }}">
+                    <img loading="lazy" src="{{ asset('storage/'.$img->image_path) }}" alt="{{ $img->caption ?? 'Gallery image' }}">
                     <div class="home-gallery-overlay">
                         <div>
-                            @if()
-                            <h4 class="home-gallery-caption">{{  }}</h4>
+                            @if($img->caption)
+                            <h4 class="home-gallery-caption">{{ $img->caption }}</h4>
                             @endif
                             <div class="home-gallery-line"></div>
                         </div>
