@@ -29,7 +29,7 @@
 </div>
 @endif
 
-<form action="{{ route('announcements.settings.update') }}" method="POST" class="admin-card" style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 900px; margin: 0 auto; padding: 2rem;">
+<form action="{{ route($routePrefix . 'announcements.settings.update') }}" method="POST" class="admin-card" style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 900px; margin: 0 auto; padding: 2rem;">
     @csrf
 
     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
