@@ -45,9 +45,17 @@
                 <input type="range" name="speed" id="speedRange" value="{{ old('speed', $speed) }}" min="2" max="120" step="1" 
                     style="flex: 1; accent-color: var(--color-primary); cursor: pointer;"
                     oninput="document.getElementById('speedNumber').value = this.value; updatePreview();">
-                <input type="number" id="speedNumber" value="{{ old('speed', $speed) }}" min="2" max="120" 
-                    style="width: 80px; padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 6px; text-align: center; font-weight: 600;"
-                    oninput="document.getElementById('speedRange').value = this.value; updatePreview();">
+                <div style="display: flex; align-items: center; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; background: white;">
+                    <button type="button" onclick="adjustSpeed(-1)" style="background: #f1f5f9; border: none; padding: 0.5rem 0.8rem; cursor: pointer; border-right: 1px solid #cbd5e1; color: #475569; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input type="number" id="speedNumber" value="{{ old('speed', $speed) }}" min="2" max="120" 
+                        style="width: 50px; padding: 0.5rem 0; border: none; outline: none; text-align: center; font-weight: 600; -moz-appearance: textfield;"
+                        oninput="document.getElementById('speedRange').value = this.value; updatePreview();">
+                    <button type="button" onclick="adjustSpeed(1)" style="background: #f1f5f9; border: none; padding: 0.5rem 0.8rem; cursor: pointer; border-left: 1px solid #cbd5e1; color: #475569; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
                 <span style="color: #64748b; font-size: 0.9rem;">seconds</span>
             </div>
         </div>
