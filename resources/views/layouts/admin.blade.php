@@ -207,6 +207,12 @@
                             <span>Carousel</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.media-optimization.index') }}" class="admin-nav-item {{ request()->routeIs('admin.media-optimization.*') ? 'active' : '' }}" title="Media Optimization (WebP)">
+                            <div class="nav-icon"><i class="fa-solid fa-images"></i></div>
+                            <span>Media Optimization</span>
+                        </a>
+                    </li>
 
                     <li class="nav-section-title"><span>Resources & Docs</span></li>
                     <li>
