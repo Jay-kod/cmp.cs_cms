@@ -61,6 +61,7 @@
                     </summary>
                     <div class="nav-dropdown-menu" role="menu" style="position: absolute; top: calc(100% + 15px); left: 50%; transform: translateX(-50%); background: white; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); border-radius: 0.5rem; padding: 0.5rem; min-width: 200px; z-index: 50; border: 1px solid #f3f4f6;">
                         <a href="{{ url('/people') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.6rem 1rem; color: #4b5563; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 0.375rem; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.color='#059669'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Staff Directory</a>
+                        <a href="{{ url('/gallery') }}" class="nav-dropdown-item" role="menuitem" style="display: block; padding: 0.6rem 1rem; color: #4b5563; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 0.375rem; transition: all 0.2s;" onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.color='#059669'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4b5563'">Gallery</a>
                     </div>
                 </details>
 
@@ -139,8 +140,7 @@
                 </summary>
                 <div class="mobile-details-menu">
                     <a href="{{ url('/people') }}" class="mobile-link mobile-sub-link">Staff Directory</a>
-                </div>
-            </details>
+                      <a href="{{ url('/gallery') }}" class="mobile-link mobile-sub-link">Gallery</a>
 
             <details class="mobile-details">
                 <summary class="mobile-link mobile-details-summary {{ $isNewsActive ? 'active' : '' }}" aria-label="News dropdown (mobile)">
