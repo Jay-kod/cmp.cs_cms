@@ -812,9 +812,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let coursesHtml = '';
         if (m.courses && m.courses.length) {
             const shown = m.courses.slice(0, 2);
-            coursesHtml = shown.map(c => `<span class="card-course-tag"><i class="fa-solid fa-book-open" style="font-size:0.6rem;"></i> ${c.code}</span>`).join('');
+            coursesHtml = shown.map(c => `<span class="card-course-tag"><i class="fa-solid fa-book-open text-[0.6rem]"></i> ${c.code}</span>`).join('');
             if (m.courses.length > 2) {
-                coursesHtml += `<span class="card-course-tag" style="background:transparent;color:#94a3b8;">+${m.courses.length - 2}</span>`;
+                coursesHtml += `<span class="card-course-tag bg-transparent text-slate-400">+${m.courses.length - 2}</span>`;
             }
         }
         return `
@@ -829,7 +829,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div>
                         <h3 class="card-name">${m.title} ${m.name}</h3>
                         ${m.rank ? `<p class="card-rank">${m.rank}</p>` : ''}
-                        ${m.specialisation ? `<p class="card-specialisation"><i class="fa-solid fa-flask" style="color:#94a3b8;margin-right:3px;font-size:0.7rem;"></i>${m.specialisation}</p>` : ''}
+                        ${m.specialisation ? `<p class="card-specialisation"><i class="fa-solid fa-flask text-slate-400 mr-[3px] text-[0.7rem]"></i>${m.specialisation}</p>` : ''}
                     </div>
                     <div data-aos="fade-up" class="card-footer">
                         <div data-aos="fade-up" class="card-courses">${coursesHtml}</div>
@@ -879,10 +879,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (data.count === 0 || cards.length === 0) {
                     gridContainer.innerHTML = `
-                        <div style="text-align:center;padding:4rem 2rem;background:#f8fafc;border-radius:12px;border:1px dashed #cbd5e1;">
-                            <i class="fa-solid fa-users-slash" style="font-size:3rem;color:#cbd5e1;margin-bottom:1rem;display:block;"></i>
-                            <h3 style="color:#334155;margin:0 0 0.5rem;">No Staff Found</h3>
-                            <p style="color:#64748b;">Try adjusting your search or filter.</p>
+                        <div class="text-center py-16 px-8 bg-slate-50 rounded-xl border border-dashed border-slate-300">
+                            <i class="fa-solid fa-users-slash text-5xl text-slate-300 mb-4 block"></i>
+                            <h3 class="text-slate-700 m-0 mb-2">No Staff Found</h3>
+                            <p class="text-slate-500">Try adjusting your search or filter.</p>
                         </div>`;
                 } else {
                     gridContainer.innerHTML = `<div class="staff-grid staff-grid-fade">${cards}</div>`;
