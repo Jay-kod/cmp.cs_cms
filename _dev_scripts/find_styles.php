@@ -1,6 +1,6 @@
 <?php
 $files = [];
-$dir = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__ . '/../resources/views/pages/'));
+$dir = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__ . '/../resources/views/'));
 foreach ($dir as $f) {
     if($f->isFile() && str_ends_with($f->getFilename(), '.blade.php')) {
         $content = file_get_contents($f->getPathname());
@@ -11,8 +11,10 @@ foreach ($dir as $f) {
     }
 }
 arsort($files);
+$out = '';
 foreach($files as $k => $v) {
-    echo "$v - $k\n";
+    $out .= "$v - $k\n";
 }
-echo "Total Files: " . count($files) . "\n";
-echo "Total Styles: " . array_sum($files) . "\n";
+$out .= "Total Files: " . count($files) . "\n";
+$out .= "Total Styles: " . array_sum($files) . "\n";
+file_put_contents(__DIR__ . '/styles_report.txt', $out);
