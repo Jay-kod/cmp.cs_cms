@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
             {{-- Left Column: About NACOS + Quick Stats --}}
             <div>
                 {{-- About card --}}
@@ -37,7 +37,7 @@
                 </div>
 
                 {{-- Quick Stats Row --}}
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     @php
                         $nacosStats = [
                             ['icon' => 'fa-solid fa-crown', 'value' => $nacosTotalCount, 'label' => $gs('home_nacos_stat1_label','Past Leaders')],
@@ -58,7 +58,7 @@
             {{-- Right Column: Past Leaders Grid --}}
             <div>
                 @if($nacosPresidents->count() > 0)
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     @foreach($nacosPresidents->take(3) as $idx => $pres)
                     <a href="{{ route('nacos-presidents') }}" style="display: flex; flex-direction: column; background: linear-gradient(160deg, rgba(30,41,59,0.4) 0%, rgba(15,23,42,0.6) 100%); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; text-decoration: none; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" onmouseover="this.style.background='linear-gradient(160deg, rgba(30,41,59,0.7) 0%, rgba(15,23,42,0.9) 100%)'; this.style.borderColor='rgba(74,222,128,0.4)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 30px -5px rgba(22,163,74,0.15), inset 0 1px 0 rgba(255,255,255,0.1)'" onmouseout="this.style.background='linear-gradient(160deg, rgba(30,41,59,0.4) 0%, rgba(15,23,42,0.6) 100%)'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)'">
                         

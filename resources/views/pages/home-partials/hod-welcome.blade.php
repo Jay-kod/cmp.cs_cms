@@ -1,61 +1,19 @@
 <!-- HOD WELCOME + STATS (Combined Section) -->
-<section data-aos="fade-up" class="hod-section" style="padding: 5rem 0 0; background: #f8fafc; position: relative; overflow: hidden;">
+<section data-aos="fade-up" class="hod-section pt-[5rem] pb-[4rem] bg-slate-50 relative overflow-hidden">
     <!-- Abstract Background Decor -->
-    <div style="position: absolute; top: -100px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(22,163,74,0.08) 0%, transparent 70%); pointer-events: none;"></div>
-    <div style="position: absolute; bottom: -50px; left: 10%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(22,163,74,0.06) 0%, transparent 70%); pointer-events: none;"></div>
+    <div class="absolute top-[-100px] right-[-50px] w-[300px] h-[300px] pointer-events-none rounded-full bg-[radial-gradient(circle,rgba(22,163,74,0.08)_0%,transparent_70%)]"></div>
+    <div class="absolute bottom-[-50px] left-[10%] w-[250px] h-[250px] pointer-events-none rounded-full bg-[radial-gradient(circle,rgba(22,163,74,0.06)_0%,transparent_70%)]"></div>
     
-    <!-- Custom Styles for Responsive Reversal -->
-    <style>
-        .hod-flex-container {
-            display: flex;
-            gap: 5rem;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-        .hod-photo-container {
-            flex-shrink: 0;
-            align-self: center;
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-            max-width: 380px;
-            width: 100%;
-        }
-        @media (max-width: 992px) {
-            .hod-flex-container {
-                flex-direction: column;
-                gap: 3.5rem;
-            }
-            .hod-photo {
-                margin: 0 auto;
-            }
-        }
-        @media (max-width: 768px) {
-            .hod-photo-container {
-                max-width: 500px;
-            }
-            .hod-quote-box {
-                padding-left: 0.2rem !important;
-            }
-            .hod-quote-mark {
-                left: -5px !important;
-                font-size: 2.5rem !important;
-                top: -5px !important;
-            }
-        }
-    </style>
-
-    <div class="container hod-flex-container">
+    <div class="container flex flex-col lg:flex-row gap-[3.5rem] lg:gap-[5rem] items-center relative z-[2]">
         
         <!-- HoD Text -->
-        <div class="hod-text" style="flex: 1; align-self: center;">
-            <span style="display: inline-block; color: var(--color-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; background: rgba(22,163,74,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_hod_badge','Welcome Message') }}</span>
-            <h2 style="font-size: 2.8rem; margin-bottom: 1.5rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; line-height: 1.15;">{{ $gs('home_hod_title','From the Head of Department') }}</h2>
+        <div class="hod-text flex-1 self-center">
+            <span class="inline-block text-primary text-[0.85rem] font-bold uppercase tracking-[1.5px] mb-4 bg-primary/10 py-1.5 px-4 rounded-full">{{ $gs('home_hod_badge','Welcome Message') }}</span>
+            <h2 class="text-[2.8rem] mb-6 font-heading font-extrabold text-slate-900 leading-[1.15]">{{ $gs('home_hod_title','From the Head of Department') }}</h2>
             
-            <div class="hod-quote-box" style="position: relative; padding-left: 2rem; margin-bottom: 2.5rem;">
-                <i class="fa-solid fa-quote-left hod-quote-mark" style="position: absolute; top: -10px; left: -10px; font-size: 3.5rem; color: rgba(22,163,74,0.1); z-index: 0;"></i>
-                <blockquote style="position: relative; z-index: 1; font-size: 1.15rem; color: #475569; line-height: 1.8; margin: 0; font-style: italic; text-align: justify;">
+            <div class="hod-quote-box relative pl-8 mb-10 max-md:pl-1 mt-6">
+                <i class="fa-solid fa-quote-left hod-quote-mark absolute -top-2.5 -left-2.5 text-[3.5rem] text-primary/10 z-0 max-md:-left-1.5 max-md:text-[2.5rem] max-md:-top-1.5"></i>
+                <blockquote class="relative z-10 text-[1.15rem] text-slate-600 leading-[1.8] m-0 italic text-justify">
                     "{!! nl2br(e($gs('hod_welcome_message', 'Welcome to the Department of Computer Science. We are committed to providing world-class computing education.'))) !!}"
                 </blockquote>
             </div>
@@ -63,28 +21,28 @@
         </div>
 
         <!-- HoD Photo Area -->
-        <div class="hod-photo-container">
-            <div class="hod-photo" style="position: relative; width: 100%;">
-                <div style="position: absolute; inset: -12px -12px 12px 12px; border: 2px solid var(--color-primary); border-radius: 14px; z-index: 1;"></div>
-                <div style="position: absolute; inset: 12px 12px -12px -12px; background: rgba(22,163,74,0.1); border-radius: 14px; z-index: 1;"></div>
+        <div class="hod-photo-container shrink-0 self-center flex flex-col gap-10 w-full max-w-[380px] lg:max-w-[380px] md:max-w-[500px]">
+            <div class="hod-photo relative w-full mx-auto">
+                <div class="absolute -inset-3 border-2 border-primary rounded-xl z-[1]"></div>
+                <div class="absolute inset-3 bg-primary/10 rounded-xl z-[1]"></div>
                 
-                <div style="position: relative; z-index: 2; aspect-ratio: 3/4; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15); border: 6px solid white;">
+                <div class="relative z-[2] aspect-[3/4] rounded-xl overflow-hidden shadow-[0_20px_40px_-12px_rgba(0,0,0,0.15)] border-[6px] border-white block group">
                     @if($gs('hod_photo'))
-                        <img src="{{ asset('storage/'.$gs('hod_photo')) }}" alt="{{ $gs('hod_name', $hod->name ?? 'HOD') }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="{{ asset('storage/'.$gs('hod_photo')) }}" alt="{{ $gs('hod_name', $hod->name ?? 'HOD') }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                     @elseif($hod && $hod->photo)
-                        <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                     @else
-                        <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); color:white; font-size:6rem;"><i class="fa-solid fa-user-tie"></i></div>
+                        <div class="w-full h-full flex items-center justify-center text-white text-[6rem] bg-gradient-to-br from-primary to-secondary"><i class="fa-solid fa-user-tie"></i></div>
                     @endif
                     
                     <!-- Floating Badge -->
-                    <div style="position: absolute; bottom: 20px; right: -20px; background: white; padding: 1rem 1.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 1rem;">
-                        <div style="width: 40px; height: 40px; background: rgba(22,163,74,0.12); color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                    <div class="absolute bottom-5 -right-5 bg-white py-4 px-6 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center gap-4">
+                        <div class="w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center text-[1.2rem]">
                             <i class="fa-solid fa-award"></i>
                         </div>
                         <div>
-                            <p style="margin: 0; font-weight: 800; color: #0f172a; font-size: 1.1rem; font-family: var(--font-heading); line-height: 1;">{{ $gs('home_hod_badge_title','Excellence') }}</p>
-                            <p style="margin: 0; font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-top: 0.2rem;">{{ $gs('home_hod_badge_subtitle','In Leadership') }}</p>
+                            <p class="m-0 font-extrabold text-slate-900 text-[1.1rem] font-heading leading-none">{{ $gs('home_hod_badge_title','Excellence') }}</p>
+                            <p class="m-0 text-[0.75rem] text-slate-500 uppercase tracking-[1px] mt-1">{{ $gs('home_hod_badge_subtitle','In Leadership') }}</p>
                         </div>
                     </div>
                 </div>
@@ -92,11 +50,11 @@
 
             <!-- HoD Name Card (Moved under image) -->
             @if($hod || $gs('hod_name'))
-            <div style="display: flex; align-items: center; gap: 1.2rem; background: white; padding: 1rem 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; position: relative; z-index: 2; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); width: 100%;">
-                <div style="width: 4px; height: 35px; background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary)); border-radius: 2px;"></div>
+            <div class="flex items-center gap-[1.2rem] bg-white py-4 px-6 rounded-xl border border-slate-200 relative z-[2] shadow-sm w-full mx-auto">
+                <div class="w-1 h-[35px] rounded-sm bg-gradient-to-b from-primary to-secondary"></div>
                 <div>
-                    <h4 style="margin: 0; font-weight: 800; color: #0f172a; font-size: 1.1rem; font-family: var(--font-heading);">{{ $gs('hod_name', $hod->name ?? '') }}</h4>
-                    <p style="margin: 0; color: #64748b; font-size: 0.9rem; font-weight: 500;">{{ $gs('hod_rank', $hod->rank ?? '') }}, Head of Department</p>
+                    <h4 class="m-0 font-extrabold text-slate-900 text-[1.1rem] font-heading">{{ $gs('hod_name', $hod->name ?? '') }}</h4>
+                    <p class="m-0 text-slate-500 text-[0.9rem] font-medium">{{ $gs('hod_rank', $hod->rank ?? '') }}, Head of Department</p>
                 </div>
             </div>
             @endif
@@ -104,22 +62,8 @@
     </div>
     
     <!-- Stats Counter Cards — integrated into HOD section -->
-    <div class="container" data-aos="fade-up" style="margin-top: 4rem; padding-bottom: 4rem;">
-        <style>
-            .home-stats-grid {
-                display: grid;
-                grid-template-columns: repeat(6, 1fr);
-                gap: 1.2rem;
-                text-align: center;
-            }
-            @media (max-width: 1024px) {
-                .home-stats-grid { grid-template-columns: repeat(3, 1fr); }
-            }
-            @media (max-width: 640px) {
-                .home-stats-grid { grid-template-columns: repeat(2, 1fr); }
-            }
-        </style>
-        <div class="home-stats-grid">
+    <div class="container mt-16 pb-16" data-aos="fade-up">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 text-center">
             @foreach([1,2,3,4,5,6] as $n)
             @php
                 $defaultIcons = ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-user-graduate','fa-solid fa-users-tie'];
@@ -147,10 +91,10 @@
                     $statValue = $gs("stat_{$n}_value", [config('university.established'), '', '', '', '', ''][$n-1]);
                 }
             @endphp
-            <div data-aos="fade-up" class="stat-card">
-                <div class="stat-bg-icon"><i class="{{ $statIcon }}"></i></div>
-                <h2 class="stat-number">{{ $statValue }}</h2>
-                <p>{{ $statLabel }}</p>
+            <div data-aos="fade-up" class="relative overflow-hidden bg-gradient-to-br from-[#14532d] via-[#166534] to-[#15803d] hover:from-[#166534] hover:via-[#15803d] hover:to-[#16a34a] text-white p-6 md:p-[1.8rem_1.2rem_1.4rem] rounded-2xl md:rounded-2xl lg:min-h-[130px] shadow-[0_4px_15px_rgba(20,83,45,0.25)] group hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(20,83,45,0.35)] transition-all duration-300 flex flex-col items-center justify-center">
+                <div class="absolute right-[12px] bottom-[10px] text-[3rem] text-white/10 opacity-90 group-hover:text-white/20 group-hover:scale-110 pointer-events-none transition-all duration-300 leading-none z-[1]"><i class="{{ $statIcon }}"></i></div>
+                <h2 class="text-[2.8rem] text-white font-heading font-black mb-[0.3rem] leading-none tracking-normal z-[2] group-hover:scale-105 transition-transform duration-300">{{ $statValue }}</h2>
+                <p class="text-[0.7rem] font-bold text-white/75 group-hover:text-white/90 uppercase tracking-[1.5px] z-[2] transition-colors duration-300 m-0">{{ $statLabel }}</p>
             </div>
             @endforeach
         </div>

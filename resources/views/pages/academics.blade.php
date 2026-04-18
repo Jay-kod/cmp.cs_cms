@@ -10,82 +10,82 @@
         : asset('images/campus-bg.jpg');
 @endphp
 <!-- Hero Section -->
-<div class="acad-hero" style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(4, 120, 87, 0.9) 50%, rgba(15, 23, 42, 0.95) 100%), url('{{ $heroUrl }}') center/cover; padding: 5.5rem 0 6.5rem; position: relative; overflow: hidden;">
-    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.15), transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1), transparent 50%); pointer-events: none;"></div>
+<div class="relative py-24 pb-28 text-center flex flex-col items-center acad-hero bg-slate-900 overflow-hidden group">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-emerald-800/90 to-slate-900/95 z-0"></div>
+    <div class="absolute inset-0 bg-center bg-cover bg-no-repeat mix-blend-overlay z-[-1] transition-transform duration-[10s] group-hover:scale-105" style="background-image: url('{{ $heroUrl }}');"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(16,185,129,0.15),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(59,130,246,0.1),transparent_50%)] pointer-events-none z-0"></div>
     
     <!-- Floating Decorative Elements -->
-    <div style="position: absolute; top: 15%; right: 10%; width: 150px; height: 150px; border: 1px solid rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none;"></div>
-    <div style="position: absolute; bottom: 10%; left: 5%; width: 250px; height: 250px; border: 1px solid rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none;"></div>
-    <div style="position: absolute; bottom: 20%; right: 25%; font-size: 8rem; color: rgba(255,255,255,0.02); transform: rotate(15deg); pointer-events: none;"><i class="fa-solid fa-laptop-code"></i></div>
+    <div class="absolute top-[15%] right-[10%] w-[150px] h-[150px] border border-white/5 rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-[10%] left-[5%] w-[250px] h-[250px] border border-white/5 rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-[20%] right-[25%] text-[8rem] text-white/5 rotate-15 pointer-events-none"><i class="fa-solid fa-laptop-code"></i></div>
     
-    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.2rem; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); color: #a7f3d0; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-            <i class="fa-solid fa-book-open" style="font-size: 0.7rem;"></i> {{ $gs('academics_hero_badge', 'Explore Our Programs') }}
+    <div class="container relative z-10 text-center flex flex-col items-center" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2 py-1.5 px-5 bg-white/10 backdrop-blur-md text-emerald-200 rounded-full text-xs font-semibold tracking-[1.5px] uppercase mb-6 border border-white/10">
+            <i class="fa-solid fa-book-open text-[0.7rem]"></i> {{ $gs('academics_hero_badge', 'Explore Our Programs') }}
         </div>
-        <h1 style="text-align: center; color: white; font-size: 3.2rem; font-family: var(--font-heading); margin: 0 0 1rem 0; font-weight: 800; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">{{ $gs('academics_hero_title', 'Discover Academic Excellence') }}</h1>
-        <p style="text-align: center; color: #cbd5e1; font-size: 1.15rem; max-width: 680px; margin: 0 auto; line-height: 1.7;">{{ $gs('academics_hero_subtitle', 'Rigorous computing programmes designed to equip you with cutting-edge skills for the technology-driven world.') }}</p>
+        <h1 class="text-white text-4xl md:text-5xl font-heading font-extrabold mb-4 drop-shadow-xl">{{ $gs('academics_hero_title', 'Discover Academic Excellence') }}</h1>
+        <p class="text-slate-300 text-lg max-w-[680px] mx-auto leading-relaxed">{{ $gs('academics_hero_subtitle', 'Rigorous computing programmes designed to equip you with cutting-edge skills for the technology-driven world.') }}</p>
     </div>
 </div>
 
-<div class="container page-layout" style="margin-top: -3rem; position: relative; z-index: 20; padding-bottom: 4rem;">
-    <div class="main-content acad-main" style="background: white; border-radius: 16px; box-shadow: 0 20px 50px -12px rgba(0,0,0,0.1); padding: 3rem 4rem;">
+<div class="container relative z-20 pb-16 -mt-12 page-layout">
+    <div class="bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] p-8 md:p-12 acad-main">
 
         {{-- Search / Filter Bar --}}
-        <div id="acad-search-bar" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem 1.5rem; margin-bottom: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center;">
-            <div style="flex: 1; min-width: 200px; position: relative;">
-                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem;"></i>
-                <input type="text" id="acad-search-input" placeholder="Search programmes or courses..." style="width: 100%; padding: 0.6rem 0.8rem 0.6rem 2.2rem; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none; transition: border-color 0.2s; background: white;" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e2e8f0'">
+        <div id="acad-search-bar" class="bg-slate-50 border border-slate-200 rounded-xl p-4 md:px-6 mb-10 flex flex-wrap gap-3 items-center">
+            <div class="flex-1 min-w-[200px] relative group">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm group-focus-within:text-primary transition-colors"></i>
+                <input type="text" id="acad-search-input" placeholder="Search programmes or courses..." class="w-full py-2.5 pr-3 pl-9 border border-slate-200 rounded-lg text-sm bg-white outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all">
             </div>
-            <select id="acad-section-filter" style="padding: 0.6rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; background: white; color: #334155; cursor: pointer; outline: none;">
+            <select id="acad-section-filter" class="py-2.5 px-4 border border-slate-200 rounded-lg text-sm bg-white text-slate-700 cursor-pointer outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all">
                 <option value="all">All Sections</option>
                 <option value="programmes">Programmes Only</option>
                 <option value="courses">Courses Only</option>
             </select>
-            <span id="acad-result-count" style="font-size: 0.8rem; color: #64748b; font-weight: 500; padding: 0.4rem 0.8rem; background: white; border-radius: 20px; border: 1px solid #e2e8f0; white-space: nowrap;"></span>
+            <span id="acad-result-count" class="text-xs text-slate-500 font-medium py-1.5 px-3 bg-white rounded-full border border-slate-200 whitespace-nowrap"></span>
         </div>
 
         {{-- ═══════════ PROGRAMME CATEGORIES OVERVIEW ═══════════ --}}
-        <section data-aos="fade-up" id="overview" style="margin-bottom: 4rem;">
-            <div class="acad-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                <div class="acad-section-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.1)); color: #3b82f6; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+        <section data-aos="fade-up" id="overview" class="mb-16">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/15 to-indigo-500/10 text-blue-500 flex items-center justify-center text-xl shadow-sm">
                     <i class="fa-solid fa-layer-group"></i>
                 </div>
-                <h2 style="margin: 0; font-size: 2rem; color: #0f172a; font-family: var(--font-heading); font-weight: 700;">{{ $gs('academics_overview_title', 'Degree Programmes') }}</h2>
+                <h2 class="m-0 text-3xl text-slate-900 font-heading font-bold">{{ $gs('academics_overview_title', 'Degree Programmes') }}</h2>
             </div>
-            <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #3b82f6, #6366f1); margin-bottom: 2rem; border-radius: 2px;"></div>
+            <div class="w-[60px] h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-sm mb-8"></div>
             
-            <p style="font-size: 1.05rem; line-height: 1.8; color: #475569; margin-bottom: 2.5rem;">
+            <p class="text-lg leading-relaxed text-slate-600 mb-10 max-w-4xl">
                 {{ $gs('academics_overview_desc', 'We offer rigorous academic paths ranging from undergraduate to doctoral studies, customized to meet global technology demands and equip our graduates with both theoretical depth and practical prowess.') }}
             </p>
 
             {{-- Category Quick Nav Cards --}}
-            <div class="acad-cat-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem;">
+            <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5">
                 @php
                     $catColors = [
-                        ['bg' => '#eff6ff', 'border' => '#bfdbfe', 'text' => '#1d4ed8', 'icon' => '#3b82f6'],
-                        ['bg' => '#ecfdf5', 'border' => '#a7f3d0', 'text' => '#047857', 'icon' => '#10b981'],
-                        ['bg' => '#faf5ff', 'border' => '#ddd6fe', 'text' => '#6d28d9', 'icon' => '#8b5cf6'],
-                        ['bg' => '#fffbeb', 'border' => '#fde68a', 'text' => '#b45309', 'icon' => '#f59e0b'],
-                        ['bg' => '#f0f9ff', 'border' => '#bae6fd', 'text' => '#2563eb', 'icon' => '#3b82f6']
+                        ['bg' => 'bg-blue-50', 'border' => 'border-blue-200', 'text' => 'text-blue-700', 'icon' => 'text-blue-500', 'hover' => 'hover:border-blue-300 hover:shadow-blue-500/10'],
+                        ['bg' => 'bg-emerald-50', 'border' => 'border-emerald-200', 'text' => 'text-emerald-700', 'icon' => 'text-emerald-500', 'hover' => 'hover:border-emerald-300 hover:shadow-emerald-500/10'],
+                        ['bg' => 'bg-purple-50', 'border' => 'border-purple-200', 'text' => 'text-purple-700', 'icon' => 'text-purple-500', 'hover' => 'hover:border-purple-300 hover:shadow-purple-500/10'],
+                        ['bg' => 'bg-amber-50', 'border' => 'border-amber-200', 'text' => 'text-amber-700', 'icon' => 'text-amber-500', 'hover' => 'hover:border-amber-300 hover:shadow-amber-500/10'],
+                        ['bg' => 'bg-sky-50', 'border' => 'border-sky-200', 'text' => 'text-sky-700', 'icon' => 'text-sky-500', 'hover' => 'hover:border-sky-300 hover:shadow-sky-500/10']
                     ];
                 @endphp
                 @foreach($categories as $index => $cat)
                 @php $color = $catColors[$index % 5]; @endphp
-                <a href="#{{ $cat->slug }}" style="display: flex; gap: 1.2rem; align-items: flex-start; background: white; padding: 1.5rem; border-radius: 14px; text-decoration: none; border: 1px solid #e2e8f0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;"
-                   onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 25px -5px rgba(0,0,0,0.05)'; this.style.borderColor='{{ $color['border'] }}'"
-                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.02)'; this.style.borderColor='#e2e8f0'">
+                <a href="#{{ $cat->slug }}" class="group flex gap-5 items-start bg-white p-6 rounded-2xl no-underline border border-slate-200 transition-all duration-300 relative overflow-hidden hover:-translate-y-1 hover:shadow-[0_12px_25px_-5px_rgba(0,0,0,0.05)] {{ $color['hover'] }}">
                     
                     {{-- Left Side: Icon --}}
-                    <div style="width: 54px; height: 54px; flex-shrink: 0; background: {{ $color['bg'] }}; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: {{ $color['icon'] }}; border: 1px solid {{ $color['border'] }};">
+                    <div class="w-14 h-14 shrink-0 {{ $color['bg'] }} rounded-xl flex items-center justify-center text-2xl {{ $color['icon'] }} border {{ $color['border'] }} transition-transform duration-300 group-hover:scale-110">
                         <i class="{{ $cat->icon ?? 'fa-solid fa-graduation-cap' }}"></i>
                     </div>
 
                     {{-- Right Side: Title + Count --}}
-                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.4rem; padding-top: 0.2rem;">
-                        <strong style="font-size: 1.15rem; color: #1e293b; font-family: var(--font-heading); line-height: 1.3;">{{ $cat->name }}</strong>
+                    <div class="flex-1 flex flex-col justify-center gap-1.5 pt-0.5">
+                        <strong class="text-[1.15rem] text-slate-800 font-heading leading-tight group-hover:{{ $color['text'] }} transition-colors">{{ $cat->name }}</strong>
                         
-                        <div style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #64748b; font-weight: 500;">
-                            <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: #f1f5f9; border-radius: 50%; color: {{ $color['icon'] }}; font-size: 0.7rem;">
+                        <div class="inline-flex items-center gap-2 text-[0.85rem] text-slate-500 font-medium">
+                            <span class="flex items-center justify-center w-[22px] h-[22px] bg-slate-100 rounded-full {{ $color['icon'] }} text-[0.7rem] transition-colors group-hover:{{ $color['bg'] }}">
                                 <i class="fa-solid fa-layer-group"></i>
                             </span>
                             {{ $cat->programmes->count() }} Programme{{ $cat->programmes->count() !== 1 ? 's' : '' }}
@@ -97,16 +97,16 @@
         </section>
 
         {{-- ═══════════ HOW TO APPLY SUMMARY (NEW) ═══════════ --}}
-        <section data-aos="fade-up" id="admission-process" class="acad-admission" style="margin-bottom: 4rem; padding: 3rem; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 16px; color: white; position: relative; overflow: hidden; box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.5);">
-            <div style="position: absolute; top: 0; right: 0; width: 300px; height: 300px; background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 60%); pointer-events: none;"></div>
+        <section data-aos="fade-up" id="admission-process" class="acad-admission mb-16 p-8 md:p-12 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl text-white relative overflow-hidden shadow-[0_15px_30px_-10px_rgba(15,23,42,0.5)]">
+            <div class="absolute top-0 right-0 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(16,185,129,0.1)_0%,transparent_60%)] pointer-events-none"></div>
             
-            <div style="text-align: center; margin-bottom: 2.5rem; position: relative; z-index: 2;">
-                <span style="display: inline-block; padding: 0.3rem 1rem; background: rgba(255,255,255,0.1); color: #a7f3d0; border-radius: 20px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem;">{{ $gs('academics_apply_badge', 'Admissions') }}</span>
-                <h2 style="margin: 0 0 1rem; font-size: 2rem; font-family: var(--font-heading); color: white;">{{ $gs('academics_apply_title', 'How to Apply') }}</h2>
-                <p style="color: #cbd5e1; font-size: 1.05rem; max-width: 500px; margin: 0 auto;">{{ $gs('academics_apply_subtitle', 'Join our vibrant academic community in three simple steps.') }}</p>
+            <div class="text-center mb-10 relative z-10">
+                <span class="inline-block py-1.5 px-4 bg-white/10 text-emerald-200 rounded-full text-xs font-semibold tracking-[1.5px] uppercase mb-4">{{ $gs('academics_apply_badge', 'Admissions') }}</span>
+                <h2 class="m-0 mb-4 text-3xl font-heading text-white font-bold">{{ $gs('academics_apply_title', 'How to Apply') }}</h2>
+                <p class="text-slate-300 text-[1.05rem] max-w-[500px] mx-auto">{{ $gs('academics_apply_subtitle', 'Join our vibrant academic community in three simple steps.') }}</p>
             </div>
 
-            <div class="acad-steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; position: relative; z-index: 2;">
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 relative z-10">
                 @php
                     $applySteps = json_decode(\App\Models\DepartmentSetting::getCached('academics_apply_steps') ?? '[]', true) ?? [];
                     if (empty($applySteps)) {
@@ -118,10 +118,10 @@
                     }
                 @endphp
                 @foreach($applySteps as $i => $step)
-                <div data-aos="fade-up" class="acad-step-card" style="background: linear-gradient(145deg, rgba(30,41,59,0.7), rgba(15,23,42,0.9)); padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); text-align: center; backdrop-filter: blur(10px); transition: all 0.4s ease; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.3);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(16,185,129,0.4)'; this.style.boxShadow='0 20px 40px -5px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(16,185,129,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.08)'; this.style.boxShadow='0 10px 30px -5px rgba(0,0,0,0.3)'">
-                    <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--color-primary), #047857); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(16,185,129,0.3); border: 2px solid rgba(255,255,255,0.1);">{{ $i + 1 }}</div>
-                    <strong style="display: block; font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 0.8rem; color: white;">{{ $step['title'] ?? '' }}</strong>
-                    <p style="font-size: 0.95rem; color: #94a3b8; margin: 0; line-height: 1.6;">{{ $step['desc'] ?? '' }}</p>
+                <div data-aos="fade-up" class="group bg-gradient-to-br from-slate-800/70 to-slate-900/90 p-8 rounded-2xl border border-white/10 text-center backdrop-blur-md transition-all duration-400 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.3)] hover:-translate-y-2 hover:border-emerald-500/40 hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.4),inset_0_0_0_1px_rgba(16,185,129,0.2)]">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary to-emerald-700 text-white rounded-full flex items-center justify-center text-2xl font-extrabold mx-auto mb-6 shadow-[0_8px_20px_rgba(16,185,129,0.3)] border-2 border-white/10">{{ $i + 1 }}</div>
+                    <strong class="block text-[1.25rem] font-heading mb-3 text-white">{{ $step['title'] ?? '' }}</strong>
+                    <p class="text-[0.95rem] text-slate-400 m-0 leading-relaxed">{{ $step['desc'] ?? '' }}</p>
                 </div>
                 @endforeach
             </div>
@@ -131,105 +131,105 @@
         @foreach($categories as $index => $cat)
         @php 
             // Cycle through some brand colors for section headers
-            $headers = ['#10b981', '#3b82f6', '#8b5cf6', '#ea580c'];
-            $hc = $headers[$index % 4]; 
+            $headers = ['text-emerald-500 bg-emerald-500 border-emerald-500', 'text-blue-500 bg-blue-500 border-blue-500', 'text-purple-500 bg-purple-500 border-purple-500', 'text-orange-500 bg-orange-500 border-orange-500'];
+            $headerBg = ['bg-emerald-500/15', 'bg-blue-500/15', 'bg-purple-500/15', 'bg-orange-500/15'];
+            $hc = explode(' ', $headers[$index % 4]);
+            $bg = $headerBg[$index % 4];
         @endphp
-        <section data-aos="fade-up" id="{{ $cat->slug }}" style="margin-bottom: 4rem;">
-            <div class="acad-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;">
-                <div class="acad-section-icon" style="width: 44px; height: 44px; background: {{ $hc }}15; color: {{ $hc }}; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+        <section data-aos="fade-up" id="{{ $cat->slug }}" class="mb-16">
+            <div class="flex items-center gap-4 mb-5">
+                <div class="w-11 h-11 {{ $bg }} {{ $hc[0] }} rounded-xl flex items-center justify-center text-xl">
                     <i class="{{ $cat->icon ?? 'fa-solid fa-graduation-cap' }}"></i>
                 </div>
-                <h2 style="margin: 0; font-size: 1.8rem; color: #0f172a; font-family: var(--font-heading); font-weight: 700;">{{ $cat->name }}</h2>
+                <h2 class="m-0 text-3xl text-slate-900 font-heading font-bold">{{ $cat->name }}</h2>
             </div>
-            <div style="width: 50px; height: 3px; background: {{ $hc }}; margin-bottom: 1.5rem; border-radius: 2px;"></div>
+            <div class="w-[50px] h-1 {{ $hc[1] }} mb-6 rounded-sm"></div>
 
             @if($cat->description)
-            <p style="font-size: 1.05rem; line-height: 1.7; color: #475569; margin-bottom: 2rem; max-width: 800px;">{{ $cat->description }}</p>
+            <p class="text-[1.05rem] leading-relaxed text-slate-600 mb-8 max-w-[800px]">{{ $cat->description }}</p>
             @endif
 
             @if($cat->programmes->isEmpty())
-            <div style="background: #f8fafc; padding: 2.5rem; border-radius: 12px; text-align: center; color: #64748b; border: 1px dashed #cbd5e1;">
-                <div style="width: 48px; height: 48px; background: #e2e8f0; color: #94a3b8; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 0 auto 1rem;">
+            <div class="bg-slate-50 p-10 rounded-xl text-center text-slate-500 border border-dashed border-slate-300">
+                <div class="w-12 h-12 bg-slate-200 text-slate-400 rounded-full flex items-center justify-center text-xl mx-auto mb-4">
                     <i class="fa-solid fa-info"></i>
                 </div>
-                <p style="margin: 0; font-size: 1rem;">Information regarding programmes in this category is currently being updated.</p>
+                <p class="m-0 text-base">Information regarding programmes in this category is currently being updated.</p>
             </div>
             @else
-            <div style="display: grid; gap: 1.2rem;">
+            <div class="grid gap-5">
                 @foreach($cat->programmes as $prog)
-                <details class="programme-card acad-programme-item" data-name="{{ strtolower($prog->name) }}" data-level="{{ strtolower($prog->level ?? '') }}" style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); transition: box-shadow 0.3s;"
-                         onmouseover="this.style.boxShadow='0 10px 25px -5px rgba(0,0,0,0.05)'"
-                         onmouseout="this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.02)'">
+                <details class="group bg-white rounded-xl border border-slate-200 overflow-hidden shadow-[0_4px_6px_-1px_rgba(0,0,0,0.02)] transition-shadow duration-300 hover:shadow-[0_10px_25px_-5px_rgba(0,0,0,0.05)] acad-programme-item" data-name="{{ strtolower($prog->name) }}" data-level="{{ strtolower($prog->level ?? '') }}">
                     
-                    <summary style="cursor: pointer; padding: 1.5rem; position: relative; list-style: none; user-select: none;">
-                        <div class="expand-icon" style="position: absolute; right: 1.5rem; top: 1.5rem; width: 36px; height: 36px; background: #f8fafc; border: 1px solid #e2e8f0; color: #64748b; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; z-index: 2;">
-                            <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem;"></i>
+                    <summary class="cursor-pointer p-6 relative list-none select-none">
+                        <div class="absolute right-6 top-6 w-9 h-9 bg-slate-50 border border-slate-200 text-slate-500 rounded-full flex items-center justify-center transition-transform duration-300 z-10 group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-sm"></i>
                         </div>
 
-                        <div style="width: 100%; box-sizing: border-box;">
-                            <div style="padding-right: 3.5rem; margin-bottom: 1rem;">
-                                <h3 style="margin: 0; font-size: 1rem; color: #1d4ed8; background: #eff6ff; font-family: var(--font-heading); line-height: 1.4; padding: 0.4rem 0.8rem; border-radius: 8px; display: inline-block;">{{ $prog->name }}</h3>
+                        <div class="w-full box-border pr-14">
+                            <div class="mb-4">
+                                <h3 class="m-0 text-base text-blue-700 bg-blue-50 font-heading leading-[1.4] py-1.5 px-3 rounded-lg inline-block">{{ $prog->name }}</h3>
                             </div>
                             
                             {{-- Meta Badges --}}
-                            <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 0.35rem; width: 100%;">
+                            <div class="flex flex-nowrap items-center gap-1.5 w-full">
                                 @if($prog->level)
-                                <span style="background: rgba(16, 185, 129, 0.1); color: #047857; padding: 0.25rem 0.55rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; border: 1px solid rgba(16,185,129,0.2); white-space: nowrap; flex-shrink: 0; letter-spacing: 0.2px;">
+                                <span class="bg-emerald-500/10 text-emerald-700 py-1 px-2.5 rounded-full text-xs font-bold border border-emerald-500/20 whitespace-nowrap shrink-0 tracking-[0.2px]">
                                     {{ $prog->level }}
                                 </span>
                                 @endif
                                 @if($prog->duration)
-                                <span style="background: #f8fafc; color: #475569; padding: 0.25rem 0.55rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; border: 1px solid #e2e8f0; display: inline-flex; align-items: center; gap: 0.25rem; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.2px;">
-                                    <i class="fa-regular fa-clock" style="font-size: 0.65rem;"></i> {{ $prog->duration }}
+                                <span class="bg-slate-50 text-slate-600 py-1 px-2.5 rounded-full text-xs font-semibold border border-slate-200 inline-flex items-center gap-1 whitespace-nowrap shrink-0 tracking-[0.2px]">
+                                    <i class="fa-regular fa-clock text-[0.65rem]"></i> {{ $prog->duration }}
                                 </span>
                                 @endif
                                 @if($prog->mode_of_study)
-                                <span style="background: #f8fafc; color: #475569; padding: 0.25rem 0.55rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; border: 1px solid #e2e8f0; display: inline-flex; align-items: center; gap: 0.25rem; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.2px;">
-                                    <i class="fa-solid fa-book-open" style="font-size: 0.65rem;"></i> {{ $prog->mode_of_study }}
+                                <span class="bg-slate-50 text-slate-600 py-1 px-2.5 rounded-full text-xs font-semibold border border-slate-200 inline-flex items-center gap-1 whitespace-nowrap shrink-0 tracking-[0.2px]">
+                                    <i class="fa-solid fa-book-open text-[0.65rem]"></i> {{ $prog->mode_of_study }}
                                 </span>
                                 @endif
                             </div>
                         </div>
                     </summary>
 
-                    <div style="padding: 0 1.5rem 1.5rem 1.5rem; border-top: 1px solid #f1f5f9; margin-top: -0.5rem; pt-4">
+                    <div class="px-6 pb-6 pt-0 border-t border-slate-100">
                         @if($prog->description)
-                        <p style="line-height: 1.7; color: #475569; font-size: 0.95rem; margin: 1rem 0 1.5rem;">{{ $prog->description }}</p>
+                        <p class="leading-relaxed text-slate-600 text-[0.95rem] my-4">{{ $prog->description }}</p>
                         @endif
 
-                        <div class="acad-prog-details-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4">
                             @if($prog->objectives)
-                            <div style="background: #faf5ff; padding: 1.2rem; border-radius: 10px; border-left: 3px solid #a855f7;">
-                                <h4 style="margin: 0 0 0.5rem; font-size: 0.95rem; color: #7e22ce; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-bullseye"></i> Objectives</h4>
-                                <p style="margin: 0; font-size: 0.9rem; color: #4c1d95; line-height: 1.6;">{{ $prog->objectives }}</p>
+                            <div class="bg-purple-50 p-5 rounded-lg border-l-4 border-purple-500">
+                                <h4 class="m-0 mb-2 text-[0.95rem] text-purple-700 flex items-center gap-2"><i class="fa-solid fa-bullseye"></i> Objectives</h4>
+                                <p class="m-0 text-[0.9rem] text-purple-900 leading-relaxed">{{ $prog->objectives }}</p>
                             </div>
                             @endif
 
                             @if($prog->career_pathways)
-                            <div style="background: #eff6ff; padding: 1.2rem; border-radius: 10px; border-left: 3px solid #3b82f6;">
-                                <h4 style="margin: 0 0 0.5rem; font-size: 0.95rem; color: #1d4ed8; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-road"></i> Career Pathways</h4>
-                                <p style="margin: 0; font-size: 0.9rem; color: #1e3a8a; line-height: 1.6;">{{ $prog->career_pathways }}</p>
+                            <div class="bg-blue-50 p-5 rounded-lg border-l-4 border-blue-500">
+                                <h4 class="m-0 mb-2 text-[0.95rem] text-blue-700 flex items-center gap-2"><i class="fa-solid fa-road"></i> Career Pathways</h4>
+                                <p class="m-0 text-[0.9rem] text-blue-900 leading-relaxed">{{ $prog->career_pathways }}</p>
                             </div>
                             @endif
 
                             @if($prog->requirements_utme)
-                            <div style="background: #fdf2f8; padding: 1.2rem; border-radius: 10px; border-left: 3px solid #ec4899;">
-                                <h4 style="margin: 0 0 0.5rem; font-size: 0.95rem; color: #be185d; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-clipboard-check"></i> UTME Requirements</h4>
-                                <p style="margin: 0; font-size: 0.9rem; color: #831843; line-height: 1.6;">{{ $prog->requirements_utme }}</p>
+                            <div class="bg-pink-50 p-5 rounded-lg border-l-4 border-pink-500">
+                                <h4 class="m-0 mb-2 text-[0.95rem] text-pink-700 flex items-center gap-2"><i class="fa-solid fa-clipboard-check"></i> UTME Requirements</h4>
+                                <p class="m-0 text-[0.9rem] text-pink-900 leading-relaxed">{{ $prog->requirements_utme }}</p>
                             </div>
                             @endif
 
                             @if($prog->requirements_de)
-                            <div style="background: #fffbeb; padding: 1.2rem; border-radius: 10px; border-left: 3px solid #f59e0b;">
-                                <h4 style="margin: 0 0 0.5rem; font-size: 0.95rem; color: #b45309; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-clipboard-list"></i> Direct Entry Requirements</h4>
-                                <p style="margin: 0; font-size: 0.9rem; color: #78350f; line-height: 1.6;">{{ $prog->requirements_de }}</p>
+                            <div class="bg-amber-50 p-5 rounded-lg border-l-4 border-amber-500">
+                                <h4 class="m-0 mb-2 text-[0.95rem] text-amber-700 flex items-center gap-2"><i class="fa-solid fa-clipboard-list"></i> Direct Entry Requirements</h4>
+                                <p class="m-0 text-[0.9rem] text-amber-900 leading-relaxed">{{ $prog->requirements_de }}</p>
                             </div>
                             @endif
                         </div>
 
                         @if($prog->handbook_pdf)
-                        <div style="margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px dashed #e2e8f0; text-align: right;">
-                            <a href="{{ asset('storage/' . $prog->handbook_pdf) }}" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='var(--color-secondary)'" onmouseout="this.style.background='var(--color-primary)'">
+                        <div class="mt-6 pt-5 border-t border-dashed border-slate-200 text-right">
+                            <a href="{{ asset('storage/' . $prog->handbook_pdf) }}" target="_blank" class="inline-flex items-center gap-2 bg-primary text-white py-2.5 px-5 rounded-lg font-semibold text-sm no-underline transition-colors hover:bg-secondary">
                                 <i class="fa-solid fa-cloud-arrow-down"></i> Download Handbook
                             </a>
                         </div>
@@ -243,50 +243,50 @@
         @endforeach
 
         {{-- ═══════════ COURSE STRUCTURE ═══════════ --}}
-        <section data-aos="fade-up" id="course-structure" style="margin-bottom: 2rem;">
-            <div class="acad-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                <div class="acad-section-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(225, 29, 72, 0.1)); color: #ec4899; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+        <section data-aos="fade-up" id="course-structure" class="mb-8">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/15 to-rose-500/10 text-pink-500 flex items-center justify-center text-xl shadow-sm">
                     <i class="fa-solid fa-diagram-project"></i>
                 </div>
-                <h2 style="margin: 0; font-size: 2rem; color: #0f172a; font-family: var(--font-heading); font-weight: 700;">{{ $gs('academics_courses_title', 'Course Structure') }}</h2>
+                <h2 class="m-0 text-3xl text-slate-900 font-heading font-bold">{{ $gs('academics_courses_title', 'Course Structure') }}</h2>
             </div>
-            <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #ec4899, #e11d48); margin-bottom: 1.5rem; border-radius: 2px;"></div>
+            <div class="w-[60px] h-1 bg-gradient-to-r from-pink-500 to-rose-500 rounded-sm mb-6"></div>
             
-            <p style="font-size: 1.05rem; color: #475569; margin-bottom: 2.5rem;">{{ $gs('academics_courses_desc', 'Browse the unified curriculum outline showing core and elective courses across different academic levels.') }}</p>
+            <p class="text-lg leading-relaxed text-slate-600 mb-10 max-w-4xl">{{ $gs('academics_courses_desc', 'Browse the unified curriculum outline showing core and elective courses across different academic levels.') }}</p>
 
             @foreach($courses as $level => $levelCourses)
-            <div style="background: white; border: 1px solid #e2e8f0; border-radius: 16px; margin-bottom: 2.5rem; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01);">
-                <div style="background: #ffffff; padding: 1.5rem 1.8rem; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 1rem;">
-                    <span style="background: #0f172a; color: white; width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.15rem; box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);">L{{ $level }}</span>
-                    <h3 style="margin: 0; font-size: 1.4rem; color: #0f172a; font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.02em;">Level {{ $level }} Courses</h3>
+            <div class="bg-white border border-slate-200 rounded-2xl mb-10 overflow-hidden shadow-[0_10px_25px_-5px_rgba(0,0,0,0.05),0_8px_10px_-6px_rgba(0,0,0,0.01)]">
+                <div class="bg-white py-6 px-7 border-b border-slate-100 flex items-center gap-4">
+                    <span class="bg-slate-900 text-white w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-[1.15rem] shadow-[0_4px_10px_rgba(15,23,42,0.25)]">L{{ $level }}</span>
+                    <h3 class="m-0 text-[1.4rem] text-slate-900 font-heading font-bold tracking-[-0.02em]">Level {{ $level }} Courses</h3>
                 </div>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; min-width: 650px; text-align: left;">
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse min-w-[650px] text-left">
                         <thead>
-                            <tr style="background: #f8fafc; color: #64748b; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
-                                <th style="padding: 1.2rem 1.8rem; font-weight: 700; border-bottom: 1px solid #e2e8f0;">Course Code</th>
-                                <th style="padding: 1.2rem 1.8rem; font-weight: 700; border-bottom: 1px solid #e2e8f0;">Course Title</th>
-                                <th style="padding: 1.2rem 1.8rem; font-weight: 700; text-align: center; border-bottom: 1px solid #e2e8f0;">Units</th>
-                                <th style="padding: 1.2rem 1.8rem; font-weight: 700; text-align: center; border-bottom: 1px solid #e2e8f0;">Semester</th>
-                                <th style="padding: 1.2rem 1.8rem; font-weight: 700; text-align: center; border-bottom: 1px solid #e2e8f0;">Type</th>
+                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-widest">
+                                <th class="py-5 px-7 font-bold border-b border-slate-200">Course Code</th>
+                                <th class="py-5 px-7 font-bold border-b border-slate-200">Course Title</th>
+                                <th class="py-5 px-7 font-bold border-b border-slate-200 text-center">Units</th>
+                                <th class="py-5 px-7 font-bold border-b border-slate-200 text-center">Semester</th>
+                                <th class="py-5 px-7 font-bold border-b border-slate-200 text-center">Type</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($levelCourses as $index => $course)
-                            <tr class="acad-course-row" data-code="{{ strtolower($course->code) }}" data-coursetitle="{{ strtolower($course->title) }}" style="border-bottom: 1px solid #f1f5f9; background: {{ $index % 2 === 0 ? 'white' : '#fafafb' }}; transition: all 0.2s ease;" onmouseover="this.style.background='#f1f5f9'; this.style.transform='translateY(-1px)'" onmouseout="this.style.background='{{ $index % 2 === 0 ? 'white' : '#fafafb' }}'; this.style.transform='translateY(0)'">
-                                <td style="padding: 1.2rem 1.8rem;">
-                                    <strong style="color: var(--color-primary); font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; background: rgba(var(--color-primary-rgb, 37, 99, 235), 0.08); padding: 0.4rem 0.8rem; border-radius: 8px; border: 1px solid rgba(var(--color-primary-rgb, 37, 99, 235), 0.15); font-weight: 700; letter-spacing: 0.5px;">{{ $course->code }}</strong>
+                            <tr class="acad-course-row border-b border-slate-100 {{ $index % 2 === 0 ? 'bg-white' : 'bg-slate-50/50' }} transition-all duration-200 hover:bg-slate-100 hover:-translate-y-[1px]" data-code="{{ strtolower($course->code) }}" data-coursetitle="{{ strtolower($course->title) }}">
+                                <td class="py-5 px-7">
+                                    <strong class="text-primary font-mono text-[0.95rem] bg-primary/10 py-1.5 px-3 rounded-lg border border-primary/20 font-bold tracking-[0.5px]">{{ $course->code }}</strong>
                                 </td>
-                                <td style="padding: 1.2rem 1.8rem; color: #1e293b; font-size: 1rem; font-weight: 600;">{{ $course->title }}</td>
-                                <td style="padding: 1.2rem 1.8rem; text-align: center; color: #475569; font-weight: 700; font-size: 1rem;">{{ $course->credit_units }}</td>
-                                <td style="padding: 1.2rem 1.8rem; text-align: center; color: #64748b; font-size: 0.95rem; font-weight: 500;">
-                                    <span style="display: inline-flex; align-items: center; gap: 0.4rem; background: white; padding: 0.3rem 0.8rem; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 1px 2px rgba(0,0,0,0.05);"><i class="fa-solid {{ strtolower($course->semester) == 'first' ? 'fa-sun' : 'fa-snowflake' }}" style="color: {{ strtolower($course->semester) == 'first' ? '#f59e0b' : '#38bdf8' }};"></i> {{ $course->semester }}</span>
+                                <td class="py-5 px-7 text-slate-800 text-base font-semibold">{{ $course->title }}</td>
+                                <td class="py-5 px-7 text-center text-slate-600 font-bold text-base">{{ $course->credit_units }}</td>
+                                <td class="py-5 px-7 text-center text-slate-500 text-[0.95rem] font-medium">
+                                    <span class="inline-flex items-center gap-1.5 bg-white py-1 px-3 rounded-full border border-slate-200 shadow-sm"><i class="fa-solid {{ strtolower($course->semester) == 'first' ? 'fa-sun text-amber-500' : 'fa-snowflake text-sky-400' }}"></i> {{ $course->semester }}</span>
                                 </td>
-                                <td style="padding: 1.2rem 1.8rem; text-align: center;">
+                                <td class="py-5 px-7 text-center">
                                     @if($course->is_elective)
-                                        <span style="background: rgba(245, 158, 11, 0.1); color: #b45309; padding: 0.4rem 1rem; border-radius: 30px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border: 1px solid rgba(245, 158, 11, 0.2); letter-spacing: 0.5px;">Elective</span>
+                                        <span class="bg-amber-500/10 text-amber-700 py-1.5 px-4 rounded-full text-xs font-extrabold uppercase border border-amber-500/20 tracking-[0.5px]">Elective</span>
                                     @else
-                                        <span style="background: rgba(16, 185, 129, 0.1); color: #047857; padding: 0.4rem 1rem; border-radius: 30px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border: 1px solid rgba(16, 185, 129, 0.2); letter-spacing: 0.5px;">Core</span>
+                                        <span class="bg-emerald-500/10 text-emerald-700 py-1.5 px-4 rounded-full text-xs font-extrabold uppercase border border-emerald-500/20 tracking-[0.5px]">Core</span>
                                     @endif
                                 </td>
                             </tr>

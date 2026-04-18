@@ -10,76 +10,62 @@
 @endphp
 
 <!-- Hero -->
-<div style="background: linear-gradient(135deg, rgba(15,23,42,0.93) 0%, rgba(4,120,87,0.85) 50%, rgba(15,23,42,0.93) 100%), url('{{ $coverSrc }}') center/cover; padding: 4rem 0 5rem; position: relative; overflow: hidden;">
-    <div style="position: absolute; inset: 0; backdrop-filter: blur(2px); pointer-events: none;"></div>
-    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <a href="{{ route('gallery.index') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #a7f3d0; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 1.2rem; transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#a7f3d0'">
+<div class="bg-[url('{{ $coverSrc }}')] bg-cover bg-center py-[4rem] pb-[5rem] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/[0.93] via-emerald-800/[0.85] to-slate-900/[0.93]"></div>
+    <div class="absolute inset-0 backdrop-blur-[2px] pointer-events-none"></div>
+    <div class="container relative z-10 text-center flex flex-col items-center" data-aos="fade-up">
+        <a href="{{ route('gallery.index') }}" class="inline-flex items-center gap-2 text-emerald-200 text-[0.85rem] font-semibold no-underline mb-[1.2rem] transition-colors duration-200 hover:text-white">
             <i class="fa-solid fa-arrow-left"></i> Back to Gallery
         </a>
-        <h1 style="color: white; font-size: 2.6rem; font-family: var(--font-heading); margin: 0 0 0.6rem; font-weight: 800; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">{{ $album->title }}</h1>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; color: #cbd5e1; font-size: 0.9rem;">
+        <h1 class="text-white text-[2.6rem] font-heading m-0 mb-2 font-extrabold [text-shadow:0_4px_20px_rgba(0,0,0,0.3)] max-[768px]:text-[1.8rem] max-[575px]:text-[1.5rem] max-[480px]:text-[1.35rem]">{{ $album->title }}</h1>
+        <div class="flex items-center justify-center gap-6 flex-wrap text-slate-300 text-[0.9rem]">
             @if($album->date)
             <span><i class="fa-regular fa-calendar"></i> {{ \Carbon\Carbon::parse($album->date)->format('F j, Y') }}</span>
             @endif
             <span><i class="fa-regular fa-image"></i> {{ $album->images_count }} {{ Str::plural('photo', $album->images_count) }}</span>
         </div>
         @if($album->description)
-        <p style="color: #94a3b8; font-size: 1rem; max-width: 640px; margin: 1rem auto 0; line-height: 1.7;">{{ $album->description }}</p>
+        <p class="text-slate-400 text-[1rem] max-w-[640px] mx-auto mt-4 leading-[1.7]">{{ $album->description }}</p>
         @endif
     </div>
 </div>
 
 <!-- Photo Grid -->
-<div class="container" data-aos="fade-up" style="padding: 3rem 0 5rem;">
+<div class="container py-12 pb-20" data-aos="fade-up">
     @if($images->count())
-    <div class="album-photo-grid" style="columns: 3; column-gap: 1rem;">
+    <div class="album-photo-grid columns-3 max-md:columns-2 max-[480px]:columns-1 gap-4">
         @foreach($images as $img)
-        <div data-aos="fade-up" class="album-photo-item" style="break-inside: avoid; margin-bottom: 1rem; border-radius: 10px; overflow: hidden; position: relative; cursor: pointer;" onclick="openLightbox({{ $loop->index }})">
-            <img src="{{ asset('storage/'.$img->image_path) }}" alt="{{ $img->caption ?? $album->title }}" style="width: 100%; display: block; transition: transform 0.4s;" loading="lazy">
-            <div class="photo-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 1rem;">
+        <div data-aos="fade-up" class="album-photo-item break-inside-avoid mb-4 rounded-[10px] overflow-hidden relative cursor-pointer group" onclick="openLightbox({{ $loop->index }})">
+            <img src="{{ asset('storage/'.$img->image_path) }}" alt="{{ $img->caption ?? $album->title }}" class="w-full block transition-transform duration-400 group-hover:scale-[1.03]" loading="lazy">
+            <div class="photo-overlay absolute inset-0 bg-gradient-to-t from-black/50 to-transparent/40 opacity-0 transition-opacity duration-300 flex items-end p-4 group-hover:opacity-100">
                 @if($img->caption)
-                <span style="color: white; font-size: 0.85rem; font-weight: 600;">{{ $img->caption }}</span>
+                <span class="text-white text-[0.85rem] font-semibold">{{ $img->caption }}</span>
                 @endif
-                <i class="fa-solid fa-expand" style="position: absolute; top: 12px; right: 12px; color: white; font-size: 1rem; opacity: 0.8;"></i>
+                <i class="fa-solid fa-expand absolute top-3 right-3 text-white text-[1rem] opacity-80"></i>
             </div>
         </div>
         @endforeach
     </div>
     @else
-    <div style="text-align: center; padding: 4rem 2rem;">
-        <i class="fa-solid fa-image" style="font-size: 3rem; color: #d1d5db; margin-bottom: 1rem;"></i>
-        <p style="color: #6b7280;">This album has no photos yet.</p>
+    <div class="text-center py-16 px-8">
+        <i class="fa-solid fa-image text-5xl text-slate-300 mb-4"></i>
+        <p class="text-slate-500">This album has no photos yet.</p>
     </div>
     @endif
 </div>
 
 <!-- Lightbox -->
-<div id="lightbox" style="display: none; position: fixed; inset: 0; z-index: 99999; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column;" onclick="if(event.target===this)closeLightbox()">
-    <button onclick="closeLightbox()" style="position: absolute; top: 20px; right: 24px; background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; z-index: 10; opacity: 0.7; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'"><i class="fa-solid fa-xmark"></i></button>
-    <button id="lb-prev" onclick="navigateLightbox(-1)" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: white; font-size: 1.4rem; cursor: pointer; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fa-solid fa-chevron-left"></i></button>
-    <button id="lb-next" onclick="navigateLightbox(1)" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: white; font-size: 1.4rem; cursor: pointer; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fa-solid fa-chevron-right"></i></button>
-    <img id="lb-img" src="" alt="" style="max-width: 90vw; max-height: 82vh; object-fit: contain; border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); transition: opacity 0.25s;">
-    <div id="lb-caption" style="color: #cbd5e1; font-size: 0.9rem; margin-top: 1rem; text-align: center; max-width: 600px;"></div>
-    <div id="lb-counter" style="color: #64748b; font-size: 0.8rem; margin-top: 0.4rem;"></div>
+<div id="lightbox" class="hidden fixed inset-0 z-[99999] bg-black/[0.92] backdrop-blur-[8px] items-center justify-center flex-col" onclick="if(event.target===this)closeLightbox()">
+    <button onclick="closeLightbox()" class="absolute top-[20px] right-[24px] bg-transparent border-none text-white text-[1.8rem] cursor-pointer z-10 opacity-70 transition-opacity duration-200 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button>
+    <button id="lb-prev" onclick="navigateLightbox(-1)" class="absolute left-[20px] top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 border-none text-white text-[1.4rem] cursor-pointer w-[48px] h-[48px] rounded-full flex items-center justify-center transition-colors duration-200"><i class="fa-solid fa-chevron-left"></i></button>
+    <button id="lb-next" onclick="navigateLightbox(1)" class="absolute right-[20px] top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 border-none text-white text-[1.4rem] cursor-pointer w-[48px] h-[48px] rounded-full flex items-center justify-center transition-colors duration-200"><i class="fa-solid fa-chevron-right"></i></button>
+    <img id="lb-img" src="" alt="" class="max-w-[90vw] max-h-[82vh] object-contain rounded-[6px] shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-opacity duration-250">
+    <div id="lb-caption" class="text-slate-300 text-[0.9rem] mt-4 text-center max-w-[600px]"></div>
+    <div id="lb-counter" class="text-slate-500 text-[0.8rem] mt-1.5"></div>
 </div>
 
 <style>
-.album-photo-item:hover img { transform: scale(1.03); }
-.album-photo-item:hover .photo-overlay { opacity: 1 !important; }
-
-@media (max-width: 768px) {
-    .album-photo-grid { columns: 2 !important; }
-    div[style*="padding: 4rem 0 5rem"] { padding: 2.5rem 0 3rem !important; }
-    div[style*="padding: 4rem 0 5rem"] h1[style*="font-size: 2.6rem"] { font-size: 1.8rem !important; }
-}
-@media (max-width: 575px) {
-    div[style*="padding: 4rem 0 5rem"] { padding: 2rem 0 2.5rem !important; }
-    div[style*="padding: 4rem 0 5rem"] h1[style*="font-size: 2.6rem"] { font-size: 1.5rem !important; }
-}
-@media (max-width: 480px) {
-    .album-photo-grid { columns: 1 !important; }
-    div[style*="padding: 4rem 0 5rem"] h1[style*="font-size: 2.6rem"] { font-size: 1.35rem !important; }
-}
+/* Additional component styling removed as it's now handled by Tailwind */
 </style>
 
 <script>

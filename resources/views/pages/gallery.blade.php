@@ -13,56 +13,57 @@
 @endphp
 
 <!-- Hero -->
-<div style="background: linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(4,120,87,0.88) 50%, rgba(15,23,42,0.93) 100%), url('{{ $heroUrl }}') center/cover; padding: 4.5rem 0 5.5rem; position: relative; overflow: hidden;">
-    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 20% 80%, rgba(16,185,129,0.12), transparent 50%), radial-gradient(circle at 80% 20%, rgba(59,130,246,0.08), transparent 50%); pointer-events: none;"></div>
-    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.2rem; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); color: #a7f3d0; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-            <i class="fa-solid fa-images" style="font-size: 0.7rem;"></i> {{ $gsData['gallery_hero_badge'] ?? 'Photo Gallery' }}
+<div class="bg-[url('{{ $heroUrl }}')] bg-cover bg-center py-[4.5rem] pb-[5.5rem] relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/[0.95] via-emerald-800/[0.88] to-slate-900/[0.93]"></div>
+    <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_80%,rgba(16,185,129,0.12),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(59,130,246,0.08),transparent_50%)]"></div>
+    <div class="container relative z-10 text-center flex flex-col items-center" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2 px-5 py-1.5 bg-white/10 backdrop-blur-md text-emerald-200 rounded-full text-[0.8rem] font-semibold tracking-[1.5px] uppercase mb-6 border border-white/10">
+            <i class="fa-solid fa-images text-[0.7rem]"></i> {{ $gsData['gallery_hero_badge'] ?? 'Photo Gallery' }}
         </div>
-        <h1 style="color: white; font-size: 3rem; font-family: var(--font-heading); margin: 0 0 0.8rem; font-weight: 800; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">{{ $gsData['gallery_hero_title'] ?? 'Our Photo Gallery' }}</h1>
-        <p style="color: #cbd5e1; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.7;">{{ $gsData['gallery_hero_subtitle'] ?? 'Browse through moments from events, lectures, ceremonies, and campus life.' }}</p>
+        <h1 class="text-white text-[3rem] font-heading m-0 mb-3 font-extrabold [text-shadow:0_4px_20px_rgba(0,0,0,0.3)]">{{ $gsData['gallery_hero_title'] ?? 'Our Photo Gallery' }}</h1>
+        <p class="text-slate-300 text-[1.1rem] max-w-[600px] mx-auto leading-[1.7]">{{ $gsData['gallery_hero_subtitle'] ?? 'Browse through moments from events, lectures, ceremonies, and campus life.' }}</p>
     </div>
 </div>
 
 <!-- Albums Grid -->
-<div class="container" data-aos="fade-up" style="padding: 3rem 0 5rem;">
+<div class="container py-12 pb-20" data-aos="fade-up">
 
     @if($albums->count())
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.8rem;">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] max-[575px]:grid-cols-1 gap-[1.8rem]">
         @foreach($albums as $album)
-        <a href="{{ route('gallery.show', $album->slug) }}" class="gallery-album-card" style="text-decoration: none; background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; transition: all 0.35s ease; display: flex; flex-direction: column;">
+        <a href="{{ route('gallery.show', $album->slug) }}" class="gallery-album-card no-underline bg-white rounded-[14px] overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-slate-200 transition-all duration-350 flex flex-col hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)] hover:border-[color:var(--color-primary)] group">
             {{-- Cover Image --}}
-            <div style="height: 220px; position: relative; overflow: hidden; background: #f1f5f9;">
+            <div class="h-[220px] max-md:h-[180px] max-[575px]:h-[200px] relative overflow-hidden bg-slate-100">
                 @php
                     $coverSrc = $album->cover_image
                         ? asset('storage/'.$album->cover_image)
                         : ($album->images->first() ? asset('storage/'.$album->images->first()->image_path) : null);
                 @endphp
                 @if($coverSrc)
-                    <img src="{{ $coverSrc }}" alt="{{ $album->title }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="album-cover-img">
+                    <img src="{{ $coverSrc }}" alt="{{ $album->title }}" class="album-cover-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                 @else
-                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 3rem;">
+                    <div class="w-full h-full flex items-center justify-center text-slate-400 text-5xl">
                         <i class="fa-solid fa-images"></i>
                     </div>
                 @endif
                 {{-- Photo count badge --}}
-                <div style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">
+                <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white py-1.5 px-3 rounded-full text-xs font-bold">
                     <i class="fa-regular fa-image"></i> {{ $album->images_count }} {{ Str::plural('photo', $album->images_count) }}
                 </div>
                 {{-- Hover overlay --}}
-                <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%); opacity: 0; transition: opacity 0.35s;" class="album-overlay"></div>
-                <div style="position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%) translateY(10px); opacity: 0; transition: all 0.35s; background: white; color: var(--color-primary); padding: 8px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; white-space: nowrap;" class="album-view-btn">
+                <div class="album-overlay absolute inset-0 bg-gradient-to-t from-black/55 to-transparent/60 opacity-0 transition-opacity duration-350 group-hover:opacity-100"></div>
+                <div class="album-view-btn absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-2.5 opacity-0 transition-all duration-350 bg-white text-[color:var(--color-primary)] py-2 px-5 rounded-lg text-[0.85rem] font-bold whitespace-nowrap group-hover:opacity-100 group-hover:translate-y-0">
                     <i class="fa-solid fa-eye"></i> View Album
                 </div>
             </div>
 
             {{-- Info --}}
-            <div style="padding: 1.2rem 1.4rem; flex: 1; display: flex; flex-direction: column;">
-                <h3 style="margin: 0 0 0.4rem; font-size: 1.1rem; font-family: var(--font-heading); font-weight: 700; color: #0f172a; line-height: 1.35;">{{ $album->title }}</h3>
+            <div class="p-[1.2rem_1.4rem] flex-1 flex flex-col">
+                <h3 class="m-0 mb-1.5 text-[1.1rem] font-heading font-bold text-slate-900 leading-snug">{{ $album->title }}</h3>
                 @if($album->description)
-                <p style="color: #64748b; font-size: 0.85rem; line-height: 1.5; margin: 0 0 0.8rem;">{{ Str::limit($album->description, 100) }}</p>
+                <p class="text-slate-500 text-[0.85rem] leading-relaxed m-0 mb-3">{{ Str::limit($album->description, 100) }}</p>
                 @endif
-                <div style="margin-top: auto; display: flex; align-items: center; gap: 0.5rem; color: #94a3b8; font-size: 0.8rem;">
+                <div class="mt-auto flex items-center gap-2 text-slate-400 text-[0.8rem]">
                     <i class="fa-regular fa-calendar"></i>
                     {{ $album->date ? \Carbon\Carbon::parse($album->date)->format('F j, Y') : 'No date' }}
                 </div>
@@ -73,52 +74,21 @@
 
     {{-- Pagination --}}
     @if($albums->hasPages())
-    <div style="margin-top: 3rem; display: flex; justify-content: center;">
+    <div class="mt-12 flex justify-center">
         {{ $albums->links() }}
     </div>
     @endif
 
     @else
-    <div style="text-align: center; padding: 5rem 2rem;">
-        <i class="fa-solid fa-camera" style="font-size: 4rem; color: #d1d5db; margin-bottom: 1.5rem;"></i>
-        <h2 style="font-family: var(--font-heading); color: #374151; font-size: 1.5rem; margin-bottom: 0.5rem;">No Albums Yet</h2>
-        <p style="color: #6b7280;">Photo albums will appear here once they are created.</p>
+    <div class="text-center py-20 px-8">
+        <i class="fa-solid fa-camera text-7xl text-gray-300 mb-6"></i>
+        <h2 class="font-heading text-gray-700 text-2xl mb-2">No Albums Yet</h2>
+        <p class="text-gray-500">Photo albums will appear here once they are created.</p>
     </div>
     @endif
 </div>
 
 <style>
-.gallery-album-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-    border-color: var(--color-primary);
-}
-.gallery-album-card:hover .album-cover-img {
-    transform: scale(1.06);
-}
-.gallery-album-card:hover .album-overlay {
-    opacity: 1 !important;
-}
-.gallery-album-card:hover .album-view-btn {
-    opacity: 1 !important;
-    transform: translateX(-50%) translateY(0) !important;
-}
-
-/* Gallery Page Responsive */
-@media (max-width: 768px) {
-    div[style*="padding: 4.5rem 0 5.5rem"] { padding: 3rem 0 3.5rem !important; }
-    div[style*="padding: 4.5rem 0 5.5rem"] h1[style*="font-size: 3rem"] { font-size: 2rem !important; }
-    div[style*="padding: 4.5rem 0 5.5rem"] p[style*="font-size: 1.1rem"] { font-size: 0.92rem !important; }
-    .gallery-album-card div[style*="height: 220px"] { height: 180px !important; }
-}
-@media (max-width: 575px) {
-    div[style*="padding: 4.5rem 0 5.5rem"] { padding: 2rem 0 2.5rem !important; }
-    div[style*="padding: 4.5rem 0 5.5rem"] h1[style*="font-size: 3rem"] { font-size: 1.6rem !important; }
-    div[style*="grid-template-columns: repeat(auto-fill, minmax(300px"] { grid-template-columns: 1fr !important; }
-    .gallery-album-card div[style*="height: 220px"] { height: 200px !important; }
-}
-@media (max-width: 480px) {
-    div[style*="padding: 4.5rem 0 5.5rem"] h1[style*="font-size: 3rem"] { font-size: 1.4rem !important; }
-}
+/* Additional component styling removed as it's now handled by Tailwind */
 </style>
 @endsection

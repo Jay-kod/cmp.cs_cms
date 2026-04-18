@@ -1,58 +1,56 @@
         {{-- ═══════════ EVENTS CALENDAR ═══════════ --}}
-        <section data-aos="fade-up" id="events" style="margin-bottom: 4rem;">
-            <div class="blog-section-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                <div class="blog-section-icon" style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.1)); color: #ef4444; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+        <section data-aos="fade-up" id="events" class="mb-16">
+            <div class="blog-section-heading flex items-center gap-4 mb-6">
+                <div class="blog-section-icon w-12 h-12 bg-gradient-to-br from-red-500/15 to-red-600/10 text-red-500 rounded-[14px] flex items-center justify-center text-[1.3rem]">
                     <i class="fa-regular fa-calendar-check"></i>
                 </div>
-                <h2 style="margin: 0; font-size: 2rem; color: #0f172a; font-family: var(--font-heading); font-weight: 700;">Upcoming Events</h2>
+                <h2 class="m-0 text-2xl text-slate-900 font-heading font-bold">Upcoming Events</h2>
             </div>
-            <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #ef4444, #dc2626); margin-bottom: 2rem; border-radius: 2px;"></div>
+            <div class="w-[60px] h-1 bg-gradient-to-r from-red-500 to-red-600 mb-8 rounded"></div>
             
-            <div class="blog-events-list" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            <div class="blog-events-list flex flex-col gap-[1.2rem]">
                 @forelse($events as $event)
-                <div data-aos="fade-up" class="blog-event-card" style="display: flex; background: white; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); align-items: stretch; flex-wrap: wrap;"
-                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 15px 30px -10px rgba(0,0,0,0.1)'; this.style.borderColor='#cbd5e1'"
-                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.03)'; this.style.borderColor='#e2e8f0'">
+                <div data-aos="fade-up" class="blog-event-card flex bg-white border border-slate-200 rounded-[16px] overflow-hidden transition-all duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.03)] items-stretch flex-wrap hover:-translate-y-1 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.1)] hover:border-slate-300">
                     
                     <!-- Date Box -->
-                    <div class="blog-event-date" style="background: linear-gradient(135deg, var(--color-primary), #047857); color: white; padding: 1.5rem 2rem; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; min-width: 140px; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: -10px; right: -15px; opacity: 0.1; font-size: 5.5rem;">
+                    <div class="blog-event-date bg-gradient-to-br from-[color:var(--color-primary)] to-emerald-700 text-white p-[1.5rem_2rem] text-center flex flex-col justify-center items-center min-w-[140px] relative overflow-hidden">
+                        <div class="absolute -top-[10px] -right-[15px] opacity-10 text-[5.5rem]">
                             <i class="fa-regular fa-calendar"></i>
                         </div>
-                        <span style="font-size: 1.15rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1.5px; color: rgba(255,255,255,0.9); z-index: 1;">{{ \Carbon\Carbon::parse($event->date)->format('M') }}</span>
-                        <span style="font-size: 3.2rem; font-weight: 800; line-height: 1; margin: 0.3rem 0; font-family: var(--font-heading); z-index: 1;">{{ \Carbon\Carbon::parse($event->date)->format('d') }}</span>
-                        <span style="font-size: 1.05rem; color: rgba(255,255,255,0.8); font-weight: 600; z-index: 1;">{{ \Carbon\Carbon::parse($event->date)->format('Y') }}</span>
+                        <span class="text-[1.15rem] uppercase font-bold tracking-[1.5px] text-white/90 z-10">{{ \Carbon\Carbon::parse($event->date)->format('M') }}</span>
+                        <span class="text-[3.2rem] font-extrabold leading-none my-[0.3rem] font-heading z-10">{{ \Carbon\Carbon::parse($event->date)->format('d') }}</span>
+                        <span class="text-[1.05rem] text-white/80 font-semibold z-10">{{ \Carbon\Carbon::parse($event->date)->format('Y') }}</span>
                     </div>
 
                     <!-- Details Box -->
-                    <div class="blog-event-details" style="padding: 1.8rem 2rem; flex: 1; min-width: 250px; display: flex; flex-direction: column; justify-content: center;">
-                        <h3 style="margin: 0 0 0.6rem; font-size: 1.35rem; color: #0f172a; font-family: var(--font-heading); font-weight: 800; line-height: 1.35;">{{ $event->title }}</h3>
-                        <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6; margin: 0 0 1.2rem;">{{ $event->description }}</p>
+                    <div class="blog-event-details p-[1.8rem_2rem] flex-1 min-w-[250px] flex flex-col justify-center">
+                        <h3 class="m-0 mb-[0.6rem] text-[1.35rem] text-slate-900 font-heading font-extrabold leading-[1.35]">{{ $event->title }}</h3>
+                        <p class="text-slate-500 text-[0.95rem] leading-[1.6] m-0 mb-[1.2rem]">{{ $event->description }}</p>
                         
-                        <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
-                            <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.4rem 1rem 0.4rem 0.4rem; border-radius: 50px;">
-                                <div style="width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
-                                    <i class="fa-solid fa-clock" style="color: #10b981; font-size: 0.85rem;"></i>
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <div class="inline-flex items-center gap-[0.6rem] bg-slate-50 border border-slate-200 p-[0.4rem_1rem_0.4rem_0.4rem] rounded-full">
+                                <div class="w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-[0_2px_4px_rgba(0,0,0,0.04)]">
+                                    <i class="fa-solid fa-clock text-emerald-500 text-[0.85rem]"></i>
                                 </div>
-                                <span style="font-size: 0.9rem; font-weight: 600; color: #334155;">{{ \Carbon\Carbon::parse($event->date)->format('h:i A') }}</span>
+                                <span class="text-[0.9rem] font-semibold text-slate-700">{{ \Carbon\Carbon::parse($event->date)->format('h:i A') }}</span>
                             </div>
                             @if($event->venue)
-                            <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.4rem 1rem 0.4rem 0.4rem; border-radius: 50px;">
-                                <div style="width: 28px; height: 28px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
-                                    <i class="fa-solid fa-location-dot" style="color: #ef4444; font-size: 0.85rem;"></i>
+                            <div class="inline-flex items-center gap-[0.6rem] bg-slate-50 border border-slate-200 p-[0.4rem_1rem_0.4rem_0.4rem] rounded-full">
+                                <div class="w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-[0_2px_4px_rgba(0,0,0,0.04)]">
+                                    <i class="fa-solid fa-location-dot text-red-500 text-[0.85rem]"></i>
                                 </div>
-                                <span style="font-size: 0.9rem; font-weight: 600; color: #334155;">{{ $event->venue }}</span>
+                                <span class="text-[0.9rem] font-semibold text-slate-700">{{ $event->venue }}</span>
                             </div>
                             @endif
                         </div>
                     </div>
                 </div>
                 @empty
-                <div style="background: #f8fafc; padding: 2.5rem; border-radius: 12px; text-align: center; color: #64748b; border: 1px dashed #cbd5e1;">
-                    <div style="width: 48px; height: 48px; background: #e2e8f0; color: #94a3b8; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 0 auto 1rem;">
+                <div class="bg-slate-50 p-10 rounded-xl text-center text-slate-500 border border-dashed border-slate-300">
+                    <div class="w-12 h-12 bg-slate-200 text-slate-400 rounded-full flex items-center justify-center text-[1.2rem] mx-auto mb-4">
                         <i class="fa-regular fa-calendar-xmark"></i>
                     </div>
-                    <p style="margin: 0;">No upcoming events scheduled.</p>
+                    <p class="m-0">No upcoming events scheduled.</p>
                 </div>
                 @endforelse
             </div>

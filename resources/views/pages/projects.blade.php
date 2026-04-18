@@ -9,20 +9,20 @@
 @endphp
 
 <!-- Hero Section -->
-<div class="about-hero" style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.97) 0%, rgba(4, 120, 87, 0.92) 50%, rgba(15, 23, 42, 0.95) 100%), url('{{ $heroUrl }}') center/cover; padding: 5.5rem 0 6.5rem; position: relative; overflow: hidden;">
-    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.15), transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1), transparent 50%); pointer-events: none;"></div>
+<div class="about-hero relative overflow-hidden bg-cover bg-center py-[5.5rem_0_6.5rem] pt-24 pb-28" style="background-image: url('{{ $heroUrl }}');">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/[0.97] via-emerald-800/[0.92] to-slate-900/[0.95]"></div>
+    <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_80%,rgba(16,185,129,0.15),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
     
-    <div class="container" data-aos="fade-up" style="position: relative; z-index: 10; text-align: center;">
-        <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.2rem; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); color: #a7f3d0; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-            <i class="fa-solid fa-graduation-cap" style="font-size: 0.7rem;"></i> Research Work
+    <div class="container relative z-10 text-center" data-aos="fade-up">
+        <div class="inline-flex items-center gap-2 px-[1.2rem] py-[0.4rem] bg-white/5 backdrop-blur-md text-emerald-200 rounded-[20px] text-[0.8rem] font-semibold tracking-[1.5px] uppercase mb-6 border border-white/10">
+            <i class="fa-solid fa-graduation-cap text-[0.7rem]"></i> Research Work
         </div>
-        <h1 style="color: white; font-size: 3.2rem; font-family: var(--font-heading); margin: 0 0 1rem 0; font-weight: 800; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">Project Guidelines & Formatting</h1>
-        <p style="color: #cbd5e1; font-size: 1.15rem; max-width: 680px; margin: 0 auto; line-height: 1.7;">{{ $s('project_course_code', 'CMP 499') }} — General information, rules, and milestones for your final year defense.</p>
+        <h1 class="text-white text-[3.2rem] font-heading m-[0_0_1rem_0] font-extrabold [text-shadow:0_4px_20px_rgba(0,0,0,0.3)]">Project Guidelines & Formatting</h1>
+        <p class="text-slate-300 text-[1.15rem] max-w-[680px] mx-auto leading-[1.7]">{{ $s('project_course_code', 'CMP 499') }} — General information, rules, and milestones for your final year defense.</p>
     </div>
 </div>
 
-
-<div class="container pb-16" style="margin-top: -3rem; position: relative; z-index: 20;">
+<div class="container pb-16 -mt-12 relative z-20">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         <!-- Main Content -->
@@ -106,7 +106,7 @@
 
         <!-- Sidebar -->
         <div class="lg:col-span-1 relative h-full">
-            <div class="space-y-6 lg:sticky lg:top-40" style="position: -webkit-sticky; position: sticky; top: 160px; z-index: 40; height: max-content; padding-bottom: 2rem;">
+            <div class="space-y-6 lg:sticky lg:top-40 z-40 h-max pb-8">
             
             <!-- Coordinator Profile -->
             <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100" data-aos="fade-left">

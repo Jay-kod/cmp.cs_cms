@@ -11,39 +11,39 @@
 @endphp
 
 {{-- Hero --}}
-<div style="{{ $heroUrl ? "background: linear-gradient(135deg, rgba(16,43,31,0.92), rgba(21,128,61,0.88)), url('{$heroUrl}') center/cover;" : 'background: linear-gradient(135deg, #102b1f 0%, #15803d 100%);' }} color: white; padding: 8rem 0 5rem; text-align: center;">
+<div class="text-center py-32 pb-20 text-white" style="{{ $heroUrl ? "background: linear-gradient(135deg, rgba(16,43,31,0.92), rgba(21,128,61,0.88)), url('{$heroUrl}') center/cover;" : 'background: linear-gradient(135deg, #102b1f 0%, #15803d 100%);' }}">
     <div class="container" data-aos="fade-up">
-        <h1 style="color: white; font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 800; letter-spacing: -0.5px;">{{ $hs['people_hero_title'] ?? 'Our People' }}</h1>
+        <h1 class="text-white text-4xl md:text-[2.8rem] font-extrabold tracking-[-0.5px] mb-2">{{ $hs['people_hero_title'] ?? 'Our People' }}</h1>
         @if(!empty($hs['people_hero_subtitle']))
-        <p style="margin-top: 0.8rem; color: rgba(255,255,255,0.75); font-size: 1.15rem; max-width: 600px; margin-left: auto; margin-right: auto;">{{ $hs['people_hero_subtitle'] }}</p>
+        <p class="mt-3 text-white/75 text-lg md:text-[1.15rem] max-w-[600px] mx-auto">{{ $hs['people_hero_subtitle'] }}</p>
         @endif
-        <div style="width: 60px; height: 4px; background: var(--color-accent); margin: 1.5rem auto 0; border-radius: 2px;"></div>
+        <div class="w-[60px] h-1 bg-accent mx-auto mt-6 rounded-sm"></div>
     </div>
 </div>
 
-<div class="container" data-aos="fade-up" style="margin-top: -2rem; position: relative; z-index: 10;">
+<div class="container relative z-10 -mt-8" data-aos="fade-up">
 
     {{-- Search & Filter Bar --}}
-    <div style="background: white; border-radius: 12px; padding: 1.2rem 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-        <div id="search-form" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; flex: 1;">
-            <div style="flex: 1; min-width: 200px; position: relative;">
-                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.9rem;"></i>
-                <input type="text" id="search-input" value="{{ request('search') }}" placeholder="Search by name, rank, or specialisation..." style="width: 100%; padding: 0.7rem 0.7rem 0.7rem 2.3rem; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e2e8f0'">
+    <div class="bg-white rounded-xl py-5 px-6 shadow-[0_4px_20px_rgba(0,0,0,0.08)] mb-10 flex gap-4 flex-wrap items-center">
+        <div id="search-form" class="flex gap-4 flex-wrap items-center flex-1">
+            <div class="flex-1 min-w-[200px] relative group">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm group-focus-within:text-primary transition-colors"></i>
+                <input type="text" id="search-input" value="{{ request('search') }}" placeholder="Search by name, rank, or specialisation..." class="w-full py-3 pr-3 pl-9 border border-slate-200 rounded-lg text-sm outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary/20">
             </div>
-            <select id="status-filter" style="padding: 0.7rem 1rem; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; background: white; cursor: pointer; min-width: 140px;">
+            <select id="status-filter" class="py-3 px-4 border border-slate-200 rounded-lg text-sm bg-white cursor-pointer min-w-[140px] focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none">
                 <option value="">All Status</option>
                 <option value="Tenure" {{ request('status') === 'Tenure' ? 'selected' : '' }}>Tenure</option>
                 <option value="Visiting" {{ request('status') === 'Visiting' ? 'selected' : '' }}>Visiting</option>
                 <option value="Sabbatical" {{ request('status') === 'Sabbatical' ? 'selected' : '' }}>Sabbatical</option>
             </select>
-            <button type="button" id="search-btn" style="padding: 0.7rem 1.5rem; background: var(--color-primary); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+            <button type="button" id="search-btn" class="py-3 px-6 bg-primary text-white border-0 rounded-lg font-semibold cursor-pointer text-sm inline-flex items-center gap-2 hover:bg-primary-dark transition-colors">
                 <i class="fa-solid fa-search"></i> Search
             </button>
-            <a href="javascript:void(0)" id="clear-btn" style="padding: 0.7rem 1rem; color: #6b7280; text-decoration: none; font-size: 0.85rem; font-weight: 500; display: none;">
+            <a href="javascript:void(0)" id="clear-btn" class="py-3 px-4 text-slate-500 font-medium text-sm hidden hover:text-slate-800 transition-colors items-center gap-1">
                 <i class="fa-solid fa-xmark"></i> Clear
             </a>
         </div>
-        <div id="staff-count" style="color: #94a3b8; font-size: 0.82rem; font-weight: 500;">
+        <div id="staff-count" class="text-slate-400 text-sm font-medium">
             {{ $staff->count() }} {{ Str::plural('member', $staff->count()) }}
         </div>
     </div>
@@ -51,8 +51,8 @@
     {{-- HOD Spotlight --}}
     <div id="hod-section">
     @if($hod && !request('search') && !request('status'))
-    <section data-aos="fade-up" class="hod-spotlight" style="margin-bottom: 3rem;">
-        <a href="{{ route('people.show', $hod->slug) }}" style="text-decoration: none; color: inherit; display: block;">
+    <section data-aos="fade-up" class="hod-spotlight mb-12">
+        <a href="{{ route('people.show', $hod->slug) }}" class="block no-underline text-inherit">
             <div data-aos="fade-up" class="hod-spotlight-card">
                 {{-- Decorative background elements --}}
                 <div data-aos="fade-up" class="hod-card-bg-decor">
@@ -151,10 +151,10 @@
     </div>
 
     {{-- Staff Grid --}}
-    <section data-aos="fade-up" style="margin-bottom: 3rem;">
-        <div id="all-staff-heading" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-            <h2 style="margin: 0; font-size: 1.5rem; color: #0f172a;">All Staff</h2>
-            <div style="flex: 1; height: 1px; background: #e2e8f0;"></div>
+    <section data-aos="fade-up" class="mb-12">
+        <div id="all-staff-heading" class="flex items-center gap-4 mb-6">
+            <h2 class="m-0 text-2xl text-slate-900">All Staff</h2>
+            <div class="flex-1 h-px bg-slate-200"></div>
         </div>
 
         <style>
@@ -693,10 +693,6 @@
                 to { opacity: 1; transform: translateY(0); }
             }
             @media (max-width: 768px) {
-                /* Hero */
-                div[style*="padding: 5rem 0 4rem"] { padding: 3rem 0 2.5rem !important; }
-                div[style*="padding: 5rem 0 4rem"] h1[style*="font-size: 2.8rem"] { font-size: 2rem !important; }
-                div[style*="padding: 5rem 0 4rem"] p[style*="font-size: 1.15rem"] { font-size: 0.95rem !important; }
                 .staff-grid {
                     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
                     gap: 1.2rem;
@@ -705,12 +701,7 @@
                     aspect-ratio: 4 / 3;
                 }
             }
-            @media (max-width: 575px) {
-                div[style*="padding: 5rem 0 4rem"] { padding: 2.5rem 0 2rem !important; }
-                div[style*="padding: 5rem 0 4rem"] h1[style*="font-size: 2.8rem"] { font-size: 1.6rem !important; }
-            }
             @media (max-width: 480px) {
-                div[style*="padding: 5rem 0 4rem"] h1[style*="font-size: 2.8rem"] { font-size: 1.4rem !important; }
                 .staff-grid {
                     grid-template-columns: 1fr;
                     gap: 1rem;
@@ -754,17 +745,17 @@
                                 <h3 class="card-name">{{ $member->title }} {{ $member->name }}</h3>
                                 @if($member->rank)<p class="card-rank">{{ $member->rank }}</p>@endif
                                 @if($member->specialisation)
-                                    <p class="card-specialisation"><i class="fa-solid fa-flask" style="color: #94a3b8; margin-right: 3px; font-size: 0.7rem;"></i>{{ $member->specialisation }}</p>
+                                    <p class="card-specialisation"><i class="fa-solid fa-flask text-slate-400 mr-[3px] text-[0.7rem]"></i>{{ $member->specialisation }}</p>
                                 @endif
                             </div>
                             <div data-aos="fade-up" class="card-footer">
                                 <div data-aos="fade-up" class="card-courses">
                                     @if($member->courses->count())
                                         @foreach($member->courses->take(2) as $course)
-                                            <span class="card-course-tag"><i class="fa-solid fa-book-open" style="font-size: 0.6rem;"></i> {{ $course->code }}</span>
+                                            <span class="card-course-tag"><i class="fa-solid fa-book-open text-[0.6rem]"></i> {{ $course->code }}</span>
                                         @endforeach
                                         @if($member->courses->count() > 2)
-                                            <span class="card-course-tag" style="background: transparent; color: #94a3b8;">+{{ $member->courses->count() - 2 }}</span>
+                                            <span class="card-course-tag bg-transparent text-slate-400">+{{ $member->courses->count() - 2 }}</span>
                                         @endif
                                     @endif
                                 </div>

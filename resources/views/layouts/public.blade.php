@@ -32,9 +32,9 @@
 <body class="antialiased">
     
     <!-- Preloader -->
-    <div id="preloader" style="position: fixed; inset: 0; z-index: 99999; background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease;">
-        <img src="{{ asset('images/logo.png') }}" alt="NSUK Logo" style="width: 120px; height: 120px; animation: heartbeat 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
-        <h2 style="margin: 1.5rem 0 0 0; font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 700; color: #1B2A4A; letter-spacing: 2px;">CMP NSUK</h2>
+    <div id="preloader" class="fixed inset-0 z-[99999] bg-white flex flex-col items-center justify-center transition-all duration-500">
+        <img src="{{ asset('images/logo.png') }}" alt="NSUK Logo" class="w-[120px] h-[120px] animate-[heartbeat_1.2s_ease-in-out_infinite]">
+        <h2 class="mt-6 font-heading text-[1.6rem] font-bold text-[#1B2A4A] tracking-[2px]">CMP NSUK</h2>
     </div>
     <style>
         @keyframes heartbeat { 
@@ -44,54 +44,43 @@
     </style>
 
     <!-- Fixed Header -->
-    <header class="fixed-header">
-        <div class="fixed-header-inner">
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_6px_16px_rgba(0,0,0,0.04)]">
             <x-nav.layer-1 />
             <x-nav.layer-2 />
             <x-nav.layer-3 />
         </div>
     </header>
-    <div class="header-spacer"></div>
+    <div class="h-[68px] lg:h-[88px]"></div>
     <style>
-        .header-spacer { height: 88px; }
         .mobile-only { display: none; }
         p { text-align: justify; }
         @media(max-width:991px) {
-            .header-spacer { height: 68px; }
             .mobile-only { display: inline !important; }
-        }
-        /* Footer bottom bar: stack on small screens */
-        @media(max-width:575px) {
-            footer .container[style*="justify-content: space-between"] {
-                flex-direction: column !important;
-                align-items: center !important;
-                text-align: center !important;
-                gap: 0.6rem !important;
-            }
         }
     </style>
 
     <!-- Search overlay removed - search is now inline on individual pages -->
 
     @if (!request()->is('/') && Breadcrumbs::exists())
-    <div style="background: #f8faf9; border-bottom: 1px solid #e5e7eb; padding-top: 1rem;">
-        <div class="container" data-aos="fade-up" style="padding: 0.65rem 0;">
+    <div class="bg-[#f8faf9] border-b border-gray-200 pt-4">
+        <div class="container py-2.5" data-aos="fade-up">
             <nav aria-label="Breadcrumb">
-                <ol style="display: flex; align-items: center; gap: 0; margin: 0; padding: 0; list-style: none; flex-wrap: wrap;">
+                <ol class="flex items-center flex-wrap m-0 p-0 list-none">
                     @foreach(Breadcrumbs::generate() as $i => $crumb)
                         @if($i > 0)
-                        <li style="display:flex; align-items:center; color:#9ca3af; margin: 0 0.35rem;">
-                            <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;"></i>
+                        <li class="flex items-center text-gray-400 mx-1.5">
+                            <i class="fa-solid fa-chevron-right text-[0.6rem]"></i>
                         </li>
                         @endif
                         @if($crumb->url && !$loop->last)
                         <li>
-                            <a href="{{ $crumb->url }}" style="font-size:0.85rem; color:var(--color-primary); text-decoration:none; font-weight:500; font-family:var(--font-heading); transition:color 0.15s;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
-                                @if($i === 0)<i class="fa-solid fa-house" style="font-size:0.75rem; margin-right:0.25rem;"></i>@endif{{ $crumb->title }}
+                            <a href="{{ $crumb->url }}" class="text-[0.85rem] text-[var(--color-primary)] hover:underline font-medium font-heading transition-colors duration-150">
+                                @if($i === 0)<i class="fa-solid fa-house text-[0.75rem] mr-1"></i>@endif{{ $crumb->title }}
                             </a>
                         </li>
                         @else
-                        <li style="font-size:0.85rem; color:#6b7280; font-weight:600; font-family:var(--font-heading);">
+                        <li class="text-[0.85rem] text-gray-500 font-semibold font-heading">
                             {{ $crumb->title }}
                         </li>
                         @endif
@@ -107,7 +96,7 @@
     </main>
 
     <!-- Footer -->
-    <footer style="margin-top: var(--spacing-xl);">
+    <footer class="mt-[var(--spacing-xl)]">
         <!-- Main Footer -->
         @php
             $firstCarousel = \App\Models\CarouselSlide::where('is_active', true)->orderBy('sort_order', 'asc')->first();
@@ -119,59 +108,59 @@
                 $footerBgUrl = file_exists(storage_path('app/public/' . $footerBgPath)) ? asset('storage/' . $footerBgPath) : '';
             }
         @endphp
-        <div style="position: relative; color: #f1f5f9; padding: 3.5rem 0 2.5rem; {{ $footerBgUrl ? "background: url('".$footerBgUrl."') center/cover no-repeat;" : 'background: #031E10;' }}">
-            <div style="position: absolute; inset: 0; background: rgba(3, 30, 16, 0.95); z-index: 0;"></div>
-            <div class="container" data-aos="fade-up" style="position: relative; z-index: 1;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem;">
+        <div class="relative text-[#f1f5f9] py-14" style="{{ $footerBgUrl ? "background: url('".$footerBgUrl."') center/cover no-repeat;" : 'background: #031E10;' }}">
+            <div class="absolute inset-0 bg-[#031e10]/95 z-0"></div>
+            <div class="container relative z-10" data-aos="fade-up">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
                     
                     <!-- Brand Column -->
                     <div>
-                        <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.2rem;">
-                            <img src="{{ asset(config('university.logo', 'images/logo.png')) }}" alt="Logo" style="width: 46px; height: 46px; border-radius: 8px; background: white; padding: 3px;" onerror="this.src='https://via.placeholder.com/46?text=Logo'">
+                        <div class="flex items-center gap-3 mb-5">
+                            <img src="{{ asset(config('university.logo', 'images/logo.png')) }}" alt="Logo" class="w-[46px] h-[46px] rounded-lg bg-white p-[3px]" onerror="this.src='https://via.placeholder.com/46?text=Logo'">
                             <div>
-                                <strong style="color: #fff; font-family: var(--font-heading); font-size: 1.05rem; display: block; line-height: 1.2;">{{ config('university.short_name') }}</strong>
-                                <span style="font-size: 0.75rem; color: #f1f5f9;">{{ config('university.university') }}</span>
+                                <strong class="text-white font-heading text-[1.05rem] block leading-tight">{{ config('university.short_name') }}</strong>
+                                <span class="text-[0.75rem] text-[#f1f5f9]">{{ config('university.university') }}</span>
                             </div>
                         </div>
-                        <p style="font-size: 0.88rem; line-height: 1.7; color: #f1f5f9; margin-bottom: 1.2rem;">
+                        <p class="text-[0.88rem] leading-relaxed text-[#f1f5f9] mb-5 text-justify">
                             {{ config('university.tagline', 'Pioneering Innovation in Computing') }}. Established {{ config('university.established') }}, dedicated to producing world-class computing professionals.
                         </p>
                         <!-- Social Icons -->
                         @php $socialLinks = \App\Models\SocialLink::active()->ordered()->get(); @endphp
-                        <div style="display: flex; gap: 0.6rem;">
+                        <div class="flex gap-2.5">
                             @forelse($socialLinks as $social)
-                            <a href="{{ $social->url }}" target="_blank" rel="noopener noreferrer" style="width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; background: rgba(255,255,255,0.08); color: #f1f5f9; font-size: 0.9rem; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.background='var(--color-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.color='#f1f5f9'" title="{{ $social->name }}"><i class="{{ $social->icon }}"></i></a>
+                            <a href="{{ $social->url }}" target="_blank" rel="noopener noreferrer" class="w-9 h-9 inline-flex items-center justify-center rounded-lg bg-white/10 text-[#f1f5f9] text-[0.9rem] hover:bg-primary hover:text-white transition-colors duration-200" title="{{ $social->name }}"><i class="{{ $social->icon }}"></i></a>
                             @empty
-                            <span style="font-size: 0.8rem; color: #6b7280;">No social links configured.</span>
+                            <span class="text-[0.8rem] text-gray-500">No social links configured.</span>
                             @endforelse
                         </div>
                     </div>
 
                     <!-- Quick Links -->
                     <div>
-                        <h4 style="color: #fff; font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.6rem;">
+                        <h4 class="text-white font-heading text-[0.95rem] font-semibold mb-5 relative pb-2.5">
                             Quick Links
-                            <span style="position: absolute; bottom: 0; left: 0; width: 30px; height: 2.5px; background: var(--color-primary); border-radius: 2px;"></span>
+                            <span class="absolute bottom-0 left-0 w-[30px] h-[2.5px] bg-primary rounded-sm"></span>
                         </h4>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem;">
-                            <li><a href="{{ url('/past-hods') }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#f1f5f9'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Past HODs</a></li>
-                            <li><a href="{{ url('/people') }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#f1f5f9'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Faculty & Staff</a></li>
-                            <li><a href="{{ url('/nacos-presidents') }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#f1f5f9'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>NACOS Presidents</a></li>
-                            <li><a href="{{ url('/page/student-handbook') }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#f1f5f9'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Student Handbook</a></li>
-                            <li><a href="{{ url('/page/research-innovation') }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#f1f5f9'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Research & Innovation</a></li>
+                        <ul class="list-none p-0 m-0 flex flex-col gap-2">
+                            <li><a href="{{ url('/past-hods') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>Past HODs</a></li>
+                            <li><a href="{{ url('/people') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>Faculty & Staff</a></li>
+                            <li><a href="{{ url('/nacos-presidents') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>NACOS Presidents</a></li>
+                            <li><a href="{{ url('/page/student-handbook') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>Student Handbook</a></li>
+                            <li><a href="{{ url('/page/research-innovation') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>Research & Innovation</a></li>
 
                         </ul>
 
                         {{-- Department Systems --}}
                         @php $externalSystems = \App\Models\ExternalSystem::active()->ordered()->get(); @endphp
                         @if($externalSystems->count())
-                        <h4 style="color: #fff; font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.6rem;">
+                        <h4 class="text-white font-heading text-[0.95rem] font-semibold mt-6 mb-5 relative pb-2.5">
                             Department Systems
-                            <span style="position: absolute; bottom: 0; left: 0; width: 30px; height: 2.5px; background: var(--color-primary); border-radius: 2px;"></span>
+                            <span class="absolute bottom-0 left-0 w-[30px] h-[2.5px] bg-primary rounded-sm"></span>
                         </h4>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem;">
+                        <ul class="list-none p-0 m-0 flex flex-col gap-2">
                             @foreach($externalSystems as $extSys)
-                            <li><a href="{{ $extSys->url }}" {{ $extSys->open_in_new_tab ? 'target="_blank" rel="noopener noreferrer"' : '' }} style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#f1f5f9'; this.style.paddingLeft='0'"><i class="{{ $extSys->icon }}" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>{{ $extSys->name }}</a></li>
+                            <li><a href="{{ $extSys->url }}" {{ $extSys->open_in_new_tab ? 'target="_blank" rel="noopener noreferrer"' : '' }} class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="{{ $extSys->icon }} text-[0.6rem] mr-1.5"></i>{{ $extSys->name }}</a></li>
                             @endforeach
                         </ul>
                         @endif
@@ -179,16 +168,16 @@
 
                     <!-- Programmes -->
                     <div>
-                        <h4 style="color: #fff; font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.6rem;">
+                        <h4 class="text-white font-heading text-[0.95rem] font-semibold mb-5 relative pb-2.5">
                             Programmes
-                            <span style="position: absolute; bottom: 0; left: 0; width: 30px; height: 2.5px; background: var(--color-primary); border-radius: 2px;"></span>
+                            <span class="absolute bottom-0 left-0 w-[30px] h-[2.5px] bg-primary rounded-sm"></span>
                         </h4>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem;">
-                            <li><a href="{{ url('/academics#undergraduate-full-time') }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#f1f5f9'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>B.Sc. Computer Science</a></li>
-                            <li><a href="{{ url('/academics#undergraduate-part-time') }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#f1f5f9'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Part-Time Programmes</a></li>
-                            <li><a href="{{ url('/academics#masters') }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#f1f5f9'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>M.Sc. Computer Science</a></li>
-                            <li><a href="{{ url('/academics#phd') }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#f1f5f9'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Ph.D. Computer Science</a></li>
-                            <li><a href="{{ url('/academics#course-structure') }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s, padding-left 0.15s; display: inline-block;" onmouseover="this.style.color='var(--color-accent)'; this.style.paddingLeft='4px'" onmouseout="this.style.color='#f1f5f9'; this.style.paddingLeft='0'"><i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; margin-right: 0.4rem;"></i>Course Structure</a></li>
+                        <ul class="list-none p-0 m-0 flex flex-col gap-2">
+                            <li><a href="{{ url('/academics#undergraduate-full-time') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>B.Sc. Computer Science</a></li>
+                            <li><a href="{{ url('/academics#undergraduate-part-time') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>Part-Time Programmes</a></li>
+                            <li><a href="{{ url('/academics#masters') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>M.Sc. Computer Science</a></li>
+                            <li><a href="{{ url('/academics#phd') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>Ph.D. Computer Science</a></li>
+                            <li><a href="{{ url('/academics#course-structure') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>Course Structure</a></li>
                         </ul>
                     </div>
 
@@ -202,30 +191,30 @@
                         $__semester= \App\Models\DepartmentSetting::getCached('academic_semester') ?? 'First';
                     @endphp
                     <div>
-                        <h4 style="color: #fff; font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.6rem;">
+                        <h4 class="text-white font-heading text-[0.95rem] font-semibold mb-5 relative pb-2.5">
                             Get in Touch
-                            <span style="position: absolute; bottom: 0; left: 0; width: 30px; height: 2.5px; background: var(--color-primary); border-radius: 2px;"></span>
+                            <span class="absolute bottom-0 left-0 w-[30px] h-[2.5px] bg-primary rounded-sm"></span>
                         </h4>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem;">
-                            <li style="display: flex; align-items: flex-start; gap: 0.7rem;">
-                                <i class="fa-solid fa-location-dot" style="color: var(--color-primary); margin-top: 3px; width: 16px; text-align: center;"></i>
-                                <span style="font-size: 0.88rem; line-height: 1.5;">{!! $__ftAddr !!}</span>
+                        <ul class="list-none p-0 m-0 flex flex-col gap-3">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-location-dot text-primary mt-1 w-4 text-center"></i>
+                                <span class="text-[0.88rem] leading-relaxed">{!! $__ftAddr !!}</span>
                             </li>
-                            <li style="display: flex; align-items: center; gap: 0.7rem;">
-                                <i class="fa-solid fa-graduation-cap" style="color: var(--color-primary); width: 16px; text-align: center;"></i>
-                                <span style="font-size: 0.88rem; color: #f1f5f9;">Academic Session: <strong style="color: #fff;">{{ $__session }} ({{ $__semester }} Semester)</strong></span>
+                            <li class="flex items-center gap-2.5">
+                                <i class="fa-solid fa-graduation-cap text-primary w-4 text-center"></i>
+                                <span class="text-[0.88rem] text-[#f1f5f9]">Academic Session: <strong class="text-white font-semibold">{{ $__session }} ({{ $__semester }} Semester)</strong></span>
                             </li>
-                            <li style="display: flex; align-items: center; gap: 0.7rem;">
-                                <i class="fa-solid fa-phone" style="color: var(--color-primary); width: 16px; text-align: center;"></i>
-                                <a href="tel:{{ preg_replace('/[^+0-9]/', '', $__ftPhone) }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#f1f5f9'">{{ $__ftPhone }}</a>
+                            <li class="flex items-center gap-2.5">
+                                <i class="fa-solid fa-phone text-primary w-4 text-center"></i>
+                                <a href="tel:{{ preg_replace('/[^+0-9]/', '', $__ftPhone) }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent transition-colors duration-150">{{ $__ftPhone }}</a>
                             </li>
-                            <li style="display: flex; align-items: center; gap: 0.7rem;">
-                                <i class="fa-solid fa-envelope" style="color: var(--color-primary); width: 16px; text-align: center;"></i>
-                                <a href="mailto:{{ $__ftEmail }}" style="color: #f1f5f9; text-decoration: none; font-size: 0.88rem; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#f1f5f9'">{{ $__ftEmail }}</a>
+                            <li class="flex items-center gap-2.5">
+                                <i class="fa-solid fa-envelope text-primary w-4 text-center"></i>
+                                <a href="mailto:{{ $__ftEmail }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent transition-colors duration-150">{{ $__ftEmail }}</a>
                             </li>
-                            <li style="display: flex; align-items: center; gap: 0.7rem;">
-                                <i class="fa-solid fa-clock" style="color: var(--color-primary); width: 16px; text-align: center;"></i>
-                                <span style="font-size: 0.88rem;">{{ $__ftHours }}</span>
+                            <li class="flex items-center gap-2.5">
+                                <i class="fa-solid fa-clock text-primary w-4 text-center"></i>
+                                <span class="text-[0.88rem]">{{ $__ftHours }}</span>
                             </li>
                         </ul>
                     </div>
@@ -235,19 +224,19 @@
         </div>
 
         <!-- Bottom Bar -->
-        <div style="background: #0a0f1a; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.06);">
-            <div class="container" data-aos="fade-up" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem;">
-                <p style="margin: 0; font-size: 0.8rem; color: #f1f5f9;">&copy; {{ date('Y') }} {{ config('university.name') }}, {{ config('university.university') }}. All rights reserved.</p>
-                <div style="display: flex; gap: 1.2rem;">
-                    <a href="{{ url('/page/privacy-policy') }}" style="color: #f1f5f9; font-size: 0.8rem; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#f1f5f9'">Privacy Policy</a>
-                    <a href="{{ url('/page/terms-of-use') }}" style="color: #f1f5f9; font-size: 0.8rem; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#f1f5f9'">Terms of Use</a>
-                    <a href="{{ url('/page/sitemap') }}" style="color: #f1f5f9; font-size: 0.8rem; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='#f1f5f9'">Sitemap</a>
+        <div class="bg-[#0a0f1a] py-4 border-t border-white/5">
+            <div class="container flex flex-wrap items-center justify-between gap-2" data-aos="fade-up">
+                <p class="m-0 text-[0.8rem] text-[#f1f5f9]">&copy; {{ date('Y') }} {{ config('university.name') }}, {{ config('university.university') }}. All rights reserved.</p>
+                <div class="flex gap-5">
+                    <a href="{{ url('/page/privacy-policy') }}" class="text-[#f1f5f9] text-[0.8rem] hover:text-accent transition-colors duration-150">Privacy Policy</a>
+                    <a href="{{ url('/page/terms-of-use') }}" class="text-[#f1f5f9] text-[0.8rem] hover:text-accent transition-colors duration-150">Terms of Use</a>
+                    <a href="{{ url('/page/sitemap') }}" class="text-[#f1f5f9] text-[0.8rem] hover:text-accent transition-colors duration-150">Sitemap</a>
                 </div>
             </div>
         </div>
 
         <!-- Back to Top -->
-        <a href="#" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" style="position: fixed; bottom: 1.5rem; right: 1.5rem; width: 42px; height: 42px; display: none; align-items: center; justify-content: center; background: var(--color-primary); color: #fff; border-radius: 10px; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 999; transition: opacity 0.3s, transform 0.3s;" title="Back to top">
+        <a href="#" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" class="fixed bottom-6 right-6 w-[42px] h-[42px] hidden items-center justify-center bg-primary text-white rounded-lg text-base shadow-[0_4px_14px_rgba(0,0,0,0.2)] z-[999] transition-all hover:bg-secondary" title="Back to top">
             <i class="fa-solid fa-arrow-up"></i>
         </a>
     </footer>
