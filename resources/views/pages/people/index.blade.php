@@ -11,8 +11,9 @@
 @endphp
 
 {{-- Hero --}}
-<div class="text-center py-32 pb-20 text-white" style="{{ $heroUrl ? "background: linear-gradient(135deg, rgba(16,43,31,0.92), rgba(21,128,61,0.88)), url('{$heroUrl}') center/cover;" : 'background: linear-gradient(135deg, #102b1f 0%, #15803d 100%);' }}">
-    <div class="container" data-aos="fade-up">
+<div class="text-center py-32 pb-20 text-white bg-cover bg-center relative" style="{{ $heroUrl ? "background-image: url('{$heroUrl}');" : '' }}">
+    <div class="absolute inset-0 bg-gradient-to-br from-emerald-950/[0.92] to-green-700/[0.88]"></div>
+    <div class="container relative z-10" data-aos="fade-up">
         <h1 class="text-white text-4xl md:text-[2.8rem] font-extrabold tracking-[-0.5px] mb-2">{{ $hs['people_hero_title'] ?? 'Our People' }}</h1>
         @if(!empty($hs['people_hero_subtitle']))
         <p class="mt-3 text-white/75 text-lg md:text-[1.15rem] max-w-[600px] mx-auto">{{ $hs['people_hero_subtitle'] }}</p>
