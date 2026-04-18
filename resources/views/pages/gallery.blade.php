@@ -13,7 +13,7 @@
 @endphp
 
 <!-- Hero -->
-<div class="bg-[url('{{ $heroUrl }}')] bg-cover bg-center py-[4.5rem] pb-[5.5rem] relative overflow-hidden">
+<div class="bg-cover bg-center py-[4.5rem] pb-[5.5rem] relative overflow-hidden" style="background-image: url('{{ $heroUrl }}');">
     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/[0.95] via-emerald-800/[0.88] to-slate-900/[0.93]"></div>
     <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_80%,rgba(16,185,129,0.12),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(59,130,246,0.08),transparent_50%)]"></div>
     <div class="container relative z-10 text-center flex flex-col items-center" data-aos="fade-up">
