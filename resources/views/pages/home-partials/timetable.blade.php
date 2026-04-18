@@ -2,7 +2,7 @@
     <div class="container" data-aos="fade-up">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-[1.5rem] text-slate-900 font-heading font-extrabold m-0">Departmental Timetables</h2>
-            <a href="{{ url('/resources') }}" class="btn btn-primary" style="background: var(--color-primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+            <a href="{{ url('/resources') }}" class="btn btn-primary bg-[color:var(--color-primary)] text-white py-[0.6rem] px-[1.2rem] rounded-lg no-underline font-semibold flex items-center gap-1.5 transition-all duration-200 hover:-translate-y-[2px]">
                 <i class="fa-solid fa-folder-open"></i> View All Resources
             </a>
         </div>
