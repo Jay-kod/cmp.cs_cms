@@ -392,7 +392,7 @@
                 @endforeach
             </div>
             <div class="text-center mt-6">
-                <a href="{{ $gs('about_req_btn_url', '/academics') }}" style="display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--color-primary); font-weight: 600; text-decoration: none; padding: 0.6rem 1.5rem; border: 2px solid var(--color-primary); border-radius: 10px; transition: all 0.3s;" onmouseover="this.style.background='var(--color-primary)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='var(--color-primary)'">{{ $gs('about_req_btn_text', 'See Full Admission Details') }} <i class="fa-solid fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                <a href="{{ $gs('about_req_btn_url', '/academics') }}" class="inline-flex items-center gap-[0.6rem] text-[0.9rem] text-[color:var(--color-primary)] font-semibold no-underline py-[0.6rem] px-[1.5rem] border-2 border-[color:var(--color-primary)] rounded-[10px] transition-all duration-300 hover:bg-[color:var(--color-primary)] hover:text-white">{{ $gs('about_req_btn_text', 'See Full Admission Details') }} <i class="fa-solid fa-arrow-right text-[0.75rem]"></i></a>
             </div>
         </section>
 
