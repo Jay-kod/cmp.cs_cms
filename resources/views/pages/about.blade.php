@@ -285,7 +285,7 @@
                   $bulletColor = $isDark ? '#10b981' : 'var(--color-primary)';
                   $border = $isDark ? 'none' : '1px solid #bbf7d0';
                 @endphp
-                <div class="rounded-[14px] p-8 text-[{{ $textColor }}] relative overflow-hidden border-[{{ $border }}]" style="background: linear-gradient(135deg, {{ $prog['theme_main'] ?? '#0f172a' }} 0%, {{ $prog['theme_accent'] ?? '#1e293b' }} 100%); border: {{ $border }};">
+                <div class="rounded-[14px] p-8 text-[{{ $textColor }}] relative overflow-hidden border-[{{ $border }}]" style="background: linear-gradient(135deg, {{ $prog['theme_main'] ?? '#0f172a' }} 0%, {{ $prog['theme_accent'] ?? '#1e293b' }} 100%);">
                     <div class="absolute -top-8 -right-8 w-[100px] h-[100px] rounded-full bg-[{{ $isDark ? 'rgba(255,255,255,0.04)' : 'rgba(22,163,74,0.06)' }}]"></div>
                     <div class="flex items-center gap-3 mb-5">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-[{{ $iconBg }}] text-[{{ $iconColor }}]">
