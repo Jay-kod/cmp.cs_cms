@@ -167,7 +167,7 @@
                 <div class="absolute -top-10 -right-10 w-[200px] h-[200px] bg-[radial-gradient(circle,rgba(22,163,74,0.05),transparent_70%)] pointer-events-none"></div>
                 <div class="absolute -bottom-[30px] -left-[30px] w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(16,185,129,0.04),transparent_70%)] pointer-events-none"></div>
                 <div class="flex items-center gap-4 mb-8 relative">
-                    <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #16a34a, #15803d); color: white; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; box-shadow: 0 8px 20px -4px rgba(22, 163, 74, 0.4);">
+                    <div class="w-[52px] h-[52px] bg-gradient-to-br from-green-600 to-green-700 text-white rounded-[14px] flex items-center justify-center text-[1.4rem] shadow-[0_8px_20px_-4px_rgba(22,163,74,0.4)]">
                         <i class="fa-solid fa-list-check"></i>
                     </div>
                     <div>
@@ -320,7 +320,7 @@
 
             <p class="text-[1.02rem] text-slate-600 leading-[1.7] mb-8">{{ $settings['about_board_desc'] ?? 'The Departmental Board is made up of all lecturers in the Department except Graduate Assistants, with the Head of Department as the Chairman. The Board organizes and controls the teaching of all courses and the examinations held in those courses.' }}</p>
 
-            <div class="about-board-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem;">
+            <div class="about-board-grid grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5">
                 @php
                     $board = json_decode($settings['about_board'] ?? '[]', true) ?? [];
                     if (empty($board)) {
@@ -334,24 +334,24 @@
                 @foreach($board as $i => $bm)
                 @if($i == 0)
                 <!-- Chairman (highlighted) -->
-                <div style="background: linear-gradient(135deg, #064e3b 0%, #065f46 100%); border-radius: 14px; padding: 2rem; color: white; text-align: center; position: relative; overflow: hidden;">
-                    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(16,185,129,0.2), transparent 70%); pointer-events: none;"></div>
-                    <div style="position: relative; z-index: 2;">
-                        <div style="width: 64px; height: 64px; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-size: 1.8rem; color: #a7f3d0;">
+                <div class="bg-gradient-to-br from-emerald-900 to-emerald-800 rounded-[14px] p-8 text-white text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.2),transparent_70%)] pointer-events-none"></div>
+                    <div class="relative z-[2]">
+                        <div class="w-16 h-16 bg-white/10 border-2 border-white/20 rounded-full flex items-center justify-center mx-auto mb-5 text-[1.8rem] text-emerald-200">
                             <i class="fa-solid {{ $bm['icon'] ?? 'fa-crown' }}"></i>
                         </div>
-                        <h4 style="margin: 0 0 0.3rem; font-size: 1.15rem; font-weight: 700;">{{ $bm['title'] ?? '' }}</h4>
-                        <p style="margin: 0; color: #6ee7b7; font-size: 0.9rem;">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
+                        <h4 class="m-0 mb-1 text-[1.15rem] font-bold">{{ $bm['title'] ?? '' }}</h4>
+                        <p class="m-0 text-emerald-300 text-[0.9rem]">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
                     </div>
                 </div>
                 @else
                 <!-- Members / Mandate -->
-                <div style="background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border-radius: 14px; padding: 2rem; text-align: center; border: 1px solid #bbf7d0;">
-                    <div style="width: 64px; height: 64px; background: rgba(22,163,74,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-size: 1.8rem; color: var(--color-primary);">
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-[14px] p-8 text-center border border-green-200">
+                    <div class="w-16 h-16 bg-green-600/10 rounded-full flex items-center justify-center mx-auto mb-5 text-[1.8rem] text-[color:var(--color-primary)]">
                         <i class="fa-solid {{ $bm['icon'] ?? 'fa-users' }}"></i>
                     </div>
-                    <h4 style="margin: 0 0 0.3rem; font-size: 1.15rem; color: #1e293b; font-weight: 700;">{{ $bm['title'] ?? '' }}</h4>
-                    <p style="margin: 0; color: #64748b; font-size: 0.9rem;">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
+                    <h4 class="m-0 mb-1 text-[1.15rem] text-slate-800 font-bold">{{ $bm['title'] ?? '' }}</h4>
+                    <p class="m-0 text-slate-500 text-[0.9rem]">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
                 </div>
                 @endif
                 @endforeach
@@ -368,7 +368,7 @@
             </div>
             <div class="w-[60px] h-1 bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] mb-[2rem] rounded-full"></div>
 
-            <div class="about-req-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+            <div class="about-req-grid grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4">
                 @php
                     $requirements = json_decode($settings['about_requirements'] ?? '[]', true) ?? [];
                     if (empty($requirements)) {
