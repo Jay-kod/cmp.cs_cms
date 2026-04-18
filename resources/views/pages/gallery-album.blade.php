@@ -10,7 +10,7 @@
 @endphp
 
 <!-- Hero -->
-<div class="bg-[url('{{ $coverSrc }}')] bg-cover bg-center py-[4rem] pb-[5rem] relative overflow-hidden">
+<div class="bg-cover bg-center py-[4rem] pb-[5rem] relative overflow-hidden" style="background-image: url('{{ $coverSrc }}');">
     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/[0.93] via-emerald-800/[0.85] to-slate-900/[0.93]"></div>
     <div class="absolute inset-0 backdrop-blur-[2px] pointer-events-none"></div>
     <div class="container relative z-10 text-center flex flex-col items-center" data-aos="fade-up">
