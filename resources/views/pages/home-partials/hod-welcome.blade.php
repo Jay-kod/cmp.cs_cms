@@ -23,26 +23,29 @@
         <!-- HoD Photo Area -->
         <div class="hod-photo-container shrink-0 self-center flex flex-col gap-10 w-full max-w-[380px] lg:max-w-[380px] md:max-w-[500px]">
             <div class="hod-photo relative w-full mx-auto">
-                <div class="absolute -inset-3 border-2 border-primary rounded-xl z-[1]"></div>
-                <div class="absolute inset-3 bg-primary/10 rounded-xl z-[1]"></div>
+                <div class="absolute -inset-3 border-2 border-primary rounded-xl z-[1] max-md:hidden"></div>
+                <div class="absolute inset-3 bg-primary/10 rounded-xl z-[1] max-md:hidden"></div>
                 
-                <div class="relative z-[2] aspect-[3/4] rounded-xl overflow-hidden shadow-[0_20px_40px_-12px_rgba(0,0,0,0.15)] border-[6px] border-white block group">
-                    @if($gs('hod_photo'))
-                        <img src="{{ asset('storage/'.$gs('hod_photo')) }}" alt="{{ $gs('hod_name', $hod->name ?? 'HOD') }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    @elseif($hod && $hod->photo)
-                        <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    @else
-                        <div class="w-full h-full flex items-center justify-center text-white text-[6rem] bg-gradient-to-br from-primary to-secondary"><i class="fa-solid fa-user-tie"></i></div>
-                    @endif
+                <!-- Wrapper for Image and floating badge -->
+                <div class="relative z-[2] w-full block group">
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden shadow-[0_20px_40px_-12px_rgba(0,0,0,0.15)] border-[6px] border-white">
+                        @if($gs('hod_photo'))
+                            <img src="{{ asset('storage/'.$gs('hod_photo')) }}" alt="{{ $gs('hod_name', $hod->name ?? 'HOD') }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        @elseif($hod && $hod->photo)
+                            <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        @else
+                            <div class="w-full h-full flex items-center justify-center text-white text-[6rem] bg-gradient-to-br from-primary to-secondary"><i class="fa-solid fa-user-tie"></i></div>
+                        @endif
+                    </div>
                     
                     <!-- Floating Badge -->
-                    <div class="absolute bottom-5 -right-5 bg-white py-4 px-6 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] flex items-center gap-4">
-                        <div class="w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center text-[1.2rem]">
+                    <div class="absolute -bottom-5 left-[5%] right-[5%] sm:left-[10%] sm:right-[10%] md:-bottom-8 md:-right-8 md:left-auto md:right-auto bg-white py-3 px-5 md:py-4 md:px-6 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] flex items-center gap-3 sm:gap-4 z-[3]">
+                        <div class="w-10 h-10 shrink-0 bg-primary/10 text-primary rounded-full flex items-center justify-center text-[1.2rem]">
                             <i class="fa-solid fa-award"></i>
                         </div>
-                        <div>
-                            <p class="m-0 font-extrabold text-slate-900 text-[1.1rem] font-heading leading-none">{{ $gs('home_hod_badge_title','Excellence') }}</p>
-                            <p class="m-0 text-[0.75rem] text-slate-500 uppercase tracking-[1px] mt-1">{{ $gs('home_hod_badge_subtitle','In Leadership') }}</p>
+                        <div class="flex-1 whitespace-nowrap">
+                            <p class="m-0 font-extrabold text-slate-900 text-[1rem] sm:text-[1.1rem] font-heading leading-none">{{ $gs('home_hod_badge_title','Excellence') }}</p>
+                            <p class="m-0 text-[0.7rem] sm:text-[0.75rem] text-slate-500 uppercase tracking-[1px] mt-1">{{ $gs('home_hod_badge_subtitle','In Leadership') }}</p>
                         </div>
                     </div>
                 </div>
