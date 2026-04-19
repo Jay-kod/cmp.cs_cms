@@ -156,15 +156,15 @@ C:\xampp\htdocs\p\dcms\resources\views\pages\home-partials\hod-welcome.blade
 
 
 
-            <div style="display: inline-flex; align-items: center; gap: 1.2rem; background: white; padding: 1rem 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+            <div class="inline-flex items-center gap-5 bg-white py-4 px-6 rounded-xl border border-slate-200">
 
-                <div style="width: 4px; height: 35px; background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary)); border-radius: 2px;"></div>
+                <div class="w-1 h-[35px] bg-gradient-to-b from-primary to-secondary rounded-sm"></div>
 
                 <div>
 
-                    <h4 style="margin: 0; font-weight: 800; color: #0f172a; font-size: 1.1rem; font-family: var(--font-heading);">{{ $gs('hod_name', $hod->name ?? '') }}</h4>
+                    <h4 class="m-0 font-extrabold text-slate-900 text-[1.1rem] font-heading">{{ $gs('hod_name', $hod->name ?? '') }}</h4>
 
-                    <p style="margin: 0; color: #64748b; font-size: 0.9rem; font-weight: 500;">{{ $gs('hod_rank', $hod->rank ?? '') }}, Head of Department</p>
+                    <p class="m-0 text-slate-500 text-[0.9rem] font-medium">{{ $gs('hod_rank', $hod->rank ?? '') }}, Head of Department</p>
 
                 </div>
 
@@ -180,9 +180,9 @@ C:\xampp\htdocs\p\dcms\resources\views\pages\home-partials\hod-welcome.blade
 
     <!-- Stats Counter Cards — integrated into HOD section -->
 
-    <div class="container" data-aos="fade-up" style="margin-top: 4rem; padding-bottom: 4rem;">
+    <div class="container mt-16 pb-16" data-aos="fade-up">
 
-        <div class="stats-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; text-align: center;">
+        <div class="stats-grid grid grid-cols-[repeat(5,1fr)] gap-5 text-center">
 
             @foreach([1,2,3,4,5] as $n)
 
