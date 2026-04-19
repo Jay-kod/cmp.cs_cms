@@ -30,29 +30,29 @@
                 {{-- Gradient Header Strip --}}
                 <div class="h-[6px] bg-gradient-to-r {{ $pc['from'] }} {{ $pc['to'] }}"></div>
 
-                <div class="p-[2rem_2rem_1.5rem] flex-grow">
+                <div class="p-[1.5rem_1.5rem_1rem] flex-grow">
                     {{-- Icon + Badge Row --}}
-                    <div class="flex justify-between items-start mb-[1.2rem]">
-                        <div class="w-[56px] h-[56px] rounded-[16px] {{ $pc['bg'] }} {{ $pc['text'] }} flex items-center justify-center text-[1.4rem] transition-all duration-300 group-hover:scale-110 group-hover:rotate-[5deg] group-hover:shadow-[0_8px_20px_-5px_rgba(0,0,0,0.15)]">
+                    <div class="flex justify-between items-start mb-[1rem]">
+                        <div class="w-[48px] h-[48px] rounded-[14px] {{ $pc['bg'] }} {{ $pc['text'] }} flex items-center justify-center text-[1.2rem] transition-all duration-300 group-hover:scale-110 group-hover:rotate-[5deg] group-hover:shadow-[0_8px_20px_-5px_rgba(0,0,0,0.15)]">
                             <i class="{{ $progIcons[$pIdx % count($progIcons)] }}"></i>
                         </div>
-                        <span class="{{ $pc['badge'] }} {{ $pc['badgeText'] }} text-[0.75rem] font-bold py-[0.35rem] px-[0.9rem] rounded-[20px] tracking-[0.5px] uppercase">{{ $prog->level }}</span>
+                        <span class="{{ $pc['badge'] }} {{ $pc['badgeText'] }} text-[0.7rem] font-bold py-[0.3rem] px-[0.7rem] rounded-[20px] tracking-[0.5px] uppercase">{{ $prog->level }}</span>
                     </div>
 
                     {{-- Programme Name --}}
-                    <h3 class="text-[1.15rem] m-[0_0_0.8rem] text-slate-800 font-heading font-bold leading-[1.3] transition-colors duration-300 group-hover:text-primary">{{ $prog->name }}</h3>
+                    <h3 class="text-[1.05rem] xl:text-[1.1rem] m-[0_0_0.6rem] text-slate-800 font-heading font-extrabold leading-[1.3] transition-colors duration-300 group-hover:text-primary">{{ $prog->name }}</h3>
 
                     {{-- Description --}}
-                    <p class="text-[0.88rem] text-slate-500 leading-[1.6] m-0">{{ Str::limit($prog->description, 100) }}</p>
+                    <p class="text-[0.85rem] text-slate-500 leading-[1.5] m-0">{{ Str::limit($prog->description, 90) }}</p>
                 </div>
 
                 {{-- Footer --}}
-                <div class="p-[1rem_2rem] border-t border-slate-50 flex justify-between items-center mt-auto bg-white transition-colors duration-300 group-hover:bg-slate-50">
-                    <div class="flex gap-[1.2rem] text-[0.78rem] text-slate-500 font-medium">
-                        <span class="flex items-center gap-[0.4rem]"><i class="fa-regular fa-clock {{ $pc['text'] }} opacity-80"></i> {{ $prog->duration }}</span>
-                        <span class="flex items-center gap-[0.4rem]"><i class="fa-solid fa-book-open {{ $pc['text'] }} opacity-80"></i> {{ $prog->mode_of_study }}</span>
+                <div class="p-[0.8rem_1.5rem] border-t border-slate-50 flex justify-between items-center mt-auto bg-white transition-colors duration-300 group-hover:bg-slate-50">
+                    <div class="flex gap-[1rem] text-[0.75rem] text-slate-500 font-medium">
+                        <span class="flex items-center gap-[0.3rem]"><i class="fa-regular fa-clock {{ $pc['text'] }} opacity-80"></i> {{ $prog->duration }}</span>
+                        <span class="flex items-center gap-[0.3rem]"><i class="fa-solid fa-book-open {{ $pc['text'] }} opacity-80"></i> {{ $prog->mode_of_study }}</span>
                     </div>
-                    <div class="w-[32px] h-[32px] rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-[0.85rem] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-primary group-hover:text-white group-hover:shadow-[0_4px_12px_rgba(22,163,74,0.3)]"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="w-[28px] h-[28px] rounded-[10px] bg-slate-100 text-slate-500 flex items-center justify-center text-[0.75rem] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-primary group-hover:text-white group-hover:shadow-[0_4px_12px_rgba(22,163,74,0.3)]"><i class="fa-solid fa-arrow-right"></i></div>
                 </div>
             </a>
             @endforeach
