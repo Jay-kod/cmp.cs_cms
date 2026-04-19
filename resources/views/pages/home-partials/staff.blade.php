@@ -1,48 +1,61 @@
-<!-- MEET OUR STAFF -->
-<section data-aos="fade-up" class="py-24 bg-[#f4fcfa] relative overflow-hidden">
-    <div class="absolute -top-20 -left-20 w-[250px] h-[250px] bg-[radial-gradient(circle,rgba(22,163,74,0.06)_0%,transparent_70%)] pointer-events-none"></div>
+﻿<!-- MEET OUR STAFF -->
+<section data-aos="fade-up" class="py-24 bg-[#080d19] relative overflow-hidden border-t border-slate-900">    
+    <!-- Background Accents -->
+    <div class="absolute -top-20 -left-20 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(22,163,74,0.15)_0%,transparent_70%)] pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(22,163,74,0.1)_0%,transparent_70%)] pointer-events-none"></div>
+
     <div class="container relative z-10" data-aos="fade-up">
+        
+        <!-- Header -->
         <div class="text-center mb-16">
-            <span class="inline-block text-primary text-sm font-bold uppercase tracking-[1.5px] mb-4 bg-primary/10 py-1.5 px-4 rounded-full">{{ $gs('home_staff_badge','Our Team') }}</span>
-            <h2 class="text-4xl md:text-[2.8rem] font-heading font-extrabold text-[#0f172a] mb-4">{{ $gs('home_staff_title','Meet Our Faculty') }}</h2>
-            <p class="text-[#64748b] text-lg max-w-[600px] mx-auto leading-relaxed text-center">{{ $gs('home_staff_subtitle','Dedicated academics and researchers shaping the future of computer science education.') }}</p>
+            <div class="inline-block relative mb-6 transform -skew-x-12 bg-slate-900 border-l-[3px] border-r-[3px] border-primary/60 shadow-[0_0_20px_rgba(22,163,74,0.2)] hover:border-primary transition-colors">
+                <span class="block text-primary text-[0.8rem] font-extrabold uppercase tracking-[3px] py-1.5 px-6 transform skew-x-12">{{ $gs('home_staff_badge','Leadership') }}</span>
+            </div>
+            <h2 class="text-4xl md:text-[3.2rem] font-heading font-black text-white mb-4 uppercase tracking-tighter">{{ $gs('home_staff_title','Meet Our Faculty') }}</h2>
+            <p class="text-slate-400 text-[1.05rem] max-w-[600px] mx-auto leading-relaxed text-center">{{ $gs('home_staff_subtitle','Dedicated academics and researchers shaping the future of computer science education.') }}</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <!-- Diagonal Masked Cards Layout -->
+        <div class="flex flex-col lg:flex-row justify-center items-stretch gap-[10px] lg:gap-0 lg:px-4 w-full xl:w-[110%] xl:-ml-[5%]">
             @foreach($featuredStaff as $member)
-            <a href="{{ route('people.show', $member->slug) }}" class="group block bg-green-50/50 rounded-[2rem] p-3 sm:p-4 border-2 border-green-500/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:border-green-500/40 hover:bg-green-50">
+            <a href="{{ route('people.show', $member->slug) }}" class="group relative w-full lg:flex-1 h-[400px] sm:h-[450px] flex-shrink-0 transition-all duration-500 lg:hover:flex-[1.3]">
                 
-                <!-- Image Wrapper -->
-                <div class="relative w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden mb-5 bg-slate-50 relative z-10">
-                    @if($member->photo)
-                        <img src="{{ asset('storage/'.$member->photo) }}" alt="{{ $member->name }}" class="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-700 ease-out group-hover:scale-110">
-                    @else
-                        <img src="https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=400&background=14532d&color=fff&bold=true&format=svg&font-size=0.35" alt="{{ $member->name }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
-                    @endif
+                <!-- The Skewed Wrapper with Accent -->
+                <div class="absolute inset-0 transform lg:-skew-x-[12deg] overflow-hidden bg-slate-900 border-l-[5px] border-[#080d19] group-hover:border-primary transition-colors duration-500 z-10 shadow-2xl">
                     
-                    <!-- Elegant Subtle Overlay on Hover -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                    <!-- View Profile Mini Badge on Hover -->
-                    <div class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
-                        <span class="bg-white/95 backdrop-blur-sm text-primary text-[0.7rem] font-bold uppercase tracking-[1px] py-1.5 px-4 rounded-full shadow-lg flex items-center gap-2">View Profile <i class="fa-solid fa-arrow-right"></i></span>
+                    <!-- The Un-Skewed Inner Image Area -->
+                    <div class="absolute inset-0 w-[140%] h-[110%] transform lg:skew-x-[12deg] -ml-[20%] -mt-[5%] bg-[#0f172a]">
+                        @if($member->photo)
+                            <img src="{{ asset('storage/'.$member->photo) }}" alt="{{ $member->name }}" class="w-full h-[100%] object-cover object-top opacity-70 group-hover:opacity-100 filter grayscale-[50%] group-hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-105">
+                        @else
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=400&background=1e293b&color=fff&bold=true&format=svg&font-size=0.35" alt="{{ $member->name }}" class="w-full h-full object-cover object-[center_top] opacity-70 group-hover:opacity-100 filter grayscale-[50%] group-hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-105">
+                        @endif
+                        
+                        <!-- Bottom shadow for text contrast -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#080d19] via-slate-900/60 to-transparent"></div>
                     </div>
                 </div>
 
-                <!-- Text Details -->
-                <div class="px-2 pb-3 flex flex-col items-center justify-center text-center">
-                    <h3 class="text-[1.1rem] sm:text-[1.15rem] font-extrabold text-slate-900 mb-1.5 font-heading transition-colors group-hover:text-primary leading-[1.2] line-clamp-1" title="{{ $member->name }}">{{ $member->name }}</h3>
-                    <div class="text-[0.75rem] text-slate-500 font-bold uppercase tracking-[1.5px] mx-auto text-center">{{ $member->rank ?? 'Lecturer' }}</div>
-                </div>
+                <!-- Floating accent slice between cards -->
+                <div class="hidden lg:block absolute top-[10%] -left-[3px] w-[5px] h-[35%] bg-gradient-to-b from-primary to-transparent transform -skew-x-[12deg] z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_15px_rgba(22,163,74,0.5)]"></div>
 
+                <!-- Floating/Skewed Name Plate -->
+                <div class="absolute bottom-8 left-4 right-4 lg:left-0 lg:right-[1.5rem] transform lg:-skew-x-[12deg] bg-slate-900 border-l-4 border-b-2 border-primary p-4 sm:p-5 z-30 shadow-[5px_15px_30px_rgba(0,0,0,0.9)] lg:group-hover:-translate-y-3 transition-transform duration-500">
+                    <div class="transform lg:skew-x-[12deg] flex flex-col justify-center">
+                        <h3 class="text-white font-heading font-black text-[1.1rem] sm:text-[1.2rem] uppercase tracking-wider m-0 mb-1 group-hover:text-primary transition-colors line-clamp-1" title="{{ $member->name }}">{{ $member->name }}</h3>
+                        <p class="text-slate-400 font-extrabold text-[0.7rem] sm:text-[0.75rem] italic tracking-[2px] uppercase m-0 group-hover:text-slate-300 transition-colors">{{ $member->rank ?? 'Lecturer' }}</p>
+                    </div>
+                </div>
             </a>
             @endforeach
         </div>
 
-        <div class="text-center mt-12">
-            <a href="{{ url('/people') }}" class="inline-flex items-center gap-2.5 bg-primary text-white py-3 px-8 rounded-lg text-base font-bold transition-all duration-300 shadow-[0_4px_15px_rgba(22,163,74,0.3)] hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(22,163,74,0.4)]">
-                {{ $gs('home_staff_btn_text','View All Staff') }} <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+        <!-- Button -->
+        <div class="text-center mt-20 relative z-20">
+            <a href="{{ url('/people') }}" class="inline-flex items-center gap-3 bg-primary text-white py-3.5 px-8 md:px-12 border-r-4 border-b-4 border-primary/50 text-[0.95rem] font-bold transition-all duration-300 hover:translate-x-1 hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(22,163,74,0.4)] uppercase tracking-wider transform -skew-x-12">
+                <span class="transform skew-x-12 text-white block">{{ $gs('home_staff_btn_text','View All Staff') }}</span> <i class="fa-solid fa-arrow-right transform skew-x-12 text-white"></i>
             </a>
         </div>
+        
     </div>
 </section>
