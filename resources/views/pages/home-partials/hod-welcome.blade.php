@@ -21,7 +21,7 @@
         </div>
 
         <!-- HoD Photo Area -->
-        <div class="hod-photo-container shrink-0 self-center flex flex-col gap-10 w-full max-w-full sm:max-w-[420px] md:max-w-[500px] lg:max-w-[380px] mx-auto">
+        <div class="hod-photo-container shrink-0 w-full max-w-full sm:max-w-[420px] md:max-w-[500px] lg:max-w-[420px] mx-auto flex flex-col gap-10">
             <div class="hod-photo relative w-full mx-auto">
                 <div class="absolute -inset-3 border-2 border-primary rounded-xl z-[1] max-md:hidden"></div>
                 <div class="absolute inset-3 bg-primary/10 rounded-xl z-[1] max-md:hidden"></div>
