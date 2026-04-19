@@ -6,10 +6,10 @@ echo Starting background processors silently...
 wscript.exe start_background_workers.vbs
 
 REM Open Laravel server in a new window
-start "Laravel API Server" cmd /c "php artisan serve --port=3000"
+start "Laravel API Server" cmd /c "php artisan serve --host=0.0.0.0 --port=3000"
 
 REM Open Vite server in a new window
-start "Vite Frontend Server" cmd /c "npm run dev"
+start "Vite Frontend Server" cmd /c "npm run dev -- --host"
 
 echo Both servers are starting up! Background workers are running silently.
 echo You can close this window.
