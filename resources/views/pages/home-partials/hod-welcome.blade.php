@@ -27,8 +27,8 @@
                 <div class="absolute inset-3 bg-primary/10 rounded-xl z-[1] max-md:hidden"></div>
                 
                 <!-- Wrapper for Image and floating badge -->
-                <div class="relative z-[2] w-full block group">
-                    <div class="w-full h-[350px] sm:h-auto sm:aspect-[3/4] rounded-2xl sm:rounded-xl overflow-hidden shadow-[0_20px_40px_-12px_rgba(0,0,0,0.15)] border-0 sm:border-[6px] border-white">
+                <div class="relative z-[2] w-full block group mx-auto">
+                    <div class="w-full aspect-square sm:aspect-[3/4] rounded-2xl sm:rounded-[1.5rem] overflow-hidden shadow-[0_15px_40px_-5px_rgba(0,0,0,0.2)] border-4 sm:border-[6px] border-white">
                         @if($gs('hod_photo'))
                             <img src="{{ asset('storage/'.$gs('hod_photo')) }}" alt="{{ $gs('hod_name', $hod->name ?? 'HOD') }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                         @elseif($hod && $hod->photo)
