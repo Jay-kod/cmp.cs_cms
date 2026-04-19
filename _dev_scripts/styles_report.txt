@@ -4,7 +4,6 @@
 86 - resources/views\admin\sub-departments\form.blade.php
 75 - resources/views\layouts\super-admin.blade.php
 70 - resources/views\admin\staff\form.blade.php
-65 - resources/views\pages\resources.blade.php
 63 - resources/views\admin\carousel\form.blade.php
 62 - resources/views\admin\carousel\index.blade.php
 59 - resources/views\admin\page-content\about.blade.php
@@ -16,7 +15,6 @@
 50 - resources/views\admin\news\index.blade.php
 48 - resources/views\admin\events\index.blade.php
 48 - resources/views\admin\system-logs\index.blade.php
-48 - resources/views\pages\nacos-presidents.blade.php
 47 - resources/views\admin\courses\index.blade.php
 47 - resources/views\admin\external-systems\form.blade.php
 46 - resources/views\admin\bulk-import-preview.blade.php
@@ -26,7 +24,6 @@
 43 - resources/views\super-admin\settings\index.blade.php
 41 - resources/views\admin\social-links\form.blade.php
 41 - resources/views\auth\login.blade.php
-41 - resources/views\pages\events.blade.php
 40 - resources/views\admin\resource-categories\index.blade.php
 39 - resources/views\admin\news\form.blade.php
 39 - resources/views\admin\pages\index.blade.php
@@ -114,8 +111,10 @@
 6 - resources/views\pages\home-partials\stats.blade.php
 4 - resources/views\layouts\guest.blade.php
 4 - resources/views\pages\home-partials\hero.blade.php
+4 - resources/views\pages\nacos-presidents.blade.php
 3 - resources/views\components\application-logo.blade.php
 2 - resources/views\pages\about.blade.php
+2 - resources/views\pages\resources.blade.php
 2 - resources/views\pages\sub-department.blade.php
 1 - resources/views\admin\page-content\projects.blade.php
 1 - resources/views\admin\page-content\siwes.blade.php
@@ -131,5 +130,5 @@
 1 - resources/views\pages\research-news-partials\hero.blade.php
 1 - resources/views\pages\research-news.blade.php
 1 - resources/views\pages\research.blade.php
-Total Files: 133
-Total Styles: 3585
+Total Files: 132
+Total Styles: 3437
