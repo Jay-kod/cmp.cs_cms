@@ -58,16 +58,16 @@
             <div class="grid grid-cols-2 gap-3 sm:gap-4">
                 @php
                     $pageStats = [
-                        ['icon' => 'fa-solid fa-crown',           'value' => $presidents->count(), 'label' => 'Past Leaders',   'color' => '#16a34a'],
-                        ['icon' => 'fa-solid fa-calendar-check',  'value' => $gs('nacos_page_stat_events', '50+'),  'label' => $gs('nacos_page_stat_events_label', 'Events Hosted'),  'color' => '#0891b2'],
-                        ['icon' => 'fa-solid fa-user-graduate',   'value' => $gs('nacos_page_stat_members', '500+'),'label' => $gs('nacos_page_stat_members_label','Active Members'), 'color' => '#7c3aed'],
-                        ['icon' => 'fa-solid fa-trophy',          'value' => $gs('nacos_page_stat_awards', '20+'),  'label' => $gs('nacos_page_stat_awards_label', 'Awards Won'),     'color' => '#ea580c'],
+                        ['icon' => 'fa-solid fa-crown',           'value' => $presidents->count(), 'label' => 'Past Leaders',   'bg_class' => 'bg-green-600/15', 'text_class' => 'text-green-600'],
+                        ['icon' => 'fa-solid fa-calendar-check',  'value' => $gs('nacos_page_stat_events', '50+'),  'label' => $gs('nacos_page_stat_events_label', 'Events Hosted'),  'bg_class' => 'bg-cyan-600/15', 'text_class' => 'text-cyan-600'],
+                        ['icon' => 'fa-solid fa-user-graduate',   'value' => $gs('nacos_page_stat_members', '500+'),'label' => $gs('nacos_page_stat_members_label','Active Members'), 'bg_class' => 'bg-violet-600/15', 'text_class' => 'text-violet-600'],
+                        ['icon' => 'fa-solid fa-trophy',          'value' => $gs('nacos_page_stat_awards', '20+'),  'label' => $gs('nacos_page_stat_awards_label', 'Awards Won'),     'bg_class' => 'bg-orange-600/15', 'text_class' => 'text-orange-600'],
                     ];
                 @endphp
                 @foreach($pageStats as $stat)
                 <div data-aos="fade-up" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center">
-                    <div data-aos="fade-up" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-2 sm:mb-3" style="background: {{ $stat['color'] }}15;">
-                        <i class="{{ $stat['icon'] }}" style="color: {{ $stat['color'] }}; font-size: 1.1rem;"></i>
+                    <div data-aos="fade-up" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-2 sm:mb-3 {{ $stat['bg_class'] }}">
+                        <i class="{{ $stat['icon'] }} text-[1.1rem] {{ $stat['text_class'] }}"></i>
                     </div>
                     <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-none mb-1 font-heading">{{ $stat['value'] }}</div>
                     <div class="text-[0.7rem] sm:text-xs text-slate-500 uppercase tracking-wider font-semibold">{{ $stat['label'] }}</div>
