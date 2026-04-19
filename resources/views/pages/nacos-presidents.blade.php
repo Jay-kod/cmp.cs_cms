@@ -183,80 +183,79 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @forelse($presidents as $p)
-            <div data-aos="fade-up" class="group bg-white border border-slate-200 rounded-2xl p-4 transition-all duration-300 hover:border-green-500 hover:-translate-y-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] flex flex-col items-center text-center">
-                <!-- Square Picture -->
-                <div class="w-full aspect-square bg-slate-50 rounded-xl overflow-hidden relative shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] border border-slate-100 mb-4 group">
+            <div data-aos="fade-up" class="group relative w-full aspect-[2.8/4] max-w-[320px] mx-auto bg-[#e5e5e5] rounded-[1.25rem] overflow-hidden shadow-sm hover:shadow-[0_15px_35px_rgba(0,0,0,0.12)] transition-all duration-500 border border-slate-200/60 z-10 hover:-translate-y-2">
+
+                <!-- Photo Layer -->
+                <div class="absolute inset-x-0 top-0 h-[75%] w-full">
                     <img src="{{ $p->photo ? asset('storage/'.$p->photo) : asset('images/avatar-placeholder.png') }}" 
                          alt="{{ $p->name }}" 
-                         class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110" 
-                         onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($p->name) }}&background=16a34a&color=fff&size=150'">
+                         class="w-full h-full object-cover object-top mix-blend-multiply filter group-hover:scale-[1.03] transition-transform duration-700 ease-out" 
+                         onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($p->name) }}&background=e5e5e5&color=333&size=400'">
+                </div>
 
-                    @if($p->email || $p->whatsapp || $p->facebook || $p->x)
-                    <div data-aos="fade-up" class="absolute inset-0 bg-black/40 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px]">
-                        @if($p->email)
-                        <a href="mailto:{{ $p->email }}" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-red-500 hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
-                            <i class="fa-solid fa-envelope"></i>
-                            <!-- Custom Tooltip -->
-                            <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[0.7rem] font-semibold tracking-wide px-2.5 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-[5px] before:border-transparent before:border-t-slate-900 z-10 translate-y-2 group-hover/icon:translate-y-0">
-                                {{ $p->email }}
+                <!-- The White Card Overlay -->
+                <div class="absolute bottom-0 w-full h-[35%] flex flex-col justify-end z-20 bg-[#f8fafc]">
+                    
+                    <!-- White Body -->
+                    <div class="w-full flex-grow px-6 pb-6 pt-5 flex flex-col justify-between">
+                        <!-- Name (Large, Tight Leading) -->
+                        <div class="relative">
+                            <!-- Break name into 2 lines if possible by limiting width -->
+                            <h3 class="text-[1.35rem] sm:text-[1.45rem] font-medium text-slate-800 tracking-tight leading-[1.1] max-w-[85%] m-0 font-sans">
+                                {{ $p->name }}
+                            </h3>
+                        </div>
+                        
+                        <!-- Bottom Details -->
+                        <div class="flex items-end justify-between mt-3">
+                            <span class="text-slate-600 text-[0.62rem] font-bold tracking-wider">
+                                PRESIDENT<br>
+                                <span class="opacity-70 text-[0.55rem] tracking-widest font-mono uppercase">{{ $p->tenure_start ?? '???' }} – {{ $p->tenure_end ?? 'Present' }}</span>
                             </span>
-                        </a>
-                        @endif
-
-                        @if($p->whatsapp)
-                        @php
-                            $waNumber = preg_replace('/[^0-9]/', '', $p->whatsapp);
-                        @endphp
-                        <a data-aos="fade-up" href="https://wa.me/{{ $waNumber }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-green-500 hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
-                            <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <!-- Custom Tooltip -->
-                            <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[0.7rem] font-semibold tracking-wide px-2.5 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-[5px] before:border-transparent before:border-t-slate-900 z-10 translate-y-2 group-hover/icon:translate-y-0">
-                                {{ $p->whatsapp }}
+                            <span class="text-slate-500 text-[0.55rem] font-bold tracking-widest font-mono uppercase">
+                                ID || {{ str_pad($loop->iteration, 4, '0', STR_PAD_LEFT) }}
                             </span>
-                        </a>
-                        @endif
-
-                        @php
-                            $facebookUrl = filled($p->facebook)
-                                ? (str_starts_with($p->facebook, 'http') ? $p->facebook : 'https://facebook.com/' . ltrim($p->facebook, '/'))
-                                : null;
-                        @endphp
-                        @if($facebookUrl)
-                        <a data-aos="fade-up" href="{{ $facebookUrl }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
-                            <i class="fa-brands fa-facebook-f text-lg"></i>
-                            <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[0.7rem] font-semibold tracking-wide px-2.5 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-[5px] before:border-transparent before:border-t-slate-900 z-10 translate-y-2 group-hover/icon:translate-y-0">
-                                {{ $p->facebook }}
-                            </span>
-                        </a>
-                        @endif
-
-                        @php
-                            $xUrl = filled($p->x)
-                                ? (str_starts_with($p->x, 'http') ? $p->x : 'https://x.com/' . ltrim($p->x, '/'))
-                                : null;
-                        @endphp
-                        @if($xUrl)
-                        <a data-aos="fade-up" href="{{ $xUrl }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:bg-black hover:text-white transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
-                            <i class="fa-brands fa-x-twitter text-lg"></i>
-                            <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[0.7rem] font-semibold tracking-wide px-2.5 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-[5px] before:border-transparent before:border-t-slate-900 z-10 translate-y-2 group-hover/icon:translate-y-0">
-                                {{ $p->x }}
-                            </span>
-                        </a>
-                        @endif
+                        </div>
                     </div>
+                </div>
+                
+                <!-- Social Icons Overlay (Visible on Hover) -->
+                @if($p->email || $p->whatsapp || $p->facebook || $p->x)
+                <div class="absolute top-[18%] right-4 flex flex-col gap-2.5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-6 group-hover:translate-x-0 z-30">
+                    @if($p->email)
+                    <a href="mailto:{{ $p->email }}" class="group/icon relative w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm border border-white/50 flex items-center justify-center text-slate-700 hover:bg-emerald-600 hover:text-white transition-all duration-300 shadow-sm" title="Email {{ $p->name }}">
+                        <i class="fa-solid fa-envelope text-[0.8rem]"></i>
+                    </a>
+                    @endif
+
+                    @if($p->whatsapp)
+                    @php
+                        $waNumber = preg_replace('/[^0-9]/', '', $p->whatsapp);
+                    @endphp
+                    <a href="https://wa.me/{{ $waNumber }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm border border-white/50 flex items-center justify-center text-slate-700 hover:bg-emerald-600 hover:text-white transition-all duration-300 shadow-sm" title="WhatsApp {{ $p->name }}">
+                        <i class="fa-brands fa-whatsapp text-[0.8rem]"></i>
+                    </a>
+                    @endif
+
+                    @php
+                        $facebookUrl = filled($p->facebook) ? (str_starts_with($p->facebook, 'http') ? $p->facebook : 'https://facebook.com/' . ltrim($p->facebook, '/')) : null;
+                    @endphp
+                    @if($facebookUrl)
+                    <a href="{{ $facebookUrl }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm border border-white/50 flex items-center justify-center text-slate-700 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm" title="Facebook">
+                        <i class="fa-brands fa-facebook-f text-[0.8rem]"></i>
+                    </a>
+                    @endif
+
+                    @php
+                        $xUrl = filled($p->x) ? (str_starts_with($p->x, 'http') ? $p->x : 'https://x.com/' . ltrim($p->x, '/')) : null;
+                    @endphp
+                    @if($xUrl)
+                    <a href="{{ $xUrl }}" target="_blank" rel="noopener noreferrer" class="group/icon relative w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm border border-white/50 flex items-center justify-center text-slate-700 hover:bg-black hover:text-white transition-all duration-300 shadow-sm" title="X (Twitter)">
+                        <i class="fa-brands fa-x-twitter text-[0.8rem]"></i>
+                    </a>
                     @endif
                 </div>
-
-                <!-- Middle Aligned Content -->
-                <div data-aos="fade-up" class="flex flex-col flex-1 w-full items-center justify-start px-2">
-                    <h3 class="m-0 mb-1 text-[1.15rem] font-bold text-slate-800 font-heading group-hover:text-green-600 transition-colors duration-300">{{ $p->name }}</h3>
-                    
-                    <div class="mb-3">
-                        <span class="inline-block px-2.5 py-0.5 bg-green-50 text-green-700 text-[0.65rem] font-bold uppercase tracking-widest rounded shadow-sm border border-green-200/60">
-                            {{ $p->tenure_start ?? 'Unknown' }} — {{ $p->tenure_end ?? 'Present' }}
-                        </span>
-                    </div>
-                </div>
+                @endif
             </div>
             @empty
             <div class="col-span-full text-center py-12 px-0 bg-slate-50 rounded-[14px] border border-dashed border-slate-200">

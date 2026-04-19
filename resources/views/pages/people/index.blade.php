@@ -724,44 +724,31 @@
         </style>
 
         <div id="staff-grid-container">
-            <div class="staff-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 staff-grid-fade">
                 @foreach($staff as $member)
                 @if($hod && $member->id === $hod->id && !request('search') && !request('status')) @continue @endif
 
-                <a href="{{ route('people.show', $member->slug) }}" class="staff-card-link">
-                    <div data-aos="fade-up" class="staff-card-v2">
-                        <div data-aos="fade-up" class="card-photo-side">
-                            <img class="card-photo-img" src="{{ $member->photo ? asset('storage/'.$member->photo) : 'https://ui-avatars.com/api/?name=' . urlencode($member->name) . '&size=300&background=1e3a8a&color=fff&bold=true&format=svg' }}" alt="{{ $member->name }}" onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=300&background=1e3a8a&color=fff&bold=true&format=svg'">
-                            <div data-aos="fade-up" class="card-photo-overlay"></div>
-                            @if($member->status === 'Tenure')
-                                <span class="card-status-badge tenure"><span class="card-status-dot tenure"></span> Tenure</span>
-                            @elseif($member->status === 'Visiting')
-                                <span class="card-status-badge visiting"><span class="card-status-dot visiting"></span> Visiting</span>
-                            @elseif($member->status === 'Sabbatical')
-                                <span class="card-status-badge sabbatical"><span class="card-status-dot sabbatical"></span> Sabbatical</span>
+                <a data-aos="fade-up" href="{{ route('people.show', $member->slug) }}" class="group relative w-full h-[450px] flex-shrink-0 transition-transform duration-500 hover:-translate-y-3 block">
+                    <!-- The Skewed Wrapper with Rounded Corners and Gap -->
+                    <div class="absolute inset-0 transform lg:-skew-x-[8deg] overflow-hidden bg-emerald-950 border-[3px] border-emerald-900 rounded-[1.5rem] group-hover:border-emerald-400/50 transition-colors duration-500 z-10 shadow-[0_15px_30px_rgba(0,0,0,0.1)] group-hover:shadow-[0_20px_40px_rgba(22,163,74,0.2)]">
+                        <!-- The Un-Skewed Inner Image Area (Reduced Zoom Ratio) -->                    
+                        <div class="absolute inset-0 w-[125%] h-[100%] transform lg:skew-x-[8deg] -ml-[12.5%] bg-emerald-950">
+                            @if($member->photo)
+                                <img src="{{ asset('storage/'.$member->photo) }}" alt="{{ $member->name }}" class="w-full h-[100%] object-cover object-top opacity-85 group-hover:opacity-100 filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-[1.03]">
+                            @else
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=400&background=022c22&color=a7f3d0&bold=true&format=svg&font-size=0.35" alt="{{ $member->name }}" class="w-full h-full object-cover object-[center_top] opacity-85 group-hover:opacity-100 filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-[1.03]">
                             @endif
+                            
+                            <!-- Smoother gradient shadow for text contrast -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/40 to-transparent"></div>
                         </div>
-                        <div data-aos="fade-up" class="card-info-side">
-                            <div>
-                                <h3 class="card-name">{{ $member->title }} {{ $member->name }}</h3>
-                                @if($member->rank)<p class="card-rank">{{ $member->rank }}</p>@endif
-                                @if($member->specialisation)
-                                    <p class="card-specialisation"><i class="fa-solid fa-flask text-slate-400 mr-[3px] text-[0.7rem]"></i>{{ $member->specialisation }}</p>
-                                @endif
-                            </div>
-                            <div data-aos="fade-up" class="card-footer">
-                                <div data-aos="fade-up" class="card-courses">
-                                    @if($member->courses->count())
-                                        @foreach($member->courses->take(2) as $course)
-                                            <span class="card-course-tag"><i class="fa-solid fa-book-open text-[0.6rem]"></i> {{ $course->code }}</span>
-                                        @endforeach
-                                        @if($member->courses->count() > 2)
-                                            <span class="card-course-tag bg-transparent text-slate-400">+{{ $member->courses->count() - 2 }}</span>
-                                        @endif
-                                    @endif
-                                </div>
-                                <span class="card-profile-btn">View Profile <i class="fa-solid fa-arrow-right arrow-icon"></i></span>
-                            </div>
+                    </div>
+
+                    <!-- Floating/Skewed Name Plate -->
+                    <div class="absolute bottom-6 left-4 right-4 lg:left-3 lg:right-3 transform lg:-skew-x-[8deg] bg-emerald-950/95 backdrop-blur-sm border-l-[4px] border-emerald-400 p-4 sm:p-5 rounded-xl z-30 shadow-[0_10px_20px_rgba(0,0,0,0.5)] transition-all duration-500 group-hover:bg-emerald-800/95">
+                        <div class="transform lg:skew-x-[8deg] flex flex-col justify-center">
+                            <h3 class="text-white font-heading font-bold text-[1.1rem] uppercase tracking-wide m-0 mb-1 group-hover:text-primary transition-colors line-clamp-1" title="{{ $member->title }} {{ $member->name }}">{{ $member->title }} {{ $member->name }}</h3>
+                            <p class="text-emerald-200/80 font-bold text-[0.7rem] sm:text-[0.75rem] tracking-[1.5px] uppercase m-0 group-hover:text-emerald-100 transition-colors">{{ $member->rank ?? 'Lecturer' }}</p>
                         </div>
                     </div>
                 </a>
@@ -807,35 +794,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function renderCard(m) {
-        const photo = m.photo || avatarUrl(m.name);
+        const photo = m.photo ? `/storage/${m.photo}` : avatarUrl(m.name);
         const fallback = avatarUrl(m.name);
-        let coursesHtml = '';
-        if (m.courses && m.courses.length) {
-            const shown = m.courses.slice(0, 2);
-            coursesHtml = shown.map(c => `<span class="card-course-tag"><i class="fa-solid fa-book-open text-[0.6rem]"></i> ${c.code}</span>`).join('');
-            if (m.courses.length > 2) {
-                coursesHtml += `<span class="card-course-tag bg-transparent text-slate-400">+${m.courses.length - 2}</span>`;
-            }
-        }
         return `
-        <a data-aos="fade-up" href="${m.profile_url}" class="staff-card-link">
-            <div data-aos="fade-up" class="staff-card-v2">
-                <div data-aos="fade-up" class="card-photo-side">
-                    <img class="card-photo-img" src="${photo}" alt="${m.name}" onerror="this.src='${fallback}'">
-                    <div data-aos="fade-up" class="card-photo-overlay"></div>
-                    ${statusBadgeHtml(m.status)}
+        <a data-aos="fade-up" href="${m.profile_url}" class="group relative w-full h-[450px] flex-shrink-0 transition-transform duration-500 hover:-translate-y-3 block">
+            <!-- The Skewed Wrapper with Rounded Corners and Gap -->
+            <div class="absolute inset-0 transform lg:-skew-x-[8deg] overflow-hidden bg-emerald-950 border-[3px] border-emerald-900 rounded-[1.5rem] group-hover:border-emerald-400/50 transition-colors duration-500 z-10 shadow-[0_15px_30px_rgba(0,0,0,0.1)] group-hover:shadow-[0_20px_40px_rgba(22,163,74,0.2)]">
+                <!-- The Un-Skewed Inner Image Area (Reduced Zoom Ratio) -->                    
+                <div class="absolute inset-0 w-[125%] h-[100%] transform lg:skew-x-[8deg] -ml-[12.5%] bg-emerald-950">
+                    <img src="${photo}" onerror="this.src='${fallback}'" alt="${m.name}" class="w-full h-[100%] object-cover object-top opacity-85 group-hover:opacity-100 filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-[1.03]">
+                    
+                    <!-- Smoother gradient shadow for text contrast -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/40 to-transparent"></div>
                 </div>
-                <div data-aos="fade-up" class="card-info-side">
-                    <div>
-                        <h3 class="card-name">${m.title} ${m.name}</h3>
-                        ${m.rank ? `<p class="card-rank">${m.rank}</p>` : ''}
-                        ${m.specialisation ? `<p class="card-specialisation"><i class="fa-solid fa-flask text-slate-400 mr-[3px] text-[0.7rem]"></i>${m.specialisation}</p>` : ''}
-                    </div>
-                    <div data-aos="fade-up" class="card-footer">
-                        <div data-aos="fade-up" class="card-courses">${coursesHtml}</div>
-                        <span class="card-profile-btn">View Profile <i class="fa-solid fa-arrow-right arrow-icon"></i></span>
-                    </div>
+            </div>
+
+            <!-- Floating/Skewed Name Plate -->
+            <div class="absolute bottom-6 left-4 right-4 lg:left-3 lg:right-3 transform lg:-skew-x-[8deg] bg-emerald-950/95 backdrop-blur-sm border-l-[4px] border-emerald-400 p-4 sm:p-5 rounded-xl z-30 shadow-[0_10px_20px_rgba(0,0,0,0.5)] transition-all duration-500 group-hover:bg-emerald-800/95">
+                <div class="transform lg:skew-x-[8deg] flex flex-col justify-center">
+                    <h3 class="text-white font-heading font-bold text-[1.1rem] uppercase tracking-wide m-0 mb-1 group-hover:text-primary transition-colors line-clamp-1" title="${m.name}">${m.title + ' ' + m.name}</h3>
+                    <p class="text-emerald-200/80 font-bold text-[0.7rem] sm:text-[0.75rem] tracking-[1.5px] uppercase m-0 group-hover:text-emerald-100 transition-colors">${m.rank || 'Lecturer'}</p>
                 </div>
+            </div>
+            
+            <!-- Optional Status Badge overlayed if needed -->
+            <div class="absolute top-4 right-4 z-40 transform lg:-skew-x-[8deg]">
+                ${statusBadgeHtml(m.status)}
             </div>
         </a>`;
     }
@@ -884,9 +868,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             <h3 class="text-slate-700 m-0 mb-2">No Staff Found</h3>
                             <p class="text-slate-500">Try adjusting your search or filter.</p>
                         </div>`;
-                } else {
-                    gridContainer.innerHTML = `<div class="staff-grid staff-grid-fade">${cards}</div>`;
-                }
+<!-- Replace old CSS class with pure Tailwind Grid -->
+            gridContainer.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 staff-grid-fade">${cards}</div>`;
+        }
 
                 gridContainer.style.opacity = '1';
 
