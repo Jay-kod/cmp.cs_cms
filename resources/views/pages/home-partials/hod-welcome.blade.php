@@ -4,43 +4,22 @@
     <div class="absolute top-[-100px] right-[-50px] w-[300px] h-[300px] pointer-events-none rounded-full bg-[radial-gradient(circle,rgba(22,163,74,0.08)_0%,transparent_70%)]"></div>
     <div class="absolute bottom-[-50px] left-[10%] w-[250px] h-[250px] pointer-events-none rounded-full bg-[radial-gradient(circle,rgba(22,163,74,0.06)_0%,transparent_70%)]"></div>
     
-    <div class="container grid grid-cols-1 lg:grid-cols-3 gap-[2rem] relative z-[2]">
+    <div class="container flex flex-col lg:flex-row gap-[3.5rem] lg:gap-[5rem] items-center relative z-[2]">
         
-        <!-- CARD 1: HOD Photo (Moved strictly to the very first visual spot as requested) -->
-        <div class="bg-white p-5 sm:p-6 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col justify-center">
-            <div class="hod-photo relative w-full h-full flex flex-col justify-center items-center">
-                <!-- Wrapper for Image and floating badge -->
-                <div class="relative z-[2] w-full block group mx-auto">
-                    <div class="w-full aspect-square sm:aspect-[4/5] lg:aspect-[3/4] rounded-2xl sm:rounded-[1.5rem] overflow-hidden shadow-[0_15px_40px_-5px_rgba(0,0,0,0.2)] border-4 border-white xl:border-[6px] xl:border-primary/10 bg-slate-100">
-                        @if($gs('hod_photo'))
-                            <img src="{{ asset('storage/'.$gs('hod_photo')) }}" alt="{{ $gs('hod_name', $hod->name ?? 'HOD') }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                        @elseif($hod && $hod->photo)
-                            <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                        @else
-                            <div class="w-full h-full flex items-center justify-center text-white text-[5rem] bg-gradient-to-br from-primary to-secondary"><i class="fa-solid fa-user-tie"></i></div>
-                        @endif
-                    </div>
-                </div>
-            </div>
+        <!-- HoD Text (Left Side) -->
+        <div class="hod-text flex-1 w-full lg:w-auto">
+            <span class="inline-block text-primary text-[0.85rem] font-bold uppercase tracking-[1.5px] mb-4 bg-primary/10 py-1.5 px-4 rounded-full">{{ $gs('home_hod_badge','Welcome Message') }}</span>
+            <h2 class="text-[2.8rem] mb-6 font-heading font-extrabold text-slate-900 leading-[1.15]">{{ $gs('home_hod_title','From the Head of Department') }}</h2>
             
-            <!-- HoD Name & Rank -->
-            @if($hod || $gs('hod_name'))
-            <div class="flex items-center gap-[1.2rem] mt-6 w-full mx-auto">
-                <div class="w-1.5 h-[40px] rounded-full bg-gradient-to-b from-primary to-secondary shrink-0"></div>
-                <div>
-                    <h4 class="m-0 font-extrabold text-slate-900 text-[1.15rem] font-heading">{{ $gs('hod_name', $hod->name ?? '') }}</h4>
-                    <p class="m-0 text-slate-500 text-[0.85rem] font-medium uppercase tracking-wide mt-0.5">{{ $gs('hod_rank', $hod->rank ?? '') }}, Head of Department</p>
-                </div>
+            <div class="hod-quote-box relative pl-8 mb-8 max-md:pl-1 mt-6">
+                <i class="fa-solid fa-quote-left hod-quote-mark absolute -top-2.5 -left-2.5 text-[3.5rem] text-primary/10 z-0 max-md:-left-1.5 max-md:text-[2.5rem] max-md:-top-1.5"></i>
+                <blockquote class="relative z-10 text-[1.15rem] text-slate-600 leading-[1.8] m-0 italic text-justify">
+                    "{!! nl2br(e($gs('hod_welcome_message', 'Welcome to the Department of Computer Science. We are committed to providing world-class computing education.'))) !!}"
+                </blockquote>
             </div>
-            @endif
-        </div>
 
-        <!-- CARD 2: Introduction Text & Title -->
-        <div class="bg-white p-8 lg:p-10 rounded-[2rem] shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col justify-center">
-            <span class="inline-block w-max text-primary text-[0.85rem] font-bold uppercase tracking-[1.5px] mb-5 bg-primary/10 py-1.5 px-4 rounded-full">{{ $gs('home_hod_badge','Welcome Message') }}</span>
-            <h2 class="text-[2.2rem] xl:text-[2.6rem] mb-6 font-heading font-extrabold text-slate-900 leading-[1.15]">{{ $gs('home_hod_title','From the Head of Department') }}</h2>
-            
-            <div class="flex items-center gap-4 mt-auto pt-6 border-t border-slate-100">
+            <!-- Excellence Badge (Moved below text) -->
+            <div class="flex items-center gap-4 mt-6">
                 <div class="w-12 h-12 shrink-0 bg-primary/10 text-primary rounded-full flex items-center justify-center text-[1.2rem]">
                     <i class="fa-solid fa-award"></i>
                 </div>
@@ -49,20 +28,40 @@
                     <p class="m-0 text-[0.75rem] text-slate-500 uppercase tracking-[1px] mt-0.5">{{ $gs('home_hod_badge_subtitle','In Leadership') }}</p>
                 </div>
             </div>
+            
         </div>
 
-        <!-- CARD 3: The Message Quote -->
-        <div class="bg-gradient-to-br from-primary via-[#166534] to-secondary p-8 lg:p-10 rounded-[2rem] shadow-lg flex flex-col justify-center text-white relative overflow-hidden group">
-            <!-- Decorative background elements -->
-            <div class="absolute top-[-50px] right-[-50px] text-[12rem] text-white/5 group-hover:scale-110 transition-transform duration-700 pointer-events-none transform -rotate-12"><i class="fa-solid fa-quote-right"></i></div>
-            
-            <i class="fa-solid fa-quote-left text-[2.5rem] xl:text-[3rem] text-white/30 mb-6 relative z-10"></i>
-            
-            <blockquote class="relative z-10 text-[1.15rem] xl:text-[1.25rem] text-white/95 leading-[1.8] m-0 italic text-justify font-medium">
-                "{!! nl2br(e($gs('hod_welcome_message', 'Welcome to the Department of Computer Science. We are committed to providing world-class computing education.'))) !!}"
-            </blockquote>
+        <!-- HoD Photo Area (Right Side, Square) -->
+        <div class="hod-photo-container shrink-0 w-full max-w-full sm:max-w-[420px] md:max-w-[450px] lg:max-w-[420px] mx-auto flex flex-col gap-6">
+            <div class="hod-photo relative w-full mx-auto">
+                <div class="absolute -inset-3 border-2 border-primary rounded-xl z-[1] max-md:hidden"></div>
+                <div class="absolute inset-3 bg-primary/10 rounded-xl z-[1] max-md:hidden"></div>
+                
+                <!-- Wrapper for Image -->
+                <div class="relative z-[2] w-full block group mx-auto">
+                    <div class="w-full aspect-square rounded-2xl sm:rounded-[1.5rem] overflow-hidden shadow-[0_15px_40px_-5px_rgba(0,0,0,0.2)] border-4 sm:border-[6px] border-white">
+                        @if($gs('hod_photo'))
+                            <img src="{{ asset('storage/'.$gs('hod_photo')) }}" alt="{{ $gs('hod_name', $hod->name ?? 'HOD') }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        @elseif($hod && $hod->photo)
+                            <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        @else
+                            <div class="w-full h-full flex items-center justify-center text-white text-[6rem] bg-gradient-to-br from-primary to-secondary"><i class="fa-solid fa-user-tie"></i></div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <!-- HoD Name Card -->
+            @if($hod || $gs('hod_name'))
+            <div class="flex items-center gap-[1.2rem] bg-white py-4 px-6 rounded-xl border border-slate-200 relative z-[2] shadow-sm w-full mx-auto">
+                <div class="w-1.5 h-[40px] rounded-full bg-gradient-to-b from-primary to-secondary"></div>
+                <div>
+                    <h4 class="m-0 font-extrabold text-slate-900 text-[1.15rem] font-heading">{{ $gs('hod_name', $hod->name ?? '') }}</h4>
+                    <p class="m-0 text-slate-500 text-[0.85rem] font-medium uppercase tracking-wide mt-0.5">{{ $gs('hod_rank', $hod->rank ?? '') }}, Head of Department</p>
+                </div>
+            </div>
+            @endif
         </div>
-        
     </div>
     
     <!-- Stats Counter Cards — integrated into HOD section -->
