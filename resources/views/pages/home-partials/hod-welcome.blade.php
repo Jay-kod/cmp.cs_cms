@@ -18,16 +18,6 @@
                         "{!! nl2br(e($gs('hod_welcome_message', 'Welcome to the Department of Computer Science. We are committed to providing world-class computing education.'))) !!}"
                     </blockquote>
                 </div>
-
-                <div class="flex items-center gap-4 bg-white p-4 md:p-5 rounded-2xl shadow-sm border border-slate-100 max-w-max">
-                    <div class="w-12 h-12 shrink-0 bg-primary/10 text-primary rounded-full flex items-center justify-center text-[1.2rem]">
-                        <i class="fa-solid fa-award"></i>
-                    </div>
-                    <div class="flex-1 pr-4">
-                        <p class="m-0 font-extrabold text-slate-900 text-[1.05rem] font-heading leading-tight">{{ $gs('home_hod_badge_title','Excellence') }}</p>
-                        <p class="m-0 text-[0.75rem] text-slate-500 uppercase tracking-[1px] mt-0.5">{{ $gs('home_hod_badge_subtitle','In Leadership') }}</p>
-                    </div>
-                </div>
             </div>
 
             <!-- IMAGE COLUMN (Stacks bottom on mobile, right on desktop) -->
