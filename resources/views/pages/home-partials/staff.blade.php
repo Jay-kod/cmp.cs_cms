@@ -10,7 +10,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             @foreach($featuredStaff as $member)
-            <a href="{{ route('people.show', $member->slug) }}" class="group block bg-green-50/50 rounded-[2rem] p-3 sm:p-4 border-2 border-primary/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:border-primary/30 hover:bg-green-50">
+            <a href="{{ route('people.show', $member->slug) }}" class="group block bg-green-50/50 rounded-[2rem] p-3 sm:p-4 border-2 border-green-500/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:border-green-500/40 hover:bg-green-50">
                 
                 <!-- Image Wrapper -->
                 <div class="relative w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden mb-5 bg-slate-50 relative z-10">
