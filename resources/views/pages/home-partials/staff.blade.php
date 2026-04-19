@@ -8,21 +8,33 @@
             <p class="text-[#64748b] text-lg max-w-[600px] mx-auto leading-relaxed text-center">{{ $gs('home_staff_subtitle','Dedicated academics and researchers shaping the future of computer science education.') }}</p>
         </div>
 
-        <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             @foreach($featuredStaff as $member)
-            <a href="{{ route('people.show', $member->slug) }}" class="group block bg-[#f8fafc] rounded-2xl overflow-hidden border border-[#e2e8f0] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-primary/20">
-                <div data-aos="fade-up" class="relative pt-[125%] overflow-hidden">
+            <a href="{{ route('people.show', $member->slug) }}" class="group block bg-white rounded-[2rem] p-3 sm:p-4 border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:border-primary/20">
+                
+                <!-- Image Wrapper -->
+                <div class="relative w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden mb-5 bg-slate-50 relative z-10">
                     @if($member->photo)
-                        <img src="{{ asset('storage/'.$member->photo) }}" alt="{{ $member->name }}" class="absolute top-0 left-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110">
+                        <img src="{{ asset('storage/'.$member->photo) }}" alt="{{ $member->name }}" class="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-700 ease-out group-hover:scale-110">
                     @else
-                        <img src="https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=400&background=14532d&color=fff&bold=true&format=svg&font-size=0.35" alt="{{ $member->name }}" class="absolute top-0 left-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110">
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=400&background=14532d&color=fff&bold=true&format=svg&font-size=0.35" alt="{{ $member->name }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110">
                     @endif
-                    <div class="absolute bottom-0 left-0 right-0 h-[60px] bg-gradient-to-t from-black/50 to-transparent pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <!-- Elegant Subtle Overlay on Hover -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <!-- View Profile Mini Badge on Hover -->
+                    <div class="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                        <span class="bg-white/95 backdrop-blur-sm text-primary text-[0.7rem] font-bold uppercase tracking-[1px] py-1.5 px-4 rounded-full shadow-lg flex items-center gap-2">View Profile <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
                 </div>
-                <div class="px-6 py-5 flex flex-col items-center justify-center text-center bg-white transition-colors duration-300 group-hover:bg-[#f4fcfa]">
-                    <h3 class="text-[1.15rem] font-bold text-[#0f172a] mb-1 font-heading text-center w-full group-hover:text-primary transition-colors">{{ $member->name }}</h3>
-                    <div class="text-[0.85rem] text-primary font-semibold mx-auto text-center w-full">{{ $member->rank ?? 'Lecturer' }}</div>
+
+                <!-- Text Details -->
+                <div class="px-2 pb-3 flex flex-col items-center justify-center text-center">
+                    <h3 class="text-[1.1rem] sm:text-[1.15rem] font-extrabold text-slate-900 mb-1.5 font-heading transition-colors group-hover:text-primary leading-[1.2] line-clamp-1" title="{{ $member->name }}">{{ $member->name }}</h3>
+                    <div class="text-[0.75rem] text-slate-500 font-bold uppercase tracking-[1.5px] mx-auto text-center">{{ $member->rank ?? 'Lecturer' }}</div>
                 </div>
+
             </a>
             @endforeach
         </div>
