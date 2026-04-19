@@ -186,7 +186,7 @@
             <div data-aos="fade-up" class="group relative w-full aspect-[2.8/4] max-w-[320px] mx-auto bg-[#e5e5e5] rounded-[1.25rem] overflow-hidden shadow-sm hover:shadow-[0_15px_35px_rgba(0,0,0,0.12)] transition-all duration-500 border border-slate-200/60 z-10 hover:-translate-y-2">
 
                 <!-- Photo Layer -->
-                <div class="absolute inset-x-0 top-0 h-[75%] w-full">
+                <div class="absolute inset-x-0 top-0 h-full w-full">
                     <img src="{{ $p->photo ? asset('storage/'.$p->photo) : asset('images/avatar-placeholder.png') }}" 
                          alt="{{ $p->name }}" 
                          class="w-full h-full object-cover object-top mix-blend-multiply filter group-hover:scale-[1.03] transition-transform duration-700 ease-out" 
@@ -194,25 +194,29 @@
                 </div>
 
                 <!-- The White Card Overlay -->
-                <div class="absolute bottom-0 w-full h-[35%] flex flex-col justify-end z-20 bg-[#f8fafc]">
+                <div class="absolute bottom-0 w-full flex flex-col justify-end z-20">
+                    <!-- SVG Curve Top Edge -->
+                    <svg viewBox="0 0 100 12" preserveAspectRatio="none" class="w-full h-[12px] sm:h-[16px] text-[#f8fafc] fill-current block -mb-[1px]">
+                        <path d="M0,12 C30,12 60,0 100,0 L100,12 L0,12 Z" />
+                    </svg>
                     
                     <!-- White Body -->
-                    <div class="w-full flex-grow px-6 pb-6 pt-5 flex flex-col justify-between">
+                    <div class="w-full px-5 sm:px-6 pb-4 sm:pb-5 pt-1 flex flex-col justify-between bg-[#f8fafc]">
                         <!-- Name (Large, Tight Leading) -->
                         <div class="relative">
                             <!-- Break name into 2 lines if possible by limiting width -->
-                            <h3 class="text-[1.35rem] sm:text-[1.45rem] font-medium text-slate-800 tracking-tight leading-[1.1] max-w-[85%] m-0 font-sans">
+                            <h3 class="text-[1.2rem] sm:text-[1.3rem] font-medium text-slate-800 tracking-tight leading-[1.15] max-w-[90%] m-0 font-sans">
                                 {{ $p->name }}
                             </h3>
                         </div>
                         
                         <!-- Bottom Details -->
-                        <div class="flex items-end justify-between mt-3">
-                            <span class="text-slate-600 text-[0.62rem] font-bold tracking-wider">
+                        <div class="flex items-end justify-between mt-3 text-slate-600">
+                            <span class="text-[#0f172a] text-[0.6rem] font-bold tracking-widest font-sans uppercase">
                                 PRESIDENT<br>
-                                <span class="opacity-70 text-[0.55rem] tracking-widest font-mono uppercase">{{ $p->tenure_start ?? '???' }} – {{ $p->tenure_end ?? 'Present' }}</span>
+                                <span class="opacity-70 text-[0.5rem] tracking-[0.15em] font-mono mt-0.5 inline-block">{{ $p->tenure_start ?? '???' }} &ndash; {{ $p->tenure_end ?? 'Present' }}</span>
                             </span>
-                            <span class="text-slate-500 text-[0.55rem] font-bold tracking-widest font-mono uppercase">
+                            <span class="text-slate-500 text-[0.55rem] font-bold tracking-[0.1em] font-mono uppercase opacity-80">
                                 ID || {{ str_pad($loop->iteration, 4, '0', STR_PAD_LEFT) }}
                             </span>
                         </div>
