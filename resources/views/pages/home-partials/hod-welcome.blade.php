@@ -4,10 +4,10 @@
     <div class="absolute top-[-100px] right-[-50px] w-[300px] h-[300px] pointer-events-none rounded-full bg-[radial-gradient(circle,rgba(22,163,74,0.08)_0%,transparent_70%)]"></div>
     <div class="absolute bottom-[-50px] left-[10%] w-[250px] h-[250px] pointer-events-none rounded-full bg-[radial-gradient(circle,rgba(22,163,74,0.06)_0%,transparent_70%)]"></div>
     
-    <div class="container flex flex-col lg:flex-row gap-[3.5rem] lg:gap-[5rem] items-center relative z-[2]">
+    <div class="container flex flex-col lg:flex-row gap-[3.5rem] lg:gap-[5rem] items-start relative z-[2]">
         
         <!-- HoD Text -->
-        <div class="hod-text flex-1 self-center">
+        <div class="hod-text flex-1 w-full lg:w-auto">
             <span class="inline-block text-primary text-[0.85rem] font-bold uppercase tracking-[1.5px] mb-4 bg-primary/10 py-1.5 px-4 rounded-full">{{ $gs('home_hod_badge','Welcome Message') }}</span>
             <h2 class="text-[2.8rem] mb-6 font-heading font-extrabold text-slate-900 leading-[1.15]">{{ $gs('home_hod_title','From the Head of Department') }}</h2>
             
