@@ -9,7 +9,6 @@
 62 - resources/views\admin\carousel\index.blade.php
 59 - resources/views\admin\page-content\about.blade.php
 56 - resources/views\admin\staff\index.blade.php
-56 - resources/views\pages\about-partials\programmes.blade.php
 54 - resources/views\admin\page-content\home.blade.php
 53 - resources/views\admin\past-hods\form.blade.php
 52 - resources/views\admin\resources\index.blade.php
@@ -28,7 +27,6 @@
 41 - resources/views\admin\social-links\form.blade.php
 41 - resources/views\auth\login.blade.php
 41 - resources/views\pages\events.blade.php
-41 - resources/views\pages\home-partials\news-events.blade.php
 40 - resources/views\admin\resource-categories\index.blade.php
 39 - resources/views\admin\news\form.blade.php
 39 - resources/views\admin\pages\index.blade.php
@@ -133,5 +131,5 @@
 1 - resources/views\pages\research-news-partials\hero.blade.php
 1 - resources/views\pages\research-news.blade.php
 1 - resources/views\pages\research.blade.php
-Total Files: 135
-Total Styles: 3682
+Total Files: 133
+Total Styles: 3585
