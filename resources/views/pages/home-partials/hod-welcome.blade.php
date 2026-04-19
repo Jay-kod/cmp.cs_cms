@@ -30,8 +30,8 @@
                 </div>
             </div>
 
-            <!-- IMAGE COLUMN (Stacks top on mobile, right on desktop) -->
-            <div class="lg:col-span-5 order-1 lg:order-2 w-full">
+            <!-- IMAGE COLUMN (Stacks bottom on mobile, right on desktop) -->
+            <div class="lg:col-span-5 order-2 w-full">
                 <!-- Wrapper explicitly uses 100% width to ensure it fills the grid column on all devices -->
                 <div class="relative w-full rounded-[2rem] mx-auto block group lg:max-w-none max-w-md sm:max-w-lg lg:ml-auto">
                     <!-- Decorative back blob -->
