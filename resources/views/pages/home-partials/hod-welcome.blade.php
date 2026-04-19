@@ -7,8 +7,8 @@
     <div class="container relative z-[2]">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             
-            <!-- TEXT COLUMN (Stacks bottom on mobile, left on desktop) -->
-            <div class="lg:col-span-7 order-2 lg:order-1 flex flex-col justify-center">
+            <!-- TEXT COLUMN (Stacks top on mobile, left on desktop) -->
+            <div class="lg:col-span-7 order-1 flex flex-col justify-center">
                 <span class="inline-block w-max text-primary text-[0.85rem] font-bold uppercase tracking-[1.5px] mb-4 bg-primary/10 py-1.5 px-4 rounded-full">{{ $gs('home_hod_badge','Welcome Message') }}</span>
                 <h2 class="text-[2.2rem] md:text-[2.8rem] mb-6 font-heading font-extrabold text-slate-900 leading-[1.15]">{{ $gs('home_hod_title','From the Head of Department') }}</h2>
                 
