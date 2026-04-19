@@ -13,7 +13,7 @@
     <div class="absolute inset-0 pointer-events-none">
         <div class="absolute -top-20 -right-20 w-[350px] h-[350px] bg-[radial-gradient(circle,rgba(22,163,74,0.15)_0%,transparent_70%)] rounded-full"></div>
         <div class="absolute -bottom-10 -left-10 w-[250px] h-[250px] bg-[radial-gradient(circle,rgba(22,163,74,0.1)_0%,transparent_70%)] rounded-full"></div>
-        <div class="absolute inset-0" style="background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.5%22 fill=%22rgba(255,255,255,0.03)%22/></svg>');"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,<svg_xmlns=%22http://www.w3.org/2000/svg%22_width=%2240%22_height=%2240%22><circle_cx=%2220%22_cy=%2220%22_r=%220.5%22_fill=%22rgba(255,255,255,0.03)%22/></svg>')]"></div>
     </div>
     <div class="container relative z-10 text-center flex flex-col items-center" data-aos="fade-up">
         <span class="inline-flex items-center gap-2 bg-green-600/20 backdrop-blur-md text-green-400 text-[0.78rem] font-bold uppercase tracking-[1.5px] py-[0.3rem] px-4 rounded-full mb-4 border border-green-600/30">
@@ -273,7 +273,7 @@
      JOIN / CTA
      ═══════════════════════════════════════════════ -->
 <section data-aos="fade-up" class="py-12 bg-gradient-to-br from-green-900 to-green-700 relative overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none" style="background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.6%22 fill=%22rgba(255,255,255,0.04)%22/></svg>');"></div>
+    <div class="absolute inset-0 pointer-events-none bg-[url('data:image/svg+xml,<svg_xmlns=%22http://www.w3.org/2000/svg%22_width=%2240%22_height=%2240%22><circle_cx=%2220%22_cy=%2220%22_r=%220.6%22_fill=%22rgba(255,255,255,0.04)%22/></svg>')]"></div>
     <div class="container relative z-10 flex items-center justify-between gap-8 flex-wrap" data-aos="fade-up">
         <div class="flex-1 min-w-[280px]">
             <h2 class="text-[1.6rem] font-heading font-extrabold text-white m-0 mb-1.5 leading-[1.2]">{{ $gs('nacos_page_cta_title', 'Want to Know More?') }}</h2>
