@@ -21,14 +21,14 @@
         </div>
 
         <!-- HoD Photo Area -->
-        <div class="hod-photo-container shrink-0 self-center flex flex-col gap-10 w-[100vw] ml-[calc(50%-50vw)] sm:w-full sm:ml-0 px-4 sm:px-0 max-w-none sm:max-w-[420px] md:max-w-[500px] lg:max-w-[380px]">
+        <div class="hod-photo-container shrink-0 self-center flex flex-col gap-10 w-[100vw] ml-[calc(50%-50vw)] px-4 sm:w-full sm:ml-0 sm:px-0 max-w-none sm:max-w-[420px] md:max-w-[500px] lg:max-w-[380px]">
             <div class="hod-photo relative w-full mx-auto">
                 <div class="absolute -inset-3 border-2 border-primary rounded-xl z-[1] max-md:hidden"></div>
                 <div class="absolute inset-3 bg-primary/10 rounded-xl z-[1] max-md:hidden"></div>
                 
                 <!-- Wrapper for Image and floating badge -->
                 <div class="relative z-[2] w-full block group">
-                    <div class="aspect-[3/4] rounded-xl overflow-hidden shadow-[0_20px_40px_-12px_rgba(0,0,0,0.15)] border-[6px] border-white">
+                    <div class="aspect-square sm:aspect-[3/4] rounded-2xl sm:rounded-xl overflow-hidden shadow-[0_20px_40px_-12px_rgba(0,0,0,0.15)] border-0 sm:border-[6px] border-white">
                         @if($gs('hod_photo'))
                             <img src="{{ asset('storage/'.$gs('hod_photo')) }}" alt="{{ $gs('hod_name', $hod->name ?? 'HOD') }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                         @elseif($hod && $hod->photo)
