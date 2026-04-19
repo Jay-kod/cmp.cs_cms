@@ -9,31 +9,31 @@
 <!-- ═══════════════════════════════════════════════
      HERO
      ═══════════════════════════════════════════════ -->
-<section data-aos="fade-up" style="background: linear-gradient(165deg, #0f172a 0%, #1e293b 55%, #0f4c2e 100%); padding: 5rem 0 4rem; position: relative; overflow: hidden;">
-    <div style="position: absolute; inset: 0; pointer-events: none;">
-        <div style="position: absolute; top: -80px; right: -80px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(22,163,74,0.15) 0%, transparent 70%); border-radius: 50%;"></div>
-        <div style="position: absolute; bottom: -40px; left: -40px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(22,163,74,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
-        <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.5%22 fill=%22rgba(255,255,255,0.03)%22/></svg>');"></div>
+<section data-aos="fade-up" class="bg-gradient-to-br from-slate-900 via-slate-800 to-green-900 py-16 sm:py-20 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -top-20 -right-20 w-[350px] h-[350px] bg-[radial-gradient(circle,rgba(22,163,74,0.15)_0%,transparent_70%)] rounded-full"></div>
+        <div class="absolute -bottom-10 -left-10 w-[250px] h-[250px] bg-[radial-gradient(circle,rgba(22,163,74,0.1)_0%,transparent_70%)] rounded-full"></div>
+        <div class="absolute inset-0" style="background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.5%22 fill=%22rgba(255,255,255,0.03)%22/></svg>');"></div>
     </div>
-    <div class="container" data-aos="fade-up" style="position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center;">
-        <span style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(22,163,74,0.2); backdrop-filter: blur(8px); color: #4ade80; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.3rem 1rem; border-radius: 20px; margin-bottom: 1rem; border: 1px solid rgba(22,163,74,0.3);">
+    <div class="container relative z-10 text-center flex flex-col items-center" data-aos="fade-up">
+        <span class="inline-flex items-center gap-2 bg-green-600/20 backdrop-blur-md text-green-400 text-[0.78rem] font-bold uppercase tracking-[1.5px] py-[0.3rem] px-4 rounded-full mb-4 border border-green-600/30">
             <i class="fa-solid fa-users-rectangle"></i> Student Association
         </span>
-        <h1 style="color: white; font-size: 3rem; font-family: var(--font-heading); font-weight: 800; margin: 0 0 0.8rem; line-height: 1.15;">{{ $gs('nacos_presidents_title', 'NACOS') }}</h1>
-        <p style="color: #e2e8f0; font-size: 1.15rem; max-width: 700px; margin: 0 auto 2rem; line-height: 1.8; text-wrap: balance; text-align: center; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">{{ $gs('nacos_presidents_subtitle', 'Honoring the visionary leaders and rich legacy of the National Association of Computing Students (NUK Chapter) — championing academic excellence and technological innovation.') }}</p>
+        <h1 class="text-white text-[2.2rem] lg:text-[3rem] font-heading font-extrabold m-0 mb-3 leading-[1.15]">{{ $gs('nacos_presidents_title', 'NACOS') }}</h1>
+        <p class="text-slate-200 text-base md:text-[1.15rem] max-w-[700px] mx-auto mb-8 leading-[1.8] text-balance text-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]">{{ $gs('nacos_presidents_subtitle', 'Honoring the visionary leaders and rich legacy of the National Association of Computing Students (NUK Chapter) — championing academic excellence and technological innovation.') }}</p>
         
-        <div style="display: flex; flex-direction: column; gap: 0.6rem; width: 100%; max-width: 400px; margin: 0 auto;">
-            <div style="display: flex; gap: 0.6rem; justify-content: center; flex-wrap: nowrap; width: 100%;">
-                <a href="#about-nacos" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: linear-gradient(135deg, #16a34a, #059669); color: white; padding: 0.65rem 0.5rem; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px rgba(22,163,74,0.3); transition: all 0.2s; flex: 1; white-space: nowrap;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div class="flex flex-col gap-[0.6rem] w-full max-w-[400px] mx-auto">
+            <div class="flex gap-[0.6rem] justify-center flex-nowrap w-full">
+                <a href="#about-nacos" class="inline-flex items-center justify-center gap-[0.4rem] bg-gradient-to-br from-green-600 to-emerald-600 text-white py-[0.65rem] px-2 rounded-lg text-[0.85rem] font-bold no-underline shadow-[0_4px_15px_rgba(22,163,74,0.3)] transition-all duration-200 flex-1 whitespace-nowrap hover:-translate-y-[1px]">
                     <i class="fa-solid fa-circle-info"></i> About NACOS
                 </a>
-                <a href="#past-leaders" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: rgba(255,255,255,0.08); color: white; padding: 0.65rem 0.5rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.15); transition: all 0.2s; backdrop-filter: blur(4px); flex: 1; white-space: nowrap;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)'; this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'; this.style.background='rgba(255,255,255,0.08)'">
+                <a href="#past-leaders" class="inline-flex items-center justify-center gap-[0.4rem] bg-white/10 text-white py-[0.65rem] px-2 rounded-lg text-[0.85rem] font-semibold no-underline border-[1.5px] border-white/15 transition-all duration-200 backdrop-blur-sm flex-1 whitespace-nowrap hover:border-white/40 hover:bg-white/15">
                     <i class="fa-solid fa-crown"></i> Past Leaders
                 </a>
             </div>
             @if(filled($gs('nacos_official_website_url')))
-            <a href="{{ $gs('nacos_official_website_url') }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: linear-gradient(135deg, #eab308, #ca8a04); color: white; padding: 0.65rem 0.5rem; border-radius: 8px; font-size: 0.85rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px rgba(234,179,8,0.3); transition: all 0.2s; border: none; width: 100%; white-space: nowrap;" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 6px 20px rgba(234,179,8,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(234,179,8,0.3)'">
-                <i class="fa-solid fa-globe"></i> {{ $gs('nacos_official_website_label', 'Visit Major NACOS Website') }} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem; margin-left: 0.2rem;"></i>
+            <a href="{{ $gs('nacos_official_website_url') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-[0.4rem] bg-gradient-to-br from-yellow-500 to-yellow-600 text-white py-[0.65rem] px-2 rounded-lg text-[0.85rem] font-bold no-underline shadow-[0_4px_15px_rgba(234,179,8,0.3)] transition-all duration-200 border-none w-full whitespace-nowrap hover:-translate-y-[1px] hover:shadow-[0_6px_20px_rgba(234,179,8,0.4)]">
+                <i class="fa-solid fa-globe"></i> {{ $gs('nacos_official_website_label', 'Visit Major NACOS Website') }} <i class="fa-solid fa-arrow-up-right-from-square text-[0.75rem] ml-1"></i>
             </a>
             @endif
         </div>
@@ -43,16 +43,16 @@
 <!-- ═══════════════════════════════════════════════
      ABOUT NACOS + MISSION / VISION
      ═══════════════════════════════════════════════ -->
-<section data-aos="fade-up" id="about-nacos" style="padding: 4rem 0; background: white;">
+<section data-aos="fade-up" id="about-nacos" class="py-16 bg-white">
     <div class="container" data-aos="fade-up">
         {{-- About Row --}}
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 3.5rem;">
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-14">
             <div>
-                <span style="display: inline-block; color: var(--color-primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.8rem; background: rgba(22,163,74,0.1); padding: 0.25rem 0.9rem; border-radius: 20px;">Who We Are</span>
-                <h2 style="font-size: 2.2rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin: 0 0 1rem; line-height: 1.2;">{{ $gs('nacos_page_about_title', 'About NACOS') }}</h2>
-                <p style="color: #334155; font-size: 1.05rem; line-height: 1.8; margin: 0 0 1.2rem;">{{ $gs('nacos_page_about_text', 'The National Association of Computing Students (NACOS) is the premier umbrella body for all students pursuing computing-related disciplines. The NUK Chapter stands as a vibrant hub dedicated to fostering academic excellence, accelerating professional development, and cultivating strong, lifelong social bonds among its members.') }}</p>
-                <p style="color: #475569; font-size: 1rem; line-height: 1.8; margin: 0 0 1.2rem;">{{ $gs('nacos_page_about_text2', 'Through engaging workshops, competitive hackathons, insightful seminars, and impactful community outreach, NACOS actively prepares students to thrive in the ever-evolving tech industry. We are committed to building a robust, supportive network that empowers our members well beyond graduation.') }}</p>
-                <p style="color: #475569; font-size: 1rem; line-height: 1.8; margin: 0;">{{ $gs('nacos_page_about_text3', 'As a community driven by innovation, we continuously strive to bridge the gap between classroom theory and real-world application. By collaborating with industry experts, faculty, and accomplished alumni, NACOS provides unique mentorship opportunities, ensuring that every student has the resources, guidance, and confidence required to become future tech leaders and effectively shape the digital landscape of tomorrow.') }}</p>
+                <span class="inline-block text-[color:var(--color-primary)] text-[0.8rem] font-bold uppercase tracking-[1.5px] mb-3 bg-green-600/10 py-1 px-3.5 rounded-full">Who We Are</span>
+                <h2 class="text-[2.2rem] font-heading font-extrabold text-slate-900 m-0 mb-4 leading-[1.2]">{{ $gs('nacos_page_about_title', 'About NACOS') }}</h2>
+                <p class="text-slate-700 text-[1.05rem] leading-[1.8] m-0 mb-5">{{ $gs('nacos_page_about_text', 'The National Association of Computing Students (NACOS) is the premier umbrella body for all students pursuing computing-related disciplines. The NUK Chapter stands as a vibrant hub dedicated to fostering academic excellence, accelerating professional development, and cultivating strong, lifelong social bonds among its members.') }}</p>
+                <p class="text-slate-600 text-base leading-[1.8] m-0 mb-5">{{ $gs('nacos_page_about_text2', 'Through engaging workshops, competitive hackathons, insightful seminars, and impactful community outreach, NACOS actively prepares students to thrive in the ever-evolving tech industry. We are committed to building a robust, supportive network that empowers our members well beyond graduation.') }}</p>
+                <p class="text-slate-600 text-base leading-[1.8] m-0">{{ $gs('nacos_page_about_text3', 'As a community driven by innovation, we continuously strive to bridge the gap between classroom theory and real-world application. By collaborating with industry experts, faculty, and accomplished alumni, NACOS provides unique mentorship opportunities, ensuring that every student has the resources, guidance, and confidence required to become future tech leaders and effectively shape the digital landscape of tomorrow.') }}</p>
             </div>
             {{-- Stats Column --}}
             <div class="grid grid-cols-2 gap-3 sm:gap-4">
@@ -131,11 +131,11 @@
 <!-- ═══════════════════════════════════════════════
      WHAT WE DO — Activities
      ═══════════════════════════════════════════════ -->
-<section data-aos="fade-up" style="padding: 3.5rem 0; background: #f8fafc; border-top: 1px solid #f1f5f9;">
+<section data-aos="fade-up" class="py-14 bg-slate-50 border-t border-slate-100">
     <div class="container" data-aos="fade-up">
-        <div style="text-align: center; margin-bottom: 2.5rem;">
-            <span style="display: inline-block; color: var(--color-primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.6rem; background: rgba(22,163,74,0.1); padding: 0.25rem 0.9rem; border-radius: 20px;">What We Do</span>
-            <h2 style="font-size: 2rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin: 0;">{{ $gs('nacos_page_activities_title', 'Our Activities') }}</h2>
+        <div class="text-center mb-10">
+            <span class="inline-block text-[color:var(--color-primary)] text-[0.8rem] font-bold uppercase tracking-[1.5px] mb-2.5 bg-green-600/10 py-1 px-3.5 rounded-full">What We Do</span>
+            <h2 class="text-[2rem] font-heading font-extrabold text-slate-900 m-0">{{ $gs('nacos_page_activities_title', 'Our Activities') }}</h2>
         </div>
 
         @php
@@ -166,18 +166,18 @@
 <!-- ═══════════════════════════════════════════════
      PAST LEADERS
      ═══════════════════════════════════════════════ -->
-<section data-aos="fade-up" id="past-leaders" style="padding: 4rem 0; background: white;">
+<section data-aos="fade-up" id="past-leaders" class="py-16 bg-white">
     <div class="container" data-aos="fade-up">
-        <div style="text-align: center; margin-bottom: 2.5rem;">
-            <span style="display: inline-block; color: var(--color-primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.6rem; background: rgba(22,163,74,0.1); padding: 0.25rem 0.9rem; border-radius: 20px;">Leadership</span>
-            <h2 style="font-size: 2rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin: 0 0 0.5rem;">{{ $gs('nacos_page_leaders_title', 'Past NACOS Presidents') }}</h2>
-            <p style="color: #64748b; font-size: 0.95rem; max-width: 550px; margin: 0 auto; line-height: 1.6;">{{ $gs('nacos_page_leaders_subtitle', 'Honoring the visionaries who led our chapter and shaped its legacy.') }}</p>
+        <div class="text-center mb-10">
+            <span class="inline-block text-[color:var(--color-primary)] text-[0.8rem] font-bold uppercase tracking-[1.5px] mb-2.5 bg-green-600/10 py-1 px-3.5 rounded-full">Leadership</span>
+            <h2 class="text-[2rem] font-heading font-extrabold text-slate-900 m-0 mb-2">{{ $gs('nacos_page_leaders_title', 'Past NACOS Presidents') }}</h2>
+            <p class="text-slate-500 text-[0.95rem] max-w-[550px] mx-auto m-0 leading-[1.6]">{{ $gs('nacos_page_leaders_subtitle', 'Honoring the visionaries who led our chapter and shaped its legacy.') }}</p>
         </div>
 
         @php $intro = $gs('nacos_presidents_intro', ''); @endphp
         @if($intro)
-        <div style="max-width: 700px; margin: 0 auto 2rem; text-align: center;">
-            <p style="color: #475569; font-size: 1rem; line-height: 1.8;">{{ $intro }}</p>
+        <div class="max-w-[700px] mx-auto mb-8 text-center">
+            <p class="text-slate-600 text-base leading-[1.8]">{{ $intro }}</p>
         </div>
         @endif
 
@@ -259,10 +259,10 @@
                 </div>
             </div>
             @empty
-            <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: #f8fafc; border-radius: 14px; border: 1px dashed #e2e8f0;">
-                <i class="fa-solid fa-users-slash" style="font-size: 2.5rem; color: #cbd5e1; margin-bottom: 0.8rem; display: block;"></i>
-                <h3 style="margin: 0 0 0.4rem 0; font-size: 1.1rem; color: #334155;">No Records Found</h3>
-                <p style="color: #64748b; margin: 0; font-size: 0.9rem;">Presidents will appear here once added by the administration.</p>
+            <div class="col-span-full text-center py-12 px-0 bg-slate-50 rounded-[14px] border border-dashed border-slate-200">
+                <i class="fa-solid fa-users-slash text-[2.5rem] text-slate-300 mb-3 block"></i>
+                <h3 class="m-0 mb-1.5 text-[1.1rem] text-slate-700">No Records Found</h3>
+                <p class="text-slate-500 m-0 text-[0.9rem]">Presidents will appear here once added by the administration.</p>
             </div>
             @endforelse
         </div>
@@ -272,70 +272,22 @@
 <!-- ═══════════════════════════════════════════════
      JOIN / CTA
      ═══════════════════════════════════════════════ -->
-<section data-aos="fade-up" style="padding: 3rem 0; background: linear-gradient(105deg, #14532d 0%, #15803d 100%); position: relative; overflow: hidden;">
-    <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.6%22 fill=%22rgba(255,255,255,0.04)%22/></svg>'); pointer-events: none;"></div>
-    <div class="container" data-aos="fade-up" style="position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 280px;">
-            <h2 style="font-size: 1.6rem; font-family: var(--font-heading); font-weight: 800; color: white; margin: 0 0 0.4rem; line-height: 1.2;">{{ $gs('nacos_page_cta_title', 'Want to Know More?') }}</h2>
-            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0;">{{ $gs('nacos_page_cta_subtitle', 'Reach out to us for questions, collaborations, or if you want to get involved with NACOS.') }}</p>
+<section data-aos="fade-up" class="py-12 bg-gradient-to-br from-green-900 to-green-700 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%220.6%22 fill=%22rgba(255,255,255,0.04)%22/></svg>');"></div>
+    <div class="container relative z-10 flex items-center justify-between gap-8 flex-wrap" data-aos="fade-up">
+        <div class="flex-1 min-w-[280px]">
+            <h2 class="text-[1.6rem] font-heading font-extrabold text-white m-0 mb-1.5 leading-[1.2]">{{ $gs('nacos_page_cta_title', 'Want to Know More?') }}</h2>
+            <p class="text-[0.9rem] text-white/70 leading-[1.6] m-0">{{ $gs('nacos_page_cta_subtitle', 'Reach out to us for questions, collaborations, or if you want to get involved with NACOS.') }}</p>
         </div>
-        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
-            <a href="{{ url('/contact') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: white; color: #14532d; padding: 0.6rem 1.3rem; border-radius: 8px; font-size: 0.88rem; font-weight: 700; text-decoration: none; box-shadow: 0 2px 10px rgba(0,0,0,0.15); transition: all 0.2s;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div class="flex gap-[0.6rem] flex-wrap items-center">
+            <a href="{{ url('/contact') }}" class="inline-flex items-center gap-[0.5rem] bg-white text-green-900 py-[0.6rem] px-[1.3rem] rounded-lg text-[0.88rem] font-bold no-underline shadow-[0_2px_10px_rgba(0,0,0,0.15)] transition-all duration-200 hover:-translate-y-[1px]">
                 <i class="fa-solid fa-envelope"></i> Contact Us
             </a>
-            <a href="{{ url('/') }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.08); color: white; padding: 0.6rem 1.3rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.2); transition: all 0.2s; backdrop-filter: blur(4px);" onmouseover="this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">
+            <a href="{{ url('/') }}" class="inline-flex items-center gap-[0.5rem] bg-white/10 text-white py-[0.6rem] px-[1.3rem] rounded-lg text-[0.88rem] font-semibold no-underline border-[1.5px] border-white/20 transition-all duration-200 backdrop-blur-sm hover:border-white/50">
                 <i class="fa-solid fa-house"></i> Back to Home
             </a>
         </div>
     </div>
 </section>
 
-<style>
-    /* NACOS Presidents Page Responsive */
-    @media (max-width: 991px) {
-        /* Hero */
-        section[style*="padding: 5rem 0 4rem"] { padding: 3.5rem 0 3rem !important; }
-        section[style*="padding: 5rem 0 4rem"] h1[style*="font-size: 3rem"] { font-size: 2.2rem !important; }
-        /* About: stack columns */
-        #about-nacos .container > div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
-        /* Mission/Vision/Values: 3 → 2 */
-        #about-nacos div[style*="repeat(3, 1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
-        /* Activities: 3 → 2 */
-        section[style*="padding: 3.5rem 0"] div[style*="repeat(3, 1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
-    }
-    @media (max-width: 768px) {
-        section[style*="padding: 5rem 0 4rem"] { padding: 2.5rem 0 2rem !important; }
-        section[style*="padding: 5rem 0 4rem"] h1[style*="font-size: 3rem"] { font-size: 1.8rem !important; }
-        section[style*="padding: 5rem 0 4rem"] p[style*="font-size: 1.1rem"] { font-size: 0.92rem !important; }
-        /* About section padding */
-        section[style*="padding: 4rem 0"] { padding: 2.5rem 0 !important; }
-        #about-nacos h2[style*="font-size: 2.2rem"] { font-size: 1.7rem !important; }
-        /* Stats grid: keep 2x2 */
-        #about-nacos div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 1rem"] { grid-template-columns: 1fr 1fr !important; }
-        /* Activities: 2 → 1 */
-        section[style*="padding: 3.5rem 0"] div[style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
-        section[style*="padding: 3.5rem 0"] h2[style*="font-size: 2rem"] { font-size: 1.6rem !important; }
-        /* Past Leaders section */
-        section#past-leaders { padding: 2.5rem 0 !important; }
-        section#past-leaders h2[style*="font-size: 2rem"] { font-size: 1.6rem !important; }
-        /* CTA */
-        section[style*="padding: 3rem 0"][style*="#14532d"] .container { flex-direction: column !important; text-align: center !important; }
-    }
-    @media (max-width: 575px) {
-        section[style*="padding: 5rem 0 4rem"] h1[style*="font-size: 3rem"] { font-size: 1.5rem !important; }
-        /* Mission/Vision/Values: 2 → 1 */
-        #about-nacos div[style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
-        /* Stats: 2x2 → 1 */
-        #about-nacos div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 1rem"] { grid-template-columns: 1fr !important; }
-        /* Leaders grid smaller min */
-        div[style*="minmax(280px, 1fr)"] { grid-template-columns: 1fr !important; }
-        section[style*="padding: 3.5rem 0"] { padding: 2rem 0 !important; }
-        /* CTA buttons full width */
-        section[style*="#14532d"] div[style*="gap: 0.6rem"] { flex-direction: column !important; width: 100% !important; }
-        section[style*="#14532d"] div[style*="gap: 0.6rem"] a { width: 100% !important; justify-content: center !important; }
-    }
-    @media (max-width: 480px) {
-        section[style*="padding: 5rem 0 4rem"] h1[style*="font-size: 3rem"] { font-size: 1.3rem !important; }
-    }
-</style>
 @endsection
