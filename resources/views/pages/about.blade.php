@@ -145,24 +145,29 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-20">
                 
                 <!-- Vision -->
-                <div data-aos="fade-right" class="bg-[#e5e5e5] p-10 sm:p-14 lg:p-16 relative rounded-[2rem] shadow-lg border border-slate-200 overflow-hidden flex flex-col justify-start">
+                <div data-aos="fade-right" class="bg-slate-900 p-10 sm:p-14 lg:p-16 relative rounded-[2rem] shadow-2xl border border-slate-800 overflow-hidden flex flex-col justify-start hover:-translate-y-2 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent pointer-events-none"></div>
                     <div class="relative z-10 w-[70%] md:w-[65%]">
-                        <h3 class="text-[2.5rem] lg:text-[3rem] text-slate-900 m-0 mb-6 font-heading font-extrabold tracking-tight">{{ $gs('about_vision_label', 'Our Vision') }}</h3>
-                        <p class="text-slate-700 text-[1.1rem] leading-[1.8] m-0">{{ $settings['about_vision'] ?? $settings['vision_statement'] ?? 'To be a globally recognized institution pioneering transformative technological solutions of innovation and excellence.' }}</p>
+                        <h3 class="text-[2.5rem] lg:text-[3rem] text-white m-0 mb-6 font-heading font-extrabold tracking-tight flex items-center gap-3">
+                            <span class="w-[8px] h-[8px] rounded-full bg-green-400"></span>
+                            {{ $gs('about_vision_label', 'Our Vision') }}
+                        </h3>
+                        <p class="text-slate-300 text-[1.1rem] leading-[1.8] m-0">{{ $settings['about_vision'] ?? $settings['vision_statement'] ?? 'To be a globally recognized institution pioneering transformative technological solutions of innovation and excellence.' }}</p>
                     </div>
-                    <div class="absolute right-[-20px] sm:right-4 bottom-0 h-[90%] opacity-20 pointer-events-none drop-shadow-xl" style="filter: drop-shadow(0 20px 10px rgba(0,0,0,0.3));">
-                        <i class="fa-solid fa-globe text-[12rem] text-slate-400"></i>
+                    <div class="absolute right-[-10px] sm:right-4 top-[50%] -translate-y-1/2 opacity-10 pointer-events-none transition-transform duration-700 hover:scale-110">
+                        <i class="fa-solid fa-eye text-[14rem] text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]"></i>
                     </div>
                 </div>
 
                 <!-- Mission -->
-                <div data-aos="fade-left" class="bg-[#e5e5e5] p-10 sm:p-14 lg:p-16 relative rounded-[2rem] shadow-lg border border-slate-200 overflow-hidden flex flex-col justify-start">
-                    <div class="relative z-10 w-[70%] md:w-[65%]">
-                        <h3 class="text-[2.5rem] lg:text-[3rem] text-slate-900 m-0 mb-6 font-heading font-extrabold tracking-tight">{{ $gs('about_mission_label', 'Our Mission') }}</h3>
-                        <p class="text-slate-700 text-[1.1rem] leading-[1.8] m-0">{{ $settings['about_mission'] ?? $settings['mission_statement'] ?? 'To deliver innovative technological solutions tailored to meet the unique needs of our students while upholding the highest standards of integrity and excellence.' }}</p>
+                <div data-aos="fade-left" class="bg-green-600 p-10 sm:p-14 lg:p-16 relative rounded-[2rem] shadow-[0_20px_40px_-10px_rgba(22,163,74,0.4)] border border-green-500 overflow-hidden flex flex-col justify-start hover:-translate-y-2 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+                    <div class="relative z-10 w-[75%] md:w-[70%]">
+                        <h3 class="text-[2.5rem] lg:text-[3rem] text-white m-0 mb-6 font-heading font-extrabold tracking-tight">{{ $gs('about_mission_label', 'Our Mission') }}</h3>
+                        <p class="text-green-50 text-[1.1rem] leading-[1.8] m-0 font-medium">{{ $settings['about_mission'] ?? $settings['mission_statement'] ?? 'To deliver innovative technological solutions tailored to meet the unique needs of our students while upholding the highest standards of integrity and excellence.' }}</p>
                     </div>
-                    <div class="absolute right-[-20px] sm:right-4 bottom-[-10px] h-[80%] opacity-90 pointer-events-none drop-shadow-2xl" style="filter: drop-shadow(-10px 20px 15px rgba(0,0,0,0.4));">
-                        <i class="fa-solid fa-gavel text-[10rem] text-slate-800"></i>
+                    <div class="absolute right-[-10px] sm:right-6 top-[50%] -translate-y-1/2 opacity-20 pointer-events-none transition-transform duration-700 hover:scale-110 hover:-rotate-12">
+                        <i class="fa-solid fa-rocket text-[12rem] text-white drop-shadow-[0_0_20px_rgba(0,0,0,0.3)]"></i>
                     </div>
                 </div>
 
