@@ -196,28 +196,27 @@
                 <!-- The White Card Overlay -->
                 <div class="absolute bottom-0 w-full flex flex-col justify-end z-20">
                     <!-- SVG Curve Top Edge -->
-                    <svg viewBox="0 0 100 12" preserveAspectRatio="none" class="w-full h-[12px] sm:h-[16px] text-[#f8fafc] fill-current block -mb-[1px]">
-                        <path d="M0,12 C30,12 60,0 100,0 L100,12 L0,12 Z" />
+                    <svg viewBox="0 0 100 24" preserveAspectRatio="none" class="w-full h-[28px] sm:h-[36px] text-emerald-50 fill-current block -mb-[1px]">
+                        <path d="M0,0 L60,0 C72,0 76,24 88,24 L100,24 L100,25 L0,25 Z" />
                     </svg>
                     
-                    <!-- White Body -->
-                    <div class="w-full px-5 sm:px-6 pb-4 sm:pb-5 pt-1 flex flex-col justify-between bg-[#f8fafc]">
+                    <!-- Green/White Body -->
+                    <div class="w-full px-5 sm:px-6 pb-4 sm:pb-5 flex flex-col justify-between bg-emerald-50">
                         <!-- Name (Large, Tight Leading) -->
-                        <div class="relative">
+                        <div class="relative -mt-1 sm:-mt-2">
                             <!-- Break name into 2 lines if possible by limiting width -->
-                            <h3 class="text-[1.2rem] sm:text-[1.3rem] font-medium text-slate-800 tracking-tight leading-[1.15] max-w-[90%] m-0 font-sans">
+                            <h3 class="text-[1.25rem] sm:text-[1.4rem] font-medium text-emerald-950 tracking-tight leading-[1.1] max-w-[85%] m-0 font-sans">
                                 {{ $p->name }}
                             </h3>
                         </div>
                         
                         <!-- Bottom Details -->
-                        <div class="flex items-end justify-between mt-3 text-slate-600">
-                            <span class="text-[#0f172a] text-[0.6rem] font-bold tracking-widest font-sans uppercase">
-                                PRESIDENT<br>
-                                <span class="opacity-70 text-[0.5rem] tracking-[0.15em] font-mono mt-0.5 inline-block">{{ $p->tenure_start ?? '???' }} &ndash; {{ $p->tenure_end ?? 'Present' }}</span>
+                        <div class="flex items-center justify-between mt-3 pb-1 border-t border-emerald-200/60 pt-2.5">
+                            <span class="text-emerald-900 text-[0.65rem] font-bold tracking-widest font-sans uppercase">
+                                PRESIDENT
                             </span>
-                            <span class="text-slate-500 text-[0.55rem] font-bold tracking-[0.1em] font-mono uppercase opacity-80">
-                                ID || {{ str_pad($loop->iteration, 4, '0', STR_PAD_LEFT) }}
+                            <span class="text-emerald-700 text-[0.55rem] font-bold tracking-[0.15em] font-mono uppercase">
+                                {{ $p->tenure_start ?? '???' }} &ndash; {{ $p->tenure_end ?? 'Present' }}
                             </span>
                         </div>
                     </div>

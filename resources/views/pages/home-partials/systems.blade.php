@@ -10,7 +10,7 @@
 
         <div class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
             @foreach($externalSystems as $sys)
-            <a href="{{ $sys->url }}" {{ $sys->open_in_new_tab ? 'target="_blank" rel="noopener"' : '' }} class="group flex flex-col items-center text-center gap-4 py-8 px-6 bg-white border border-[#e2e8f0] rounded-2xl transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.04)] relative overflow-hidden hover:-translate-y-1 hover:shadow-xl hover:border-primary/20">
+            <a href="{{ $sys->url }}" {{ $sys->open_in_new_tab ? 'target="_blank" rel="noopener"' : '' }} class="group flex flex-col items-center text-center gap-4 py-8 px-6 bg-emerald-50/60 border border-solid border-emerald-100/80 rounded-2xl transition-all duration-300 shadow-[0_4px_20px_rgba(16,185,129,0.04)] relative overflow-hidden hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(16,185,129,0.12)] hover:border-emerald-200 hover:bg-white">
                 <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-primary scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></div>
                 <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary text-2xl transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
                     <i class="{{ $sys->icon ?? 'fa-solid fa-globe' }}"></i>

@@ -35,7 +35,7 @@
                             @elseif($hod && $hod->photo)
                                 <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
                             @else
-                                <div class="w-full h-full flex items-center justify-center text-white text-[7rem] bg-gradient-to-br from-primary to-secondary"><i class="fa-solid fa-user-tie"></i></div>
+                                <div class="w-full h-full flex items-center justify-center text-white text-[7rem] bg-primary hover:bg-[#166534] shadow-[0_8px_20px_-6px_rgba(22,163,74,0.6)] ring-1 ring-white/20 transition-all"><i class="fa-solid fa-user-tie"></i></div>
                             @endif
                             
                             <!-- Internal Gradient Overlay for Text Readability -->

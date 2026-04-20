@@ -30,101 +30,103 @@
 
         <!-- ═══════════ OUR STORY ═══════════ -->
         <section data-aos="fade-up" id="our-story" class="mb-16">
-            <div class="section-heading flex items-center gap-4 mb-6">
-                <div class="section-heading-icon w-12 h-12 bg-gradient-to-br from-green-600/15 to-emerald-500/10 text-[color:var(--color-primary)] rounded-[14px] flex items-center justify-center text-[1.3rem]">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                </div>
-                <h2 class="m-0 text-[2rem] text-slate-900 font-heading font-bold">{{ $gs('about_section_story_title', 'Our Story') }}</h2>
-            </div>
-            <div class="w-[60px] h-1 bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] mb-[2rem] rounded-full"></div>
+            <div class="bg-white rounded-[2rem] p-8 lg:p-14 shadow-xl relative overflow-hidden mb-12">
+                <!-- Background Decoration -->
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(16,185,129,0.05),transparent_50%)] pointer-events-none"></div>
 
-            <div class="about-story-layout flex gap-10 items-start flex-wrap mb-8">
-                {{-- HOD Card --}}
-                <div data-aos="fade-up" class="about-hod-card flex-[0_0_220px] max-w-[220px]">
-                    <div class="aspect-square rounded-[14px] overflow-hidden shadow-[0_12px_30px_rgba(0,0,0,0.1)] border-[3px] border-solid border-[color:var(--color-accent)]">
-                        @if(isset($hod) && $hod && $hod->photo)
-                            <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" class="w-full h-full object-cover">
-                        @else
-                            <div class="w-full h-full flex items-center justify-center bg-green-50 p-6">
-                                <img src="{{ asset(config('university.logo', 'images/logo.png')) }}" alt="Department Logo" class="w-4/5 h-4/5 object-contain">
+                <div class="about-story-layout flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+                    {{-- Photo Frame (Left) --}}
+                    <div class="relative w-full max-w-[320px] sm:max-w-[360px] lg:w-[42%] shrink-0 lg:ml-10 mb-10 lg:mb-0" data-aos="fade-right">
+                        
+                        <!-- SVG Green L-Border Behind -->
+                        <div class="absolute inset-0 -translate-x-5 translate-y-5 z-0 pointer-events-none">
+                            <svg class="w-full h-full" overflow="visible" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <path d="M0,15 L0,100 L85,89.8" fill="none" stroke="#22c55e" stroke-width="4" vector-effect="non-scaling-stroke" stroke-linejoin="miter" stroke-linecap="square" />
+                            </svg>
+                        </div>
+                        
+                        <!-- Main Image Box (Clipped) -->
+                        <div class="relative z-10" style="filter: drop-shadow(10px 15px 20px rgba(0, 0, 0, 0.15));">
+                            <div class="relative bg-white w-full aspect-[4/5] flex items-end overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);">
+                                @if(isset($hod) && $hod && $hod->photo)
+                                    <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" class="absolute inset-0 w-full h-full object-cover">
+                                @else
+                                    <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-slate-100 text-slate-300">
+                                        <i class="fa-solid fa-user-tie text-[8rem] mb-[10%]"></i>
+                                    </div>
+                                @endif
+                                
+                                <!-- HOD Name Overlay on Image -->
+                                <div class="relative w-full z-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-16 pb-8 px-6 text-white" style="margin-bottom: 5%;">
+                                    @if(isset($hod) && $hod)
+                                        <p class="m-0 font-bold text-[1.15rem] leading-tight">{{ $hod->name }}</p>
+                                        <p class="m-0 text-green-400 font-medium text-[0.85rem] mt-1">{{ $hod->rank }}, HOD</p>
+                                    @elseif(isset($settings['hod_name']))
+                                        <p class="m-0 font-bold text-[1.15rem] leading-tight">{{ $settings['hod_name'] }}</p>
+                                        <p class="m-0 text-green-400 font-medium text-[0.85rem] mt-1">Head of Department</p>
+                                    @endif
+                                </div>
                             </div>
-                        @endif
+                        </div>
+                        
                     </div>
-                    <div class="text-center mt-3">
-                        @if(isset($hod) && $hod)
-                            <p class="m-0 font-bold text-slate-900 text-[0.95rem]">{{ $hod->name }}</p>
-                            <p class="m-0 text-[color:var(--color-primary)] text-[0.82rem]">{{ $hod->rank }}, HOD</p>
+
+                    {{-- Story Text (Right) --}}
+                    <div class="about-story-text flex-1">
+                        <span class="text-green-600 font-bold tracking-[2px] uppercase text-[0.8rem] mb-3 block">ABOUT US</span>
+                        <h2 class="m-0 mb-6 text-[2.2rem] lg:text-[2.6rem] text-slate-900 font-heading font-bold leading-[1.2]">{{ $gs('about_section_story_title', 'Why Choose Our Department?') }}</h2>
+                        
+                        <div class="text-[1.05rem] leading-[1.8] space-y-4 mb-8 text-slate-600">
+                        @php
+                            $introBody = $settings['about_intro_body'] ?? '';
+                            $historyText = $settings['about_history'] ?? '';
+                        @endphp
+                        @if($introBody)
+                            <div>{!! nl2br(e($introBody)) !!}</div>
                         @else
-                            <p class="m-0 font-bold text-slate-900 text-[0.95rem]">Head of Department</p>
-                            <p class="m-0 text-[color:var(--color-primary)] text-[0.82rem]">Department of Computer Science</p>
+                        <p>The Department of Computer Science was established as a <strong>Unit</strong> in the Department of Mathematical Sciences, Faculty of Natural and Applied Sciences, in the <strong>2003/2004</strong> academic session and was upgraded to the status of a full <strong>Department in the 2017/18 session</strong>.</p>
+
+                        <p>With effect from the <strong>2021/2022</strong> academic session, two new programmes — <strong>Data Science & Technology</strong> and <strong>Cybersecurity & Forensic</strong> — were introduced alongside the core Computer Science programme.</p>
+
+                        <p>We provide focused, trend-setting multidisciplinary research excellence. Our programmes are designed to produce market-ready graduates with the appropriate information technology skills to tackle real-world problems.</p>
                         @endif
+                        @if($historyText)
+                            <div class="mt-4 pt-4 border-t border-slate-200">{!! nl2br(e($historyText)) !!}</div>
+                        @endif
+                        </div>
+
+                        <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-6">
+                            @if(isset($hod) && $hod && $hod->email)
+                                <a href="mailto:{{ $hod->email }}" class="inline-flex items-center justify-center px-8 py-3 bg-green-500 text-white rounded-md font-bold hover:bg-green-600 shadow-md transition-all shrink-0">
+                                    <i class="fa-solid fa-envelope mr-2"></i> Contact HOD
+                                </a>
+                            @else
+                                <a href="{{ url('/contact') }}" class="inline-flex items-center justify-center px-8 py-3 bg-green-500 text-white rounded-md font-bold hover:bg-green-600 shadow-md transition-all shrink-0">
+                                    Contact HOD
+                                </a>
+                            @endif
+                        </div>
                     </div>
-                </div>
-
-                {{-- Story Text --}}
-                <div class="about-story-text flex-1 min-w-[280px] text-[1.05rem] leading-[1.85] text-slate-600">
-                @php
-                    $introBody = $settings['about_intro_body'] ?? '';
-                    $historyText = $settings['about_history'] ?? '';
-                @endphp
-                @if($introBody)
-                    <div>{!! nl2br(e($introBody)) !!}</div>
-                @else
-                <p>The Department of Computer Science was established as a <strong>Unit</strong> in the Department of Mathematical Sciences, Faculty of Natural and Applied Sciences, in the <strong>2003/2004</strong> academic session and was upgraded to the status of a full <strong>Department in the 2017/18 session</strong>.</p>
-
-                <div class="about-quote border-l-4 border-l-[color:var(--color-primary)] py-[1.2rem] px-6 bg-gradient-to-r from-green-600/[0.04] to-transparent rounded-r-lg my-6 italic text-slate-700 text-[1.08rem] leading-[1.7]">
-                    "The goal of the department is to be a leading edge in the area of competition, innovation, and society-responsive computing solutions — strategically aligning with the university's mission."
-                </div>
-
-                <p>With effect from the <strong>2021/2022</strong> academic session, two new programmes — <strong>Data Science & Technology</strong> and <strong>Cybersecurity & Forensic</strong> — were introduced alongside the core Computer Science programme.</p>
-
-                <p>The department develops focused, trend-setting multidisciplinary research excellence with national, regional, and international recognition through diverse research projects. Our programmes are designed to produce <strong>market-ready graduates</strong> with the appropriate information technology skills and capacity for independent thinking, self-reliance, creativity, and resourcefulness.</p>
-
-                <p>Our curricula are unique, robust, current, and comparable with international best practice — designed to meet and surpass academic standards prescribed by regulatory authorities. The development and implementation of our programmes are defined by ideals of <strong>inclusivity and accessibility</strong> to the Nasarawa State community we serve and the nation at large.</p>
-                @endif
-                @if($historyText)
-                    <div class="mt-5 py-4 px-6 bg-slate-50 border-l-[3px] border-l-[color:var(--color-primary)] rounded-r-lg text-slate-600 text-[0.97rem] leading-[1.7]">{!! nl2br(e($historyText)) !!}</div>
-                @endif
                 </div>
             </div>
 
             <!-- Timeline Milestones -->
-            <style>
-                @media (min-width: 992px) {
-                    .about-milestones-grid {
-                        grid-template-columns: repeat(4, 1fr) !important;
-                    }
-                }
-                @media (max-width: 991px) {
-                    .about-milestones-grid {
-                        grid-template-columns: repeat(2, 1fr) !important;
-                    }
-                }
-                @media (max-width: 575px) {
-                    .about-milestones-grid {
-                        grid-template-columns: repeat(2, 1fr) !important;
-                    }
-                    .about-milestones-grid .milestone-year {
-                        font-size: 1.5rem !important;
-                    }
-                }
-            </style>
-            <div class="about-milestones flex flex-wrap max-md:grid max-md:grid-cols-2 max-[480px]:grid-cols-1 gap-5 mt-10">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-10" data-aos="fade-up" data-aos-delay="100">
                 @php
                     $milestones = json_decode($settings['about_milestones'] ?? '[]', true) ?? [];
                     if (empty($milestones)) {
                         $milestones = [
                             ['year' => '2003', 'title' => 'Established as a Unit'],
-                            ['year' => '2017', 'title' => 'Upgraded to Department'],
+                            ['year' => '2017', 'title' => 'Upgraded to Dept'],
                             ['year' => '2021', 'title' => 'New Programmes Added'],
                             ['year' => '11+', 'title' => 'Academic Programmes']
                         ];
                     }
                 @endphp
                 @foreach($milestones as $ms)
-                <div class="flex-1 min-w-[200px] text-center p-6 bg-white rounded-[14px] border border-green-600/20 shadow-[0_4px_15px_-3px_rgba(22,163,74,0.05)]">
-                    <div class="milestone-year text-[2rem] font-extrabold text-[color:var(--color-primary)] font-heading">{{ $ms['year'] ?? '' }}</div>
-                    <div class="text-[0.85rem] text-slate-600 mt-1 font-medium">{{ $ms['title'] ?? '' }}</div>
+                <div class="flex flex-col items-center justify-center p-5 sm:p-8 bg-[#f0fdf4] rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-[2px] border-[#22c55e]/20 hover:border-[#22c55e]/50 hover:bg-[#dcfce7] hover:shadow-[0_8px_30px_rgba(34,197,94,0.12)] hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-[1.8rem] sm:text-[2.2rem] font-bold text-green-600 font-heading leading-none mb-2 sm:mb-3">{{ $ms['year'] ?? '' }}</div>
+                    <div class="text-[0.85rem] sm:text-[0.95rem] text-slate-700 font-medium text-center leading-[1.4]">{{ $ms['title'] ?? '' }}</div>
                 </div>
                 @endforeach
             </div>
@@ -231,11 +233,11 @@
                     $c = $val['color'] ?? $colors[$i % count($colors)];
                     $b = $val['bg'] ?? $bgs[$i % count($bgs)];
                 @endphp
-                <div class="text-center py-8 px-5 bg-[{{ $b }}] rounded-[14px] border border-[{{ $c }}20] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_35px_-8px_{{ $c }}25] cursor-default">
-                    <div class="w-14 h-14 mx-auto mb-4 bg-gradient-to-br from-[{{ $c }}] to-[{{ $c }}dd] text-white rounded-full flex items-center justify-center text-[1.5rem] shadow-[0_8px_20px_-4px_{{ $c }}40]">
+                <div class="text-center py-8 px-5 rounded-[14px] transition-all duration-300 hover:-translate-y-1.5 cursor-default hover:shadow-xl" style="background-color: {{ $b }}; border: 1px solid {{ $c }}20; --hover-shadow-color: {{ $c }}25;" onmouseover="this.style.boxShadow='0 18px 35px -8px ' + this.style.getPropertyValue('--hover-shadow-color')" onmouseout="this.style.boxShadow=''">
+                    <div class="w-14 h-14 mx-auto mb-4 text-white rounded-full flex items-center justify-center text-[1.5rem]" style="background: linear-gradient(135deg, {{ $c }}, {{ $c }}dd); box-shadow: 0 8px 20px -4px {{ $c }}40;">
                         <i class="fa-solid {{ $val['icon'] ?? 'fa-star' }}"></i>
                     </div>
-                    <h4 class="m-0 mb-1 z-[1.1rem] text-slate-800 font-bold mb-1.5">{{ $val['title'] ?? '' }}</h4>
+                    <h4 class="m-0 mb-1.5 z-[1.1rem] text-slate-800 font-bold mb-1.5">{{ $val['title'] ?? '' }}</h4>
                     <p class="m-0 text-[0.82rem] text-slate-500 leading-[1.5]">{{ $val['description'] ?? '' }}</p>
                 </div>
                 @endforeach
@@ -277,18 +279,19 @@
                 @endphp
                 @foreach($programmes as $prog)
                 @php 
-                  $isDark = in_array(strtolower($prog['theme_main'] ?? ''), ['#0f172a', '#1e293b', 'black']);
-                  $textColor = $isDark ? 'white' : '#1e293b';
+                  $isDark = in_array(strtolower($prog['theme_main'] ?? ''), ['#0f172a', '#1e293b', 'black', 'rgb(15, 23, 42)', 'rgba(15,23,42,1)']);
+                  $textColor = $isDark ? '#ffffff' : '#1e293b';
                   $iconBg = $isDark ? 'rgba(16, 185, 129, 0.2)' : 'rgba(22, 163, 74, 0.15)';
                   $iconColor = $isDark ? '#6ee7b7' : 'var(--color-primary)';
                   $listColor = $isDark ? '#cbd5e1' : '#334155';
                   $bulletColor = $isDark ? '#10b981' : 'var(--color-primary)';
                   $border = $isDark ? 'none' : '1px solid #bbf7d0';
+                  $circleBg = $isDark ? 'rgba(255,255,255,0.04)' : 'rgba(22,163,74,0.06)';
                 @endphp
-                <div class="rounded-[14px] p-8 text-[{{ $textColor }}] relative overflow-hidden border-[{{ $border }}]" style="background: linear-gradient(135deg, {{ $prog['theme_main'] ?? '#0f172a' }} 0%, {{ $prog['theme_accent'] ?? '#1e293b' }} 100%);">
-                    <div class="absolute -top-8 -right-8 w-[100px] h-[100px] rounded-full bg-[{{ $isDark ? 'rgba(255,255,255,0.04)' : 'rgba(22,163,74,0.06)' }}]"></div>
+                <div class="rounded-[14px] p-8 relative overflow-hidden" style="background: linear-gradient(135deg, {{ $prog['theme_main'] ?? '#0f172a' }} 0%, {{ $prog['theme_accent'] ?? '#1e293b' }} 100%); color: {{ $textColor }}; border: {{ $border }};">
+                    <div class="absolute -top-8 -right-8 w-[100px] h-[100px] rounded-full" style="background: {{ $circleBg }};"></div>
                     <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-[{{ $iconBg }}] text-[{{ $iconColor }}]">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: {{ $iconBg }}; color: {{ $iconColor }};">
                             <i class="fa-solid {{ $prog['icon'] ?? 'fa-graduation-cap' }}"></i>
                         </div>
                         <h4 class="m-0 text-[1.1rem] font-bold">{{ $prog['title'] ?? '' }}</h4>
@@ -296,7 +299,7 @@
                     <ul class="list-none p-0 m-0 flex flex-col gap-2.5">
                         @foreach(explode("\n", $prog['items'] ?? '') as $item)
                         @if(trim($item))
-                        <li class="flex items-center gap-2 text-[0.88rem] text-[{{ $listColor }}]"><i class="fa-solid fa-chevron-right text-[0.55rem] text-[{{ $bulletColor }}]"></i> {!! trim($item) !!}</li>
+                        <li class="flex items-start gap-2 text-[0.9rem] leading-[1.4]" style="color: {{ $listColor }};"><i class="fa-solid fa-chevron-right text-[0.6rem] mt-[5px]" style="color: {{ $bulletColor }};"></i> <span>{!! trim($item) !!}</span></li>
                         @endif
                         @endforeach
                     </ul>
@@ -382,8 +385,8 @@
                     }
                 @endphp
                 @foreach($requirements as $req)
-                <div class="p-6 bg-[{{ $req['bg'] ?? '#f0fdf4' }}] rounded-xl text-center border border-[{{ $req['color'] ?? '#16a34a' }}15] transition-transform duration-300 hover:-translate-y-1">
-                    <div class="w-11 h-11 bg-[{{ $req['color'] ?? '#16a34a' }}] text-white rounded-xl flex items-center justify-center text-[1.2rem] mx-auto mb-4 shadow-[0_6px_15px_-3px_{{ $req['color'] ?? '#16a34a' }}40]">
+                <div class="p-6 rounded-xl text-center transition-transform duration-300 hover:-translate-y-1" style="background-color: {{ $req['bg'] ?? '#f0fdf4' }}; border: 1px solid {{ $req['color'] ?? '#16a34a' }}15;">
+                    <div class="w-11 h-11 text-white rounded-xl flex items-center justify-center text-[1.2rem] mx-auto mb-4" style="background-color: {{ $req['color'] ?? '#16a34a' }}; box-shadow: 0 6px 15px -3px {{ $req['color'] ?? '#16a34a' }}40;">
                         <i class="fa-solid {{ $req['icon'] ?? 'fa-check' }}"></i>
                     </div>
                     <h4 class="m-0 mb-1.5 text-[1rem] text-slate-800 font-bold">{{ $req['level'] ?? '' }}</h4>
@@ -421,8 +424,8 @@
                     $displayLabs = !empty($cmsLabs) ? $cmsLabs : $defaultLabs;
                 @endphp
                 @foreach($displayLabs as $i => $lab)
-                <div data-aos="fade-up" class="about-facilities-card flex gap-5 bg-slate-50 p-7 rounded-[14px] border border-slate-200 transition-all duration-300 hover:bg-slate-100 hover:-translate-y-[3px] hover:shadow-[0_10px_25px_-8px_rgba(0,0,0,0.08)]">
-                    <div class="w-14 h-14 rounded-[14px] bg-[{{ $labColors[$i % count($labColors)] }}] text-white flex items-center justify-center text-[1.6rem] shrink-0 shadow-[0_8px_20px_-4px_{{ $labShadows[$i % count($labShadows)] }}]">
+                <div data-aos="fade-up" class="about-facilities-card flex gap-5 bg-slate-50 p-7 rounded-[14px] border border-slate-200 transition-all duration-300 hover:bg-slate-100 hover:-translate-y-[3px] hover:shadow-lg">
+                    <div class="w-14 h-14 rounded-[14px] text-white flex items-center justify-center text-[1.6rem] shrink-0" style="background: {{ $labColors[$i % count($labColors)] }}; box-shadow: 0 8px 20px -4px {{ $labShadows[$i % count($labShadows)] }};">
                         <i class="fa-solid {{ $lab['icon'] ?? 'fa-flask' }}"></i>
                     </div>
                     <div>
@@ -462,19 +465,6 @@
         </section>
 
     </div>
-
-    @php
-        $sections = [
-            'our-story' => 'Our Story',
-            'vision-mission' => 'Vision, Mission & Objectives',
-            'core-values' => 'Core Values',
-            'programmes' => 'Academic Programmes',
-            'departmental-board' => 'Departmental Board',
-            'entry-requirements' => 'Entry Requirements',
-            'our-faculty' => 'Our Faculty',
-        ];
-    @endphp
-    <x-sticky-toc :sections="$sections" />
 </div>
 
 <style>
@@ -491,9 +481,9 @@
     /* Tablet portrait (≤768px) */
     @media (max-width: 768px) {
         .page-layout { flex-direction: column; }
-        .about-hero { padding: 3.5rem 0 4.5rem !important; }
+        .about-hero { padding: 4.5rem 0 11rem !important; }
         .about-hero h1 { font-size: 2rem !important; }
-        .about-hero p { font-size: 1rem !important; }
+        .about-hero p { font-size: 1rem !important; margin-bottom: 2rem !important; }
         .about-main { padding: 1.5rem 1.2rem !important; border-radius: 12px !important; }
         .about-main section { margin-bottom: 2.5rem !important; }
         .about-main .section-heading h2 { font-size: 1.5rem !important; }

@@ -13,7 +13,7 @@
     <div class="carousel-track flex h-full transition-transform duration-[600ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" id="carouselTrack">
         
         @forelse($carouselSlides as $slide)
-        <div class="carousel-slide min-w-full h-full flex items-center justify-center text-center text-white relative" {{ $slide->image_url ? "background: url('".$slide->image_url."') center/cover no-repeat;" : "background: linear-gradient(135deg, var(--color-primary) 0%, #1e293b 100%);" }}">
+        <div class="carousel-slide min-w-full h-full flex items-center justify-center text-center text-white relative" style="{{ $slide->image_url ? "background: url('".$slide->image_url."') center/cover no-repeat;" : "background: linear-gradient(135deg, var(--color-primary) 0%, #1e293b 100%);" }}">
             <!-- Rich Gradient Overlay -->
             <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, {{ $slide->overlay_color ?? 'rgba(6, 78, 30, 0.7)' }}, rgba(6, 50, 20, 0.92));"></div>
             
@@ -31,8 +31,9 @@
                 @endif
                 @if($slide->button_text)
                 <div class="flex gap-4 justify-center flex-wrap">
-                    <a href="{{ $slide->button_url ?? '#' }}" class="btn bg-gradient-to-br from-primary to-secondary text-white font-bold py-3.5 px-10 text-[1.05rem] rounded-lg border-none shadow-[0_10px_25px_-5px_rgba(22,163,74,0.4)] inline-flex items-center gap-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_15px_35px_-5px_rgba(22,163,74,0.5)]">
-                        {{ $slide->button_text }} <i class="fa-solid fa-arrow-right text-[0.9rem]"></i>
+                    <a href="{{ $slide->button_url ?? '#' }}" class="group relative inline-flex items-center justify-center gap-3 bg-emerald-600 border border-emerald-500/30 text-white font-semibold text-[1.05rem] py-3.5 px-8 rounded-full shadow-[0_4px_20px_rgba(5,150,105,0.4)] transition-all duration-300 hover:bg-emerald-500 hover:shadow-[0_8px_30px_rgba(5,150,105,0.6)] hover:-translate-y-0.5 overflow-hidden">
+                        {{ $slide->button_text }}
+                        <i class="fa-solid fa-arrow-right text-[0.9rem] transition-transform duration-300 group-hover:translate-x-1.5"></i>
                     </a>
                 </div>
                 @endif
@@ -53,10 +54,11 @@
                 <h1 class="text-center text-white text-[3.8rem] font-heading font-extrabold mb-5 leading-[1.1] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">Empowering the Future<br>of Computing</h1>
                 <p class="text-center text-[1.15rem] text-slate-300 m-0 mx-auto mb-10 max-w-[700px] leading-[1.7] drop-shadow-[0_4px_10px_rgba(0,0,0,0.3)]">Discover world-class education, pioneering research, and a community dedicated to solving global challenges through technology.</p>
                 <div class="flex gap-4 justify-center flex-wrap">
-                    <a href="{{ url('/about') }}" class="btn bg-gradient-to-br from-primary to-secondary text-white font-bold py-3.5 px-10 text-[1.05rem] rounded-lg border-none shadow-[0_10px_25px_-5px_rgba(22,163,74,0.4)] inline-flex items-center gap-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_15px_35px_-5px_rgba(22,163,74,0.5)]">
-                        Explore Department <i class="fa-solid fa-arrow-right text-[0.9rem]"></i>
+                    <a href="{{ url('/about') }}" class="group relative inline-flex items-center justify-center gap-3 bg-emerald-600 border border-emerald-500/30 text-white font-semibold text-[1.05rem] py-3.5 px-8 rounded-full shadow-[0_4px_20px_rgba(5,150,105,0.4)] transition-all duration-300 hover:bg-emerald-500 hover:shadow-[0_8px_30px_rgba(5,150,105,0.6)] hover:-translate-y-0.5 overflow-hidden">
+                        Explore Department
+                        <i class="fa-solid fa-arrow-right text-[0.9rem] transition-transform duration-300 group-hover:translate-x-1.5"></i>
                     </a>
-                    <a href="{{ url('/academics') }}" class="btn bg-white/10 backdrop-blur-sm text-white font-bold py-3.5 px-10 text-[1.05rem] rounded-lg border border-white/20 inline-flex items-center gap-2.5 transition-all duration-200 hover:bg-white/20 hover:-translate-y-0.5">
+                    <a href="{{ url('/academics') }}" class="inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm text-white font-semibold py-3.5 px-8 text-[1.05rem] rounded-full border border-white/20 transition-all duration-300 hover:bg-white/20 hover:-translate-y-0.5">
                         View Programmes
                     </a>
                 </div>
@@ -85,7 +87,7 @@
     @endphp
     <div class="absolute bottom-0 left-0 w-full z-20 bg-slate-900/60 backdrop-blur-md border-t border-white/10 border-b-2 border-primary">
           <div class="container flex items-center gap-4 py-2.5 px-4" data-aos="fade-up">
-              <div class="bg-gradient-to-br from-primary to-secondary text-white py-1 px-2.5 rounded text-[0.65rem] font-extrabold uppercase whitespace-nowrap tracking-[1px] shadow-[0_0_8px_rgba(22,163,74,0.8),inset_0_0_3px_rgba(255,255,255,0.2)] flex items-center gap-1.5 border border-white/20">
+              <div class="bg-emerald-600 border border-emerald-500/40 text-white py-1 px-2.5 rounded text-[0.65rem] font-extrabold uppercase whitespace-nowrap tracking-[1px] shadow-[0_4px_10px_rgba(5,150,105,0.4)] flex items-center gap-1.5">
                   <i class="fa-solid fa-bolt text-[0.6rem]"></i> Notice
             </div>
             <div class="overflow-hidden flex-1">

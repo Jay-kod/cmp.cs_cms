@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const animCards = document.querySelectorAll('.hover-card, .news-card, .staff-home-card, .staff-card, .gallery-item, .card, .stat-card, article, .info-box, [class*="-card"], [class*="-box"], [class*="-item"], [class*="-block"], [class$="-member"], .partner-logo, .system-card');
     
     animCards.forEach((el, idx) => {
-        if (!el.hasAttribute('data-aos') && !el.closest('.nav-dropdown-menu') && el.tagName !== 'HEADER' && el.tagName !== 'NAV' && el.tagName !== 'FOOTER') {
+        if (!el.hasAttribute('data-aos') && !el.closest('.nav-dropdown-menu') && !el.closest('.admin-sidebar') && el.tagName !== 'HEADER' && el.tagName !== 'NAV' && el.tagName !== 'FOOTER') {
             el.setAttribute('data-aos', 'fade-up');
             // Create a staggered delay effect grouping by row roughly
             const delay = (idx % 6) * 100;

@@ -8,19 +8,40 @@
     $heroUrl = asset('images/campus-bg.jpg'); 
 @endphp
 
-<!-- Hero Section -->
-<div class="about-hero relative overflow-hidden bg-cover bg-center py-[5.5rem_0_6.5rem] pt-24 pb-28" style="background-image: url('{{ $heroUrl }}');">
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/[0.97] via-emerald-800/[0.92] to-slate-900/[0.95]"></div>
-    <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_80%,rgba(16,185,129,0.15),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-    
+<!-- Premium Hero Section -->
+<section data-aos="fade-up" class="bg-slate-900 bg-center bg-cover pt-24 pb-28 text-white relative overflow-hidden border-b-4 border-accent" style="background-image: url('{{ asset('images/pattern-grid.svg') }}'), linear-gradient(135deg, #0f172a 0%, #064e3b 100%);">
+    <!-- Abstract Glow -->
+    <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.2)_0%,transparent_60%)]"></div>
+
     <div class="container relative z-10 text-center" data-aos="fade-up">
-        <div class="inline-flex items-center gap-2 px-[1.2rem] py-[0.4rem] bg-white/5 backdrop-blur-md text-emerald-200 rounded-[20px] text-[0.8rem] font-semibold tracking-[1.5px] uppercase mb-6 border border-white/10">
-            <i class="fa-solid fa-graduation-cap text-[0.7rem]"></i> Research Work
+        <nav aria-label="breadcrumb" class="flex justify-center mb-6">
+            <ol class="breadcrumb list-none m-0 bg-white/10 backdrop-blur-md py-2 px-6 rounded-full text-[0.85rem] font-semibold tracking-[0.5px] border border-white/10 inline-flex items-center gap-[0.8rem]">
+                <li class="m-0"><a href="{{ url('/') }}" class="text-slate-300 no-underline transition-colors duration-300 hover:text-white"><i class="fa-solid fa-house mr-1"></i> Home</a></li>
+                <li class="text-white/30 m-0">/</li>
+                <li aria-current="page" class="text-[color:var(--color-accent)] m-0 drop-shadow-[0_2px_10px_rgba(244,196,48,0.4)]">Research Projects</li>
+            </ol>
+        </nav>
+        
+        <div class="inline-flex items-center gap-2 px-[1.2rem] py-[0.4rem] bg-white/10 backdrop-blur-md text-emerald-200 rounded-full text-[0.8rem] font-semibold tracking-[1.5px] uppercase mb-4 border border-white/10 shadow-sm">
+            <i class="fa-solid fa-graduation-cap text-[0.8rem]"></i> {{ $s('project_course_code', 'CMP 499') }}
         </div>
-        <h1 class="text-white text-[3.2rem] font-heading m-[0_0_1rem_0] font-extrabold [text-shadow:0_4px_20px_rgba(0,0,0,0.3)]">Project Guidelines & Formatting</h1>
-        <p class="text-slate-300 text-[1.15rem] max-w-[680px] mx-auto leading-[1.7]">{{ $s('project_course_code', 'CMP 499') }} — General information, rules, and milestones for your final year defense.</p>
+        
+        <h1 class="text-[3.2rem] md:text-[4.2rem] font-black mb-[1.2rem] text-white font-heading tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.3)] lg:leading-[1.1]">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[color:var(--color-accent)] to-yellow-200">Project</span> Guidelines
+        </h1>
+        
+        <p class="text-[1.15rem] md:text-[1.25rem] max-w-[700px] mx-auto text-slate-300 leading-[1.8] font-normal">
+            General information, formatting rules, and key milestones for your final year defense and research documentation.
+        </p>
     </div>
-</div>
+
+    <!-- Decorative Bottom Wave (matching Resources page to fill the space cleanly) -->
+    <div class="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none">
+        <svg class="relative block w-full h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C63.26,35,142.27,61.96,213.31,64.44,249.25,65.73,286.34,62.91,321.39,56.44Z" fill="#ffffff"></path>
+        </svg>
+    </div>
+</section>
 
 <div class="container pb-16 -mt-12 relative z-20">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">

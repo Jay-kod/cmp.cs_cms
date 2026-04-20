@@ -38,8 +38,8 @@
                         @if($isAboutActive)<div class="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-primary"></div>@endif
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[220px] z-50 border border-gray-100" role="menu">
-                        <a href="{{ url('/about') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">About the Department</a>
-                        <a href="{{ url('/nacos-presidents') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">Our Association</a>
+                        <a href="{{ url('/about') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('about') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">About the Department</a>
+                        <a href="{{ url('/nacos-presidents') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('nacos-presidents*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Our Association</a>
                     </div>
                 </details>
 
@@ -50,13 +50,13 @@
                         @if($isAcademicsActive)<div class="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-primary"></div>@endif
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[320px] z-50 border border-gray-100" role="menu">
-                        <a href="{{ route('page.show', 'programmes') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">Programmes (BSc, MSc, PhD)</a>
+                        <a href="{{ route('page.show', 'programmes') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('pages/programmes') || request()->is('programmes*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Programmes (BSc, MSc, PhD)</a>
                         @foreach($navSubDepts as $subDept)
-                            <a href="{{ route('sub-department.show', $subDept->slug) }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">{{ $subDept->name }}</a>
+                            <a href="{{ route('sub-department.show', $subDept->slug) }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('sub-department/'.$subDept->slug.'*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">{{ $subDept->name }}</a>
                         @endforeach
-                        <a href="{{ route('siwes') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">SIWES Information</a>
-                        <a href="{{ route('projects') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">Final Year Projects</a>
-                        <a href="{{ url('/resources') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">Student Resources</a>
+                        <a href="{{ route('siwes') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->routeIs('siwes*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">SIWES Information</a>
+                        <a href="{{ route('projects') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->routeIs('projects*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Final Year Projects</a>
+                        <a href="{{ url('/resources') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('resources*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Student Resources</a>
                     </div>
                 </details>
 
@@ -67,8 +67,8 @@
                         @if($isPeopleActive)<div class="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-primary"></div>@endif
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[200px] z-50 border border-gray-100" role="menu">
-                        <a href="{{ url('/people') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">Staff Directory</a>
-                        <a href="{{ url('/gallery') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">Gallery</a>
+                        <a href="{{ url('/people') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('people') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Staff Directory</a>
+                        <a href="{{ url('/gallery') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('gallery*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Gallery</a>
                     </div>
                 </details>
 
@@ -78,11 +78,11 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-60"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
                         @if($isNewsActive)<div class="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-primary"></div>@endif
                     </summary>
-                    <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] right-0 left-auto bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[250px] z-50 border border-gray-100" role="menu">
-                        <a href="{{ url('/research-news') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">News</a>
-                        <a href="{{ url('/research-innovations') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">Research &amp; Innovations</a>
-                        <a href="{{ url('/events') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">Events &amp; Seminars</a>
-                        <a href="{{ route('page.show', 'academic-calendar') }}" class="nav-dropdown-item block py-2.5 px-4 text-gray-600 text-[0.95rem] font-medium no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary" role="menuitem">Academic Calendar</a>
+                    <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[250px] z-50 border border-gray-100" role="menu">
+                        <a href="{{ url('/research-news') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('research-news*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">News</a>
+                        <a href="{{ url('/research-innovations') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('research-innovations*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Research &amp; Innovations</a>
+                        <a href="{{ url('/events') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('events*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Events &amp; Seminars</a>
+                        <a href="{{ route('page.show', 'academic-calendar') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('pages/academic-calendar*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Academic Calendar</a>
                     </div>
                 </details>
                 <a href="{{ url('/contact') }}" class="nav-link btn btn-primary {{ request()->is('contact') ? 'active' : '' }} bg-[#2e8b57] text-white py-2 px-5 rounded-md border-none font-semibold text-[0.95rem] ml-4 transition-colors duration-200 shadow-sm hover:bg-[#1f6b45]">
@@ -125,8 +125,8 @@
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="{{ url('/about') }}" class="mobile-link mobile-sub-link">About the Department</a>
-                    <a href="{{ url('/nacos-presidents') }}" class="mobile-link mobile-sub-link">Our Association</a>
+                    <a href="{{ url('/about') }}" class="mobile-link mobile-sub-link {{ request()->is('about') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">About the Department</a>
+                    <a href="{{ url('/nacos-presidents') }}" class="mobile-link mobile-sub-link {{ request()->is('nacos-presidents*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Our Association</a>
                 </div>
             </details>
 
@@ -136,13 +136,13 @@
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="{{ route('page.show', 'programmes') }}" class="mobile-link mobile-sub-link">Programmes (BSc, MSc, PhD)</a>
+                    <a href="{{ route('page.show', 'programmes') }}" class="mobile-link mobile-sub-link {{ request()->is('pages/programmes') || request()->is('programmes*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Programmes (BSc, MSc, PhD)</a>
                     @foreach($navSubDepts as $subDept)
-                        <a href="{{ route('sub-department.show', $subDept->slug) }}" class="mobile-link mobile-sub-link">{{ $subDept->name }}</a>
+                        <a href="{{ route('sub-department.show', $subDept->slug) }}" class="mobile-link mobile-sub-link {{ request()->is('sub-department/'.$subDept->slug.'*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">{{ $subDept->name }}</a>
                     @endforeach
-                    <a href="{{ route('siwes') }}" class="mobile-link mobile-sub-link">SIWES Information</a>
-                    <a href="{{ route('projects') }}" class="mobile-link mobile-sub-link">Final Year Projects</a>
-                    <a href="{{ url('/resources') }}" class="mobile-link mobile-sub-link">Student Resources</a>
+                    <a href="{{ route('siwes') }}" class="mobile-link mobile-sub-link {{ request()->routeIs('siwes*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">SIWES Information</a>
+                    <a href="{{ route('projects') }}" class="mobile-link mobile-sub-link {{ request()->routeIs('projects*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Final Year Projects</a>
+                    <a href="{{ url('/resources') }}" class="mobile-link mobile-sub-link {{ request()->is('resources*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Student Resources</a>
                 </div>
             </details>
 
@@ -152,8 +152,8 @@
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="{{ url('/people') }}" class="mobile-link mobile-sub-link">Staff Directory</a>
-                      <a href="{{ url('/gallery') }}" class="mobile-link mobile-sub-link">Gallery</a>
+                    <a href="{{ url('/people') }}" class="mobile-link mobile-sub-link {{ request()->is('people') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Staff Directory</a>
+                      <a href="{{ url('/gallery') }}" class="mobile-link mobile-sub-link {{ request()->is('gallery*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Gallery</a>
                   </div>
               </details>
 
@@ -163,10 +163,10 @@
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="{{ url('/research-news') }}" class="mobile-link mobile-sub-link">News</a>
-                    <a href="{{ url('/research-innovations') }}" class="mobile-link mobile-sub-link">Research &amp; Innovations</a>
-                    <a href="{{ url('/events') }}" class="mobile-link mobile-sub-link">Events &amp; Seminars</a>
-                    <a href="{{ route('page.show', 'academic-calendar') }}" class="mobile-link mobile-sub-link">Academic Calendar</a>
+                    <a href="{{ url('/research-news') }}" class="mobile-link mobile-sub-link {{ request()->is('research-news*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">News</a>
+                    <a href="{{ url('/research-innovations') }}" class="mobile-link mobile-sub-link {{ request()->is('research-innovations*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Research &amp; Innovations</a>
+                    <a href="{{ url('/events') }}" class="mobile-link mobile-sub-link {{ request()->is('events*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Events &amp; Seminars</a>
+                    <a href="{{ route('page.show', 'academic-calendar') }}" class="mobile-link mobile-sub-link {{ request()->is('pages/academic-calendar*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Academic Calendar</a>
                 </div>
             </details>
 

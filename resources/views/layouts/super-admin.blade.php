@@ -406,11 +406,6 @@
                 });
             }
 
-            // Scroll the active nav item into view inside the sidebar
-            const activeNavItem = sidebar ? sidebar.querySelector('.admin-nav-item.active') : null;
-            if (activeNavItem) {
-                activeNavItem.scrollIntoView({ block: 'nearest', behavior: 'instant' });
-            }
             
             const logoutModal = document.getElementById('logoutModal');
             if(logoutModal) {

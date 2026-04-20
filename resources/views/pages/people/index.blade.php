@@ -734,13 +734,13 @@
                         <!-- The Un-Skewed Inner Image Area (Reduced Zoom Ratio) -->                    
                         <div class="absolute inset-0 w-[125%] h-[100%] transform lg:skew-x-[8deg] -ml-[12.5%] bg-emerald-950">
                             @if($member->photo)
-                                <img src="{{ asset('storage/'.$member->photo) }}" alt="{{ $member->name }}" class="w-full h-[100%] object-cover object-top opacity-85 group-hover:opacity-100 filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-[1.03]">
+                                <img src="{{ asset('storage/'.$member->photo) }}" alt="{{ $member->name }}" class="w-full h-[100%] object-cover object-top transition-all duration-500 ease-out group-hover:scale-[1.03]">
                             @else
-                                <img src="https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=400&background=022c22&color=a7f3d0&bold=true&format=svg&font-size=0.35" alt="{{ $member->name }}" class="w-full h-full object-cover object-[center_top] opacity-85 group-hover:opacity-100 filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-[1.03]">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&size=400&background=022c22&color=a7f3d0&bold=true&format=svg&font-size=0.35" alt="{{ $member->name }}" class="w-full h-full object-cover object-[center_top] transition-all duration-500 ease-out group-hover:scale-[1.03]">
                             @endif
                             
                             <!-- Smoother gradient shadow for text contrast -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/40 to-transparent"></div>
+                            <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-emerald-950/90 to-transparent"></div>
                         </div>
                     </div>
 
@@ -802,10 +802,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="absolute inset-0 transform lg:-skew-x-[8deg] overflow-hidden bg-emerald-950 border-[3px] border-emerald-900 rounded-[1.5rem] group-hover:border-emerald-400/50 transition-colors duration-500 z-10 shadow-[0_15px_30px_rgba(0,0,0,0.1)] group-hover:shadow-[0_20px_40px_rgba(22,163,74,0.2)]">
                 <!-- The Un-Skewed Inner Image Area (Reduced Zoom Ratio) -->                    
                 <div class="absolute inset-0 w-[125%] h-[100%] transform lg:skew-x-[8deg] -ml-[12.5%] bg-emerald-950">
-                    <img src="${photo}" onerror="this.src='${fallback}'" alt="${m.name}" class="w-full h-[100%] object-cover object-top opacity-85 group-hover:opacity-100 filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-[1.03]">
+                    <img src="${photo}" onerror="this.src='${fallback}'" alt="${m.name}" class="w-full h-[100%] object-cover object-top transition-all duration-500 ease-out group-hover:scale-[1.03]">
                     
                     <!-- Smoother gradient shadow for text contrast -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/40 to-transparent"></div>
+                    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-emerald-950/90 to-transparent"></div>
                 </div>
             </div>
 

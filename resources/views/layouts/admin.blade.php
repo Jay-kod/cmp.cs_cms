@@ -328,6 +328,12 @@
                     
                     <li class="nav-section-title"><span>Content Manager & Config</span></li>
                     <li>
+                        <a href="{{ route('admin.settings.brand-logo') }}" class="admin-nav-item {{ request()->routeIs('admin.settings.brand-logo') ? 'active' : '' }}" title="Brand & Logo">
+                            <div class="nav-icon"><i class="fa-solid fa-gem"></i></div>
+                            <span>Brand Identity</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.pages.index') }}" class="admin-nav-item {{ request()->routeIs('admin.pages.*') ? 'active' : '' }}" title="Pages">
                             <div class="nav-icon"><i class="fa-solid fa-file-lines"></i></div>
                             <span>Dynamic Pages</span>
@@ -465,12 +471,6 @@
                     sidebar.classList.toggle('collapsed');
                     localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
                 });
-            }
-
-            // Scroll the active nav item into view inside the sidebar
-            const activeNavItem = sidebar ? sidebar.querySelector('.admin-nav-item.active') : null;
-            if (activeNavItem) {
-                activeNavItem.scrollIntoView({ block: 'nearest', behavior: 'instant' });
             }
             
             // Close logout modal when clicking outside

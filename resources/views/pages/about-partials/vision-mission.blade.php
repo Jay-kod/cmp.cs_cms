@@ -158,7 +158,7 @@ C:\xampp\htdocs\p\dcms\resources\views\pages\home-partials\hod-welcome.blade
 
             <div class="inline-flex items-center gap-5 bg-white py-4 px-6 rounded-xl border border-slate-200">
 
-                <div class="w-1 h-[35px] bg-gradient-to-b from-primary to-secondary rounded-sm"></div>
+                <div class="w-1 h-[35px] bg-primary rounded-sm"></div>
 
                 <div>
 
