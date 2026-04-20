@@ -35,43 +35,7 @@
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(16,185,129,0.05),transparent_50%)] pointer-events-none"></div>
 
                 <div class="about-story-layout flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-                    {{-- Photo Frame (Left) --}}
-                    <div class="relative w-full max-w-[320px] sm:max-w-[360px] lg:w-[42%] shrink-0 lg:ml-10 mb-10 lg:mb-0" data-aos="fade-right">
-                        
-                        <!-- SVG Green L-Border Behind -->
-                        <div class="absolute inset-0 -translate-x-5 translate-y-5 z-0 pointer-events-none">
-                            <svg class="w-full h-full" overflow="visible" viewBox="0 0 100 100" preserveAspectRatio="none">
-                                <path d="M0,15 L0,100 L85,89.8" fill="none" stroke="#22c55e" stroke-width="4" vector-effect="non-scaling-stroke" stroke-linejoin="miter" stroke-linecap="square" />
-                            </svg>
-                        </div>
-                        
-                        <!-- Main Image Box (Clipped) -->
-                        <div class="relative z-10" style="filter: drop-shadow(10px 15px 20px rgba(0, 0, 0, 0.15));">
-                            <div class="relative bg-white w-full aspect-[4/5] flex items-end overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);">
-                                @if(isset($hod) && $hod && $hod->photo)
-                                    <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" class="absolute inset-0 w-full h-full object-cover">
-                                @else
-                                    <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-slate-100 text-slate-300">
-                                        <i class="fa-solid fa-user-tie text-[8rem] mb-[10%]"></i>
-                                    </div>
-                                @endif
-                                
-                                <!-- HOD Name Overlay on Image -->
-                                <div class="relative w-full z-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-16 pb-8 px-6 text-white" style="margin-bottom: 5%;">
-                                    @if(isset($hod) && $hod)
-                                        <p class="m-0 font-bold text-[1.15rem] leading-tight">{{ $hod->name }}</p>
-                                        <p class="m-0 text-green-400 font-medium text-[0.85rem] mt-1">{{ $hod->rank }}, HOD</p>
-                                    @elseif(isset($settings['hod_name']))
-                                        <p class="m-0 font-bold text-[1.15rem] leading-tight">{{ $settings['hod_name'] }}</p>
-                                        <p class="m-0 text-green-400 font-medium text-[0.85rem] mt-1">Head of Department</p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-
-                    {{-- Story Text (Right) --}}
+                    {{-- Story Text (Left) --}}
                     <div class="about-story-text flex-1">
                         <span class="text-green-600 font-bold tracking-[2px] uppercase text-[0.8rem] mb-3 block">ABOUT US</span>
                         <h2 class="m-0 mb-6 text-[2.2rem] lg:text-[2.6rem] text-slate-900 font-heading font-bold leading-[1.2]">{{ $gs('about_section_story_title', 'Why Choose Our Department?') }}</h2>
@@ -106,6 +70,42 @@
                                 </a>
                             @endif
                         </div>
+                    </div>
+
+                    {{-- Photo Frame (Right) --}}
+                    <div class="relative w-full max-w-[320px] sm:max-w-[360px] lg:w-[42%] shrink-0 lg:ml-10 mb-10 lg:mb-0" data-aos="fade-left">
+                        
+                        <!-- SVG Green L-Border Behind -->
+                        <div class="absolute inset-0 -translate-x-5 translate-y-5 z-0 pointer-events-none">
+                            <svg class="w-full h-full" overflow="visible" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <path d="M0,15 L0,100 L85,89.8" fill="none" stroke="#22c55e" stroke-width="4" vector-effect="non-scaling-stroke" stroke-linejoin="miter" stroke-linecap="square" />
+                            </svg>
+                        </div>
+                        
+                        <!-- Main Image Box (Clipped) -->
+                        <div class="relative z-10" style="filter: drop-shadow(10px 15px 20px rgba(0, 0, 0, 0.15));">
+                            <div class="relative bg-white w-full aspect-[4/5] flex items-end overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);">
+                                @if(isset($hod) && $hod && $hod->photo)
+                                    <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}" class="absolute inset-0 w-full h-full object-cover">
+                                @else
+                                    <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-slate-100 text-slate-300">
+                                        <i class="fa-solid fa-user-tie text-[8rem] mb-[10%]"></i>
+                                    </div>
+                                @endif
+                                
+                                <!-- HOD Name Overlay on Image -->
+                                <div class="relative w-full z-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-16 pb-8 px-6 text-white" style="margin-bottom: 5%;">
+                                    @if(isset($hod) && $hod)
+                                        <p class="m-0 font-bold text-[1.15rem] leading-tight">{{ $hod->name }}</p>
+                                        <p class="m-0 text-green-400 font-medium text-[0.85rem] mt-1">{{ $hod->rank }}, HOD</p>
+                                    @elseif(isset($settings['hod_name']))
+                                        <p class="m-0 font-bold text-[1.15rem] leading-tight">{{ $settings['hod_name'] }}</p>
+                                        <p class="m-0 text-green-400 font-medium text-[0.85rem] mt-1">Head of Department</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
