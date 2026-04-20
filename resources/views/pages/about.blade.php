@@ -357,8 +357,8 @@
                     <div class="w-[70px] h-[70px] bg-[#1d7c54] rounded-full flex items-center justify-center mb-6 text-[2rem] text-[#86efac]">
                         <i class="fa-solid {{ $bm['icon'] ?? 'fa-crown' }}"></i>
                     </div>
-                    <h4 class="m-0 mb-3 text-[1.2rem] font-bold text-[#4ade80] text-center w-full">{{ $bm['title'] ?? '' }}</h4>
-                    <p class="m-0 text-[#a7f3d0] text-[0.95rem] leading-[1.5] text-center w-full">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
+                    <h4 class="m-0 mb-3 text-[1.2rem] font-bold text-[#4ade80]" style="text-align: center; width: 100%;">{{ $bm['title'] ?? '' }}</h4>
+                    <p class="m-0 text-[#a7f3d0] text-[0.95rem] leading-[1.5]" style="text-align: center; width: 100%;">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
                 </div>
                 @else
                 <!-- Members / Mandate -->
@@ -366,8 +366,8 @@
                     <div class="w-[70px] h-[70px] bg-[#dcfce7] rounded-full flex items-center justify-center mb-6 text-[2rem] text-green-700">
                         <i class="fa-solid {{ $bm['icon'] ?? 'fa-users' }}"></i>
                     </div>
-                    <h4 class="m-0 mb-3 text-[1.2rem] font-extrabold text-slate-900 text-center w-full">{{ $bm['title'] ?? '' }}</h4>
-                    <p class="m-0 text-slate-500 text-[0.95rem] leading-[1.6] text-center w-full">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
+                    <h4 class="m-0 mb-3 text-[1.2rem] font-extrabold text-slate-900" style="text-align: center; width: 100%;">{{ $bm['title'] ?? '' }}</h4>
+                    <p class="m-0 text-slate-500 text-[0.95rem] leading-[1.6]" style="text-align: center; width: 100%;">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
                 </div>
                 @endif
                 @endforeach
