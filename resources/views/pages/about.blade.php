@@ -142,25 +142,39 @@
             </div>
             <div class="w-[60px] h-1 bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] mb-[2rem] rounded-full"></div>
 
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mb-12">
                 <!-- Vision -->
-                <div data-aos="fade-up" class="group bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-10 relative overflow-hidden border border-green-600/15 transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[0_20px_40px_-12px_rgba(22,163,74,0.2)]">
-                    <div class="absolute -top-5 -right-5 text-[7rem] text-green-600/[0.06] -rotate-15 pointer-events-none"><i class="fa-solid fa-eye"></i></div>
-                    <div class="w-[52px] h-[52px] bg-gradient-to-br from-green-600 to-green-700 text-white rounded-[14px] flex items-center justify-center text-[1.4rem] mb-6 shadow-[0_8px_20px_-4px_rgba(22,163,74,0.4)]">
-                        <i class="fa-solid fa-eye"></i>
+                <div data-aos="fade-up" class="group bg-white rounded-[24px] p-8 sm:p-12 relative overflow-hidden border border-slate-200 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-12px_rgba(34,197,94,0.15)] transition-all duration-500 hover:-translate-y-2">
+                    <!-- Decorative Top Border -->
+                    <div class="absolute top-0 left-0 w-full h-[6px] bg-gradient-to-r from-green-400 to-green-600"></div>
+                    
+                    <!-- Decorative Background Icon -->
+                    <div class="absolute -bottom-8 -right-8 text-[9rem] text-green-50/80 group-hover:text-green-100/60 -rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-700 pointer-events-none"><i class="fa-solid fa-eye"></i></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-[64px] h-[64px] bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-[1.8rem] mb-6 shadow-sm group-hover:bg-green-600 group-hover:text-white transition-colors duration-500">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h3 class="text-[1.6rem] text-slate-900 m-0 mb-4 font-heading font-bold">{{ $gs('about_vision_label', 'Our Vision') }}</h3>
+                        <p class="text-slate-600 text-[1.05rem] leading-[1.8] m-0">{{ $settings['about_vision'] ?? $settings['vision_statement'] ?? 'To be a leading edge in the area of competition, innovation, and society-responsive computing solutions, strategically aligning with the university\'s mission to promote technological advancement.' }}</p>
                     </div>
-                    <h3 class="text-[1.4rem] text-slate-800 m-0 mb-4 font-heading font-bold">{{ $gs('about_vision_label', 'Our Vision') }}</h3>
-                    <p class="text-slate-700 text-[1rem] leading-[1.7] m-0">{{ $settings['about_vision'] ?? $settings['vision_statement'] ?? 'To be a leading edge in the area of competition, innovation, and society-responsive computing solutions, strategically aligning with the university\'s mission to promote technological advancement.' }}</p>
                 </div>
 
                 <!-- Mission -->
-                <div data-aos="fade-up" class="group bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl p-10 relative overflow-hidden border border-emerald-500/15 transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[0_20px_40px_-12px_rgba(16,185,129,0.2)]">
-                    <div class="absolute -top-5 -right-5 text-[7rem] text-emerald-500/[0.06] -rotate-15 pointer-events-none"><i class="fa-solid fa-bullseye"></i></div>
-                    <div class="w-[52px] h-[52px] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-[14px] flex items-center justify-center text-[1.4rem] mb-6 shadow-[0_8px_20px_-4px_rgba(16,185,129,0.4)]">
-                        <i class="fa-solid fa-bullseye"></i>
+                <div data-aos="fade-up" data-aos-delay="100" class="group bg-white rounded-[24px] p-8 sm:p-12 relative overflow-hidden border border-slate-200 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-12px_rgba(16,185,129,0.15)] transition-all duration-500 hover:-translate-y-2">
+                    <!-- Decorative Top Border -->
+                    <div class="absolute top-0 left-0 w-full h-[6px] bg-gradient-to-r from-emerald-400 to-emerald-600"></div>
+                    
+                    <!-- Decorative Background Icon -->
+                    <div class="absolute -bottom-8 -right-8 text-[9rem] text-emerald-50/80 group-hover:text-emerald-100/60 -rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-700 pointer-events-none"><i class="fa-solid fa-bullseye"></i></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-[64px] h-[64px] bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-[1.8rem] mb-6 shadow-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-500">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-[1.6rem] text-slate-900 m-0 mb-4 font-heading font-bold">{{ $gs('about_mission_label', 'Our Mission') }}</h3>
+                        <p class="text-slate-600 text-[1.05rem] leading-[1.8] m-0">{{ $settings['about_mission'] ?? $settings['mission_statement'] ?? 'To promote technological advancement by providing a conducive environment for research, teaching, and learning that engenders the development of products that are technology-oriented, self-reliant, and relevant to society.' }}</p>
                     </div>
-                    <h3 class="text-[1.4rem] text-slate-800 m-0 mb-4 font-heading font-bold">{{ $gs('about_mission_label', 'Our Mission') }}</h3>
-                    <p class="text-slate-700 text-[1rem] leading-[1.7] m-0">{{ $settings['about_mission'] ?? $settings['mission_statement'] ?? 'To promote technological advancement by providing a conducive environment for research, teaching, and learning that engenders the development of products that are technology-oriented, self-reliant, and relevant to society.' }}</p>
                 </div>
             </div>
 
