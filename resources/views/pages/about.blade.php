@@ -443,7 +443,7 @@
                     <i class="fa-solid {{ $lab['icon'] ?? 'fa-flask' }} water-icon" style="position: absolute; bottom: -15px; right: -15px; font-size: 151px; color: #94a3b8; opacity: 0.15; z-index: -1; transform: rotate(-15deg); transition: transform 0.4s ease;"></i>
 
                     <!-- Content -->
-                    <div style="position: relative; z-index: 10;" class="w-[60px] h-[60px] rounded-[14px] text-white flex items-center justify-center text-[1.7rem] shrink-0 mb-1" style="background: {{ $labColors[$i % count($labColors)] }}; box-shadow: 0 8px 20px -4px {{ $labShadows[$i % count($labShadows)] }};">
+                    <div class="w-[60px] h-[60px] rounded-[14px] text-white flex items-center justify-center text-[1.7rem] shrink-0 mb-1" style="position: relative; z-index: 10; background: {{ $labColors[$i % count($labColors)] }}; box-shadow: 0 8px 20px -4px {{ $labShadows[$i % count($labShadows)] }};">
                         <i class="fa-solid {{ $lab['icon'] ?? 'fa-flask' }}"></i>
                     </div>
                     <div style="position: relative; z-index: 10;">
