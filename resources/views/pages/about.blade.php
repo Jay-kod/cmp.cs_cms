@@ -437,12 +437,12 @@
                     $displayLabs = !empty($cmsLabs) ? $cmsLabs : $defaultLabs;
                 @endphp
                 @foreach($displayLabs as $i => $lab)
-                <div data-aos="fade-up" class="about-facilities-card flex gap-5 bg-slate-50 p-7 rounded-[14px] border border-slate-200 transition-all duration-300 hover:bg-slate-100 hover:-translate-y-[3px] hover:shadow-lg">
-                    <div class="w-14 h-14 rounded-[14px] text-white flex items-center justify-center text-[1.6rem] shrink-0" style="background: {{ $labColors[$i % count($labColors)] }}; box-shadow: 0 8px 20px -4px {{ $labShadows[$i % count($labShadows)] }};">
+                <div data-aos="fade-up" class="about-facilities-card flex flex-col items-start gap-4 bg-slate-50 p-7 lg:p-6 xl:p-8 rounded-[14px] border border-slate-200 transition-all duration-300 hover:bg-slate-100 hover:-translate-y-[3px] hover:shadow-lg">
+                    <div class="w-[60px] h-[60px] rounded-[14px] text-white flex items-center justify-center text-[1.7rem] shrink-0 mb-1" style="background: {{ $labColors[$i % count($labColors)] }}; box-shadow: 0 8px 20px -4px {{ $labShadows[$i % count($labShadows)] }};">
                         <i class="fa-solid {{ $lab['icon'] ?? 'fa-flask' }}"></i>
                     </div>
                     <div>
-                        <strong class="text-[1.1rem] block mb-1.5 text-slate-800 font-heading">{{ $lab['name'] ?? '' }}</strong>
+                        <strong class="text-[1.1rem] block mb-2 text-slate-800 font-heading">{{ $lab['name'] ?? '' }}</strong>
                         <p class="m-0 text-slate-500 leading-[1.6] text-[0.92rem]">{{ $lab['description'] ?? '' }}</p>
                     </div>
                 </div>
