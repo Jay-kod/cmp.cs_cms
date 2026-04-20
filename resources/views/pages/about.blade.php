@@ -302,7 +302,7 @@
                     </div>
                     
                     <div class="relative z-10 bottom-0">
-                        <a href="{{ $prog['link'] ?? url('/academics') }}" class="group/link inline-flex items-center gap-2 text-[0.9rem] font-semibold no-underline hover:gap-3 transition-all duration-200" style="color: #16a34a;">View full programme details <i class="fa-solid fa-arrow-right text-[0.75rem] transition-transform duration-200"></i></a>
+                        <a href="{{ !empty($prog['link']) && $prog['link'] !== url('/academics') ? $prog['link'] : url('/academics') . '#' . \Illuminate\Support\Str::slug($prog['title'] ?? 'prog', '-') }}" class="group/link inline-flex items-center gap-2 text-[0.9rem] font-semibold no-underline hover:gap-3 transition-all duration-200" style="color: #16a34a;">View full programme details <i class="fa-solid fa-arrow-right text-[0.75rem] transition-transform duration-200"></i></a>
                     </div>
                 </div>
                 @endforeach
