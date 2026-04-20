@@ -23,10 +23,10 @@
     $facilities = json_decode($s('about_facilities', '[]'), true) ?? [];
     if (empty($facilities)) {
         $facilities = [
-            ['name' => 'Software Engineering Lab', 'icon' => 'fa-code', 'description' => 'Modern IDEs and collaboration tools for full-stack software development, testing, and real-world project simulations.'],
-            ['name' => 'Hardware & Networking Lab', 'icon' => 'fa-network-wired', 'description' => 'Hands-on experience with CISCO routing, switching, and embedded systems micro-controller design.'],
-            ['name' => 'AI & Data Science Hub', 'icon' => 'fa-microchip', 'description' => 'High-performance computing clusters for machine learning, big data analytics, and advanced algorithmic processing.'],
-            ['name' => 'Cybersecurity Lab', 'icon' => 'fa-shield-halved', 'description' => 'Dedicated environment for penetration testing, digital forensics, and cybersecurity research.'],
+            ['name' => 'Software Lab', 'icon' => 'fa-laptop-code', 'description' => 'The Department of Computer Science is equipped with state-of-the-art facilities that empower students to explore, innovate, and succeed in their academic and professional journeys.'],
+            ['name' => 'Hardware Lab', 'icon' => 'fa-microchip', 'description' => 'A dedicated space for practical experiments with computer architecture and embedded systems.'],
+            ['name' => 'Networking Lab', 'icon' => 'fa-network-wired', 'description' => 'Advanced infrastructural setup for studying cryptography, network administration, and cybersecurity protocols.'],
+            ['name' => 'Library', 'icon' => 'fa-book', 'description' => 'A comprehensive collection of academic resources, research journals, and reference materials for computer science studies.'],
         ];
     }
     
