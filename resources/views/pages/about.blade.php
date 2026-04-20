@@ -197,7 +197,7 @@
                         }
                     @endphp
                     @foreach($objectives as $i => $obj)
-                    <div class="text-center py-10 px-6 sm:px-8 bg-white rounded-[1.5rem] transition-transform duration-300 hover:-translate-y-2 flex flex-col items-center" style="border: none; box-shadow: 0 15px 40px -10px rgba(22, 101, 52, 0.15);">
+                    <div class="text-center py-10 px-6 sm:px-8 bg-white rounded-[1.5rem] transition-transform duration-300 hover:-translate-y-2 flex flex-col items-center" style="border: none; box-shadow: 0 25px 60px -12px rgba(22, 101, 52, 0.35);">
                         <div class="w-14 h-14 bg-[#edf6f0] text-green-700 rounded-2xl flex items-center justify-center text-[1.4rem] mb-6 shadow-sm">
                             <i class="fa-solid {{ $obj['icon'] ?? 'fa-bullseye' }}"></i>
                         </div>
