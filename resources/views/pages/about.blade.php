@@ -175,6 +175,15 @@
 
             <!-- Objectives -->
             <div class="mt-8 mb-16 relative">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="w-[52px] h-[52px] bg-gradient-to-br from-green-600 to-emerald-500 text-white rounded-[14px] flex items-center justify-center text-[1.4rem] shadow-[0_8px_20px_-4px_rgba(22,163,74,0.4)]">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-[1.8rem] text-slate-900 m-0 font-heading font-bold">{{ $gs('about_objectives_title', 'Our Objectives') }}</h3>
+                        <p class="mt-1 mb-0 text-[0.95rem] text-slate-500">{{ $gs('about_objectives_subtitle', 'What we strive to achieve') }}</p>
+                    </div>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
                     @php
                         $objectives = json_decode($settings['about_objectives'] ?? '[]', true) ?? [];
