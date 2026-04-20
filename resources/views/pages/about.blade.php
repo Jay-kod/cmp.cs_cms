@@ -40,7 +40,7 @@
                         <span class="text-green-600 font-bold tracking-[2px] uppercase text-[0.8rem] mb-3 block">ABOUT US</span>
                         <h2 class="m-0 mb-6 text-[2.2rem] lg:text-[2.6rem] text-slate-900 font-heading font-bold leading-[1.2]">{{ $gs('about_section_story_title', 'Why Choose Our Department?') }}</h2>
                         
-                        <div class="text-[1.05rem] leading-[1.8] space-y-4 mb-8 text-slate-600">
+                        <div class="text-[1.05rem] leading-[1.8] space-y-4 mb-8 text-slate-600 text-justify" style="text-align: justify;">
                         @php
                             $introBody = $settings['about_intro_body'] ?? '';
                             $historyText = $settings['about_history'] ?? '';
@@ -48,11 +48,11 @@
                         @if($introBody)
                             <div>{!! nl2br(e($introBody)) !!}</div>
                         @else
-                        <p>The Department of Computer Science was established as a <strong>Unit</strong> in the Department of Mathematical Sciences, Faculty of Natural and Applied Sciences, in the <strong>2003/2004</strong> academic session and was upgraded to the status of a full <strong>Department in the 2017/18 session</strong>.</p>
+                        <p style="text-align: justify;">The Department of Computer Science was established as a <strong>Unit</strong> in the Department of Mathematical Sciences, Faculty of Natural and Applied Sciences, in the <strong>2003/2004</strong> academic session and was upgraded to the status of a full <strong>Department in the 2017/18 session</strong>.</p>
 
-                        <p>With effect from the <strong>2021/2022</strong> academic session, two new programmes — <strong>Data Science & Technology</strong> and <strong>Cybersecurity & Forensic</strong> — were introduced alongside the core Computer Science programme.</p>
+                        <p style="text-align: justify;">With effect from the <strong>2021/2022</strong> academic session, two new programmes — <strong>Data Science & Technology</strong> and <strong>Cybersecurity & Forensic</strong> — were introduced alongside the core Computer Science programme.</p>
 
-                        <p>We provide focused, trend-setting multidisciplinary research excellence. Our programmes are designed to produce market-ready graduates with the appropriate information technology skills to tackle real-world problems.</p>
+                        <p style="text-align: justify;">We provide focused, trend-setting multidisciplinary research excellence. Our programmes are designed to produce market-ready graduates with the appropriate information technology skills to tackle real-world problems.</p>
                         @endif
                         @if($historyText)
                             <div class="mt-4 pt-4 border-t border-slate-200">{!! nl2br(e($historyText)) !!}</div>
