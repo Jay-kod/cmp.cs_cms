@@ -124,7 +124,7 @@
                     }
                 @endphp
                 @foreach($milestones as $ms)
-                <div class="flex flex-col items-center justify-center p-5 sm:p-8 bg-[#f0fdf4] rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-[2px] border-[#22c55e]/20 hover:border-[#22c55e]/50 hover:bg-[#dcfce7] hover:shadow-[0_8px_30px_rgba(34,197,94,0.12)] hover:-translate-y-1 transition-all duration-300">
+                <div class="flex flex-col items-center justify-center p-5 sm:p-8 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300" style="background-color: #f0fdf4; border: 2px solid #86efac; border-radius: 20px;">
                     <div class="text-[1.8rem] sm:text-[2.2rem] font-bold text-green-600 font-heading leading-none mb-2 sm:mb-3">{{ $ms['year'] ?? '' }}</div>
                     <div class="text-[0.85rem] sm:text-[0.95rem] text-slate-700 font-medium text-center leading-[1.4]">{{ $ms['title'] ?? '' }}</div>
                 </div>
