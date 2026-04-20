@@ -353,21 +353,21 @@
                 @foreach($board as $i => $bm)
                 @if($i == 0)
                 <!-- Chairman (highlighted) -->
-                <div class="bg-[#0f5f3c] rounded-[1.5rem] p-10 text-center flex flex-col items-center justify-center transition-transform duration-300 hover:-translate-y-2">
+                <div class="bg-[#0f5f3c] rounded-[1.5rem] p-10 text-center flex flex-col items-center justify-center h-full transition-transform duration-300 hover:-translate-y-2">
                     <div class="w-[70px] h-[70px] bg-[#1d7c54] rounded-full flex items-center justify-center mb-6 text-[2rem] text-[#86efac]">
                         <i class="fa-solid {{ $bm['icon'] ?? 'fa-crown' }}"></i>
                     </div>
-                    <h4 class="m-0 mb-3 text-[1.2rem] font-bold text-[#4ade80]">{{ $bm['title'] ?? '' }}</h4>
-                    <p class="m-0 text-[#a7f3d0] text-[0.95rem] leading-[1.5]">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
+                    <h4 class="m-0 mb-3 text-[1.2rem] font-bold text-[#4ade80] text-center w-full">{{ $bm['title'] ?? '' }}</h4>
+                    <p class="m-0 text-[#a7f3d0] text-[0.95rem] leading-[1.5] text-center w-full">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
                 </div>
                 @else
                 <!-- Members / Mandate -->
-                <div class="bg-[#f0fdf4] rounded-[1.5rem] p-10 text-center flex flex-col items-center justify-center transition-transform duration-300 hover:-translate-y-2">
+                <div class="bg-[#f0fdf4] rounded-[1.5rem] p-10 text-center flex flex-col items-center justify-center h-full transition-transform duration-300 hover:-translate-y-2">
                     <div class="w-[70px] h-[70px] bg-[#dcfce7] rounded-full flex items-center justify-center mb-6 text-[2rem] text-green-700">
                         <i class="fa-solid {{ $bm['icon'] ?? 'fa-users' }}"></i>
                     </div>
-                    <h4 class="m-0 mb-3 text-[1.2rem] font-extrabold text-slate-900">{{ $bm['title'] ?? '' }}</h4>
-                    <p class="m-0 text-slate-500 text-[0.95rem] leading-[1.6]">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
+                    <h4 class="m-0 mb-3 text-[1.2rem] font-extrabold text-slate-900 text-center w-full">{{ $bm['title'] ?? '' }}</h4>
+                    <p class="m-0 text-slate-500 text-[0.95rem] leading-[1.6] text-center w-full">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
                 </div>
                 @endif
                 @endforeach
