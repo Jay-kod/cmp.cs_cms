@@ -652,15 +652,15 @@
                         <div class="apc-rep-row-content">
                             <div class="apc-row">
                                 <div class="apc-field"><label class="apc-label">Category Name</label><input class="apc-input" type="text" name="about_programmes[{{ $i }}][title]" value="{{ $prog['title'] ?? '' }}" placeholder="Postgraduate"></div>
-                                <div class="apc-field"><label class="apc-label">Icon (FA)</label><input class="apc-input" type="text" name="about_programmes[{{ $i }}][icon]" value="{{ $prog['icon'] ?? 'fa-hat-wizard' }}"></div>
+                                <div class="apc-field"><label class="apc-label">Icon (FA)</label><input class="apc-input" type="text" name="about_programmes[{{ $i }}][icon]" value="{{ $prog['icon'] ?? 'fa-graduation-cap' }}"></div>
                             </div>
-                            <div class="apc-row">
-                                <div class="apc-field"><label class="apc-label">Card Background Color</label><input class="apc-input" type="text" name="about_programmes[{{ $i }}][theme_main]" value="{{ $prog['theme_main'] ?? '#0f172a' }}" placeholder="#0f172a"></div>
-                                <div class="apc-field"><label class="apc-label">Card Accent Color</label><input class="apc-input" type="text" name="about_programmes[{{ $i }}][theme_accent]" value="{{ $prog['theme_accent'] ?? '#1e293b' }}" placeholder="#1e293b"></div>
+                            <div class="apc-field" style="margin-bottom:0.75rem;">
+                                <label class="apc-label">Programme Link (URL)</label>
+                                <input class="apc-input" type="text" name="about_programmes[{{ $i }}][link]" value="{{ $prog['link'] ?? url('/academics') }}" placeholder="https://example.com/programmes/bsc">
                             </div>
                             <div class="apc-field">
-                                <label class="apc-label">Degrees / Programmes <span class="apc-hint" style="margin:0;">(one per line)</span></label>
-                                <textarea class="apc-textarea" name="about_programmes[{{ $i }}][items]" rows="5" placeholder="Ph.D. Computer Science&#10;M.Sc. Computer Science">{{ $prog['items'] ?? '' }}</textarea>
+                                <label class="apc-label">Brief Description (Optional)</label>
+                                <textarea class="apc-textarea" name="about_programmes[{{ $i }}][desc]" rows="3" placeholder="Brief details about the programme...">{{ $prog['desc'] ?? '' }}</textarea>
                             </div>
                         </div>
                     </div>
