@@ -437,11 +437,16 @@
                     $displayLabs = !empty($cmsLabs) ? $cmsLabs : $defaultLabs;
                 @endphp
                 @foreach($displayLabs as $i => $lab)
-                <div data-aos="fade-up" class="about-facilities-card flex flex-col items-start gap-4 bg-white p-7 lg:p-6 xl:p-8 rounded-[1rem] border-none transition-all duration-300 hover:-translate-y-[5px]" style="box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.15), 0 8px 20px -6px rgba(0, 0, 0, 0.2);">
-                    <div class="w-[60px] h-[60px] rounded-[14px] text-white flex items-center justify-center text-[1.7rem] shrink-0 mb-1" style="background: {{ $labColors[$i % count($labColors)] }}; box-shadow: 0 8px 20px -4px {{ $labShadows[$i % count($labShadows)] }};">
+                <div data-aos="fade-up" class="about-facilities-card relative overflow-hidden flex flex-col items-start gap-4 bg-white p-7 lg:p-6 xl:p-8 rounded-[1rem] border-none transition-all duration-300 hover:-translate-y-[5px]" style="box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.15), 0 8px 20px -6px rgba(0, 0, 0, 0.2);">
+                    
+                    <!-- Faint Background Watermark Icon -->
+                    <i class="fa-solid {{ $lab['icon'] ?? 'fa-flask' }} absolute -bottom-6 -right-6 text-[8.5rem] text-slate-300 opacity-[0.15] z-0 -rotate-12 transition-transform duration-500 hover:scale-110 hover:rotate-0"></i>
+
+                    <!-- Content -->
+                    <div class="relative z-10 w-[60px] h-[60px] rounded-[14px] text-white flex items-center justify-center text-[1.7rem] shrink-0 mb-1" style="background: {{ $labColors[$i % count($labColors)] }}; box-shadow: 0 8px 20px -4px {{ $labShadows[$i % count($labShadows)] }};">
                         <i class="fa-solid {{ $lab['icon'] ?? 'fa-flask' }}"></i>
                     </div>
-                    <div>
+                    <div class="relative z-10">
                         <strong class="text-[1.1rem] block mb-2 text-slate-800 font-heading">{{ $lab['name'] ?? '' }}</strong>
                         <p class="m-0 text-slate-500 leading-[1.6] text-[0.92rem]">{{ $lab['description'] ?? '' }}</p>
                     </div>
