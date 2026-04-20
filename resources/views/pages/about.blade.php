@@ -142,38 +142,38 @@
             </div>
             <div class="w-[60px] h-1 bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] mb-[2rem] rounded-full"></div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mb-12">
-                <!-- Vision -->
-                <div data-aos="fade-up" class="group bg-white rounded-[24px] p-8 sm:p-12 relative overflow-hidden border border-slate-200 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-12px_rgba(34,197,94,0.15)] transition-all duration-500 hover:-translate-y-2">
-                    <!-- Decorative Top Border -->
-                    <div class="absolute top-0 left-0 w-full h-[6px] bg-gradient-to-r from-green-400 to-green-600"></div>
-                    
-                    <!-- Decorative Background Icon -->
-                    <div class="absolute -bottom-8 -right-8 text-[9rem] text-green-50/80 group-hover:text-green-100/60 -rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-700 pointer-events-none"><i class="fa-solid fa-eye"></i></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-0 items-start mb-20 relative pt-10">
+                <!-- Decorative background connector -->
+                <div class="hidden lg:block absolute top-[40%] left-[20%] right-[20%] h-[2px] bg-gradient-to-r from-transparent via-green-500/50 to-transparent -z-10 blur-[1px]"></div>
+
+                <!-- Vision (Dark Creative Card) -->
+                <div data-aos="fade-right" class="group bg-slate-900 rounded-[2rem] p-10 sm:p-12 relative overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] lg:w-[105%] z-10 hover:-translate-y-2 transition-transform duration-500">
+                    <!-- Glowing blob -->
+                    <div class="absolute -top-32 -right-32 w-[300px] h-[300px] bg-green-500/20 blur-[60px] rounded-full pointer-events-none transition-all duration-700 group-hover:bg-green-500/30"></div>
+                    <!-- Hexagon Pattern Overlay -->
+                    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=\'20\' height=\'34.64101615137754\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M20 17.32050807568877V34.64101615137754L0 34.64101615137754V17.32050807568877L10 0L20 17.32050807568877Z\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'1\'/%3E%3C/svg%3E'); background-size: 30px;"></div>
                     
                     <div class="relative z-10">
-                        <div class="w-[64px] h-[64px] bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-[1.8rem] mb-6 shadow-sm group-hover:bg-green-600 group-hover:text-white transition-colors duration-500">
-                            <i class="fa-solid fa-eye"></i>
+                        <div class="inline-flex items-center justify-center w-[75px] h-[75px] rounded-full bg-slate-800/80 border border-slate-700/50 text-green-400 text-[2rem] mb-8 shadow-[0_0_25px_rgba(74,222,128,0.2)] group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                            <i class="fa-regular fa-lightbulb"></i>
                         </div>
-                        <h3 class="text-[1.6rem] text-slate-900 m-0 mb-4 font-heading font-bold">{{ $gs('about_vision_label', 'Our Vision') }}</h3>
-                        <p class="text-slate-600 text-[1.05rem] leading-[1.8] m-0">{{ $settings['about_vision'] ?? $settings['vision_statement'] ?? 'To be a leading edge in the area of competition, innovation, and society-responsive computing solutions, strategically aligning with the university\'s mission to promote technological advancement.' }}</p>
+                        <h3 class="text-[2rem] text-white m-0 mb-5 font-heading font-bold tracking-wide">{{ $gs('about_vision_label', 'Our Vision') }}</h3>
+                        <p class="text-slate-300 text-[1.1rem] leading-[1.8] m-0 font-light">{{ $settings['about_vision'] ?? $settings['vision_statement'] ?? 'To be a leading edge in the area of competition, innovation, and society-responsive computing solutions, strategically aligning with the university\'s mission to promote technological advancement.' }}</p>
                     </div>
                 </div>
 
-                <!-- Mission -->
-                <div data-aos="fade-up" data-aos-delay="100" class="group bg-white rounded-[24px] p-8 sm:p-12 relative overflow-hidden border border-slate-200 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_-12px_rgba(16,185,129,0.15)] transition-all duration-500 hover:-translate-y-2">
-                    <!-- Decorative Top Border -->
-                    <div class="absolute top-0 left-0 w-full h-[6px] bg-gradient-to-r from-emerald-400 to-emerald-600"></div>
-                    
-                    <!-- Decorative Background Icon -->
-                    <div class="absolute -bottom-8 -right-8 text-[9rem] text-emerald-50/80 group-hover:text-emerald-100/60 -rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-700 pointer-events-none"><i class="fa-solid fa-bullseye"></i></div>
+                <!-- Mission (Vibrant Gradient Card) -->
+                <div data-aos="fade-left" data-aos-delay="100" class="group bg-gradient-to-br from-green-500 to-emerald-700 rounded-[2rem] p-10 sm:p-12 relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(16,185,129,0.4)] lg:-ml-8 lg:mt-24 z-20 hover:-translate-y-2 transition-transform duration-500">
+                    <!-- Glassy circles -->
+                    <div class="absolute -bottom-20 -left-20 w-[250px] h-[250px] border-[40px] border-white/10 rounded-full pointer-events-none group-hover:scale-110 transition-transform duration-700"></div>
+                    <div class="absolute top-10 -right-10 w-[120px] h-[120px] bg-white/10 rounded-full pointer-events-none blur-[2px] group-hover:-translate-y-6 group-hover:scale-110 transition-transform duration-700"></div>
                     
                     <div class="relative z-10">
-                        <div class="w-[64px] h-[64px] bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-[1.8rem] mb-6 shadow-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-500">
-                            <i class="fa-solid fa-bullseye"></i>
+                        <div class="inline-flex items-center justify-center w-[75px] h-[75px] rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[2rem] mb-8 shadow-xl group-hover:scale-110 group-hover:-rotate-12 transition-all duration-500">
+                            <i class="fa-solid fa-rocket"></i>
                         </div>
-                        <h3 class="text-[1.6rem] text-slate-900 m-0 mb-4 font-heading font-bold">{{ $gs('about_mission_label', 'Our Mission') }}</h3>
-                        <p class="text-slate-600 text-[1.05rem] leading-[1.8] m-0">{{ $settings['about_mission'] ?? $settings['mission_statement'] ?? 'To promote technological advancement by providing a conducive environment for research, teaching, and learning that engenders the development of products that are technology-oriented, self-reliant, and relevant to society.' }}</p>
+                        <h3 class="text-[2rem] text-white m-0 mb-5 font-heading font-bold tracking-wide">{{ $gs('about_mission_label', 'Our Mission') }}</h3>
+                        <p class="text-emerald-50 text-[1.1rem] leading-[1.8] m-0 font-light">{{ $settings['about_mission'] ?? $settings['mission_statement'] ?? 'To promote technological advancement by providing a conducive environment for research, teaching, and learning that engenders the development of products that are technology-oriented, self-reliant, and relevant to society.' }}</p>
                     </div>
                 </div>
             </div>
