@@ -437,7 +437,7 @@
                     $displayLabs = !empty($cmsLabs) ? $cmsLabs : $defaultLabs;
                 @endphp
                 @foreach($displayLabs as $i => $lab)
-                <div data-aos="fade-up" class="about-facilities-card flex flex-col items-start gap-4 bg-slate-50 p-7 lg:p-6 xl:p-8 rounded-[14px] border border-slate-200 transition-all duration-300 hover:bg-slate-100 hover:-translate-y-[3px] hover:shadow-lg">
+                <div data-aos="fade-up" class="about-facilities-card flex flex-col items-start gap-4 bg-white p-7 lg:p-6 xl:p-8 rounded-[1rem] border-none transition-all duration-300 hover:-translate-y-[5px]" style="box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.15), 0 8px 20px -6px rgba(0, 0, 0, 0.2);">
                     <div class="w-[60px] h-[60px] rounded-[14px] text-white flex items-center justify-center text-[1.7rem] shrink-0 mb-1" style="background: {{ $labColors[$i % count($labColors)] }}; box-shadow: 0 8px 20px -4px {{ $labShadows[$i % count($labShadows)] }};">
                         <i class="fa-solid {{ $lab['icon'] ?? 'fa-flask' }}"></i>
                     </div>
