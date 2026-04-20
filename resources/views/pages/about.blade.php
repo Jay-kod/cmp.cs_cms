@@ -329,48 +329,45 @@
 
         <!-- ═══════════ DEPARTMENTAL BOARD ═══════════ -->
         <section data-aos="fade-up" id="departmental-board" class="mb-16">
-            <div class="section-heading flex items-center gap-4 mb-6">
-                <div class="section-heading-icon w-12 h-12 bg-gradient-to-br from-green-600/15 to-emerald-500/10 text-[color:var(--color-primary)] rounded-[14px] flex items-center justify-center text-[1.3rem]">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="w-[52px] h-[52px] bg-[#edf6f0] text-green-700 rounded-2xl flex items-center justify-center text-[1.4rem]">
                     <i class="fa-solid fa-sitemap"></i>
                 </div>
-                <h2 class="m-0 text-[2rem] text-slate-900 font-heading font-bold">{{ $gs('about_section_board_title', 'Departmental Board') }}</h2>
+                <h2 class="m-0 text-[2.2rem] text-slate-900 font-heading font-extrabold tracking-tight">{{ $gs('about_section_board_title', 'Departmental Board') }}</h2>
             </div>
-            <div class="w-[60px] h-1 bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] mb-[2rem] rounded-full"></div>
+            <div class="w-[45px] h-[3px] bg-green-500 mb-8 rounded-full"></div>
 
-            <p class="text-[1.02rem] text-slate-600 leading-[1.7] mb-8">{{ $settings['about_board_desc'] ?? 'The Departmental Board is made up of all lecturers in the Department except Graduate Assistants, with the Head of Department as the Chairman. The Board organizes and controls the teaching of all courses and the examinations held in those courses.' }}</p>
+            <p class="text-[1.05rem] text-slate-600 leading-[1.8] mb-10 max-w-4xl">{{ $settings['about_board_desc'] ?? 'The Departmental Board is made up of all lecturers in the Department except Graduate Assistants, with the Head of Department as the Chairman. The Board organizes and controls the teaching of all courses and the examinations held in those courses.' }}</p>
 
-            <div class="about-board-grid grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 @php
                     $board = json_decode($settings['about_board'] ?? '[]', true) ?? [];
                     if (empty($board)) {
                         $board = [
                             ['title' => 'Chairman', 'icon' => 'fa-crown', 'who' => 'Head of Department (HOD)'],
                             ['title' => 'Members', 'icon' => 'fa-users', 'who' => "All Academic Staff\n(Except Graduate Assistants)"],
-                            ['title' => 'Mandate', 'icon' => 'fa-clipboard-check', 'who' => 'Course organisation, teaching oversight & examination control'],
+                            ['title' => 'Mandate', 'icon' => 'fa-clipboard-check', 'who' => 'Course organisation, teaching oversight &\nexamination control'],
                         ];
                     }
                 @endphp
                 @foreach($board as $i => $bm)
                 @if($i == 0)
                 <!-- Chairman (highlighted) -->
-                <div class="bg-gradient-to-br from-emerald-900 to-emerald-800 rounded-[14px] p-8 text-white text-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.2),transparent_70%)] pointer-events-none"></div>
-                    <div class="relative z-[2]">
-                        <div class="w-16 h-16 bg-white/10 border-2 border-white/20 rounded-full flex items-center justify-center mx-auto mb-5 text-[1.8rem] text-emerald-200">
-                            <i class="fa-solid {{ $bm['icon'] ?? 'fa-crown' }}"></i>
-                        </div>
-                        <h4 class="m-0 mb-1 text-[1.15rem] font-bold">{{ $bm['title'] ?? '' }}</h4>
-                        <p class="m-0 text-emerald-300 text-[0.9rem]">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
+                <div class="bg-[#0f5f3c] rounded-[1.5rem] p-10 text-center flex flex-col items-center justify-center transition-transform duration-300 hover:-translate-y-2">
+                    <div class="w-[70px] h-[70px] bg-[#1d7c54] rounded-full flex items-center justify-center mb-6 text-[2rem] text-[#86efac]">
+                        <i class="fa-solid {{ $bm['icon'] ?? 'fa-crown' }}"></i>
                     </div>
+                    <h4 class="m-0 mb-3 text-[1.2rem] font-bold text-[#4ade80]">{{ $bm['title'] ?? '' }}</h4>
+                    <p class="m-0 text-[#a7f3d0] text-[0.95rem] leading-[1.5]">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
                 </div>
                 @else
                 <!-- Members / Mandate -->
-                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-[14px] p-8 text-center border border-green-200">
-                    <div class="w-16 h-16 bg-green-600/10 rounded-full flex items-center justify-center mx-auto mb-5 text-[1.8rem] text-[color:var(--color-primary)]">
+                <div class="bg-[#f0fdf4] rounded-[1.5rem] p-10 text-center flex flex-col items-center justify-center transition-transform duration-300 hover:-translate-y-2">
+                    <div class="w-[70px] h-[70px] bg-[#dcfce7] rounded-full flex items-center justify-center mb-6 text-[2rem] text-green-700">
                         <i class="fa-solid {{ $bm['icon'] ?? 'fa-users' }}"></i>
                     </div>
-                    <h4 class="m-0 mb-1 text-[1.15rem] text-slate-800 font-bold">{{ $bm['title'] ?? '' }}</h4>
-                    <p class="m-0 text-slate-500 text-[0.9rem]">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
+                    <h4 class="m-0 mb-3 text-[1.2rem] font-extrabold text-slate-900">{{ $bm['title'] ?? '' }}</h4>
+                    <p class="m-0 text-slate-500 text-[0.95rem] leading-[1.6]">{!! nl2br(e($bm['who'] ?? '')) !!}</p>
                 </div>
                 @endif
                 @endforeach
