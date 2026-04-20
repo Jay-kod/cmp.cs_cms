@@ -4,7 +4,7 @@ $app = require_once 'bootstrap/app.php';
 $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
 $kernel->bootstrap();
 
-use Illuminate\Support\Facades\DB;
+use App\Models\DepartmentSetting;
 
 $dataToInsertOrUpdate = [
     // Programmes
@@ -39,11 +39,17 @@ $dataToInsertOrUpdate = [
 ];
 
 foreach ($dataToInsertOrUpdate as $key => $value) {
-    if (DB::table('settings')->where('key', $key)->exists()) {
-        DB::table('settings')->where('key', $key)->update(['value' => $value]);
+    $ds = DepartmentSetting::where('key', $key)->first();
+    if ($ds) {
+        $ds->value = $value;
+        $ds->save();
     } else {
-        DB::table('settings')->insert(['key' => $key, 'value' => $value]);
+        $newDs = new DepartmentSetting();
+        $newDs->key = $key;
+        $newDs->value = $value;
+        $newDs->group = 'page_about';
+        $newDs->save();
     }
 }
 
-echo "Successfully injected all the latest frontend configurations directly into the Admin Database!\n";
+echo "Successfully synchronized the DB settings!!!\n";
