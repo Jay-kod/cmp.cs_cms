@@ -423,7 +423,7 @@
             <div class="w-[60px] h-1 bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] mb-[1rem] rounded-full"></div>
             <p class="text-[1.02rem] text-slate-500 leading-[1.7] mb-8">{{ $settings['about_facilities_desc'] ?? 'Our department boasts state-of-the-art laboratories to support practical learning and research across various IT domains.' }}</p>
 
-            <div class="about-facilities-grid grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-5">
+            <div class="about-facilities-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 @php
                     $cmsLabs = json_decode($settings['about_facilities'] ?? '[]', true) ?? [];
                     $defaultLabs = [
