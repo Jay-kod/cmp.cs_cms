@@ -656,7 +656,7 @@
                             </div>
                             <div class="apc-field" style="margin-bottom:0.75rem;">
                                 <label class="apc-label">Programme Link (URL)</label>
-                                <input class="apc-input" type="text" name="about_programmes[{{ $i }}][link]" value="{{ $prog['link'] ?? url('/academics') }}" placeholder="https://example.com/programmes/bsc">
+                                <input class="apc-input" type="text" name="about_programmes[{{ $i }}][link]" value="{{ $prog['link'] ?? '' }}" placeholder="{{ url('/academics') }}#{{ \Illuminate\Support\Str::slug($prog['title'] ?? 'postgraduate') }}">
                             </div>
                             <div class="apc-field">
                                 <label class="apc-label">Brief Description (Optional)</label>
