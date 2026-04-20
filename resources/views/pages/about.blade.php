@@ -292,36 +292,18 @@
                     }
                 @endphp
                 @foreach($programmes as $prog)
-                @php 
-                  $isDark = in_array(strtolower($prog['theme_main'] ?? ''), ['#0f172a', '#1e293b', 'black', 'rgb(15, 23, 42)', 'rgba(15,23,42,1)']);
-                  $textColor = $isDark ? '#ffffff' : '#1e293b';
-                  $iconBg = $isDark ? 'rgba(16, 185, 129, 0.2)' : 'rgba(22, 163, 74, 0.15)';
-                  $iconColor = $isDark ? '#6ee7b7' : 'var(--color-primary)';
-                  $listColor = $isDark ? '#cbd5e1' : '#334155';
-                  $bulletColor = $isDark ? '#10b981' : 'var(--color-primary)';
-                  $border = $isDark ? 'none' : '1px solid #bbf7d0';
-                  $circleBg = $isDark ? 'rgba(255,255,255,0.04)' : 'rgba(22,163,74,0.06)';
-                @endphp
-                <div class="rounded-[14px] p-8 relative overflow-hidden h-full" style="background: linear-gradient(135deg, {{ $prog['theme_main'] ?? '#0f172a' }} 0%, {{ $prog['theme_accent'] ?? '#1e293b' }} 100%); color: {{ $textColor }}; border: {{ $border }};">
-                    <div class="absolute -top-8 -right-8 w-[100px] h-[100px] rounded-full" style="background: {{ $circleBg }};"></div>
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: {{ $iconBg }}; color: {{ $iconColor }};">
-                            <i class="fa-solid {{ $prog['icon'] ?? 'fa-graduation-cap' }}"></i>
+                <div class="rounded-[14px] p-8 relative overflow-hidden h-[240px] flex flex-col justify-between" style="background: #1a2332; border: 1px solid rgba(255, 255, 255, 0.03); box-shadow: 0 10px 25px rgba(0,0,0,0.15);">
+                    <div class="absolute -top-8 -right-8 w-[100px] h-[100px] rounded-full" style="background: rgba(22, 163, 74, 0.05);"></div>
+                    <div class="flex items-center gap-4 relative z-10 pt-2">
+                        <div class="w-11 h-11 rounded-lg flex items-center justify-center shrink-0" style="background: #12332a; color: #16a34a; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                            <i class="fa-solid {{ $prog['icon'] ?? 'fa-graduation-cap' }} text-[1.1rem]"></i>
                         </div>
-                        <h4 class="m-0 text-[1.1rem] font-bold" style="color: {{ $iconColor }};">{{ $prog['title'] ?? '' }}</h4>
+                        <h4 class="m-0 text-[1.15rem] font-bold" style="color: #16a34a;">{{ $prog['title'] ?? '' }}</h4>
                     </div>
-                    <ul class="list-none p-0 m-0 mb-10 flex flex-col gap-2.5">
-                        @foreach(explode("\n", $prog['items'] ?? '') as $item)
-                        @if(trim($item))
-                        <li class="flex items-start gap-2 text-[0.9rem] leading-[1.4]" style="color: {{ $listColor }};"><i class="fa-solid fa-chevron-right text-[0.6rem] mt-[5px]" style="color: {{ $bulletColor }};"></i> <span>{!! trim($item) !!}</span></li>
-                        @endif
-                        @endforeach
-                    </ul>
-                    @if(!$isDark)
-                    <div class="absolute bottom-8 left-8">
-                        <a href="{{ url('/academics') }}" class="group/link inline-flex items-center gap-2 text-[0.88rem] text-[color:var(--color-primary)] font-semibold no-underline hover:gap-3 transition-all duration-200">View full programme details <i class="fa-solid fa-arrow-right text-[0.75rem] transition-transform duration-200"></i></a>
+                    
+                    <div class="relative z-10 bottom-0">
+                        <a href="{{ url('/academics') }}#{{ \Illuminate\Support\Str::slug($prog['title'] ?? 'prog', '-') }}" class="group/link inline-flex items-center gap-2 text-[0.9rem] font-semibold no-underline hover:gap-3 transition-all duration-200" style="color: #16a34a;">View full programme details <i class="fa-solid fa-arrow-right text-[0.75rem] transition-transform duration-200"></i></a>
                     </div>
-                    @endif
                 </div>
                 @endforeach
             </div>
