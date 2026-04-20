@@ -174,19 +174,8 @@
             </div>
 
             <!-- Objectives -->
-            <div class="about-objectives-wrap mt-6 bg-white rounded-[20px] p-12 border border-green-600/12 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] relative overflow-hidden max-md:p-8">
-                <div class="absolute -top-10 -right-10 w-[200px] h-[200px] bg-[radial-gradient(circle,rgba(22,163,74,0.05),transparent_70%)] pointer-events-none"></div>
-                <div class="absolute -bottom-[30px] -left-[30px] w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(16,185,129,0.04),transparent_70%)] pointer-events-none"></div>
-                <div class="flex items-center gap-4 mb-8 relative">
-                    <div class="w-[52px] h-[52px] bg-gradient-to-br from-green-600 to-green-700 text-white rounded-[14px] flex items-center justify-center text-[1.4rem] shadow-[0_8px_20px_-4px_rgba(22,163,74,0.4)]">
-                        <i class="fa-solid fa-list-check"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-[1.4rem] text-slate-800 m-0 font-heading font-bold">{{ $gs('about_objectives_title', 'Our Objectives') }}</h3>
-                        <p class="mt-1 mb-0 text-[0.85rem] text-slate-500">{{ $gs('about_objectives_subtitle', 'What we strive to achieve') }}</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 relative">
+            <div class="mt-8 mb-16 relative">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
                     @php
                         $objectives = json_decode($settings['about_objectives'] ?? '[]', true) ?? [];
                         if (empty($objectives)) {
@@ -199,12 +188,12 @@
                         }
                     @endphp
                     @foreach($objectives as $i => $obj)
-                    <div class="text-center py-5 px-4 bg-stone-50 rounded-xl border border-green-600/[0.05] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-6px_rgba(22,163,74,0.12)] hover:border-green-600/20 cursor-default">
-                        <div class="w-10 h-10 bg-green-600/[0.06] text-[color:var(--color-primary)] rounded-lg flex items-center justify-center text-[1rem] mx-auto mb-3 border border-green-600/10">
+                    <div class="text-center py-10 px-6 sm:px-8 bg-[#f9fafb] rounded-[1.5rem] transition-transform duration-300 hover:-translate-y-2 flex flex-col items-center">
+                        <div class="w-14 h-14 bg-[#edf6f0] text-green-700 rounded-2xl flex items-center justify-center text-[1.4rem] mb-6 shadow-sm">
                             <i class="fa-solid {{ $obj['icon'] ?? 'fa-bullseye' }}"></i>
                         </div>
-                        <h4 class="m-0 mb-1.5 text-[0.85rem] font-bold text-slate-800 font-heading">{{ $obj['title'] ?? '' }}</h4>
-                        <p class="m-0 text-slate-600 text-[0.82rem] leading-[1.6]">{{ $obj['text'] ?? '' }}</p>
+                        <h4 class="m-0 mb-4 text-[1.05rem] font-extrabold text-[#1e293b] font-heading tracking-tight">{{ $obj['title'] ?? '' }}</h4>
+                        <p class="m-0 text-[#64748b] text-[0.95rem] leading-[1.8]">{{ $obj['text'] ?? '' }}</p>
                     </div>
                     @endforeach
                 </div>
