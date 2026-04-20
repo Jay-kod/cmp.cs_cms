@@ -440,15 +440,12 @@
                 <div data-aos="fade-up" class="about-facilities-card flex flex-col items-start gap-4 bg-white p-7 lg:p-6 xl:p-8 border-none transition-all duration-300 hover:-translate-y-[5px]" style="box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.15), 0 8px 20px -6px rgba(0, 0, 0, 0.2); border-radius: 1rem; position: relative; overflow: hidden; z-index: 1;">
                     
                     <!-- Faint Background Watermark Icon -->
-                    <i class="fa-solid {{ $lab['icon'] ?? 'fa-flask' }} water-icon" style="position: absolute; bottom: -15px; right: -15px; font-size: 151px; color: #94a3b8; opacity: 0.15; z-index: -1; transform: rotate(-15deg); transition: transform 0.4s ease;"></i>
+                    <i class="fa-solid {{ $lab['icon'] ?? 'fa-flask' }} water-icon" style="position: absolute; bottom: -15px; right: -15px; font-size: 151px; color: #94a3b8; opacity: 0.35; z-index: -1; transform: rotate(-15deg); transition: transform 0.4s ease;"></i>
 
                     <!-- Content -->
-                    <div class="w-[60px] h-[60px] rounded-[14px] text-white flex items-center justify-center text-[1.7rem] shrink-0 mb-1" style="position: relative; z-index: 10; background: {{ $labColors[$i % count($labColors)] }}; box-shadow: 0 8px 20px -4px {{ $labShadows[$i % count($labShadows)] }};">
-                        <i class="fa-solid {{ $lab['icon'] ?? 'fa-flask' }}"></i>
-                    </div>
                     <div style="position: relative; z-index: 10;">
-                        <strong class="text-[1.1rem] block mb-2 text-slate-800 font-heading">{{ $lab['name'] ?? '' }}</strong>
-                        <p class="m-0 text-slate-500 leading-[1.6] text-[0.92rem]">{{ $lab['description'] ?? '' }}</p>
+                        <strong class="text-[1.3rem] block mb-2 text-slate-800 font-heading">{{ $lab['name'] ?? '' }}</strong>
+                        <p class="m-0 text-slate-600 leading-[1.6] text-[0.95rem] font-medium">{{ $lab['description'] ?? '' }}</p>
                     </div>
                 </div>
                 @endforeach
