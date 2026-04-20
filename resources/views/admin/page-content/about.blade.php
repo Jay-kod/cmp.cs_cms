@@ -59,6 +59,13 @@
                 'theme_main' => '#f0fdf4',
                 'theme_accent' => '#dcfce7',
                 'items' => "B.Sc. Computer Science\nB.Sc. Network Technology & Cybersecurity\nB.Sc. Software Engineering"
+            ],
+            [
+                'title' => 'Part-Time',
+                'icon' => 'fa-clock',
+                'theme_main' => '#f8fafc',
+                'theme_accent' => '#e2e8f0',
+                'items' => "B.Sc. Computer Science (Part-Time)\nProfessional Diplomas\nShort Certificate Courses"
             ]
         ];
     }
