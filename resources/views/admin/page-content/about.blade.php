@@ -976,14 +976,11 @@ function addProg() {
     progIdx++;
     r.insertAdjacentHTML('beforeend', rowHtml(progIdx, `
         <div class="apc-row">
-            <div class="apc-field"><label class="apc-label">Category Name</label><input class="apc-input" type="text" name="about_programmes[${progIdx}][title]" placeholder="Postgraduate"></div>
-            <div class="apc-field"><label class="apc-label">Icon (FA)</label><input class="apc-input" type="text" name="about_programmes[${progIdx}][icon]" value="fa-hat-wizard"></div>
+            <div class="apc-field"><label class="apc-label">Category Name</label><input class="apc-input" type="text" name="about_programmes[${progIdx}][title]" placeholder="B.Sc. Computer Science"></div>
+            <div class="apc-field"><label class="apc-label">Icon (FA)</label><input class="apc-input" type="text" name="about_programmes[${progIdx}][icon]" value="fa-graduation-cap"></div>
         </div>
-        <div class="apc-row">
-            <div class="apc-field"><label class="apc-label">Background Color</label><input class="apc-input" type="text" name="about_programmes[${progIdx}][theme_main]" value="#0f172a" placeholder="#0f172a"></div>
-            <div class="apc-field"><label class="apc-label">Accent Color</label><input class="apc-input" type="text" name="about_programmes[${progIdx}][theme_accent]" value="#1e293b" placeholder="#1e293b"></div>
-        </div>
-        <div class="apc-field"><label class="apc-label">Degrees (one per line)</label><textarea class="apc-textarea" name="about_programmes[${progIdx}][items]" rows="5"></textarea></div>`));
+        <div class="apc-field" style="margin-bottom:0.75rem;"><label class="apc-label">Programme Link (URL)</label><input class="apc-input" type="text" name="about_programmes[${progIdx}][link]" value="{{ url('/academics') }}" placeholder="https://example.com/academics/bsc"></div>
+        <div class="apc-field"><label class="apc-label">Brief Description (Optional)</label><textarea class="apc-textarea" name="about_programmes[${progIdx}][desc]" rows="3"></textarea></div>`));
 }
 
 function addBoard() {
