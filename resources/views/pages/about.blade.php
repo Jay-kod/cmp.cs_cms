@@ -142,41 +142,27 @@
             </div>
             <div class="w-[60px] h-1 bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] mb-[2rem] rounded-full"></div>
 
-            <div class="flex flex-col lg:flex-row mb-20 shadow-[-10px_20px_40px_rgba(0,0,0,0.05)] rounded-[0] overflow-hidden bg-[#e5e5e5]">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-20">
                 
                 <!-- Vision -->
-                <div data-aos="fade-right" class="flex-1 p-10 sm:p-14 lg:p-16 relative flex items-center justify-between border-b lg:border-b-0 lg:border-r border-slate-300">
-                    <div class="relative z-10 w-[60%]">
+                <div data-aos="fade-right" class="bg-[#e5e5e5] p-10 sm:p-14 lg:p-16 relative rounded-[2rem] shadow-lg border border-slate-200 overflow-hidden flex flex-col justify-start">
+                    <div class="relative z-10 w-[70%] md:w-[65%]">
                         <h3 class="text-[2.5rem] lg:text-[3rem] text-slate-900 m-0 mb-6 font-heading font-extrabold tracking-tight">{{ $gs('about_vision_label', 'Our Vision') }}</h3>
                         <p class="text-slate-700 text-[1.1rem] leading-[1.8] m-0">{{ $settings['about_vision'] ?? $settings['vision_statement'] ?? 'To be a globally recognized institution pioneering transformative technological solutions of innovation and excellence.' }}</p>
                     </div>
-                    <div class="absolute right-4 bottom-0 h-[90%] opacity-20 pointer-events-none drop-shadow-xl" style="filter: drop-shadow(0 20px 10px rgba(0,0,0,0.3));">
+                    <div class="absolute right-[-20px] sm:right-4 bottom-0 h-[90%] opacity-20 pointer-events-none drop-shadow-xl" style="filter: drop-shadow(0 20px 10px rgba(0,0,0,0.3));">
                         <i class="fa-solid fa-globe text-[12rem] text-slate-400"></i>
-                    </div>
-                    
-                    <!-- Bottom line -->
-                    <div class="absolute bottom-6 left-10 sm:left-14 lg:left-16 right-10 flex items-center border-b-[2px] border-slate-800 pb-2">
-                        <span class="text-slate-800 text-[0.85rem] font-bold tracking-widest">{{ request()->getHost() }}</span>
                     </div>
                 </div>
 
                 <!-- Mission -->
-                <div data-aos="fade-left" class="flex-1 p-10 sm:p-14 lg:p-16 relative flex items-center justify-between">
-                    <div class="relative z-10 w-[60%]">
+                <div data-aos="fade-left" class="bg-[#e5e5e5] p-10 sm:p-14 lg:p-16 relative rounded-[2rem] shadow-lg border border-slate-200 overflow-hidden flex flex-col justify-start">
+                    <div class="relative z-10 w-[70%] md:w-[65%]">
                         <h3 class="text-[2.5rem] lg:text-[3rem] text-slate-900 m-0 mb-6 font-heading font-extrabold tracking-tight">{{ $gs('about_mission_label', 'Our Mission') }}</h3>
                         <p class="text-slate-700 text-[1.1rem] leading-[1.8] m-0">{{ $settings['about_mission'] ?? $settings['mission_statement'] ?? 'To deliver innovative technological solutions tailored to meet the unique needs of our students while upholding the highest standards of integrity and excellence.' }}</p>
                     </div>
-                    <div class="absolute right-4 bottom-4 h-[80%] opacity-90 pointer-events-none drop-shadow-2xl" style="filter: drop-shadow(-10px 20px 15px rgba(0,0,0,0.4));">
+                    <div class="absolute right-[-20px] sm:right-4 bottom-[-10px] h-[80%] opacity-90 pointer-events-none drop-shadow-2xl" style="filter: drop-shadow(-10px 20px 15px rgba(0,0,0,0.4));">
                         <i class="fa-solid fa-gavel text-[10rem] text-slate-800"></i>
-                    </div>
-
-                    <!-- Bottom line -->
-                    <div class="absolute bottom-6 left-10 sm:left-14 lg:left-16 right-10 flex items-center justify-between border-b-[2px] border-slate-800 pb-2">
-                        <span class="text-slate-800 text-[0.85rem] font-bold tracking-widest">{{ request()->getHost() }}</span>
-                        <div class="flex gap-3 text-slate-800 text-[1rem]">
-                            <i class="fa-brands fa-facebook-f"></i>
-                            <i class="fa-brands fa-instagram"></i>
-                        </div>
                     </div>
                 </div>
 
