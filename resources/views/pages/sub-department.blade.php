@@ -359,9 +359,11 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                     <div class="absolute bottom-0 left-0 w-full p-5 pb-4 z-20 flex flex-col text-left pointer-events-none">
                         
                         <!-- Name and Badge -->
-                        <a href="{{ route('people.show', $member->slug) }}" class="text-[1rem] font-semibold text-white mb-1 flex items-center gap-1.5 leading-tight no-underline hover:text-white pointer-events-auto w-max">
-                            {{ $displayName }}
-                            <span class="relative flex items-center justify-center ml-1">
+                        <a href="{{ route('people.show', $member->slug) }}"
+                           class="text-[1rem] font-semibold text-white mb-1 flex items-center gap-1.5 leading-tight no-underline hover:text-white pointer-events-auto max-w-full whitespace-nowrap overflow-hidden text-ellipsis"
+                           style="display:block;">
+                            <span class="inline-block max-w-[85%] align-bottom whitespace-nowrap overflow-hidden text-ellipsis">{{ $displayName }}</span>
+                            <span class="relative flex items-center justify-center ml-1 shrink-0">
                                 <i class="fa-solid fa-certificate text-emerald-400 text-[1.1rem]"></i>
                                 <i class="fa-solid fa-check text-slate-900 text-[0.6rem] absolute"></i>
                             </span>
