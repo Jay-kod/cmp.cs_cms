@@ -368,7 +368,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                         </a>
                         
                         <!-- Role & Description -->
-                        <p class="text-white/80 text-[0.85rem] leading-[1.4] mb-3 font-normal line-clamp-2">
+                        <p class="text-white/70 text-[0.78rem] leading-[1.3] mb-3 font-light line-clamp-2">
                             {{ $member->role }} &bull; {{ $member->specialisation ?: 'Focused on creating intuitive learning experiences.' }}
                         </p>
                         
