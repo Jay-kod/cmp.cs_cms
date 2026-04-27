@@ -65,7 +65,12 @@
                 
                 <div class="form-group">
                     <label class="form-label">Mode of Study <span style="color: red;">*</span></label>
-                    <input type="text" name="mode_of_study" value="{{ old('mode_of_study', $programme->mode_of_study) }}" class="form-control" placeholder="e.g. Full Time" required>
+                    <select name="mode_of_study" class="form-control" required>
+                        <option value="">Select Mode of Study</option>
+                        <option value="Full Time" {{ old('mode_of_study', $programme->mode_of_study) == 'Full Time' ? 'selected' : '' }}>Full Time</option>
+                        <option value="Part Time" {{ old('mode_of_study', $programme->mode_of_study) == 'Part Time' ? 'selected' : '' }}>Part Time</option>
+                        <option value="Online / Distance" {{ old('mode_of_study', $programme->mode_of_study) == 'Online / Distance' ? 'selected' : '' }}>Online / Distance</option>
+                    </select>
                 </div>
                 
                 <div class="form-group" style="padding: 1rem; background: #f9fafb; border-radius: 4px; border: 1px solid #e5e7eb;">
@@ -97,12 +102,60 @@
             <!-- Full Width Details -->
             <div style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
                 <div class="form-group">
-                    <label class="form-label">UTME Requirements/O-Level</label>
+                    <label class="form-label">UTME Requirements / Additional Notes (Rich Text)</label>
                     <textarea name="requirements_utme" class="form-control" rows="3">{{ old('requirements_utme', $programme->requirements_utme) }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Direct Entry Requirements</label>
+                    <label class="form-label">Direct Entry Requirements (Rich Text)</label>
                     <textarea name="requirements_de" class="form-control" rows="3">{{ old('requirements_de', $programme->requirements_de) }}</textarea>
+                </div>
+            </div>
+
+            <!-- Detailed Admission Requirements -->
+            <div style="grid-column: 1 / -1; margin-top: 1rem;">
+                <h3 style="padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb; margin-bottom: 1rem; color: #111827;">Detailed Admission Requirements</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    
+                    <!-- Undergraduate Fields -->
+                    <div style="background: #f9fafb; padding: 1.5rem; border-radius: 8px; border: 1px solid #e5e7eb;">
+                        <h4 style="margin-top: 0; margin-bottom: 1rem; color: #059669; font-size: 1.1rem;">Undergraduate Requirements (BSc/UG)</h4>
+                        
+                        <div class="form-group">
+                            <label class="form-label">O' Level Requirement text</label>
+                            <input type="text" name="req_olevel" class="form-control" value="{{ old('req_olevel', $programme->req_olevel) }}" placeholder="e.g. WAEC/NECO with 5 credits including Maths & English.">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">A' Level Requirement text</label>
+                            <input type="text" name="req_alevel" class="form-control" value="{{ old('req_alevel', $programme->req_alevel) }}" placeholder="e.g. Advanced Level or JUPEB with required passes.">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">UTME Subjects</label>
+                            <input type="text" name="req_utme_subjects" class="form-control" value="{{ old('req_utme_subjects', $programme->req_utme_subjects) }}" placeholder="e.g. Mathematics, English, Physics & one science subject">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">UTME Score / JAMB Cutoff text</label>
+                            <input type="text" name="req_utme_score" class="form-control" value="{{ old('req_utme_score', $programme->req_utme_score) }}" placeholder="e.g. Minimum of 200 in JAMB">
+                        </div>
+                    </div>
+
+                    <!-- Postgraduate Fields -->
+                    <div style="background: #f9fafb; padding: 1.5rem; border-radius: 8px; border: 1px solid #e5e7eb;">
+                        <h4 style="margin-top: 0; margin-bottom: 1rem; color: #2563eb; font-size: 1.1rem;">Postgraduate Requirements (PGD/MSc/PhD)</h4>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Core Qualification Requirement text</label>
+                            <textarea name="req_pg_core" class="form-control" rows="3" placeholder="e.g. A Bachelor's Degree in Computer Science or a closely related field is strictly required to be considered.">{{ old('req_pg_core', $programme->req_pg_core) }}</textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Academic Standing / Transcripts text</label>
+                            <textarea name="req_pg_academic" class="form-control" rows="3" placeholder="e.g. Applicants must meet the minimum prescribed CGPA standard set by the postgraduate school.">{{ old('req_pg_academic', $programme->req_pg_academic) }}</textarea>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

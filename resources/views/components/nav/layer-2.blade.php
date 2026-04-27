@@ -50,7 +50,7 @@
                         @if($isAcademicsActive)<div class="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-primary"></div>@endif
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[320px] z-50 border border-gray-100" role="menu">
-                        <a href="{{ route('page.show', 'programmes') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('pages/programmes') || request()->is('programmes*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Programmes (BSc, MSc, PhD)</a>
+                        <a href="{{ route('page.show', 'programmes') }}" class="nav-dropdown-item block py-2.5 px-4 text-[0.95rem] no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('pages/programmes') || request()->is('programmes*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Academic Programmes</a>
                         @foreach($navSubDepts as $subDept)
                             <a href="{{ route('sub-department.show', $subDept->slug) }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('sub-department/'.$subDept->slug.'*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">{{ $subDept->name }}</a>
                         @endforeach
@@ -136,7 +136,7 @@
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="{{ route('page.show', 'programmes') }}" class="mobile-link mobile-sub-link {{ request()->is('pages/programmes') || request()->is('programmes*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Programmes (BSc, MSc, PhD)</a>
+                    <a href="{{ route('page.show', 'programmes') }}" class="mobile-link mobile-sub-link {{ request()->is('pages/programmes') || request()->is('programmes*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Academic Programmes</a>
                     @foreach($navSubDepts as $subDept)
                         <a href="{{ route('sub-department.show', $subDept->slug) }}" class="mobile-link mobile-sub-link {{ request()->is('sub-department/'.$subDept->slug.'*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">{{ $subDept->name }}</a>
                     @endforeach

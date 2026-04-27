@@ -3,7 +3,7 @@
 @section('header', 'Final Year Projects Setup')
 
 @section('content')
-<div class="card bg-white p-6 shadow-sm rounded-lg border border-gray-200" style="max-width: 900px;">
+<div class="card bg-white p-6 shadow-sm rounded-lg border border-gray-200 mx-auto" style="max-width: 900px;">
 @php
     $s = fn(string $key, string $default = '') => $settings[$key] ?? $default;
     

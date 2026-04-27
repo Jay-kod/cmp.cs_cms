@@ -26,7 +26,7 @@
             @endphp
             @foreach($programmes as $pIdx => $prog)
             @php $pc = $progColors[$pIdx % count($progColors)]; @endphp
-            <a href="{{ url('/academics#' . $prog->slug) }}" class="group bg-white rounded-[20px] text-inherit relative overflow-hidden transition-all duration-300 flex flex-col shadow-[0_4px_15px_-3px_rgba(0,0,0,0.05)] border border-slate-100 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)]">
+            <a href="{{ route('programmes.show', $prog->slug) }}" class="group bg-white rounded-[20px] text-inherit relative overflow-hidden transition-all duration-300 flex flex-col shadow-[0_4px_15px_-3px_rgba(0,0,0,0.05)] border border-slate-100 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)]">
                 {{-- Gradient Header Strip --}}
                 <div class="h-[6px] bg-gradient-to-r {{ $pc['from'] }} {{ $pc['to'] }}"></div>
 

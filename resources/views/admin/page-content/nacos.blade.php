@@ -303,18 +303,32 @@
                     <label class="apc-label">Section Title</label>
                     <input class="apc-input" type="text" name="nacos_page_about_title" value="{{ $s('nacos_page_about_title', 'About NACOS') }}">
                 </div>
-                <div class="apc-field">
+                <div class="apc-field" style="margin-bottom: 0.75rem;">
                     <label class="apc-label">First Paragraph</label>
                     <textarea class="apc-textarea" name="nacos_page_about_text" rows="3">{{ $s('nacos_page_about_text', 'The National Association of Computing Students (NACOS) is the umbrella body for all students studying computing-related disciplines. Our NUK Chapter is dedicated to fostering academic excellence, professional development, and strong social bonds among members.') }}</textarea>
                 </div>
-                <div class="apc-field">
+                <div class="apc-field" style="margin-bottom: 0.75rem;">
                     <label class="apc-label">Second Paragraph</label>
                     <textarea class="apc-textarea" name="nacos_page_about_text2" rows="3">{{ $s('nacos_page_about_text2', 'Through workshops, hackathons, seminars, and community outreach, NACOS prepares students for the ever-evolving tech industry while building a supportive network that extends well beyond graduation.') }}</textarea>
                 </div>
+                <div class="apc-field" style="margin-bottom: 0.75rem;">
+                    <label class="apc-label">Third Paragraph (Optional)</label>
+                    <textarea class="apc-textarea" name="nacos_page_about_text3" rows="3">{{ $s('nacos_page_about_text3', 'As a community driven by innovation, we continuously strive to bridge the gap between classroom theory and real-world application. By collaborating with industry experts, faculty, and accomplished alumni, NACOS provides unique mentorship opportunities, ensuring that every student has the resources, guidance, and confidence required to become future tech leaders and effectively shape the digital landscape of tomorrow.') }}</textarea>
+                </div>
 
                 <hr style="border:0;border-top:1px dashed #cbd5e1;margin:1.5rem 0;">
-                <p style="font-size:0.85rem;font-weight:700;color:#475569;margin-bottom:1rem;">Page Stats (Stat 2-4)</p>
+                <p style="font-size:0.85rem;font-weight:700;color:#475569;margin-bottom:1rem;">Page Stats (Stat 1-4)</p>
 
+                <div class="apc-row">
+                    <div class="apc-field">
+                        <label class="apc-label">Stat 1: Value</label>
+                        <input class="apc-input" type="text" value="[Auto-Calculated from DB]" disabled style="background:#e2e8f0;cursor:not-allowed;">
+                    </div>
+                    <div class="apc-field">
+                        <label class="apc-label">Stat 1: Label</label>
+                        <input class="apc-input" type="text" name="nacos_page_stat_leaders_label" value="{{ $s('nacos_page_stat_leaders_label', 'Past Leaders') }}">
+                    </div>
+                </div>
                 <div class="apc-row">
                     <div class="apc-field">
                         <label class="apc-label">Stat 2: Value</label>

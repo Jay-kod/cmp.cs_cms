@@ -42,7 +42,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
     <!-- Overlapping the hero slightly -->
     <div class="container -mt-14 relative z-20">
         <div class="bg-white rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border border-black/5 overflow-hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-0">
+              <div class="grid grid-cols-1 gap-0">
                 
                 <!-- Main Content -->
                 <div data-aos="fade-up" class="p-12 lg:p-16">
@@ -88,61 +88,80 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                     </div>
                     @endif
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <!-- Quick Facts Sidebar -->
-                <div data-aos="fade-left" data-aos-delay="100" class="bg-slate-50 border-l border-slate-200 p-12 lg:p-16">
-                    <div class="flex items-center gap-3 mb-8">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-[0_4px_6px_rgba(0,0,0,0.05)] flex items-center justify-center text-[1.4rem] text-[#1E7A3E]">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <h3 class="text-[1.5rem] font-extrabold text-slate-900 m-0">Quick Facts</h3>
-                    </div>
-                    
-                    <ul class="list-none p-0 m-0 flex flex-col gap-5">
-                        <li class="flex justify-between items-center bg-white py-4 px-5 rounded-xl border border-slate-200 shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
-                            <div class="flex items-center gap-3 text-slate-500 font-semibold text-[0.95rem]">
-                                <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fa-solid fa-calendar-alt"></i></div> 
-                                Founded
-                            </div>
-                            <span class="font-bold text-slate-900 text-[1.05rem]">{{ $subDept->founded_year ?? 'N/A' }}</span>
-                        </li>
-                        <li class="flex justify-between items-center bg-white py-4 px-5 rounded-xl border border-slate-200 shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
-                            <div class="flex items-center gap-3 text-slate-500 font-semibold text-[0.95rem]">
-                                <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fa-solid fa-building"></i></div> 
-                                Faculty
-                            </div>
-                            <span class="font-bold text-slate-900 text-[0.95rem] text-right">Natural &amp; Applied Sciences</span>
-                        </li>
-                        <li class="flex justify-between items-center bg-white py-4 px-5 rounded-xl border border-slate-200 shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
-                            <div class="flex items-center gap-3 text-slate-500 font-semibold text-[0.95rem]">
-                                <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center"><i class="fa-solid fa-user-tie"></i></div> 
-                                Head
-                            </div>
-                            <span class="font-extrabold text-emerald-500 text-[1.05rem]">{{ $subDept->hod_name ?? 'Vacant' }}</span>
-                        </li>
-                        <li class="flex justify-between items-center bg-white py-4 px-5 rounded-xl border border-slate-200 shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
-                            <div class="flex items-center gap-3 text-slate-500 font-semibold text-[0.95rem]">
-                                <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fa-solid fa-graduation-cap"></i></div> 
-                                Programmes
-                            </div>
-                            <span class="font-bold text-slate-900 text-[1.05rem]">BSc · MSc · PhD</span>
-                        </li>
-                        <li class="flex justify-between items-center bg-white py-4 px-5 rounded-xl border border-slate-200 shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
-                            <div class="flex items-center gap-3 text-slate-500 font-semibold text-[0.95rem]">
-                                <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center"><i class="fa-solid fa-check-circle"></i></div> 
-                                Status
-                            </div>
-                            <span class="font-bold text-blue-500 text-[1.05rem]">Accredited (NUC)</span>
-                        </li>
-                        <li class="flex justify-between items-center bg-white py-4 px-5 rounded-xl border border-slate-200 shadow-[0_2px_4px_rgba(0,0,0,0.02)]">
-                            <div class="flex items-center gap-3 text-slate-500 font-semibold text-[0.95rem]">
-                                <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center"><i class="fa-solid fa-map-marker-alt"></i></div> 
-                                Location
-                            </div>
-                            <span class="font-bold text-slate-900 text-right text-[0.9rem]">NSUK Main Campus<br><span class="text-slate-500 font-medium">Keffi</span></span>
-                        </li>
-                    </ul>
+<!-- Section 2.5 — Quick Facts (Independent Section) -->
+<section class="bg-[#0f172a] py-20 border-t border-black/5 relative overflow-hidden">
+    <!-- Decorative transparent pattern -->
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <!-- Accent glow -->
+    <div class="absolute top-0 right-1/4 w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-[300px] h-[300px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="container relative z-10" data-aos="fade-up">
+        <div class="text-center mb-16">
+            <span class="inline-block bg-slate-800 text-emerald-400 font-bold text-[0.85rem] py-1.5 px-5 rounded-full mb-4 tracking-[1px] uppercase border border-slate-700 shadow-sm">Fast Facts</span>
+            <h2 class="text-[2.5rem] font-extrabold text-white font-heading mb-4">Department at a Glance</h2>
+            <p class="text-slate-400 max-w-[600px] mx-auto text-[1.1rem]">Key highlights and essential metrics that define our dynamic academic community and infrastructure.</p>
+        </div>
+        
+        <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
+            <!-- Metric 1: Founded -->
+            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-emerald-500/30 transition-all duration-300 group flex flex-col justify-center">
+                <div class="w-14 h-14 mx-auto bg-slate-800 text-emerald-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-emerald-400/10 ring-1 ring-white/5">
+                    <i class="fa-solid fa-calendar-alt"></i>
                 </div>
+                <div class="font-black text-white text-2xl mb-1.5">{{ $subDept->founded_year ?? 'N/A' }}</div>
+                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider">Founded</h4>
+            </div>
+
+            <!-- Metric 2: Faculty -->
+            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-blue-500/30 transition-all duration-300 group flex flex-col justify-center">
+                <div class="w-14 h-14 mx-auto bg-slate-800 text-blue-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-blue-400/10 ring-1 ring-white/5">
+                    <i class="fa-regular fa-building"></i>
+                </div>
+                <div class="font-bold text-white text-[1.05rem] leading-tight mb-2">Natural &amp; Applied<br>Sciences</div>
+                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Faculty</h4>
+            </div>
+
+            <!-- Metric 3: Head -->
+            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-amber-500/30 transition-all duration-300 group flex flex-col justify-center">
+                <div class="w-14 h-14 mx-auto bg-slate-800 text-amber-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-amber-400/10 ring-1 ring-white/5">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <div class="font-black text-white text-[1.1rem] mb-2 px-1">{{ $subDept->hod_name ?? 'Vacant' }}</div>
+                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Head of Dept.</h4>
+            </div>
+
+            <!-- Metric 4: Programmes -->
+            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-purple-500/30 transition-all duration-300 group flex flex-col justify-center">
+                <div class="w-14 h-14 mx-auto bg-slate-800 text-purple-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-purple-400/10 ring-1 ring-white/5">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="font-black text-white text-xl mb-1.5 whitespace-nowrap">BSc · MSc · PhD</div>
+                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider">Programmes</h4>
+            </div>
+
+            <!-- Metric 5: Status -->
+            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-cyan-500/30 transition-all duration-300 group flex flex-col justify-center">
+                <div class="w-14 h-14 mx-auto bg-slate-800 text-cyan-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-cyan-400/10 ring-1 ring-white/5">
+                    <i class="fa-solid fa-check-double"></i>
+                </div>
+                <div class="font-black text-white text-[1.2rem] mb-0.5">Accredited</div>
+                <div class="text-cyan-400/80 font-bold text-[0.7rem] mb-2 uppercase tracking-widest">NUC Approved</div>
+                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Status</h4>
+            </div>
+
+            <!-- Metric 6: Location -->
+            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-rose-500/30 transition-all duration-300 group flex flex-col justify-center">
+                <div class="w-14 h-14 mx-auto bg-slate-800 text-rose-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-rose-400/10 ring-1 ring-white/5">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </div>
+                <div class="font-bold text-white text-[1.05rem] mb-2 leading-tight">NSUK Main<br>Campus, Keffi</div>
+                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Location</h4>
             </div>
         </div>
     </div>
@@ -150,45 +169,63 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
 
 <!-- Section 3 — Programmes Offered (#F8FAFC) -->
 <section class="bg-slate-50 py-24 border-t border-black/5">
-    <div class="container" data-aos="fade-up">
+    <div class="container mx-auto max-w-[1240px]" data-aos="fade-up">
         <div class="text-center mb-16">
-            <span class="inline-block bg-emerald-700/10 text-emerald-700 font-bold text-[0.85rem] py-1.5 px-5 rounded-full mb-4 tracking-[1px]">ACADEMICS</span>
+            <span class="inline-block bg-[#1E7A3E]/10 text-[#1E7A3E] font-bold text-[0.85rem] py-1.5 px-5 rounded-full mb-4 tracking-[1px] uppercase">Academics</span>
             <h2 class="text-[2.5rem] font-extrabold text-slate-900 font-heading mb-4">Our Programmes</h2>
             <p class="text-slate-500 max-w-[600px] mx-auto text-[1.1rem] leading-[1.6]">Choose from our tailored academic pathways designed to build expertise and career readiness from undergraduate to doctorate levels.</p>
         </div>
 
         @if($programmes->count() > 0)
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             @foreach($programmes as $prog)
-            <div data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}" class="bg-white rounded-2xl p-10 py-10 px-8 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] border border-black/5 flex flex-col transition-all duration-300 relative overflow-hidden group hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)]">
+            <div data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}" class="bg-white rounded-[1.5rem] p-8 shadow-[0_5px_20px_-5px_rgba(0,0,0,0.05)] border border-slate-100 flex flex-col transition-all duration-300 relative overflow-hidden group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)]">
                 <!-- Top accent line -->
-                <div class="absolute top-0 left-0 right-0 h-1 {{ strtolower($prog->level) == 'bsc' ? 'bg-blue-500' : (strtolower($prog->level) == 'msc' ? 'bg-emerald-500' : 'bg-amber-500') }}"></div>
+                <div class="absolute top-0 left-0 right-0 h-2.5 transition-all duration-300 {{ strtolower($prog->level) == 'bsc' ? 'bg-blue-500' : (strtolower($prog->level) == 'msc' ? 'bg-emerald-500' : 'bg-[#f59e0b]') }}"></div>
                 
-                <div class="flex justify-between items-start mb-6">
-                    <div class="w-14 h-14 rounded-xl flex items-center justify-center text-[1.5rem] {{ strtolower($prog->level) == 'bsc' ? 'bg-blue-500/10 text-blue-500' : (strtolower($prog->level) == 'msc' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-amber-500/10 text-amber-500') }}">
+                <div class="flex justify-between items-start mb-7 mt-2 relative z-10 w-full">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-[1.45rem] transition-transform duration-500 group-hover:scale-110 group-hover:shadow-sm {{ strtolower($prog->level) == 'bsc' ? 'bg-blue-50 text-blue-600' : (strtolower($prog->level) == 'msc' ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600') }}">
                         <i class="fa-solid fa-graduation-cap"></i>
                     </div>
-                    <div class="inline-block bg-slate-50 text-slate-600 py-1 px-3 rounded-full font-bold text-[0.75rem] tracking-[0.5px] border border-slate-200">
-                        {{ strtoupper($prog->level) }}
+                    <div class="inline-flex items-center bg-slate-50 text-slate-500 py-1.5 px-4 rounded-full font-bold text-[0.75rem] uppercase tracking-wider border border-slate-100/60 shadow-sm transition-colors duration-300 {{ strtolower($prog->level) == 'bsc' ? 'group-hover:bg-blue-50 group-hover:text-blue-700 group-hover:border-blue-100' : (strtolower($prog->level) == 'msc' ? 'group-hover:bg-emerald-50 group-hover:text-emerald-700 group-hover:border-emerald-100' : 'group-hover:bg-amber-50 group-hover:text-amber-700 group-hover:border-amber-100') }}">
+                        {{ $prog->level }}
                     </div>
                 </div>
                 
-                <h3 class="text-[1.4rem] font-extrabold text-slate-900 mb-4 leading-[1.4]">{{ $prog->name }}</h3>
+                <h3 class="text-[1.35rem] font-bold text-slate-900 mb-5 leading-[1.3] transition-colors duration-300 {{ strtolower($prog->level) == 'bsc' ? 'group-hover:text-blue-600' : (strtolower($prog->level) == 'msc' ? 'group-hover:text-emerald-600' : 'group-hover:text-amber-600') }}">{{ $prog->name }}</h3>
                 
-                <div class="flex flex-wrap gap-4 mb-6 text-slate-500 text-[0.9rem] font-semibold py-4 border-y border-dashed border-slate-200">
-                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-slate-400"></i> {{ $prog->duration }}</span>
-                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-layer-group text-slate-400"></i> {{ $prog->mode_of_study }}</span>
+                <!-- Modern info layout replacing dashed box -->
+                <div class="flex flex-col gap-3 mb-6 p-4 rounded-xl bg-slate-50/80 border border-slate-100/80 transition-colors duration-300 {{ strtolower($prog->level) == 'bsc' ? 'group-hover:bg-blue-50/30 group-hover:border-blue-100/50' : (strtolower($prog->level) == 'msc' ? 'group-hover:bg-emerald-50/30 group-hover:border-emerald-100/50' : 'group-hover:bg-amber-50/30 group-hover:border-amber-100/50') }}">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-8 h-8 rounded-lg bg-white shadow-sm border border-slate-100 flex items-center justify-center">
+                            <i class="fa-regular fa-clock text-slate-400 text-[0.95rem]"></i> 
+                        </div>
+                        <span class="text-slate-700 text-[0.95rem] font-bold">{{ $prog->duration ?? 'N/A' }}</span>
+                    </div>
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-8 h-8 rounded-lg bg-white shadow-sm border border-slate-100 flex items-center justify-center">
+                            <i class="fa-solid fa-layer-group text-slate-400 text-[0.95rem]"></i> 
+                        </div>
+                        <span class="text-slate-700 text-[0.95rem] font-bold">{{ $prog->mode_of_study ?? 'N/A' }}</span>
+                    </div>
                 </div>
                 
-                <p class="text-slate-600 text-[0.95rem] leading-[1.6] mb-8 flex-grow">
-                    {{ Str::limit(strip_tags($prog->description), 120, '...') }}
+                <p class="text-slate-500 text-[0.95rem] leading-relaxed mb-8 flex-grow">
+                    {{ Str::limit(preg_replace('/\s+/', ' ', strip_tags(html_entity_decode($prog->description))), 100, '...') }}
                 </p>
                 
-                <a href="#prog-{{ $prog->slug }}" class="flex items-center justify-center gap-2 w-full p-3.5 bg-white text-slate-900 font-bold rounded-lg no-underline border-2 border-slate-200 transition-all duration-200 hover:bg-slate-50 hover:border-slate-300">
-                    View Full Details <i class="fa-solid fa-arrow-down text-sm"></i>
+                <!-- Premium Color-Matched Button -->
+                <a href="{{ route('programmes.show', $prog->slug) }}" class="mt-auto group/btn flex items-center justify-center gap-2 w-full py-[0.85rem] font-bold rounded-xl no-underline transition-all duration-300 {{ strtolower($prog->level) == 'bsc' ? 'bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white hover:shadow-[0_8px_15px_-3px_rgba(37,99,235,0.3)]' : (strtolower($prog->level) == 'msc' ? 'bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white hover:shadow-[0_8px_15px_-3px_rgba(16,185,129,0.3)]' : 'bg-amber-50 text-amber-700 hover:bg-[#f59e0b] hover:text-white hover:shadow-[0_8px_15px_-3px_rgba(245,158,11,0.3)]') }}">
+                    View Details <i class="fa-solid fa-arrow-right-long text-[0.8rem] ml-1 transition-transform duration-300 group-hover/btn:translate-x-1.5 group-hover/btn:bg-white/20 group-hover/btn:px-1.5 group-hover/btn:py-0.5 group-hover/btn:rounded-md"></i>
                 </a>
             </div>
             @endforeach
+        </div>
+        
+        <div class="mt-14 text-center">
+            <a href="{{ route('page.show', 'programmes') }}" class="inline-flex items-center gap-2 bg-[#1E7A3E] text-white py-[0.95rem] px-8 rounded-full font-bold text-[1.05rem] transition-all duration-300 shadow-[0_4px_15px_rgba(30,122,62,0.2)] hover:bg-[#115e3b] hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(30,122,62,0.3)] no-underline">
+                View All Programmes <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
         </div>
         @else
         <div class="text-center max-w-[600px] mx-auto py-16 px-8 bg-white rounded-2xl border border-dashed border-slate-300 shadow-[0_10px_25px_-5px_rgba(0,0,0,0.05)]">
@@ -201,124 +238,89 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
         @endif
     </div>
 </section>
-
-<!-- Section 4 — Details Section -->
-@foreach($programmes as $prog)
-@php 
-    $level = strtolower($prog->level);
-    $bgStyle = $loop->iteration % 2 == 0 ? 'bg-[#EAF3DE]' : 'bg-white';
-@endphp
-<section id="prog-{{ $prog->slug }}" class="{{ $bgStyle }} py-20 border-t border-black/5">
-    <div class="container" data-aos="fade-up">
-        <div class="mb-12">
-            <span class="inline-block bg-[#1E7A3E] text-white py-1px px-3 rounded text-[0.85rem] font-bold mb-4">{{ strtoupper($prog->level) }} PROGRAMME</span>
-            <h2 class="text-[2.2rem] font-extrabold text-slate-900 font-heading mb-4">{{ $prog->name }} Details</h2>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12">
-            <!-- Left: Overview & Key Info -->
-            <div class="bg-white rounded-xl p-8 shadow-[0_4px_15px_rgba(0,0,0,0.05)] self-start border border-slate-200">
-                <h3 class="text-[1.25rem] font-bold text-slate-900 mb-6 border-b-2 border-slate-100 pb-3">Programme Overview</h3>
-                
-                <ul class="list-none p-0 m-0 flex flex-col gap-4">
-                    <li class="flex flex-col gap-1">
-                        <span class="text-slate-500 shadow-sm font-semibold uppercase text-[0.85rem]">Duration</span>
-                        <span class="text-slate-900 font-medium">{{ $prog->duration }}</span>
-                    </li>
-                    <li class="flex flex-col gap-1">
-                        <span class="text-slate-500 shadow-sm font-semibold uppercase text-[0.85rem]">Mode of Study</span>
-                        <span class="text-slate-900 font-medium">{{ $prog->mode_of_study }}</span>
-                    </li>
-                </ul>
-
-                @if($prog->handbook_pdf)
-                <div class="mt-8">
-                    <a href="{{ asset('storage/'.$prog->handbook_pdf) }}" target="_blank" class="flex items-center justify-center gap-2 w-full p-3 bg-emerald-700/10 text-[#1E7A3E] font-semibold rounded-lg no-underline border border-dashed border-[#1E7A3E]/30 transition-colors duration-200 hover:bg-emerald-700/15">
-                        <i class="fa-solid fa-file-pdf"></i> Download Handbook
-                    </a>
-                </div>
-                @endif
-            </div>
-
-            <!-- Right: Content -->
-            <div>
-                <div class="bg-white rounded-xl p-8 shadow-[0_4px_15px_rgba(0,0,0,0.05)] border border-slate-200 mb-8">
-                    <h3 class="text-[1.4rem] font-bold text-slate-900 mb-6"><i class="fa-solid fa-clipboard-list text-emerald-600 mr-2"></i> Description</h3>
-                    <div class="text-slate-600 leading-[1.8] text-[1.05rem]">
-                        {!! $prog->description !!}
-                    </div>
-                </div>
-                
-                @if($prog->requirements_utme || $prog->requirements_de)
-                <div class="bg-white rounded-xl p-8 shadow-[0_4px_15px_rgba(0,0,0,0.05)] border border-slate-200 mb-8">
-                    <h3 class="text-[1.4rem] font-bold text-slate-900 mb-6"><i class="fa-solid fa-clipboard-check text-emerald-600 mr-2"></i> Entry Requirements</h3>
-                    
-                    @if($prog->requirements_utme && $prog->level == 'bsc')
-                    <div class="mb-6">
-                        <h4 class="font-semibold text-slate-800 mb-2">UTME / O'Level Requirements</h4>
-                        <div class="text-slate-600 leading-[1.8]">
-                            {!! $prog->requirements_utme !!}
-                        </div>
-                    </div>
-                    @else
-                    <div class="mb-6">
-                        <div class="text-slate-600 leading-[1.8]">
-                            {!! $prog->requirements_utme !!}
-                        </div>
-                    </div>
-                    @endif
-
-                    @if($prog->requirements_de && $prog->level == 'bsc')
-                    <div>
-                        <h4 class="font-semibold text-slate-800 mb-2 border-t border-dashed border-slate-200 pt-6">Direct Entry (DE) Requirements</h4>
-                        <div class="text-slate-600 leading-[1.8]">
-                            {!! $prog->requirements_de !!}
-                        </div>
-                    </div>
-                    @endif
-                </div>
-                @endif
-                
-                <div class="bg-white rounded-xl p-8 shadow-[0_4px_15px_rgba(0,0,0,0.05)] border border-slate-200 mb-8">
-                    <h3 class="text-[1.4rem] font-bold text-slate-900 mb-6"><i class="fa-solid fa-share-square text-emerald-600 mr-2"></i> How to Apply</h3>
-                    
-                    <div class="text-slate-600 leading-[1.8] text-[1.05rem]">
-                       @if($prog->level == 'bsc')
-                           <p>Prospective candidates should apply via JAMB and select NSUK as their first choice institution. Detailed steps involve Post-UTME screening as defined by the University guidelines.</p>
-                       @else
-                           <p>Postgraduate applications are managed via the PG School. Detailed application process will be provided on the <a href="https://spgs.nsuk.edu.ng" target="_blank" class="text-[#1E7A3E]">NSUK SPGS Portal</a>.</p>
-                       @endif
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-@endforeach
-
 <!-- Section 7 — Career Paths (#F8FAFC) -->
-<section class="bg-slate-50 py-24 border-t border-black/5">
-    <div class="container" data-aos="fade-up">
-        <div class="flex flex-col items-center text-center mb-16">
-            <span class="inline-block bg-blue-500/10 text-blue-500 font-bold text-[0.85rem] py-1.5 px-5 rounded-full mb-4 tracking-[1px]">OPPORTUNITIES</span>
+<section class="bg-white py-24 border-t border-black/5 relative overflow-hidden">
+    <!-- Abstract Background Elements -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/60 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-50/60 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
+
+    <div class="container relative z-10">
+        <div class="flex flex-col items-center text-center mb-16" data-aos="fade-up">
+            <span class="inline-flex items-center gap-2 bg-blue-50 text-blue-600 font-bold text-[0.85rem] py-1.5 px-5 rounded-full mb-4 tracking-[1px] uppercase border border-blue-100/50 shadow-sm">
+                <i class="fa-solid fa-rocket"></i> OPPORTUNITIES
+            </span>
             <h2 class="text-[2.5rem] font-extrabold text-slate-900 font-heading mb-4">Career Pathways</h2>
             <p class="text-slate-500 max-w-[600px] text-[1.1rem] leading-[1.6]">Explore the diverse and promising roles, industries, and pathways available to our high-achieving graduates.</p>
         </div>
         
-        <div class="bg-white rounded-2xl p-12 py-14 px-12 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] border border-black/5 relative overflow-hidden max-w-[900px] mx-auto">
-            <!-- Decorative background element -->
-            <div class="absolute -top-12 -right-12 w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(59,130,246,0.08)_0%,transparent_70%)] rounded-full pointer-events-none"></div>
-            
-            <div class="flex items-start gap-6">
-                <div class="w-[50px] h-[50px] min-w-[50px] bg-blue-500/10 rounded-xl flex items-center justify-center text-[1.4rem] text-blue-500">
-                    <i class="fa-solid fa-briefcase"></i>
-                </div>
-                <div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; color: #1e293b; margin-bottom: 0.8rem;">Dynamic Career Profiles</h3>
-                    <p style="color: #475569; font-size: 1.05rem; line-height: 1.7; margin: 0;">
-                        Information on career paths specific to this department is highly dynamic. Check back as we continuously update the profiles and global success stories of our alumni making an impact in their respective fields.
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 max-w-[1100px] mx-auto">
+            <!-- Left: Hero Card -->
+            <div data-aos="fade-right" class="lg:col-span-5 bg-slate-900 rounded-[2rem] p-10 relative overflow-hidden text-white flex flex-col justify-between group shadow-xl">
+                <!-- Background Image & Gradient -->
+                <div class="absolute inset-0 bg-slate-800 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/micro-carbon.png')] pointer-events-none"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-800/80"></div>
+                <!-- Glowing Orb inside the card -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/30 rounded-full blur-[50px] transition-all duration-500 group-hover:bg-blue-400/40"></div>
+                
+                <div class="relative z-10 mb-12">
+                    <div class="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-blue-400 text-[1.4rem] border border-white/10 mb-8 shadow-inner group-hover:scale-110 transition-transform duration-500">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <h3 class="text-[2rem] font-black leading-[1.1] mb-5 tracking-tight">High Global<br>Demand</h3>
+                    <p class="text-slate-300 text-[1.05rem] leading-[1.7]">
+                        Our distinctive curriculum aligns perfectly with global industry standards, positioning our alumni at the forefront of innovation across high-value tech sectors.
                     </p>
+                </div>
+                
+                <!-- Mini Stats / "Endorsements" Footer -->
+                <div class="relative z-10 flex items-center gap-4 pt-6 border-t border-white/10">
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-white flex items-center justify-center text-[0.6rem] font-black text-slate-800 shadow-sm z-30"><i class="fa-brands fa-microsoft"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-white flex items-center justify-center text-[0.6rem] font-black text-slate-800 shadow-sm z-20"><i class="fa-brands fa-google"></i></div>
+                        <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-white flex items-center justify-center text-[0.6rem] font-black text-slate-800 shadow-sm z-10"><i class="fa-brands fa-aws"></i></div>
+                    </div>
+                    <div class="text-sm font-semibold text-slate-400">
+                        Top destination networks
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Roles Bento Grid -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
+                <!-- Pathway 1 -->
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-slate-50 hover:bg-white p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-blue-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(37,99,235,0.08)] group flex flex-col justify-start">
+                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-blue-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-blue-50">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h4 class="text-[1.2rem] font-bold text-slate-900 mb-2">Tech & Engineering</h4>
+                    <p class="text-slate-500 text-[0.95rem] leading-relaxed">Software Engineers, System Architects, Full-stack Devs, Cloud Engineers.</p>
+                </div>
+                
+                <!-- Pathway 2 -->
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-slate-50 hover:bg-white p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-emerald-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.08)] group flex flex-col justify-start">
+                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-emerald-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-emerald-50">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h4 class="text-[1.2rem] font-bold text-slate-900 mb-2">Data & AI</h4>
+                    <p class="text-slate-500 text-[0.95rem] leading-relaxed">Data Scientists, Machine Learning Engineers, Quant Analysts, AI Researchers.</p>
+                </div>
+                
+                <!-- Pathway 3 -->
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-slate-50 hover:bg-white p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-amber-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(245,158,11,0.08)] group flex flex-col justify-start">
+                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-amber-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-amber-50">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-[1.2rem] font-bold text-slate-900 mb-2">Cybersecurity</h4>
+                    <p class="text-slate-500 text-[0.95rem] leading-relaxed">Security Analysts, Pentesters, IT Compliance Officers, Forensic Experts.</p>
+                </div>
+                
+                <!-- Pathway 4 -->
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-slate-50 hover:bg-white p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-purple-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(168,85,247,0.08)] group flex flex-col justify-start">
+                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-purple-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-purple-50">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <h4 class="text-[1.2rem] font-bold text-slate-900 mb-2">Research & Policy</h4>
+                    <p class="text-slate-500 text-[0.95rem] leading-relaxed">Academics, Policy Advisors, Tech Consultancies, Government IT Directors.</p>
                 </div>
             </div>
         </div>
@@ -335,30 +337,72 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
         </div>
 
         @if($staff->count() > 0)
-        <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-3">
             @foreach($staff as $member)
-            <div data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}" class="bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] border border-black/5 transition-all duration-300 flex flex-col relative group hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)]">
-                <div class="h-[260px] bg-slate-50 overflow-hidden relative">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 pointer-events-none"></div>
-                    <img src="{{ $member->photo ? asset('storage/'.$member->photo) : asset('images/avatar-placeholder.png') }}" alt="{{ $member->name }}" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" onerror="this.src='{{ asset('images/avatar-placeholder.png') }}'">
-                </div>
-                <div class="p-8 pb-6 flex-grow flex flex-col relative z-20 bg-white">
-                    <div class="mb-auto">
-                        <h3 class="text-[1.25rem] font-extrabold text-slate-900 mb-1.5 leading-[1.3]">{{ $member->title }} {{ $member->name }}</h3>
-                        <div class="inline-block bg-[#EAF3DE] text-[#1E7A3E] text-[0.75rem] font-bold py-1 px-3 rounded-full mb-4">
-                            {{ $member->role }}
-                        </div>
-                        <p class="text-slate-500 text-[0.95rem] mb-6 flex items-start gap-2">
-                            <i class="fa-solid fa-book-open text-slate-400 mt-1"></i>
-                            <span>{{ $member->specialisation ?: 'Core Faculty Member & Instructor' }}</span>
-                        </p>
-                    </div>
-                    <a href="{{ route('people.show', $member->slug) }}" class="flex items-center justify-center gap-2 w-full p-3 bg-slate-50 text-slate-900 font-semibold rounded-lg no-underline border border-slate-200 transition-all duration-200 hover:bg-[#1E7A3E] hover:border-[#1E7A3E] hover:text-white">
-                        View Profile <i class="fa-solid fa-arrow-right text-xs"></i>
+            <div data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}" class="bg-white rounded-[2rem] p-2 shadow-[0_15px_35px_-5px_rgba(0,0,0,0.08)] border border-slate-100 transition-all duration-300 relative group flex flex-col hover:-translate-y-2 hover:shadow-[0_25px_50px_-12px_rgba(30,122,62,0.35)] hover:border-[#1E7A3E]/30">
+                <div class="h-[440px] rounded-[1.5rem] bg-slate-50 overflow-hidden relative w-full isolate">
+                    
+                    @php
+                        $cleanName = preg_replace('/^(Prof\.|Dr\.|Mr\.|Mrs\.|Ms\.|Engr\.)\s+/i', '', $member->name);
+                        $displayName = $member->title && !str_starts_with($member->name, $member->title) ? $member->title . ' ' . $member->name : $member->name;
+                        $fallbackImage = 'https://ui-avatars.com/api/?name=' . urlencode($cleanName) . '&background=EAF3DE&color=1E7A3E&size=400';
+                    @endphp
+                    
+                    <a href="{{ route('people.show', $member->slug) }}" class="absolute inset-0 z-0 w-full h-full block">
+                        <img src="{{ $member->photo ? asset('storage/'.$member->photo) : $fallbackImage }}" alt="{{ $displayName }}" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 z-0" onerror="this.src='{{ $fallbackImage }}'">
                     </a>
+                    
+                    <!-- Smooth Dark Gradient Overlay focused on the bottom for perfect text readability -->
+                    <div class="absolute inset-x-0 bottom-0 h-[80%] bg-gradient-to-t from-[#062e14] via-[#062e14]/70 to-transparent z-10 pointer-events-none opacity-100 transition-opacity duration-300"></div>
+                    
+                    <!-- Inner Content overlaying the image -->
+                    <div class="absolute bottom-0 left-0 w-full p-5 pb-4 z-20 flex flex-col text-left pointer-events-none">
+                        
+                        <!-- Name and Badge -->
+                        <a href="{{ route('people.show', $member->slug) }}" class="text-[1.25rem] font-bold text-white mb-1 flex items-center gap-1.5 leading-tight no-underline hover:text-white pointer-events-auto w-max">
+                            {{ $displayName }}
+                            <span class="relative flex items-center justify-center ml-1">
+                                <i class="fa-solid fa-certificate text-emerald-400 text-[1.1rem]"></i>
+                                <i class="fa-solid fa-check text-slate-900 text-[0.6rem] absolute"></i>
+                            </span>
+                        </a>
+                        
+                        <!-- Role & Description -->
+                        <p class="text-white/80 text-[0.85rem] leading-[1.4] mb-3 font-normal line-clamp-2">
+                            {{ $member->role }} &bull; {{ $member->specialisation ?: 'Focused on creating intuitive learning experiences.' }}
+                        </p>
+                        
+                        <!-- Socials Row -->
+                        <div class="flex items-center justify-between pt-2 mt-auto pointer-events-auto">
+                            <div class="flex items-center gap-2">
+                                @if($member->linkedin)
+                                <a href="{{ $member->linkedin }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-[#0A66C2] hover:text-white transition-all shadow-sm">
+                                    <i class="fa-brands fa-linkedin-in text-[0.8rem]"></i>
+                                </a>
+                                @endif
+                                
+                                @if($member->twitter)
+                                <a href="{{ $member->twitter }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-black transition-all shadow-sm">
+                                    <i class="fa-brands fa-x-twitter text-[0.8rem]"></i>
+                                </a>
+                                @else
+                                <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-[#1E7A3E] transition-all shadow-sm">
+                                    <i class="fa-solid fa-envelope text-[0.8rem]"></i>
+                                </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             @endforeach
+        </div>
+                        <div class="mt-14 text-center">
+                <a href="{{ route('people.index') }}" class="inline-flex items-center gap-2 bg-[#1E7A3E] text-white py-[0.95rem] px-8 rounded-full font-bold text-[1.05rem] transition-all duration-300 shadow-[0_4px_15px_rgba(30,122,62,0.2)] hover:bg-[#115e3b] hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(30,122,62,0.3)] no-underline">
+                    Meet All Lecturers <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+
         </div>
         @else
         <div class="text-center max-w-[600px] mx-auto py-16 px-8 bg-white rounded-2xl border border-dashed border-slate-300 shadow-[0_10px_25px_-5px_rgba(0,0,0,0.05)]">
@@ -373,29 +417,85 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
 </section>
 
 <!-- Section 9 — Frequently Asked Questions (#F8FAFC) -->
-<section class="bg-slate-50 py-24 border-t border-black/5">
+@php
+    $cyberFaqs = [
+        ['q' => 'Is prior coding experience required to study Cyber Security?', 'a' => 'While prior coding experience is helpful, it is not strictly required. Our foundational courses will introduce you to programming basics relevant to security before advancing to more complex topics.'],
+        ['q' => 'Will I have access to hands-on practical labs?', 'a' => 'Yes. We provide modern virtual environments and physical labs where students practice ethical hacking, penetration testing, and digital forensics in a controlled setting.'],
+        ['q' => 'What kind of certifications can this degree help me achieve?', 'a' => 'Our curriculum is designed to align with industry standards, helping you prepare for certifications like CompTIA Security+, CEH (Certified Ethical Hacker), and CCNA.'],
+        ['q' => 'Are there internship opportunities in the industry?', 'a' => 'Absolutely. We partner with various tech companies and government parastatals to ensure our students get placements for their 6-month SIWES program.']
+    ];
+
+    $dataScienceFaqs = [
+        ['q' => 'What programming languages will I learn?', 'a' => 'The program heavily focuses on Python and R for data analysis, machine learning, and AI. You will also learn SQL for database management.'],
+        ['q' => 'Do I need a strong background in mathematics?', 'a' => 'Data Science relies on statistics, calculus, and linear algebra. A fair understanding of these concepts is advantageous, but we cover the essential mathematics tailored for data science in our curriculum.'],
+        ['q' => 'What are the hardware requirements for my laptop?', 'a' => 'We recommend a laptop with at least 8GB RAM (16GB preferred), a multi-core processor (Core i5 or equivalent), and at least 500GB of storage. A dedicated GPU is a plus for deep learning models, but cloud resources are also utilized.'],
+        ['q' => 'Are there research opportunities in artificial intelligence?', 'a' => 'Yes, final year students often undertake AI or predictive modeling projects, guided by our specialized faculty and industry datasets.']
+    ];
+
+    // Determine the FAQ array to use based on the slug
+    if ($subDept->slug == 'cyber-security') {
+        $faqs = $cyberFaqs;
+    } elseif ($subDept->slug == 'data-science') {
+        $faqs = $dataScienceFaqs;
+    } else {
+        $faqs = [
+            ['q' => 'How do I apply for this programme?', 'a' => 'To apply, kindly follow the university\'s general admission guidelines via the JAMB portal or the postgraduate school portal, selecting your desired programme.'],
+            ['q' => 'Are there practical laboratory sessions?', 'a' => 'Yes, our programmes balance theoretical knowledge with robust practical sessions to ensure you are industry-ready.'],
+            ['q' => 'Can I easily reach out to academic advisors?', 'a' => 'Our staff are available during working hours for academic advising and mentorship. You can find their profiles and contact details above.']
+        ];
+    }
+@endphp
+
+<section class="bg-slate-50 py-24 border-t border-black/5" x-data="{ activeFaq: null }">
     <div class="container" data-aos="fade-up">
         <div class="flex flex-col items-center text-center mb-16">
-            <span class="inline-block bg-amber-500/10 text-amber-500 font-bold text-[0.85rem] py-1.5 px-5 rounded-full mb-4 tracking-[1px]">SUPPORT</span>
+            <span class="inline-block bg-amber-500/10 text-amber-500 font-bold text-[0.85rem] py-1.5 px-6 rounded-full mb-4 tracking-[1.5px] uppercase">SUPPORT</span>
             <h2 class="text-[2.5rem] font-extrabold text-slate-900 font-heading mb-4">Frequently Asked Questions</h2>
-            <p class="text-slate-500 max-w-[600px] text-[1.1rem] leading-[1.6]">Find quick answers regarding admissions, campus life, and academic requirements.</p>
+            <p class="text-slate-500 max-w-[500px] text-[1.1rem] leading-[1.7]">Find quick answers regarding admissions, campus life, and academic requirements for {{ $subDept->name }}.</p>
         </div>
         
-        <div class="max-w-[800px] mx-auto bg-white rounded-2xl p-12 py-14 px-12 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] border border-black/5 relative overflow-hidden">
-            <div class="absolute -bottom-12 -left-12 w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(245,158,11,0.08)_0%,transparent_70%)] rounded-full pointer-events-none"></div>
-            
-            <div class="flex items-start gap-6">
-                <div class="w-[50px] h-[50px] min-w-[50px] bg-amber-500/10 rounded-xl flex items-center justify-center text-[1.4rem] text-amber-500">
-                    <i class="fa-regular fa-comments"></i>
-                </div>
-                <div>
-                    <h3 class="text-[1.3rem] font-bold text-slate-800 mb-3">Updates in Progress</h3>
-                    <p class="text-slate-600 text-[1.05rem] leading-[1.7] m-0">
-                         Specific FAQs relating to the {{ $subDept->name }} are continually being compiled and updated by our academic advisors. If you have immediate questions, please utilize the contact options below.
-                    </p>
+        <div class="max-w-[850px] mx-auto space-y-4">
+            @foreach($faqs as $index => $faq)
+            <div class="bg-white rounded-[1rem] p-2 shadow-[0_4px_15px_-10px_rgba(0,0,0,0.05)] border border-slate-100/60 transition-all duration-300"
+                 :class="activeFaq === {{ $index }} ? 'shadow-[0_8px_30px_-10px_rgba(251,191,36,0.15)] border-amber-200/50' : 'hover:border-slate-200'">
+                <!-- Header / Question -->
+                <button @click="activeFaq = activeFaq === {{ $index }} ? null : {{ $index }}" 
+                        class="w-full relative flex items-center justify-between p-5 md:p-6 text-left focus:outline-none rounded-[0.85rem] group transition-colors"
+                        :class="activeFaq === {{ $index }} ? 'bg-[#fff8eb]/50' : 'hover:bg-slate-50/50'">
+                    
+                    <div class="flex items-center gap-4 md:gap-5 pr-8 text-black">
+                        <!-- Icon wrapper -->
+                        <div class="w-10 h-10 min-w-[2.5rem] rounded-full flex items-center justify-center transition-all duration-300"
+                             :class="activeFaq === {{ $index }} ? 'bg-amber-100 text-amber-600' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200 group-hover:text-slate-600'">
+                            <i class="fa-solid fa-question text-[0.95rem]"></i>
+                        </div>
+                        
+                        <h3 class="text-[1.15rem] md:text-[1.2rem] font-bold text-slate-800 tracking-tight leading-snug transition-colors"
+                            :class="activeFaq === {{ $index }} ? 'text-amber-700' : 'group-hover:text-slate-900'">
+                            {{ $faq['q'] }}
+                        </h3>
+                    </div>
+
+                    <!-- Chevron -->
+                    <div class="absolute right-5 md:right-6 text-slate-400 transition-transform duration-300"
+                         :class="activeFaq === {{ $index }} ? 'rotate-180 text-amber-500' : 'group-hover:text-slate-600'">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </button>
+
+                <!-- Body / Answer -->
+                <div x-show="activeFaq === {{ $index }}" 
+                     x-collapse 
+                     x-cloak
+                     class="px-5 md:px-6 pb-6 pt-1 text-slate-500 text-[1.05rem] leading-[1.75]">
+                    <div class="pl-0 md:pl-[3.75rem]"> <!-- Aligns with the text, skipping icon spacing -->
+                        {{ $faq['a'] }}
+                    </div>
                 </div>
             </div>
+            @endforeach
         </div>
+        
     </div>
 </section>
 

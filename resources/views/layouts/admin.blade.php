@@ -390,9 +390,11 @@
             </header>
             
             <div style="padding: 2rem; flex: 1; overflow-y: auto;">
-                {{-- Flash messages are now handled as toast notifications below --}}
-                
-                @yield('content')
+                <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
+                    {{-- Flash messages are now handled as toast notifications below --}}
+                    
+                    @yield('content')
+                </div>
             </div>
         </main>
     </div>

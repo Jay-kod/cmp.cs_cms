@@ -7,6 +7,9 @@
     <div style="flex: 1; min-width: 280px;">
         <h2 class="dashboard-title">Welcome back, {{ explode(' ', Auth::user()->name)[0] }}! 👋</h2>
         <p class="dashboard-subtitle">Here's what's happening with the Department of Computer Science today.</p>
+        <div style="margin-top: 1rem;">
+            <a href="{{ route('admin.programmes.create') }}" style="background: var(--color-primary, #2563eb); color: white; padding: 0.6rem 1.25rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.15s ease;"><i class="fa-solid fa-plus"></i> Create New Programme</a>
+        </div>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
         <div class="dashboard-date-widget" style="margin: 0; padding: 0.5rem 0.75rem; background: white; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center;">

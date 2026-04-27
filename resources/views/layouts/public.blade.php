@@ -167,16 +167,19 @@
                     </div>
 
                     <!-- Programmes -->
+                    @php
+                        $footerProgrammes = \App\Models\Programme::where('is_active', true)->take(4)->get();
+                    @endphp
                     <div>
                         <h4 class="text-white font-heading text-[0.95rem] font-semibold mb-5 relative pb-2.5">
                             Programmes
                             <span class="absolute bottom-0 left-0 w-[30px] h-[2.5px] bg-primary rounded-sm"></span>
                         </h4>
                         <ul class="list-none p-0 m-0 flex flex-col gap-2">
-                            <li><a href="{{ url('/academics#undergraduate-full-time') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>B.Sc. Computer Science</a></li>
-                            <li><a href="{{ url('/academics#undergraduate-part-time') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>Part-Time Programmes</a></li>
-                            <li><a href="{{ url('/academics#masters') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>M.Sc. Computer Science</a></li>
-                            <li><a href="{{ url('/academics#phd') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>Ph.D. Computer Science</a></li>
+                            @foreach($footerProgrammes as $fProg)
+                            <li><a href="{{ route('programmes.show', $fProg->slug) }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>{{ $fProg->name }}</a></li>
+                            @endforeach
+                            <li><a href="{{ route('page.show', 'programmes') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>View All Programmes</a></li>
                             <li><a href="{{ url('/academics#course-structure') }}" class="text-[#f1f5f9] text-[0.88rem] hover:text-accent hover:pl-1 transition-all duration-150 inline-block"><i class="fa-solid fa-chevron-right text-[0.6rem] mr-1.5"></i>Course Structure</a></li>
                         </ul>
                     </div>
