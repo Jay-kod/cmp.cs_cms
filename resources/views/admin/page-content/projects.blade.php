@@ -28,14 +28,24 @@
         @csrf
 
         <h3 class="font-bold text-xl mb-4 border-b pb-2">Course Overview & Coordinator</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
             <div>
                 <label class="block text-sm font-bold mb-1">Project Coordinator Name</label>
                 <input type="text" name="project_coordinator_name" value="{{ $s('project_coordinator_name', '') }}" class="form-input w-full rounded border-gray-300">
             </div>
             <div>
+                <label class="block text-sm font-bold mb-1">Coordinator Image</label>
+                <input type="file" name="project_coordinator_image" accept="image/*" class="form-input w-full rounded border-gray-300 p-1 text-xs">
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+            <div>
                 <label class="block text-sm font-bold mb-1">Course Code (e.g. CMP 499)</label>
                 <input type="text" name="project_course_code" value="{{ $s('project_course_code', 'CMP 499') }}" class="form-input w-full rounded border-gray-300">
+            </div>
+            <div>
+                <label class="block text-sm font-bold mb-1">Project Portal URL</label>
+                <input type="url" name="project_portal_url" value="{{ $s('project_portal_url', '#') }}" class="form-input w-full rounded border-gray-300" placeholder="https://projects.nsuk.edu.ng">
             </div>
         </div>
         <div class="mb-6">

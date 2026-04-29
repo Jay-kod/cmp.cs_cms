@@ -44,153 +44,170 @@
 </section>
 
 <div class="container pb-16 -mt-12 relative z-20">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    
+    <!-- Top Contact & Resource Cards (Horizontal Grid) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-[950px] mx-auto">
         
-        <!-- Main Content -->
-        <div class="lg:col-span-2">
-            
-            <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8" data-aos="fade-up">
-                <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
-                    <i class="fa-solid fa-project-diagram text-green-600"></i> Course Overview
-                </h2>
-                <div class="prose max-w-none text-gray-700 text-lg leading-relaxed">
-                    <p>{{ $s('project_overview', 'The final year project is a mandatory course where students are expected to solve real-world computing problems...') }}</p>
-                </div>
-            </div>
-
-            <!-- Guidelines / Rules -->
-            @php 
-                $defaultRules = [
-                    ['title' => 'Chapter Structure', 'desc' => "Chapter 1: Introduction\nChapter 2: Literature Review\nChapter 3: Methodology\nChapter 4: System Implementation & Results\nChapter 5: Summary, Conclusion and Recommendations."],
-                    ['title' => 'Plagiarism Policy', 'desc' => 'All projects will be scanned for plagiarism. Any research work with a similarity index above standard thresholds will be automatically rejected. Ensure all citations follow conventional academic formats.'],
-                    ['title' => 'Page Formatting', 'desc' => 'Use Times New Roman, 12pt font size. Line spacing must be 1.5 margins. Left margin: 1.5 inches for binding; Top, Bottom, and Right margins: 1.0 inch.']
-                ];
-                $rules = json_decode($s('project_rules', '[]'), true); 
-                if (empty($rules)) $rules = $defaultRules;
-            @endphp
-            @if(count($rules) > 0)
-            <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8" data-aos="fade-up">
-                <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
-                    <i class="fa-solid fa-book-open-reader text-green-600"></i> Formatting & Typing Guidelines
-                </h2>
-                
-                <div class="space-y-6">
-                    @foreach($rules as $index => $rule)
-                    <div class="p-5 bg-green-50/50 border border-green-100 rounded-xl relative group hover:shadow-md hover:border-green-200 transition-all">
-                        <div class="absolute -left-3 -top-3 w-8 h-8 rounded-full bg-green-200 text-green-700 flex items-center justify-center shadow-sm font-bold text-xs ring-4 ring-white">
-                            <i class="fa-solid fa-bookmark"></i>
-                        </div>
-                        <h4 class="font-bold text-gray-900 text-lg mb-2">Rule {{ $index + 1 }}: {{ $rule['title'] }}</h4>
-                        <div class="text-gray-700 leading-relaxed text-[0.95rem]">
-                            {!! nl2br(e($rule['desc'])) !!}
-                        </div>
+        <!-- Project Coordinator Profile -->
+        <div class="bg-gradient-to-br from-white to-green-50/30 p-8 rounded-3xl shadow-2xl shadow-green-900/10 border border-green-100 flex flex-col transition-all duration-300 hover:shadow-green-900/20 hover:-translate-y-1" data-aos="fade-up">
+            <h3 class="text-xl font-bold text-gray-900 border-b border-green-100 pb-4 mb-6 font-heading flex flex-col">
+                <span class="text-xs font-black text-green-700 uppercase tracking-widest mb-1 opacity-80">Department</span>
+                Project Coordinator
+            </h3>
+            <div class="flex items-center gap-6 mt-auto mb-auto">
+                @if($s('project_coordinator_image'))
+                    <img src="{{ asset('storage/' . $s('project_coordinator_image')) }}" alt="Coordinator" class="w-[4.5rem] h-[4.5rem] rounded-[1.2rem] object-cover shadow-[0_8px_20px_rgba(20,83,45,0.4)] border-2 border-green-500 shrink-0 transform transition-transform group-hover:scale-105">
+                @else
+                    <div class="w-[4.5rem] h-[4.5rem] bg-gradient-to-br from-green-600 to-green-800 text-white rounded-[1.2rem] flex items-center justify-center text-3xl shadow-[0_8px_20px_rgba(20,83,45,0.4)] border border-green-500 shrink-0 transform transition-transform group-hover:scale-105">
+                        <i class="fa-solid fa-chalkboard-user drop-shadow-md"></i>
                     </div>
-                    @endforeach
+                @endif
+                <div>
+                    <h4 class="font-bold text-gray-900 text-[1.2rem]">{{ $s('project_coordinator_name', 'Dr. Coordinator') }}</h4>
+                    <p class="text-[0.95rem] text-gray-500 mt-1">Final Year Research Coordinator</p>
                 </div>
             </div>
-            @endif
-
-            <!-- Calendar/Milestones -->
-            @php 
-                $defaultMilestones = [
-                    ['date' => 'Early Sem 1', 'title' => 'Topic Approval', 'desc' => 'Submit three proposed project topics to your assigned supervisor.'],
-                    ['date' => 'Mid Sem 1', 'title' => 'Chapter 1 & 2 Submission', 'desc' => 'First draft of Introduction and Literature Review due for supervisor review.'],
-                    ['date' => 'Early Sem 2', 'title' => 'System Demonstration', 'desc' => 'Live demonstration of the proposed system/software working prototype.'],
-                    ['date' => 'End of Sem 2', 'title' => 'Final Defense & Binding', 'desc' => 'Defense before an external panel followed by the submission of 3 hardbound copies of the completed project plus CD-ROM.']
-                ];
-                $milestones = json_decode($s('project_milestones', '[]'), true); 
-                if (empty($milestones)) $milestones = $defaultMilestones;
-            @endphp
-            @if(count($milestones) > 0)
-            <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8" data-aos="fade-up">
-                <h2 class="text-2xl font-bold text-gray-900 border-b border-gray-100 pb-3 mb-6 font-heading flex items-center gap-3">
-                    <i class="fa-regular fa-calendar-check text-green-600"></i> Important Deadlines
-                </h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    @foreach($milestones as $index => $mile)
-                    <div class="border border-gray-100 bg-white shadow-sm p-4 rounded-lg flex gap-4 items-start group hover:border-green-300 transition-colors">
-                        <div class="bg-green-100 text-green-700 p-3 rounded-lg flex flex-col items-center justify-center flex-shrink-0 group-hover:bg-green-600 group-hover:text-white transition-colors min-w-[70px]">
-                            <i class="fa-solid fa-clock text-xl mb-1 opacity-80"></i>
-                            <span class="text-xs font-bold text-center leading-tight">{{ $mile['date'] }}</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900">{{ $mile['title'] }}</h3>
-                            <p class="text-sm text-gray-500 line-clamp-3 mt-1">{{ $mile['desc'] }}</p>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-            @endif
+            <!-- Placeholder for future contact details if needed -->
         </div>
 
-        <!-- Sidebar -->
-        <div class="lg:col-span-1 relative h-full">
-            <div class="space-y-6 lg:sticky lg:top-40 z-40 h-max pb-8">
-            
-            <!-- Coordinator Profile -->
-            <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100" data-aos="fade-left">
-                <h3 class="text-lg font-bold text-gray-900 border-b border-gray-100 pb-3 mb-4 font-heading">
-                    Project Coordinator
-                </h3>
-                <div class="flex items-center gap-4 mb-2">
-                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl shadow-inner border border-green-200">
-                        <i class="fa-solid fa-chalkboard-user"></i>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-900">{{ $s('project_coordinator_name', 'Dr. Coordinator') }}</p>
-                    </div>
-                </div>
-                <!-- You can add more contact info directly to the form later. For now, it stays clean. -->
+        <!-- Templates Downloads Widget -->
+        <div class="bg-gradient-to-br from-green-900 to-green-800 p-8 rounded-3xl shadow-2xl shadow-green-900/20 border border-green-700/50 text-white relative overflow-hidden flex flex-col transition-transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
+            <div class="absolute -right-4 top-0 opacity-10 text-9xl transform translate-x-1/8 translate-y-1/8 pointer-events-none">
+                <i class="fa-solid fa-file-word"></i>
             </div>
-
-            <!-- Templates Downloads Widget -->
-            <div class="bg-gradient-to-br from-green-900 to-green-800 p-6 rounded-2xl shadow-xl text-white relative overflow-hidden" data-aos="fade-left" data-aos-delay="100">
-                <div class="absolute -right-4 top-0 opacity-10 text-7xl transform translate-x-1/4 translate-y-1/8">
-                    <i class="fa-solid fa-file-word"></i>
-                </div>
-                
-                <h3 class="text-lg font-bold text-green-50 border-b border-green-700/50 pb-3 mb-4 font-heading relative z-10 flex items-center gap-2">
-                    <i class="fa-solid fa-download"></i> Official Templates
-                </h3>
-                
-                <div class="text-sm text-green-200 mb-3 relative z-10 leading-snug">Ensure you download and use the official Microsoft Word templates for structure compliance.</div>
-                
-                <ul class="space-y-3 relative z-10">
-                    @if($downloads && $downloads->items->count() > 0)
-                        @foreach($downloads->items as $doc)
-                            <li>
-                                <a href="{{ route('resources.index') }}?category={{ $downloads->id }}" class="flex items-center gap-3 p-3 bg-white/10 hover:bg-white/20 rounded-lg transition group border border-transparent hover:border-white/10">
-                                    <div class="bg-green-100 text-green-700 w-8 h-8 rounded flex items-center justify-center shadow shadow-black/10 group-hover:scale-110 transition-transform">
-                                        <i class="fa-solid fa-file-lines"></i>
-                                    </div>
-                                    <div class="flex-grow">
-                                        <span class="block text-sm font-semibold text-white drop-shadow-md">{{ $doc->title }}</span>
-                                    </div>
-                                    <i class="fa-solid fa-arrow-down shadow-black/20 text-green-300 group-hover:text-white transition-colors"></i>
-                                </a>
-                            </li>
-                        @endforeach
-                    @else
-                        <!-- Stub for when no resource items are uploaded yet -->
+            
+            <h3 class="text-xl font-bold text-green-50 border-b border-green-700/50 pb-4 mb-6 font-heading relative z-10 flex items-center gap-3">
+                <i class="fa-solid fa-download"></i> Official Templates
+            </h3>
+            
+            <p class="text-[0.95rem] text-green-100 mb-6 relative z-10 leading-relaxed max-w-[90%]">Ensure you download and use the official templates for structural compliance before submission.</p>
+            
+            <ul class="space-y-3 relative z-10 flex-1">
+                @if($downloads && $downloads->items->count() > 0)
+                    @foreach($downloads->items as $doc)
                         <li>
-                            <div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-green-500/50 text-green-200 text-sm">
-                                <i class="fa-solid fa-circle-info mt-[-2px] text-green-300"></i>
-                                <span>No templates currently uploaded. Please check the Resource section.</span>
-                            </div>
+                            <a href="{{ route('resources.index') }}?category={{ $downloads->id }}" class="flex items-center gap-4 p-4 bg-white/10 hover:bg-white/20 rounded-2xl transition group border border-white/5 hover:border-white/20 shadow-sm backdrop-blur-sm">
+                                <div class="bg-green-100 text-green-700 w-10 h-10 rounded-xl flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform shrink-0">
+                                    <i class="fa-solid fa-file-arrow-down text-lg"></i>
+                                </div>
+                                <div class="flex-grow">
+                                    <span class="block text-[0.95rem] font-bold text-white drop-shadow-sm">{{ $doc->title }}</span>
+                                </div>
+                                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-arrow-right text-green-200 group-hover:text-white transition-colors"></i>
+                                </div>
+                            </a>
                         </li>
-                    @endif
-                </ul>
-                <div class="mt-4 pt-3 border-t border-green-700/50 text-center relative z-10">
-                    <a href="{{ route('resources.index') }}" class="text-xs text-green-200 hover:text-white font-bold inline-flex items-center gap-1 transition">
-                        View All Department Resources <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
-            
-            </div> <!-- End Sticky Wrapper -->
+                    @endforeach
+                @else
+                    <li>
+                        <div class="flex items-start gap-4 p-5 bg-white/5 rounded-2xl border border-green-500/50 text-green-100 text-[0.95rem] leading-relaxed shadow-inner">
+                            <i class="fa-solid fa-circle-info mt-1 text-green-300 shrink-0 text-lg"></i>
+                            <span>No templates currently uploaded. Check the Resource Catalog directly.</span>
+                        </div>
+                    </li>
+                @endif
+            </ul>
         </div>
+    </div>
+
+
+    <div class="max-w-[1050px] mx-auto">
+        
+        <!-- Project Management Portal External Link Notice -->
+        <div class="bg-blue-50 border border-blue-200 rounded-3xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center gap-6 shadow-sm relative overflow-hidden" data-aos="fade-up">
+            <div class="absolute -right-4 -top-4 text-blue-200/50 text-9xl pointer-events-none">
+                <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <div class="w-16 h-16 shrink-0 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner relative z-10 border border-blue-200">
+                <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <div class="flex-1 text-center md:text-left relative z-10">
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Departmental Project Management System</h3>
+                <p class="text-blue-800 text-[1.05rem] leading-relaxed mb-5 max-w-[800px]">The department utilizes a dedicated Project Management System for students to track milestones, communicate with supervisors, and securely upload project drafts and final reports.</p>
+                <a href="{{ $s('project_portal_url', '#') }}" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl text-sm font-bold shadow-lg shadow-blue-500/30 hover:bg-blue-700 hover:-translate-y-1 transition-all group">
+                    Access Project Portal <i class="fa-solid fa-arrow-up-right-from-square text-[0.8rem] ml-1 group-hover:scale-110 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Overview -->
+        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100 mb-12" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-100 pb-5 mb-8 font-heading flex items-center gap-4">
+                <span class="w-12 h-12 bg-green-100 text-green-700 flex items-center justify-center rounded-2xl shadow-inner"><i class="fa-solid fa-project-diagram"></i></span> Course Overview
+            </h2>
+            <div class="prose max-w-none text-gray-700 text-[1.1rem] leading-loose">
+                <p>{{ $s('project_overview', 'The final year project is a mandatory course where students are expected to solve real-world computing problems...') }}</p>
+            </div>
+        </div>
+
+        <!-- Guidelines / Rules -->
+        @php 
+            $defaultRules = [
+                ['title' => 'Chapter Structure', 'desc' => "Chapter 1: Introduction\nChapter 2: Literature Review\nChapter 3: Methodology\nChapter 4: System Implementation & Results\nChapter 5: Summary, Conclusion and Recommendations."],
+                ['title' => 'Plagiarism Policy', 'desc' => 'All projects will be scanned for plagiarism. Any research work with a similarity index above standard thresholds will be automatically rejected. Ensure all citations follow conventional academic formats.'],
+                ['title' => 'Page Formatting', 'desc' => 'Use Times New Roman, 12pt font size. Line spacing must be 1.5 margins. Left margin: 1.5 inches for binding; Top, Bottom, and Right margins: 1.0 inch.']
+            ];
+            $rules = json_decode($s('project_rules', '[]'), true); 
+            if (empty($rules)) $rules = $defaultRules;
+        @endphp
+        @if(count($rules) > 0)
+        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100 mb-12" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-100 pb-5 mb-8 font-heading flex items-center gap-4">
+                <span class="w-12 h-12 bg-blue-100 text-blue-700 flex items-center justify-center rounded-2xl shadow-inner"><i class="fa-solid fa-book-open-reader"></i></span> Formatting Guidelines
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                @foreach($rules as $index => $rule)
+                <div class="p-8 bg-gradient-to-br from-slate-50/80 to-white border border-slate-200 rounded-3xl relative group hover:-translate-y-2 hover:shadow-2xl hover:shadow-slate-200/50 hover:border-slate-300 transition-all duration-300 flex flex-col">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-600/30 font-bold text-2xl mb-6 relative overflow-hidden">
+                        <i class="fa-solid fa-bookmark absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 text-5xl opacity-20"></i>
+                        <span class="relative z-10">{{ $index + 1 }}</span>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-[1.3rem] mb-4 leading-tight">{{ $rule['title'] }}</h4>
+                    <div class="text-slate-600 leading-relaxed text-[1.05rem] flex-1">
+                        {!! nl2br(e($rule['desc'])) !!}
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
+
+        <!-- Calendar/Milestones -->
+        @php 
+            $defaultMilestones = [
+                ['date' => 'Early Sem 1', 'title' => 'Topic Approval', 'desc' => 'Submit three proposed project topics to your assigned supervisor.'],
+                ['date' => 'Mid Sem 1', 'title' => 'Chapter 1 & 2 Submission', 'desc' => 'First draft of Introduction and Literature Review due for supervisor review.'],
+                ['date' => 'Early Sem 2', 'title' => 'System Demonstration', 'desc' => 'Live demonstration of the proposed system/software working prototype.'],
+                ['date' => 'End of Sem 2', 'title' => 'Final Defense & Binding', 'desc' => 'Defense before an external panel followed by the submission of 3 hardbound copies of the completed project plus CD-ROM.']
+            ];
+            $milestones = json_decode($s('project_milestones', '[]'), true); 
+            if (empty($milestones)) $milestones = $defaultMilestones;
+        @endphp
+        @if(count($milestones) > 0)
+        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-100 pb-5 mb-10 font-heading flex items-center gap-4">
+                <span class="w-12 h-12 bg-amber-100 text-amber-700 flex items-center justify-center rounded-2xl shadow-inner"><i class="fa-regular fa-calendar-check"></i></span> Important Deadlines
+            </h2>
+
+            <!-- Timeline style layout -->
+            <div class="relative border-l-4 border-amber-200/60 ml-6 space-y-10 pb-4">
+                @foreach($milestones as $index => $mile)
+                <div class="relative pl-10 md:pl-12">
+                    <div class="absolute w-12 h-12 bg-amber-500 rounded-full text-white flex items-center justify-center font-bold shadow-lg shadow-amber-500/30 ring-4 ring-white" style="left: -26px; top: 0;">
+                        <i class="fa-solid fa-thumbtack -rotate-45 ml-1 mt-1"></i>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-100 rounded-3xl p-7 hover:shadow-xl hover:shadow-amber-900/5 hover:-translate-y-1 hover:border-amber-200 transition-all duration-300">
+                        <span class="inline-block py-1.5 px-4 bg-amber-100/80 text-amber-800 rounded-full text-[0.75rem] font-black uppercase tracking-widest mb-4 border border-amber-200/60 shadow-sm">{{ $mile['date'] }}</span>
+                        <h3 class="font-bold text-slate-900 text-xl md:text-2xl mb-3">{{ $mile['title'] }}</h3>
+                        <p class="text-slate-600 text-[1.05rem] leading-relaxed">{{ $mile['desc'] }}</p>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
     </div>
 </div>
 @endsection

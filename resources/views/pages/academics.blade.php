@@ -106,7 +106,7 @@
                 <p class="text-slate-300 text-[1.05rem] max-w-[500px] mx-auto">{{ $gs('academics_apply_subtitle', 'Join our vibrant academic community in three simple steps.') }}</p>
             </div>
 
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8 relative z-10">
                 @php
                     $applySteps = json_decode(\App\Models\DepartmentSetting::getCached('academics_apply_steps') ?? '[]', true) ?? [];
                     if (empty($applySteps)) {
@@ -118,7 +118,7 @@
                     }
                 @endphp
                 @foreach($applySteps as $i => $step)
-                <div data-aos="fade-up" class="group bg-gradient-to-br from-slate-800/70 to-slate-900/90 p-8 rounded-2xl border border-white/10 text-center backdrop-blur-md transition-all duration-400 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.3)] hover:-translate-y-2 hover:border-emerald-500/40 hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.4),inset_0_0_0_1px_rgba(16,185,129,0.2)]">
+                <div data-aos="fade-up" class="group bg-gradient-to-br from-slate-800/70 to-slate-900/90 p-6 lg:p-8 rounded-2xl border border-white/10 text-center backdrop-blur-md transition-all duration-400 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.3)] hover:-translate-y-2 hover:border-emerald-500/40 hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.4),inset_0_0_0_1px_rgba(16,185,129,0.2)]">
                     <div class="w-16 h-16 bg-gradient-to-br from-primary to-emerald-700 text-white rounded-full flex items-center justify-center text-2xl font-extrabold mx-auto mb-6 shadow-[0_8px_20px_rgba(16,185,129,0.3)] border-2 border-white/10">{{ $i + 1 }}</div>
                     <strong class="block text-[1.25rem] font-heading mb-3 text-white">{{ $step['title'] ?? '' }}</strong>
                     <p class="text-[0.95rem] text-slate-400 m-0 leading-relaxed">{{ $step['desc'] ?? '' }}</p>
@@ -243,32 +243,34 @@
         @endforeach
 
         {{-- ═══════════ COURSE STRUCTURE ═══════════ --}}
-        <section data-aos="fade-up" id="course-structure" class="mb-8">
+        <section data-aos="fade-up" id="course-structure" class="mb-16">
             <div class="flex items-center gap-4 mb-6">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/15 to-rose-500/10 text-pink-500 flex items-center justify-center text-xl shadow-sm">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/15 to-emerald-500/10 text-emerald-600 flex items-center justify-center text-xl shadow-sm border border-emerald-500/20">
                     <i class="fa-solid fa-diagram-project"></i>
                 </div>
-                <h2 class="m-0 text-3xl text-slate-900 font-heading font-bold">{{ $gs('academics_courses_title', 'Course Structure') }}</h2>
+                <h2 class="m-0 text-3xl text-slate-900 font-heading font-bold tracking-tight">{{ $gs('academics_courses_title', 'Course Structure') }}</h2>
             </div>
-            <div class="w-[60px] h-1 bg-gradient-to-r from-pink-500 to-rose-500 rounded-sm mb-6"></div>
+            <div class="w-[60px] h-1 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-sm mb-6"></div>
             
-            <p class="text-lg leading-relaxed text-slate-600 mb-10 max-w-4xl">{{ $gs('academics_courses_desc', 'Browse the unified curriculum outline showing core and elective courses across different academic levels.') }}</p>
+            <p class="text-[1.05rem] leading-relaxed text-slate-600 mb-10 max-w-4xl">{{ $gs('academics_courses_desc', 'Browse the unified curriculum outline showing core and elective courses across different academic levels.') }}</p>
 
             @foreach($courses as $level => $levelCourses)
-            <div class="bg-white border border-slate-200 rounded-2xl mb-10 overflow-hidden shadow-[0_10px_25px_-5px_rgba(0,0,0,0.05),0_8px_10px_-6px_rgba(0,0,0,0.01)]">
-                <div class="bg-white py-6 px-7 border-b border-slate-100 flex items-center gap-4">
-                    <span class="bg-slate-900 text-white w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-[1.15rem] shadow-[0_4px_10px_rgba(15,23,42,0.25)]">L{{ $level }}</span>
-                    <h3 class="m-0 text-[1.4rem] text-slate-900 font-heading font-bold tracking-[-0.02em]">Level {{ $level }} Courses</h3>
+            <div class="bg-white border border-slate-200/80 rounded-2xl mb-10 overflow-hidden shadow-[0_12px_30px_-10px_rgba(37,99,235,0.08)] group hover:border-emerald-200 transition-all duration-300">
+                <div class="bg-slate-50 py-5 px-7 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <span class="bg-gradient-to-br from-emerald-500 to-blue-600 text-white w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-[1.2rem] shadow-md border border-emerald-400/20">L{{ $level }}</span>
+                        <h3 class="m-0 text-[1.4rem] text-slate-800 font-heading font-bold tracking-tight">Level {{ $level }} Courses</h3>
+                    </div>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full border-collapse min-w-[650px] text-left">
                         <thead>
-                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-widest">
-                                <th class="py-5 px-7 font-bold border-b border-slate-200">Course Code</th>
-                                <th class="py-5 px-7 font-bold border-b border-slate-200">Course Title</th>
-                                <th class="py-5 px-7 font-bold border-b border-slate-200 text-center">Units</th>
-                                <th class="py-5 px-7 font-bold border-b border-slate-200 text-center">Semester</th>
-                                <th class="py-5 px-7 font-bold border-b border-slate-200 text-center">Type</th>
+                            <tr class="bg-white text-slate-400 text-[0.75rem] uppercase tracking-wider border-b border-slate-100">
+                                <th class="py-4 px-7 font-bold">Course Code</th>
+                                <th class="py-4 px-7 font-bold">Course Title</th>
+                                <th class="py-4 px-7 font-bold text-center">Units</th>
+                                <th class="py-4 px-7 font-bold text-center">Semester</th>
+                                <th class="py-4 px-7 font-bold text-center">Type</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -298,18 +300,6 @@
             @endforeach
         </section>
     </div>
-
-    @php
-        $sections = [
-            'overview' => 'Programme Overview',
-            'admission-process' => 'How to Apply'
-        ];
-        foreach($categories as $c) {
-            $sections[$c->slug] = $c->name;
-        }
-        $sections['course-structure'] = 'Course Structure';
-    @endphp
-    <x-sticky-toc :sections="$sections" />
 </div>
 
 <style>

@@ -20,6 +20,12 @@ Breadcrumbs::for('academics', function (BreadcrumbTrail $trail) {
     $trail->push('Academics', url('academics'));
 });
 
+// Home > Admissions
+Breadcrumbs::for('admissions', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Admissions', url('admissions'));
+});
+
 // Home > Faculty
 Breadcrumbs::for('people', function (BreadcrumbTrail $trail) {
     $trail->parent('home');

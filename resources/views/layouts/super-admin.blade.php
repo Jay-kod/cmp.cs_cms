@@ -210,6 +210,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('super-admin.page-content.show', 'admissions') }}" class="admin-nav-item {{ request()->is('super-admin/page-content/admissions') ? 'active' : '' }}" title="Admissions Page">
+                            <div class="nav-icon"><i class="fa-solid fa-door-open"></i></div>
+                            <span>Admissions Page</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('super-admin.page-content.show', 'people') }}" class="admin-nav-item {{ request()->is('super-admin/page-content/people') ? 'active' : '' }}" title="Faculty & People Page">
                             <div class="nav-icon"><i class="fa-solid fa-users"></i></div>
                             <span>Faculty & People</span>

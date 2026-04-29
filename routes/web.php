@@ -65,6 +65,7 @@ Route::get('/department/{slug}', [DepartmentController::class, 'show'])->name('d
 Route::get('/sub-department/{slug}', [App\Http\Controllers\SubDepartmentPublicController::class, 'show'])->name('sub-department.show');
 Route::get('/past-hods', [AboutController::class, 'pastHods'])->name('past-hods');
 Route::get('/academics', [AcademicsController::class, 'index'])->name('academics');
+Route::get('/admissions', [\App\Http\Controllers\AdmissionsController::class, 'index'])->name('admissions');
 Route::get('/programmes/{slug}', [\App\Http\Controllers\ProgrammePublicController::class, 'show'])->name('programmes.show');
 Route::get('/people', [PeopleController::class, 'index'])->name('people.index');
 Route::get('/people/search', [PeopleController::class, 'search'])->name('people.search');

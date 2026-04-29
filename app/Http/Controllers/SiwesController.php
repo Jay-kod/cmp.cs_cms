@@ -10,7 +10,10 @@ class SiwesController extends Controller
 {
     public function index()
     {
-        $settings = DepartmentSetting::where('group', 'page_siwes')->pluck('value', 'key')->toArray();
+        // Load settings related to the SIWES page and images (which use 'hero' group by default)
+        $settings = DepartmentSetting::whereIn('group', ['page_siwes', 'hero'])
+            ->pluck('value', 'key')
+            ->toArray();
         $downloads = ResourceCategory::where('name', 'like', '%SIWES%')->with(['items' => function($q){
             $q->where('is_active', true)->orderBy('sort_order');
         }])->first();

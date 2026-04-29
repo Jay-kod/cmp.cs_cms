@@ -33,18 +33,59 @@
             <textarea name="siwes_overview" rows="4" class="form-input w-full rounded border-gray-300">{{ $s('siwes_overview', 'The Student Industrial Work Experience Scheme (SIWES) is designed to give students practical experience...') }}</textarea>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div>
-                <label class="block text-sm font-bold mb-1">Coordinator Name</label>
-                <input type="text" name="siwes_coordinator_name" value="{{ $s('siwes_coordinator_name', 'Dr. John Doe') }}" class="form-input w-full rounded border-gray-300">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 mt-6">
+            <!-- General Director Card -->
+            <div class="border border-blue-200 rounded-xl p-5 bg-blue-50/50 relative">
+                <span class="absolute -top-3 left-4 bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded text-xs border border-blue-300 shadow-sm">University SIWES Directorate</span>
+                <div class="grid grid-cols-1 gap-4 mt-3">
+                    <div class="grid grid-cols-2 gap-3 mb-1">
+                        <div>
+                            <label class="block text-xs font-bold mb-1 text-blue-900">Upload Image</label>
+                            <input type="file" name="siwes_director_image" accept="image/*" class="form-input w-full rounded border-blue-200 text-xs bg-white p-1">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold mb-1 text-blue-900">Director Name</label>
+                            <input type="text" name="siwes_director_name" value="{{ $s('siwes_director_name', 'University SIWES Director') }}" class="form-input w-full rounded border-blue-200 text-sm bg-white">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold mb-1 text-blue-900">Director Email</label>
+                            <input type="email" name="siwes_director_email" value="{{ $s('siwes_director_email', 'directorsiwes@nsuk.edu.ng') }}" class="form-input w-full rounded border-blue-200 text-sm bg-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold mb-1 text-blue-900">Contact / Phone</label>
+                            <input type="text" name="siwes_director_phone" value="{{ $s('siwes_director_phone', '+2348063400484, +2348052753760') }}" class="form-input w-full rounded border-blue-200 text-sm bg-white">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label class="block text-sm font-bold mb-1">Coordinator Email</label>
-                <input type="email" name="siwes_coordinator_email" value="{{ $s('siwes_coordinator_email', 'siwes@dept.edu.ng') }}" class="form-input w-full rounded border-gray-300">
-            </div>
-            <div>
-                <label class="block text-sm font-bold mb-1">Consultation Hours</label>
-                <input type="text" name="siwes_coordinator_hours" value="{{ $s('siwes_coordinator_hours', 'Mon-Wed 10am-12pm') }}" class="form-input w-full rounded border-gray-300">
+
+            <!-- Departmental Coordinator Card -->
+            <div class="border border-green-200 rounded-xl p-5 bg-green-50/50 relative">
+                <span class="absolute -top-3 left-4 bg-green-100 text-green-700 font-bold px-3 py-1 rounded text-xs border border-green-300 shadow-sm">Departmental SIWES Coordinator</span>
+                <div class="grid grid-cols-1 gap-4 mt-3">
+                    <div class="grid grid-cols-2 gap-3 mb-1">
+                        <div>
+                            <label class="block text-xs font-bold mb-1 text-green-900">Upload Image</label>
+                            <input type="file" name="siwes_coordinator_image" accept="image/*" class="form-input w-full rounded border-green-200 text-xs bg-white p-1">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold mb-1 text-green-900">Coordinator Name</label>
+                            <input type="text" name="siwes_coordinator_name" value="{{ $s('siwes_coordinator_name', 'Dr. John Doe') }}" class="form-input w-full rounded border-green-200 text-sm bg-white">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold mb-1 text-green-900">Coordinator Email</label>
+                            <input type="email" name="siwes_coordinator_email" value="{{ $s('siwes_coordinator_email', 'siwes@dept.edu.ng') }}" class="form-input w-full rounded border-green-200 text-sm bg-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold mb-1 text-green-900">Consultation Hours</label>
+                            <input type="text" name="siwes_coordinator_hours" value="{{ $s('siwes_coordinator_hours', 'Mon-Wed 10am-12pm') }}" class="form-input w-full rounded border-green-200 text-sm bg-white">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

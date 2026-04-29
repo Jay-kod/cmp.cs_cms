@@ -360,12 +360,11 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                         
                         <!-- Name and Badge -->
                         <a href="{{ route('people.show', $member->slug) }}"
-                           class="text-[1rem] font-semibold text-white mb-1 flex items-center gap-1.5 leading-tight no-underline hover:text-white pointer-events-auto max-w-full whitespace-nowrap overflow-hidden text-ellipsis"
-                           style="display:block;">
-                            <span class="inline-block max-w-[85%] align-bottom whitespace-nowrap overflow-hidden text-ellipsis">{{ $displayName }}</span>
-                            <span class="relative flex items-center justify-center ml-1 shrink-0">
-                                <i class="fa-solid fa-certificate text-emerald-400 text-[1.1rem]"></i>
-                                <i class="fa-solid fa-check text-slate-900 text-[0.6rem] absolute"></i>
+                           class="text-[1rem] font-semibold text-white mb-1 inline-flex items-center gap-1 leading-tight no-underline hover:text-white pointer-events-auto max-w-full">
+                            <span class="min-w-0 whitespace-nowrap overflow-hidden text-ellipsis">{{ $displayName }}</span>
+                            <span class="relative flex items-center justify-center shrink-0 w-[14px] h-[14px]">
+                                <i class="fa-solid fa-certificate text-emerald-400 text-[0.75rem]"></i>
+                                <i class="fa-solid fa-check text-slate-900 text-[0.4rem] absolute"></i>
                             </span>
                         </a>
                         
@@ -448,56 +447,107 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
     }
 @endphp
 
-<section class="bg-slate-50 py-24 border-t border-black/5" x-data="{ activeFaq: null }">
-    <div class="container" data-aos="fade-up">
-        <div class="flex flex-col items-center text-center mb-16">
-            <span class="inline-block bg-amber-500/10 text-amber-500 font-bold text-[0.85rem] py-1.5 px-6 rounded-full mb-4 tracking-[1.5px] uppercase">SUPPORT</span>
-            <h2 class="text-[2.5rem] font-extrabold text-slate-900 font-heading mb-4">Frequently Asked Questions</h2>
-            <p class="text-slate-500 max-w-[500px] text-[1.1rem] leading-[1.7]">Find quick answers regarding admissions, campus life, and academic requirements for {{ $subDept->name }}.</p>
-        </div>
+<section class="bg-[#fafbfc] py-28 border-t border-black/5 relative overflow-hidden" x-data="{ activeFaq: null }">
+    <!-- Background mesh decorations -->
+    <div class="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] bg-gradient-to-br from-emerald-100/40 to-transparent rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute bottom-[-15%] right-[-8%] w-[500px] h-[500px] bg-gradient-to-tl from-slate-200/50 to-transparent rounded-full blur-[80px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-emerald-50/30 via-transparent to-slate-50/30 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="container relative z-10">
         
-        <div class="max-w-[850px] mx-auto space-y-4">
-            @foreach($faqs as $index => $faq)
-            <div class="bg-white rounded-[1rem] p-2 shadow-[0_4px_15px_-10px_rgba(0,0,0,0.05)] border border-slate-100/60 transition-all duration-300"
-                 :class="activeFaq === {{ $index }} ? 'shadow-[0_8px_30px_-10px_rgba(251,191,36,0.15)] border-amber-200/50' : 'hover:border-slate-200'">
-                <!-- Header / Question -->
-                <button @click="activeFaq = activeFaq === {{ $index }} ? null : {{ $index }}" 
-                        class="w-full relative flex items-center justify-between p-5 md:p-6 text-left focus:outline-none rounded-[0.85rem] group transition-colors"
-                        :class="activeFaq === {{ $index }} ? 'bg-[#fff8eb]/50' : 'hover:bg-slate-50/50'">
-                    
-                    <div class="flex items-center gap-4 md:gap-5 pr-8 text-black">
-                        <!-- Icon wrapper -->
-                        <div class="w-10 h-10 min-w-[2.5rem] rounded-full flex items-center justify-center transition-all duration-300"
-                             :class="activeFaq === {{ $index }} ? 'bg-amber-100 text-amber-600' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200 group-hover:text-slate-600'">
-                            <i class="fa-solid fa-question text-[0.95rem]"></i>
+        <!-- Section Header -->
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 text-[0.78rem] font-bold uppercase tracking-[2px] py-2 px-5 rounded-full mb-5 border border-emerald-500/15 shadow-sm">
+                <i class="fa-solid fa-circle-question text-[0.7rem]"></i> Support & Guidance
+            </span>
+            <h2 class="text-[2.5rem] md:text-[3rem] font-black text-slate-900 font-heading mb-5 tracking-tight leading-[1.1]">
+                Frequently Asked Questions
+            </h2>
+            <p class="text-slate-500 max-w-[600px] mx-auto text-[1.05rem] leading-[1.7]">
+                Everything you need to know about admissions, curriculum, and campus life at <span class="text-emerald-600 font-semibold">{{ $subDept->name }}</span>.
+            </p>
+        </div>
+
+
+        <div class="max-w-[850px] mx-auto">
+
+            <div class="space-y-3.5">
+
+                @foreach($faqs as $index => $faq)
+                <div class="group/card rounded-2xl transition-all duration-400 border relative overflow-hidden"
+                     :class="activeFaq === {{ $index }}
+                         ? 'bg-white shadow-[0_12px_40px_-8px_rgba(5,150,105,0.12),0_0_0_1px_rgba(5,150,105,0.08)] border-emerald-300/50'
+                         : 'bg-white/70 backdrop-blur-sm border-slate-200/70 hover:bg-white hover:border-slate-300/80 hover:shadow-[0_8px_25px_-8px_rgba(0,0,0,0.06)]'"
+                     data-aos="fade-up" data-aos-delay="{{ $index * 70 }}">
+
+                    <!-- Left accent bar -->
+                    <div class="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl transition-all duration-400"
+                         :class="activeFaq === {{ $index }}
+                             ? 'bg-gradient-to-b from-emerald-400 to-emerald-600'
+                             : 'bg-transparent group-hover/card:bg-slate-200'"></div>
+
+                    <!-- Question Button -->
+                    <button @click="activeFaq = activeFaq === {{ $index }} ? null : {{ $index }}"
+                            class="w-full flex items-center gap-4 md:gap-5 p-5 md:p-6 pl-6 md:pl-7 text-left focus:outline-none group cursor-pointer">
+
+                        <!-- Number badge -->
+                        <div class="w-11 h-11 min-w-[2.75rem] rounded-xl flex items-center justify-center text-[0.85rem] font-black transition-all duration-400 shrink-0 relative"
+                             :class="activeFaq === {{ $index }}
+                                 ? 'bg-emerald-500 text-white shadow-[0_6px_16px_-2px_rgba(16,185,129,0.45)] scale-110'
+                                 : 'bg-slate-50 text-slate-400 border border-slate-200/80 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-200'">
+                            <span :class="activeFaq === {{ $index }} ? 'opacity-0 scale-75' : 'opacity-100 scale-100'" class="transition-all duration-200">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                            <i class="fa-solid fa-check text-[0.7rem] absolute transition-all duration-200" :class="activeFaq === {{ $index }} ? 'opacity-100 scale-100' : 'opacity-0 scale-75'"></i>
                         </div>
-                        
-                        <h3 class="text-[1.15rem] md:text-[1.2rem] font-bold text-slate-800 tracking-tight leading-snug transition-colors"
-                            :class="activeFaq === {{ $index }} ? 'text-amber-700' : 'group-hover:text-slate-900'">
+
+                        <!-- Question text -->
+                        <h3 class="flex-1 text-[1rem] md:text-[1.08rem] font-bold leading-snug tracking-tight transition-colors duration-200"
+                            :class="activeFaq === {{ $index }} ? 'text-slate-900' : 'text-slate-600 group-hover:text-slate-800'">
                             {{ $faq['q'] }}
                         </h3>
-                    </div>
 
-                    <!-- Chevron -->
-                    <div class="absolute right-5 md:right-6 text-slate-400 transition-transform duration-300"
-                         :class="activeFaq === {{ $index }} ? 'rotate-180 text-amber-500' : 'group-hover:text-slate-600'">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </div>
-                </button>
+                        <!-- Toggle icon (+ / −) -->
+                        <div class="w-9 h-9 min-w-[2.25rem] rounded-xl flex items-center justify-center transition-all duration-400 shrink-0"
+                             :class="activeFaq === {{ $index }}
+                                 ? 'bg-emerald-500 text-white shadow-sm'
+                                 : 'bg-slate-50 text-slate-400 border border-slate-200/80 group-hover:bg-slate-100 group-hover:text-slate-600'">
+                            <i class="fa-solid fa-plus text-[0.7rem] transition-transform duration-300" :class="activeFaq === {{ $index }} ? 'rotate-45' : ''"></i>
+                        </div>
+                    </button>
 
-                <!-- Body / Answer -->
-                <div x-show="activeFaq === {{ $index }}" 
-                     x-collapse 
-                     x-cloak
-                     class="px-5 md:px-6 pb-6 pt-1 text-slate-500 text-[1.05rem] leading-[1.75]">
-                    <div class="pl-0 md:pl-[3.75rem]"> <!-- Aligns with the text, skipping icon spacing -->
-                        {{ $faq['a'] }}
+                    <!-- Answer Panel -->
+                    <div x-show="activeFaq === {{ $index }}"
+                         x-collapse
+                         x-cloak>
+                        <div class="px-5 md:px-6 pl-6 md:pl-7 pb-6">
+                            <div class="ml-[3.75rem] bg-emerald-50/50 border border-emerald-100/60 rounded-xl p-5 text-slate-600 text-[0.93rem] leading-[1.85] relative">
+                                <!-- Answer icon -->
+                                <div class="absolute -top-3 -left-3 w-6 h-6 rounded-lg bg-emerald-500 text-white flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-reply text-[0.55rem]"></i>
+                                </div>
+                                {{ $faq['a'] }}
+                            </div>
+                        </div>
                     </div>
                 </div>
+                @endforeach
+
+                <!-- Bottom CTA Bar -->
+                <div class="mt-8 bg-gradient-to-r from-slate-50 to-emerald-50/40 rounded-2xl p-6 md:p-7 border border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-4" data-aos="fade-up">
+                    <div class="flex items-center gap-3 text-center sm:text-left">
+                        <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-[1.1rem] shrink-0 shadow-sm">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <div class="text-slate-800 font-bold text-[0.95rem]">Didn't find what you were looking for?</div>
+                            <div class="text-slate-500 text-[0.82rem]">Our admissions team is happy to help with any questions.</div>
+                        </div>
+                    </div>
+                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white py-2.5 px-6 rounded-xl font-bold text-[0.85rem] no-underline transition-all duration-300 shadow-sm hover:shadow-md whitespace-nowrap shrink-0">
+                        Ask a Question <i class="fa-solid fa-arrow-right text-[0.7rem]"></i>
+                    </a>
+                </div>
             </div>
-            @endforeach
         </div>
-        
     </div>
 </section>
 

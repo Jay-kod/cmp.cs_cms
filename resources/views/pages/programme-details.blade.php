@@ -41,12 +41,7 @@
                 </ol>
             </nav>
 
-            @auth
-            <!-- Admin Edit Button -->
-            <a href="{{ route('admin.programmes.edit', $programme->id) }}" class="bg-amber-500 hover:bg-amber-400 text-amber-950 px-5 py-2.5 rounded-full font-bold text-sm shadow-[0_0_15px_rgba(245,158,11,0.3)] flex items-center transition-all transform hover:-translate-y-0.5 border border-amber-400/50">
-                <i class="fas fa-edit mr-2"></i> Edit Content
-            </a>
-            @endauth
+
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">

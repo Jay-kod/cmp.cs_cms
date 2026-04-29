@@ -290,6 +290,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('admin.page-content.show', 'admissions') }}" class="admin-nav-item {{ request()->is('admin/page-content/admissions') ? 'active' : '' }}" title="Admissions Page">
+                            <div class="nav-icon"><i class="fa-solid fa-door-open"></i></div>
+                            <span>Admissions Layout</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.page-content.show', 'people') }}" class="admin-nav-item {{ request()->is('admin/page-content/people') ? 'active' : '' }}" title="Faculty & People Page">
                             <div class="nav-icon"><i class="fa-solid fa-users"></i></div>
                             <span>People Layout</span>
