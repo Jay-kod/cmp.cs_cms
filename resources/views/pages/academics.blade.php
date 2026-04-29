@@ -64,11 +64,11 @@
             <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5">
                 @php
                     $catColors = [
-                        ['bg' => 'bg-blue-50', 'border' => 'border-blue-200', 'text' => 'text-blue-700', 'icon' => 'text-blue-500', 'hover' => 'hover:border-blue-300 hover:shadow-blue-500/10'],
-                        ['bg' => 'bg-emerald-50', 'border' => 'border-emerald-200', 'text' => 'text-emerald-700', 'icon' => 'text-emerald-500', 'hover' => 'hover:border-emerald-300 hover:shadow-emerald-500/10'],
-                        ['bg' => 'bg-purple-50', 'border' => 'border-purple-200', 'text' => 'text-purple-700', 'icon' => 'text-purple-500', 'hover' => 'hover:border-purple-300 hover:shadow-purple-500/10'],
-                        ['bg' => 'bg-amber-50', 'border' => 'border-amber-200', 'text' => 'text-amber-700', 'icon' => 'text-amber-500', 'hover' => 'hover:border-amber-300 hover:shadow-amber-500/10'],
-                        ['bg' => 'bg-sky-50', 'border' => 'border-sky-200', 'text' => 'text-sky-700', 'icon' => 'text-sky-500', 'hover' => 'hover:border-sky-300 hover:shadow-sky-500/10']
+                        ['bg' => 'bg-emerald-50', 'border' => 'border-emerald-200', 'text' => 'text-emerald-700', 'icon' => 'text-emerald-600', 'hover' => 'hover:border-emerald-400 hover:shadow-emerald-500/20'],
+                        ['bg' => 'bg-green-50', 'border' => 'border-green-200', 'text' => 'text-green-700', 'icon' => 'text-green-600', 'hover' => 'hover:border-green-400 hover:shadow-green-500/20'],
+                        ['bg' => 'bg-teal-50', 'border' => 'border-teal-200', 'text' => 'text-teal-700', 'icon' => 'text-teal-600', 'hover' => 'hover:border-teal-400 hover:shadow-teal-500/20'],
+                        ['bg' => 'bg-lime-50', 'border' => 'border-lime-200', 'text' => 'text-lime-700', 'icon' => 'text-lime-600', 'hover' => 'hover:border-lime-400 hover:shadow-lime-500/20'],
+                        ['bg' => 'bg-emerald-100', 'border' => 'border-emerald-300', 'text' => 'text-emerald-800', 'icon' => 'text-emerald-600', 'hover' => 'hover:border-emerald-500 hover:shadow-emerald-500/20']
                     ];
                 @endphp
                 @foreach($categories as $index => $cat)
