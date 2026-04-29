@@ -1,6 +1,6 @@
 ﻿<!-- UPCOMING EVENTS -->
 <section data-aos="fade-up" style="padding: 6rem 0; background-color: #FFFFFF; position: relative;">
-    <div class="container" data-aos="fade-up">
+    <div class="container px-4" data-aos="fade-up">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem;">
             <div>
                 <span style="display: inline-block; color: #ef4444; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.5rem; background: rgba(239,68,68,0.1); padding: 0.3rem 1rem; border-radius: 20px;">{{ $gs('home_events_badge','Mark Your Calendar') }}</span>

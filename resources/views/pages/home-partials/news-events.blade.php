@@ -1,6 +1,6 @@
 <!-- CLEAN & PROFESSIONAL NEWS & EVENTS COMPONENT -->
 <section class="py-24 bg-slate-50" id="news-section">
-    <div class="container relative z-[2]" data-aos="fade-up">
+    <div class="container relative z-[2] px-4" data-aos="fade-up">
 
         <!-- Section Header -->
         <div class="text-center mb-16">

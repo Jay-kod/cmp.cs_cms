@@ -4,7 +4,7 @@
     <div class="absolute top-[-100px] right-[-50px] w-[300px] h-[300px] pointer-events-none rounded-full bg-[radial-gradient(circle,rgba(22,163,74,0.08)_0%,transparent_70%)]"></div>
     <div class="absolute bottom-[-50px] left-[10%] w-[250px] h-[250px] pointer-events-none rounded-full bg-[radial-gradient(circle,rgba(22,163,74,0.06)_0%,transparent_70%)]"></div>
     
-    <div class="container relative z-[2]">
+    <div class="container relative z-[2] px-4">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             
             <!-- TEXT COLUMN (Stacks top on mobile, left on desktop) -->
@@ -56,7 +56,7 @@
     </div>
     
     <!-- Stats Counter Cards — integrated into HOD section -->
-    <div class="container mt-16 pb-16" data-aos="fade-up">
+    <div class="container mt-16 pb-16 px-4" data-aos="fade-up">
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 text-center">
             @foreach([1,2,3,4,5,6] as $n)
             @php

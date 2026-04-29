@@ -5,7 +5,7 @@
     <div style="position: absolute; top: -10%; left: -5%; width: 400px; height: 400px; background: rgba(59, 130, 246, 0.1); filter: blur(80px); border-radius: 50%; z-index: 1;"></div>
     <div style="position: absolute; bottom: -10%; right: -5%; width: 500px; height: 500px; background: rgba(16, 185, 129, 0.1); filter: blur(100px); border-radius: 50%; z-index: 1;"></div>
 
-    <div class="container" data-aos="fade-up" style="position: relative; z-index: 2;">
+    <div class="container px-4" data-aos="fade-up" style="position: relative; z-index: 2;">
         <div style="margin-bottom: 4rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
             <span style="color: var(--color-primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; background: rgba(255,255,255,0.6); padding: 0.4rem 1.2rem; border-radius: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.8); text-align: center !important;">Our Network</span>
             <h2 style="font-size: 2.8rem; font-family: var(--font-heading); font-weight: 800; color: #0f172a; margin-bottom: 1rem; letter-spacing: -0.5px; text-align: center !important;">Industry Partners</h2>

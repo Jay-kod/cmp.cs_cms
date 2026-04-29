@@ -7,7 +7,7 @@
         <div class="absolute inset-0 bg-[url('data:image/svg+xml,<svg_xmlns=%22http://www.w3.org/2000/svg%22_width=%2240%22_height=%2240%22><circle_cx=%2220%22_cy=%2220%22_r=%220.5%22_fill=%22rgba(255,255,255,0.03)%22/></svg>')]"></div>
     </div>
 
-    <div class="container relative z-10" data-aos="fade-up">
+    <div class="container relative z-10 px-4" data-aos="fade-up">
         {{-- Section Header --}}
         <div class="grid grid-cols-[1fr_auto] items-end gap-6 mb-8">
             <div>

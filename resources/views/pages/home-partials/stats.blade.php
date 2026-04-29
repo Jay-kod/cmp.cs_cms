@@ -1,6 +1,6 @@
 ﻿<!-- QUICK STATS BAR -->
 <section data-aos="fade-up" style="background-color: #0D4F26; color: #FFFFFF; padding: 2.5rem 0; position: relative;">
-    <div class="container" data-aos="fade-up">
+    <div class="container px-4" data-aos="fade-up">
         <div class="stats-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; text-align: center;">
             @php
                 $statValues = [

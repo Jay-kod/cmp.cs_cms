@@ -4,7 +4,7 @@
     <div class="absolute -top-20 -left-20 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(34,197,94,0.15)_0%,transparent_70%)] pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(34,197,94,0.1)_0%,transparent_70%)] pointer-events-none"></div>
 
-    <div class="container relative z-10" data-aos="fade-up">
+    <div class="container relative z-10 px-4" data-aos="fade-up">
         
         <!-- Header -->
         <div class="text-center mb-16">
