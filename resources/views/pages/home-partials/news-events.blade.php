@@ -9,9 +9,9 @@
             <div class="w-16 h-1 bg-emerald-600 mx-auto mt-6 rounded-full"></div>
         </div>
 
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-12 lg:gap-14">
-            <!-- News Column (2/3 width) -->
-            <div class="xl:col-span-2">
+        <div class="flex flex-col gap-16 lg:gap-20">
+            <!-- News Section -->
+            <div class="w-full">
                 <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-200">
                     <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-3">
                         <i class="fa-regular fa-newspaper text-emerald-600"></i>
@@ -23,7 +23,7 @@
                     </a>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @if($news && count($news) > 0)
                         @foreach($news as $item)
                         <a href="{{ route('research-news.show', $item->slug) }}" class="group bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
