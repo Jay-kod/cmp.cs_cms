@@ -1,5 +1,5 @@
 <div class="timetable-section my-12">
-    <div class="container px-4" data-aos="fade-up">
+    <div class="container" data-aos="fade-up">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <h2 class="text-[1.5rem] text-slate-900 font-heading font-extrabold m-0">Departmental Timetables</h2>
             <a href="{{ url('/resources') }}" class="btn btn-primary bg-[color:var(--color-primary)] text-white py-[0.6rem] px-[1.2rem] rounded-lg no-underline font-semibold flex items-center justify-center w-full sm:w-auto gap-1.5 transition-all duration-200 hover:-translate-y-[2px]">

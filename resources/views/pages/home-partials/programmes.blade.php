@@ -7,7 +7,7 @@
         </svg>
     </div>
     
-    <div class="container relative z-[2] px-4" data-aos="fade-up">
+    <div class="container relative z-[2]" data-aos="fade-up">
         <div class="text-center mb-[4rem]">
             <span class="inline-block text-primary text-[0.85rem] font-bold uppercase tracking-[1.5px] mb-[1rem] bg-blue-500/10 py-[0.3rem] px-[1rem] rounded-[20px]">{{ $gs('home_programmes_badge','What We Offer') }}</span>
             <h2 class="text-[2.8rem] font-heading font-extrabold text-slate-900 mb-[1rem]">{{ $gs('home_programmes_title','Academic Programmes') }}</h2>

@@ -6,7 +6,7 @@
     <div class="absolute bottom-0 left-0 -ml-48 -mb-48 w-[600px] h-[600px] bg-emerald-600/20 rounded-full blur-[100px] pointer-events-none"></div>
     <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMC44IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDcpIi8+PC9zdmc+')] opacity-60 pointer-events-none"></div>
     
-    <div class="relative z-10 container px-4 sm:px-6 lg:px-8 mx-auto max-w-4xl flex flex-col items-center">
+    <div class="relative z-10 container sm: lg: max-w-4xl flex flex-col items-center">
         <!-- Main Headings -->
         <h2 class="text-4xl md:text-[3.6rem] font-heading font-black text-white mb-6 leading-tight drop-shadow-lg tracking-tight">
             {{ $gs('home_cta_title','Ready to Join Us?') }}

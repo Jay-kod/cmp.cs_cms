@@ -1,6 +1,6 @@
 ﻿<!-- SUB-DEPARTMENTS OVERVIEW -->
 <section data-aos="fade-up" class="py-24 bg-[#F0F9F3] relative">
-    <div class="container px-4" data-aos="fade-up">
+    <div class="container" data-aos="fade-up">
         <div class="text-center mb-16">
             <span class="inline-block text-primary text-sm font-bold uppercase tracking-[1.5px] mb-4 bg-primary/10 py-1.5 px-4 rounded-full">{{ $gs('home_subdepts_badge','Overview') }}</span>
             <h2 class="text-4xl md:text-[2.8rem] font-heading font-extrabold text-[#0f172a] mb-4">{{ $gs('home_subdepts_title','Our Departments') }}</h2>
