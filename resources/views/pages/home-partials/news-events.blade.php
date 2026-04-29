@@ -4,18 +4,22 @@
 
         <!-- Section Header -->
         <div class="text-center mb-16">
-            <span class="text-emerald-600 font-bold tracking-wider uppercase text-sm mb-2 block">{{ $gs('home_news_badge','Stay Informed') }}</span>
-            <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900">{{ $gs('home_news_title','Campus News & Events') }}</h2>
-            <div class="w-20 h-1.5 bg-emerald-600 mx-auto mt-6 rounded-full"></div>
+            <span class="text-emerald-600 font-bold tracking-wider uppercase text-sm mb-2 block">{{ $gs('home_news_badge','STAY INFORMED') }}</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900">{{ $gs('home_news_title','News & Events') }}</h2>
+            <div class="w-16 h-1 bg-emerald-600 mx-auto mt-6 rounded-full"></div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-12 lg:gap-14">
             <!-- News Column (2/3 width) -->
-            <div class="lg:col-span-2">
-                <div class="flex justify-between items-center mb-8 border-b-2 border-slate-200 pb-4">
-                    <h3 class="text-2xl font-bold text-slate-800">Latest News</h3>
-                    <a href="{{ url('/research-news') }}" class="text-sm font-semibold text-emerald-600 hover:text-emerald-700 flex items-center gap-2 transition-colors">
-                        View All News <i class="fa-solid fa-arrow-right-long"></i>
+            <div class="xl:col-span-2">
+                <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-200">
+                    <h3 class="text-2xl font-bold text-slate-800 flex items-center gap-3">
+                        <i class="fa-regular fa-newspaper text-emerald-600"></i>
+                        Latest News
+                    </h3>
+                    <a href="{{ url('/research-news') }}" class="group text-sm font-bold text-emerald-600 hover:text-emerald-700 flex items-center gap-2 transition-all">
+                        View All News 
+                        <i class="fa-solid fa-arrow-right-long transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
 
