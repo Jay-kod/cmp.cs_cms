@@ -10,7 +10,7 @@
 
         <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8">
             @foreach($externalSystems as $sys)
-            <a href="{{ $sys->url }}" {{ $sys->open_in_new_tab ? 'target="_blank" rel="noopener"' : '' }} class="group flex flex-col gap-6 p-7 bg-emerald-50/50 border border-emerald-200 rounded-2xl transition-all duration-500 shadow-[0_4px_20px_rgba(16,185,129,0.03)] relative overflow-hidden hover:-translate-y-2 hover:shadow-[0_10px_25px_rgba(16,185,129,0.15)] hover:border-emerald-400 hover:bg-emerald-50">
+            <a href="{{ $sys->url }}" {{ $sys->open_in_new_tab ? 'target="_blank" rel="noopener"' : '' }} class="group flex flex-col gap-6 p-7 bg-emerald-50/50 border border-emerald-200 rounded-2xl transition-all duration-500 shadow-lg shadow-emerald-500/20 relative overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/40 hover:border-emerald-400 hover:bg-emerald-50">
                 <!-- Decorative ambient glow (Softened for pale card) -->
                 <div class="absolute -right-10 -top-10 w-40 h-40 bg-emerald-200/40 rounded-full blur-3xl group-hover:bg-emerald-300/40 transition-colors duration-700 pointer-events-none"></div>
                 <div class="absolute -left-10 -bottom-10 w-32 h-32 bg-green-200/40 rounded-full blur-2xl group-hover:bg-green-300/40 transition-colors duration-700 pointer-events-none"></div>
