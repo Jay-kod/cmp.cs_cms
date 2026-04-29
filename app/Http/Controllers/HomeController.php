@@ -41,12 +41,11 @@ class HomeController extends Controller
                 'externalSystems' => ExternalSystem::active()->ordered()->get(),
                 'cmsPages' => Page::where('is_active', true)->get(),
                 'partners' => \App\Models\Partner::where('is_active', true)->orderBy('sort_order')->orderBy('name')->get(),
-                'nacosPresidents' => NacosPresident::orderByRaw("CASE WHEN tenure_end IS NULL OR tenure_end = 'Present' THEN 1 ELSE 0 END DESC")->orderByDesc('tenure_end')->take(3)->get(),
+                'nacosPresidents' => NacosPresident::orderByDesc('tenure_end')->take(4)->get(),
                 'nacosTotalCount' => NacosPresident::count(),
                 'timetables' => \App\Models\ResourceItem::whereHas('category', function($q) {
                     $q->where('slug', 'timetable');
                 })->where('is_active', true)->latest()->take(3)->get(),
-                'uploadedTimetable' => \Illuminate\Support\Facades\Storage::disk('public')->files('timetable')[0] ?? null,
             ];
         });
 
