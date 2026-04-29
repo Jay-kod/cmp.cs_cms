@@ -67,8 +67,8 @@
                 </div>
             </div>
 
-            <!-- Events Column (1/3 width) -->
-            <div>
+            <!-- Events Section -->
+            <div class="w-full">
                 <div class="flex justify-between items-center mb-8 border-b-2 border-slate-200 pb-4">
                     <h3 class="text-2xl font-bold text-slate-800">Upcoming Events</h3>
                     <a href="{{ url('/events') }}" class="text-sm font-semibold text-emerald-600 hover:text-emerald-700 flex items-center gap-2 transition-colors">
@@ -76,11 +76,11 @@
                     </a>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-2">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
                     @if($events && count($events) > 0)
-                        <div class="flex flex-col">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             @foreach($events as $event)
-                            <a href="{{ url('/events') }}" class="group flex gap-5 p-5 rounded-xl hover:bg-slate-50 transition-all duration-300 {{ !$loop->last ? 'border-b border-slate-100' : '' }}">
+                            <a href="{{ url('/events') }}" class="group flex gap-5 p-5 rounded-xl border border-slate-100 hover:border-emerald-200 hover:bg-emerald-50/30 transition-all duration-300">
                                 <!-- Date Box -->
                                 <div class="shrink-0 w-16 h-[4.5rem] rounded-xl bg-emerald-50 border border-emerald-100 flex flex-col items-center justify-center text-center shadow-sm group-hover:bg-emerald-600 group-hover:border-emerald-600 transition-colors duration-300">
                                     <span class="text-emerald-600 text-xs font-bold uppercase tracking-wide group-hover:text-emerald-100 mb-0.5">{{ \Carbon\Carbon::parse($event->active_date ?? $event->date)->format('M') }}</span>
