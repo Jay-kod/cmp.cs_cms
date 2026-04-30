@@ -59,9 +59,9 @@
                         </a>
                         @endforeach
                     @else
-                        <div class="col-span-full py-16 text-center text-slate-500 bg-white rounded-xl border border-dashed border-slate-300">
-                            <i class="fa-regular fa-newspaper text-4xl mb-4 text-slate-300 block"></i>
-                            <p class="text-lg">No recent news available.</p>
+                        <div class="col-span-full py-16 flex flex-col items-center justify-center w-full text-center text-slate-500 bg-white rounded-xl border border-dashed border-slate-300">
+                            <i class="fa-regular fa-newspaper text-4xl mb-4 text-slate-300"></i>
+                            <p class="text-lg m-0 text-center">No recent news available.</p>
                         </div>
                     @endif
                 </div>
