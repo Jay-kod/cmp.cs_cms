@@ -513,5 +513,17 @@
         document.querySelectorAll('.admin-toast').forEach(function(toast) { setTimeout(function() { dismissToast(toast); }, 10000); });
     </script>
     @endif
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-scroll sidebar to the active navigation item
+            const activeNavItem = document.querySelector('.flex-1.overflow-y-auto .active, .admin-aside .active');
+            if (activeNavItem) {
+                // Wrap in slight timeout to ensure paint is done
+                setTimeout(() => {
+                    activeNavItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+        });
+    </script>
 </body>
 </html>
