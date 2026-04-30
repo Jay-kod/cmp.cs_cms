@@ -666,9 +666,13 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Auto-scroll sidebar to the active navigation item
-            const activeNavItem = document.querySelector('.admin-aside .active, .sidebar .active');
-            if (activeNavItem) {
-                activeNavItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const activeNavItem = document.querySelector('.admin-sidebar .active');
+            const sidebarNav = document.querySelector('.admin-sidebar nav');
+            if (activeNavItem && sidebarNav) {
+                setTimeout(function() {
+                    const offset = activeNavItem.offsetTop - (sidebarNav.clientHeight / 2) + (activeNavItem.clientHeight / 2);
+                    sidebarNav.scrollTo({ top: offset, behavior: 'smooth' });
+                }, 150);
             }
         });
     </script>
