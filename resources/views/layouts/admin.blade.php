@@ -663,5 +663,14 @@
         }
     </style>
     @yield('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-scroll sidebar to the active navigation item
+            const activeNavItem = document.querySelector('.admin-aside .active, .sidebar .active');
+            if (activeNavItem) {
+                activeNavItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    </script>
 </body>
 </html>
