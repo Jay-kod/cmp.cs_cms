@@ -28,7 +28,7 @@ class HomeController extends Controller
 
             return [
                 'programmes' => Programme::where('is_active', true)->orderBy('sort_order')->get(),
-                'news' => News::latest('published_at')->take(2)->get(),
+                'news' => News::latest('published_at')->take(3)->get(),
                 'events' => Event::where('date', '>=', now())->orderBy('date')->take(3)->get(),
                 'announcements' => Announcement::where('expires_at', '>=', now())->orWhereNull('expires_at')->take(3)->get(),
                 'hod' => Staff::where('is_hod', true)->first(),
@@ -46,6 +46,7 @@ class HomeController extends Controller
                 'timetables' => \App\Models\ResourceItem::whereHas('category', function($q) {
                     $q->where('slug', 'timetable');
                 })->where('is_active', true)->latest()->take(3)->get(),
+                'uploadedTimetable' => \Illuminate\Support\Facades\Storage::disk('public')->files('timetable')[0] ?? null,
             ];
         });
 
