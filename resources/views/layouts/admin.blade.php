@@ -79,6 +79,12 @@
                             <span>System Logs</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.encryption-logs.index') }}" class="admin-nav-item {{ request()->routeIs('admin.encryption-logs.*') ? 'active' : '' }}" title="Encryption Logs">
+                            <div class="nav-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span>Encryption Logs</span>
+                        </a>
+                    </li>
                     
                     @if(auth()->user()->isAdmin())
                     <li class="nav-section-title"><span>Academics & Structure</span></li>

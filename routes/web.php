@@ -92,6 +92,9 @@ Route::middleware(['auth:web,super_admin', 'verified', 'admin', \App\Http\Middle
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/system-logs', [\App\Http\Controllers\Admin\SystemLogController::class, 'index'])->name('system-logs.index');
     
+    // Encryption Audit Logs
+    Route::get('/encryption-logs', [\App\Http\Controllers\Admin\EncryptionAuditController::class, 'index'])->name('encryption-logs.index');
+    
     // Brand Settings
     Route::get('/settings/brand-logo', [\App\Http\Controllers\Admin\SettingsController::class, 'brandLogo'])->name('settings.brand-logo');
     Route::post('/settings/brand-logo', [\App\Http\Controllers\Admin\SettingsController::class, 'updateBrandLogo'])->name('settings.update-brand-logo');

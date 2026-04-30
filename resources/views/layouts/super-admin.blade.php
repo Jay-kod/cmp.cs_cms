@@ -298,6 +298,12 @@
                             <span>System Backup</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.encryption-logs.index') }}" class="admin-nav-item {{ request()->routeIs('admin.encryption-logs.*') ? 'active' : '' }}" title="Encryption Logs">
+                            <div class="nav-icon" style="background: rgba(251,191,36,0.15); color: #fbbf24;"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span>Encryption Logs</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             
