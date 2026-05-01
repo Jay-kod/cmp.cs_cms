@@ -458,7 +458,7 @@
                     @if($reactionsByType->count())
                     <div style="font-size: 0.78rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin: 1rem 0 0.5rem;">Reactions Breakdown</div>
                     <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-                        @php $emojiMap = ['like' => "\xF0\x9F\x91\x8D", 'love' => "\xE2\x9D\xA4\xEF\xB8\x8F", 'clap' => "\xF0\x9F\x91\x8F", 'insightful' => "\xF0\x9F\x92\xA1", 'celebrate' => "\xF0\x9F\x8E\x89"]; @endphp
+                        @php $emojiMap = ['like' => "\xF0\x9F\x91\x8D", 'love' => "\xE2\x9D\xA4\xEF\xB8\x8F", 'dislike' => "\xF0\x9F\x91\x8E", 'insightful' => "\xF0\x9F\x92\xA1", 'angry' => "\xF0\x9F\x98\xA1"]; @endphp
                         @foreach($reactionsByType as $type => $count)
                         <div style="padding: 0.4rem 0.8rem; background: #f8fafc; border-radius: 8px; font-size: 0.85rem;">
                             {{ $emojiMap[$type] ?? "\xF0\x9F\x91\x8D" }} <strong>{{ number_format($count) }}</strong> <span style="color: #94a3b8; font-size: 0.75rem;">{{ $type }}</span>
