@@ -37,7 +37,7 @@ class EventController extends Controller
             'flyer_image' => 'nullable|image|max:2048'
         ]);
 
-        $data['slug'] = Str::slug($data['title']) . '-' . time();
+
 
         if ($request->hasFile('flyer_image')) {
             $flyerFile = $request->file('flyer_image');
@@ -80,7 +80,7 @@ class EventController extends Controller
         ]);
 
         if ($data['title'] !== $event->title) {
-            $data['slug'] = Str::slug($data['title']) . '-' . time();
+
         }
 
         if ($request->hasFile('flyer_image')) {

@@ -30,7 +30,7 @@ class ProgrammeCategoryController extends Controller
             'is_active'   => 'boolean',
         ]);
 
-        $data['slug'] = Str::slug($data['name']);
+
         if (!$request->has('is_active')) $data['is_active'] = false;
         if (!$request->has('sort_order')) $data['sort_order'] = 0;
 
@@ -53,7 +53,7 @@ class ProgrammeCategoryController extends Controller
             'is_active'   => 'boolean',
         ]);
 
-        $data['slug'] = Str::slug($data['name']);
+
         if (!$request->has('is_active')) $data['is_active'] = false;
         if (!$request->has('sort_order')) $data['sort_order'] = 0;
 

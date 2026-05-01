@@ -40,7 +40,7 @@ class NewsController extends Controller
             $data['author_name'] = null;
         }
 
-        $data['slug'] = Str::slug($data['title']) . '-' . time();
+
         if(!$request->has('is_featured')) $data['is_featured'] = false;
 
         if ($request->hasFile('featured_image')) {
@@ -82,7 +82,7 @@ class NewsController extends Controller
         }
 
         if ($data['title'] !== $news->title) {
-            $data['slug'] = Str::slug($data['title']) . '-' . time();
+
         }
         
         if(!$request->has('is_featured')) $data['is_featured'] = false;

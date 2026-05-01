@@ -31,7 +31,7 @@ class PageController extends Controller
             'is_active'  => 'boolean',
         ]);
 
-        $data['slug'] = Str::slug($data['title']);
+
         if (!$request->has('is_active')) $data['is_active'] = false;
         
         if ($request->hasFile('hero_image')) {
@@ -63,7 +63,7 @@ class PageController extends Controller
 
         // Only update slug for non-system pages
         if (!$page->is_system) {
-            $data['slug'] = Str::slug($data['title']);
+
         }
         if (!$request->has('is_active')) $data['is_active'] = false;
 

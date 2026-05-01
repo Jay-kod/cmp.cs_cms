@@ -36,7 +36,7 @@ class GalleryController extends Controller
             'images.*' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:5120',
         ]);
 
-        $data['slug'] = Str::slug($data['title']) . '-' . time();
+
 
         if ($request->hasFile('cover_image')) {
             $coverFile = $request->file('cover_image');
@@ -90,7 +90,7 @@ class GalleryController extends Controller
         ]);
 
         if ($data['title'] !== $gallery->title) {
-            $data['slug'] = Str::slug($data['title']) . '-' . time();
+
         }
 
         if ($request->hasFile('cover_image')) {
