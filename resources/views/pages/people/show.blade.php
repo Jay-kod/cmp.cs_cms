@@ -24,7 +24,7 @@ html { scroll-behavior: smooth; }
         <div data-aos="fade-up" class="flex flex-col md:flex-row gap-8 lg:gap-12 items-center md:items-start text-center md:text-left">
             <!-- Photo -->
             <div class="flex-shrink-0 relative group">
-                <div class="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 mx-auto md:mx-0 rounded-3xl p-1.5 bg-white/10 border border-solid border-white/20 backdrop-blur-md shadow-2xl group-hover:-translate-y-2 transition-transform duration-500 z-10 relative">
+                <div class="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 mx-auto md:mx-0 rounded-3xl p-1.5 bg-white/10 border border-solid border-white/20 backdrop-blur-md shadow-2xl group-hover:-translate-y-2 transition-transform duration-500 z-10 relative">
                     <img
                         src="{{ $staff->photo ? asset('storage/'.$staff->photo) : 'https://ui-avatars.com/api/?name=' . urlencode($staff->name) . '&size=400&background=0f172a&color=fff&bold=true&format=svg' }}"
                         alt="{{ $staff->name }}"
@@ -58,7 +58,7 @@ html { scroll-behavior: smooth; }
                 </div>
 
                 <!-- Name & Rank -->
-                <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 tracking-tight drop-shadow-xl">
+                <h1 class="text-white text-[clamp(2.2rem,6vw,3.75rem)] font-extrabold mb-3 tracking-tight drop-shadow-xl leading-tight">
                     {{ $staff->title }} {{ $staff->name }}
                 </h1>
                 <div data-aos="fade-up" class="flex items-center justify-center md:justify-start gap-4 mb-8">
@@ -154,14 +154,14 @@ html { scroll-behavior: smooth; }
             
             <!-- Biography -->
             <section data-aos="fade-up" id="biography" class="profile-section scroll-mt-24">
-                <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
-                    <div data-aos="fade-up" class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
-                        <div data-aos="fade-up" class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center text-xl shadow-inner">
+                <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
+                    <div data-aos="fade-up" class="flex items-center gap-4 mb-5 sm:mb-6 pb-4 sm:pb-6 border-b border-slate-100">
+                        <div data-aos="fade-up" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center text-lg sm:text-xl shadow-inner">
                             <i class="fa-solid fa-user"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-slate-800 m-0">Biography</h2>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800 m-0">Biography</h2>
                     </div>
-                    <div class="prose prose-base sm:prose-lg prose-slate max-w-none text-slate-600 leading-relaxed font-medium text-left tracking-normal">
+                    <div class="prose prose-base sm:prose-lg prose-slate max-w-none text-slate-600 leading-relaxed font-medium text-justify tracking-normal">
                         {!! nl2br(e($staff->bio ?? 'Biography information is currently unavailable.')) !!}
                     </div>
                 </div>
@@ -170,14 +170,14 @@ html { scroll-behavior: smooth; }
             <!-- Qualifications -->
             @if($staff->qualifications)
             <section data-aos="fade-up" id="qualifications" class="profile-section scroll-mt-24">
-                <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
-                    <div data-aos="fade-up" class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
-                        <div data-aos="fade-up" class="w-12 h-12 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center text-xl shadow-inner">
+                <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
+                    <div data-aos="fade-up" class="flex items-center gap-4 mb-5 sm:mb-6 pb-4 sm:pb-6 border-b border-slate-100">
+                        <div data-aos="fade-up" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center text-lg sm:text-xl shadow-inner">
                             <i class="fa-solid fa-graduation-cap"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-slate-800 m-0">Qualifications</h2>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800 m-0">Qualifications</h2>
                     </div>
-                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-medium m-0 text-left tracking-normal">{{ $staff->qualifications }}</p>
+                    <p class="text-[0.95rem] sm:text-lg text-slate-600 leading-relaxed font-medium m-0 text-justify tracking-normal">{{ $staff->qualifications }}</p>
                 </div>
             </section>
             @endif
@@ -185,14 +185,14 @@ html { scroll-behavior: smooth; }
             <!-- Specialisation -->
             @if($staff->specialisation)
             <section data-aos="fade-up" id="specialisation" class="profile-section scroll-mt-24">
-                <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
-                    <div data-aos="fade-up" class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
-                        <div data-aos="fade-up" class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl shadow-inner">
+                <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
+                    <div data-aos="fade-up" class="flex items-center gap-4 mb-5 sm:mb-6 pb-4 sm:pb-6 border-b border-slate-100">
+                        <div data-aos="fade-up" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg sm:text-xl shadow-inner">
                             <i class="fa-solid fa-microchip"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-slate-800 m-0">Specialisation & Research Areas</h2>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800 m-0">Specialisation & Research Areas</h2>
                     </div>
-                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-medium m-0 text-left tracking-normal">{{ $staff->specialisation }}</p>
+                    <p class="text-[0.95rem] sm:text-lg text-slate-600 leading-relaxed font-medium m-0 text-justify tracking-normal">{{ $staff->specialisation }}</p>
                 </div>
             </section>
             @endif
