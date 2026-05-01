@@ -49,7 +49,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-[950px] mx-auto">
         
         <!-- Project Coordinator Profile -->
-        <div class="bg-gradient-to-br from-white to-green-50/30 p-8 rounded-3xl shadow-2xl shadow-green-900/10 border border-green-100 flex flex-col transition-all duration-300 hover:shadow-green-900/20 hover:-translate-y-1" data-aos="fade-up">
+        <div class="bg-gradient-to-br from-white to-green-50/30 p-6 sm:p-8 rounded-3xl shadow-2xl shadow-green-900/10 border border-green-100 flex flex-col transition-all duration-300 hover:shadow-green-900/20 hover:-translate-y-1" data-aos="fade-up">
             <h3 class="text-xl font-bold text-gray-900 border-b border-green-100 pb-4 mb-6 font-heading flex flex-col">
                 <span class="text-xs font-black text-green-700 uppercase tracking-widest mb-1 opacity-80">Department</span>
                 Project Coordinator
@@ -71,7 +71,7 @@
         </div>
 
         <!-- Templates Downloads Widget -->
-        <div class="bg-gradient-to-br from-green-900 to-green-800 p-8 rounded-3xl shadow-2xl shadow-green-900/20 border border-green-700/50 text-white relative overflow-hidden flex flex-col transition-transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
+        <div class="bg-gradient-to-br from-green-900 to-green-800 p-6 sm:p-8 rounded-3xl shadow-2xl shadow-green-900/20 border border-green-700/50 text-white relative overflow-hidden flex flex-col transition-transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
             <div class="absolute -right-4 top-0 opacity-10 text-9xl transform translate-x-1/8 translate-y-1/8 pointer-events-none">
                 <i class="fa-solid fa-file-word"></i>
             </div>
@@ -115,7 +115,7 @@
     <div class="max-w-[1050px] mx-auto">
         
         <!-- Project Management Portal External Link Notice -->
-        <div class="bg-blue-50 border border-blue-200 rounded-3xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center gap-6 shadow-sm relative overflow-hidden" data-aos="fade-up">
+        <div class="bg-blue-50 border border-blue-200 rounded-3xl p-5 sm:p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center gap-5 sm:gap-6 shadow-sm relative overflow-hidden" data-aos="fade-up">
             <div class="absolute -right-4 -top-4 text-blue-200/50 text-9xl pointer-events-none">
                 <i class="fa-solid fa-network-wired"></i>
             </div>
