@@ -31,4 +31,13 @@ class News extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function getDisplayAuthorAttribute()
+    {
+        if ($this->author_type === 'outside' && !empty($this->author_name)) {
+            return $this->author_name;
+        }
+
+        return $this->author ? $this->author->name : 'Department Administration';
+    }
 }
