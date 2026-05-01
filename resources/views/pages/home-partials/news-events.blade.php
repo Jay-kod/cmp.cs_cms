@@ -17,7 +17,7 @@
                         <i class="fa-regular fa-newspaper text-emerald-600"></i>
                         Latest News
                     </h3>
-                    <a href="{{ url('/research-news') }}" class="group text-sm font-bold text-emerald-600 hover:text-emerald-700 flex items-center gap-2 transition-all">
+                    <a href="{{ route('research-news') }}" class="group text-sm font-bold text-emerald-600 hover:text-emerald-700 flex items-center gap-2 transition-all">
                         View All News 
                         <i class="fa-solid fa-arrow-right-long transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
