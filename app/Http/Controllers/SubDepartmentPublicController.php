@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\SubDepartment;
 use App\Models\Programme;
 use App\Models\Staff;
+use App\Models\Course;
+use App\Models\DepartmentSetting;
 
 class SubDepartmentPublicController extends Controller
 {
@@ -40,6 +42,15 @@ class SubDepartmentPublicController extends Controller
                 ->get();
         }
 
-        return view('pages.sub-department', compact('subDept', 'programmes', 'staff'));
+        // Dynamic counts for "Department at a Glance"
+        $programmeCount = Programme::where('is_active', true)->count();
+        $courseCount = Course::count();
+        $lecturerCount = Staff::count();
+        $studentCount = DepartmentSetting::getCached('total_students') ?? '500+';
+
+        return view('pages.sub-department', compact(
+            'subDept', 'programmes', 'staff',
+            'programmeCount', 'courseCount', 'lecturerCount', 'studentCount'
+        ));
     }
 }
