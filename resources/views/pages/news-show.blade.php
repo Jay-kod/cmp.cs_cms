@@ -994,8 +994,8 @@
                 <div class="nd-detail-icon"><i class="fa-regular fa-clock"></i></div>
                 <span>{{ $readTime }} min read</span>
             </div>
-            <div class="nd-author-box">
-                <div class="nd-author-avatar">{{ substr($article->display_author, 0, 1) }}</div>
+            <div class="nd-detail-row">
+                <div class="nd-detail-icon"><i class="fa-solid fa-user-pen"></i></div>
                 <span>{{ $article->display_author }}</span>
             </div>
         </div>
