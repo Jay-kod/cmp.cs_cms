@@ -584,29 +584,29 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
 
                     <!-- Question Button -->
                     <button @click="activeFaq = activeFaq === {{ $index }} ? null : {{ $index }}"
-                            class="w-full flex items-center gap-4 md:gap-5 p-4 md:p-6 pl-4 md:pl-7 text-left focus:outline-none group cursor-pointer">
+                            class="w-full flex items-center gap-3 sm:gap-4 md:gap-5 p-3 sm:p-4 md:p-6 pl-3 sm:pl-4 md:pl-7 text-left focus:outline-none group cursor-pointer">
 
                         <!-- Number badge -->
-                        <div class="w-11 h-11 min-w-[2.75rem] rounded-xl flex items-center justify-center text-[0.85rem] font-black transition-all duration-400 shrink-0 relative"
+                        <div class="w-9 h-9 min-w-[2.25rem] sm:w-11 sm:h-11 sm:min-w-[2.75rem] rounded-xl flex items-center justify-center text-[0.75rem] sm:text-[0.85rem] font-black transition-all duration-400 shrink-0 relative"
                              :class="activeFaq === {{ $index }}
                                  ? 'bg-emerald-500 text-white shadow-[0_6px_16px_-2px_rgba(16,185,129,0.45)] scale-110'
                                  : 'bg-slate-50 text-slate-400 border border-slate-200/80 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-200'">
                             <span :class="activeFaq === {{ $index }} ? 'opacity-0 scale-75' : 'opacity-100 scale-100'" class="transition-all duration-200">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
-                            <i class="fa-solid fa-check text-[0.7rem] absolute transition-all duration-200" :class="activeFaq === {{ $index }} ? 'opacity-100 scale-100' : 'opacity-0 scale-75'"></i>
+                            <i class="fa-solid fa-check text-[0.6rem] sm:text-[0.7rem] absolute transition-all duration-200" :class="activeFaq === {{ $index }} ? 'opacity-100 scale-100' : 'opacity-0 scale-75'"></i>
                         </div>
 
                         <!-- Question text -->
-                        <h3 class="flex-1 text-[1rem] md:text-[1.08rem] font-bold leading-snug tracking-tight transition-colors duration-200"
+                        <h3 class="flex-1 text-[0.95rem] sm:text-[1rem] md:text-[1.08rem] font-bold leading-snug tracking-tight transition-colors duration-200"
                             :class="activeFaq === {{ $index }} ? 'text-slate-900' : 'text-slate-600 group-hover:text-slate-800'">
                             {{ $faq['q'] }}
                         </h3>
 
                         <!-- Toggle icon (+ / −) -->
-                        <div class="w-9 h-9 min-w-[2.25rem] rounded-xl flex items-center justify-center transition-all duration-400 shrink-0"
+                        <div class="w-7 h-7 min-w-[1.75rem] sm:w-9 sm:h-9 sm:min-w-[2.25rem] rounded-xl flex items-center justify-center transition-all duration-400 shrink-0"
                              :class="activeFaq === {{ $index }}
                                  ? 'bg-emerald-500 text-white shadow-sm'
                                  : 'bg-slate-50 text-slate-400 border border-slate-200/80 group-hover:bg-slate-100 group-hover:text-slate-600'">
-                            <i class="fa-solid fa-plus text-[0.7rem] transition-transform duration-300" :class="activeFaq === {{ $index }} ? 'rotate-45' : ''"></i>
+                            <i class="fa-solid fa-plus text-[0.6rem] sm:text-[0.7rem] transition-transform duration-300" :class="activeFaq === {{ $index }} ? 'rotate-45' : ''"></i>
                         </div>
                     </button>
 
@@ -614,10 +614,11 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                     <div x-show="activeFaq === {{ $index }}"
                          x-collapse
                          x-cloak>
-                        <div class="px-4 md:px-6 pl-4 md:pl-7 pb-5 md:pb-6">
-                            <div class="ml-[3.75rem] bg-emerald-50/50 border border-emerald-100/60 rounded-xl p-5 text-slate-600 text-[0.93rem] leading-[1.85] relative">
-                                <!-- Answer icon -->
-                                <div class="absolute -top-3 -left-3 w-6 h-6 rounded-lg bg-emerald-500 text-white flex items-center justify-center shadow-sm">
+                         <!-- Reduced padding on mobile, removed left margin on mobile so text stretches full width -->
+                        <div class="px-3 sm:px-4 md:px-6 pl-3 sm:pl-4 md:pl-7 pb-4 sm:pb-5 md:pb-6 pt-1 sm:pt-0">
+                            <div class="ml-0 sm:ml-[3.5rem] md:ml-[3.75rem] bg-emerald-50/50 border border-emerald-100/60 rounded-xl p-4 sm:p-5 text-slate-600 text-[0.9rem] sm:text-[0.93rem] leading-[1.7] sm:leading-[1.85] relative mt-2 sm:mt-0">
+                                <!-- Answer icon - moved to top left corner inside the box on mobile so it doesn't overflow the screen -->
+                                <div class="absolute -top-3 left-4 sm:-left-3 w-6 h-6 rounded-lg bg-emerald-500 text-white flex items-center justify-center shadow-sm">
                                     <i class="fa-solid fa-reply text-[0.55rem]"></i>
                                 </div>
                                 {{ $faq['a'] }}
