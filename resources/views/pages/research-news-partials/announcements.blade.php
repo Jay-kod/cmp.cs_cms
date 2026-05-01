@@ -10,11 +10,11 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 @forelse($announcements as $announcement)
-                <div class="bg-white border border-slate-100 rounded-2xl p-4 sm:p-6 md:p-8 transition-all duration-300 flex flex-col shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 relative overflow-hidden group">
+                <a href="{{ route('announcements.show', $announcement->id) }}" class="bg-white border border-slate-100 rounded-2xl p-4 sm:p-6 md:p-8 transition-all duration-300 flex flex-col shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 relative overflow-hidden group no-underline">
                     <div class="absolute top-0 left-0 w-1.5 h-full transition-colors duration-300 @if($announcement->priority == 'high') bg-red-500 group-hover:bg-red-600 @else bg-blue-500 group-hover:bg-blue-600 @endif"></div>
                     
                     <div class="flex justify-between items-start gap-4 mb-4">
-                        <h3 class="m-0 text-lg font-bold text-slate-800 leading-tight">
+                        <h3 class="m-0 text-lg font-bold text-slate-800 leading-tight group-hover:text-green-600 transition-colors">
                             {{ $announcement->title }}
                         </h3>
                         <span class="text-[0.65rem] py-1 px-3 rounded-full font-bold uppercase tracking-widest whitespace-nowrap @if($announcement->priority == 'high') bg-red-50 text-red-600 border border-red-100 @else bg-blue-50 text-blue-600 border border-blue-100 @endif">
@@ -22,15 +22,20 @@
                         </span>
                     </div>
                     
-                    <div class="text-slate-500 text-sm leading-relaxed mb-6 flex-grow text-justify">
-                        {!! nl2br(e($announcement->body)) !!}
+                    <div class="text-slate-500 text-sm leading-relaxed mb-6 flex-grow text-justify line-clamp-3">
+                        {{ Str::limit(strip_tags($announcement->body), 150) }}
                     </div>
                     
-                    <div class="text-xs text-slate-400 flex items-center gap-2 mt-auto font-bold uppercase tracking-wide">
-                        <i class="fa-regular fa-clock text-slate-300"></i> 
-                        Posted {{ $announcement->created_at->diffForHumans() }}
+                    <div class="flex justify-between items-center mt-auto border-t border-slate-100 pt-4">
+                        <span class="text-xs text-slate-400 flex items-center gap-2 font-bold uppercase tracking-wide">
+                            <i class="fa-regular fa-clock text-slate-300"></i> 
+                            {{ $announcement->created_at->diffForHumans() }}
+                        </span>
+                        <span class="text-sm font-bold text-green-600 group-hover:text-green-700 transition-colors flex items-center">
+                            Read More <i class="fa-solid fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
                     </div>
-                </div>
+                </a>
                 @empty
                 <div class="col-span-full bg-white rounded-3xl shadow-sm border border-slate-100 p-12 text-center mt-4">
                     <div class="w-20 h-20 mx-auto bg-slate-50 text-slate-400 rounded-full flex items-center justify-center text-3xl mb-4">
