@@ -35,6 +35,13 @@ class SubDepartmentController extends Controller
             'hod_image' => 'nullable|image|max:2048',
             'vision' => 'nullable|string',
             'mission' => 'nullable|string',
+            'founded_year' => 'nullable|string|max:10',
+            'faculty_name' => 'nullable|string|max:255',
+            'student_population' => 'nullable|string|max:255',
+            'programme_count' => 'nullable|string|max:255',
+            'course_count' => 'nullable|string|max:255',
+            'lecturer_count' => 'nullable|string|max:255',
+            'career_pathways' => 'nullable|array',
             'is_active' => 'boolean'
         ]);
 
@@ -77,6 +84,12 @@ class SubDepartmentController extends Controller
             'hod_image' => 'nullable|image|max:2048',
             'vision' => 'nullable|string',
             'mission' => 'nullable|string',
+            'founded_year' => 'nullable|string|max:10',
+            'faculty_name' => 'nullable|string|max:255',
+            'student_population' => 'nullable|string|max:255',
+            'programme_count' => 'nullable|string|max:255',
+            'course_count' => 'nullable|string|max:255',
+            'lecturer_count' => 'nullable|string|max:255',
             'is_active' => 'boolean'
         ]);
 
