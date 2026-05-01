@@ -919,9 +919,9 @@
                                 $reactions = [
                                     'like'       => '👍',
                                     'love'       => '❤️',
-                                    'clap'       => '👏',
+                                    'dislike'    => '👎',
                                     'insightful' => '💡',
-                                    'celebrate'  => '🎉',
+                                    'angry'      => '😡',
                                 ];
                             @endphp
                             @foreach($reactions as $type => $emoji)
