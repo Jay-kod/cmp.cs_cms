@@ -46,7 +46,7 @@ class ProgrammeController extends Controller
             'sort_order' => 'nullable|integer'
         ]);
 
-        $data['slug'] = Str::slug($data['name']);
+
         if(!$request->has('is_active')) $data['is_active'] = false;
         if(!$request->has('sort_order')) $data['sort_order'] = 0;
 
@@ -84,7 +84,7 @@ class ProgrammeController extends Controller
             'sort_order' => 'nullable|integer'
         ]);
 
-        $data['slug'] = Str::slug($data['name']);
+
         if(!$request->has('is_active')) $data['is_active'] = false;
         if(!$request->has('sort_order')) $data['sort_order'] = 0;
 
