@@ -380,7 +380,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             <!-- Right: Roles Bento Grid -->
             <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
                 <!-- Pathway 1 -->
-                <div data-aos="fade-up" data-aos-delay="100" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
                     <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-blue-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-blue-50">
                         <i class="fa-solid fa-code"></i>
                     </div>
@@ -389,7 +389,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                 </div>
                 
                 <!-- Pathway 2 -->
-                <div data-aos="fade-up" data-aos-delay="200" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
                     <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-emerald-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-emerald-50">
                         <i class="fa-solid fa-network-wired"></i>
                     </div>
@@ -398,7 +398,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                 </div>
                 
                 <!-- Pathway 3 -->
-                <div data-aos="fade-up" data-aos-delay="300" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
                     <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-amber-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-amber-50">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
@@ -407,7 +407,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                 </div>
                 
                 <!-- Pathway 4 -->
-                <div data-aos="fade-up" data-aos-delay="400" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
                     <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-purple-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-purple-50">
                         <i class="fa-solid fa-building-columns"></i>
                     </div>
