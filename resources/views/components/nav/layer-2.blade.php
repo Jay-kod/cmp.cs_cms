@@ -21,7 +21,7 @@
             $isAboutActive = request()->is('about*') || request()->is('nacos-presidents*');
             $isAcademicsActive = request()->is('academics*') || request()->is('programmes*') || request()->is('pages/programmes*') || request()->is('siwes*') || request()->is('projects*') || request()->is('sub-department/*') || request()->is('resources*');
             $isPeopleActive = request()->is('people*') || request()->is('gallery*');
-            $isNewsActive = request()->is('research-news*') || request()->is('announcements*') || request()->is('events*') || request()->is('research-innovations*') || request()->is('pages/academic-calendar*');
+            $isNewsActive = request()->routeIs('research-news*') || request()->routeIs('announcements*') || request()->is('events*') || request()->is('research-innovations*') || request()->is('pages/academic-calendar*');
             $navSubDepts = \App\Models\SubDepartment::where('is_active', true)->where('slug', '!=', 'computer-science')->get();
             @endphp
             <!-- Desktop Nav -->
@@ -87,8 +87,8 @@
                         @if($isNewsActive)<div class="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-primary"></div>@endif
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[250px] z-50 border border-gray-100" role="menu">
-                        <a href="{{ url('/research-news') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('research-news*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">News</a>
-                        <a href="{{ url('/research-news#announcements') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('announcements*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Announcements</a>
+                        <a href="{{ route('research-news') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->routeIs('research-news*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">News</a>
+                        <a href="{{ route('research-news') }}#announcements" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->routeIs('announcements*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Announcements</a>
                         <a href="{{ url('/research-innovations') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('research-innovations*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Research &amp; Innovations</a>
                         <a href="{{ url('/events') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('events*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Events &amp; Seminars</a>
                         <a href="{{ route('page.show', 'academic-calendar') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('pages/academic-calendar*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Academic Calendar</a>
@@ -167,8 +167,8 @@
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
-                    <a href="{{ url('/research-news') }}" class="mobile-link mobile-sub-link {{ request()->is('research-news*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">News</a>
-                    <a href="{{ url('/research-news#announcements') }}" class="mobile-link mobile-sub-link {{ request()->is('announcements*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Announcements</a>
+                    <a href="{{ route('research-news') }}" class="mobile-link mobile-sub-link {{ request()->routeIs('research-news*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">News</a>
+                    <a href="{{ route('research-news') }}#announcements" class="mobile-link mobile-sub-link {{ request()->routeIs('announcements*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Announcements</a>
                     <a href="{{ url('/research-innovations') }}" class="mobile-link mobile-sub-link {{ request()->is('research-innovations*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Research &amp; Innovations</a>
                     <a href="{{ url('/events') }}" class="mobile-link mobile-sub-link {{ request()->is('events*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Events &amp; Seminars</a>
                     <a href="{{ route('page.show', 'academic-calendar') }}" class="mobile-link mobile-sub-link {{ request()->is('pages/academic-calendar*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Academic Calendar</a>
