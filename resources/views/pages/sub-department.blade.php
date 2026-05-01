@@ -464,24 +464,24 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                         <div class="flex items-center justify-center pt-2 mt-auto pointer-events-auto">
                             <div class="flex items-center gap-2">
                                 @if($member->email)
-                                <a href="mailto:{{ $member->email }}" class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-[#1E7A3E] transition-all shadow-sm" title="Email">
-                                    <i class="fa-solid fa-envelope text-[0.8rem]"></i>
+                                <a href="mailto:{{ $member->email }}" class="w-7 h-7 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-[#1E7A3E] transition-all shadow-sm" title="Email">
+                                    <i class="fa-solid fa-envelope text-[0.7rem]"></i>
                                 </a>
                                 @else
-                                <a href="#" onclick="event.preventDefault();" class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-[#1E7A3E] transition-all shadow-sm">
-                                    <i class="fa-solid fa-envelope text-[0.8rem]"></i>
+                                <a href="#" onclick="event.preventDefault();" class="w-7 h-7 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-[#1E7A3E] transition-all shadow-sm">
+                                    <i class="fa-solid fa-envelope text-[0.7rem]"></i>
                                 </a>
                                 @endif
                                 
                                 @if($member->phone)
-                                <a href="tel:{{ $member->phone }}" class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-[#1E7A3E] transition-all shadow-sm" title="Call">
-                                    <i class="fa-solid fa-phone text-[0.8rem]"></i>
+                                <a href="tel:{{ $member->phone }}" class="w-7 h-7 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-[#1E7A3E] transition-all shadow-sm" title="Call">
+                                    <i class="fa-solid fa-phone text-[0.7rem]"></i>
                                 </a>
                                 @endif
                                 
                                 @if($member->linkedin)
-                                <a href="{{ $member->linkedin }}" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-[#0A66C2] hover:text-white transition-all shadow-sm">
-                                    <i class="fa-brands fa-linkedin-in text-[0.8rem]"></i>
+                                <a href="{{ $member->linkedin }}" target="_blank" rel="noopener noreferrer" class="w-7 h-7 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-[#0A66C2] hover:text-white transition-all shadow-sm">
+                                    <i class="fa-brands fa-linkedin-in text-[0.7rem]"></i>
                                 </a>
                                 @endif
                             </div>
