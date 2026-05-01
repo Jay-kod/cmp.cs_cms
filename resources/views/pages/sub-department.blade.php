@@ -401,7 +401,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                         $color = $colors[$i];
                     @endphp
                     <!-- Pathway {{ $i + 1 }} -->
-                    <div data-aos="fade-up" data-aos-delay="{{ ($i + 1) * 100 }}" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
+                    <div data-aos="fade-up" data-aos-delay="{{ ($i + 1) * 100 }}" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 shadow-md hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
                         <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-{{ $color }}-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-{{ $color }}-50">
                             <i class="{{ $icon }}"></i>
                         </div>
