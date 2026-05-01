@@ -73,6 +73,7 @@ Route::get('/people/{slug}', [PeopleController::class, 'show'])->name('people.sh
 Route::get('/research-news', [ResearchNewsController::class, 'index'])->name('research-news');
 Route::get('/research-innovations', [ResearchNewsController::class, 'research'])->name('research');
 Route::get('/research-news/{slug}', [ResearchNewsController::class, 'show'])->name('research-news.show');
+Route::get('/announcements/{id}', [ResearchNewsController::class, 'showAnnouncement'])->name('announcements.show');
 Route::get('/news/{news}/reactions', [ReactionController::class, 'show'])->name('reactions.show');
 Route::post('/news/{news}/reactions', [ReactionController::class, 'store'])->name('reactions.store');
 Route::get('/news/{news}/comments', [CommentController::class, 'index'])->name('comments.index');
