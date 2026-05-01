@@ -158,60 +158,102 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             <p class="text-slate-400 max-w-[600px] mx-auto text-[1.1rem]">Key highlights and essential metrics that define our dynamic academic community and infrastructure.</p>
         </div>
         
-        <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
+        <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
             <!-- Metric 1: Founded & Accreditation -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-emerald-500/30 transition-all duration-300 group flex flex-col justify-center">
-                <div class="w-14 h-14 mx-auto bg-slate-800 text-emerald-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-emerald-400/10 ring-1 ring-white/5">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.3)] hover:border-emerald-500/30 flex flex-col justify-center text-center">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-emerald-500/20 group-hover:scale-150 pointer-events-none"></div>
+                <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-solid fa-calendar-alt"></i>
                 </div>
-                <div class="font-black text-white text-2xl mb-1">{{ $subDept->founded_year ?? 'N/A' }}</div>
-                <div class="text-emerald-400/80 font-bold text-[0.7rem] mb-2 uppercase tracking-widest">NUC Accredited</div>
-                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Founded</h4>
+                
+                <div class="relative z-10">
+                    <div class="w-12 h-12 mx-auto bg-slate-800/80 text-emerald-400 rounded-2xl flex items-center justify-center text-[1.2rem] shadow-[0_0_15px_rgba(16,185,129,0.15)] border border-emerald-500/20 mb-4 group-hover:scale-110 transition-transform duration-500 group-hover:rotate-[-5deg]">
+                        <i class="fa-solid fa-calendar-alt"></i>
+                    </div>
+                    <div class="font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-400 text-[1.65rem] leading-none mb-2">{{ $subDept->founded_year ?? 'N/A' }}</div>
+                    <div class="text-emerald-400/80 font-bold text-[0.65rem] mb-2 uppercase tracking-[0.15em]">NUC Accredited</div>
+                    <h4 class="text-slate-400 font-semibold text-[0.8rem] uppercase tracking-wider mt-2">Founded</h4>
+                </div>
             </div>
 
             <!-- Metric 2: Faculty -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-blue-500/30 transition-all duration-300 group flex flex-col justify-center">
-                <div class="w-14 h-14 mx-auto bg-slate-800 text-blue-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-blue-400/10 ring-1 ring-white/5">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] hover:border-blue-500/30 flex flex-col justify-center text-center">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-blue-500/20 group-hover:scale-150 pointer-events-none"></div>
+                <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-regular fa-building"></i>
                 </div>
-                <div class="font-bold text-white text-[1.05rem] leading-tight mb-2">{!! nl2br(e($subDept->faculty_name ?? "Natural &\nApplied Sciences")) !!}</div>
-                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Faculty</h4>
+                
+                <div class="relative z-10 flex flex-col h-full">
+                    <div class="w-12 h-12 mx-auto bg-slate-800/80 text-blue-400 rounded-2xl flex items-center justify-center text-[1.2rem] shadow-[0_0_15px_rgba(59,130,246,0.15)] border border-blue-500/20 mb-4 group-hover:scale-110 transition-transform duration-500 group-hover:rotate-[-5deg]">
+                        <i class="fa-regular fa-building"></i>
+                    </div>
+                    <div class="font-bold text-white text-[0.95rem] leading-[1.3] mb-3 flex-grow flex items-center justify-center">{!! nl2br(e($subDept->faculty_name ?? "Natural &\nApplied Sciences")) !!}</div>
+                    <h4 class="text-slate-400 font-semibold text-[0.8rem] uppercase tracking-wider mt-auto">Faculty</h4>
+                </div>
             </div>
 
             <!-- Metric 3: Number of Programmes -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-purple-500/30 transition-all duration-300 group flex flex-col justify-center">
-                <div class="w-14 h-14 mx-auto bg-slate-800 text-purple-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-purple-400/10 ring-1 ring-white/5">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.3)] hover:border-purple-500/30 flex flex-col justify-center text-center">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-purple-500/20 group-hover:scale-150 pointer-events-none"></div>
+                <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
-                <div class="font-black text-white text-3xl mb-1.5">{{ $programmeCount }}</div>
-                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider">Programmes</h4>
+                
+                <div class="relative z-10">
+                    <div class="w-12 h-12 mx-auto bg-slate-800/80 text-purple-400 rounded-2xl flex items-center justify-center text-[1.2rem] shadow-[0_0_15px_rgba(168,85,247,0.15)] border border-purple-500/20 mb-4 group-hover:scale-110 transition-transform duration-500 group-hover:rotate-[-5deg]">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-300 text-[2.2rem] leading-none mb-3">{{ $programmeCount }}</div>
+                    <h4 class="text-slate-400 font-semibold text-[0.8rem] uppercase tracking-wider">Programmes</h4>
+                </div>
             </div>
 
             <!-- Metric 4: Number of Courses -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-amber-500/30 transition-all duration-300 group flex flex-col justify-center">
-                <div class="w-14 h-14 mx-auto bg-slate-800 text-amber-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-amber-400/10 ring-1 ring-white/5">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(245,158,11,0.3)] hover:border-amber-500/30 flex flex-col justify-center text-center">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-amber-500/20 group-hover:scale-150 pointer-events-none"></div>
+                <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-solid fa-book-open"></i>
                 </div>
-                <div class="font-black text-white text-3xl mb-1.5">{{ $courseCount }}</div>
-                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider">Courses</h4>
+                
+                <div class="relative z-10">
+                    <div class="w-12 h-12 mx-auto bg-slate-800/80 text-amber-400 rounded-2xl flex items-center justify-center text-[1.2rem] shadow-[0_0_15px_rgba(245,158,11,0.15)] border border-amber-500/20 mb-4 group-hover:scale-110 transition-transform duration-500 group-hover:rotate-[-5deg]">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div class="font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-300 text-[2.2rem] leading-none mb-3">{{ $courseCount }}</div>
+                    <h4 class="text-slate-400 font-semibold text-[0.8rem] uppercase tracking-wider">Courses</h4>
+                </div>
             </div>
 
             <!-- Metric 5: Number of Lecturers -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-cyan-500/30 transition-all duration-300 group flex flex-col justify-center">
-                <div class="w-14 h-14 mx-auto bg-slate-800 text-cyan-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-cyan-400/10 ring-1 ring-white/5">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(6,182,212,0.3)] hover:border-cyan-500/30 flex flex-col justify-center text-center">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-cyan-500/20 group-hover:scale-150 pointer-events-none"></div>
+                <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-solid fa-chalkboard-user"></i>
                 </div>
-                <div class="font-black text-white text-3xl mb-1.5">{{ $lecturerCount }}</div>
-                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider">Lecturers</h4>
+                
+                <div class="relative z-10">
+                    <div class="w-12 h-12 mx-auto bg-slate-800/80 text-cyan-400 rounded-2xl flex items-center justify-center text-[1.2rem] shadow-[0_0_15px_rgba(6,182,212,0.15)] border border-cyan-500/20 mb-4 group-hover:scale-110 transition-transform duration-500 group-hover:rotate-[-5deg]">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <div class="font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-300 text-[2.2rem] leading-none mb-3">{{ $lecturerCount }}</div>
+                    <h4 class="text-slate-400 font-semibold text-[0.8rem] uppercase tracking-wider">Lecturers</h4>
+                </div>
             </div>
 
             <!-- Metric 6: Number of Students -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-rose-500/30 transition-all duration-300 group flex flex-col justify-center">
-                <div class="w-14 h-14 mx-auto bg-slate-800 text-rose-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-rose-400/10 ring-1 ring-white/5">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(244,63,94,0.3)] hover:border-rose-500/30 flex flex-col justify-center text-center">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-rose-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-rose-500/20 group-hover:scale-150 pointer-events-none"></div>
+                <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-solid fa-users"></i>
                 </div>
-                <div class="font-black text-white text-3xl mb-1.5">{{ $studentCount }}</div>
-                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider">Students</h4>
+                
+                <div class="relative z-10">
+                    <div class="w-12 h-12 mx-auto bg-slate-800/80 text-rose-400 rounded-2xl flex items-center justify-center text-[1.2rem] shadow-[0_0_15px_rgba(244,63,94,0.15)] border border-rose-500/20 mb-4 group-hover:scale-110 transition-transform duration-500 group-hover:rotate-[-5deg]">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-300 text-[2.2rem] leading-none mb-3">{{ $studentCount }}</div>
+                    <h4 class="text-slate-400 font-semibold text-[0.8rem] uppercase tracking-wider">Students</h4>
+                </div>
             </div>
         </div>
     </div>
