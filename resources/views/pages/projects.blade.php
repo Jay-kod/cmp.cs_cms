@@ -136,7 +136,7 @@
             <h2 class="text-[1.3rem] sm:text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-100 pb-3 sm:pb-5 mb-5 sm:mb-8 font-heading flex items-center gap-3 sm:gap-4">
                 <span class="w-12 h-12 bg-green-100 text-green-700 flex items-center justify-center rounded-2xl shadow-inner"><i class="fa-solid fa-project-diagram"></i></span> Course Overview
             </h2>
-            <div class="prose max-w-none text-gray-700 text-[1.1rem] leading-loose">
+            <div class="prose max-w-none text-gray-700 text-[1.1rem] leading-loose text-justify">
                 <p>{{ $s('project_overview', 'The final year project is a mandatory course where students are expected to solve real-world computing problems...') }}</p>
             </div>
         </div>
@@ -165,7 +165,7 @@
                         <span class="relative z-10">{{ $index + 1 }}</span>
                     </div>
                     <h4 class="font-bold text-slate-900 text-[1.3rem] mb-4 leading-tight">{{ $rule['title'] }}</h4>
-                    <div class="text-slate-600 leading-relaxed text-[1.05rem] flex-1">
+                    <div class="text-slate-600 leading-relaxed text-[1.05rem] flex-1 text-justify">
                         {!! nl2br(e($rule['desc'])) !!}
                     </div>
                 </div>
@@ -201,7 +201,7 @@
                     <div class="bg-slate-50 border border-slate-100 rounded-2xl sm:rounded-3xl p-4 sm:p-7 hover:shadow-xl hover:shadow-amber-900/5 hover:-translate-y-1 hover:border-amber-200 transition-all duration-300">
                         <span class="inline-block py-1 px-3 sm:py-1.5 sm:px-4 bg-amber-100/80 text-amber-800 rounded-full text-[0.7rem] sm:text-[0.75rem] font-black uppercase tracking-widest mb-3 sm:mb-4 border border-amber-200/60 shadow-sm">{{ $mile['date'] }}</span>
                         <h3 class="font-bold text-slate-900 text-[1.1rem] sm:text-xl md:text-2xl mb-2 sm:mb-3">{{ $mile['title'] }}</h3>
-                        <p class="text-slate-600 text-[1.05rem] leading-relaxed">{{ $mile['desc'] }}</p>
+                        <p class="text-slate-600 text-[1.05rem] leading-relaxed text-justify">{{ $mile['desc'] }}</p>
                     </div>
                 </div>
                 @endforeach
