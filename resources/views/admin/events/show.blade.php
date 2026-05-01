@@ -39,7 +39,7 @@
         <p style="margin: 0.3rem 0 0; color: #64748b; font-size: 0.85rem; font-weight: 500; text-transform: uppercase;">Total Reactions</p>
         @if(array_sum($reactionsCount) > 0)
         <div style="display: flex; justify-content: center; gap: 0.6rem; margin-top: 0.8rem; font-size: 0.8rem;">
-            @php $emojis = ['like'=>'👍','love'=>'❤️','clap'=>'👏','insightful'=>'💡','celebrate'=>'🎉']; @endphp
+            @php $emojis = ['like'=>'👍','love'=>'❤️','dislike'=>'👎','insightful'=>'💡','angry'=>'😡']; @endphp
             @foreach($reactionsCount as $k => $v)
                 <span title="{{ ucfirst($k) }}">{{ $emojis[$k] ?? '' }} {{ $v }}</span>
             @endforeach
