@@ -45,7 +45,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
               <div class="grid grid-cols-1 gap-0">
                 
                 <!-- Main Content -->
-                <div data-aos="fade-up" class="p-12 lg:p-16">
+                <div data-aos="fade-up" class="p-5 md:p-10 lg:p-16">
                     <div class="inline-flex items-center gap-2 bg-[#EAF3DE] text-[#1E7A3E] text-sm font-bold uppercase tracking-[1.5px] py-1.5 px-4 rounded-full mb-6">
                         <i class="fa-solid fa-circle-info"></i> About Us
                     </div>
@@ -110,7 +110,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
         
         <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
             <!-- Metric 1: Founded -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-emerald-500/30 transition-all duration-300 group flex flex-col justify-center">
+            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-emerald-500/30 transition-all duration-300 group flex flex-col justify-center">
                 <div class="w-14 h-14 mx-auto bg-slate-800 text-emerald-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-emerald-400/10 ring-1 ring-white/5">
                     <i class="fa-solid fa-calendar-alt"></i>
                 </div>
@@ -119,7 +119,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </div>
 
             <!-- Metric 2: Faculty -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-blue-500/30 transition-all duration-300 group flex flex-col justify-center">
+            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-blue-500/30 transition-all duration-300 group flex flex-col justify-center">
                 <div class="w-14 h-14 mx-auto bg-slate-800 text-blue-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-blue-400/10 ring-1 ring-white/5">
                     <i class="fa-regular fa-building"></i>
                 </div>
@@ -128,7 +128,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </div>
 
             <!-- Metric 3: Head -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-amber-500/30 transition-all duration-300 group flex flex-col justify-center">
+            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-amber-500/30 transition-all duration-300 group flex flex-col justify-center">
                 <div class="w-14 h-14 mx-auto bg-slate-800 text-amber-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-amber-400/10 ring-1 ring-white/5">
                     <i class="fa-solid fa-user-tie"></i>
                 </div>
@@ -137,7 +137,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </div>
 
             <!-- Metric 4: Programmes -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-purple-500/30 transition-all duration-300 group flex flex-col justify-center">
+            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-purple-500/30 transition-all duration-300 group flex flex-col justify-center">
                 <div class="w-14 h-14 mx-auto bg-slate-800 text-purple-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-purple-400/10 ring-1 ring-white/5">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
@@ -146,7 +146,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </div>
 
             <!-- Metric 5: Status -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-cyan-500/30 transition-all duration-300 group flex flex-col justify-center">
+            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-cyan-500/30 transition-all duration-300 group flex flex-col justify-center">
                 <div class="w-14 h-14 mx-auto bg-slate-800 text-cyan-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-cyan-400/10 ring-1 ring-white/5">
                     <i class="fa-solid fa-check-double"></i>
                 </div>
@@ -156,7 +156,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </div>
 
             <!-- Metric 6: Location -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-rose-500/30 transition-all duration-300 group flex flex-col justify-center">
+            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-rose-500/30 transition-all duration-300 group flex flex-col justify-center">
                 <div class="w-14 h-14 mx-auto bg-slate-800 text-rose-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-rose-400/10 ring-1 ring-white/5">
                     <i class="fa-solid fa-map-location-dot"></i>
                 </div>
@@ -179,7 +179,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
         @if($programmes->count() > 0)
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             @foreach($programmes as $prog)
-            <div data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}" class="bg-white rounded-[1.5rem] p-8 shadow-[0_5px_20px_-5px_rgba(0,0,0,0.05)] border border-slate-100 flex flex-col transition-all duration-300 relative overflow-hidden group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)]">
+            <div data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}" class="bg-white rounded-[1.5rem] p-5 sm:p-8 shadow-[0_5px_20px_-5px_rgba(0,0,0,0.05)] border border-slate-100 flex flex-col transition-all duration-300 relative overflow-hidden group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)]">
                 <!-- Top accent line -->
                 <div class="absolute top-0 left-0 right-0 h-2.5 transition-all duration-300 {{ strtolower($prog->level) == 'bsc' ? 'bg-blue-500' : (strtolower($prog->level) == 'msc' ? 'bg-emerald-500' : 'bg-[#f59e0b]') }}"></div>
                 
@@ -255,7 +255,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 max-w-[1100px] mx-auto">
             <!-- Left: Hero Card -->
-            <div data-aos="fade-right" class="lg:col-span-5 bg-slate-900 rounded-[2rem] p-10 relative overflow-hidden text-white flex flex-col justify-between group shadow-xl">
+            <div data-aos="fade-right" class="lg:col-span-5 bg-slate-900 rounded-[2rem] p-6 md:p-10 relative overflow-hidden text-white flex flex-col justify-between group shadow-xl">
                 <!-- Background Image & Gradient -->
                 <div class="absolute inset-0 bg-slate-800 opacity-50 bg-[url('https://www.transparenttextures.com/patterns/micro-carbon.png')] pointer-events-none"></div>
                 <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-800/80"></div>
@@ -288,7 +288,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             <!-- Right: Roles Bento Grid -->
             <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
                 <!-- Pathway 1 -->
-                <div data-aos="fade-up" data-aos-delay="100" class="bg-slate-50 hover:bg-white p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-blue-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(37,99,235,0.08)] group flex flex-col justify-start">
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-slate-50 hover:bg-white p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-blue-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(37,99,235,0.08)] group flex flex-col justify-start">
                     <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-blue-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-blue-50">
                         <i class="fa-solid fa-code"></i>
                     </div>
@@ -297,7 +297,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                 </div>
                 
                 <!-- Pathway 2 -->
-                <div data-aos="fade-up" data-aos-delay="200" class="bg-slate-50 hover:bg-white p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-emerald-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.08)] group flex flex-col justify-start">
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-slate-50 hover:bg-white p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-emerald-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.08)] group flex flex-col justify-start">
                     <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-emerald-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-emerald-50">
                         <i class="fa-solid fa-network-wired"></i>
                     </div>
@@ -306,7 +306,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                 </div>
                 
                 <!-- Pathway 3 -->
-                <div data-aos="fade-up" data-aos-delay="300" class="bg-slate-50 hover:bg-white p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-amber-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(245,158,11,0.08)] group flex flex-col justify-start">
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-slate-50 hover:bg-white p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-amber-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(245,158,11,0.08)] group flex flex-col justify-start">
                     <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-amber-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-amber-50">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
@@ -315,7 +315,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                 </div>
                 
                 <!-- Pathway 4 -->
-                <div data-aos="fade-up" data-aos-delay="400" class="bg-slate-50 hover:bg-white p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-purple-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(168,85,247,0.08)] group flex flex-col justify-start">
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-slate-50 hover:bg-white p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-slate-100 hover:border-purple-100 transition-all duration-300 hover:shadow-[0_15px_30px_-5px_rgba(168,85,247,0.08)] group flex flex-col justify-start">
                     <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-purple-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-purple-50">
                         <i class="fa-solid fa-building-columns"></i>
                     </div>
@@ -488,7 +488,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
 
                     <!-- Question Button -->
                     <button @click="activeFaq = activeFaq === {{ $index }} ? null : {{ $index }}"
-                            class="w-full flex items-center gap-4 md:gap-5 p-5 md:p-6 pl-6 md:pl-7 text-left focus:outline-none group cursor-pointer">
+                            class="w-full flex items-center gap-4 md:gap-5 p-4 md:p-6 pl-4 md:pl-7 text-left focus:outline-none group cursor-pointer">
 
                         <!-- Number badge -->
                         <div class="w-11 h-11 min-w-[2.75rem] rounded-xl flex items-center justify-center text-[0.85rem] font-black transition-all duration-400 shrink-0 relative"
@@ -518,7 +518,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                     <div x-show="activeFaq === {{ $index }}"
                          x-collapse
                          x-cloak>
-                        <div class="px-5 md:px-6 pl-6 md:pl-7 pb-6">
+                        <div class="px-4 md:px-6 pl-4 md:pl-7 pb-5 md:pb-6">
                             <div class="ml-[3.75rem] bg-emerald-50/50 border border-emerald-100/60 rounded-xl p-5 text-slate-600 text-[0.93rem] leading-[1.85] relative">
                                 <!-- Answer icon -->
                                 <div class="absolute -top-3 -left-3 w-6 h-6 rounded-lg bg-emerald-500 text-white flex items-center justify-center shadow-sm">
@@ -532,7 +532,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                 @endforeach
 
                 <!-- Bottom CTA Bar -->
-                <div class="mt-8 bg-gradient-to-r from-slate-50 to-emerald-50/40 rounded-2xl p-6 md:p-7 border border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-4" data-aos="fade-up">
+                <div class="mt-8 bg-gradient-to-r from-slate-50 to-emerald-50/40 rounded-2xl p-5 md:p-7 border border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-4" data-aos="fade-up">
                     <div class="flex items-center gap-3 text-center sm:text-left">
                         <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-[1.1rem] shrink-0 shadow-sm">
                             <i class="fa-solid fa-lightbulb"></i>
