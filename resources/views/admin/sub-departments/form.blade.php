@@ -1,4 +1,4 @@
-﻿@extends($adminLayout ?? 'layouts.admin')
+@extends($adminLayout ?? 'layouts.admin')
 @section('title', $department->exists ? 'Edit Department' : 'Create Department')
 @section('content')
 
@@ -105,6 +105,13 @@
                             <small style="color: #64748b; display: block; margin-top: 0.5rem;"><i class="fa-solid fa-link mr-1"></i> Generates: /department/slug</small>
                         </div>
                     </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.5rem; display: block;"><i class="fa-solid fa-calendar-alt text-sky-500 mr-1"></i> Year Founded</label>
+                            <input type="text" name="founded_year" class="form-control" style="background: white; border: 1px solid #cbd5e1; padding: 0.75rem; border-radius: 8px; width: 100%;" value="{{ old('founded_year', $department->founded_year) }}" placeholder="e.g. 2003">
+                            <small style="color: #64748b; display: block; margin-top: 0.5rem;"><i class="fa-solid fa-circle-info mr-1"></i> Shown in the "Department at a Glance" statistics.</small>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -124,9 +131,15 @@
             <div class="tab-pane" id="tab-about" style="display: none;">
                 <h3 style="font-size: 1.25rem; color: #334155; margin-bottom: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem;"><i class="fa-regular fa-file-lines text-green-500"></i> Website Block 2: About Description</h3>
                 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem;">
-                    <div class="form-group">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
                         <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.5rem; display: block;">Detailed Department Overview</label>
                         <textarea name="description" class="form-control" style="border: 1px solid #cbd5e1; border-radius: 8px; width: 100%; padding: 1rem; resize: vertical;" rows="8" placeholder="A center for academic excellence and pioneering research in...">{{ old('description', $department->description) }}</textarea>
+                        <small style="color: #64748b; display: block; margin-top: 0.5rem;">The main introductory paragraph shown under the "Pioneering Excellence" heading.</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.5rem; display: block;"><i class="fa-solid fa-paragraph text-green-500 mr-1"></i> Additional About Content (Optional)</label>
+                        <textarea name="about_short" class="form-control" style="border: 1px solid #cbd5e1; border-radius: 8px; width: 100%; padding: 1rem; resize: vertical;" rows="5" placeholder="Any additional content to show below the main overview...">{{ old('about_short', $department->about_short) }}</textarea>
+                        <small style="color: #64748b; display: block; margin-top: 0.5rem;">Appears below the main description. Supports plain text.</small>
                     </div>
                 </div>
             </div>
@@ -134,16 +147,37 @@
             <!-- Panel: Vision & Mission -->
             <div class="tab-pane" id="tab-vision" style="display: none;">
                 <h3 style="font-size: 1.25rem; color: #334155; margin-bottom: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem;"><i class="fa-solid fa-bullseye text-fuchsia-500"></i> Website Block 3: Vision & Mission Cards</h3>
+                <!-- Preview Hint -->
+                <div style="background: linear-gradient(135deg, #faf5ff 0%, #f0fdfa 100%); border: 1px solid #e9d5ff; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 36px; height: 36px; background: #d946ef20; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fa-solid fa-palette" style="color: #d946ef; font-size: 0.85rem;"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; color: #334155; font-size: 0.85rem;">Website Preview</div>
+                        <div style="color: #64748b; font-size: 0.78rem; line-height: 1.4;">These fields render as two premium side-by-side cards — a dark <strong>Vision</strong> card and a green <strong>Mission</strong> card — in the About section of the department page.</div>
+                    </div>
+                </div>
+
                 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem;">
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <!-- Vision Field -->
                         <div class="form-group">
-                            <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.75rem; display: block;"><i class="fa-solid fa-eye text-fuchsia-500 mr-2"></i>Our Vision (Card 1)</label>
-                            <textarea name="vision" class="form-control" style="border: 1px solid #cbd5e1; border-radius: 8px; width: 100%; padding: 1rem; resize: vertical;" rows="5" placeholder="To be a globally recognized center of excellence...">{{ old('vision', $department->vision) }}</textarea>
+                            <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="width: 28px; height: 28px; background: #0f172a; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa-solid fa-eye" style="color: #34d399; font-size: 0.7rem;"></i></span>
+                                Our Vision
+                            </label>
+                            <textarea name="vision" class="form-control" style="border: 1px solid #cbd5e1; border-radius: 8px; width: 100%; padding: 1rem; resize: vertical;" rows="6" placeholder="To be a globally recognized center of excellence...">{{ old('vision', $department->vision) }}</textarea>
+                            <small style="color: #64748b; display: block; margin-top: 0.5rem;"><i class="fa-solid fa-circle-info mr-1"></i> Renders as a dark slate card with an eye icon.</small>
                         </div>
 
+                        <!-- Mission Field -->
                         <div class="form-group">
-                            <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.75rem; display: block;"><i class="fa-solid fa-bullseye text-fuchsia-500 mr-2"></i>Our Mission (Card 2)</label>
-                            <textarea name="mission" class="form-control" style="border: 1px solid #cbd5e1; border-radius: 8px; width: 100%; padding: 1rem; resize: vertical;" rows="5" placeholder="To provide high-quality education and foster innovative research...">{{ old('mission', $department->mission) }}</textarea>
+                            <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="width: 28px; height: 28px; background: #059669; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center;"><i class="fa-solid fa-bullseye" style="color: white; font-size: 0.7rem;"></i></span>
+                                Our Mission
+                            </label>
+                            <textarea name="mission" class="form-control" style="border: 1px solid #cbd5e1; border-radius: 8px; width: 100%; padding: 1rem; resize: vertical;" rows="6" placeholder="To provide high-quality education and foster innovative research...">{{ old('mission', $department->mission) }}</textarea>
+                            <small style="color: #64748b; display: block; margin-top: 0.5rem;"><i class="fa-solid fa-circle-info mr-1"></i> Renders as a green gradient card with a rocket icon.</small>
                         </div>
                     </div>
                 </div>

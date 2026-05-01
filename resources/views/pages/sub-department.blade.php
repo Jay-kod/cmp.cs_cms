@@ -71,20 +71,70 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                     </div>
 
                     @if($subDept->vision || $subDept->mission)
-                    <div class="grid grid-cols-1 gap-6 mt-10">
-                        @if($subDept->vision)
-                        <div class="bg-slate-50 p-7 border-l-4 border-emerald-500 rounded-r-xl">
-                            <h4 class="text-slate-900 font-extrabold mb-3 text-[1.2rem] flex items-center gap-2"><div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center"><i class="fa-solid fa-eye"></i></div> Vision</h4>
-                            <p class="text-slate-600 m-0 text-base leading-[1.7]">{{ $subDept->vision }}</p>
+                    <!-- ═══ Vision & Mission Premium Cards ═══ -->
+                    <div class="mt-10 mb-2">
+                        <div class="flex items-center gap-2.5 mb-5">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 text-white flex items-center justify-center text-[0.9rem] shadow-[0_4px_12px_-2px_rgba(16,185,129,0.4)]">
+                                <i class="fa-solid fa-compass"></i>
+                            </div>
+                            <h3 class="text-[1.25rem] font-extrabold text-slate-900 m-0 font-heading tracking-tight">Vision & Mission</h3>
                         </div>
-                        @endif
-                        
-                        @if($subDept->mission)
-                        <div class="bg-slate-50 p-7 border-l-4 border-blue-500 rounded-r-xl">
-                            <h4 class="text-slate-900 font-extrabold mb-3 text-[1.2rem] flex items-center gap-2"><div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center"><i class="fa-solid fa-bullseye"></i></div> Mission</h4>
-                            <p class="text-slate-600 m-0 text-base leading-[1.7]">{{ $subDept->mission }}</p>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                            @if($subDept->vision)
+                            <!-- Vision Card — Dark Slate -->
+                            <div class="subdept-vm-card group relative bg-slate-900 rounded-2xl p-6 sm:p-7 overflow-hidden shadow-[0_12px_30px_-8px_rgba(15,23,42,0.5)] border border-slate-800 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-10px_rgba(15,23,42,0.6)]" data-aos="fade-up">
+                                <!-- Gradient overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/8 via-transparent to-blue-500/5 pointer-events-none"></div>
+                                <!-- Animated orb -->
+                                <div class="absolute -top-12 -right-12 w-36 h-36 bg-emerald-500/10 rounded-full blur-[50px] transition-all duration-700 group-hover:bg-emerald-400/20 group-hover:scale-125 pointer-events-none"></div>
+                                <!-- Watermark icon -->
+                                <div class="absolute right-2 bottom-[-8px] text-[5.5rem] text-white/[0.04] pointer-events-none transition-all duration-700 group-hover:text-white/[0.07] group-hover:scale-110 group-hover:-rotate-6">
+                                    <i class="fa-solid fa-eye"></i>
+                                </div>
+
+                                <div class="relative z-10">
+                                    <!-- Heading row: icon + title on same line -->
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-10 h-10 shrink-0 bg-emerald-500/15 backdrop-blur-sm rounded-xl flex items-center justify-center text-emerald-400 text-[1rem] border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-5deg]">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </div>
+                                        <h4 class="text-[1.25rem] sm:text-[1.35rem] text-white font-heading font-extrabold tracking-tight m-0">Our Vision</h4>
+                                    </div>
+
+                                    <!-- Body -->
+                                    <p class="text-slate-300 text-[0.95rem] leading-[1.75] m-0 font-normal">{{ $subDept->vision }}</p>
+                                </div>
+                            </div>
+                            @endif
+
+                            @if($subDept->mission)
+                            <!-- Mission Card — Green Gradient -->
+                            <div class="subdept-vm-card group relative bg-gradient-to-br from-emerald-600 to-green-700 rounded-2xl p-6 sm:p-7 overflow-hidden shadow-[0_12px_30px_-8px_rgba(22,163,74,0.45)] border border-emerald-500/40 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-10px_rgba(22,163,74,0.55)]" data-aos="fade-up" data-aos-delay="100">
+                                <!-- Gradient overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+                                <!-- Animated orb -->
+                                <div class="absolute -bottom-12 -left-12 w-36 h-36 bg-white/10 rounded-full blur-[50px] transition-all duration-700 group-hover:bg-white/15 group-hover:scale-125 pointer-events-none"></div>
+                                <!-- Watermark icon -->
+                                <div class="absolute right-2 bottom-[-6px] text-[5rem] text-white/[0.08] pointer-events-none transition-all duration-700 group-hover:text-white/[0.13] group-hover:scale-110 group-hover:rotate-6">
+                                    <i class="fa-solid fa-rocket"></i>
+                                </div>
+
+                                <div class="relative z-10">
+                                    <!-- Heading row: icon + title on same line -->
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-10 h-10 shrink-0 bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center text-white text-[1rem] border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-5deg]">
+                                            <i class="fa-solid fa-bullseye"></i>
+                                        </div>
+                                        <h4 class="text-[1.25rem] sm:text-[1.35rem] text-white font-heading font-extrabold tracking-tight m-0">Our Mission</h4>
+                                    </div>
+
+                                    <!-- Body -->
+                                    <p class="text-green-50 text-[0.95rem] leading-[1.75] m-0 font-medium">{{ $subDept->mission }}</p>
+                                </div>
+                            </div>
+                            @endif
                         </div>
-                        @endif
                     </div>
                     @endif
                 </div>
