@@ -19,11 +19,11 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
     
     <div class="container relative z-10" data-aos="fade-right">
         <!-- Breadcrumb -->
-        <nav class="mb-6 sm:mb-8 w-full overflow-x-auto pb-2" style="scrollbar-width: none; -ms-overflow-style: none;">
+        <nav class="mb-4 sm:mb-8 w-full overflow-x-auto pb-2" style="scrollbar-width: none; -ms-overflow-style: none;">
             <!-- Hide webkit scrollbar -->
             <style>.overflow-x-auto::-webkit-scrollbar { display: none; }</style>
             
-            <ol class="list-none py-2 sm:py-2.5 px-4 sm:px-5 m-0 inline-flex items-center gap-2 sm:gap-2.5 text-[0.8rem] sm:text-[0.85rem] text-white/90 bg-white/10 backdrop-blur-md rounded-full border border-white/20 whitespace-nowrap min-w-min">
+            <ol class="list-none py-1.5 sm:py-2.5 px-0 sm:px-5 m-0 inline-flex items-center gap-2 sm:gap-2.5 text-[0.8rem] sm:text-[0.85rem] text-white/90 sm:bg-white/10 sm:backdrop-blur-md sm:rounded-full sm:border sm:border-white/20 whitespace-nowrap min-w-min">
                 <li><a href="{{ route('home') }}" class="text-white no-underline font-medium transition-colors duration-200 hover:text-emerald-500"><i class="fa-solid fa-house text-[0.7rem] sm:text-xs"></i> Home</a></li>
                 <li class="opacity-60"><i class="fa-solid fa-chevron-right text-[0.55rem] sm:text-[0.6rem]"></i></li>
                 <li><a href="{{ route('academics') }}" class="text-white no-underline font-medium transition-colors duration-200 hover:text-emerald-500">Academics</a></li>
@@ -41,26 +41,29 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
 </section>
 
 <!-- Section 2 — About the Sub-Department (#FFFFFF) -->
-<section id="about" class="bg-white pb-24 relative">
+<section id="about" class="bg-white pb-20 sm:pb-24 relative">
     <!-- Overlapping the hero slightly -->
-    <div class="container -mt-14 relative z-20">
-        <div class="bg-white rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border border-black/5 overflow-hidden">
+    <div class="w-full max-w-[1240px] mx-auto px-3 sm:px-5 lg:px-8 -mt-14 relative z-20">
+        <div class="bg-white rounded-xl sm:rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border border-black/5 overflow-hidden">
               <div class="grid grid-cols-1 gap-0">
                 
                 <!-- Main Content -->
-                <div data-aos="fade-up" class="p-5 md:p-10 lg:p-16">
-                    <div class="inline-flex items-center gap-2 bg-[#EAF3DE] text-[#1E7A3E] text-sm font-bold uppercase tracking-[1.5px] py-1.5 px-4 rounded-full mb-6">
+                <div data-aos="fade-up" class="p-5 sm:p-8 md:p-10 lg:p-16">
+                    <div class="inline-flex items-center gap-2 bg-[#EAF3DE] text-[#1E7A3E] text-sm font-bold uppercase tracking-[1.5px] py-1.5 px-4 rounded-full mb-5 sm:mb-6">
                         <i class="fa-solid fa-circle-info"></i> About Us
                     </div>
-                    <h2 class="text-[2.2rem] font-extrabold text-slate-900 mb-6 font-heading leading-[1.2]">Pioneering Excellence</h2>
+                    <h2 class="text-[2rem] sm:text-[2.2rem] font-extrabold text-slate-900 mb-5 sm:mb-6 font-heading leading-[1.2]">Pioneering Excellence</h2>
                     
-                    <div class="text-slate-600 leading-[1.8] text-[1.1rem] text-pretty">
-                        <p class="mb-6 text-[1.15rem] text-slate-700">
+                    <!-- Forced text-left on mobile to override justified gaps from summernote DB content -->
+                    <div class="text-slate-600 leading-[1.75] text-[1.05rem] sm:text-[1.1rem] [&_p]:!text-left sm:[&_p]:!text-justify text-pretty">
+                        <p class="mb-5 sm:mb-6 text-[1.1rem] sm:text-[1.15rem] text-slate-700">
                             {{ $subDept->description ?: 'Discover your future with our specialized academic programmes, hands-on training, and world-class faculty.' }}
                         </p>
                         
                         @if($subDept->about_short)
-                            {!! $subDept->about_short !!}
+                            <div class="space-y-4">
+                                {!! $subDept->about_short !!}
+                            </div>
                         @endif
                     </div>
                     
