@@ -54,8 +54,8 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                     </div>
                     <h2 class="text-[2rem] sm:text-[2.2rem] font-extrabold text-slate-900 mb-5 sm:mb-6 font-heading leading-[1.2]">Pioneering Excellence</h2>
                     
-                    <!-- Forced text-left on mobile to override justified gaps from summernote DB content -->
-                    <div class="text-slate-600 leading-[1.75] text-[1.05rem] sm:text-[1.1rem] [&_p]:!text-left sm:[&_p]:!text-justify text-pretty">
+                    <!-- Text justified across all screen sizes as requested -->
+                    <div class="text-slate-600 leading-[1.75] text-[1.05rem] sm:text-[1.1rem] [&_p]:!text-justify text-justify">
                         <p class="mb-5 sm:mb-6 text-[1.1rem] sm:text-[1.15rem] text-slate-700">
                             {{ $subDept->description ?: 'Discover your future with our specialized academic programmes, hands-on training, and world-class faculty.' }}
                         </p>
