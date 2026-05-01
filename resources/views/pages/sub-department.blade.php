@@ -461,7 +461,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                         </p>
                         
                         <!-- Socials Row -->
-                        <div class="flex items-center justify-between pt-2 mt-auto pointer-events-auto">
+                        <div class="flex items-center justify-center pt-2 mt-auto pointer-events-auto">
                             <div class="flex items-center gap-2">
                                 @if($member->email)
                                 <a href="mailto:{{ $member->email }}" class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-[#1E7A3E] transition-all shadow-sm" title="Email">
