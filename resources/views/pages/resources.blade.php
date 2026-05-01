@@ -74,8 +74,8 @@
 </section>
 
 <!-- 3. Categorized Downloads (Sidebar + Content Layout) -->
-<section id="downloads-view" class="bg-slate-50 pb-32" x-data="{ activeTab: '{{ $categories->first()?->slug ?? '' }}' }">
-    <div class="container max-w-[1100px]">
+<section id="downloads-view" class="bg-slate-50 pb-20 sm:pb-32" x-data="{ activeTab: '{{ $categories->first()?->slug ?? '' }}' }">
+    <div class="w-full max-w-[1100px] mx-auto px-2 sm:px-5 lg:px-8">
         <div class="text-center mb-16" data-aos="fade-up">
             <span class="inline-block bg-white text-[color:var(--color-primary)] text-xs font-bold py-1.5 px-4 rounded-full mb-4 shadow-sm border border-green-100 uppercase tracking-wider">Document Archives</span>
             <h2 class="text-3xl md:text-4xl font-black text-slate-800 font-heading mb-4 tracking-tight">Download Center</h2>
@@ -87,7 +87,7 @@
                 
                 <!-- Category Sidebar -->
                 <div class="w-full md:w-[300px] shrink-0 sticky top-[100px] z-20">
-                    <div class="bg-white rounded-2xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col gap-2">
+                    <div class="bg-white rounded-2xl p-3 sm:p-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col gap-2">
                         <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider px-4 pt-2 pb-1">Categories</h4>
                         
                         @foreach($categories as $category)
@@ -97,7 +97,7 @@
                             <button 
                                 @click.prevent="activeTab = '{{ $category->slug }}'"
                                 :class="{'bg-[color:var(--color-primary)] text-white shadow-md': activeTab === '{{ $category->slug }}', 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 border border-transparent hover:border-slate-100': activeTab !== '{{ $category->slug }}'}"
-                                class="w-full text-left px-4 py-3 rounded-xl font-bold text-sm transition-all duration-200 flex items-center justify-between group cursor-pointer border border-transparent">
+                                class="w-full text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl font-bold text-sm transition-all duration-200 flex items-center justify-between group cursor-pointer border border-transparent">
                                 <span class="flex items-center gap-3">
                                     <i class="fa-solid fa-folder-open text-lg opacity-70 group-hover:opacity-100"></i>
                                     {{ $category->name }}
@@ -113,7 +113,7 @@
 
                     <!-- Timetable Quick Highlight -->
                     @if($timetableItem)
-                    <div class="mt-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 text-white shadow-xl relative overflow-hidden">
+                    <div class="mt-4 sm:mt-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 sm:p-6 text-white shadow-xl relative overflow-hidden">
                         <div class="absolute -right-4 -bottom-4 text-[6rem] opacity-5 text-white pointer-events-none">
                             <i class="fa-solid fa-calendar-check"></i>
                         </div>
@@ -151,9 +151,9 @@
                             </div>
                             
                             @if($items->count() > 0)
-                                <div class="grid gap-4">
+                                <div class="grid gap-3 sm:gap-4">
                                     @foreach($items as $item)
-                                        <div class="bg-white border border-slate-100 rounded-2xl p-5 hover:border-slate-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 group flex flex-col sm:flex-row gap-4 sm:gap-6 justify-between items-start sm:items-center relative z-10 w-full overflow-hidden">
+                                        <div class="bg-white border border-slate-100 rounded-2xl p-4 sm:p-5 hover:border-slate-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 group flex flex-col sm:flex-row gap-4 sm:gap-6 justify-between items-start sm:items-center relative z-10 w-full overflow-hidden">
                                             
                                             <!-- File Icon + Info -->
                                             <div class="flex gap-5 items-center w-full sm:w-auto overflow-hidden">
@@ -197,7 +197,7 @@
                                     @endforeach
                                 </div>
                             @else
-                                <div class="text-center py-20 px-8 bg-white rounded-2xl border border-dashed border-slate-200">
+                                <div class="text-center py-16 sm:py-20 px-4 sm:px-8 bg-white rounded-2xl border border-dashed border-slate-200">
                                     <div class="mx-auto mb-4 text-5xl text-slate-200">
                                         <i class="fa-solid fa-folder-open"></i>
                                     </div>
@@ -211,7 +211,7 @@
             </div>
         @else
             <!-- Global Empty State -->
-            <div data-aos="fade-up" data-aos-delay="100" class="text-center py-20 px-8 bg-white rounded-3xl border border-dashed border-slate-200 max-w-[700px] mx-auto shadow-sm">
+            <div data-aos="fade-up" data-aos-delay="100" class="text-center py-16 sm:py-20 px-4 sm:px-8 bg-white rounded-2xl sm:rounded-3xl border border-dashed border-slate-200 max-w-[700px] mx-auto shadow-sm">
                 <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl text-slate-300 shadow-inner">
                     <i class="fa-solid fa-box-open"></i>
                 </div>
