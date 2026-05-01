@@ -24,7 +24,7 @@ html { scroll-behavior: smooth; }
         <div data-aos="fade-up" class="flex flex-col md:flex-row gap-8 lg:gap-12 items-center md:items-start text-center md:text-left">
             <!-- Photo -->
             <div class="flex-shrink-0 relative group">
-                <div class="w-60 h-60 sm:w-72 sm:h-72 lg:w-80 lg:h-80 mx-auto md:mx-0 rounded-3xl p-1.5 bg-white/10 border border-solid border-white/20 backdrop-blur-md shadow-2xl group-hover:-translate-y-2 transition-transform duration-500 z-10 relative">
+                <div class="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto md:mx-0 rounded-3xl p-1.5 bg-white/10 border border-solid border-white/20 backdrop-blur-md shadow-2xl group-hover:-translate-y-2 transition-transform duration-500 z-10 relative">
                     <img
                         src="{{ $staff->photo ? asset('storage/'.$staff->photo) : 'https://ui-avatars.com/api/?name=' . urlencode($staff->name) . '&size=400&background=0f172a&color=fff&bold=true&format=svg' }}"
                         alt="{{ $staff->name }}"
