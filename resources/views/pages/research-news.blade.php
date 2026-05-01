@@ -42,8 +42,6 @@
 
     <div class="w-full">
         @include('pages.research-news-partials.news')
-        
-        @include('pages.research-news-partials.announcements')
     </div>
 
 </div>
