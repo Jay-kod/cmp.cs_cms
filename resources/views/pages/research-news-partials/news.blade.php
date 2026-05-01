@@ -27,7 +27,7 @@
                             <div class="absolute inset-0 bg-green-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay"></div>
                         </div>
 
-                        <div class="p-6 md:p-8 flex-1 flex flex-col bg-white">
+                        <div class="p-4 sm:p-6 md:p-8 flex-1 flex flex-col bg-white">
                             <h3 class="text-xl font-bold text-slate-800 leading-tight mb-3 group-hover:text-green-600 transition-colors">
                                 {{ $article->title }}
                             </h3>
