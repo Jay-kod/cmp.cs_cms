@@ -4,23 +4,23 @@
 @section('content')
 
 <!-- 1. Premium Hero Banner -->
-<section data-aos="fade-up" class="bg-emerald-800 bg-center bg-cover pt-24 pb-28 text-white relative overflow-hidden border-b-4 border-accent" style="background-image: url('{{ asset('images/pattern-grid.svg') }}');">
+<section data-aos="fade-up" class="bg-emerald-800 bg-center bg-cover pt-16 sm:pt-24 pb-20 sm:pb-28 text-white relative overflow-hidden border-b-4 border-accent" style="background-image: url('{{ asset('images/pattern-grid.svg') }}');">
     <!-- Abstract Glow -->
     <div class="absolute inset-0 pointer-events-none"></div>
 
-    <div class="container relative z-10 text-center" data-aos="fade-up">
-        <nav aria-label="breadcrumb" class="flex justify-center mb-6">
-            <ol class="breadcrumb list-none m-0 bg-white/10 backdrop-blur-md py-2 px-6 rounded-full text-[0.85rem] font-semibold tracking-[0.5px] border border-white/10 inline-flex items-center gap-[0.8rem]">
-                <li class="m-0"><a href="{{ url('/') }}" class="text-slate-300 no-underline transition-colors duration-300 hover:text-white"><i class="fa-solid fa-house mr-1"></i> Home</a></li>
-                <li class="text-white/30 m-0">/</li>
-                <li aria-current="page" class="text-[color:var(--color-accent)] m-0 drop-shadow-[0_2px_10px_rgba(244,196,48,0.4)]">Resources</li>
+    <div class="container relative z-10 text-center px-4 sm:px-6" data-aos="fade-up">
+        <nav aria-label="breadcrumb" class="flex justify-center mb-6 w-full">
+            <ol class="breadcrumb list-none m-0 bg-white/10 backdrop-blur-md py-2 px-4 sm:px-6 rounded-2xl sm:rounded-full text-[0.75rem] sm:text-[0.85rem] font-semibold tracking-[0.5px] border border-white/10 inline-flex flex-wrap justify-center items-center gap-x-2 sm:gap-x-[0.8rem] gap-y-1">
+                <li class="m-0 whitespace-nowrap"><a href="{{ url('/') }}" class="text-slate-300 no-underline transition-colors duration-300 hover:text-white"><i class="fa-solid fa-house mr-1"></i> Home</a></li>
+                <li class="text-white/30 m-0 shrink-0">/</li>
+                <li aria-current="page" class="text-[color:var(--color-accent)] m-0 drop-shadow-[0_2px_10px_rgba(244,196,48,0.4)] text-center break-words">Resources</li>
             </ol>
         </nav>
         
-        <h1 class="text-[3.5rem] md:text-[4.5rem] font-black mb-[1.2rem] text-white font-heading tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+        <h1 class="text-[clamp(2.5rem,8vw,4.5rem)] font-black mb-[1rem] sm:mb-[1.2rem] text-white font-heading tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.3)] leading-[1.15] sm:leading-[1.1]">
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-[color:var(--color-accent)] to-yellow-200">Academic</span> Resources
         </h1>
-        <p class="text-[1.15rem] md:text-[1.25rem] max-w-[700px] mx-auto text-slate-300 leading-[1.8] font-normal">
+        <p class="text-[1.05rem] sm:text-[1.15rem] md:text-[1.25rem] max-w-[700px] mx-auto text-slate-300 leading-[1.6] sm:leading-[1.8] font-normal px-2">
             A centralized digital repository for students and faculty. Access handbooks, lecture schedules, official guidelines, and essential university portals.
         </p>
     </div>
