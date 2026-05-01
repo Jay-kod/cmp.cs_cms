@@ -195,7 +195,7 @@
             <div class="relative border-l-4 border-amber-200/60 ml-4 sm:ml-6 space-y-8 sm:space-y-10 pb-4">
                 @foreach($milestones as $index => $mile)
                 <div class="relative pl-8 sm:pl-10 md:pl-12">
-                    <div class="absolute w-10 h-10 sm:w-12 sm:h-12 bg-amber-500 rounded-full text-white flex items-center justify-center font-bold shadow-lg shadow-amber-500/30 ring-4 ring-white" style="left: -22px; top: 0;" class="sm:left-[-26px]">
+                    <div class="absolute w-10 h-10 sm:w-12 sm:h-12 bg-amber-500 rounded-full text-white flex items-center justify-center font-bold shadow-lg shadow-amber-500/30 ring-4 ring-white left-[-22px] sm:left-[-26px]" style="top: 0;">
                         <i class="fa-solid fa-thumbtack -rotate-45 ml-1 mt-1 text-[0.8rem] sm:text-base"></i>
                     </div>
                     <div class="bg-slate-50 border border-slate-100 rounded-3xl p-5 sm:p-7 hover:shadow-xl hover:shadow-amber-900/5 hover:-translate-y-1 hover:border-amber-200 transition-all duration-300">
