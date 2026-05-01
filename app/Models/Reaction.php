@@ -17,7 +17,7 @@ class Reaction extends Model
         'ip_address',
     ];
 
-    public const TYPES = ['like', 'love', 'dislike', 'insightful', 'angry'];
+    public const TYPES = ['like', 'love', 'insightful', 'dislike', 'angry'];
 
     public function news()
     {
