@@ -10,7 +10,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 @forelse($announcements as $announcement)
-                <div class="bg-white border border-slate-100 rounded-2xl p-6 md:p-8 transition-all duration-300 flex flex-col shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 relative overflow-hidden group">
+                <div class="bg-white border border-slate-100 rounded-2xl p-4 sm:p-6 md:p-8 transition-all duration-300 flex flex-col shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 relative overflow-hidden group">
                     <div class="absolute top-0 left-0 w-1.5 h-full transition-colors duration-300 @if($announcement->priority == 'high') bg-red-500 group-hover:bg-red-600 @else bg-blue-500 group-hover:bg-blue-600 @endif"></div>
                     
                     <div class="flex justify-between items-start gap-4 mb-4">
