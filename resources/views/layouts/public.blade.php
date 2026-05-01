@@ -288,12 +288,14 @@
 
         <!-- Bottom Bar -->
         <div class="bg-[#0a0f1a] py-4 border-t border-white/5">
-            <div class="container flex flex-wrap items-center justify-between gap-2" data-aos="fade-up">
-                <p class="m-0 text-[0.8rem] text-[#f1f5f9]">&copy; {{ date('Y') }} {{ config('university.name') }}, {{ config('university.university') }}. All rights reserved.</p>
-                <div class="flex gap-5">
-                    <a href="{{ url('/page/privacy-policy') }}" class="text-[#f1f5f9] text-[0.8rem] hover:text-accent transition-colors duration-150">Privacy Policy</a>
-                    <a href="{{ url('/page/terms-of-use') }}" class="text-[#f1f5f9] text-[0.8rem] hover:text-accent transition-colors duration-150">Terms of Use</a>
-                    <a href="{{ url('/page/sitemap') }}" class="text-[#f1f5f9] text-[0.8rem] hover:text-accent transition-colors duration-150">Sitemap</a>
+            <div class="container flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-2" data-aos="fade-up">
+                <p class="m-0 text-[0.7rem] sm:text-[0.8rem] text-[#f1f5f9] text-center md:text-left !text-center md:!text-left leading-relaxed opacity-80 sm:opacity-100">&copy; {{ date('Y') }} {{ config('university.name') }}, {{ config('university.university') }}. All rights reserved.</p>
+                <div class="flex items-center justify-center gap-2 sm:gap-5 text-[0.7rem] sm:text-[0.8rem] opacity-90 sm:opacity-100">
+                    <a href="{{ url('/page/privacy-policy') }}" class="text-[#f1f5f9] hover:text-accent transition-colors duration-150">Privacy Policy</a>
+                    <span class="text-white/20 sm:hidden">|</span>
+                    <a href="{{ url('/page/terms-of-use') }}" class="text-[#f1f5f9] hover:text-accent transition-colors duration-150">Terms of Use</a>
+                    <span class="text-white/20 sm:hidden">|</span>
+                    <a href="{{ url('/page/sitemap') }}" class="text-[#f1f5f9] hover:text-accent transition-colors duration-150">Sitemap</a>
                 </div>
             </div>
         </div>
