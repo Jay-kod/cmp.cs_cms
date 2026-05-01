@@ -109,13 +109,14 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
         </div>
         
         <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
-            <!-- Metric 1: Founded -->
+            <!-- Metric 1: Founded & Accreditation -->
             <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-emerald-500/30 transition-all duration-300 group flex flex-col justify-center">
                 <div class="w-14 h-14 mx-auto bg-slate-800 text-emerald-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-emerald-400/10 ring-1 ring-white/5">
                     <i class="fa-solid fa-calendar-alt"></i>
                 </div>
-                <div class="font-black text-white text-2xl mb-1.5">{{ $subDept->founded_year ?? 'N/A' }}</div>
-                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider">Founded</h4>
+                <div class="font-black text-white text-2xl mb-1">{{ $subDept->founded_year ?? 'N/A' }}</div>
+                <div class="text-emerald-400/80 font-bold text-[0.7rem] mb-2 uppercase tracking-widest">NUC Accredited</div>
+                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Founded</h4>
             </div>
 
             <!-- Metric 2: Faculty -->
@@ -127,41 +128,40 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                 <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Faculty</h4>
             </div>
 
-            <!-- Metric 3: Head -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-amber-500/30 transition-all duration-300 group flex flex-col justify-center">
-                <div class="w-14 h-14 mx-auto bg-slate-800 text-amber-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-amber-400/10 ring-1 ring-white/5">
-                    <i class="fa-solid fa-user-tie"></i>
-                </div>
-                <div class="font-black text-white text-[1.1rem] mb-2 px-1">{{ $subDept->hod_name ?? 'Vacant' }}</div>
-                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Head of Dept.</h4>
-            </div>
-
-            <!-- Metric 4: Programmes -->
+            <!-- Metric 3: Number of Programmes -->
             <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-purple-500/30 transition-all duration-300 group flex flex-col justify-center">
                 <div class="w-14 h-14 mx-auto bg-slate-800 text-purple-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-purple-400/10 ring-1 ring-white/5">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
-                <div class="font-black text-white text-xl mb-1.5 whitespace-nowrap">BSc · MSc · PhD</div>
+                <div class="font-black text-white text-3xl mb-1.5">{{ $programmeCount }}</div>
                 <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider">Programmes</h4>
             </div>
 
-            <!-- Metric 5: Status -->
-            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-cyan-500/30 transition-all duration-300 group flex flex-col justify-center">
-                <div class="w-14 h-14 mx-auto bg-slate-800 text-cyan-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-cyan-400/10 ring-1 ring-white/5">
-                    <i class="fa-solid fa-check-double"></i>
+            <!-- Metric 4: Number of Courses -->
+            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-amber-500/30 transition-all duration-300 group flex flex-col justify-center">
+                <div class="w-14 h-14 mx-auto bg-slate-800 text-amber-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-amber-400/10 ring-1 ring-white/5">
+                    <i class="fa-solid fa-book-open"></i>
                 </div>
-                <div class="font-black text-white text-[1.2rem] mb-0.5">Accredited</div>
-                <div class="text-cyan-400/80 font-bold text-[0.7rem] mb-2 uppercase tracking-widest">NUC Approved</div>
-                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Status</h4>
+                <div class="font-black text-white text-3xl mb-1.5">{{ $courseCount }}</div>
+                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider">Courses</h4>
             </div>
 
-            <!-- Metric 6: Location -->
+            <!-- Metric 5: Number of Lecturers -->
+            <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-cyan-500/30 transition-all duration-300 group flex flex-col justify-center">
+                <div class="w-14 h-14 mx-auto bg-slate-800 text-cyan-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-cyan-400/10 ring-1 ring-white/5">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+                <div class="font-black text-white text-3xl mb-1.5">{{ $lecturerCount }}</div>
+                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider">Lecturers</h4>
+            </div>
+
+            <!-- Metric 6: Number of Students -->
             <div class="bg-slate-800/80 backdrop-blur-sm p-4 sm:p-7 rounded-2xl border border-slate-700/80 text-center hover:-translate-y-2 hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] hover:border-rose-500/30 transition-all duration-300 group flex flex-col justify-center">
                 <div class="w-14 h-14 mx-auto bg-slate-800 text-rose-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-rose-400/10 ring-1 ring-white/5">
-                    <i class="fa-solid fa-map-location-dot"></i>
+                    <i class="fa-solid fa-users"></i>
                 </div>
-                <div class="font-bold text-white text-[1.05rem] mb-2 leading-tight">NSUK Main<br>Campus, Keffi</div>
-                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Location</h4>
+                <div class="font-black text-white text-3xl mb-1.5">{{ $studentCount }}</div>
+                <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider">Students</h4>
             </div>
         </div>
     </div>
