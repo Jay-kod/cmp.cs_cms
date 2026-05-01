@@ -1,35 +1,43 @@
         {{-- ----------- ANNOUNCEMENTS ----------- --}}
         <section data-aos="fade-up" id="announcements" class="mb-16 pt-16 border-t border-slate-200">
             <div class="blog-section-heading flex items-center gap-4 mb-6">
-                <div class="blog-section-icon w-12 h-12 bg-gradient-to-br from-red-600/15 to-red-700/10 text-red-600 rounded-[14px] flex items-center justify-center text-[1.3rem]">
+                <div class="blog-section-icon w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center text-[1.3rem] shadow-sm border border-red-100">
                     <i class="fa-solid fa-bullhorn"></i>
                 </div>
                 <h2 class="m-0 text-2xl text-slate-900 font-heading font-bold">Announcements</h2>
             </div>
-            <div class="w-[60px] h-1 bg-gradient-to-r from-red-500 to-red-700 mb-8 rounded"></div>
+            <div class="w-[60px] h-1 bg-gradient-to-r from-red-500 to-red-600 mb-8 rounded"></div>
             
-            <div class="announcements-grid grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 @forelse($announcements as $announcement)
-                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 transition-all duration-200 flex flex-col hover:shadow-md hover:-translate-y-1 border-l-4 @if($announcement->priority == 'high') border-l-red-500 @else border-l-blue-500 @endif">
-                    <div class="flex justify-between items-start gap-2 mb-2">
-                        <h3 class="m-0 text-[1rem] font-heading text-slate-800 leading-[1.3] font-bold">
+                <div class="bg-white border border-slate-100 rounded-2xl p-6 md:p-8 transition-all duration-300 flex flex-col shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1.5 h-full transition-colors duration-300 @if($announcement->priority == 'high') bg-red-500 group-hover:bg-red-600 @else bg-blue-500 group-hover:bg-blue-600 @endif"></div>
+                    
+                    <div class="flex justify-between items-start gap-4 mb-4">
+                        <h3 class="m-0 text-lg font-bold text-slate-800 leading-tight">
                             {{ $announcement->title }}
                         </h3>
-                        <span class="text-[0.7rem] py-[0.15rem] px-2 rounded-xl font-semibold whitespace-nowrap @if($announcement->priority == 'high') bg-red-100 text-red-700 @else bg-blue-100 text-blue-700 @endif">
+                        <span class="text-[0.65rem] py-1 px-3 rounded-full font-bold uppercase tracking-widest whitespace-nowrap @if($announcement->priority == 'high') bg-red-50 text-red-600 border border-red-100 @else bg-blue-50 text-blue-600 border border-blue-100 @endif">
                             {{ ucfirst($announcement->audience) }}
                         </span>
                     </div>
-                    <div class="text-slate-500 text-[0.85rem] leading-[1.5] mb-3 flex-grow">
+                    
+                    <div class="text-slate-500 text-sm leading-relaxed mb-6 flex-grow text-justify">
                         {!! nl2br(e($announcement->body)) !!}
                     </div>
-                    <div class="text-[0.75rem] text-slate-400 flex items-center gap-[0.4rem] mt-auto">
-                        <i class="fa-regular fa-clock"></i> 
+                    
+                    <div class="text-xs text-slate-400 flex items-center gap-2 mt-auto font-bold uppercase tracking-wide">
+                        <i class="fa-regular fa-clock text-slate-300"></i> 
                         Posted {{ $announcement->created_at->diffForHumans() }}
                     </div>
                 </div>
                 @empty
-                <div class="col-span-full bg-slate-50 p-10 rounded-xl text-center text-slate-500 border border-dashed border-slate-300">
-                    <p class="m-0">No active announcements at the moment.</p>
+                <div class="col-span-full bg-white rounded-3xl shadow-sm border border-slate-100 p-12 text-center mt-4">
+                    <div class="w-20 h-20 mx-auto bg-slate-50 text-slate-400 rounded-full flex items-center justify-center text-3xl mb-4">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-700 mb-2">No Announcements</h3>
+                    <p class="text-slate-500">There are no active announcements right now.</p>
                 </div>
                 @endforelse
             </div>
