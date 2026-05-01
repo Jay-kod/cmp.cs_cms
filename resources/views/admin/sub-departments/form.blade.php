@@ -62,6 +62,11 @@
                     <span style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #f1f5f9; color: #64748b; border-radius: 8px; font-size: 0.7rem;"><i class="fa-solid fa-flask"></i></span>
                     Research & Pubs
                 </button>
+
+                <button type="button" class="tab-btn" data-target="tab-pathways" style="width: 100%; text-align: left; padding: 0.5rem 0.75rem; border: none; background: white; color: #475569; font-weight: 500; font-size: 0.7rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; border-left: 4px solid transparent; transition: all 0.2s;">
+                    <span style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #ecfdf5; color: #10b981; border-radius: 8px; font-size: 0.7rem;"><i class="fa-solid fa-route"></i></span>
+                    Career Pathways
+                </button>
                 
                 <button type="button" class="tab-btn" data-target="tab-news" style="width: 100%; text-align: left; padding: 0.5rem 0.75rem; border: none; background: white; color: #475569; font-weight: 500; font-size: 0.7rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; border-left: 4px solid transparent; transition: all 0.2s;">
                     <span style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #fce7f3; color: #ec4899; border-radius: 8px; font-size: 0.7rem;"><i class="fa-regular fa-newspaper"></i></span>
@@ -227,6 +232,61 @@
                             <input type="text" name="lecturer_count" class="form-control" style="background: white; border: 1px solid #cbd5e1; padding: 0.75rem; border-radius: 8px; width: 100%;" value="{{ old('lecturer_count', $department->lecturer_count) }}" placeholder="e.g. 10">
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Panel: Career Pathways -->
+            <div class="tab-pane" id="tab-pathways" style="display: none;">
+                <h3 style="font-size: 1.25rem; color: #334155; margin-bottom: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem;"><i class="fa-solid fa-route text-emerald-500"></i> Career Pathways</h3>
+                
+                <div style="background: linear-gradient(135deg, #ecfdf530 0%, #f3f4f6 100%); border: 1px solid #a7f3d0; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 36px; height: 36px; background: #10b98120; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fa-solid fa-info-circle" style="color: #10b981; font-size: 0.85rem;"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; color: #334155; font-size: 0.85rem;">Custom Career Pathways</div>
+                        <div style="color: #64748b; font-size: 0.78rem; line-height: 1.4;">Define the 4 career pathways that will be displayed in the Bento Grid for this sub-department. If left empty, default global pathways will be shown.</div>
+                    </div>
+                </div>
+
+                @php
+                    $pathways = is_array($department->career_pathways) ? $department->career_pathways : [];
+                    $defaultIcons = ['fa-solid fa-code', 'fa-solid fa-network-wired', 'fa-solid fa-shield-halved', 'fa-solid fa-building-columns'];
+                    $defaultTitles = ['Tech & Engineering', 'Data & AI', 'Cybersecurity', 'Research & Policy'];
+                    $colors = ['blue-500', 'emerald-500', 'amber-500', 'purple-500'];
+                @endphp
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    @for($i = 0; $i < 4; $i++)
+                        @php
+                            $pathway = $pathways[$i] ?? [];
+                            $icon = $pathway['icon'] ?? $defaultIcons[$i];
+                            $title = $pathway['title'] ?? '';
+                            $desc = $pathway['description'] ?? '';
+                            $color = $colors[$i];
+                        @endphp
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; border-top: 4px solid var(--tw-color-{{ $color }});">
+                            <h4 style="font-weight: 800; color: #334155; margin-bottom: 1rem; font-size: 1.05rem;">Pathway {{ $i + 1 }}</h4>
+                            
+                            <div class="form-group mb-3">
+                                <label class="form-label" style="font-weight: 700; font-size: 0.8rem;">Icon Class (FontAwesome)</label>
+                                <div class="flex items-center gap-2">
+                                    <div style="width: 38px; height: 38px; background: white; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="{{ $icon }} text-slate-600" id="icon-preview-{{ $i }}"></i></div>
+                                    <input type="text" name="career_pathways[{{ $i }}][icon]" class="form-control flex-grow" style="background: white; border: 1px solid #cbd5e1; padding: 0.5rem; border-radius: 8px;" value="{{ old('career_pathways.'.$i.'.icon', $icon) }}" placeholder="e.g. fa-solid fa-code" oninput="document.getElementById('icon-preview-{{ $i }}').className = this.value + ' text-slate-600'">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group mb-3">
+                                <label class="form-label" style="font-weight: 700; font-size: 0.8rem;">Title</label>
+                                <input type="text" name="career_pathways[{{ $i }}][title]" class="form-control" style="background: white; border: 1px solid #cbd5e1; padding: 0.5rem; border-radius: 8px; width: 100%;" value="{{ old('career_pathways.'.$i.'.title', $title) }}" placeholder="e.g. {{ $defaultTitles[$i] }}">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" style="font-weight: 700; font-size: 0.8rem;">Description (Comma separated roles)</label>
+                                <textarea name="career_pathways[{{ $i }}][description]" class="form-control" style="background: white; border: 1px solid #cbd5e1; padding: 0.5rem; border-radius: 8px; width: 100%; resize: vertical;" rows="2" placeholder="e.g. Software Engineers, System Architects...">{{ old('career_pathways.'.$i.'.description', $desc) }}</textarea>
+                            </div>
+                        </div>
+                    @endfor
                 </div>
             </div>
 
