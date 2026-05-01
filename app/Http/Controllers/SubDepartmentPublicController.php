@@ -43,10 +43,11 @@ class SubDepartmentPublicController extends Controller
         }
 
         // Dynamic counts for "Department at a Glance"
-        $programmeCount = Programme::where('is_active', true)->count();
-        $courseCount = Course::count();
-        $lecturerCount = Staff::count();
-        $studentCount = DepartmentSetting::getCached('total_students') ?? '500+';
+        $programmeCount = $subDept->programme_count ?: Programme::where('is_active', true)->count();
+        $courseCount = $subDept->course_count ?: Course::count();
+        $lecturerCount = $subDept->lecturer_count ?: Staff::count();
+        $studentCount = $subDept->student_population ?: (DepartmentSetting::getCached('total_students') ?? '500+');
+
 
         return view('pages.sub-department', compact(
             'subDept', 'programmes', 'staff',
