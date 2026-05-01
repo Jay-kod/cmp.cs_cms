@@ -919,8 +919,8 @@
                                 $reactions = [
                                     'like'       => '👍',
                                     'love'       => '❤️',
-                                    'dislike'    => '👎',
                                     'insightful' => '💡',
+                                    'dislike'    => '👎',
                                     'angry'      => '😡',
                                 ];
                             @endphp
