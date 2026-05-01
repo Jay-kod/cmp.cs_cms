@@ -61,11 +61,11 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                         @endif
                     </div>
                     
-                    <div class="flex gap-4 flex-wrap items-center mt-10">
-                        <a href="#apply-now" class="bg-[#1E7A3E] text-white py-4 px-9 rounded-full font-bold no-underline text-[1.05rem] transition-all duration-300 shadow-[0_10px_20px_-5px_rgba(30,122,62,0.4)] inline-flex items-center gap-2 hover:-translate-y-[2px] hover:shadow-[0_15px_25px_-5px_rgba(30,122,62,0.5)]">
+                    <div class="flex flex-col sm:flex-row gap-4 flex-wrap items-center mt-10">
+                        <a href="#apply-now" class="w-full sm:w-auto justify-center bg-[#1E7A3E] text-white py-4 px-9 rounded-full font-bold no-underline text-[1.05rem] transition-all duration-300 shadow-[0_10px_20px_-5px_rgba(30,122,62,0.4)] inline-flex items-center gap-2 hover:-translate-y-[2px] hover:shadow-[0_15px_25px_-5px_rgba(30,122,62,0.5)]">
                             Apply Now <i class="fa-solid fa-arrow-right text-sm"></i>
                         </a>
-                        <a href="#programmes" class="bg-slate-50 text-slate-900 py-4 px-9 rounded-full font-semibold text-[1.05rem] no-underline border border-slate-200 transition-all duration-300 hover:bg-slate-100 hover:border-slate-300">
+                        <a href="#programmes" class="w-full sm:w-auto text-center justify-center bg-slate-50 text-slate-900 py-4 px-9 rounded-full font-semibold text-[1.05rem] no-underline border border-slate-200 transition-all duration-300 hover:bg-slate-100 hover:border-slate-300">
                             Explore Programmes
                         </a>
                     </div>
@@ -158,7 +158,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             <p class="text-slate-400 max-w-[600px] mx-auto text-[1.1rem]">Key highlights and essential metrics that define our dynamic academic community and infrastructure.</p>
         </div>
         
-        <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+        <div class="grid grid-cols-1 min-[450px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 sm:gap-6">
             <!-- Metric 1: Founded & Accreditation -->
             <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-emerald-200/50 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:bg-emerald-400/20 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.4)] hover:border-emerald-600 flex flex-col justify-center text-center">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-emerald-500/20 group-hover:scale-150 pointer-events-none"></div>
