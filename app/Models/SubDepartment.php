@@ -11,6 +11,10 @@ class SubDepartment extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'career_pathways' => 'array',
+    ];
+
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
