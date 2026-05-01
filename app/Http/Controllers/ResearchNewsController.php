@@ -14,14 +14,19 @@ class ResearchNewsController extends Controller
     public function index()
     {
         $news = News::latest('published_at')->paginate(12);
+        
+        return view('pages.research-news', compact('news'));
+    }
+
+    public function announcements()
+    {
         $announcements = Announcement::where('expires_at', '>=', now())
             ->orWhereNull('expires_at')
             ->orderBy('priority', 'desc')
             ->latest()
-            ->take(10)
-            ->get();
-        
-        return view('pages.research-news', compact('news', 'announcements'));
+            ->paginate(12);
+            
+        return view('pages.announcements-index', compact('announcements'));
     }
 
     public function research()
