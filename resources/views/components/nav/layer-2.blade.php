@@ -1,6 +1,6 @@
 <div class="navbar">
     @php
-        $externalSystems = \App\Models\ExternalSystem::active()->ordered()->get();
+    $externalSystems = \App\Models\ExternalSystem::active()->ordered()->get();
     @endphp
     <div class="container navbar-inner">
         <!-- Brand Wrapper -->
@@ -14,7 +14,7 @@
             </a>
         </div>
 
-                <!-- Navigation & Actions Wrapper -->
+        <!-- Navigation & Actions Wrapper -->
         <div class="navbar-nav-wrapper" style="display: flex; align-items: center; justify-content: flex-end; flex: 1; gap: 1rem;">
             @php
             $isHomeActive = request()->is('/');
@@ -23,8 +23,8 @@
             $isPeopleActive = request()->is('people*') || request()->is('gallery*');
             $isNewsActive = request()->is('research-news*') || request()->is('events*') || request()->is('research-innovations*') || request()->is('pages/academic-calendar*');
             $navSubDepts = \App\Models\SubDepartment::where('is_active', true)->where('slug', '!=', 'computer-science')->get();
-        @endphp
-        <!-- Desktop Nav -->
+            @endphp
+            <!-- Desktop Nav -->
             <nav class="navbar-nav desktop-only hidden lg:flex items-center justify-end gap-6 flex-1" id="primary-nav">
                 <a href="{{ url('/') }}" class="nav-link {{ $isHomeActive ? 'active' : '' }} font-semibold text-base relative py-1 px-0.5 inline-block text-gray-700 hover:text-primary transition-colors">
                     <span class="{{ $isHomeActive ? 'text-primary' : '' }}">Home</span>
@@ -33,8 +33,10 @@
 
                 <details class="nav-dropdown relative group">
                     <summary class="nav-link nav-dropdown-summary {{ $isAboutActive ? 'active' : '' }} font-medium text-base cursor-pointer flex items-center gap-1.5 py-1 px-0.5 relative text-gray-700 hover:text-primary transition-colors" aria-label="About dropdown">
-                        <span class="{{ $isAboutActive ? 'text-primary' : '' }}">About</span> 
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-60"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        <span class="{{ $isAboutActive ? 'text-primary' : '' }}">About</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-60">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
                         @if($isAboutActive)<div class="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-primary"></div>@endif
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[220px] z-50 border border-gray-100" role="menu">
@@ -45,14 +47,16 @@
 
                 <details class="nav-dropdown relative group">
                     <summary class="nav-link nav-dropdown-summary {{ $isAcademicsActive ? 'active' : '' }} font-medium text-base cursor-pointer flex items-center gap-1.5 py-1 px-0.5 relative text-gray-700 hover:text-primary transition-colors" aria-label="Academics dropdown">
-                        <span class="{{ $isAcademicsActive ? 'text-primary' : '' }}">Academics</span> 
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-60"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        <span class="{{ $isAcademicsActive ? 'text-primary' : '' }}">Academics</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-60">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
                         @if($isAcademicsActive)<div class="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-primary"></div>@endif
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[320px] z-50 border border-gray-100" role="menu">
                         <a href="{{ route('page.show', 'programmes') }}" class="nav-dropdown-item block py-2.5 px-4 text-[0.95rem] no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('pages/programmes') || request()->is('programmes*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Academic Programmes</a>
                         @foreach($navSubDepts as $subDept)
-                            <a href="{{ route('sub-department.show', $subDept->slug) }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('sub-department/'.$subDept->slug.'*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">{{ $subDept->name }}</a>
+                        <a href="{{ route('sub-department.show', $subDept->slug) }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('sub-department/'.$subDept->slug.'*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">{{ $subDept->name }}</a>
                         @endforeach
                         <a href="{{ route('siwes') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->routeIs('siwes*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">SIWES Information</a>
                         <a href="{{ route('projects') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->routeIs('projects*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Final Year Projects</a>
@@ -62,8 +66,10 @@
 
                 <details class="nav-dropdown relative group">
                     <summary class="nav-link nav-dropdown-summary {{ $isPeopleActive ? 'active' : '' }} font-medium text-base cursor-pointer flex items-center gap-1.5 py-1 px-0.5 relative text-gray-700 hover:text-primary transition-colors" aria-label="People dropdown">
-                        <span class="{{ $isPeopleActive ? 'text-primary' : '' }}">People</span> 
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-60"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        <span class="{{ $isPeopleActive ? 'text-primary' : '' }}">People</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-60">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
                         @if($isPeopleActive)<div class="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-primary"></div>@endif
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[200px] z-50 border border-gray-100" role="menu">
@@ -74,8 +80,10 @@
 
                 <details class="nav-dropdown relative group">
                     <summary class="nav-link nav-dropdown-summary {{ $isNewsActive ? 'active' : '' }} font-medium text-base cursor-pointer flex items-center gap-1.5 py-1 px-0.5 relative text-gray-700 hover:text-primary transition-colors" aria-label="News dropdown">
-                        <span class="{{ $isNewsActive ? 'text-primary' : '' }}">News</span> 
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-60"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        <span class="{{ $isNewsActive ? 'text-primary' : '' }}">News</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-60">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
                         @if($isNewsActive)<div class="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-primary"></div>@endif
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[250px] z-50 border border-gray-100" role="menu">
@@ -105,12 +113,7 @@
                 <strong>DEPARTMENT OF COMPUTER SCIENCE</strong>
                 <span>NASARAWA STATE UNIVERSITY, KEFFI</span>
             </div>
-            <button
-                type="button"
-                class="mobile-drawer-close-btn"
-                id="mobile-drawer-close-btn"
-                aria-label="Close menu"
-            >
+            <button type="button" class="mobile-drawer-close-btn" id="mobile-drawer-close-btn" aria-label="Close menu">
                 <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
         </div>
@@ -138,7 +141,7 @@
                 <div class="mobile-details-menu">
                     <a href="{{ route('page.show', 'programmes') }}" class="mobile-link mobile-sub-link {{ request()->is('pages/programmes') || request()->is('programmes*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Academic Programmes</a>
                     @foreach($navSubDepts as $subDept)
-                        <a href="{{ route('sub-department.show', $subDept->slug) }}" class="mobile-link mobile-sub-link {{ request()->is('sub-department/'.$subDept->slug.'*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">{{ $subDept->name }}</a>
+                    <a href="{{ route('sub-department.show', $subDept->slug) }}" class="mobile-link mobile-sub-link {{ request()->is('sub-department/'.$subDept->slug.'*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">{{ $subDept->name }}</a>
                     @endforeach
                     <a href="{{ route('siwes') }}" class="mobile-link mobile-sub-link {{ request()->routeIs('siwes*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">SIWES Information</a>
                     <a href="{{ route('projects') }}" class="mobile-link mobile-sub-link {{ request()->routeIs('projects*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Final Year Projects</a>
@@ -153,9 +156,9 @@
                 </summary>
                 <div class="mobile-details-menu">
                     <a href="{{ url('/people') }}" class="mobile-link mobile-sub-link {{ request()->is('people') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Staff Directory</a>
-                      <a href="{{ url('/gallery') }}" class="mobile-link mobile-sub-link {{ request()->is('gallery*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Gallery</a>
-                  </div>
-              </details>
+                    <a href="{{ url('/gallery') }}" class="mobile-link mobile-sub-link {{ request()->is('gallery*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Gallery</a>
+                </div>
+            </details>
 
             <details class="mobile-details">
                 <summary class="mobile-link mobile-details-summary {{ $isNewsActive ? 'active' : '' }}" aria-label="News dropdown (mobile)">
@@ -177,9 +180,9 @@
 
         <div class="mobile-drawer-footer">
             @php
-                $__drawerPhone = \App\Models\DepartmentSetting::getCached('contact_phone') ?? '+234 (0) 123 456 7890';
-                $__drawerEmail = \App\Models\DepartmentSetting::getCached('contact_email') ?? 'info@dcms.nsuk.edu.ng';
-                $__drawerSocials = \App\Models\SocialLink::active()->ordered()->get();
+            $__drawerPhone = \App\Models\DepartmentSetting::getCached('contact_phone') ?? '+234 (0) 123 456 7890';
+            $__drawerEmail = \App\Models\DepartmentSetting::getCached('contact_email') ?? 'info@dcms.nsuk.edu.ng';
+            $__drawerSocials = \App\Models\SocialLink::active()->ordered()->get();
             @endphp
             <div class="mobile-contact-info">
                 <a href="tel:{{ preg_replace('/[^+0-9]/', '', $__drawerPhone) }}">
@@ -189,7 +192,7 @@
                     <i class="fa-solid fa-envelope"></i> {{ $__drawerEmail }}
                 </a>
             </div>
-            
+
             @if($__drawerSocials->count())
             <div class="mobile-social-links">
                 @foreach($__drawerSocials as $social)
@@ -201,19 +204,29 @@
             @endif
         </div>
     </div>
-    
+
     <style>
         .navbar-brand-wrapper {
             display: flex;
             align-items: center;
         }
 
-        .desktop-only { display: none !important; }
-        .mobile-only { display: block !important; }
-        
+        .desktop-only {
+            display: none !important;
+        }
+
+        .mobile-only {
+            display: block !important;
+        }
+
         @media (min-width: 1024px) {
-            .desktop-only { display: flex !important; }
-            .mobile-only { display: none !important; }
+            .desktop-only {
+                display: flex !important;
+            }
+
+            .mobile-only {
+                display: none !important;
+            }
         }
 
         /* Hover behavior for details on desktop */
@@ -221,26 +234,32 @@
             #primary-nav details.nav-dropdown {
                 position: relative;
             }
-            #primary-nav details.nav-dropdown > summary::after {
+
+            #primary-nav details.nav-dropdown>summary::after {
                 content: none;
             }
+
             #primary-nav details.nav-dropdown summary::-webkit-details-marker {
                 display: none;
             }
-            #primary-nav details.nav-dropdown > summary ~ div.nav-dropdown-menu {
+
+            #primary-nav details.nav-dropdown>summary~div.nav-dropdown-menu {
                 display: none;
             }
-            #primary-nav details.nav-dropdown:hover > summary ~ div.nav-dropdown-menu,
-            #primary-nav details.nav-dropdown[open] > summary ~ div.nav-dropdown-menu {
+
+            #primary-nav details.nav-dropdown:hover>summary~div.nav-dropdown-menu,
+            #primary-nav details.nav-dropdown[open]>summary~div.nav-dropdown-menu {
                 display: block;
                 animation: fade-in 0.2s ease-in-out forwards;
             }
-            #primary-nav details.nav-dropdown:hover > summary,
-            #primary-nav details.nav-dropdown.active > summary {
+
+            #primary-nav details.nav-dropdown:hover>summary,
+            #primary-nav details.nav-dropdown.active>summary {
                 color: #047857 !important;
             }
-            #primary-nav details.nav-dropdown:hover > summary::after,
-            #primary-nav details.nav-dropdown.active > summary::after {
+
+            #primary-nav details.nav-dropdown:hover>summary::after,
+            #primary-nav details.nav-dropdown.active>summary::after {
                 content: '';
                 position: absolute;
                 bottom: -8px;
@@ -251,9 +270,17 @@
                 display: block !important;
             }
         }
+
         @keyframes fade-in {
-            from { opacity: 0; transform: translate(-50%, 10px); }
-            to { opacity: 1; transform: translate(-50%, 0); }
+            from {
+                opacity: 0;
+                transform: translate(-50%, 10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
         }
     </style>
 </div>

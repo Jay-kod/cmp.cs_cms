@@ -20,7 +20,7 @@
 </section>
 
 <!-- Content Section -->
-<section style="background-color: #f8fafc; padding: 4rem 0;" class="py-16">
+<section style="background-color: #ffffff; padding: 4rem 0;" class="py-16">
     <div class="container max-w-6xl mx-auto px-4">
         
         <div class="mb-12 text-center">
@@ -98,10 +98,14 @@
                 @endforelse
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- Part-Time Programmes -->
-        <div class="mt-16 mb-8">
-            <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center border-b pb-2"><i class="fas fa-moon text-indigo-500 mr-3"></i> Part-Time Programmes (Including NSC)</h3>
+<!-- Part-Time Programmes Section -->
+<section style="background-color: #f0fdf4; padding: 4rem 0;" class="py-16 border-t border-emerald-100">
+    <div class="container max-w-6xl mx-auto px-4">
+        <div class="mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center border-b border-emerald-200 pb-2"><i class="fas fa-moon text-indigo-500 mr-3"></i> Part-Time Programmes (Including NSC)</h3>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 @forelse($partTime as $programme)
                     <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); overflow: hidden; transition: all 0.3s ease;" class="hover:shadow-lg flex flex-col group border-t-4 border-t-indigo-500">

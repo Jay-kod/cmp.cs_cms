@@ -29,7 +29,7 @@
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased {{ request()->routeIs('home') ? 'is-home' : '' }}">
     
     <!-- Preloader -->
     <div id="preloader" class="fixed inset-0 z-[99999] bg-white flex flex-col items-center justify-center transition-all duration-500">
@@ -41,17 +41,77 @@
             0%, 100% { transform: scale(1); } 
             50% { transform: scale(1.15); } 
         }
+        
+        /* Transparent Header styles for Homepage */
+        body.is-home header.is-transparent > div,
+        body.is-home header.is-transparent .navbar,
+        body.is-home header.is-transparent .topbar {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+        }
+        body.is-home header.is-transparent .bg-\[\#047857\] {
+            background-color: transparent !important;
+        }
+        body.is-home header.is-transparent .text-white {
+            color: rgba(255,255,255,0.9) !important;
+        }
+        body.is-home header.is-transparent .nav-link,
+        body.is-home header.is-transparent .brand-title,
+        body.is-home header.is-transparent .brand-subtitle,
+        body.is-home header.is-transparent .navbar-hamburger i {
+            color: #ffffff !important;
+        }
+        body.is-home header.is-transparent .navbar-logo {
+            background-color: #ffffff !important;
+            padding: 4px !important;
+            border-radius: 6px !important;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+        }
+        body.is-home header.is-transparent .nav-link.active span.text-primary,
+        body.is-home header.is-transparent .nav-dropdown-summary.active span.text-primary {
+            color: #ffffff !important;
+        }
+        body.is-home header.is-transparent .nav-link.active div.bg-primary,
+        body.is-home header.is-transparent .nav-dropdown-summary.active div.bg-primary {
+            background-color: #22c55e !important;
+        }
+        body.is-home header.is-transparent .btn-primary {
+            background-color: rgba(255,255,255,0.15) !important;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+            color: #ffffff !important;
+        }
+        body.is-home header.is-transparent .btn-primary:hover {
+            background-color: rgba(255,255,255,0.25) !important;
+        }
+        body.is-home header.is-transparent .nav-dropdown-menu {
+            background-color: #ffffff !important;
+            border-color: rgba(0,0,0,0.05) !important;
+        }
+        body.is-home header.is-transparent .nav-dropdown-menu .nav-dropdown-item {
+            color: #4b5563 !important;
+        }
+        body.is-home header.is-transparent .nav-dropdown-menu .nav-dropdown-item:hover {
+            color: var(--color-primary) !important;
+            background-color: #f0fdf4 !important;
+        }
+        body.is-home header.is-transparent .nav-dropdown-summary svg {
+            color: #ffffff !important;
+            opacity: 0.8;
+        }
     </style>
 
     <!-- Fixed Header -->
-    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
-        <div class="bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_6px_16px_rgba(0,0,0,0.04)]">
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 {{ request()->routeIs('home') ? 'is-transparent' : '' }}">
+        <div class="bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06),0_6px_16px_rgba(0,0,0,0.04)] transition-all duration-500">
             <x-nav.layer-1 />
             <x-nav.layer-2 />
             <x-nav.layer-3 />
         </div>
     </header>
+    @if(!request()->routeIs('home'))
     <div class="h-[68px] lg:h-[88px]"></div>
+    @endif
     <style>
         .mobile-only { display: none; }
         p { text-align: justify; }
@@ -342,6 +402,20 @@
                         setTimeout(() => { if (window.scrollY <= 400) backToTop.style.display = 'none'; }, 300);
                     }
                 });
+            }
+
+            // Transparent Header logic
+            const header = document.getElementById('main-header');
+            if (document.body.classList.contains('is-home') && header) {
+                const updateHeader = () => {
+                    if (window.scrollY > 50) {
+                        header.classList.remove('is-transparent');
+                    } else {
+                        header.classList.add('is-transparent');
+                    }
+                };
+                window.addEventListener('scroll', updateHeader);
+                updateHeader();
             }
         });
     </script>

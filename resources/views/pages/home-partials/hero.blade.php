@@ -8,7 +8,7 @@
         opacity: 1;
     }
 </style>
-<section data-aos="fade-up" class="hero-carousel relative overflow-hidden h-[652px]">
+<section data-aos="fade-up" class="hero-carousel relative overflow-hidden min-h-[500px] h-[100vh]">
     <!-- Slides -->
     <div class="carousel-track flex h-full transition-transform duration-[600ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" id="carouselTrack">
         

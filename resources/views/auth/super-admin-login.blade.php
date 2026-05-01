@@ -194,13 +194,13 @@
         }
 
         .sa-form-group {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
         .sa-form-group label {
             display: block;
             font-weight: 500;
             font-size: 0.85rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             color: #cbd5e1;
         }
         .sa-input-wrap {
@@ -218,7 +218,7 @@
         }
         .sa-input {
             width: 100%;
-            padding: 0.8rem 0.8rem 0.8rem 2.8rem;
+            padding: 0.65rem 0.65rem 0.65rem 2.5rem;
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(148, 163, 184, 0.15);
             border-radius: 10px;
@@ -262,7 +262,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
         }
         .sa-remember {
             display: flex;
@@ -295,7 +295,7 @@
             width: 100%;
             background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
             color: #0f172a;
-            padding: 0.85rem;
+            padding: 0.75rem;
             border: none;
             border-radius: 10px;
             font-weight: 700;
@@ -418,7 +418,7 @@
                     <div class="sa-session-status">{{ session('status') }}</div>
                 @endif
 
-                <form method="POST" action="{{ route('super-admin.login', [], false) }}">
+                <form method="POST" action="{{ route('super-admin.login') }}">
                     @csrf
 
                     {{-- Email --}}
@@ -465,7 +465,7 @@
 
                     {{-- Dev/super-admin credentials hint (remove before production) --}}
                     @if(app()->environment('local') || config('app.debug'))
-                    <div style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid rgba(234,179,8,0.3); border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1.25rem;">
+                    <div style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid rgba(234,179,8,0.3); border-radius: 10px; padding: 0.75rem 1rem; margin-top: 1rem;">
                         <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
                             <div style="width: 22px; height: 22px; background: #eab308; border-radius: 5px; display: flex; align-items: center; justify-content: center;">
                                 <i class="fa-solid fa-code" style="font-size: 0.65rem; color: #0f172a;"></i>
@@ -483,8 +483,8 @@
                             </div>
                         </div>
                         <button type="button"
-                            onclick="(function(){const e=document.getElementById('email')||document.querySelector('input[name=email]'); const p=document.getElementById('password')||document.querySelector('input[name=password]'); if(e){e.value='superadmin@cmpnsuk.edu.ng'; e.dispatchEvent(new Event('input',{bubbles:true}));} if(p){p.value='12345678'; p.dispatchEvent(new Event('input',{bubbles:true}));} const f=document.forms[0]; if(f){f.submit();}})();"
-                            style="margin-top: 0.75rem; width: 100%; padding: 0.45rem; background: #eab308; color: #0f172a; border: none; border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: background 0.2s;"
+                            onclick="(function(){const e=document.getElementById('email')||document.querySelector('input[name=email]'); const p=document.getElementById('password')||document.querySelector('input[name=password]'); if(e){e.value='superadmin@cmpnsuk.edu.ng'; e.dispatchEvent(new Event('input',{bubbles:true}));} if(p){p.value='12345678'; p.dispatchEvent(new Event('input',{bubbles:true}));} const b=document.querySelector('button[type=submit]'); if(b){b.click();} else {const f=document.forms[0]; if(f) f.submit();} })();"
+                            style="margin-top: 0.5rem; width: 100%; padding: 0.4rem; background: #eab308; color: #0f172a; border: none; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: background 0.2s;"
                             onmouseover="this.style.background='#ca8a04'" onmouseout="this.style.background='#eab308'"><i class="fa-solid fa-bolt" style="margin-right: 4px;"></i> Auto-fill & Login</button>
                     </div>
                     @endif
