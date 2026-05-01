@@ -160,7 +160,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
         
         <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
             <!-- Metric 1: Founded & Accreditation -->
-            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.3)] hover:border-emerald-500/30 flex flex-col justify-center text-center">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-emerald-200/50 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:bg-emerald-400/20 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.4)] hover:border-emerald-600 flex flex-col justify-center text-center">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-emerald-500/20 group-hover:scale-150 pointer-events-none"></div>
                 <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-solid fa-calendar-alt"></i>
@@ -177,7 +177,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </div>
 
             <!-- Metric 2: Faculty -->
-            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] hover:border-blue-500/30 flex flex-col justify-center text-center">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-emerald-200/50 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:bg-emerald-400/20 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] hover:border-emerald-600 flex flex-col justify-center text-center">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-blue-500/20 group-hover:scale-150 pointer-events-none"></div>
                 <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-regular fa-building"></i>
@@ -193,7 +193,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </div>
 
             <!-- Metric 3: Number of Programmes -->
-            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.3)] hover:border-purple-500/30 flex flex-col justify-center text-center">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-emerald-200/50 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:bg-emerald-400/20 hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.3)] hover:border-emerald-600 flex flex-col justify-center text-center">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-purple-500/20 group-hover:scale-150 pointer-events-none"></div>
                 <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-solid fa-graduation-cap"></i>
@@ -209,7 +209,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </div>
 
             <!-- Metric 4: Number of Courses -->
-            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(245,158,11,0.3)] hover:border-amber-500/30 flex flex-col justify-center text-center">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-emerald-200/50 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:bg-emerald-400/20 hover:shadow-[0_20px_40px_-15px_rgba(245,158,11,0.3)] hover:border-emerald-600 flex flex-col justify-center text-center">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-amber-500/20 group-hover:scale-150 pointer-events-none"></div>
                 <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-solid fa-book-open"></i>
@@ -225,7 +225,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </div>
 
             <!-- Metric 5: Number of Lecturers -->
-            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(6,182,212,0.3)] hover:border-cyan-500/30 flex flex-col justify-center text-center">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-emerald-200/50 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:bg-emerald-400/20 hover:shadow-[0_20px_40px_-15px_rgba(6,182,212,0.3)] hover:border-emerald-600 flex flex-col justify-center text-center">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-cyan-500/20 group-hover:scale-150 pointer-events-none"></div>
                 <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-solid fa-chalkboard-user"></i>
