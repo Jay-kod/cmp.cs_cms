@@ -1,28 +1,4 @@
-@media (max-width: 991px) {
-    .fixed-header,
-    .fixed-header-inner,
-    .navbar {
-        background: rgba(1, 24, 13, 0.68) !important;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        box-shadow: 0 8px 32px 0 rgba(0, 234, 93, 0.10);
-        border-bottom: 1.5px solid rgba(0,234,93,0.13);
-    }
-    .navbar-inner {
-        background: transparent !important;
-    }
-    .navbar-brand strong,
-    .navbar-brand span,
-    .navbar-nav .nav-link,
-    .navbar-cta {
-        color: #eafff2 !important;
-    }
-    .navbar-cta {
-        background: rgba(0,234,93,0.13) !important;
-        color: #00ea5d !important;
-        border: none !important;
-    }
-}
+
 @import "toc.css";
 @tailwind base;
 @tailwind components;
