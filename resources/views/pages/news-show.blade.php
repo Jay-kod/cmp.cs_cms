@@ -883,10 +883,8 @@
             <span><i class="fa-regular fa-calendar"></i> {{ $publishDate->format('M d, Y') }}</span>
             <span class="nd-dot"></span>
             <span><i class="fa-regular fa-clock"></i> {{ $readTime }} min read</span>
-            @if($article->author)
             <span class="nd-dot"></span>
-            <span><i class="fa-regular fa-user"></i> {{ $article->author->name }}</span>
-            @endif
+            <span><i class="fa-regular fa-user"></i> {{ $article->display_author }}</span>
         </div>
     </div>
 </div>
@@ -996,12 +994,10 @@
                 <div class="nd-detail-icon"><i class="fa-regular fa-clock"></i></div>
                 <span>{{ $readTime }} min read</span>
             </div>
-            @if($article->author)
-            <div class="nd-detail-row">
-                <div class="nd-detail-icon"><i class="fa-solid fa-user-pen"></i></div>
-                <span>{{ $article->author->name }}</span>
+            <div class="nd-author-box">
+                <div class="nd-author-avatar">{{ substr($article->display_author, 0, 1) }}</div>
+                <span>{{ $article->display_author }}</span>
             </div>
-            @endif
         </div>
 
         @if($related->isNotEmpty())
@@ -1051,9 +1047,7 @@
                     <div data-aos="fade-up" class="nd-share-card-meta">
                         <i class="fa-regular fa-calendar"></i>
                         {{ $publishDate->format('M d, Y') }}
-                        @if($article->author)
-                         &middot; {{ $article->author->name }}
-                        @endif
+                         &middot; {{ $article->display_author }}
                     </div>
                     <span class="nd-share-card-brand">DCMS</span>
                 </div>
