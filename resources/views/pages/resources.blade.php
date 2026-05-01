@@ -35,13 +35,13 @@
 
 <!-- 2. Essential Portals -->
 <section class="bg-slate-50 pb-16 pt-8 relative z-10" id="portals-section">
-    <div class="container" data-aos="fade-up">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[800px] mx-auto -mt-24">
+    <div class="w-full max-w-[1240px] mx-auto px-2 sm:px-5 lg:px-8" data-aos="fade-up">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 max-w-[800px] mx-auto -mt-16 sm:-mt-24">
             
             <!-- Timetable Shortcut -->
             <div>
                 <a href="#downloads-view" class="group no-underline block h-full">
-                    <div class="h-full bg-white p-8 rounded-2xl border border-slate-100 text-left transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] relative overflow-hidden flex flex-row items-center gap-6 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_-15px_rgba(22,163,74,0.3)] group-hover:border-green-100 cursor-pointer">
+                    <div class="h-full bg-white p-4 sm:p-8 rounded-2xl border border-slate-100 text-left transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] relative overflow-hidden flex flex-row items-center gap-4 sm:gap-6 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_-15px_rgba(22,163,74,0.3)] group-hover:border-green-100 cursor-pointer">
                         <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
                         <div class="w-16 h-16 bg-green-50 text-[color:var(--color-primary)] rounded-xl flex items-center justify-center text-[1.8rem] shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300 relative z-10">
                             <i class="fa-regular fa-calendar-days"></i>
@@ -57,7 +57,7 @@
             <!-- Library -->
             <div>
                 <a href="{{ url('/') }}" class="group no-underline block h-full">
-                    <div class="h-full bg-white p-8 rounded-2xl border border-slate-100 text-left transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] relative overflow-hidden flex flex-row items-center gap-6 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_-15px_rgba(59,130,246,0.3)] group-hover:border-blue-100 cursor-pointer">
+                    <div class="h-full bg-white p-4 sm:p-8 rounded-2xl border border-slate-100 text-left transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] relative overflow-hidden flex flex-row items-center gap-4 sm:gap-6 group-hover:-translate-y-2 group-hover:shadow-[0_20px_50px_-15px_rgba(59,130,246,0.3)] group-hover:border-blue-100 cursor-pointer">
                         <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
                         <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-[1.8rem] shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300 relative z-10">
                             <i class="fa-solid fa-book-open-reader"></i>
