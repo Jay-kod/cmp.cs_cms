@@ -379,41 +379,36 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
 
             <!-- Right: Roles Bento Grid -->
             <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
-                <!-- Pathway 1 -->
-                <div data-aos="fade-up" data-aos-delay="100" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
-                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-blue-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-blue-50">
-                        <i class="fa-solid fa-code"></i>
+                @php
+                    $pathways = is_array($subDept->career_pathways) ? $subDept->career_pathways : [];
+                    $defaultIcons = ['fa-solid fa-code', 'fa-solid fa-network-wired', 'fa-solid fa-shield-halved', 'fa-solid fa-building-columns'];
+                    $defaultTitles = ['Tech & Engineering', 'Data & AI', 'Cybersecurity', 'Research & Policy'];
+                    $defaultDescs = [
+                        'Software Engineers, System Architects, Full-stack Devs, Cloud Engineers.',
+                        'Data Scientists, Machine Learning Engineers, Quant Analysts, AI Researchers.',
+                        'Security Analysts, Pentesters, IT Compliance Officers, Forensic Experts.',
+                        'Academics, Policy Advisors, Tech Consultancies, Government IT Directors.'
+                    ];
+                    $colors = ['blue', 'emerald', 'amber', 'purple'];
+                @endphp
+
+                @for($i = 0; $i < 4; $i++)
+                    @php
+                        $pathway = $pathways[$i] ?? [];
+                        $icon = !empty($pathway['icon']) ? $pathway['icon'] : $defaultIcons[$i];
+                        $title = !empty($pathway['title']) ? $pathway['title'] : $defaultTitles[$i];
+                        $desc = !empty($pathway['description']) ? $pathway['description'] : $defaultDescs[$i];
+                        $color = $colors[$i];
+                    @endphp
+                    <!-- Pathway {{ $i + 1 }} -->
+                    <div data-aos="fade-up" data-aos-delay="{{ ($i + 1) * 100 }}" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-{{ $color }}-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-{{ $color }}-50">
+                            <i class="{{ $icon }}"></i>
+                        </div>
+                        <h4 class="text-[1.2rem] font-bold text-slate-900 mb-2">{{ $title }}</h4>
+                        <p class="text-slate-500 text-[0.95rem] leading-relaxed">{{ $desc }}</p>
                     </div>
-                    <h4 class="text-[1.2rem] font-bold text-slate-900 mb-2">Tech & Engineering</h4>
-                    <p class="text-slate-500 text-[0.95rem] leading-relaxed">Software Engineers, System Architects, Full-stack Devs, Cloud Engineers.</p>
-                </div>
-                
-                <!-- Pathway 2 -->
-                <div data-aos="fade-up" data-aos-delay="200" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
-                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-emerald-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-emerald-50">
-                        <i class="fa-solid fa-network-wired"></i>
-                    </div>
-                    <h4 class="text-[1.2rem] font-bold text-slate-900 mb-2">Data & AI</h4>
-                    <p class="text-slate-500 text-[0.95rem] leading-relaxed">Data Scientists, Machine Learning Engineers, Quant Analysts, AI Researchers.</p>
-                </div>
-                
-                <!-- Pathway 3 -->
-                <div data-aos="fade-up" data-aos-delay="300" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
-                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-amber-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-amber-50">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h4 class="text-[1.2rem] font-bold text-slate-900 mb-2">Cybersecurity</h4>
-                    <p class="text-slate-500 text-[0.95rem] leading-relaxed">Security Analysts, Pentesters, IT Compliance Officers, Forensic Experts.</p>
-                </div>
-                
-                <!-- Pathway 4 -->
-                <div data-aos="fade-up" data-aos-delay="400" class="bg-white hover:bg-emerald-50 p-5 sm:p-7 lg:p-8 rounded-[1.5rem] border border-emerald-200 hover:border-emerald-500 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_30px_-5px_rgba(16,185,129,0.15)] group flex flex-col justify-start">
-                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-purple-600 text-[1.2rem] mb-5 group-hover:scale-110 transition-transform duration-300 group-hover:bg-purple-50">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
-                    <h4 class="text-[1.2rem] font-bold text-slate-900 mb-2">Research & Policy</h4>
-                    <p class="text-slate-500 text-[0.95rem] leading-relaxed">Academics, Policy Advisors, Tech Consultancies, Government IT Directors.</p>
-                </div>
+                @endfor
             </div>
         </div>
     </div>
