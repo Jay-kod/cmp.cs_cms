@@ -156,19 +156,24 @@
 .nd-share-trigger {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    padding: 0.5rem 1.1rem;
-    border: 1.5px solid #e2e8f0;
+    gap: 0.5rem;
+    padding: 0.7rem 1.6rem;
     border-radius: 999px;
-    background: #fff;
-    color: #475569;
-    font-weight: 600;
-    font-size: 0.85rem;
+    background: linear-gradient(135deg, var(--color-primary), #047857);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.25s;
+    box-shadow: 0 4px 15px rgba(var(--color-primary-rgb,22,163,106), 0.3);
 }
-.nd-share-trigger:hover { border-color: var(--color-primary); color: var(--color-primary); background: #f0fdf4; }
-.nd-share-trigger i { font-size: 0.9rem; }
+.nd-share-trigger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(var(--color-primary-rgb,22,163,106), 0.4);
+    color: #fff;
+}
+.nd-share-trigger i { font-size: 1rem; }
 .nd-reactions-row {
     display: flex;
     align-items: center;
