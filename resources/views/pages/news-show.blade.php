@@ -1294,9 +1294,12 @@ document.addEventListener('DOMContentLoaded', function () {
             ctx.font = '13px sans-serif';
             ctx.fillStyle = '#64748b';
             ctx.fillText(meta, 24, footerY + 30);
-            ctx.font = 'bold 12px sans-serif';
-            ctx.fillStyle = '#cbd5e1';
-            ctx.fillText(brand, W - ctx.measureText(brand).width - 24, footerY + 30);
+            ctx.font = 'bold 14px sans-serif';
+            ctx.fillStyle = primaryColor;
+            ctx.fillText(brand, W - brandW - 24, footerY + 30);
+            ctx.font = '600 13px sans-serif';
+            ctx.fillStyle = '#64748b';
+            ctx.fillText(statsText, W - brandW - statsW - 44, footerY + 30);
             ctx.fillStyle = primaryColor;
             ctx.fillRect(0, footerY + 50, W, 4);
 
