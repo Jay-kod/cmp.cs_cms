@@ -188,6 +188,48 @@
                 </div>
             </div>
 
+            <!-- Panel: Glance / Facts -->
+            <div class="tab-pane" id="tab-glance" style="display: none;">
+                <h3 style="font-size: 1.25rem; color: #334155; margin-bottom: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem;"><i class="fa-solid fa-chart-pie text-indigo-500"></i> Website Block: Department at a Glance</h3>
+                
+                <div style="background: linear-gradient(135deg, #e0e7ff30 0%, #f3f4f6 100%); border: 1px solid #c7d2fe; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 36px; height: 36px; background: #6366f120; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fa-solid fa-info-circle" style="color: #6366f1; font-size: 0.85rem;"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; color: #334155; font-size: 0.85rem;">Override Dynamic Counts</div>
+                        <div style="color: #64748b; font-size: 0.78rem; line-height: 1.4;">By default, counts are calculated dynamically from the system. Enter values here to override them with static text (e.g. "500+", "10+").</div>
+                    </div>
+                </div>
+
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.5rem; display: block;"><i class="fa-solid fa-building text-slate-500 mr-1"></i> Faculty Name Override</label>
+                            <input type="text" name="faculty_name" class="form-control" style="background: white; border: 1px solid #cbd5e1; padding: 0.75rem; border-radius: 8px; width: 100%;" value="{{ old('faculty_name', $department->faculty_name) }}" placeholder="e.g. Natural & Applied Sciences">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.5rem; display: block;"><i class="fa-solid fa-users text-rose-400 mr-1"></i> Student Population Override</label>
+                            <input type="text" name="student_population" class="form-control" style="background: white; border: 1px solid #cbd5e1; padding: 0.75rem; border-radius: 8px; width: 100%;" value="{{ old('student_population', $department->student_population) }}" placeholder="e.g. 500+">
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.5rem; display: block;"><i class="fa-solid fa-graduation-cap text-purple-500 mr-1"></i> Programmes Count</label>
+                            <input type="text" name="programme_count" class="form-control" style="background: white; border: 1px solid #cbd5e1; padding: 0.75rem; border-radius: 8px; width: 100%;" value="{{ old('programme_count', $department->programme_count) }}" placeholder="e.g. 3">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.5rem; display: block;"><i class="fa-solid fa-book-open text-yellow-500 mr-1"></i> Courses Count</label>
+                            <input type="text" name="course_count" class="form-control" style="background: white; border: 1px solid #cbd5e1; padding: 0.75rem; border-radius: 8px; width: 100%;" value="{{ old('course_count', $department->course_count) }}" placeholder="e.g. 16">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="font-weight: 700; color: #334155; margin-bottom: 0.5rem; display: block;"><i class="fa-solid fa-chalkboard-user text-sky-500 mr-1"></i> Lecturers Count</label>
+                            <input type="text" name="lecturer_count" class="form-control" style="background: white; border: 1px solid #cbd5e1; padding: 0.75rem; border-radius: 8px; width: 100%;" value="{{ old('lecturer_count', $department->lecturer_count) }}" placeholder="e.g. 10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Panel: Programmes -->
             <div class="tab-pane" id="tab-programmes" style="display: none;">
                 <h3 style="font-size: 1.25rem; color: #334155; margin-bottom: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem;"><i class="fa-solid fa-graduation-cap text-yellow-500"></i> Website Block 4: Programmes</h3>
