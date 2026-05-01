@@ -241,7 +241,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </div>
 
             <!-- Metric 6: Number of Students -->
-            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(244,63,94,0.3)] hover:border-rose-500/30 flex flex-col justify-center text-center">
+            <div class="group relative bg-slate-800/40 backdrop-blur-lg p-6 rounded-3xl border border-emerald-200/50 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:bg-emerald-400/20 hover:shadow-[0_20px_40px_-15px_rgba(244,63,94,0.3)] hover:border-emerald-600 flex flex-col justify-center text-center">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-rose-500/10 rounded-full blur-[40px] transition-all duration-500 group-hover:bg-rose-500/20 group-hover:scale-150 pointer-events-none"></div>
                 <div class="absolute right-[-5px] bottom-[-10px] text-[5.5rem] text-white/[0.02] pointer-events-none transition-all duration-700 group-hover:text-white/[0.06] group-hover:scale-110 group-hover:-rotate-6">
                     <i class="fa-solid fa-users"></i>
