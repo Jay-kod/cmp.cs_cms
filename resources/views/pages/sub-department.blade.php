@@ -19,15 +19,12 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
     
     <div class="container relative z-10" data-aos="fade-right">
         <!-- Breadcrumb -->
-        <nav class="mb-4 sm:mb-8 w-full overflow-x-auto pb-2" style="scrollbar-width: none; -ms-overflow-style: none;">
-            <!-- Hide webkit scrollbar -->
-            <style>.overflow-x-auto::-webkit-scrollbar { display: none; }</style>
-            
-            <ol class="list-none py-1.5 sm:py-2.5 px-0 sm:px-5 m-0 inline-flex items-center gap-2 sm:gap-2.5 text-[0.8rem] sm:text-[0.85rem] text-white/90 sm:bg-white/10 sm:backdrop-blur-md sm:rounded-full sm:border sm:border-white/20 whitespace-nowrap min-w-min">
-                <li><a href="{{ route('home') }}" class="text-white no-underline font-medium transition-colors duration-200 hover:text-emerald-500"><i class="fa-solid fa-house text-[0.7rem] sm:text-xs"></i> Home</a></li>
-                <li class="opacity-60"><i class="fa-solid fa-chevron-right text-[0.55rem] sm:text-[0.6rem]"></i></li>
-                <li><a href="{{ route('academics') }}" class="text-white no-underline font-medium transition-colors duration-200 hover:text-emerald-500">Academics</a></li>
-                <li class="opacity-60"><i class="fa-solid fa-chevron-right text-[0.55rem] sm:text-[0.6rem]"></i></li>
+        <nav class="mb-4 sm:mb-8 w-full">
+            <ol class="list-none py-1.5 sm:py-2.5 px-0 sm:px-5 m-0 inline-flex flex-wrap items-center gap-x-2 gap-y-1.5 sm:gap-2.5 text-[0.8rem] sm:text-[0.85rem] text-white/90 sm:bg-white/10 sm:backdrop-blur-md sm:rounded-[1.2rem] sm:border sm:border-white/20">
+                <li class="whitespace-nowrap"><a href="{{ route('home') }}" class="text-white no-underline font-medium transition-colors duration-200 hover:text-emerald-500"><i class="fa-solid fa-house text-[0.7rem] sm:text-xs"></i> Home</a></li>
+                <li class="opacity-60 shrink-0"><i class="fa-solid fa-chevron-right text-[0.55rem] sm:text-[0.6rem]"></i></li>
+                <li class="whitespace-nowrap"><a href="{{ route('academics') }}" class="text-white no-underline font-medium transition-colors duration-200 hover:text-emerald-500">Academics</a></li>
+                <li class="opacity-60 shrink-0"><i class="fa-solid fa-chevron-right text-[0.55rem] sm:text-[0.6rem]"></i></li>
                 <li class="text-emerald-400 font-bold">{{ $subDept->name }}</li>
             </ol>
         </nav>
