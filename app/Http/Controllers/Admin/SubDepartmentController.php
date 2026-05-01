@@ -90,6 +90,7 @@ class SubDepartmentController extends Controller
             'programme_count' => 'nullable|string|max:255',
             'course_count' => 'nullable|string|max:255',
             'lecturer_count' => 'nullable|string|max:255',
+            'career_pathways' => 'nullable|array',
             'is_active' => 'boolean'
         ]);
 
