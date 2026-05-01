@@ -38,4 +38,17 @@ class ResearchNewsController extends Controller
         $related  = News::where('id', '!=', $article->id)->latest('published_at')->take(3)->get();
         return view('pages.news-show', compact('article', 'related'));
     }
+
+    public function showAnnouncement(int $id)
+    {
+        $announcement = Announcement::findOrFail($id);
+        $related = Announcement::where('id', '!=', $announcement->id)
+            ->where(function ($q) {
+                $q->where('expires_at', '>=', now())->orWhereNull('expires_at');
+            })
+            ->latest()
+            ->take(4)
+            ->get();
+        return view('pages.announcement-show', compact('announcement', 'related'));
+    }
 }
