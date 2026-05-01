@@ -174,7 +174,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                 <div class="w-14 h-14 mx-auto bg-slate-800 text-blue-400 rounded-full flex items-center justify-center text-[1.35rem] shadow-inner mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:bg-blue-400/10 ring-1 ring-white/5">
                     <i class="fa-regular fa-building"></i>
                 </div>
-                <div class="font-bold text-white text-[1.05rem] leading-tight mb-2">Natural &amp; Applied<br>Sciences</div>
+                <div class="font-bold text-white text-[1.05rem] leading-tight mb-2">{!! nl2br(e($subDept->faculty_name ?? "Natural &\nApplied Sciences")) !!}</div>
                 <h4 class="text-slate-400 font-semibold text-[0.85rem] uppercase tracking-wider mt-auto">Faculty</h4>
             </div>
 
