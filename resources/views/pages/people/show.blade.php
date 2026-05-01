@@ -30,6 +30,7 @@ html { scroll-behavior: smooth; }
                         alt="{{ $staff->name }}"
                         class="w-full h-full rounded-2xl object-cover bg-slate-900 shadow-inner"
                         onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($staff->name) }}&size=400&background=0f172a&color=fff&bold=true&format=svg'">
+                </div>
                 <div class="absolute inset-0 bg-gradient-radial from-green-400/50 to-transparent rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500 -z-10 transform scale-110"></div>
             </div>
 
