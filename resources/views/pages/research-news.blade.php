@@ -38,21 +38,12 @@
     </div>
 </div>
 
-<div class="container page-layout relative z-20 py-12 max-w-7xl px-4 sm:px-6">
+<div class="container relative z-20 py-12 max-w-6xl px-4 sm:px-6 mx-auto">
 
-    <div class="main-content blog-main w-full">
+    <div class="w-full">
         @include('pages.research-news-partials.news')
         
         @include('pages.research-news-partials.announcements')
-    </div>
-    
-    <div class="right-toc-wrapper shrink-0 sticky top-[120px] self-start h-max z-40">
-        <div class="w-[200px]">
-            <x-sticky-toc :sections="[
-                'news' => 'Department News',
-                'announcements' => 'Announcements'
-            ]" />
-        </div>
     </div>
 
 </div>
