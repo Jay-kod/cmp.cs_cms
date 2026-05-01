@@ -8,12 +8,13 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * Convert any existing 'clap' and 'celebrate' reactions to 'like'
+     * since those types are being replaced by 'dislike' and 'angry'.
      */
     public function up(): void
     {
-        Schema::table('reactions', function (Blueprint $table) {
-            //
-        });
+        DB::table('reactions')->where('type', 'clap')->update(['type' => 'like']);
+        DB::table('reactions')->where('type', 'celebrate')->update(['type' => 'like']);
     }
 
     /**
@@ -21,8 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('reactions', function (Blueprint $table) {
-            //
-        });
+        // Not reversible — the original clap/celebrate data cannot be recovered
     }
 };
