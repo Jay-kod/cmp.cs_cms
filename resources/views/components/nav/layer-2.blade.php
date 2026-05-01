@@ -21,7 +21,7 @@
             $isAboutActive = request()->is('about*') || request()->is('nacos-presidents*');
             $isAcademicsActive = request()->is('academics*') || request()->is('programmes*') || request()->is('pages/programmes*') || request()->is('siwes*') || request()->is('projects*') || request()->is('sub-department/*') || request()->is('resources*');
             $isPeopleActive = request()->is('people*') || request()->is('gallery*');
-            $isNewsActive = request()->is('research-news*') || request()->is('events*') || request()->is('research-innovations*') || request()->is('pages/academic-calendar*');
+            $isNewsActive = request()->is('research-news*') || request()->is('announcements*') || request()->is('events*') || request()->is('research-innovations*') || request()->is('pages/academic-calendar*');
             $navSubDepts = \App\Models\SubDepartment::where('is_active', true)->where('slug', '!=', 'computer-science')->get();
             @endphp
             <!-- Desktop Nav -->
@@ -79,8 +79,8 @@
                 </details>
 
                 <details class="nav-dropdown relative group">
-                    <summary class="nav-link nav-dropdown-summary {{ $isNewsActive ? 'active' : '' }} font-medium text-base cursor-pointer flex items-center gap-1.5 py-1 px-0.5 relative text-gray-700 hover:text-primary transition-colors" aria-label="News dropdown">
-                        <span class="{{ $isNewsActive ? 'text-primary' : '' }}">News</span>
+                    <summary class="nav-link nav-dropdown-summary {{ $isNewsActive ? 'active' : '' }} font-medium text-base cursor-pointer flex items-center gap-1.5 py-1 px-0.5 relative text-gray-700 hover:text-primary transition-colors" aria-label="Blog dropdown">
+                        <span class="{{ $isNewsActive ? 'text-primary' : '' }}">Blog</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-60">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
@@ -88,6 +88,7 @@
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[250px] z-50 border border-gray-100" role="menu">
                         <a href="{{ url('/research-news') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('research-news*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">News</a>
+                        <a href="{{ url('/research-news#announcements') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('announcements*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Announcements</a>
                         <a href="{{ url('/research-innovations') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('research-innovations*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Research &amp; Innovations</a>
                         <a href="{{ url('/events') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('events*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Events &amp; Seminars</a>
                         <a href="{{ route('page.show', 'academic-calendar') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('pages/academic-calendar*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Academic Calendar</a>
@@ -161,12 +162,13 @@
             </details>
 
             <details class="mobile-details">
-                <summary class="mobile-link mobile-details-summary {{ $isNewsActive ? 'active' : '' }}" aria-label="News dropdown (mobile)">
-                    <i class="fa-regular fa-newspaper"></i> News
+                <summary class="mobile-link mobile-details-summary {{ $isNewsActive ? 'active' : '' }}" aria-label="Blog dropdown (mobile)">
+                    <i class="fa-regular fa-newspaper"></i> Blog
                     <i class="fa-solid fa-chevron-down" style="margin-left:auto; opacity:0.9;"></i>
                 </summary>
                 <div class="mobile-details-menu">
                     <a href="{{ url('/research-news') }}" class="mobile-link mobile-sub-link {{ request()->is('research-news*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">News</a>
+                    <a href="{{ url('/research-news#announcements') }}" class="mobile-link mobile-sub-link {{ request()->is('announcements*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Announcements</a>
                     <a href="{{ url('/research-innovations') }}" class="mobile-link mobile-sub-link {{ request()->is('research-innovations*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Research &amp; Innovations</a>
                     <a href="{{ url('/events') }}" class="mobile-link mobile-sub-link {{ request()->is('events*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Events &amp; Seminars</a>
                     <a href="{{ route('page.show', 'academic-calendar') }}" class="mobile-link mobile-sub-link {{ request()->is('pages/academic-calendar*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Academic Calendar</a>
