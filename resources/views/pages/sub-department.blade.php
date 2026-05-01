@@ -10,7 +10,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
 @endphp
 
 <!-- Section 1 — New Main Hero -->
-<section class="relative bg-slate-900 py-24 pb-28 min-h-[45vh] flex items-center overflow-hidden">
+<section class="relative bg-slate-900 pt-16 sm:pt-24 pb-20 sm:pb-28 min-h-[40vh] sm:min-h-[45vh] flex items-center overflow-hidden">
     <!-- Background Texture/Image -->
     <div class="absolute inset-0">
         <img src="{{ asset('images/campus-bg.jpg') }}" onerror="this.style.display='none'" class="w-full h-full object-cover opacity-25" alt="">
