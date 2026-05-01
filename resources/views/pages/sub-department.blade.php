@@ -19,17 +19,17 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
     
     <div class="container relative z-10" data-aos="fade-right">
         <!-- Breadcrumb -->
-        <nav class="mb-8">
-            <ol class="list-none py-2 px-5 m-0 inline-flex items-center gap-2.5 text-[0.85rem] text-white/90 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                <li><a href="{{ route('home') }}" class="text-white no-underline font-medium transition-colors duration-200 hover:text-emerald-500"><i class="fa-solid fa-house text-xs"></i> Home</a></li>
-                <li class="opacity-60"><i class="fa-solid fa-chevron-right text-[0.6rem]"></i></li>
-                <li><a href="{{ route('academics') }}" class="text-white no-underline font-medium transition-colors duration-200 hover:text-emerald-500">Academics</a></li>
-                <li class="opacity-60"><i class="fa-solid fa-chevron-right text-[0.6rem]"></i></li>
-                <li class="text-emerald-500 font-bold">{{ $subDept->name }}</li>
+        <nav class="mb-6 sm:mb-8 max-w-full">
+            <ol class="list-none py-2 sm:py-2.5 px-4 sm:px-5 m-0 inline-flex flex-wrap items-center gap-2 sm:gap-2.5 text-[0.75rem] sm:text-[0.85rem] text-white/90 bg-white/10 backdrop-blur-md rounded-2xl md:rounded-full border border-white/20">
+                <li class="whitespace-nowrap"><a href="{{ route('home') }}" class="text-white no-underline font-medium transition-colors duration-200 hover:text-emerald-500"><i class="fa-solid fa-house text-[0.7rem] sm:text-xs"></i> Home</a></li>
+                <li class="opacity-60"><i class="fa-solid fa-chevron-right text-[0.55rem] sm:text-[0.6rem]"></i></li>
+                <li class="whitespace-nowrap"><a href="{{ route('academics') }}" class="text-white no-underline font-medium transition-colors duration-200 hover:text-emerald-500">Academics</a></li>
+                <li class="opacity-60"><i class="fa-solid fa-chevron-right text-[0.55rem] sm:text-[0.6rem]"></i></li>
+                <li class="text-emerald-500 font-bold max-w-[150px] sm:max-w-none overflow-hidden text-ellipsis whitespace-nowrap" title="{{ $subDept->name }}">{{ $subDept->name }}</li>
             </ol>
         </nav>
         
-        <h1 class="text-[clamp(2.5rem,5vw,4.2rem)] font-black text-white mb-5 font-heading leading-[1.1] tracking-[-0.02em] text-balance max-w-[900px]">
+        <h1 class="text-[clamp(2.1rem,7vw,4.2rem)] font-black text-white mb-4 sm:mb-5 font-heading leading-[1.1] tracking-[-0.02em] text-balance max-w-[900px]">
             {{ $subDept->name }}
         </h1>
         
