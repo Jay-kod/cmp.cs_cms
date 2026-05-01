@@ -48,7 +48,7 @@ class StaffController extends Controller
         $courseIds = $data['courses'] ?? [];
         unset($data['courses']);
 
-        $data['slug'] = Str::slug($data['name']);
+
         if(!$request->has('is_hod')) $data['is_hod'] = false;
         if(!isset($data['status'])) $data['status'] = 'Tenure';
 
@@ -105,7 +105,7 @@ class StaffController extends Controller
         $courseIds = $data['courses'] ?? [];
         unset($data['courses']);
 
-        $data['slug'] = Str::slug($data['name']);
+
         if(!$request->has('is_hod')) $data['is_hod'] = false;
         if(!isset($data['status'])) $data['status'] = 'Tenure';
 

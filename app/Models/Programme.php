@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasAutoSlug;
 
 class Programme extends Model
 {
+    use HasAutoSlug;
+
     protected $guarded = [];
 
     public function category()
