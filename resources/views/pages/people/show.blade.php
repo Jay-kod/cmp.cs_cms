@@ -291,40 +291,6 @@ html { scroll-behavior: smooth; }
             <!-- Sticky Container -->
             <div class="sticky top-8 space-y-6">
                 
-                <!-- Navigation Widget -->
-                <div class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300 overflow-hidden">
-                    <div data-aos="fade-up" class="bg-slate-50/80 px-6 py-5 border-b border-slate-200 flex items-center justify-between">
-                        <h3 class="font-bold text-slate-800 m-0 flex items-center gap-2.5">
-                            <i class="fa-solid fa-route text-green-600"></i> On this page
-                        </h3>
-                    </div>
-                    <div class="p-4 space-y-1">
-                        <a href="#biography" class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-xl text-slate-600 font-medium hover:bg-slate-50 hover:text-green-600 transition-colors">
-                            <div class="w-6 text-center text-slate-400"><i class="fa-solid fa-user text-sm"></i></div> Biography
-                        </a>
-                        @if($staff->qualifications)
-                        <a href="#qualifications" class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-xl text-slate-600 font-medium hover:bg-slate-50 hover:text-amber-600 transition-colors shadow-sm">
-                            <div class="w-6 text-center text-slate-400"><i class="fa-solid fa-graduation-cap text-sm"></i></div> Qualifications
-                        </a>
-                        @endif
-                        @if($staff->specialisation)
-                        <a href="#specialisation" class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-xl text-slate-600 font-medium hover:bg-slate-50 hover:text-purple-600 transition-colors">
-                            <div class="w-6 text-center text-slate-400"><i class="fa-solid fa-microchip text-sm"></i></div> Specialisation
-                        </a>
-                        @endif
-                        @if($staff->courses->count() > 0)
-                        <a href="#courses" class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-xl text-slate-600 font-medium hover:bg-slate-50 hover:text-green-600 transition-colors">
-                            <div class="w-6 text-center text-slate-400"><i class="fa-solid fa-book text-sm"></i></div> Courses
-                        </a>
-                        @endif
-                        @if($staff->publications->count() > 0)
-                        <a href="#publications" class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-xl text-slate-600 font-medium hover:bg-slate-50 hover:text-red-500 transition-colors">
-                            <div class="w-6 text-center text-slate-400"><i class="fa-solid fa-book-open text-sm"></i></div> Publications
-                        </a>
-                        @endif
-                    </div>
-                </div>
-
                 <!-- Complete Contact Widget -->
                 <div class="bg-white rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300 overflow-hidden">
                     <div class="bg-slate-50/80 px-5 sm:px-6 py-4 sm:py-5 border-b border-slate-200">
@@ -421,31 +387,6 @@ html { scroll-behavior: smooth; }
     </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.profile-section');
-    
-    // Highlight active section on scroll
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (window.scrollY >= (sectionTop - 180)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            const href = link.getAttribute('href');
-            if (href === '#' + current) {
-                link.classList.add('active');
-            }
-        });
-    });
-});
-</script>
 </div>@endsection
 
 
