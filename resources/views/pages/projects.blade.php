@@ -132,8 +132,8 @@
         </div>
 
         <!-- Overview -->
-        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100 mb-12" data-aos="fade-up">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-100 pb-5 mb-8 font-heading flex items-center gap-4">
+        <div class="bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100 mb-12" data-aos="fade-up">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-100 pb-4 sm:pb-5 mb-6 sm:mb-8 font-heading flex items-center gap-3 sm:gap-4">
                 <span class="w-12 h-12 bg-green-100 text-green-700 flex items-center justify-center rounded-2xl shadow-inner"><i class="fa-solid fa-project-diagram"></i></span> Course Overview
             </h2>
             <div class="prose max-w-none text-gray-700 text-[1.1rem] leading-loose">
@@ -152,14 +152,14 @@
             if (empty($rules)) $rules = $defaultRules;
         @endphp
         @if(count($rules) > 0)
-        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100 mb-12" data-aos="fade-up">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-100 pb-5 mb-8 font-heading flex items-center gap-4">
-                <span class="w-12 h-12 bg-blue-100 text-blue-700 flex items-center justify-center rounded-2xl shadow-inner"><i class="fa-solid fa-book-open-reader"></i></span> Formatting Guidelines
+        <div class="bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100 mb-12" data-aos="fade-up">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-100 pb-4 sm:pb-5 mb-6 sm:mb-8 font-heading flex items-center gap-3 sm:gap-4">
+                <span class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 text-blue-700 flex items-center justify-center rounded-2xl shadow-inner text-[1.1rem] sm:text-base"><i class="fa-solid fa-book-open-reader"></i></span> Formatting Guidelines
             </h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
                 @foreach($rules as $index => $rule)
-                <div class="p-8 bg-gradient-to-br from-slate-50/80 to-white border border-slate-200 rounded-3xl relative group hover:-translate-y-2 hover:shadow-2xl hover:shadow-slate-200/50 hover:border-slate-300 transition-all duration-300 flex flex-col">
+                <div class="p-6 sm:p-8 bg-gradient-to-br from-slate-50/80 to-white border border-slate-200 rounded-3xl relative group hover:-translate-y-2 hover:shadow-2xl hover:shadow-slate-200/50 hover:border-slate-300 transition-all duration-300 flex flex-col">
                     <div class="w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-600/30 font-bold text-2xl mb-6 relative overflow-hidden">
                         <i class="fa-solid fa-bookmark absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 text-5xl opacity-20"></i>
                         <span class="relative z-10">{{ $index + 1 }}</span>
@@ -186,19 +186,19 @@
             if (empty($milestones)) $milestones = $defaultMilestones;
         @endphp
         @if(count($milestones) > 0)
-        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100" data-aos="fade-up">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-100 pb-5 mb-10 font-heading flex items-center gap-4">
-                <span class="w-12 h-12 bg-amber-100 text-amber-700 flex items-center justify-center rounded-2xl shadow-inner"><i class="fa-regular fa-calendar-check"></i></span> Important Deadlines
+        <div class="bg-white p-5 sm:p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100" data-aos="fade-up">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-100 pb-4 sm:pb-5 mb-8 sm:mb-10 font-heading flex items-center gap-3 sm:gap-4">
+                <span class="w-10 h-10 sm:w-12 sm:h-12 bg-amber-100 text-amber-700 flex items-center justify-center rounded-2xl shadow-inner text-[1.1rem] sm:text-base"><i class="fa-regular fa-calendar-check"></i></span> Important Deadlines
             </h2>
 
             <!-- Timeline style layout -->
-            <div class="relative border-l-4 border-amber-200/60 ml-6 space-y-10 pb-4">
+            <div class="relative border-l-4 border-amber-200/60 ml-4 sm:ml-6 space-y-8 sm:space-y-10 pb-4">
                 @foreach($milestones as $index => $mile)
-                <div class="relative pl-10 md:pl-12">
-                    <div class="absolute w-12 h-12 bg-amber-500 rounded-full text-white flex items-center justify-center font-bold shadow-lg shadow-amber-500/30 ring-4 ring-white" style="left: -26px; top: 0;">
-                        <i class="fa-solid fa-thumbtack -rotate-45 ml-1 mt-1"></i>
+                <div class="relative pl-8 sm:pl-10 md:pl-12">
+                    <div class="absolute w-10 h-10 sm:w-12 sm:h-12 bg-amber-500 rounded-full text-white flex items-center justify-center font-bold shadow-lg shadow-amber-500/30 ring-4 ring-white" style="left: -22px; top: 0;" class="sm:left-[-26px]">
+                        <i class="fa-solid fa-thumbtack -rotate-45 ml-1 mt-1 text-[0.8rem] sm:text-base"></i>
                     </div>
-                    <div class="bg-slate-50 border border-slate-100 rounded-3xl p-7 hover:shadow-xl hover:shadow-amber-900/5 hover:-translate-y-1 hover:border-amber-200 transition-all duration-300">
+                    <div class="bg-slate-50 border border-slate-100 rounded-3xl p-5 sm:p-7 hover:shadow-xl hover:shadow-amber-900/5 hover:-translate-y-1 hover:border-amber-200 transition-all duration-300">
                         <span class="inline-block py-1.5 px-4 bg-amber-100/80 text-amber-800 rounded-full text-[0.75rem] font-black uppercase tracking-widest mb-4 border border-amber-200/60 shadow-sm">{{ $mile['date'] }}</span>
                         <h3 class="font-bold text-slate-900 text-xl md:text-2xl mb-3">{{ $mile['title'] }}</h3>
                         <p class="text-slate-600 text-[1.05rem] leading-relaxed">{{ $mile['desc'] }}</p>
