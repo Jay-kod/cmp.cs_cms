@@ -86,7 +86,7 @@
             <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-start" data-aos="fade-up" data-aos-delay="100">
                 
                 <!-- Category Sidebar -->
-                <div class="w-full md:w-[300px] shrink-0 sticky top-[100px] z-20">
+                <div class="w-full md:w-[300px] shrink-0 relative md:sticky top-[100px] z-20">
                     <div class="bg-white rounded-2xl p-3 sm:p-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col gap-2">
                         <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider px-4 pt-2 pb-1">Categories</h4>
                         
