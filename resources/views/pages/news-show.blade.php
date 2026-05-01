@@ -1165,6 +1165,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim() || '#16a34a';
 
+        // Get live stats
+        const rEl = document.getElementById('reaction-total');
+        let rText = rEl ? rEl.textContent.trim() : '0 reactions';
+        if(rText === 'Be the first to react!') rText = '0 reactions';
+        
+        const cEl = document.getElementById('comment-count-badge');
+        let cCount = cEl ? cEl.textContent.trim() : '0';
+        let cText = cCount + (cCount === '1' ? ' comment' : ' comments');
+        
+        const statsText = rText + '  •  ' + cText;
+
         const drawCard = (imgObj) => {
             // Calculate total height
             ctx.save();
