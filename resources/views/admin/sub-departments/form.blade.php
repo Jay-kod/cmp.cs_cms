@@ -48,6 +48,11 @@
                     Vision & Mission
                 </button>
 
+                <button type="button" class="tab-btn" data-target="tab-glance" style="width: 100%; text-align: left; padding: 0.5rem 0.75rem; border: none; background: white; color: #475569; font-weight: 500; font-size: 0.7rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; border-left: 4px solid transparent; transition: all 0.2s;">
+                    <span style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #e0e7ff; color: #6366f1; border-radius: 8px; font-size: 0.7rem;"><i class="fa-solid fa-chart-pie"></i></span>
+                    Glance / Facts
+                </button>
+
                 <button type="button" class="tab-btn" data-target="tab-programmes" style="width: 100%; text-align: left; padding: 0.5rem 0.75rem; border: none; background: white; color: #475569; font-weight: 500; font-size: 0.7rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; border-left: 4px solid transparent; transition: all 0.2s;">
                     <span style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #fef9c3; color: #eab308; border-radius: 8px; font-size: 0.7rem;"><i class="fa-solid fa-graduation-cap"></i></span>
                     Programmes
