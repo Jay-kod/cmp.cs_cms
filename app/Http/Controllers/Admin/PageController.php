@@ -24,7 +24,7 @@ class PageController extends Controller
     {
         $data = $request->validate([
             'title'      => 'required|string|max:255',
-            'content'    => 'required|string',
+            'content'    => 'nullable|string',
             'icon'       => 'nullable|string|max:100',
             'hero_image' => 'nullable|image|max:3072',
             'attachment' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
@@ -54,12 +54,14 @@ class PageController extends Controller
     {
         $data = $request->validate([
             'title'      => 'required|string|max:255',
-            'content'    => 'required|string',
+            'content'    => 'nullable|string',
             'icon'       => 'nullable|string|max:100',
             'hero_image' => 'nullable|image|max:3072',
             'attachment' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
             'is_active'  => 'boolean',
         ]);
+
+        $data['content'] = $data['content'] ?? '';
 
         // Only update slug for non-system pages
         if (!$page->is_system) {
