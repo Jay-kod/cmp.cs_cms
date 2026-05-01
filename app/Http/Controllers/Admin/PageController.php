@@ -31,7 +31,7 @@ class PageController extends Controller
             'is_active'  => 'boolean',
         ]);
 
-
+        $data['content'] = $data['content'] ?? '';
         if (!$request->has('is_active')) $data['is_active'] = false;
         
         if ($request->hasFile('hero_image')) {

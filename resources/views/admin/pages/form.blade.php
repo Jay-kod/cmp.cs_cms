@@ -27,8 +27,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Page Content <span style="color: red;">*</span></label>
-                    <textarea name="content" class="form-control richtext" rows="30" required>{{ old('content', $page->content) }}</textarea>
+                    <label class="form-label">Page Content</label>
+                    <textarea name="content" class="form-control richtext" rows="30">{{ old('content', $page->content) }}</textarea>
                 </div>
             </div>
 

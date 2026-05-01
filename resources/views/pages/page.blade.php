@@ -51,6 +51,7 @@
     @endif
 
     <!-- Content Card -->
+    @if(!empty(trim(str_replace(['<p><br></p>', '<p></p>'], '', $page->content))))
     <div data-aos="fade-up" data-aos-delay="300" class="bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 p-8 md:p-12 overflow-x-auto">
         <div class="page-content">
             <style>
@@ -79,5 +80,6 @@
             <i class="fa-solid fa-clock-rotate-left"></i> Last updated: {{ $page->updated_at->format('F j, Y') }}
         </div>
     </div>
+    @endif
 </div>
 @endsection
