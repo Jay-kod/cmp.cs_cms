@@ -10,22 +10,31 @@
         : asset('images/campus-bg.jpg');
 @endphp
 
-<!-- Hero Section -->
-<div class="blog-hero bg-cover bg-center py-[5.5rem] pt-24 pb-28 relative overflow-hidden" style="background-image: url('{{ $heroUrl }}');">
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/[0.96] via-emerald-800/[0.9] to-slate-900/[0.95]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(16,185,129,0.15),transparent_50%),radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.1),transparent_50%)] pointer-events-none"></div>
-    
-    <!-- Floating Decorative Elements -->
-    <div class="absolute top-[15%] left-[10%] w-[150px] h-[150px] border border-white/5 rounded-full pointer-events-none"></div>
-    <div class="absolute bottom-[10%] right-[5%] w-[250px] h-[250px] border border-white/[0.04] rounded-full pointer-events-none"></div>
-    <div class="absolute bottom-[15%] right-[25%] text-[8rem] text-white/5 -rotate-15 pointer-events-none"><i class="fa-solid fa-microscope"></i></div>
-    
-    <div class="container relative z-10 text-center flex flex-col items-center" data-aos="fade-up">
-        <div class="inline-flex items-center gap-2 py-1.5 px-5 bg-white/10 backdrop-blur-md text-emerald-200 rounded-[20px] text-[0.8rem] font-semibold tracking-[1.5px] uppercase mb-6 border border-white/10">
-            <i class="fa-solid fa-newspaper text-[0.7rem]"></i> Insights
+<!-- Hero -->
+<div class="relative overflow-hidden bg-gradient-to-br from-[#102b1f] via-[#15803d] to-[#16a34a] pt-20 pb-28 md:pt-28 md:pb-36 flex items-center justify-center">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-overlay opacity-40 filter grayscale" style="background-image: url('{{ $heroUrl }}');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#102b1f] to-transparent opacity-80"></div>
+    <!-- Subtle Grid Pattern -->
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNykiLz48L3N2Zz4=')] opacity-50 z-0"></div>
+
+    <div class="container relative z-10 px-4 flex flex-col items-center text-center">
+        <!-- Badge -->
+        <div data-aos="fade-up" class="inline-flex items-center gap-2.5 px-6 py-2 bg-white/10 border border-white/20 backdrop-blur-md text-green-100 rounded-full text-xs sm:text-sm font-bold uppercase tracking-widest mb-6 shadow-xl">
+            <i class="fa-solid fa-newspaper text-green-300"></i> Insights
         </div>
-        <h1 class="text-center text-white text-[3.2rem] font-heading m-[0_0_1rem_0] font-extrabold [text-shadow:0_4px_20px_rgba(0,0,0,0.3)]">Department News</h1>
-        <p class="text-center text-slate-300 text-[1.15rem] max-w-[680px] mx-auto leading-[1.7]">Stay updated with our latest departmental highlights and student activities.</p>
+        
+        <!-- Title -->
+        <h1 data-aos="fade-up" data-aos-delay="100" class="text-white text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold mb-6 tracking-tight leading-tight drop-shadow-2xl">
+            Department News
+        </h1>
+        
+        <!-- Subtitle inside a glass card -->
+        <div data-aos="fade-up" data-aos-delay="200" class="max-w-3xl bg-black/20 border border-white/10 backdrop-blur-sm rounded-2xl p-5 sm:p-6 shadow-2xl">
+            <p class="text-green-50 text-base sm:text-lg md:text-xl leading-relaxed m-0 text-center sm:text-justify font-medium">
+                Stay updated with our latest departmental highlights and student activities.
+            </p>
+        </div>
     </div>
 </div>
 
