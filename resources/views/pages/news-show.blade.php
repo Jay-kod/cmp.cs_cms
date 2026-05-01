@@ -1229,14 +1229,21 @@ document.addEventListener('DOMContentLoaded', function () {
             // Date + author
             ctx.font = '13px sans-serif';
             ctx.fillStyle = '#64748b';
-            const meta = card.querySelector('.nd-share-card-meta').textContent.trim();
+            let meta = card.querySelector('.nd-share-card-meta').textContent.trim().replace(/\s+/g, ' ');
             ctx.fillText(meta, 24, footerY + 30);
 
             // Brand
-            ctx.font = 'bold 12px sans-serif';
-            ctx.fillStyle = '#cbd5e1';
+            ctx.font = 'bold 14px sans-serif';
             const brand = 'DCMS';
-            ctx.fillText(brand, W - ctx.measureText(brand).width - 24, footerY + 30);
+            const brandW = ctx.measureText(brand).width;
+            ctx.fillStyle = primaryColor;
+            ctx.fillText(brand, W - brandW - 24, footerY + 30);
+
+            // Stats
+            ctx.font = '600 13px sans-serif';
+            ctx.fillStyle = '#64748b';
+            const statsW = ctx.measureText(statsText).width;
+            ctx.fillText(statsText, W - brandW - statsW - 44, footerY + 30);
 
             // Bottom accent line
             ctx.fillStyle = primaryColor;
