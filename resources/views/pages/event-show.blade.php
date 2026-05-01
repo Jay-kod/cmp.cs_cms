@@ -1,10 +1,10 @@
 @extends('layouts.public')
-@section('title', $article->title)
+@section('title', $event->title)
 
 @section('content')
 @php
-    $publishDate = $article->published_at ? \Carbon\Carbon::parse($article->published_at) : $article->created_at;
-    $readTime = max(1, ceil(str_word_count(strip_tags($article->body)) / 200));
+    $publishDate = $event->published_at ? \Carbon\Carbon::parse($event->published_at) : $event->created_at;
+    $readTime = max(1, ceil(str_word_count(strip_tags($event->body)) / 200));
 @endphp
 
 <style>
@@ -866,21 +866,26 @@
 
 <!-- Hero -->
 <div class="nd-hero">
-    <div class="nd-hero-bg" style="background-image: url('{{ $article->featured_image ? asset('storage/'.$article->featured_image) : asset('images/campus-bg.jpg') }}');"></div>
+    <div class="nd-hero-bg" style="background-image: url('{{ $event->flyer_image ? asset('storage/'.$event->flyer_image) : asset('images/campus-bg.jpg') }}');"></div>
     <div class="nd-hero-overlay"></div>
     <div class="nd-hero-inner">
-        <a href="{{ route('research-news') }}" class="nd-breadcrumb">
-            <i class="fa-solid fa-arrow-left"></i> Back to News & Events
+        <a href="{{ route('events.index') }}" class="nd-breadcrumb">
+            <i class="fa-solid fa-arrow-left"></i> Back to Events
         </a>
-        <div class="nd-category-pill">{{ $article->category }}</div>
-        <h1 class="nd-hero-title">{{ $article->title }}</h1>
+        <div class="nd-category-pill">{{ $event->category }}</div>
+        <h1 class="nd-hero-title">{{ $event->title }}</h1>
         <div class="nd-hero-meta">
-            <span><i class="fa-regular fa-calendar"></i> {{ $publishDate->format('M d, Y') }}</span>
+            <span><i class="fa-regular fa-calendar"></i> {{ \Carbon\Carbon::parse($event->date)->format('M d, Y') }}</span>
+            @if(!empty($event->time))
+                <span class="nd-dot"></span>
+                <span><i class="fa-regular fa-clock"></i> {{ $event->time }}</span>
+            @elseif($event->date)
+                <span class="nd-dot"></span>
+                <span><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::parse($event->date)->format('h:i A') }}@if($event->end_date) - {{ \Carbon\Carbon::parse($event->end_date)->format('h:i A') }}@endif</span>
+            @endif
+            @if(false)
             <span class="nd-dot"></span>
-            <span><i class="fa-regular fa-clock"></i> {{ $readTime }} min read</span>
-            @if($article->author)
-            <span class="nd-dot"></span>
-            <span><i class="fa-regular fa-user"></i> {{ $article->author->name }}</span>
+            <span><i class="fa-regular fa-user"></i> </span>
             @endif
         </div>
     </div>
@@ -891,13 +896,13 @@
     <!-- Article -->
     <div>
         <article data-aos="fade-up" class="nd-article">
-            @if($article->featured_image)
-            <img src="{{ asset('storage/'.$article->featured_image) }}" alt="{{ $article->title }}" class="nd-featured-img">
+            @if($event->flyer_image)
+            <img src="{{ asset('storage/'.$event->flyer_image) }}" alt="{{ $event->title }}" class="nd-featured-img">
             @endif
 
             <div class="nd-article-body-wrap">
                 <div class="nd-article-body">
-                    {!! $article->body !!}
+                    {!! $event->description !!}
                 </div>
             </div>
 
@@ -928,6 +933,33 @@
                         </div>
                         <p class="nd-reaction-total" id="reaction-total"></p>
                     </div>
+                </div>
+            </div>
+
+                        <!-- RSVP Section -->
+            <div class="nd-engage-bar" style="margin-top: 2rem;">
+                <hr class="nd-divider">
+                <div class="nd-comments-header" style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-calendar-check" style="color: var(--color-primary); font-size: 1.1rem;"></i>
+                        <h3 style="margin: 0;">Will you be attending?</h3>
+                    </div>
+                    <span class="nd-count-pill" style="background: var(--color-primary); color: white; font-size: 0.8rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 20px;">{{ $event->rsvps->count() }} attending</span>
+                </div>
+                <div class="nd-comment-form">
+                    <form id="rsvp-form" method="POST" action="{{ route('event.rsvp.store', $event->id) }}">
+                        @csrf
+                        <div class="nd-cform-row">
+                            <input type="text" id="rsvp-name" name="name" placeholder="Your Name" maxlength="150" required class="nd-cform-input">
+                            <input type="email" id="rsvp-email" name="email" placeholder="Your Email" maxlength="150" required class="nd-cform-input">
+                        </div>
+                        <div class="nd-cform-footer" style="justify-content: flex-start; margin-top: 1rem;">
+                            <button type="submit" id="rsvp-submit-btn" class="nd-cform-submit">
+                                <i class="fa-solid fa-check" style="font-size: 0.78rem;"></i> I'm coming! (RSVP)
+                            </button>
+                        </div>
+                        <div id="rsvp-alert" class="nd-cform-alert"></div>
+                    </form>
                 </div>
             </div>
 
@@ -978,32 +1010,44 @@
     <!-- Sidebar -->
     <aside class="nd-sidebar">
         <div data-aos="fade-up" class="nd-sidebar-card">
-            <h4><i class="fa-solid fa-circle-info"></i> Article Details</h4>
+            <h4><i class="fa-solid fa-circle-info"></i> Event Details</h4>
             <div class="nd-detail-row">
                 <div class="nd-detail-icon"><i class="fa-solid fa-tag"></i></div>
-                <span>{{ $article->category }}</span>
+                <span>{{ $event->category }}</span>
             </div>
             <div class="nd-detail-row">
                 <div class="nd-detail-icon"><i class="fa-regular fa-calendar"></i></div>
                 <span>{{ $publishDate->format('F j, Y') }}</span>
             </div>
             <div class="nd-detail-row">
-                <div class="nd-detail-icon"><i class="fa-regular fa-clock"></i></div>
-                <span>{{ $readTime }} min read</span>
+                <div class="nd-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <span>{{ $event->venue ?: '—' }}</span>
             </div>
-            @if($article->author)
+            <div class="nd-detail-row">
+                <div class="nd-detail-icon"><i class="fa-regular fa-clock"></i></div>
+                <span>
+                    @if(!empty($event->time))
+                        {{ $event->time }}
+                    @elseif($event->date)
+                        {{ \Carbon\Carbon::parse($event->date)->format('h:i A') }}@if($event->end_date) - {{ \Carbon\Carbon::parse($event->end_date)->format('h:i A') }}@endif
+                    @else
+                        &mdash;
+                    @endif
+                </span>
+            </div>
+            @if(false)
             <div class="nd-detail-row">
                 <div class="nd-detail-icon"><i class="fa-solid fa-user-pen"></i></div>
-                <span>{{ $article->author->name }}</span>
+                <span></span>
             </div>
             @endif
         </div>
 
         @if($related->isNotEmpty())
         <div data-aos="fade-up" class="nd-sidebar-card">
-            <h4><i class="fa-solid fa-newspaper"></i> Related News</h4>
+            <h4><i class="fa-solid fa-newspaper"></i> Upcoming Events</h4>
             @foreach($related as $rel)
-            <a href="{{ route('research-news.show', $rel->slug) }}" class="nd-related-item">
+            <a href="{{ route('events.show', $rel->slug) }}" class="nd-related-item">
                 @if($rel->featured_image)
                 <img src="{{ asset('storage/'.$rel->featured_image) }}" alt="" class="nd-related-img">
                 @else
@@ -1011,7 +1055,7 @@
                 @endif
                 <div class="nd-related-info">
                     <p>{{ Str::limit($rel->title, 55) }}</p>
-                    <span>{{ $rel->published_at ? \Carbon\Carbon::parse($rel->published_at)->format('M d, Y') : $rel->created_at->format('M d, Y') }}</span>
+                    <span>{{ \Carbon\Carbon::parse($rel->date)->format('M d, Y') }}</span>
                 </div>
             </a>
             @endforeach
@@ -1032,22 +1076,22 @@
         <div data-aos="fade-up" class="nd-share-card-wrap">
             <div data-aos="fade-up" class="nd-share-card" id="share-card">
                 <div data-aos="fade-up" class="nd-share-card-visual">
-                    @if($article->featured_image)
-                    <img src="{{ asset('storage/'.$article->featured_image) }}" alt="" class="nd-share-card-img">
+                    @if($event->flyer_image)
+                    <img src="{{ asset('storage/'.$event->flyer_image) }}" alt="" class="nd-share-card-img">
                     @else
                     <div data-aos="fade-up" class="nd-share-card-placeholder"><i class="fa-regular fa-newspaper"></i></div>
                     @endif
                     <div data-aos="fade-up" class="nd-share-card-overlay">
-                        <div data-aos="fade-up" class="nd-share-card-cat">{{ $article->category }}</div>
-                        <h3 class="nd-share-card-title">{{ $article->title }}</h3>
+                        <div data-aos="fade-up" class="nd-share-card-cat">{{ $event->category }}</div>
+                        <h3 class="nd-share-card-title">{{ $event->title }}</h3>
                     </div>
                 </div>
                 <div data-aos="fade-up" class="nd-share-card-footer">
                     <div data-aos="fade-up" class="nd-share-card-meta">
                         <i class="fa-regular fa-calendar"></i>
-                        {{ $publishDate->format('M d, Y') }}
-                        @if($article->author)
-                         &middot; {{ $article->author->name }}
+                        {{ \Carbon\Carbon::parse($event->date)->format('M d, Y') }}
+                        @if(false)
+                         &middot; 
                         @endif
                     </div>
                     <span class="nd-share-card-brand">DCMS</span>
@@ -1072,11 +1116,11 @@
                     <div class="nd-sp-icon nd-sp-fb"><i class="fa-brands fa-facebook-f"></i></div>
                     <span class="nd-sp-label">Facebook</span>
                 </a>
-                <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->url()) }}&text={{ urlencode($article->title) }}" target="_blank" class="nd-sp-btn">
+                <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->url()) }}&text={{ urlencode($event->title) }}" target="_blank" class="nd-sp-btn">
                     <div class="nd-sp-icon nd-sp-tw"><i class="fa-brands fa-x-twitter"></i></div>
                     <span class="nd-sp-label">X</span>
                 </a>
-                <a href="https://wa.me/?text={{ urlencode($article->title . ' ' . request()->url()) }}" target="_blank" class="nd-sp-btn">
+                <a href="https://wa.me/?text={{ urlencode($event->title . ' ' . request()->url()) }}" target="_blank" class="nd-sp-btn">
                     <div class="nd-sp-icon nd-sp-wa"><i class="fa-brands fa-whatsapp"></i></div>
                     <span class="nd-sp-label">WhatsApp</span>
                 </a>
@@ -1084,11 +1128,11 @@
                     <div class="nd-sp-icon nd-sp-li"><i class="fa-brands fa-linkedin-in"></i></div>
                     <span class="nd-sp-label">LinkedIn</span>
                 </a>
-                <a href="https://t.me/share/url?url={{ urlencode(request()->url()) }}&text={{ urlencode($article->title) }}" target="_blank" class="nd-sp-btn">
+                <a href="https://t.me/share/url?url={{ urlencode(request()->url()) }}&text={{ urlencode($event->title) }}" target="_blank" class="nd-sp-btn">
                     <div class="nd-sp-icon nd-sp-tg"><i class="fa-brands fa-telegram"></i></div>
                     <span class="nd-sp-label">Telegram</span>
                 </a>
-                <a href="mailto:?subject={{ rawurlencode($article->title) }}&body={{ rawurlencode('Check out this article: ' . request()->url()) }}" class="nd-sp-btn">
+                <a href="mailto:?subject={{ rawurlencode($event->title) }}&body={{ rawurlencode('Check out this article: ' . request()->url()) }}" class="nd-sp-btn">
                     <div class="nd-sp-icon nd-sp-em"><i class="fa-solid fa-envelope"></i></div>
                     <span class="nd-sp-label">Email</span>
                 </a>
@@ -1331,8 +1375,8 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // ── Reactions ──
-    const getUrl  = @json(route('reactions.show', $article->id));
-    const postUrl = @json(route('reactions.store', $article->id));
+    const getUrl  = @json(route('event.reactions.show', $event->id));
+    const postUrl = @json(route('event.reactions.store', $event->id));
 
     function updateReactionsUI(data) {
         document.querySelectorAll('.nd-reaction-btn').forEach(btn => {
@@ -1371,8 +1415,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // ── Comments ──
-    const commentsGetUrl  = @json(route('comments.index', $article->id));
-    const commentsPostUrl = @json(route('comments.store', $article->id));
+    const commentsGetUrl  = @json(route('event.comments.index', $event->id));
+    const commentsPostUrl = @json(route('event.comments.store', $event->id));
     let commentsNextPage = null;
 
     function getInitials(name) {
@@ -1400,6 +1444,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let h = `<div class="nd-c-thread" data-thread="${c.id}">`;
         h += renderSingleComment(c, false);
 
+        // Toggle button for replies
         if (replyCount > 0) {
             h += `<button class="nd-c-toggle-replies" onclick="toggleReplies(${c.id})" id="toggle-${c.id}">`;
             h += `<span class="nd-c-toggle-line"></span>`;
@@ -1408,12 +1453,14 @@ document.addEventListener('DOMContentLoaded', function () {
             h += `</button>`;
         }
 
+        // Replies container (hidden by default if >0 replies)
         h += `<div class="nd-c-replies-wrap" id="replies-${c.id}" style="${replyCount > 0 ? 'display:none' : ''}">`;
         if (c.replies) {
             c.replies.forEach(r => { h += renderSingleComment(r, true); });
         }
         h += `</div>`;
 
+        // Inline reply form
         h += `<div id="reply-form-${c.id}" class="nd-inline-reply">`;
         h += `<textarea rows="1" placeholder="Reply to ${c.author_name}..." id="reply-body-${c.id}" maxlength="2000"></textarea>`;
         h += `<button onclick="submitReply(${c.id})"><i class="fa-solid fa-paper-plane" style="font-size:.65rem;margin-right:2px;"></i>Reply</button>`;
@@ -1429,8 +1476,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const hidden = wrap.style.display === 'none';
         wrap.style.display = hidden ? '' : 'none';
         btn.classList.toggle('expanded', hidden);
-        const count = wrap.querySelectorAll('.nd-c-item').length;
-        btn.querySelector('span:nth-child(2)').textContent = (hidden ? 'Hide ' : 'View ') + count + (count === 1 ? ' reply' : ' replies');
+        if (hidden) {
+            const count = wrap.querySelectorAll('.nd-c-item').length;
+            btn.querySelector('span:nth-child(2)').textContent = `Hide ${count} ${count === 1 ? 'reply' : 'replies'}`;
+        } else {
+            const count = wrap.querySelectorAll('.nd-c-item').length;
+            btn.querySelector('span:nth-child(2)').textContent = `View ${count} ${count === 1 ? 'reply' : 'replies'}`;
+        }
     };
 
     function loadComments(url) {
@@ -1451,6 +1503,54 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     window.loadMoreComments = () => { if (commentsNextPage) loadComments(commentsNextPage); };
+
+    // ── RSVP Form Handler ──
+    document.getElementById('rsvp-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('rsvp-submit-btn');
+        const alertEl = document.getElementById('rsvp-alert');
+        const name = document.getElementById('rsvp-name').value.trim();
+        const email = document.getElementById('rsvp-email').value.trim();
+
+        if (!name || !email) {
+            alertEl.style.display = 'block';
+            alertEl.style.background = '#fef2f2';
+            alertEl.style.color = '#b91c1c';
+            alertEl.innerHTML = '<i class="fa-solid fa-exclamation-circle"></i> Please fill in all fields.';
+            return;
+        }
+
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Adding you...';
+
+        fetch(this.action, {
+            method: 'POST', credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken, 'Accept': 'application/json' },
+            body: JSON.stringify({ name, email })
+        })
+        .then(r => r.json())
+        .then(data => {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-check" style="font-size: 0.78rem;"></i> I\'m coming! (RSVP)';
+            if (data.success) {
+                document.getElementById('rsvp-name').value = '';
+                document.getElementById('rsvp-email').value = '';
+                alertEl.style.display = 'block'; alertEl.style.background = '#ecfdf5'; alertEl.style.color = '#047857';
+                alertEl.innerHTML = '<i class="fa-solid fa-check-circle"></i> Thanks for RSVP\'ing! We look forward to seeing you.';
+                setTimeout(() => { alertEl.style.display = 'none'; }, 4000);
+            } else {
+                alertEl.style.display = 'block'; alertEl.style.background = '#fff4f2'; alertEl.style.color = '#b91c1c';
+                alertEl.innerHTML = '<i class="fa-solid fa-exclamation-circle"></i> ' + (data.message || 'Error adding RSVP.');
+            }
+        })
+        .catch(() => {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-check" style="font-size: 0.78rem;"></i> I\'m coming! (RSVP)';
+            alertEl.style.display = 'block'; alertEl.style.background = '#fef2f2'; alertEl.style.color = '#b91c1c';
+            alertEl.innerHTML = '<i class="fa-solid fa-exclamation-circle"></i> Failed to add RSVP. Try again.';
+            setTimeout(() => { alertEl.style.display = 'none'; }, 4000);
+        });
+    });
 
     window.submitComment = function(e) {
         e.preventDefault();
@@ -1517,6 +1617,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     wrap.insertAdjacentHTML('beforeend', renderSingleComment(data.comment, true));
                     wrap.style.display = '';
                 }
+                // Update or create toggle button
                 const thread = document.querySelector(`[data-thread="${parentId}"]`);
                 let toggle = document.getElementById('toggle-' + parentId);
                 const count = wrap ? wrap.querySelectorAll('.nd-c-item').length : 1;
@@ -1535,6 +1636,10 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     loadComments();
+    
+    // Load reactions on page load
+    fetch(getUrl, { credentials: 'same-origin' })
+        .then(r => r.json()).then(updateReactionsUI).catch(() => {});
 });
 </script>
 @endsection

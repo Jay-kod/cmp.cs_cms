@@ -25,16 +25,28 @@
                     <label class="form-label">Event Title <span style="color: red;">*</span></label>
                     <input type="text" name="title" value="{{ old('title', $event->title) }}" class="form-control" required placeholder="e.g. 5th International Conference on Computing">
                 </div>
-                
+
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select name="category" class="form-control" required>
+                        <option value="">-- Select Category --</option>
+                        @php
+                            $categories = ['Seminar', 'Workshop', 'Conference', 'Symposium', 'Lecture', 'Training', 'Competition', 'Social', 'Other'];
+                        @endphp
+                        @foreach($categories as $cat)
+                            <option value="{{ $cat }}" {{ old('category', $event->category) == $cat ? 'selected' : '' }}>{{ $cat }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="form-group">
                         <label class="form-label">Start Date & Time <span style="color: red;">*</span></label>
-                        <input type="datetime-local" name="date" value="{{ old('date', $event->date ? \Carbon\Carbon::parse($event->date)->format('Y-m-d\TH:i') : '') }}" class="form-control" required>
+                        <input type="datetime-local" name="date" value="{{ old('date', $event->date ? \Carbon\Carbon::parse($event->date)->format('Y-m-d\\TH:i') : '') }}" class="form-control" required>
                     </div>
-                    
                     <div class="form-group">
                         <label class="form-label">End Date & Time</label>
-                        <input type="datetime-local" name="end_date" value="{{ old('end_date', $event->end_date ? \Carbon\Carbon::parse($event->end_date)->format('Y-m-d\TH:i') : '') }}" class="form-control">
+                        <input type="datetime-local" name="end_date" value="{{ old('end_date', $event->end_date ? \Carbon\Carbon::parse($event->end_date)->format('Y-m-d\\TH:i') : '') }}" class="form-control">
                     </div>
                 </div>
 
@@ -42,6 +54,11 @@
                     <label class="form-label">Venue / Location</label>
                     <input type="text" name="venue" value="{{ old('venue', $event->venue) }}" class="form-control" placeholder="e.g. Faculty Auditorium, Main Campus">
                     <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #6b7280;">Leave blank for virtual events, or paste Zoom link in description.</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Time</label>
+                    <input type="text" name="time" value="{{ old('time', $event->time) }}" class="form-control" placeholder="e.g. 10:00 AM - 2:00 PM">
                 </div>
 
                 <div class="form-group" style="margin-top: 1.5rem;">

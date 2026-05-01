@@ -1,11 +1,11 @@
 @extends($adminLayout ?? 'layouts.admin')
-@section('title', 'Manage Announcements')
-@section('header', 'Quick Announcements')
+@section('title', 'Manage Ticker')
+@section('header', 'Ticker & Alerts')
 
 @section('content')
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
     <div>
-        <h2 style="margin: 0; font-size: 1.25rem; font-weight: 600; color: #1f2937;">All Announcements</h2>
+        <h2 style="margin: 0; font-size: 1.25rem; font-weight: 600; color: #1f2937;">All Ticker Items</h2>
         <p style="margin: 0.2rem 0 0; color: #64748b; font-size: 0.88rem;">Manage important alerts, notices, and banners across the site.</p>
     </div>
     <div style="display: flex; gap: 0.6rem;">

@@ -86,6 +86,15 @@ Route::get('/page/{page}', [PageController::class, 'show'])->name('page.show');
 Route::get('/siwes', [SiwesController::class, 'index'])->name('siwes');
 Route::get('/final-year-projects', [ProjectGuideController::class, 'index'])->name('projects');
 Route::get('/events', [\App\Http\Controllers\EventPublicController::class, 'index'])->name('events.index');
+Route::get('/events/{event:slug}', [\App\Http\Controllers\EventPublicController::class, 'show'])->name('events.show');
+
+// Event Reactions & Comments & RSVP
+Route::get('/events/{event}/reactions', [\App\Http\Controllers\EventReactionController::class, 'show'])->name('event.reactions.show');
+Route::post('/events/{event}/reactions', [\App\Http\Controllers\EventReactionController::class, 'store'])->name('event.reactions.store');
+Route::get('/events/{event}/comments', [\App\Http\Controllers\EventCommentController::class, 'index'])->name('event.comments.index');
+Route::post('/events/{event}/comments', [\App\Http\Controllers\EventCommentController::class, 'store'])->name('event.comments.store');
+Route::post('/events/{event}/rsvp', [\App\Http\Controllers\EventRsvpController::class, 'store'])->name('event.rsvp.store');
+
 Route::get('/resources', [ResourcesController::class, 'index'])->name('resources.index');
 
 Route::middleware(['auth:web,super_admin', 'verified', 'admin', \App\Http\Middleware\SetAdminLayoutForSuperAdmins::class])->prefix('admin')->name('admin.')->group(function () {
@@ -120,6 +129,10 @@ Route::middleware(['auth:web,super_admin', 'verified', 'admin', \App\Http\Middle
     Route::resource('gallery', GalleryController::class);
     Route::delete('gallery/image/{image}', [GalleryController::class, 'destroyImage'])->name('gallery.image.destroy');
     Route::resource('publications', PublicationController::class);
+
+    // Comments Management
+    Route::post('comments/{comment}/toggle-approval', [\App\Http\Controllers\Admin\CommentController::class, 'toggleApproval'])->name('comments.toggle-approval');
+    Route::delete('comments/{comment}', [\App\Http\Controllers\Admin\CommentController::class, 'destroy'])->name('comments.destroy');
 
     // Resources Catalog (DB-driven files)
     Route::resource('resource-categories', ResourceCategoryController::class)->except(['show']);
@@ -204,6 +217,10 @@ Route::middleware(['auth:super_admin', 'super_admin', \App\Http\Middleware\SetAd
     Route::resource('partners', PartnerController::class);
     Route::resource('gallery', GalleryController::class);
     Route::resource('publications', PublicationController::class);
+
+    // Comments Management
+    Route::post('comments/{comment}/toggle-approval', [\App\Http\Controllers\Admin\CommentController::class, 'toggleApproval'])->name('comments.toggle-approval');
+    Route::delete('comments/{comment}', [\App\Http\Controllers\Admin\CommentController::class, 'destroy'])->name('comments.destroy');
 
     // Resources Catalog (DB-driven files)
     Route::resource('resource-categories', ResourceCategoryController::class)->except(['show']);

@@ -40,7 +40,7 @@
         </h2>
         <div id="upcoming-grid" class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(340px,1fr))] gap-6">
             @foreach($upcoming as $event)
-            <div data-aos="fade-up" class="event-card group bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)]" data-type="upcoming" data-title="{{ strtolower($event->title) }}" data-location="{{ strtolower($event->location ?? '') }}">
+            <a href="{{ route('events.show', $event->slug) }}" data-aos="fade-up" class="event-card block group bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)]" data-type="upcoming" data-title="{{ strtolower($event->title) }}" data-location="{{ strtolower($event->venue ?? '') }}">
                 <div class="flex gap-4 p-4 md:p-6">
                     {{-- Date badge --}}
                     <div class="min-w-[60px] text-center shrink-0">
@@ -51,9 +51,9 @@
                     <div class="flex-1 min-w-0">
                         <h3 class="m-0 mb-1.5 text-[1.05rem] font-bold text-slate-900">{{ $event->title }}</h3>
                         <div class="flex flex-wrap gap-[0.8rem] text-[0.85rem] text-slate-500">
-                            <span><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::parse($event->time ?? $event->date)->format('h:i A') }}</span>
-                            @if($event->location)
-                            <span><i class="fa-solid fa-location-dot"></i> {{ $event->location }}</span>
+                            <span><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::parse(null ?? $event->date)->format('h:i A') }}</span>
+                            @if($event->venue)
+                            <span><i class="fa-solid fa-location-dot"></i> {{ $event->venue }}</span>
                             @endif
                         </div>
                         @if($event->description)
@@ -61,7 +61,7 @@
                         @endif
                     </div>
                 </div>
-            </div>
+            </a>
             @endforeach
         </div>
     </div>
@@ -78,16 +78,16 @@
         @if($past->count())
         <div id="past-grid" class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(340px,1fr))] gap-[1.2rem]">
             @foreach($past as $event)
-            <div data-aos="fade-up" class="event-card group bg-white border border-slate-200 rounded-xl p-[1.2rem] flex gap-4 items-start opacity-85 hover:opacity-100 transition-opacity" data-type="past" data-title="{{ strtolower($event->title) }}" data-location="{{ strtolower($event->location ?? '') }}">
+            <a href="{{ route('events.show', $event->slug) }}" data-aos="fade-up" class="event-card block group bg-white border border-slate-200 rounded-xl p-[1.2rem] flex gap-4 items-start opacity-85 hover:opacity-100 transition-opacity" data-type="past" data-title="{{ strtolower($event->title) }}" data-location="{{ strtolower($event->venue ?? '') }}">
                 <div class="min-w-[50px] text-center shrink-0">
                     <div class="bg-slate-500 text-white text-[0.65rem] font-bold uppercase py-[3px] px-0 rounded-t-md">{{ \Carbon\Carbon::parse($event->date)->format('M') }}</div>
                     <div class="bg-slate-100 border border-slate-200 border-t-0 rounded-b-md py-1 px-0 text-[1.2rem] font-bold text-slate-600">{{ \Carbon\Carbon::parse($event->date)->format('d') }}</div>
                 </div>
                 <div class="flex-1 min-w-0">
                     <h4 class="m-0 mb-1 text-[0.95rem] font-semibold text-slate-700">{{ $event->title }}</h4>
-                    <span class="text-[0.8rem] text-slate-400">{{ \Carbon\Carbon::parse($event->date)->format('F j, Y') }}@if($event->location) · {{ $event->location }}@endif</span>
+                    <span class="text-[0.8rem] text-slate-400">{{ \Carbon\Carbon::parse($event->date)->format('F j, Y') }}@if($event->venue) · {{ $event->venue }}@endif</span>
                 </div>
-            </div>
+            </a>
             @endforeach
         </div>
 

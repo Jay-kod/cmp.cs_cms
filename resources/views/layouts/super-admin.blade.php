@@ -154,9 +154,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('super-admin.announcements.index') }}" class="admin-nav-item {{ request()->routeIs('super-admin.announcements.*') ? 'active' : '' }}" title="Announcements">
+                        <a href="{{ route('super-admin.announcements.index') }}" class="admin-nav-item {{ request()->routeIs('super-admin.announcements.*') ? 'active' : '' }}" title="Ticker">
                             <div class="nav-icon"><i class="fa-solid fa-bullhorn"></i></div>
-                            <span>Announcements</span>
+                            <span>Ticker</span>
                         </a>
                     </li>
                     <li>

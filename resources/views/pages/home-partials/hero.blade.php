@@ -91,7 +91,7 @@
                   <i class="fa-solid fa-bolt text-[0.6rem]"></i> Notice
             </div>
             <div class="overflow-hidden flex-1">
-                <div class="announcement-scroll flex gap-16 whitespace-nowrap pl-full" style="animation: scrollAnnouncements {{ $scrollSpeed }}s linear infinite;">
+                <div class="announcement-scroll flex gap-16 whitespace-nowrap pl-[100%]" style="animation: scrollAnnouncements {{ $scrollSpeed }}s linear infinite;">
                     @foreach($announcements as $announcement)
                     <span class="text-slate-300 text-[0.95rem] inline-flex items-center gap-2.5">
                         <strong class="text-white font-semibold">{{ $announcement->title }} <span class="text-slate-500 font-normal mx-1">&mdash;</span></strong> {{ Str::limit($announcement->body, 120) }}

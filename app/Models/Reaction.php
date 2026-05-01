@@ -11,6 +11,7 @@ class Reaction extends Model
 
     protected $fillable = [
         'news_id',
+        'event_id',
         'type',
         'session_id',
         'ip_address',
@@ -21,5 +22,10 @@ class Reaction extends Model
     public function news()
     {
         return $this->belongsTo(News::class);
+    }
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
     }
 }

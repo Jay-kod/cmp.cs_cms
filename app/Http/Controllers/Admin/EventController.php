@@ -13,7 +13,9 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::orderBy('date', 'desc')->paginate(20);
+        $events = Event::withCount(['rsvps', 'comments', 'reactions'])
+            ->orderBy('date', 'desc')
+            ->paginate(20);
         return view('admin.events.index', compact('events'));
     }
 
@@ -26,10 +28,12 @@ class EventController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|string|max:255',
+            'category' => 'nullable|string|max:255',
             'description' => 'required|string',
             'date' => 'required|date',
             'end_date' => 'nullable|date|after_or_equal:date',
             'venue' => 'nullable|string|max:255',
+            'time' => 'nullable|string|max:255',
             'flyer_image' => 'nullable|image|max:2048'
         ]);
 
@@ -50,6 +54,13 @@ class EventController extends Controller
         return redirect()->route('admin.events.index')->with('success', 'Event created successfully.');
     }
 
+    public function show(Event $event)
+    {
+        $event->load(['rsvps' => fn($q) => $q->orderBy('created_at', 'desc'), 'comments' => fn($q) => $q->orderBy('created_at', 'desc')]);
+        $reactionsCount = $event->reactions()->select('type', \DB::raw('count(*) as count'))->groupBy('type')->pluck('count', 'type')->toArray();
+        return view('admin.events.show', compact('event', 'reactionsCount'));
+    }
+
     public function edit(Event $event)
     {
         return view('admin.events.form', compact('event'));
@@ -59,10 +70,12 @@ class EventController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|string|max:255',
+            'category' => 'nullable|string|max:255',
             'description' => 'required|string',
             'date' => 'required|date',
             'end_date' => 'nullable|date|after_or_equal:date',
             'venue' => 'nullable|string|max:255',
+            'time' => 'nullable|string|max:255',
             'flyer_image' => 'nullable|image|max:2048'
         ]);
 
