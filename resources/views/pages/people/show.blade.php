@@ -98,7 +98,7 @@ html { scroll-behavior: smooth; }
     <!-- Quick Stats Bar -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
         @if($staff->publications->count() > 0)
-        <div data-aos="fade-up" class="bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgb(0,0,0,0.12)] hover:border-green-200 transition-all duration-300 flex items-center gap-5 group">
+        <div data-aos="fade-up" class="bg-white rounded-2xl p-4 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgb(0,0,0,0.12)] hover:border-green-200 transition-all duration-300 flex items-center gap-4 sm:gap-5 group">
             <div data-aos="fade-up" class="w-14 h-14 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
                 <i class="fa-solid fa-book-open"></i>
             </div>
@@ -110,7 +110,7 @@ html { scroll-behavior: smooth; }
         @endif
 
         @if($staff->courses->count() > 0)
-        <div data-aos="fade-up" class="bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgb(0,0,0,0.12)] hover:border-amber-200 transition-all duration-300 flex items-center gap-5 group">
+        <div data-aos="fade-up" class="bg-white rounded-2xl p-4 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgb(0,0,0,0.12)] hover:border-amber-200 transition-all duration-300 flex items-center gap-4 sm:gap-5 group">
             <div data-aos="fade-up" class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-500 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300">
                 <i class="fa-solid fa-chalkboard-user"></i>
             </div>
@@ -122,7 +122,7 @@ html { scroll-behavior: smooth; }
         @endif
 
         @if($staff->specialisation)
-        <div data-aos="fade-up" class="bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgb(0,0,0,0.12)] hover:border-purple-200 transition-all duration-300 flex items-center gap-5 group">
+        <div data-aos="fade-up" class="bg-white rounded-2xl p-4 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgb(0,0,0,0.12)] hover:border-purple-200 transition-all duration-300 flex items-center gap-4 sm:gap-5 group">
             <div data-aos="fade-up" class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
                 <i class="fa-solid fa-microchip"></i>
             </div>
@@ -134,7 +134,7 @@ html { scroll-behavior: smooth; }
         @endif
 
         @if($staff->accepting_pg)
-        <div data-aos="fade-up" class="bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgb(0,0,0,0.12)] hover:border-green-200 transition-all duration-300 flex items-center gap-5 group">
+        <div data-aos="fade-up" class="bg-white rounded-2xl p-4 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgb(0,0,0,0.12)] hover:border-green-200 transition-all duration-300 flex items-center gap-4 sm:gap-5 group">
             <div data-aos="fade-up" class="w-14 h-14 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
                 <i class="fa-solid fa-user-graduate"></i>
             </div>
@@ -200,13 +200,13 @@ html { scroll-behavior: smooth; }
             <!-- Courses Taught -->
             @if($staff->courses->count() > 0)
             <section data-aos="fade-up" id="courses" class="profile-section scroll-mt-24">
-                <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
-                    <div data-aos="fade-up" class="flex items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
+                <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
+                    <div data-aos="fade-up" class="flex items-center justify-between gap-4 mb-5 sm:mb-6 pb-4 sm:pb-6 border-b border-slate-100">
                         <div data-aos="fade-up" class="flex items-center gap-4">
-                            <div data-aos="fade-up" class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center text-xl shadow-inner">
+                            <div data-aos="fade-up" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center text-lg sm:text-xl shadow-inner">
                                 <i class="fa-solid fa-book"></i>
                             </div>
-                            <h2 class="text-2xl font-bold text-slate-800 m-0">Courses Taught</h2>
+                            <h2 class="text-xl sm:text-2xl font-bold text-slate-800 m-0">Courses Taught</h2>
                         </div>
                         <span class="px-4 py-1.5 bg-slate-100 text-slate-600 font-bold rounded-full text-sm border border-solid border-slate-200 shadow-sm">
                             {{ $staff->courses->count() }}
@@ -235,13 +235,13 @@ html { scroll-behavior: smooth; }
             <!-- Publications -->
             @if($staff->publications->count() > 0)
             <section data-aos="fade-up" id="publications" class="profile-section scroll-mt-24">
-                <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
-                    <div data-aos="fade-up" class="flex items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
+                <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300">
+                    <div data-aos="fade-up" class="flex items-center justify-between gap-4 mb-5 sm:mb-6 pb-4 sm:pb-6 border-b border-slate-100">
                         <div data-aos="fade-up" class="flex items-center gap-4">
-                            <div data-aos="fade-up" class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center text-xl shadow-inner">
+                            <div data-aos="fade-up" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center text-lg sm:text-xl shadow-inner">
                                 <i class="fa-solid fa-book-open"></i>
                             </div>
-                            <h2 class="text-2xl font-bold text-slate-800 m-0">Latest Publications</h2>
+                            <h2 class="text-xl sm:text-2xl font-bold text-slate-800 m-0">Latest Publications</h2>
                         </div>
                         <span class="px-4 py-1.5 bg-slate-100 text-slate-600 font-bold rounded-full text-sm border border-solid border-slate-200 shadow-sm">
                             {{ $staff->publications->count() }}
@@ -250,10 +250,10 @@ html { scroll-behavior: smooth; }
                     
                     <div class="space-y-4">
                         @foreach($staff->publications as $pub)
-                        <div class="bg-white rounded-2xl p-6 border border-solid border-slate-200 hover:border-green-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 group relative pl-10 overflow-hidden">
+                        <div class="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-solid border-slate-200 hover:border-green-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 group relative pl-8 sm:pl-10 overflow-hidden">
                             <div class="absolute left-0 top-0 bottom-0 w-2 bg-slate-200 group-hover:bg-green-400 transition-colors"></div>
                             
-                            <h4 class="font-bold text-slate-800 text-lg mb-3 leading-snug group-hover:text-green-600 transition-colors pr-8">
+                            <h4 class="font-bold text-slate-800 text-[1.05rem] sm:text-lg mb-3 leading-snug group-hover:text-green-600 transition-colors pr-6 sm:pr-8 text-justify">
                                 {{ $pub->title }}
                             </h4>
                             
@@ -325,19 +325,19 @@ html { scroll-behavior: smooth; }
                 </div>
 
                 <!-- Complete Contact Widget -->
-                <div class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300 overflow-hidden">
-                    <div class="bg-slate-50/80 px-6 py-5 border-b border-slate-200">
+                <div class="bg-white rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-solid border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.1)] transition-all duration-300 overflow-hidden">
+                    <div class="bg-slate-50/80 px-5 sm:px-6 py-4 sm:py-5 border-b border-slate-200">
                         <h3 class="font-bold text-slate-800 m-0 flex items-center gap-2.5">
                             <i class="fa-solid fa-address-card text-green-600"></i> Full Contact Info
                         </h3>
                     </div>
-                    <div class="p-6 space-y-7">
+                    <div class="p-5 sm:p-6 space-y-6 sm:space-y-7">
                         @if($staff->email)
-                        <div data-aos="fade-up" class="flex items-start gap-4">
-                            <div data-aos="fade-up" class="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-envelope"></i>
+                        <div data-aos="fade-up" class="flex items-start gap-3 sm:gap-4">
+                            <div data-aos="fade-up" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-envelope text-sm sm:text-base"></i>
                             </div>
-                            <div class="flex-1 min-w-0"><p class="text-[0.65rem] text-left font-bold text-slate-400 uppercase tracking-widest mb-1">Email</p>
+                            <div class="flex-1 min-w-0"><p class="text-[0.6rem] sm:text-[0.65rem] text-left font-bold text-slate-400 uppercase tracking-widest mb-1">Email</p>
                                 <a href="mailto:{{ $staff->email }}" class="text-slate-800 font-semibold hover:text-green-600 transition-colors break-words text-sm sm:text-base text-left block normal-case tracking-normal">{{ $staff->email }}</a>
                             </div>
                         </div>
