@@ -4,12 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasAutoSlug;
 
 class Event extends Model
 {
-    use HasFactory;
+    use HasFactory, HasAutoSlug;
 
     protected $guarded = [];
+
+    public function slugSource(): string
+    {
+        return 'title';
+    }
 
     public function comments()
     {

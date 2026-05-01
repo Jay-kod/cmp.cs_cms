@@ -3,10 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasAutoSlug;
 
 class Page extends Model
 {
+    use HasAutoSlug;
+
     protected $guarded = [];
+
+    public function slugSource(): string
+    {
+        return 'title';
+    }
 
     protected $casts = [
         'is_active'  => 'boolean',
