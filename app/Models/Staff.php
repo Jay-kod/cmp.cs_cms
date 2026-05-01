@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasAutoSlug;
 
 class Staff extends Model
 {
+    use HasAutoSlug;
+
     protected $guarded = [];
 
     protected $casts = [
