@@ -98,6 +98,13 @@ class PageController extends Controller
             return redirect()->route('admin.pages.index')->with('error', 'System pages cannot be deleted.');
         }
 
+        if ($page->hero_image) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($page->hero_image);
+        }
+        if ($page->attachment) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($page->attachment);
+        }
+
         $page->delete();
         return redirect()->route('admin.pages.index')->with('success', 'Page deleted successfully.');
     }
