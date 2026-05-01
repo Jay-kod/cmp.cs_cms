@@ -653,12 +653,12 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
         <h2 class="text-[2.8rem] font-black mb-6 font-heading [text-wrap:balance]">Ready to Shape Your Future?</h2>
         <p class="text-[1.25rem] text-white/85 mb-14 max-w-[650px] mx-auto leading-[1.6] [text-wrap:pretty]">Take the first decisive step towards a highly rewarding career. Join the {{ $subDept->name }} today.</p>
         
-        <div class="flex flex-wrap gap-[1.2rem] justify-center">
-            <a href="https://jamb.gov.ng" target="_blank" class="bg-white text-[#1E7A3E] py-[1.1rem] px-[2.2rem] rounded-full font-extrabold text-[1.05rem] no-underline transition-all duration-300 shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] inline-flex items-center gap-2 hover:-translate-y-[3px] hover:shadow-[0_15px_30px_-5px_rgba(0,0,0,0.4)]">
+        <div class="flex flex-col sm:flex-row flex-wrap gap-[1.2rem] justify-center">
+            <a href="https://jamb.gov.ng" target="_blank" class="w-full sm:w-auto justify-center bg-white text-[#1E7A3E] py-[1.1rem] px-[2.2rem] rounded-full font-extrabold text-[1.05rem] no-underline transition-all duration-300 shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] inline-flex items-center gap-2 hover:-translate-y-[3px] hover:shadow-[0_15px_30px_-5px_rgba(0,0,0,0.4)]">
                 Apply for BSc (JAMB) <i class="fa-solid fa-external-link-alt text-sm"></i>
             </a>
             
-            <a href="https://spgs.nsuk.edu.ng" target="_blank" class="bg-black/20 border-2 border-white/20 text-white py-[1.1rem] px-[2.2rem] rounded-full font-bold text-[1.05rem] no-underline backdrop-blur-[5px] transition-all duration-300 inline-flex items-center gap-2 hover:bg-white/15 hover:border-white/40">
+            <a href="https://spgs.nsuk.edu.ng" target="_blank" class="w-full sm:w-auto justify-center bg-black/20 border-2 border-white/20 text-white py-[1.1rem] px-[2.2rem] rounded-full font-bold text-[1.05rem] no-underline backdrop-blur-[5px] transition-all duration-300 inline-flex items-center gap-2 hover:bg-white/15 hover:border-white/40">
                 Apply for MSc/PhD <i class="fa-solid fa-external-link-alt text-sm"></i>
             </a>
         </div>
