@@ -48,7 +48,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
               <div class="grid grid-cols-1 gap-0">
                 
                 <!-- Main Content -->
-                <div data-aos="fade-up" class="p-5 sm:p-8 md:p-10 lg:p-16">
+                <div data-aos="fade-up" class="p-4 sm:p-8 md:p-10 lg:p-16">
                     <div class="inline-flex items-center gap-2 bg-[#EAF3DE] text-[#1E7A3E] text-sm font-bold uppercase tracking-[1.5px] py-1.5 px-4 rounded-full mb-5 sm:mb-6">
                         <i class="fa-solid fa-circle-info"></i> About Us
                     </div>
