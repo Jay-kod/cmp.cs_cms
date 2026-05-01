@@ -38,9 +38,9 @@
     </div>
 </div>
 
-<div class="container page-layout -mt-12 relative z-20 pb-16">
+<div class="container page-layout -mt-16 relative z-20 pb-16 max-w-7xl">
 
-    <div class="main-content blog-main bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] p-12 lg:p-16">
+    <div class="main-content blog-main bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-100 p-6 sm:p-10 lg:p-16">
         @include('pages.research-news-partials.news')
         
         @include('pages.research-news-partials.announcements')
