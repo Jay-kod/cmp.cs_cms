@@ -29,7 +29,7 @@
         2 => ['fa-solid fa-book-open' => 'Book Open', 'fa-solid fa-book' => 'Book', 'fa-solid fa-chalkboard' => 'Chalkboard'],
         3 => ['fa-solid fa-graduation-cap' => 'Graduation Cap', 'fa-solid fa-user-graduate' => 'Graduate', 'fa-solid fa-scroll' => 'Scroll'],
         4 => ['fa-solid fa-building-user' => 'Building User', 'fa-solid fa-building-columns' => 'Building Columns', 'fa-solid fa-sitemap' => 'Sitemap'],
-        5 => ['fa-solid fa-user-graduate' => 'Students', 'fa-solid fa-users' => 'Users', 'fa-solid fa-medal' => 'Medal'],
+        5 => ['fa-solid fa-user-graduate' => 'Student Cap', 'fa-solid fa-graduation-cap' => 'Cap', 'fa-solid fa-user-group' => 'Group'],
         6 => ['fa-solid fa-users' => 'Team', 'fa-solid fa-chalkboard-user' => 'Teachers', 'fa-solid fa-user-tie' => 'Staff'],
     ];
 @endphp
