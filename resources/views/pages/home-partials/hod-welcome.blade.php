@@ -85,7 +85,7 @@
                     $statValue = $gs("stat_{$n}_value", [config('university.established'), '', '', '', '', ''][$n-1]);
                 }
             @endphp
-            <div data-aos="fade-up" data-aos-delay="{{ $n * 50 }}" class="relative bg-gradient-to-b from-green-50/80 to-[#f3faf5] rounded-3xl p-6 sm:p-8 border border-white hover:border-primary/20 shadow-[0_10px_40px_-5px_rgba(22,163,74,0.08)] group hover:-translate-y-2 hover:shadow-[0_20px_50px_-15px_rgba(22,163,74,0.15)] transition-all duration-500 overflow-hidden flex flex-col items-center justify-center text-center z-10 h-full cursor-default">
+            <div data-aos="fade-up" data-aos-delay="{{ $n * 50 }}" class="relative bg-gradient-to-b from-green-50/80 to-[#f3faf5] rounded-3xl p-6 sm:p-8 border border-white hover:border-primary/20 shadow-md sm:shadow-lg lg:shadow-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] group hover:-translate-y-2 hover:shadow-[0_20px_50px_-15px_rgba(22,163,74,0.25)] transition-all duration-500 overflow-hidden flex flex-col items-center justify-center text-center z-10 h-full cursor-default">
                 <!-- Decorative background elements -->
                 <div class="absolute -top-8 -right-8 w-24 h-24 bg-white/60 rounded-full blur-2xl group-hover:bg-primary/5 transition-colors duration-500 pointer-events-none"></div>
                 
