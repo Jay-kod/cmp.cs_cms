@@ -543,17 +543,11 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
     }
 @endphp
 
-<section class="bg-slate-50 py-24 relative overflow-hidden" x-data="{ activeFaq: 0 }">
-    <!-- Abstract background elements -->
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#1E7A3E]/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
-
+<section class="bg-white py-24 border-t border-black/5 relative overflow-hidden" x-data="{ activeFaq: 0 }">
     <div class="container relative z-10 max-w-[850px] mx-auto">
+        
         <!-- Section Header -->
-        <div class="text-center mb-16" data-aos="fade-up">
-            <span class="inline-flex items-center gap-2 bg-[#1E7A3E]/10 text-[#1E7A3E] text-[0.8rem] font-bold uppercase tracking-[2px] py-1.5 px-5 rounded-full mb-4">
-                Got Questions?
-            </span>
+        <div class="text-center mb-12" data-aos="fade-up">
             <h2 class="text-[2.5rem] md:text-[3rem] font-black text-slate-900 font-heading mb-4 tracking-tight leading-tight">
                 Frequently Asked Questions
             </h2>
@@ -562,34 +556,36 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </p>
         </div>
 
-        <div class="space-y-4">
+        <div class="space-y-5">
             @foreach($faqs as $index => $faq)
-            <div class="bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 transition-all duration-300 overflow-hidden"
-                 :class="activeFaq === {{ $index }} ? 'ring-1 ring-[#1E7A3E]/30 shadow-[0_15px_35px_rgba(30,122,62,0.1)] -translate-y-1' : 'hover:border-slate-200 hover:shadow-[0_8px_25px_rgba(0,0,0,0.06)]'"
+            <div class="relative rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden transition-all duration-300"
+                 :class="activeFaq === {{ $index }} ? 'bg-[#1E7A3E]/5' : 'bg-white hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)]'"
                  data-aos="fade-up" data-aos-delay="{{ $index * 50 }}">
                 
+                <!-- Left Accent Border -->
+                <div class="absolute left-0 top-0 bottom-0 w-[6px] bg-[#1E7A3E] rounded-l-2xl z-10"></div>
+
+                <!-- Question Button -->
                 <button @click="activeFaq = activeFaq === {{ $index }} ? null : {{ $index }}"
-                        class="w-full flex items-center justify-between p-5 sm:p-6 md:p-8 text-left focus:outline-none group bg-transparent">
-                    <div class="flex items-center gap-4 md:gap-6 pr-4">
-                        <!-- Number Indicator -->
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-[0.95rem] transition-colors duration-300 shrink-0"
-                             :class="activeFaq === {{ $index }} ? 'bg-[#1E7A3E] text-white shadow-md' : 'bg-slate-100 text-slate-500 group-hover:bg-[#1E7A3E]/10 group-hover:text-[#1E7A3E]'">
-                            0{{ $index + 1 }}
-                        </div>
-                        <h3 class="text-[1.05rem] md:text-[1.15rem] font-bold transition-colors duration-300 m-0"
-                            :class="activeFaq === {{ $index }} ? 'text-[#1E7A3E]' : 'text-slate-800 group-hover:text-[#1E7A3E]'">
-                            {{ $faq['q'] }}
-                        </h3>
-                    </div>
-                    <div class="w-8 h-8 flex items-center justify-center shrink-0 transition-all duration-300 text-slate-400 group-hover:text-[#1E7A3E]"
-                         :class="activeFaq === {{ $index }} ? 'rotate-180 text-[#1E7A3E]' : ''">
-                        <i class="fa-solid fa-chevron-down text-lg"></i>
+                        class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none group relative z-0"
+                        :class="activeFaq === {{ $index }} ? 'bg-transparent' : 'bg-white'">
+                    
+                    <h3 class="text-[1.05rem] md:text-[1.15rem] font-bold text-[#1E7A3E] m-0 pl-3">
+                        {{ $faq['q'] }}
+                    </h3>
+                    
+                    <!-- Plus / Minus Icon -->
+                    <div class="w-8 h-8 rounded-full border-[1.5px] border-[#1E7A3E] text-[#1E7A3E] flex items-center justify-center shrink-0 transition-all duration-300 bg-white group-hover:bg-[#1E7A3E] group-hover:text-white"
+                         :class="activeFaq === {{ $index }} ? 'rotate-45' : ''">
+                        <i class="fa-solid fa-plus text-[1rem]"></i>
                     </div>
                 </button>
                 
+                <!-- Answer Panel -->
                 <div x-show="activeFaq === {{ $index }}" x-collapse x-cloak>
-                    <div class="px-5 sm:px-6 md:px-8 pb-6 md:pb-8 pt-0 ml-[3.5rem] md:ml-[4.5rem]">
-                        <p class="text-slate-600 text-[1rem] leading-[1.7] m-0 border-l-2 border-[#1E7A3E]/20 pl-4 py-1">
+                    <!-- In the image, the answer box has a light gray/light theme background with rounded bottoms -->
+                    <div class="px-5 md:px-8 pb-7 pt-1" :class="activeFaq === {{ $index }} ? 'bg-transparent' : 'bg-slate-50'">
+                        <p class="text-slate-600 text-[0.95rem] md:text-[1rem] leading-[1.7] m-0 pl-1">
                             {{ $faq['a'] }}
                         </p>
                     </div>
@@ -598,19 +594,14 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             @endforeach
         </div>
 
-        <!-- Support CTA -->
-        <div class="mt-16 bg-white rounded-3xl p-8 md:p-12 text-center border border-slate-100 shadow-sm relative overflow-hidden" data-aos="fade-up">
-            <div class="absolute inset-0 bg-gradient-to-br from-[#1E7A3E]/5 to-transparent pointer-events-none"></div>
-            <div class="relative z-10">
-                <div class="w-16 h-16 bg-[#1E7A3E]/10 rounded-full flex items-center justify-center text-2xl text-[#1E7A3E] mx-auto mb-5 shadow-inner">
-                    <i class="fa-regular fa-comments"></i>
-                </div>
-                <h4 class="text-[1.4rem] font-black text-slate-900 mb-2 font-heading">Still have questions?</h4>
-                <p class="text-slate-500 mb-8 max-w-[400px] mx-auto text-[1.05rem]">Can't find the answer you're looking for? Please chat with our friendly team.</p>
-                <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 bg-[#1E7A3E] hover:bg-[#156030] text-white py-3.5 px-9 rounded-full font-bold transition-all duration-300 shadow-[0_8px_20px_-5px_rgba(30,122,62,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(30,122,62,0.5)] hover:-translate-y-1 no-underline">
-                    Get in touch <i class="fa-solid fa-arrow-right text-sm ml-1"></i>
-                </a>
-            </div>
+        <!-- Support CTA matching the image -->
+        <div class="mt-16 text-center" data-aos="fade-up">
+            <h3 class="text-[1.8rem] md:text-[2.2rem] font-extrabold text-[#1E7A3E] mb-6 tracking-tight">
+                Still Have any Question ?
+            </h3>
+            <a href="{{ route('contact') }}" class="inline-flex items-center justify-center bg-transparent border-[2.5px] border-[#1E7A3E] text-[#1E7A3E] hover:bg-[#1E7A3E] hover:text-white py-3 px-10 font-bold text-[1.1rem] transition-all duration-300 shadow-sm hover:shadow-md no-underline rounded-sm">
+                Contact us Now
+            </a>
         </div>
     </div>
 </section>
