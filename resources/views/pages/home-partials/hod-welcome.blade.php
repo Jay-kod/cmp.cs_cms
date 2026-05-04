@@ -60,7 +60,7 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 text-center">
             @foreach([1,2,3,4,5,6] as $n)
             @php
-                $defaultIcons = ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-user-graduate','fa-solid fa-users-tie'];
+                $defaultIcons = ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-user-graduate','fa-solid fa-users'];
                 $defaultLabels = ['Established','Courses','Programmes','Departments','Active Students','Expert Staff'];
                 $defaultValues = ['2019', \App\Models\Course::count(), \App\Models\Programme::where('is_active', true)->count(), \App\Models\ProgrammeCategory::count(), '1,500+', \App\Models\Staff::count() > 0 ? \App\Models\Staff::count() : '50+'];
 
