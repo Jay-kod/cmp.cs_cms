@@ -188,6 +188,12 @@
                             <label class="apc-label">Label</label>
                             <input class="apc-input" type="text" name="stat_{{ $n }}_label" value="{{ $s("stat_{$n}_label", $defaultLabels[$n-1] ?? '') }}" placeholder="{{ $defaultLabels[$n-1] ?? '' }}">
                         </div>
+                        @if($n == 1)
+                        <div class="apc-field">
+                            <label class="apc-label">Badge Text (Accreditation)</label>
+                            <input class="apc-input" type="text" name="stat_1_badge" value="{{ $s('stat_1_badge', 'NUC Accredited') }}" placeholder="NUC Accredited">
+                        </div>
+                        @endif
                     </div>
                 </div>
                 @endforeach
