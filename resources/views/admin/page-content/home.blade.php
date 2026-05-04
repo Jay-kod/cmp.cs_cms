@@ -154,17 +154,17 @@
                     <div class="apc-section-icon" style="background: #6366f1;"><i class="fa-solid fa-chart-bar"></i></div>
                     <div>
                         <p class="apc-section-title">Stats Counter Cards</p>
-                        <p class="apc-section-subtitle">5 metric cards displayed over the HOD section</p>
+                        <p class="apc-section-subtitle">6 metric cards displayed over the HOD section</p>
                     </div>
                 </div>
                 <div style="display:flex; align-items:center; gap:0.6rem;">
-                    <span style="background:#e0e7ff; color:#4338ca; font-size:0.7rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:20px;">5 cards</span>
+                    <span style="background:#e0e7ff; color:#4338ca; font-size:0.7rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:20px;">6 cards</span>
                     <i class="fa-solid fa-chevron-down apc-chevron"></i>
                 </div>
             </div>
             <div class="apc-section-body">
-                @foreach([1,2,3,4,5] as $n)
-                @php $currentIcon = $s("stat_{$n}_icon", $defaultIcons[$n-1]); @endphp
+                @foreach([1,2,3,4,5,6] as $n)
+                @php $currentIcon = $s("stat_{$n}_icon", $defaultIcons[$n-1] ?? 'fa-solid fa-star'); @endphp
                 <div style="border:1.5px solid #e2e8f0; border-radius:10px; padding:1rem; margin-bottom:1rem; background:#fafafa;">
                     <div style="font-size:0.8rem; font-weight:800; color:#64748b; margin-bottom:0.8rem;">CARD #{{ $n }}</div>
                     <div class="apc-row" style="grid-template-columns: 1.5fr 1fr 1fr;">
@@ -172,7 +172,7 @@
                             <label class="apc-label"><i class="fa-solid fa-icons" style="color:#0ea5e9;"></i> Icon</label>
                             <input type="hidden" name="stat_{{ $n }}_icon" id="statIconInput{{ $n }}" value="{{ $currentIcon }}">
                             <div style="display:flex; gap:0.5rem; margin-top:0.2rem;">
-                                @foreach($iconChoices[$n] as $iconClass => $iconLabel)
+                                @foreach($iconChoices[$n] ?? ['fa-solid fa-star' => 'Star', 'fa-solid fa-user-graduate' => 'Graduate', 'fa-solid fa-users-tie' => 'Staff'] as $iconClass => $iconLabel)
                                 <div class="icon-pick {{ $currentIcon === $iconClass ? 'icon-pick-active' : '' }}" onclick="pickIcon({{ $n }}, '{{ $iconClass }}', this)">
                                     <i class="{{ $iconClass }}"></i>
                                 </div>
@@ -181,11 +181,11 @@
                         </div>
                         <div class="apc-field">
                             <label class="apc-label">Metric Value</label>
-                            <input class="apc-input" type="text" name="stat_{{ $n }}_value" value="{{ $s("stat_{$n}_value", $defaultValues[$n-1]) }}" placeholder="{{ $defaultValues[$n-1] }}">
+                            <input class="apc-input" type="text" name="stat_{{ $n }}_value" value="{{ $s("stat_{$n}_value", $defaultValues[$n-1] ?? '') }}" placeholder="{{ $defaultValues[$n-1] ?? '' }}">
                         </div>
                         <div class="apc-field">
                             <label class="apc-label">Label</label>
-                            <input class="apc-input" type="text" name="stat_{{ $n }}_label" value="{{ $s("stat_{$n}_label", $defaultLabels[$n-1]) }}" placeholder="{{ $defaultLabels[$n-1] }}">
+                            <input class="apc-input" type="text" name="stat_{{ $n }}_label" value="{{ $s("stat_{$n}_label", $defaultLabels[$n-1] ?? '') }}" placeholder="{{ $defaultLabels[$n-1] ?? '' }}">
                         </div>
                     </div>
                 </div>
