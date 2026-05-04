@@ -552,34 +552,30 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
     <div class="container relative z-10">
         
         <!-- Section Header -->
-        <div class="text-center mb-16" data-aos="fade-up">
-            <span class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-600 text-[0.78rem] font-bold uppercase tracking-[2px] py-2 px-5 rounded-full mb-5 border border-emerald-500/15 shadow-sm">
-                <i class="fa-solid fa-circle-question text-[0.7rem]"></i> Support & Guidance
-            </span>
-            <h2 class="text-[2.5rem] md:text-[3rem] font-black text-slate-900 font-heading mb-5 tracking-tight leading-[1.1]">
-                Frequently Asked Questions
+        <div class="mb-10 text-left" data-aos="fade-up">
+            <h2 class="text-[1.3rem] font-extrabold text-[#0f172a] font-heading mb-1.5 flex items-center gap-2.5">
+                <i class="fa-solid fa-circle-question text-primary"></i> Frequently Asked Questions
             </h2>
-            <p class="text-slate-500 max-w-[600px] mx-auto text-[1.05rem] leading-[1.7]">
-                Everything you need to know about admissions, curriculum, and campus life at <span class="text-emerald-600 font-semibold">{{ $subDept->name }}</span>.
+            <p class="text-[#64748b] text-[0.9rem] mb-6">
+                Everything you need to know about admissions, curriculum, and campus life at <span class="font-semibold">{{ $subDept->name }}</span>.
             </p>
         </div>
 
-
-        <div class="max-w-[850px] mx-auto">
+        <div class="mx-auto">
             <div class="flex flex-col gap-[0.8rem]">
 
                 @foreach($faqs as $index => $faq)
-                <div class="bg-white rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] border transition-all duration-200 overflow-hidden"
-                     :class="activeFaq === {{ $index }} ? 'border-[#1E7A3E]/20 shadow-[0_4px_20px_rgba(0,0,0,0.06)]' : 'border-slate-100'"
-                     data-aos="fade-up" data-aos-delay="{{ $index * 70 }}">
+                <div class="bg-white rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-[#f1f5f9] transition-all duration-200 overflow-hidden"
+                     :class="activeFaq === {{ $index }} ? 'border-primary/20 shadow-[0_4px_20px_rgba(0,0,0,0.06)]' : ''"
+                     data-aos="fade-up" data-aos-delay="{{ $index * 50 }}">
 
                     <!-- Question Button -->
                     <button @click="activeFaq = activeFaq === {{ $index }} ? null : {{ $index }}"
-                            class="w-full text-left p-[1.1rem_1.3rem] flex items-center justify-between cursor-pointer select-none gap-4 transition-colors duration-150 hover:bg-slate-50 focus:outline-none">
+                            class="w-full text-left p-[1.1rem_1.3rem] flex items-center justify-between cursor-pointer select-none gap-4 transition-colors duration-150 hover:bg-[#fafbfc] focus:outline-none">
 
                         <!-- Question text with Number -->
-                        <h4 class="font-heading text-[0.92rem] sm:text-[1rem] font-bold text-slate-800 m-0 flex items-center gap-2.5">
-                            <span class="w-[26px] h-[26px] rounded-[7px] bg-[#1E7A3E]/10 text-[#1E7A3E] flex items-center justify-center text-[0.75rem] font-bold shrink-0">
+                        <h4 class="font-heading text-[0.92rem] font-bold text-[#1e293b] m-0 flex items-center gap-[0.6rem]">
+                            <span class="w-[26px] h-[26px] rounded-[7px] bg-primary/10 text-primary flex items-center justify-center text-[0.75rem] font-bold shrink-0">
                                 {{ $index + 1 }}
                             </span>
                             {{ $faq['q'] }}
@@ -587,7 +583,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
 
                         <!-- Toggle icon -->
                         <div class="w-[28px] h-[28px] rounded-full flex items-center justify-center text-[0.7rem] transition-all duration-300 shrink-0"
-                             :class="activeFaq === {{ $index }} ? 'bg-[#1E7A3E] text-white rotate-180' : 'bg-slate-100 text-slate-500'">
+                             :class="activeFaq === {{ $index }} ? 'bg-primary text-white rotate-180' : 'bg-[#f1f5f9] text-[#64748b]'">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </button>
@@ -596,12 +592,13 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                     <div x-show="activeFaq === {{ $index }}"
                          x-collapse
                          x-cloak>
-                        <div class="px-[1.3rem] pb-[1.2rem] pl-[calc(1.3rem+26px+0.6rem)] text-[0.88rem] sm:text-[0.95rem] text-slate-600 leading-[1.7]">
+                        <div class="px-[1.3rem] pb-[1.2rem] pl-[calc(1.3rem+26px+0.6rem)] text-[0.88rem] text-[#475569] leading-[1.7]">
                             {{ $faq['a'] }}
                         </div>
                     </div>
                 </div>
                 @endforeach
+
 
                 <!-- Bottom CTA Bar -->
                 <div class="mt-8 bg-gradient-to-r from-slate-50 to-[#1E7A3E]/10 rounded-2xl p-5 md:p-7 border border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-4" data-aos="fade-up">
