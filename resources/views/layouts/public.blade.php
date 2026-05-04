@@ -295,7 +295,7 @@
                     <span class="text-white/20 sm:hidden">|</span>
                     <a href="{{ url('/page/terms-of-use') }}" class="text-[#f1f5f9] hover:text-accent transition-colors duration-150">Terms of Use</a>
                     <span class="text-white/20 sm:hidden">|</span>
-                    <a href="{{ url('/page/sitemap') }}" class="text-[#f1f5f9] hover:text-accent transition-colors duration-150">Sitemap</a>
+                    <a href="{{ route('page.show', 'sitemap') }}" class="text-[#f1f5f9] hover:text-accent transition-colors duration-150">Sitemap</a>
                 </div>
             </div>
         </div>
