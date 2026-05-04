@@ -85,6 +85,13 @@
                 <!-- Label -->
                 <p class="relative text-[0.65rem] lg:text-[0.7rem] font-bold text-slate-500 uppercase tracking-[1.5px] m-0 z-10 group-hover:text-slate-700 transition-colors duration-300">{{ $statLabel }}</p>
 
+                @if($n == 1)
+                <!-- Extra Badge for Card 1 (Accreditation) -->
+                <div class="relative z-10 mt-3 inline-flex items-center gap-1.5 bg-green-100/80 text-primary border border-green-200/50 px-2.5 py-1 rounded-full text-[0.55rem] font-bold uppercase tracking-[1px] group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <i class="fa-solid fa-certificate"></i> NUC Accredited
+                </div>
+                @endif
+
                 <!-- Bottom accent line -->
                 <div class="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary/80 to-primary group-hover:w-full transition-all duration-500 ease-out"></div>
             </div>
