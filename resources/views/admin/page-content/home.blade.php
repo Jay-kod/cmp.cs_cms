@@ -20,7 +20,7 @@
         'sec-cta'        => ['icon' => 'fa-paper-plane',     'label' => 'CTA Banner',      'color' => '#ef4444'],
     ];
 
-    $defaultIcons  = ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-user-graduate','fa-solid fa-users-tie'];
+    $defaultIcons  = ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-user-graduate','fa-solid fa-users'];
     $defaultValues = ['2019', '16', '3', '5', '1,500+', '7'];
     $defaultLabels = ['Established','Courses','Programmes','Departments','Active Students','Expert Staff'];
 
@@ -30,7 +30,7 @@
         3 => ['fa-solid fa-graduation-cap' => 'Graduation Cap', 'fa-solid fa-user-graduate' => 'Graduate', 'fa-solid fa-scroll' => 'Scroll'],
         4 => ['fa-solid fa-building-user' => 'Building User', 'fa-solid fa-building-columns' => 'Building Columns', 'fa-solid fa-sitemap' => 'Sitemap'],
         5 => ['fa-solid fa-user-graduate' => 'Students', 'fa-solid fa-users' => 'Users', 'fa-solid fa-medal' => 'Medal'],
-        6 => ['fa-solid fa-users-tie' => 'Expert Staff', 'fa-solid fa-chalkboard-user' => 'Teachers', 'fa-solid fa-user-tie' => 'Staff'],
+        6 => ['fa-solid fa-users' => 'Team', 'fa-solid fa-chalkboard-user' => 'Teachers', 'fa-solid fa-user-tie' => 'Staff'],
     ];
 @endphp
 
