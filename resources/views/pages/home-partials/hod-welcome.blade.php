@@ -85,25 +85,25 @@
                     $statValue = $gs("stat_{$n}_value", [config('university.established'), '', '', '', '', ''][$n-1]);
                 }
             @endphp
-            <div data-aos="fade-up" data-aos-delay="{{ $n * 50 }}" class="relative bg-green-50 rounded-2xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-green-100 hover:border-primary/30 group hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(22,163,74,0.2)] transition-all duration-500 overflow-hidden flex flex-col items-center justify-center text-center z-10 h-full">
+            <div data-aos="fade-up" data-aos-delay="{{ $n * 50 }}" class="relative bg-gradient-to-b from-green-50/80 to-[#f3faf5] rounded-3xl p-6 sm:p-8 border border-white hover:border-primary/20 shadow-[0_10px_40px_-5px_rgba(22,163,74,0.08)] group hover:-translate-y-2 hover:shadow-[0_20px_50px_-15px_rgba(22,163,74,0.15)] transition-all duration-500 overflow-hidden flex flex-col items-center justify-center text-center z-10 h-full cursor-default">
                 <!-- Decorative background elements -->
-                <div class="absolute -top-8 -right-8 w-24 h-24 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/15 transition-colors duration-500 pointer-events-none"></div>
+                <div class="absolute -top-8 -right-8 w-24 h-24 bg-white/60 rounded-full blur-2xl group-hover:bg-primary/5 transition-colors duration-500 pointer-events-none"></div>
                 
                 <!-- Icon container -->
-                <div class="relative w-14 h-14 mx-auto mb-4 rounded-xl bg-white flex items-center justify-center text-[1.5rem] text-primary shadow-sm border border-green-100/50 group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:-rotate-3 group-hover:shadow-[0_8px_15px_rgba(22,163,74,0.3)] transition-all duration-500 z-10">
+                <div class="relative w-14 h-14 mx-auto mb-5 rounded-2xl bg-white flex items-center justify-center text-[1.4rem] text-primary shadow-[0_4px_20px_-5px_rgba(22,163,74,0.1)] group-hover:bg-primary group-hover:text-white group-hover:scale-110 transition-all duration-500 z-10">
                     <i class="{{ $statIcon }}"></i>
                 </div>
                 
                 <!-- Value -->
-                <h2 class="relative text-[2.2rem] lg:text-[2.5rem] text-slate-800 font-heading font-black mb-1 leading-none tracking-tight z-10 group-hover:scale-105 group-hover:text-primary transition-all duration-500">
+                <h2 class="relative text-[2.2rem] lg:text-[2.6rem] text-slate-800 font-heading font-extrabold mb-1.5 leading-none tracking-tight z-10 group-hover:scale-105 group-hover:text-primary transition-all duration-500">
                     {{ $statValue }}
                 </h2>
                 
                 <!-- Label -->
-                <p class="relative text-[0.65rem] lg:text-[0.7rem] font-bold text-slate-500 uppercase tracking-[1.5px] m-0 z-10 group-hover:text-slate-700 transition-colors duration-300">{{ $statLabel }}</p>
+                <p class="relative text-[0.7rem] lg:text-[0.75rem] font-bold text-slate-500 uppercase tracking-[1.5px] m-0 z-10 group-hover:text-slate-700 transition-colors duration-300">{{ $statLabel }}</p>
 
                 <!-- Bottom accent line -->
-                <div class="absolute bottom-0 left-0 h-1 w-0 bg-primary group-hover:w-full transition-all duration-500 ease-out"></div>
+                <div class="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary/80 to-primary group-hover:w-full transition-all duration-500 ease-out"></div>
             </div>
             @endforeach
         </div>
