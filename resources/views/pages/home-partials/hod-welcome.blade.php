@@ -62,28 +62,11 @@
             @php
                 $defaultIcons = ['fa-regular fa-building','fa-solid fa-book-open','fa-solid fa-graduation-cap','fa-solid fa-building-user','fa-solid fa-user-graduate','fa-solid fa-users-tie'];
                 $defaultLabels = ['Established','Courses','Programmes','Departments','Active Students','Expert Staff'];
-                
+                $defaultValues = ['2019', \App\Models\Course::count(), \App\Models\Programme::where('is_active', true)->count(), \App\Models\ProgrammeCategory::count(), '1,500+', \App\Models\Staff::count() > 0 ? \App\Models\Staff::count() : '50+'];
+
                 $statIcon  = $gs("stat_{$n}_icon", $defaultIcons[$n-1]);
                 $statLabel = $gs("stat_{$n}_label", $defaultLabels[$n-1]);
-
-                // Force override for Active Students (to prevent old database values from showing NUC)
-                if ($n == 5) {
-                    $statIcon = 'fa-solid fa-user-graduate';
-                    $statLabel = 'Active Students';
-                    $statValue = '1,500+';
-                } elseif ($n == 6) {
-                    $statIcon = 'fa-solid fa-users-tie';
-                    $statLabel = 'Expert Staff';
-                    $statValue = \App\Models\Staff::count() > 0 ? \App\Models\Staff::count() : '50+';
-                } elseif ($n == 2 || stripos($statLabel, 'courses') !== false) {
-                    $statValue = \App\Models\Course::count();
-                } elseif ($n == 3 || stripos($statLabel, 'programmes') !== false) {
-                    $statValue = \App\Models\Programme::where('is_active', true)->count();
-                } elseif ($n == 4 || stripos($statLabel, 'departments') !== false) {
-                    $statValue = \App\Models\ProgrammeCategory::count();
-                } else {
-                    $statValue = $gs("stat_{$n}_value", [config('university.established'), '', '', '', '', ''][$n-1]);
-                }
+                $statValue = $gs("stat_{$n}_value", $defaultValues[$n-1]);
             @endphp
             <div data-aos="fade-up" data-aos-delay="{{ $n * 50 }}" class="relative bg-gradient-to-b from-green-50/80 to-[#f3faf5] rounded-2xl p-4 sm:p-5 border border-white hover:border-primary/20 shadow-xl shadow-[0_8px_30px_rgba(0,0,0,0.18)] group hover:-translate-y-2 hover:shadow-[0_20px_50px_-15px_rgba(22,163,74,0.4)] transition-all duration-500 overflow-hidden flex flex-col items-center justify-center text-center z-10 h-full cursor-default">
                 <!-- Decorative background elements -->
