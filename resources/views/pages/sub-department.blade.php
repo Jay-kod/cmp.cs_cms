@@ -556,19 +556,15 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
             </p>
         </div>
 
-        <div class="space-y-5">
+        <div class="flex flex-col divide-y divide-slate-100 bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden mx-auto">
             @foreach($faqs as $index => $faq)
-            <div class="relative rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden transition-all duration-300"
-                 :class="activeFaq === {{ $index }} ? 'bg-[#1E7A3E]/5' : 'bg-white hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)]'"
+            <div class="transition-all duration-200 bg-white hover:bg-[#fafbfc]"
+                 :class="activeFaq === {{ $index }} ? 'bg-[#fafbfc]' : ''"
                  data-aos="fade-up" data-aos-delay="{{ $index * 50 }}">
                 
-                <!-- Left Accent Border -->
-                <div class="absolute left-0 top-0 bottom-0 w-[6px] bg-[#1E7A3E] rounded-l-2xl z-10"></div>
-
                 <!-- Question Button -->
                 <button @click="activeFaq = activeFaq === {{ $index }} ? null : {{ $index }}"
-                        class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none group relative z-0"
-                        :class="activeFaq === {{ $index }} ? 'bg-transparent' : 'bg-white'">
+                        class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none group relative z-0">
                     
                     <h3 class="text-[1.05rem] md:text-[1.15rem] font-bold text-[#1E7A3E] m-0 pl-3">
                         {{ $faq['q'] }}
@@ -584,7 +580,7 @@ $gs = fn(string $key, string $default = '') => \App\Models\DepartmentSetting::ge
                 <!-- Answer Panel -->
                 <div x-show="activeFaq === {{ $index }}" x-collapse x-cloak>
                     <!-- In the image, the answer box has a light gray/light theme background with rounded bottoms -->
-                    <div class="px-5 md:px-8 pb-7 pt-1" :class="activeFaq === {{ $index }} ? 'bg-transparent' : 'bg-slate-50'">
+                    <div class="px-5 md:px-8 pb-7 pt-1 bg-transparent">
                         <p class="text-slate-600 text-[0.95rem] md:text-[1rem] leading-[1.7] m-0 pl-1">
                             {{ $faq['a'] }}
                         </p>
