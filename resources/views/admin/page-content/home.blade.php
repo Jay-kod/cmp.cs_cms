@@ -173,7 +173,7 @@
                             <label class="apc-label"><i class="fa-solid fa-icons" style="color:#0ea5e9;"></i> Icon</label>
                             <input type="hidden" name="stat_{{ $n }}_icon" id="statIconInput{{ $n }}" value="{{ $currentIcon }}">
                             <div style="display:flex; gap:0.5rem; margin-top:0.2rem;">
-                                @foreach($iconChoices[$n] ?? ['fa-solid fa-star' => 'Star', 'fa-solid fa-user-graduate' => 'Graduate', 'fa-solid fa-users-tie' => 'Staff'] as $iconClass => $iconLabel)
+                                @foreach($iconChoices[$n] ?? ['fa-solid fa-users' => 'Team', 'fa-solid fa-chalkboard-user' => 'Teachers', 'fa-solid fa-user-tie' => 'Staff'] as $iconClass => $iconLabel)
                                 <div class="icon-pick {{ $currentIcon === $iconClass ? 'icon-pick-active' : '' }}" onclick="pickIcon({{ $n }}, '{{ $iconClass }}', this)">
                                     <i class="{{ $iconClass }}"></i>
                                 </div>
