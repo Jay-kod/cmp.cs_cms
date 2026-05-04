@@ -222,26 +222,26 @@
                 </p>
             </div>
             
-            <div class="flex flex-col gap-[0.8rem]">
+            <div class="flex flex-col divide-y divide-slate-100 bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                 @foreach($faqs as $index => $faq)
-                <div class="bg-white rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-[#f1f5f9] transition-all duration-200 overflow-hidden"
-                     :class="activeFaq === {{ $index }} ? 'border-primary/20 shadow-[0_4px_20px_rgba(0,0,0,0.06)]' : ''">
+                <div class="transition-all duration-200 bg-white hover:bg-[#fafbfc]"
+                     :class="activeFaq === {{ $index }} ? 'bg-[#fafbfc]' : ''">
 
                     <!-- Question Button -->
                     <button @click="activeFaq = activeFaq === {{ $index }} ? null : {{ $index }}"
-                            class="w-full text-left p-[1.1rem_1.3rem] flex items-center justify-between cursor-pointer select-none gap-4 transition-colors duration-150 hover:bg-[#fafbfc] focus:outline-none">
+                            class="w-full text-left p-[1.2rem_1.5rem] flex items-center justify-between cursor-pointer select-none gap-4 transition-colors duration-150 focus:outline-none">
 
                         <!-- Question text with Number -->
-                        <h4 class="font-heading text-[0.92rem] font-bold text-[#1e293b] m-0 flex items-center gap-[0.6rem]">
-                            <span class="w-[26px] h-[26px] rounded-[7px] bg-primary/10 text-primary flex items-center justify-center text-[0.75rem] font-bold shrink-0">
+                        <h4 class="font-heading text-[0.95rem] font-bold text-[#1e293b] m-0 flex items-center gap-[0.8rem]">
+                            <span class="w-[28px] h-[28px] rounded-lg bg-primary/10 text-primary flex items-center justify-center text-[0.8rem] font-bold shrink-0">
                                 {{ $index + 1 }}
                             </span>
                             {{ $faq['q'] }}
                         </h4>
 
                         <!-- Toggle icon -->
-                        <div class="w-[28px] h-[28px] rounded-full flex items-center justify-center text-[0.7rem] transition-all duration-300 shrink-0"
-                             :class="activeFaq === {{ $index }} ? 'bg-primary text-white rotate-180' : 'bg-[#f1f5f9] text-[#64748b]'">
+                        <div class="w-[30px] h-[30px] rounded-full flex items-center justify-center text-[0.75rem] transition-transform duration-300 shrink-0 text-[#64748b]"
+                             :class="activeFaq === {{ $index }} ? 'rotate-180 text-primary bg-primary/10' : 'bg-[#f1f5f9]'">
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </button>
@@ -250,7 +250,7 @@
                     <div x-show="activeFaq === {{ $index }}"
                          x-collapse
                          x-cloak>
-                        <div class="px-[1.3rem] pb-[1.2rem] pl-[calc(1.3rem+26px+0.6rem)] text-[0.88rem] text-[#475569] leading-[1.7]">
+                        <div class="px-[1.5rem] pb-[1.4rem] pl-[calc(1.5rem+28px+0.8rem)] text-[0.9rem] text-[#475569] leading-[1.7]">
                             {{ $faq['a'] }}
                         </div>
                     </div>
