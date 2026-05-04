@@ -212,27 +212,54 @@
             if (empty($faqs)) $faqs = $defaultFaqs;
         @endphp
         @if(count($faqs) > 0)
-        <div class="bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-gray-100" data-aos="fade-up">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 border-b border-gray-100 pb-4 mb-8 font-heading flex items-center gap-3">
-                <i class="fa-solid fa-comments text-green-600"></i> Frequently Asked Questions
-            </h2>
+        <div class="mt-10" data-aos="fade-up" x-data="{ activeFaq: null }">
+            <div class="mb-6 text-left">
+                <h2 class="text-[1.3rem] font-extrabold text-[#0f172a] font-heading mb-1.5 flex items-center gap-2.5">
+                    <i class="fa-solid fa-circle-question text-primary"></i> Frequently Asked Questions
+                </h2>
+                <p class="text-[#64748b] text-[0.9rem]">
+                    Quick answers to common questions about the SIWES programme.
+                </p>
+            </div>
             
-            <div class="space-y-4">
+            <div class="flex flex-col gap-[0.8rem]">
                 @foreach($faqs as $index => $faq)
-                <div class="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 shadow-sm">
-                    <button class="w-full text-left px-6 py-5 bg-gray-50 hover:bg-gray-100 font-bold text-gray-800 text-lg flex justify-between items-center transition"
-                            onclick="const c = this.nextElementSibling; const i = this.querySelector('i'); if(c.style.display === 'none'){c.style.display='block';i.classList.add('rotate-180')}else{c.style.display='none';i.classList.remove('rotate-180')}">
-                        {{ $faq['q'] }}
-                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 text-sm"></i>
+                <div class="bg-white rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-[#f1f5f9] transition-all duration-200 overflow-hidden"
+                     :class="activeFaq === {{ $index }} ? 'border-primary/20 shadow-[0_4px_20px_rgba(0,0,0,0.06)]' : ''">
+
+                    <!-- Question Button -->
+                    <button @click="activeFaq = activeFaq === {{ $index }} ? null : {{ $index }}"
+                            class="w-full text-left p-[1.1rem_1.3rem] flex items-center justify-between cursor-pointer select-none gap-4 transition-colors duration-150 hover:bg-[#fafbfc] focus:outline-none">
+
+                        <!-- Question text with Number -->
+                        <h4 class="font-heading text-[0.92rem] font-bold text-[#1e293b] m-0 flex items-center gap-[0.6rem]">
+                            <span class="w-[26px] h-[26px] rounded-[7px] bg-primary/10 text-primary flex items-center justify-center text-[0.75rem] font-bold shrink-0">
+                                {{ $index + 1 }}
+                            </span>
+                            {{ $faq['q'] }}
+                        </h4>
+
+                        <!-- Toggle icon -->
+                        <div class="w-[28px] h-[28px] rounded-full flex items-center justify-center text-[0.7rem] transition-all duration-300 shrink-0"
+                             :class="activeFaq === {{ $index }} ? 'bg-primary text-white rotate-180' : 'bg-[#f1f5f9] text-[#64748b]'">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
                     </button>
-                    <div class="px-6 py-5 bg-white text-gray-600 text-[1.05rem] leading-relaxed border-t border-gray-100" style="display: none;">
-                        {{ $faq['a'] }}
+
+                    <!-- Answer Panel -->
+                    <div x-show="activeFaq === {{ $index }}"
+                         x-collapse
+                         x-cloak>
+                        <div class="px-[1.3rem] pb-[1.2rem] pl-[calc(1.3rem+26px+0.6rem)] text-[0.88rem] text-[#475569] leading-[1.7]">
+                            {{ $faq['a'] }}
+                        </div>
                     </div>
                 </div>
                 @endforeach
             </div>
         </div>
         @endif
+
     </div>
 </div>
 @endsection
