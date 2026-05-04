@@ -85,10 +85,25 @@
                     $statValue = $gs("stat_{$n}_value", [config('university.established'), '', '', '', '', ''][$n-1]);
                 }
             @endphp
-            <div data-aos="fade-up" class="relative overflow-hidden bg-gradient-to-br from-[#14532d] via-[#166534] to-[#15803d] hover:from-[#166534] hover:via-[#15803d] hover:to-[#16a34a] text-white p-6 md:p-[1.8rem_1.2rem_1.4rem] rounded-2xl md:rounded-2xl lg:min-h-[130px] shadow-[0_4px_15px_rgba(20,83,45,0.25)] group hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(20,83,45,0.35)] transition-all duration-300 flex flex-col items-center justify-center">
-                <div class="absolute right-[12px] bottom-[10px] text-[3rem] text-white/10 opacity-90 group-hover:text-white/20 group-hover:scale-110 pointer-events-none transition-all duration-300 leading-none z-[1]"><i class="{{ $statIcon }}"></i></div>
-                <h2 class="text-[2.8rem] text-white font-heading font-black mb-[0.3rem] leading-none tracking-normal z-[2] group-hover:scale-105 transition-transform duration-300">{{ $statValue }}</h2>
-                <p class="text-[0.7rem] font-bold text-white/75 group-hover:text-white/90 uppercase tracking-[1.5px] z-[2] transition-colors duration-300 m-0">{{ $statLabel }}</p>
+            <div data-aos="fade-up" data-aos-delay="{{ $n * 50 }}" class="relative bg-green-50/60 rounded-2xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-green-100/80 hover:border-primary/30 hover:bg-green-50 group hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(22,163,74,0.2)] transition-all duration-500 overflow-hidden flex flex-col items-center justify-center text-center z-10 h-full">
+                <!-- Decorative background elements -->
+                <div class="absolute -top-8 -right-8 w-24 h-24 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/15 transition-colors duration-500 pointer-events-none"></div>
+                
+                <!-- Icon container -->
+                <div class="relative w-14 h-14 mx-auto mb-4 rounded-xl bg-white flex items-center justify-center text-[1.5rem] text-primary shadow-sm border border-green-100/50 group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:-rotate-3 group-hover:shadow-[0_8px_15px_rgba(22,163,74,0.3)] transition-all duration-500 z-10">
+                    <i class="{{ $statIcon }}"></i>
+                </div>
+                
+                <!-- Value -->
+                <h2 class="relative text-[2.2rem] lg:text-[2.5rem] text-slate-800 font-heading font-black mb-1 leading-none tracking-tight z-10 group-hover:scale-105 transition-transform duration-500">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-br from-slate-800 to-slate-600 group-hover:from-primary group-hover:to-[#14532d]">{{ $statValue }}</span>
+                </h2>
+                
+                <!-- Label -->
+                <p class="relative text-[0.65rem] lg:text-[0.7rem] font-bold text-slate-500 uppercase tracking-[1.5px] m-0 z-10 group-hover:text-slate-700 transition-colors duration-300">{{ $statLabel }}</p>
+
+                <!-- Bottom accent line -->
+                <div class="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary to-[#14532d] group-hover:w-full transition-all duration-500 ease-out"></div>
             </div>
             @endforeach
         </div>
