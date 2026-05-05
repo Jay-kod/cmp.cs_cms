@@ -19,7 +19,7 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # Explicitly set the MPM to prefork to avoid multiple MPMs error
-RUN a2dismod mpm_event mpm_worker || true \
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.load \
     && a2enmod mpm_prefork rewrite
 
 RUN apt-get update && apt-get install -y \
