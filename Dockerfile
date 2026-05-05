@@ -44,8 +44,10 @@ RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoload
 COPY . .
 COPY --from=node-build /app/public/build ./public/build
 
-RUN composer dump-autoload --optimize
-
+# Temporarily copy .env.example so artisan scripts don't fail during build
+RUN cp .env.example .env && \
+    composer dump-autoload --optimize && \
+    rm .env
 
 # Ensure required writable dirs exist.
 RUN mkdir -p storage bootstrap/cache \
