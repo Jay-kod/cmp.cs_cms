@@ -26,5 +26,16 @@ if [ -n "$PORT" ]; then
   sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
 fi
 
+# Ensure only mpm_prefork is loaded
+echo "Cleaning up MPM modules before starting Apache to prevent AH00534..."
+rm -f /etc/apache2/mods-enabled/mpm_*.load
+rm -f /etc/apache2/mods-enabled/mpm_*.conf
+ln -sf /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load
+ln -sf /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf
+
+# Log loaded modules for debugging
+echo "Loaded modules in mods-enabled:"
+ls -la /etc/apache2/mods-enabled/mpm*
+
 exec "$@"
 
