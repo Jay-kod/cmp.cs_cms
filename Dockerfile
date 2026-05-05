@@ -44,14 +44,14 @@ RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoload
 COPY . .
 COPY --from=node-build /app/public/build ./public/build
 
+# Ensure required writable dirs exist so artisan package:discover doesn't fail.
+RUN mkdir -p storage bootstrap/cache \
+  && chown -R www-data:www-data storage bootstrap/cache
+
 # Temporarily copy .env.example so artisan scripts don't fail during build
 RUN cp .env.example .env && \
     composer dump-autoload --optimize && \
     rm .env
-
-# Ensure required writable dirs exist.
-RUN mkdir -p storage bootstrap/cache \
-  && chown -R www-data:www-data storage bootstrap/cache
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
