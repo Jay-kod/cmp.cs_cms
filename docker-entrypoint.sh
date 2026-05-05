@@ -21,5 +21,10 @@ if [ "${MIGRATE_ON_START:-0}" = "1" ]; then
   php artisan migrate --force
 fi
 
+# Configure Apache to listen on the PORT provided by Railway
+if [ -n "$PORT" ]; then
+  sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
+fi
+
 exec "$@"
 

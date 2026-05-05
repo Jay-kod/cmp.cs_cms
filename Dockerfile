@@ -18,7 +18,9 @@ FROM php:8.2-apache AS app
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-RUN a2enmod rewrite
+# Explicitly set the MPM to prefork to avoid multiple MPMs error
+RUN a2dismod mpm_event mpm_worker || true \
+    && a2enmod mpm_prefork rewrite
 
 RUN apt-get update && apt-get install -y \
     libjpeg-dev \
