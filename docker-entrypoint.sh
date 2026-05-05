@@ -3,6 +3,11 @@ set -e
 
 cd /var/www/html
 
+# Strictly ensure storage structure exists and has correct permissions
+mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache storage/logs bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+
 # Ensure we have an .env file for Artisan.
 if [ ! -f .env ]; then
   cp .env.example .env
