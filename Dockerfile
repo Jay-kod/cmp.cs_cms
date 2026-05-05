@@ -18,9 +18,8 @@ FROM php:8.2-apache AS app
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-# Explicitly set the MPM to prefork to avoid multiple MPMs error
-RUN rm -f /etc/apache2/mods-enabled/mpm_*.load \
-    && a2enmod mpm_prefork rewrite
+# Enable Apache rewrite module (php image already comes with mpm_prefork)
+RUN a2enmod rewrite
 
 RUN apt-get update && apt-get install -y \
     libjpeg-dev \
