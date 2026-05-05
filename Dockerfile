@@ -50,9 +50,14 @@ COPY --from=node-build /app/public/build ./public/build
 RUN mkdir -p storage bootstrap/cache \
   && chown -R www-data:www-data storage bootstrap/cache
 
-# Temporarily copy .env.example so artisan scripts don't fail during build
+# Temporarily create .env with a build-time key so artisan can bootstrap.
+# - Generate a random APP_KEY (required for Laravel to boot)
+# - Switch DB to sqlite so no real DB connection is attempted during discovery
 RUN cp .env.example .env && \
+    sed -i "s|^APP_KEY=$|APP_KEY=base64:$(php -r 'echo base64_encode(random_bytes(32));')|" .env && \
+    sed -i "s|^DB_CONNECTION=mysql$|DB_CONNECTION=sqlite|" .env && \
     composer dump-autoload --optimize && \
+    php artisan config:clear && \
     rm .env
 
 # Adjust Apache DocumentRoot to point to Laravel's public directory
