@@ -46,7 +46,7 @@ COPY . .
 COPY --from=node-build /app/public/build ./public/build
 
 # Ensure required writable dirs exist so artisan package:discover doesn't fail.
-RUN mkdir -p storage bootstrap/cache \
+RUN mkdir -p storage/framework/{sessions,views,cache} bootstrap/cache storage/logs \
   && chown -R www-data:www-data storage bootstrap/cache
 
 # Temporarily create .env with a build-time key so artisan can bootstrap.
