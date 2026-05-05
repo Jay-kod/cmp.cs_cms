@@ -39,10 +39,13 @@ COPY --from=composer-base /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts
 
 COPY . .
 COPY --from=node-build /app/public/build ./public/build
+
+RUN composer dump-autoload --optimize
+
 
 # Ensure required writable dirs exist.
 RUN mkdir -p storage bootstrap/cache \
