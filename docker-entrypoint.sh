@@ -23,14 +23,14 @@ if [ -z "$APP_KEY" ] && [ -z "$(sed -n 's/^APP_KEY=//p' .env | tail -n 1)" ]; th
   php artisan key:generate --force
 fi
 
-# Automatically map Railway MySQL variables if provided
+# Automatically map Railway MySQL variables if provided and update .env
 if [ -n "$MYSQLHOST" ]; then
-  export DB_CONNECTION=mysql
-  export DB_HOST="$MYSQLHOST"
-  export DB_PORT="$MYSQLPORT"
-  export DB_DATABASE="$MYSQLDATABASE"
-  export DB_USERNAME="$MYSQLUSER"
-  export DB_PASSWORD="$MYSQLPASSWORD"
+  sed -i "s/^DB_CONNECTION=.*/DB_CONNECTION=mysql/g" .env
+  sed -i "s/^DB_HOST=.*/DB_HOST=$MYSQLHOST/g" .env
+  sed -i "s/^DB_PORT=.*/DB_PORT=$MYSQLPORT/g" .env
+  sed -i "s/^DB_DATABASE=.*/DB_DATABASE=$MYSQLDATABASE/g" .env
+  sed -i "s/^DB_USERNAME=.*/DB_USERNAME=$MYSQLUSER/g" .env
+  sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=$MYSQLPASSWORD/g" .env
 fi
 
 # Create the storage symlink (safe to ignore failures).
@@ -38,7 +38,8 @@ php artisan storage:link >/dev/null 2>&1 || true
 
 # Optional migrations on container start.
 if [ "${MIGRATE_ON_START:-0}" = "1" ]; then
-  php artisan migrate --force
+  echo "Running database migrations..."
+  php artisan migrate --force || echo "WARNING: Migrations failed. Check database connection settings."
 fi
 
 # Configure Apache to listen on the PORT provided by Railway
