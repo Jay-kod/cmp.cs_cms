@@ -23,6 +23,16 @@ if [ -z "$APP_KEY" ] && [ -z "$(sed -n 's/^APP_KEY=//p' .env | tail -n 1)" ]; th
   php artisan key:generate --force
 fi
 
+# Automatically map Railway MySQL variables if provided
+if [ -n "$MYSQLHOST" ]; then
+  export DB_CONNECTION=mysql
+  export DB_HOST="$MYSQLHOST"
+  export DB_PORT="$MYSQLPORT"
+  export DB_DATABASE="$MYSQLDATABASE"
+  export DB_USERNAME="$MYSQLUSER"
+  export DB_PASSWORD="$MYSQLPASSWORD"
+fi
+
 # Create the storage symlink (safe to ignore failures).
 php artisan storage:link >/dev/null 2>&1 || true
 
