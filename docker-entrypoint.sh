@@ -13,8 +13,13 @@ if [ ! -f .env ]; then
   cp .env.example .env
 fi
 
-# Generate APP_KEY if missing.
-if [ -z "$(sed -n 's/^APP_KEY=//p' .env | tail -n 1)" ]; then
+# Ensure APP_KEY exists in .env if not already present
+if ! grep -q "^APP_KEY=" .env; then
+  echo "APP_KEY=" >> .env
+fi
+
+# Generate APP_KEY if missing in both env var and .env file.
+if [ -z "$APP_KEY" ] && [ -z "$(sed -n 's/^APP_KEY=//p' .env | tail -n 1)" ]; then
   php artisan key:generate --force
 fi
 
@@ -28,7 +33,8 @@ fi
 
 # Configure Apache to listen on the PORT provided by Railway
 if [ -n "$PORT" ]; then
-  sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
+  sed -i "s/^Listen .*/Listen $PORT/g" /etc/apache2/ports.conf
+  sed -i "s/<VirtualHost \*:.*>/<VirtualHost \*:$PORT>/g" /etc/apache2/sites-available/000-default.conf
 fi
 
 # Ensure only mpm_prefork is loaded
