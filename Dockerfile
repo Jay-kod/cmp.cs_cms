@@ -66,6 +66,9 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
+# Enable database migrations on container startup by default
+ENV MIGRATE_ON_START=1
+
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
 
