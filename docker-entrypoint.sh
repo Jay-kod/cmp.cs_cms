@@ -59,5 +59,8 @@ ln -sf /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mp
 echo "Loaded modules in mods-enabled:"
 ls -la /etc/apache2/mods-enabled/mpm*
 
+# Fix permissions again before starting the server just in case artisan commands created files as root
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
 exec "$@"
 
