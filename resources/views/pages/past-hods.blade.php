@@ -46,11 +46,11 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 items-end">
             
             @if($currentHod)
-            <!-- LARGE CARD: Current HOD (Spans 2 columns) -->
-            <div class="col-span-2 flex shadow-2xl bg-white group w-full relative z-20" data-aos="fade-up">
+            <!-- LARGE CARD: Current HOD (Spans up to 3 columns for extra width) -->
+            <div class="col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-3 flex shadow-2xl bg-white group w-full relative z-20" data-aos="fade-up">
                 <!-- Main Content -->
                 <div class="flex-1 flex flex-col">
-                    <div class="relative w-full bg-gradient-to-tr from-lime-400 to-green-600 overflow-hidden shrink-0" style="height: 450px;">
+                    <div class="relative w-full bg-gradient-to-tr from-lime-400 to-green-600 overflow-hidden shrink-0" style="height: 400px;">
                         <img src="{{ $currentHod->photo ? asset('storage/'.$currentHod->photo) : asset('images/avatar-placeholder.png') }}"
                              alt="{{ $currentHod->name }}"
                              class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
