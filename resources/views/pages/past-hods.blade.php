@@ -35,15 +35,15 @@
 </section>
 
 <div class="bg-gradient-to-b from-slate-100 to-slate-300 py-16 lg:py-24 min-h-screen">
-    <div class="container max-w-[1000px] mx-auto px-4">
+    <div class="container max-w-[1280px] mx-auto px-4">
         
         @php
             $currentHod = $hods->firstWhere('is_current', true);
             $pastHodsCollection = $hods->where('is_current', '!=', true)->values();
         @endphp
 
-        <!-- 5-Column Collage Grid -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 items-end">
+        <!-- 6-Column Collage Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5 items-end">
             
             @if($currentHod)
             <!-- LARGE CARD: Current HOD (Spans up to 3 columns for extra width) -->
