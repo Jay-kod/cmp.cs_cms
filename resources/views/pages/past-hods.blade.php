@@ -53,17 +53,24 @@
                     <div class="relative w-full bg-gradient-to-tr from-lime-400 to-green-600 overflow-hidden shrink-0" style="height: 400px;">
                         <img src="{{ $currentHod->photo ? asset('storage/'.$currentHod->photo) : asset('images/avatar-placeholder.png') }}"
                              alt="{{ $currentHod->name }}"
-                             class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
+                             class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
                              onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($currentHod->name) }}&size=800&background=e2e8f0&color=1e293b&bold=true'">
                     </div>
                     <!-- White Text Box -->
-                    <div class="bg-white p-2.5 sm:p-5 text-center relative z-10 border-t-2 border-slate-100 flex-1 flex flex-col justify-center min-h-[90px]">
-                        <h4 class="text-red-600 font-black text-[0.7rem] sm:text-[0.8rem] uppercase tracking-wider mb-1 line-clamp-1">
+                    <div class="bg-white p-2.5 sm:p-5 text-center relative z-10 border-t-2 border-slate-100 flex-1 flex flex-col justify-center min-h-[90px] transition-colors duration-500 group-hover:bg-slate-50">
+                        <h4 class="text-red-600 font-black text-[0.7rem] sm:text-[0.8rem] uppercase tracking-wider mb-1 line-clamp-1 transition-colors duration-300 group-hover:text-green-600">
                             {{ $currentHod->name }}
                         </h4>
                         <h5 class="text-slate-900 font-extrabold text-[0.85rem] sm:text-[1.05rem] uppercase tracking-wide">
                             Current H.O.D
                         </h5>
+                        <p class="text-slate-500 text-[0.65rem] sm:text-[0.75rem] font-bold mt-1 tracking-wider opacity-80 transition-opacity duration-300">
+                            @if($currentHod->tenure_start)
+                                {{ $currentHod->tenure_start }} - Present
+                            @else
+                                Active Tenure
+                            @endif
+                        </p>
                     </div>
                 </div>
                 <!-- Vertical Ribbon -->
@@ -85,21 +92,28 @@
                 $isTopRow = $index < 3;
                 $gradient = $isTopRow ? 'from-green-500 to-lime-400' : 'from-blue-600 to-cyan-500';
             @endphp
-            <div class="flex flex-col bg-white shadow-xl group transition-all duration-300 hover:-translate-y-1.5 relative z-10" style="flex: 1 1 250px; max-width: 280px;" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 50 }}">
+            <div class="flex flex-col bg-white shadow-xl group transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative z-10 cursor-pointer" style="flex: 1 1 250px; max-width: 280px;" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 50 }}">
                 <div class="relative w-full bg-gradient-to-tr {{ $gradient }} overflow-hidden shrink-0" style="height: 300px;">
                     <img src="{{ $h->photo ? asset('storage/'.$h->photo) : asset('images/avatar-placeholder.png') }}"
                          alt="{{ $h->name }}"
-                         class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
+                         class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
                          onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($h->name) }}&size=400&background=e2e8f0&color=1e293b&bold=true'">
                 </div>
                 <!-- White Text Box -->
-                <div class="bg-white p-2 text-center relative z-10 border-t border-slate-100 flex flex-col justify-center h-[55px] sm:h-[70px]">
-                    <h4 class="text-red-600 font-bold text-[0.5rem] sm:text-[0.55rem] uppercase tracking-wider mb-0.5 line-clamp-1">
+                <div class="bg-white py-3 px-2 text-center relative z-10 border-t border-slate-100 flex flex-col justify-center min-h-[80px] transition-colors duration-500 group-hover:bg-slate-50">
+                    <h4 class="text-red-600 font-bold text-[0.55rem] sm:text-[0.65rem] uppercase tracking-wider mb-0.5 line-clamp-1 transition-colors duration-300 group-hover:text-green-600">
                         {{ $h->name }}
                     </h4>
-                    <h5 class="text-slate-900 font-extrabold text-[0.6rem] sm:text-[0.7rem] uppercase tracking-tight line-clamp-1">
+                    <h5 class="text-slate-900 font-extrabold text-[0.65rem] sm:text-[0.75rem] uppercase tracking-tight line-clamp-1">
                         Past H.O.D
                     </h5>
+                    <p class="text-slate-500 text-[0.55rem] sm:text-[0.65rem] font-medium mt-1 opacity-80 transition-opacity duration-300">
+                        @if($h->tenure_start)
+                            {{ $h->tenure_start }} - {{ $h->tenure_end ?? 'Present' }}
+                        @else
+                            Tenure: N/A
+                        @endif
+                    </p>
                 </div>
             </div>
             @endforeach
