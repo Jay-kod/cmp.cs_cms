@@ -42,12 +42,12 @@
             $pastHodsCollection = $hods->where('is_current', '!=', true)->values();
         @endphp
 
-        <!-- 6-Column Collage Grid -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5 items-end">
+        <!-- Flexbox Collage Layout -->
+        <div class="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 items-end">
             
             @if($currentHod)
-            <!-- LARGE CARD: Current HOD (Spans up to 3 columns for extra width) -->
-            <div class="col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-3 flex shadow-2xl bg-white group w-full relative z-20" data-aos="fade-up">
+            <!-- LARGE CARD: Current HOD -->
+            <div class="flex shadow-2xl bg-white group relative z-20" style="flex: 1 1 100%; max-width: 550px;" data-aos="fade-up">
                 <!-- Main Content -->
                 <div class="flex-1 flex flex-col">
                     <div class="relative w-full bg-gradient-to-tr from-lime-400 to-green-600 overflow-hidden shrink-0" style="height: 400px;">
@@ -81,13 +81,11 @@
             <!-- SMALL CARDS: Past HODs -->
             @foreach($pastHodsCollection as $index => $h)
             @php
-                // The large card takes up 2 columns. 
-                // So the first 3 small cards sit on the top row with it.
                 // The top row in the screenshot uses green gradients, bottom rows use blue.
                 $isTopRow = $index < 3;
                 $gradient = $isTopRow ? 'from-green-500 to-lime-400' : 'from-blue-600 to-cyan-500';
             @endphp
-            <div class="col-span-1 flex flex-col bg-white shadow-xl group transition-all duration-300 hover:-translate-y-1.5 w-full relative z-10" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 50 }}">
+            <div class="flex flex-col bg-white shadow-xl group transition-all duration-300 hover:-translate-y-1.5 relative z-10" style="flex: 1 1 250px; max-width: 280px;" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 50 }}">
                 <div class="relative w-full bg-gradient-to-tr {{ $gradient }} overflow-hidden shrink-0" style="height: 300px;">
                     <img src="{{ $h->photo ? asset('storage/'.$h->photo) : asset('images/avatar-placeholder.png') }}"
                          alt="{{ $h->name }}"
