@@ -18,9 +18,9 @@
         <div class="navbar-nav-wrapper" style="display: flex; align-items: center; justify-content: flex-end; flex: 1; gap: 1rem;">
             @php
             $isHomeActive = request()->is('/');
-            $isAboutActive = request()->is('about*') || request()->is('nacos-presidents*');
+            $isAboutActive = request()->is('about*');
             $isAcademicsActive = request()->is('academics*') || request()->is('programmes*') || request()->is('pages/programmes*') || request()->is('siwes*') || request()->is('projects*') || request()->is('sub-department/*') || request()->is('resources*');
-            $isPeopleActive = request()->is('people*') || request()->is('gallery*');
+            $isPeopleActive = request()->is('people*') || request()->is('gallery*') || request()->is('past-hods*') || request()->is('nacos-presidents*');
             $isNewsActive = request()->routeIs('research-news*') || request()->routeIs('announcements*') || request()->is('events*') || request()->is('research-innovations*') || request()->is('pages/academic-calendar*');
             $navSubDepts = \App\Models\SubDepartment::where('is_active', true)->where('slug', '!=', 'computer-science')->get();
             @endphp
@@ -41,7 +41,6 @@
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[220px] z-50 border border-gray-100" role="menu">
                         <a href="{{ url('/about') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('about') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">About the Department</a>
-                        <a href="{{ url('/nacos-presidents') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('nacos-presidents*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Our Association</a>
                     </div>
                 </details>
 
@@ -74,6 +73,8 @@
                     </summary>
                     <div class="nav-dropdown-menu absolute top-[calc(100%+15px)] left-1/2 -translate-x-1/2 bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] rounded-lg p-2 min-w-[200px] z-50 border border-gray-100" role="menu">
                         <a href="{{ url('/people') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('people') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Staff Directory</a>
+                        <a href="{{ url('/past-hods') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('past-hods*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Past HODs</a>
+                        <a href="{{ url('/nacos-presidents') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('nacos-presidents*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Past NACOS Presidents</a>
                         <a href="{{ url('/gallery') }}" class="nav-dropdown-item  block py-2.5 px-4  text-[0.95rem]  no-underline rounded-md transition-all duration-200 hover:bg-green-50 hover:text-primary {{ request()->is('gallery*') ? 'bg-green-50 text-primary font-bold shadow-sm' : 'text-gray-600 font-medium' }}" role="menuitem">Gallery</a>
                     </div>
                 </details>
@@ -130,7 +131,6 @@
                 </summary>
                 <div class="mobile-details-menu">
                     <a href="{{ url('/about') }}" class="mobile-link mobile-sub-link {{ request()->is('about') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">About the Department</a>
-                    <a href="{{ url('/nacos-presidents') }}" class="mobile-link mobile-sub-link {{ request()->is('nacos-presidents*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Our Association</a>
                 </div>
             </details>
 
@@ -157,6 +157,8 @@
                 </summary>
                 <div class="mobile-details-menu">
                     <a href="{{ url('/people') }}" class="mobile-link mobile-sub-link {{ request()->is('people') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Staff Directory</a>
+                    <a href="{{ url('/past-hods') }}" class="mobile-link mobile-sub-link {{ request()->is('past-hods*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Past HODs</a>
+                    <a href="{{ url('/nacos-presidents') }}" class="mobile-link mobile-sub-link {{ request()->is('nacos-presidents*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Past NACOS Presidents</a>
                     <a href="{{ url('/gallery') }}" class="mobile-link mobile-sub-link {{ request()->is('gallery*') ? 'text-primary font-bold bg-green-50 border-l-4 border-primary pl-3' : '' }}">Gallery</a>
                 </div>
             </details>

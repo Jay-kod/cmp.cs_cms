@@ -812,7 +812,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Floating/Skewed Name Plate -->
             <div class="absolute bottom-6 left-4 right-4 lg:left-3 lg:right-3 transform lg:-skew-x-[8deg] bg-emerald-950/95 backdrop-blur-sm border-l-[4px] border-emerald-400 p-4 sm:p-5 rounded-xl z-30 shadow-[0_10px_20px_rgba(0,0,0,0.5)] transition-all duration-500 group-hover:bg-emerald-800/95">
                 <div class="transform lg:skew-x-[8deg] flex flex-col justify-center">
-                    <h3 class="text-white font-heading font-bold text-[1.1rem] uppercase tracking-wide m-0 mb-1 group-hover:text-primary transition-colors line-clamp-1" title="${m.name}">${m.title + ' ' + m.name}</h3>
+                    <h3 class="text-white font-heading font-bold text-[1.1rem] uppercase tracking-wide m-0 mb-1 group-hover:text-primary transition-colors line-clamp-1" title="${m.name}">${(m.title ? m.title + ' ' : '') + m.name}</h3>
                     <p class="text-emerald-200/80 font-bold text-[0.7rem] sm:text-[0.75rem] tracking-[1.5px] uppercase m-0 group-hover:text-emerald-100 transition-colors">${m.rank || 'Lecturer'}</p>
                 </div>
             </div>
@@ -868,9 +868,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             <h3 class="text-slate-700 m-0 mb-2">No Staff Found</h3>
                             <p class="text-slate-500">Try adjusting your search or filter.</p>
                         </div>`;
-<!-- Replace old CSS class with pure Tailwind Grid -->
-            gridContainer.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 staff-grid-fade">${cards}</div>`;
-        }
+                } else {
+                    gridContainer.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 staff-grid-fade">${cards}</div>`;
+                }
 
                 gridContainer.style.opacity = '1';
 

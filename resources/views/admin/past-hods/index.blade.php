@@ -161,6 +161,9 @@
                         <div>
                             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
                                 <strong style="font-size: 1.05rem; color: #0f172a;">{{ $h->name }}</strong>
+                                @if($h->is_current)
+                                    <span style="font-size: 0.7rem; background: #f59e0b; color: white; padding: 2px 6px; border-radius: 4px; font-weight: 500; text-transform: uppercase;">Current</span>
+                                @endif
                             </div>
                         </div>
                     </div>

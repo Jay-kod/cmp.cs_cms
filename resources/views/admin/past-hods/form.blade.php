@@ -42,6 +42,14 @@
                     <input type="text" name="phone" value="{{ old('phone', $hod->phone) }}" class="form-control" placeholder="e.g. +234 800 000 0000" style="width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #d1d5db; border-radius: 6px;">
                 </div>
 
+                <div class="form-group" style="margin-bottom: 1.2rem; background: #fbbf241a; padding: 1rem; border-radius: 6px; border: 1px solid #fcd34d;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-weight: 500; font-size: 0.95rem; color: #92400e;">
+                        <input type="checkbox" name="is_current" value="1" {{ old('is_current', $hod->is_current) ? 'checked' : '' }} style="width: 1.2rem; height: 1.2rem; accent-color: #d97706;">
+                        Set as Current HOD
+                    </label>
+                    <p style="margin: 0.4rem 0 0 1.7rem; font-size: 0.8rem; color: #b45309;">If checked, this person will be displayed as the current Head of Department on the website. Checking this will unset any previously set Current HOD.</p>
+                </div>
+
                 <div class="form-group" style="margin-bottom: 1.2rem;">
                     <label class="form-label" style="font-weight: 500; font-size: 0.9rem; color: #374151;">Profile Photo</label>
                     @if($hod->photo)

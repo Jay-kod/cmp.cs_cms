@@ -21,8 +21,11 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-    {
-        // ── Dynamic admin layout ──
+    {        // Force fully secure URLs when accessed via Cloudflare/Proxies
+        if (request()->headers->has('x-forwarded-proto') && request()->header('x-forwarded-proto') === 'https') {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+                // ── Dynamic admin layout ──
         // When a super admin opens shared admin views (news, staff, events, etc.),
         // they see the super-admin layout (red theme). Regular admins see the admin layout (green).
         View::composer('admin.*', function ($view) {
