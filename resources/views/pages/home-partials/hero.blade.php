@@ -1,11 +1,7 @@
 <!-- HERO CAROUSEL — Dynamic from Database -->
 <style>
     .hero-carousel .carousel-arrow {
-        opacity: 0;
-        transition: opacity 0.3s ease, background 0.3s ease;
-    }
-    .hero-carousel:hover .carousel-arrow {
-        opacity: 1;
+        display: none !important;
     }
 </style>
 <section data-aos="fade-up" class="hero-carousel relative overflow-hidden min-h-[500px] h-[100vh]">
