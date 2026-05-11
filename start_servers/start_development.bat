@@ -34,14 +34,14 @@ if exist "start_background_workers.vbs" (
     echo      - Background workers script not found. Skipping.
 )
 
-echo [5] Starting Cloudflare Tunnel...
-start "Cloudflare Tunnel" cmd /k "title Cloudflare Tunnel & cloudflared tunnel --url http://127.0.0.1:8000"
+echo [5] Starting Ngrok Tunnel...
+start "Ngrok Tunnel" cmd /k "title Ngrok Tunnel & ngrok http 8000"
 
 echo.
 echo =========================================
 echo   Servers successfully started!          
 echo   Local URL: http://localhost:8000       
-echo   Check the 'Cloudflare Tunnel' window for your public URL!
+echo   Check the 'Ngrok Tunnel' window for your public URL!
 echo =========================================
 echo.
 pause
