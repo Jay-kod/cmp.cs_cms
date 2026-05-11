@@ -13,3 +13,12 @@
     .hod-text { min-width: 100%; }
     .hod-text > div { text-align: left; }
 }
+
+/* Global Heading Overrides (Responsive) */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: clamp(16px, 5vw, 20px) !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+}
+

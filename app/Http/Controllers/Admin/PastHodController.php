@@ -29,6 +29,7 @@ class PastHodController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'is_current' => 'nullable|boolean',
             'email' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:50',
             'rank' => 'nullable|string|max:255',
@@ -41,6 +42,11 @@ class PastHodController extends Controller
             'bio' => 'nullable|string',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
         ]);
+
+        $data['is_current'] = $request->has('is_current') ? true : false;
+        if ($data['is_current']) {
+            PastHod::query()->update(['is_current' => false]);
+        }
 
         if ($request->hasFile('photo')) {
             $photoFile = $request->file('photo');
@@ -69,6 +75,7 @@ class PastHodController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'is_current' => 'nullable|boolean',
             'email' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:50',
             'rank' => 'nullable|string|max:255',
@@ -81,6 +88,11 @@ class PastHodController extends Controller
             'bio' => 'nullable|string',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
         ]);
+
+        $data['is_current'] = $request->has('is_current') ? true : false;
+        if ($data['is_current']) {
+            PastHod::where('id', '!=', $past_hod->id)->update(['is_current' => false]);
+        }
 
         if ($request->hasFile('photo')) {
             if ($past_hod->photo) {
